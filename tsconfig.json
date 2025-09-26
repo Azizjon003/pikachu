@@ -1,0 +1,38 @@
+{
+  "compilerOptions": {
+    /* === File Layout === */
+    "baseUrl": ".",
+    "paths": {
+      "@/*": ["./*"]
+    },
+
+    /* === Module & Target === */
+    "module": "CommonJS",
+    "moduleResolution": "Node",
+    "target": "ESNext",
+    "lib": ["ESNext", "DOM"],
+    "types": ["node"],
+    "esModuleInterop": true,
+    "allowSyntheticDefaultImports": true,
+
+    /* === Outputs === */
+    "sourceMap": true,
+    "declaration": true,
+
+    /* === Strictness (yumshatilgan) === */
+    "strict": true, // umumiy strict qoladi
+    "skipLibCheck": true, // kutubxonalarni check qilmaydi
+    "isolatedModules": false, // har faylni alohida check qilmaydi
+    "noUncheckedIndexedAccess": false,
+    "exactOptionalPropertyTypes": false,
+    "forceConsistentCasingInFileNames": false
+
+    /* === Optional stricter flags (hozircha o‘chirib qo‘yilgan) === */
+    // "noImplicitReturns": true,
+    // "noUnusedLocals": true,
+    // "noUnusedParameters": true,
+    // "noFallthroughCasesInSwitch": true
+  },
+  "include": ["**/*.ts"],
+  "exclude": ["node_modules", "dist"]
+}
