@@ -5,4 +5,7 @@ const json = fs.readFileSync("test-java.json", "utf-8");
 
 const data = JSON.parse(json);
 
-exportPPTX(data.slide, false, false, data.theme);
+exportPPTX(data.slide, false, false, data.theme, {
+  width: data.viewportWidth,
+  height: data.viewportHeight,
+});

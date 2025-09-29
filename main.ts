@@ -24,12 +24,6 @@ let viewportSize = { value: 1920 };
 let viewportHeight = { value: 1080 };
 let viewportRatio = { value: viewportHeight.value / viewportSize.value };
 console.log(viewportRatio.value, "viewportRatio");
-const ratioPx2Inch = () => {
-  return 96 * (viewportSize.value / 1920);
-};
-const ratioPx2Pt = () => {
-  return (96 / 72) * (viewportSize.value / 1920);
-};
 
 const formatColor = (_color: string) => {
   if (!_color) {
@@ -49,10 +43,7 @@ const formatColor = (_color: string) => {
 };
 
 type FormatColor = ReturnType<typeof formatColor>;
-
-// 将HTML字符串格式化为pptxgenjs所需的格式
-// 核心思路：将HTML字符串按样式分片平铺，每个片段需要继承祖先元素的样式信息，遇到块级元素需要换行
-const formatHTML = (html: string) => {
+const formatHTML = (html: string, ratioPx2Pt: number) => {
   const ast = toAST(html);
   let bulletFlag = false;
   let indent = 0;
@@ -132,7 +123,7 @@ const formatHTML = (html: string) => {
         const options: pptxgen.TextPropsOptions = {};
 
         if (styleObj["font-size"]) {
-          options.fontSize = parseInt(styleObj["font-size"]) / ratioPx2Pt();
+          options.fontSize = parseInt(styleObj["font-size"]) / ratioPx2Pt;
         }
         if (styleObj["color"]) {
           options.color = formatColor(styleObj["color"]).color;
@@ -237,8 +228,12 @@ type Points = Array<
 >;
 
 // 将SVG路径信息格式化为pptxgenjs所需要的格式
-const formatPoints = (points: SvgPoints, scale = { x: 1, y: 1 }): Points => {
-  const dpi = ratioPx2Inch(); // px per inch
+const formatPoints = (
+  points: SvgPoints,
+  ratioPx2Inch: number,
+  scale = { x: 1, y: 1 }
+): Points => {
+  const dpi = ratioPx2Inch; // px per inch
   return points.map((point: any) => {
     if (point.close !== undefined) {
       return { close: true };
@@ -281,7 +276,10 @@ const formatPoints = (points: SvgPoints, scale = { x: 1, y: 1 }): Points => {
 };
 
 // 获取阴影配置
-const getShadowOption = (shadow: PPTElementShadow): pptxgen.ShadowProps => {
+const getShadowOption = (
+  shadow: PPTElementShadow,
+  ratioPx2Pt: number
+): pptxgen.ShadowProps => {
   const c = formatColor(shadow.color);
   const { h, v } = shadow;
 
@@ -325,7 +323,7 @@ const getShadowOption = (shadow: PPTElementShadow): pptxgen.ShadowProps => {
     type: "outer",
     color: c.color.replace("#", ""),
     opacity: c.alpha,
-    blur: shadow.blur / ratioPx2Pt(),
+    blur: shadow.blur / ratioPx2Pt,
     offset,
     angle,
   };
@@ -339,14 +337,15 @@ const dashTypeMap = {
 
 // 获取边框配置
 const getOutlineOption = (
-  outline: PPTElementOutline
+  outline: PPTElementOutline,
+  ratioPx2Pt: number
 ): pptxgen.ShapeLineProps => {
   const c = formatColor(outline?.color || "#000000");
 
   return {
     color: c.color,
     transparency: (1 - c.alpha) * 100,
-    width: (outline.width || 1) / ratioPx2Pt(),
+    width: (outline.width || 1) / ratioPx2Pt,
     dashType: outline.style
       ? (dashTypeMap[outline.style] as "solid" | "dash" | "sysDot")
       : "solid",
@@ -381,24 +380,92 @@ const isSVGImage = (url: string) => {
   return isSVGBase64 || isSVGUrl;
 };
 
-// 导出PPTX文件
 export const exportPPTX = (
   _slides: Slide[],
   masterOverwrite: boolean,
   ignoreMedia: boolean,
-  theme: SlideTheme
+  theme: SlideTheme,
+  viewPort: { width: number; height: number }
 ) => {
+  viewportSize.value = viewPort.width;
+  viewportHeight.value = viewPort.height;
+  viewportRatio.value = viewportHeight.value / viewportSize.value;
   const pptx = new pptxgen();
+  const ratio = viewportRatio.value;
 
-  if (viewportRatio.value === 0.625) pptx.layout = "LAYOUT_16x10";
-  else if (viewportRatio.value === 0.75) pptx.layout = "LAYOUT_4x3";
-  else if (viewportRatio.value === 0.70710678) {
-    pptx.defineLayout({ name: "A3", width: 10, height: 7.0710678 });
+  let slideWidthInches = 10;
+  let slideHeightInches = 5.625;
+
+  if (Math.abs(ratio - 0.625) < 0.001) {
+    pptx.layout = "LAYOUT_16x10";
+    slideWidthInches = 10;
+    slideHeightInches = 6.25;
+  } else if (Math.abs(ratio - 0.75) < 0.001) {
+    pptx.layout = "LAYOUT_4x3";
+    slideWidthInches = 10;
+    slideHeightInches = 7.5;
+  } else if (Math.abs(ratio - 0.70710678) < 0.0000001) {
+    slideWidthInches = 10;
+    slideHeightInches = 7.0710678;
+    pptx.defineLayout({
+      name: "A3",
+      width: slideWidthInches,
+      height: slideHeightInches,
+    });
     pptx.layout = "A3";
-  } else if (viewportRatio.value === 1.41421356) {
-    pptx.defineLayout({ name: "A3_V", width: 10, height: 14.1421356 });
+  } else if (Math.abs(ratio - 1.41421356) < 0.0000001) {
+    slideWidthInches = 10;
+    slideHeightInches = 14.1421356;
+    pptx.defineLayout({
+      name: "A3_V",
+      width: slideWidthInches,
+      height: slideHeightInches,
+    });
     pptx.layout = "A3_V";
-  } else pptx.layout = "LAYOUT_16x9";
+  } else if (Math.abs(ratio - 1) < 0.001) {
+    slideWidthInches = 10;
+    slideHeightInches = 10;
+    pptx.defineLayout({
+      name: "SQUARE",
+      width: slideWidthInches,
+      height: slideHeightInches,
+    });
+    pptx.layout = "SQUARE";
+  } else if (Math.abs(ratio - 16 / 9) < 0.01) {
+    slideWidthInches = 9;
+    slideHeightInches = 16;
+    pptx.defineLayout({
+      name: "PORTRAIT_9x16",
+      width: slideWidthInches,
+      height: slideHeightInches,
+    });
+    pptx.layout = "PORTRAIT_9x16";
+  } else if (Math.abs(ratio - 4 / 3) < 0.01) {
+    slideWidthInches = 9;
+    slideHeightInches = 12;
+    pptx.defineLayout({
+      name: "PORTRAIT_4x3",
+      width: slideWidthInches,
+      height: slideHeightInches,
+    });
+    pptx.layout = "PORTRAIT_4x3";
+  } else if (Math.abs(ratio - 2 / 3) < 0.01) {
+    slideWidthInches = 12;
+    slideHeightInches = 8;
+    pptx.defineLayout({
+      name: "LANDSCAPE_3x2",
+      width: slideWidthInches,
+      height: slideHeightInches,
+    });
+    pptx.layout = "LANDSCAPE_3x2";
+  } else {
+    pptx.layout = "LAYOUT_16x9";
+    slideWidthInches = 10;
+    slideHeightInches = 5.625;
+  }
+
+  const ratioPx2Inch = viewportSize.value / slideWidthInches;
+  const ratioPx2Pt = ratioPx2Inch / 72;
 
   if (masterOverwrite) {
     const { color: bgColor, alpha: bgAlpha } = formatColor(
@@ -421,8 +488,8 @@ export const exportPPTX = (
             data: background.image.src,
             x: 0,
             y: 0,
-            w: viewportSize.value / ratioPx2Inch(),
-            h: (viewportSize.value * viewportRatio.value) / ratioPx2Inch(),
+            w: viewportSize.value / ratioPx2Inch,
+            h: (viewportSize.value * viewportRatio.value) / ratioPx2Inch,
           });
         } else if (isBase64Image(background.image.src)) {
           pptxSlide.background = { data: background.image.src };
@@ -462,24 +529,24 @@ export const exportPPTX = (
 
     for (const el of slide.elements) {
       if (el.type === "text") {
-        const textProps = formatHTML(el.content);
+        const textProps = formatHTML(el.content, ratioPx2Pt);
 
         const options: pptxgen.TextPropsOptions = {
-          x: el.left / ratioPx2Inch(),
-          y: el.top / ratioPx2Inch(),
-          w: el.width / ratioPx2Inch(),
-          h: el.height / ratioPx2Inch(),
-          fontSize: defaultFontSize / ratioPx2Pt(),
+          x: el.left / ratioPx2Inch,
+          y: el.top / ratioPx2Inch,
+          w: el.width / ratioPx2Inch,
+          h: el.height / ratioPx2Inch,
+          fontSize: defaultFontSize / ratioPx2Pt,
           fontFace: "微软雅黑",
           color: "#000000",
           valign: "top",
-          margin: 10 / ratioPx2Pt(),
-          paraSpaceBefore: 5 / ratioPx2Pt(),
+          margin: 10 / ratioPx2Pt,
+          paraSpaceBefore: 5 / ratioPx2Pt,
           lineSpacingMultiple: 1.5 / 1.25,
           autoFit: true,
         };
         if (el.rotate) options.rotate = el.rotate;
-        if (el.wordSpace) options.charSpacing = el.wordSpace / ratioPx2Pt();
+        if (el.wordSpace) options.charSpacing = el.wordSpace / ratioPx2Pt;
         if (el.lineHeight) options.lineSpacingMultiple = el.lineHeight / 1.25;
         if (el.fill) {
           const c = formatColor(el.fill?.value || "#ffffff");
@@ -491,20 +558,21 @@ export const exportPPTX = (
         }
         if (el.defaultColor) options.color = formatColor(el.defaultColor).color;
         if (el.defaultFontName) options.fontFace = el.defaultFontName;
-        if (el.shadow) options.shadow = getShadowOption(el.shadow);
-        if (el.outline?.width) options.line = getOutlineOption(el.outline);
+        if (el.shadow) options.shadow = getShadowOption(el.shadow, ratioPx2Pt);
+        if (el.outline?.width)
+          options.line = getOutlineOption(el.outline, ratioPx2Pt);
         if (el.opacity !== undefined)
           options.transparency = (1 - el.opacity) * 100;
         if (el.paragraphSpace !== undefined)
-          options.paraSpaceBefore = el.paragraphSpace / ratioPx2Pt();
+          options.paraSpaceBefore = el.paragraphSpace / ratioPx2Pt;
         if (el.vertical) options.vert = "eaVert";
         pptxSlide.addText(textProps, options);
       } else if (el.type === "image") {
         const options: pptxgen.ImageProps = {
-          x: el.left / ratioPx2Inch(),
-          y: el.top / ratioPx2Inch(),
-          w: el.width / ratioPx2Inch(),
-          h: el.height / ratioPx2Inch(),
+          x: el.left / ratioPx2Inch,
+          y: el.top / ratioPx2Inch,
+          w: el.width / ratioPx2Inch,
+          h: el.height / ratioPx2Inch,
         };
         if (isBase64Image(el.src)) options.data = el.src;
         else options.path = el.src;
@@ -525,18 +593,18 @@ export const exportPPTX = (
           const [startX, startY] = start;
           const [endX, endY] = end;
 
-          const originW = el.width / ((endX - startX) / ratioPx2Inch());
-          const originH = el.height / ((endY - startY) / ratioPx2Inch());
+          const originW = el.width / (endX - startX);
+          const originH = el.height / (endY - startY);
 
-          options.w = originW / ratioPx2Inch();
-          options.h = originH / ratioPx2Inch();
+          options.w = originW / ratioPx2Inch;
+          options.h = originH / ratioPx2Inch;
 
           options.sizing = {
             type: "crop",
-            x: ((startX / ratioPx2Inch()) * originW) / ratioPx2Inch(),
-            y: ((startY / ratioPx2Inch()) * originH) / ratioPx2Inch(),
-            w: (((endX - startX) / ratioPx2Inch()) * originW) / ratioPx2Inch(),
-            h: (((endY - startY) / ratioPx2Inch()) * originH) / ratioPx2Inch(),
+            x: startX,
+            y: startY,
+            w: endX - startX,
+            h: endY - startY,
           };
         }
 
@@ -555,10 +623,10 @@ export const exportPPTX = (
 
           const options: pptxgen.ImageProps = {
             data: el.path,
-            x: el.left / ratioPx2Inch(),
-            y: el.top / ratioPx2Inch(),
-            w: el.width / ratioPx2Inch(),
-            h: el.height / ratioPx2Inch(),
+            x: el.left / ratioPx2Inch,
+            y: el.top / ratioPx2Inch,
+            w: el.width / ratioPx2Inch,
+            h: el.height / ratioPx2Inch,
           };
           if (el.rotate) options.rotate = el.rotate;
           if (el.flipH) options.flipH = el.flipH;
@@ -574,7 +642,7 @@ export const exportPPTX = (
             x: el.width / el.viewBox[0],
             y: el.height / el.viewBox[1],
           };
-          const points = formatPoints(toPoints(el.path), scale);
+          const points = formatPoints(toPoints(el.path), ratioPx2Inch, scale);
 
           let fillColor = formatColor(el.fill);
           if (el.gradient) {
@@ -588,10 +656,10 @@ export const exportPPTX = (
           const opacity = el.opacity === undefined ? 1 : el.opacity;
 
           const options: pptxgen.ShapeProps = {
-            x: el.left / ratioPx2Inch(),
-            y: el.top / ratioPx2Inch(),
-            w: el.width / ratioPx2Inch(),
-            h: el.height / ratioPx2Inch(),
+            x: el.left / ratioPx2Inch,
+            y: el.top / ratioPx2Inch,
+            w: el.width / ratioPx2Inch,
+            h: el.height / ratioPx2Inch,
             fill: {
               color: fillColor.color,
               transparency: (1 - fillColor.alpha * opacity) * 100,
@@ -600,8 +668,10 @@ export const exportPPTX = (
           };
           if (el.flipH) options.flipH = el.flipH;
           if (el.flipV) options.flipV = el.flipV;
-          if (el.shadow) options.shadow = getShadowOption(el.shadow);
-          if (el.outline?.width) options.line = getOutlineOption(el.outline);
+          if (el.shadow)
+            options.shadow = getShadowOption(el.shadow, ratioPx2Pt);
+          if (el.outline?.width)
+            options.line = getOutlineOption(el.outline, ratioPx2Pt);
           if (el.rotate) options.rotate = el.rotate;
           if (el.link) {
             const linkOption = getLinkOption(el.link, _slides);
@@ -611,17 +681,17 @@ export const exportPPTX = (
           pptxSlide.addShape("custGeom" as pptxgen.ShapeType, options);
         }
         if (el.text) {
-          const textProps = formatHTML(el.text.content);
+          const textProps = formatHTML(el.text.content, ratioPx2Pt);
 
           const options: pptxgen.TextPropsOptions = {
-            x: el.left / ratioPx2Inch(),
-            y: el.top / ratioPx2Inch(),
-            w: el.width / ratioPx2Inch(),
-            h: el.height / ratioPx2Inch(),
-            fontSize: defaultFontSize / ratioPx2Pt(),
+            x: el.left / ratioPx2Inch,
+            y: el.top / ratioPx2Inch,
+            w: el.width / ratioPx2Inch,
+            h: el.height / ratioPx2Inch,
+            fontSize: defaultFontSize / ratioPx2Pt,
             fontFace: "微软雅黑",
             color: "#000000",
-            paraSpaceBefore: 5 / ratioPx2Pt(),
+            paraSpaceBefore: 5 / ratioPx2Pt,
             valign: el.text.align,
           };
           if (el.rotate) options.rotate = el.rotate;
@@ -634,10 +704,10 @@ export const exportPPTX = (
         }
         if (el.pattern) {
           const options: pptxgen.ImageProps = {
-            x: el.left / ratioPx2Inch(),
-            y: el.top / ratioPx2Inch(),
-            w: el.width / ratioPx2Inch(),
-            h: el.height / ratioPx2Inch(),
+            x: el.left / ratioPx2Inch,
+            y: el.top / ratioPx2Inch,
+            w: el.width / ratioPx2Inch,
+            h: el.height / ratioPx2Inch,
           };
           if (isBase64Image(el.pattern)) options.data = el.pattern;
           else options.path = el.pattern;
@@ -654,26 +724,26 @@ export const exportPPTX = (
         }
       } else if (el.type === "line") {
         const path = getLineElementPath(el);
-        const points = formatPoints(toPoints(path));
+        const points = formatPoints(toPoints(path), ratioPx2Inch);
         const { minX, maxX, minY, maxY }: any = getElementRange(el);
         const c = formatColor(el.color);
 
         const options: pptxgen.ShapeProps = {
-          x: el.left / ratioPx2Inch(),
-          y: el.top / ratioPx2Inch(),
-          w: (maxX - minX) / ratioPx2Inch(),
-          h: (maxY - minY) / ratioPx2Inch(),
+          x: el.left / ratioPx2Inch,
+          y: el.top / ratioPx2Inch,
+          w: (maxX - minX) / ratioPx2Inch,
+          h: (maxY - minY) / ratioPx2Inch,
           line: {
             color: c.color,
             transparency: (1 - c.alpha) * 100,
-            width: el.width / ratioPx2Pt(),
+            width: el.width / ratioPx2Pt,
             dashType: dashTypeMap[el.style] as "solid" | "dash" | "sysDot",
             beginArrowType: el.points[0] ? "arrow" : "none",
             endArrowType: el.points[1] ? "arrow" : "none",
           },
           points,
         };
-        if (el.shadow) options.shadow = getShadowOption(el.shadow);
+        if (el.shadow) options.shadow = getShadowOption(el.shadow, ratioPx2Pt);
 
         pptxSlide.addShape("custGeom" as pptxgen.ShapeType, options);
       } else if (el.type === "chart") {
@@ -710,10 +780,10 @@ export const exportPPTX = (
         }
 
         const options: pptxgen.IChartOpts = {
-          x: el.left / ratioPx2Inch(),
-          y: el.top / ratioPx2Inch(),
-          w: el.width / ratioPx2Inch(),
-          h: el.height / ratioPx2Inch(),
+          x: el.left / ratioPx2Inch,
+          y: el.top / ratioPx2Inch,
+          w: el.width / ratioPx2Inch,
+          h: el.height / ratioPx2Inch,
           chartColors:
             el.chartType === "pie" || el.chartType === "ring"
               ? chartColors
@@ -724,7 +794,7 @@ export const exportPPTX = (
         options.catAxisLabelColor = textColor;
         options.valAxisLabelColor = textColor;
 
-        const fontSize = 14 / ratioPx2Pt();
+        const fontSize = 14 / ratioPx2Pt;
         options.catAxisLabelFontSize = fontSize;
         options.valAxisLabelFontSize = fontSize;
 
@@ -735,7 +805,7 @@ export const exportPPTX = (
           }
           if (el.outline) {
             plotArea.border = {
-              pt: el.outline.width! / ratioPx2Pt(),
+              pt: el.outline.width! / ratioPx2Pt,
               color: formatColor(el.outline.color!).color,
             };
           }
@@ -829,7 +899,7 @@ export const exportPPTX = (
               fontFace: cell.style?.fontname || "微软雅黑",
               fontSize:
                 (cell.style?.fontsize ? parseInt(cell.style?.fontsize) : 14) /
-                ratioPx2Pt(),
+                ratioPx2Pt,
             };
             if (theme && themeColor) {
               let c: FormatColor;
@@ -869,17 +939,17 @@ export const exportPPTX = (
         }
 
         const options: pptxgen.TableProps = {
-          x: el.left / ratioPx2Inch(),
-          y: el.top / ratioPx2Inch(),
-          w: el.width / ratioPx2Inch(),
-          h: el.height / ratioPx2Inch(),
-          colW: el.colWidths.map((item) => (el.width * item) / ratioPx2Inch()),
+          x: el.left / ratioPx2Inch,
+          y: el.top / ratioPx2Inch,
+          w: el.width / ratioPx2Inch,
+          h: el.height / ratioPx2Inch,
+          colW: el.colWidths.map((item) => (el.width * item) / ratioPx2Inch),
         };
         if (el.theme) options.fill = { color: "#ffffff" };
         if (el.outline.width && el.outline.color) {
           options.border = {
             type: el.outline.style === "solid" ? "solid" : "dash",
-            pt: el.outline.width / ratioPx2Pt(),
+            pt: el.outline.width / ratioPx2Pt,
             color: formatColor(el.outline.color).color,
           };
         }
@@ -893,10 +963,10 @@ export const exportPPTX = (
 
         const options: pptxgen.ImageProps = {
           data: base64SVG,
-          x: el.left / ratioPx2Inch(),
-          y: el.top / ratioPx2Inch(),
-          w: el.width / ratioPx2Inch(),
-          h: el.height / ratioPx2Inch(),
+          x: el.left / ratioPx2Inch,
+          y: el.top / ratioPx2Inch,
+          w: el.width / ratioPx2Inch,
+          h: el.height / ratioPx2Inch,
         };
         if (el.link) {
           const linkOption = getLinkOption(el.link, _slides);
@@ -906,10 +976,10 @@ export const exportPPTX = (
         pptxSlide.addImage(options);
       } else if (!ignoreMedia && (el.type === "video" || el.type === "audio")) {
         const options: pptxgen.MediaProps = {
-          x: el.left / ratioPx2Inch(),
-          y: el.top / ratioPx2Inch(),
-          w: el.width / ratioPx2Inch(),
-          h: el.height / ratioPx2Inch(),
+          x: el.left / ratioPx2Inch,
+          y: el.top / ratioPx2Inch,
+          w: el.width / ratioPx2Inch,
+          h: el.height / ratioPx2Inch,
           path: el.src,
           type: el.type,
         };

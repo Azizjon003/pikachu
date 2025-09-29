@@ -204,7 +204,6 @@ const calculateRotatedPosition = (
   return { x: graphicX, y: graphicY };
 };
 
-// 导入PPTX文件
 export const importPPTX = async (
   buffer: ArrayBuffer,
   options?: { cover?: boolean; fixedViewport?: boolean }
@@ -214,7 +213,6 @@ export const importPPTX = async (
     fixedViewport: false,
   };
   const { cover, fixedViewport } = { ...defaultOptions, ...options };
-  let viewportSize = 1920;
   const shapeList: ShapePoolItem[] = [];
   for (const item of SHAPE_LIST) {
     shapeList.push(...item.children);
@@ -230,10 +228,19 @@ export const importPPTX = async (
   if (!json) return [];
 
   let ratio = 96 / 72;
-  const width = json.size.width;
+  const { width, height } = json.size;
+  console.log(width, height, "width, height");
+  let viewportWidth;
+  let viewportHeight;
 
-  if (fixedViewport) ratio = 1000 / width;
-  else viewportSize = width * ratio;
+  if (fixedViewport) {
+    ratio = 1000 / width;
+    viewportWidth = 1920;
+    viewportHeight = (1920 * height) / width;
+  } else {
+    viewportWidth = width * ratio;
+    viewportHeight = height * ratio;
+  }
 
   theme = {
     themeColors: json.themeColors,
@@ -742,6 +749,7 @@ export const importPPTX = async (
   return {
     slide: slides,
     theme,
-    viewportSize,
+    viewportWidth,
+    viewportHeight,
   };
 };
