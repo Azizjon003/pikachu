@@ -222,6 +222,7 @@ export const importPPTX = async (
   try {
     json = await pptxtojson.parse(buffer);
   } catch (e) {
+    console.log(e, "e");
     return [];
   }
 
