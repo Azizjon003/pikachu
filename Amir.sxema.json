@@ -1,0 +1,98 @@
+[
+  {
+    "id": "awcfTxfkt7",
+    "index": 0,
+    "slide": 1,
+    "elements": [
+      {
+        "type": "text",
+        "content": "Mirzo Ulug‘bek"
+      },
+      {
+        "type": "text",
+        "content": "Azizjon Aliqulov"
+      }
+    ],
+    "note": ""
+  },
+  {
+    "id": "NrTGqyHu1C",
+    "index": 1,
+    "slide": 2,
+    "elements": [
+      {
+        "type": "text",
+        "content": "Mundarija"
+      },
+      {
+        "type": "text",
+        "content": "Ulug‘bekning hayoti va faoliyati\nUlug‘bekning ilmiy merosi\nSamarqand rasadxonasi\nUlug‘bekning ta’limga qo‘shgan hissasi\nUlug‘bek merosi va ta’siri"
+      }
+    ],
+    "note": ""
+  },
+  {
+    "id": "gr3XBXjPWi",
+    "index": 2,
+    "slide": 3,
+    "elements": [
+      {
+        "type": "text",
+        "content": "Mirzo Ulug‘bekning hayoti"
+      },
+      {
+        "type": "text",
+        "content": "Tarixiy shaxs va buyuk olim"
+      }
+    ],
+    "note": ""
+  },
+  {
+    "id": "ujoZaRaF_X",
+    "index": 3,
+    "slide": 4,
+    "elements": [
+      {
+        "type": "text",
+        "content": "Mirzo Ulug‘bek: Olim va hukmdor"
+      },
+      {
+        "type": "text",
+        "content": "Mirzo Ulug‘bek (1394–1449) Temuriylar sulolasining yirik vakili, hukmdor va buyuk astronom edi. U ilm-fanga bo‘lgan mehrini yoshligidan namoyon etgan va Samarqandni ilm markaziga aylantirgan. Ulug‘bekning hukmronligi davrida ilmiy izlanishlar rivoj topdi."
+      }
+    ],
+    "note": ""
+  },
+  {
+    "id": "nX_4owPWMm",
+    "index": 4,
+    "slide": 5,
+    "elements": [
+      {
+        "type": "text",
+        "content": "Samarqand rasadxonasi"
+      },
+      {
+        "type": "text",
+        "content": "Ulug‘bek 1428-yilda Samarqandda ulkan rasadxona barpo qildi. Bu markaz Sharqda astronomiya taraqqiyotining eng yirik o‘choqlaridan biri bo‘lib, unda ko‘plab olimlar faoliyat olib bordi. Rasadxona orqali yulduzlar katalogi tuzildi va aniq kuzatuvlar amalga oshirildi."
+      }
+    ],
+    "note": ""
+  },
+  {
+    "id": "3WBbkaRkeR",
+    "index": 5,
+    "slide": 6,
+    "elements": [
+      {
+        "type": "text",
+        "content": "Ulug‘bekning merosi va ta’siri"
+      },
+      {
+        "type": "text",
+        "content": "Ulug‘bekning ilmiy ishlari butun dunyo astronomiyasiga katta ta’sir ko‘rsatgan. Uning yulduzlar jadvali (‘Ziji Jadidi Kuragoniy’) yuz yillar davomida jahon olimlari tomonidan foydalanilgan. U nafaqat astronom, balki ta’limni rivojlantirgan buyuk alloma sifatida ham tarixda o‘chmas iz qoldirgan."
+      }
+    ],
+    "note": ""
+  }
+]
