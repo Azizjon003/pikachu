@@ -6,28 +6,28 @@
     "elements": [
       {
         "type": "image",
-        "src": "https://pixabay.com/get/gd490a0d0baf64ccecf2a7f1d7009a00970a79869.jpg",
+        "src": "./images\\slide0_img1.jpeg",
         "hasImage": true
       },
       {
         "type": "text",
-        "content": "Mirzo Ulug‘bek"
+        "content": "Performance Review"
       },
       {
         "type": "text",
-        "content": "Buyuk olim va hukmdor"
+        "content": "Simple"
       },
       {
         "type": "text",
-        "content": "SAMARQAND AKADEMIYASI"
+        "content": "COMPANY NAME"
       },
       {
         "type": "text",
-        "content": "1394–1449"
+        "content": "July 2024"
       },
       {
         "type": "text",
-        "content": "Presentation"
+        "content": "Slides"
       }
     ],
     "note": ""
@@ -39,48 +39,32 @@
     "elements": [
       {
         "type": "image",
-        "src": "https://www.gettyimages.com/detail/photo/ulugh-beg-observatory-museum-royalty-free-image/157305384",
+        "src": "./images\\slide1_img2.jpeg",
         "hasImage": true
       },
       {
         "type": "text",
-        "content": "1. Kirish"
+        "content": "1.Introduction"
       },
       {
         "type": "text",
-        "content": "2. Ulug‘bekning hayoti"
+        "content": "2.Our Products"
       },
       {
         "type": "text",
-        "content": "3. Samarqand ilmiy markazi"
+        "content": "3.About Us"
       },
       {
         "type": "text",
-        "content": "4. Rasadxona"
+        "content": "WelcomeOur CompanyTimeline"
       },
       {
         "type": "text",
-        "content": "5. Ilmiy meros"
+        "content": "Our ServicesOur ProjectImage GalleryMarket ResearchPricing"
       },
       {
         "type": "text",
-        "content": "6. Ta’limga qo‘shgan hissasi"
-      },
-      {
-        "type": "text",
-        "content": "7. Ulug‘bekning ta’siri"
-      },
-      {
-        "type": "text",
-        "content": "8. Madaniyat va fan"
-      },
-      {
-        "type": "text",
-        "content": "9. Merosi bugungi kunda"
-      },
-      {
-        "type": "text",
-        "content": "10. Xulosa"
+        "content": "Our HistoryTeam MembersOur FounderTestimonialsContact"
       },
       {
         "type": "text",
@@ -88,7 +72,7 @@
       },
       {
         "type": "text",
-        "content": "History of Science"
+        "content": "July 2024"
       }
     ],
     "note": ""
@@ -100,7 +84,7 @@
     "elements": [
       {
         "type": "text",
-        "content": "Kirish"
+        "content": "Introduction"
       },
       {
         "type": "text",
@@ -108,7 +92,7 @@
       },
       {
         "type": "text",
-        "content": "Mirzo Ulug‘bek – Temuriylar sulolasining buyuk vakili, astronom va matematik. U ilm-fan va ta’limni rivojlantirishda beqiyos o‘rin tutadi."
+        "content": "Elaborate on what you want to discuss."
       }
     ],
     "note": ""
@@ -120,28 +104,28 @@
     "elements": [
       {
         "type": "image",
-        "src": "https://www.gettyimages.com/detail/photo/ulugh-beg-observatory-museum-royalty-free-image/497146410",
+        "src": "./images\\slide3_img4.jpeg",
         "hasImage": true
       },
       {
         "type": "text",
-        "content": "Mirzo Ulug‘bek hayoti"
+        "content": "Welcome To Presentation"
       },
       {
         "type": "text",
-        "content": "Ulug‘bek 1394-yilda tug‘ilgan. Temuriylar saltanatining hukmdori bo‘lishiga qaramay, u ilmiy izlanishlarga katta e’tibor qaratdi."
+        "content": "I'm Rain, and I'll be sharing with you my beautiful ideas. Follow me at @reallygreatsite to learn more."
       },
       {
         "type": "text",
-        "content": "Samarqandni ilm markaziga aylantirdi."
+        "content": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer vitae leo sapien. Morbi eget dictum turpis. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Aliquam euismod pharetra laoreet. Phasellus et nisl at eros maximus luctus. Maecenas ornare ligula euismod sagittis pretium. Nunc vestibulum dictum nulla, sed aliquet metus ornare eu. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Phasellus vel nunc et sem commodo blandit fermentum id ex."
       },
       {
         "type": "text",
-        "content": "SAMARQAND AKADEMIYASI"
+        "content": "COMPANY NAME"
       },
       {
         "type": "text",
-        "content": "XV asr"
+        "content": "July 2024"
       }
     ],
     "note": ""
@@ -153,36 +137,36 @@
     "elements": [
       {
         "type": "text",
-        "content": "Samarqand ilmiy maktabi"
+        "content": "Briefly elaborate on what you want to discuss."
       },
       {
         "type": "text",
-        "content": "Ulug‘bek hukmronligi davrida ko‘plab olimlar Samarqandga yig‘ildi."
+        "content": "Briefly elaborate on what you want to discuss."
       },
       {
         "type": "image",
-        "src": "https://www.gettyimages.com/detail/photo/ulugh-beg-madrasah-samarkand-royalty-free-image/11577",
+        "src": "./images\\slide4_img5.jpeg",
         "hasImage": true
       },
       {
         "type": "text",
-        "content": "Ilmiy doiralar"
+        "content": "Our Company"
       },
       {
         "type": "text",
-        "content": "Matematika va astronomiya"
+        "content": "What we do?"
       },
       {
         "type": "text",
-        "content": "Falsafa"
+        "content": "Who we are?"
       },
       {
         "type": "text",
-        "content": "SAMARQAND AKADEMIYASI"
+        "content": "COMPANY NAME"
       },
       {
         "type": "text",
-        "content": "XV asr"
+        "content": "July 2024"
       }
     ],
     "note": ""
@@ -194,27 +178,27 @@
     "elements": [
       {
         "type": "text",
-        "content": "Rasadxona"
+        "content": "PHASE 1"
       },
       {
         "type": "text",
-        "content": "1428-yilda Samarqandda barpo etilgan."
+        "content": "PHASE 1"
       },
       {
         "type": "text",
-        "content": "Eng katta ilmiy inshootlardan biri."
+        "content": "PHASE 1"
       },
       {
         "type": "text",
-        "content": "Yulduzlar xaritasi tuzildi."
+        "content": "Elaborate on what youwant to discuss."
       },
       {
         "type": "text",
-        "content": "Aniq astronomik kuzatuvlar."
+        "content": "Elaborate on what youwant to discuss."
       },
       {
         "type": "text",
-        "content": "Ilmiy kashfiyot markazi."
+        "content": "Elaborate on what youwant to discuss."
       },
       {
         "type": "text",
@@ -222,11 +206,11 @@
       },
       {
         "type": "text",
-        "content": "SAMARQAND"
+        "content": "COMPANY NAME"
       },
       {
         "type": "text",
-        "content": "1428"
+        "content": "July 2024"
       }
     ],
     "note": ""
@@ -238,7 +222,7 @@
     "elements": [
       {
         "type": "text",
-        "content": "Ulug‘bekning ilmiy merosi"
+        "content": "Our Products"
       },
       {
         "type": "text",
@@ -246,7 +230,7 @@
       },
       {
         "type": "text",
-        "content": "‘Ziji Jadidi Kuragoniy’ – yulduzlar katalogi. Bu asar 1018 yulduzni o‘z ichiga olgan va yuz yillar davomida jahon olimlari tomonidan foydalanilgan."
+        "content": "Elaborate on what you want to discuss."
       }
     ],
     "note": ""
@@ -258,36 +242,56 @@
     "elements": [
       {
         "type": "image",
-        "src": "https://www.gettyimages.com/detail/photo/ulugh-beg-observatory-museum-royalty-free-image/818876121",
+        "src": "./images\\slide7_img7.jpeg",
         "hasImage": true
       },
       {
         "type": "text",
-        "content": "Matematika"
+        "content": "Service One"
       },
       {
         "type": "text",
-        "content": "Astronomiya"
+        "content": "Service Two"
       },
       {
         "type": "text",
-        "content": "Geometriya"
+        "content": "Service Five"
       },
       {
         "type": "text",
-        "content": "Ta’lim tizimi"
+        "content": "Service Six"
       },
       {
         "type": "text",
-        "content": "Madaniyat"
+        "content": "Service Three"
       },
       {
         "type": "text",
-        "content": "Ilmiy meros"
+        "content": "Service Four"
       },
       {
         "type": "text",
-        "content": "Ulug‘bekning ilm-fanga qo‘shgan hissasi ko‘plab sohalarni qamrab olgan."
+        "content": "Elaborate on what youwant to discuss."
+      },
+      {
+        "type": "text",
+        "content": "Elaborate on what youwant to discuss."
+      },
+      {
+        "type": "text",
+        "content": "Elaborate on what youwant to discuss."
+      },
+      {
+        "type": "text",
+        "content": "Elaborate on what youwant to discuss."
+      },
+      {
+        "type": "text",
+        "content": "Elaborate on what youwant to discuss."
+      },
+      {
+        "type": "text",
+        "content": "Elaborate on what youwant to discuss."
       },
       {
         "type": "text",
@@ -295,11 +299,11 @@
       },
       {
         "type": "text",
-        "content": "SAMARQAND"
+        "content": "COMPANY NAME"
       },
       {
         "type": "text",
-        "content": "XV asr"
+        "content": "July 2024"
       }
     ],
     "note": ""
@@ -311,24 +315,32 @@
     "elements": [
       {
         "type": "image",
-        "src": "https://www.gettyimages.com/detail/photo/ulugh-beg-madrasah-samarkand-royalty-free-image/106467616",
+        "src": "./images\\slide8_img8.jpeg",
         "hasImage": true
       },
       {
         "type": "text",
-        "content": "Ulug‘bekning ta’siri"
+        "content": "YEAR / 2022ROLE / WRITE YOUR ROLE"
       },
       {
         "type": "text",
-        "content": "Ulug‘bek ilmiy ishlari Yevropa va Sharq olimlariga kuchli ta’sir ko‘rsatdi."
+        "content": "Presentations are communication tools that can be used as demonstrations, lectures, speeches, reports, and more. It is mostly presented before an audience."
       },
       {
         "type": "text",
-        "content": "Uning izdoshlari ilmiy izlanishlarni davom ettirdi."
+        "content": "Our Project"
       },
       {
         "type": "text",
-        "content": "Bugungi kunda ham uning merosi o‘rganilmoqda."
+        "content": "COMPANY NAME"
+      },
+      {
+        "type": "text",
+        "content": "July 2024"
+      },
+      {
+        "type": "text",
+        "content": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer vitae leo sapien. Morbi eget dictum turpis. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Aliquam euismod pharetra laoreet. Phasellus et nisl at eros maximus luctus. Maecenas ornare ligula euismod sagittis pretium. Nunc vestibulum dictum nulla, sed aliquet metus ornare eu."
       }
     ],
     "note": ""
@@ -340,20 +352,700 @@
     "elements": [
       {
         "type": "image",
-        "src": "https://pixabay.com/get/g6fdb0f1e6ee3d8f9a07d5ba2c8bc5e1a2253f0e5.jpg",
+        "src": "./images\\slide9_img9.jpeg",
+        "hasImage": true
+      },
+      {
+        "type": "image",
+        "src": "./images\\slide9_img10.jpeg",
+        "hasImage": true
+      },
+      {
+        "type": "image",
+        "src": "./images\\slide9_img11.jpeg",
+        "hasImage": true
+      },
+      {
+        "type": "image",
+        "src": "./images\\slide9_img12.jpeg",
         "hasImage": true
       },
       {
         "type": "text",
-        "content": "Xulosa"
+        "content": "What can you say about your projects? Share it here!"
       },
       {
         "type": "text",
-        "content": "Mirzo Ulug‘bek – ilm-fan va ta’limning buyuk homiysi. U nafaqat astronomiya, balki matematika va madaniyat rivojida ham ulkan o‘rin tutadi."
+        "content": "Image Gallery"
       },
       {
         "type": "text",
-        "content": "Uning merosi butun insoniyat uchun bebaho qadriyatdir."
+        "content": "COMPANY NAME"
+      },
+      {
+        "type": "text",
+        "content": "July 2024"
+      }
+    ],
+    "note": ""
+  },
+  {
+    "id": "ZdCDBNKDUb",
+    "index": 10,
+    "slide": 11,
+    "elements": [
+      {
+        "type": "text",
+        "content": "Example"
+      },
+      {
+        "type": "text",
+        "content": "Example 1"
+      },
+      {
+        "type": "text",
+        "content": "Example 2"
+      },
+      {
+        "type": "text",
+        "content": "Example 3"
+      },
+      {
+        "type": "text",
+        "content": "Example 4"
+      },
+      {
+        "type": "text",
+        "content": "Example"
+      },
+      {
+        "type": "text",
+        "content": "Example"
+      },
+      {
+        "type": "text",
+        "content": "Example"
+      },
+      {
+        "type": "text",
+        "content": "$20M"
+      },
+      {
+        "type": "text",
+        "content": "$15M"
+      },
+      {
+        "type": "text",
+        "content": "$10M"
+      },
+      {
+        "type": "text",
+        "content": "$5M"
+      },
+      {
+        "type": "text",
+        "content": "Elaborate on what you want to discuss."
+      },
+      {
+        "type": "text",
+        "content": "Market Research"
+      },
+      {
+        "type": "text",
+        "content": "COMPANY NAME"
+      },
+      {
+        "type": "text",
+        "content": "July 2024"
+      },
+      {
+        "type": "text",
+        "content": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer vitae leo sapien."
+      },
+      {
+        "type": "text",
+        "content": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer vitae leo sapien."
+      },
+      {
+        "type": "text",
+        "content": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer vitae leo sapien."
+      },
+      {
+        "type": "text",
+        "content": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer vitae leo sapien."
+      }
+    ],
+    "note": ""
+  },
+  {
+    "id": "btC08aBtph",
+    "index": 11,
+    "slide": 12,
+    "elements": [
+      {
+        "type": "text",
+        "content": "MONTHLY"
+      },
+      {
+        "type": "text",
+        "content": "20$"
+      },
+      {
+        "type": "text",
+        "content": "ADD A FEATURE"
+      },
+      {
+        "type": "text",
+        "content": "ADD A FEATURE"
+      },
+      {
+        "type": "text",
+        "content": "YEARLY"
+      },
+      {
+        "type": "text",
+        "content": "300$"
+      },
+      {
+        "type": "text",
+        "content": "ADD A FEATURE"
+      },
+      {
+        "type": "text",
+        "content": "ADD A FEATURE"
+      },
+      {
+        "type": "text",
+        "content": "ADD A FEATURE"
+      },
+      {
+        "type": "text",
+        "content": "ADD A FEATURE"
+      },
+      {
+        "type": "text",
+        "content": "ADD A FEATURE"
+      },
+      {
+        "type": "text",
+        "content": "ADD A FEATURE"
+      },
+      {
+        "type": "text",
+        "content": "MONTHLY"
+      },
+      {
+        "type": "text",
+        "content": "30$"
+      },
+      {
+        "type": "text",
+        "content": "ADD A FEATURE"
+      },
+      {
+        "type": "text",
+        "content": "ADD A FEATURE"
+      },
+      {
+        "type": "text",
+        "content": "ADD A FEATURE"
+      },
+      {
+        "type": "text",
+        "content": "ADD A FEATURE"
+      },
+      {
+        "type": "text",
+        "content": "Pricing"
+      },
+      {
+        "type": "text",
+        "content": "COMPANY NAME"
+      },
+      {
+        "type": "text",
+        "content": "July 2024"
+      }
+    ],
+    "note": ""
+  },
+  {
+    "id": "1AakpAy6an",
+    "index": 12,
+    "slide": 13,
+    "elements": [
+      {
+        "type": "image",
+        "src": "./images\\slide12_img13.jpeg",
+        "hasImage": true
+      },
+      {
+        "type": "text",
+        "content": "A PICTURE IS WORTH A THOUSAND WORDS"
+      }
+    ],
+    "note": ""
+  },
+  {
+    "id": "jKHl05U3eZ",
+    "index": 13,
+    "slide": 14,
+    "elements": [
+      {
+        "type": "text",
+        "content": "About Us"
+      },
+      {
+        "type": "text",
+        "content": "3."
+      },
+      {
+        "type": "text",
+        "content": "Elaborate on what you want to discuss."
+      }
+    ],
+    "note": ""
+  },
+  {
+    "id": "zaLLIVDqXn",
+    "index": 14,
+    "slide": 15,
+    "elements": [
+      {
+        "type": "image",
+        "src": "./images\\slide14_img15.jpeg",
+        "hasImage": true
+      },
+      {
+        "type": "text",
+        "content": "Presentations are communication tools that can be used as demonstrations, lectures, speeches, reports, and more. It is mostly presented before an audience."
+      },
+      {
+        "type": "text",
+        "content": "Our History"
+      },
+      {
+        "type": "text",
+        "content": "COMPANY NAME"
+      },
+      {
+        "type": "text",
+        "content": "July 2024"
+      },
+      {
+        "type": "text",
+        "content": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer vitae leo sapien. Morbi eget dictum turpis. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Aliquam euismod pharetra laoreet. Phasellus et nisl at eros maximus luctus."
+      },
+      {
+        "type": "text",
+        "content": "INFO ONE"
+      },
+      {
+        "type": "text",
+        "content": "INFO TWO"
+      },
+      {
+        "type": "text",
+        "content": "INFO FOUR"
+      },
+      {
+        "type": "text",
+        "content": "INFO THREE"
+      },
+      {
+        "type": "text",
+        "content": "INFO FIVE"
+      },
+      {
+        "type": "text",
+        "content": "Elaborate on what you want to discuss."
+      },
+      {
+        "type": "text",
+        "content": "Elaborate on what you want to discuss."
+      },
+      {
+        "type": "text",
+        "content": "Elaborate on what you want to discuss."
+      },
+      {
+        "type": "text",
+        "content": "Elaborate on what you want to discuss."
+      },
+      {
+        "type": "text",
+        "content": "Elaborate on what you want to discuss."
+      }
+    ],
+    "note": ""
+  },
+  {
+    "id": "fr17XqFu_E",
+    "index": 15,
+    "slide": 16,
+    "elements": [
+      {
+        "type": "image",
+        "src": "./images\\slide15_img16.jpeg",
+        "hasImage": true
+      },
+      {
+        "type": "image",
+        "src": "./images\\slide15_img17.jpeg",
+        "hasImage": true
+      },
+      {
+        "type": "image",
+        "src": "./images\\slide15_img18.jpeg",
+        "hasImage": true
+      },
+      {
+        "type": "image",
+        "src": "./images\\slide15_img19.jpeg",
+        "hasImage": true
+      },
+      {
+        "type": "image",
+        "src": "./images\\slide15_img20.jpeg",
+        "hasImage": true
+      },
+      {
+        "type": "image",
+        "src": "./images\\slide15_img21.jpeg",
+        "hasImage": true
+      },
+      {
+        "type": "text",
+        "content": "Name Surname"
+      },
+      {
+        "type": "text",
+        "content": "Name Surname"
+      },
+      {
+        "type": "text",
+        "content": "Name Surname"
+      },
+      {
+        "type": "text",
+        "content": "Name Surname"
+      },
+      {
+        "type": "text",
+        "content": "Name Surname"
+      },
+      {
+        "type": "text",
+        "content": "Name Surname"
+      },
+      {
+        "type": "text",
+        "content": "Title or Position"
+      },
+      {
+        "type": "text",
+        "content": "Title or Position"
+      },
+      {
+        "type": "text",
+        "content": "Title or Position"
+      },
+      {
+        "type": "text",
+        "content": "Title or Position"
+      },
+      {
+        "type": "text",
+        "content": "Title or Position"
+      },
+      {
+        "type": "text",
+        "content": "Title or Position"
+      },
+      {
+        "type": "text",
+        "content": "Elaborate on what you want to discuss."
+      },
+      {
+        "type": "text",
+        "content": "TeamMembers"
+      },
+      {
+        "type": "text",
+        "content": "COMPANY NAME"
+      },
+      {
+        "type": "text",
+        "content": "July 2024"
+      }
+    ],
+    "note": ""
+  },
+  {
+    "id": "aswrkuU2hF",
+    "index": 16,
+    "slide": 17,
+    "elements": [
+      {
+        "type": "image",
+        "src": "./images\\slide16_img22.jpeg",
+        "hasImage": true
+      },
+      {
+        "type": "text",
+        "content": "Name Surname"
+      },
+      {
+        "type": "text",
+        "content": "Our Founder"
+      },
+      {
+        "type": "text",
+        "content": "Presentations are communication tools that can be used as demonstrations, lectures, speeches, reports, and more. It is mostly presented before an audience."
+      },
+      {
+        "type": "text",
+        "content": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer vitae leo sapien. Morbi eget dictum turpis. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Aliquam euismod pharetra laoreet. Phasellus et nisl at eros maximus luctus. Maecenas ornare ligula euismod sagittis pretium. Nunc vestibulum dictum nulla, sed aliquet metus ornare eu. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Phasellus vel nunc et sem commodo blandit fermentum id ex."
+      },
+      {
+        "type": "text",
+        "content": "COMPANY NAME"
+      },
+      {
+        "type": "text",
+        "content": "July 2024"
+      }
+    ],
+    "note": ""
+  },
+  {
+    "id": "_Vny2cJco7",
+    "index": 17,
+    "slide": 18,
+    "elements": [
+      {
+        "type": "image",
+        "src": "./images\\slide17_img23.jpeg",
+        "hasImage": true
+      },
+      {
+        "type": "image",
+        "src": "./images\\slide17_img24.jpeg",
+        "hasImage": true
+      },
+      {
+        "type": "image",
+        "src": "./images\\slide17_img25.jpeg",
+        "hasImage": true
+      },
+      {
+        "type": "image",
+        "src": "./images\\slide17_img26.jpeg",
+        "hasImage": true
+      },
+      {
+        "type": "text",
+        "content": "Testimonials"
+      },
+      {
+        "type": "text",
+        "content": "COMPANY NAME"
+      },
+      {
+        "type": "text",
+        "content": "July 2024"
+      },
+      {
+        "type": "text",
+        "content": "Name Surname"
+      },
+      {
+        "type": "text",
+        "content": "Name Surname"
+      },
+      {
+        "type": "text",
+        "content": "Name Surname"
+      },
+      {
+        "type": "text",
+        "content": "Name Surname"
+      },
+      {
+        "type": "text",
+        "content": "Title or Position"
+      },
+      {
+        "type": "text",
+        "content": "Title or Position"
+      },
+      {
+        "type": "text",
+        "content": "Title or Position"
+      },
+      {
+        "type": "text",
+        "content": "Title or Position"
+      },
+      {
+        "type": "text",
+        "content": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer vitae leo sapien. Morbi eget dictum turpis. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos."
+      },
+      {
+        "type": "text",
+        "content": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer vitae leo sapien. Morbi eget dictum turpis. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos."
+      },
+      {
+        "type": "text",
+        "content": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer vitae leo sapien. Morbi eget dictum turpis. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos."
+      },
+      {
+        "type": "text",
+        "content": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer vitae leo sapien. Morbi eget dictum turpis. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos."
+      }
+    ],
+    "note": ""
+  },
+  {
+    "id": "Zo5x_jrApz",
+    "index": 18,
+    "slide": 19,
+    "elements": [
+      {
+        "type": "text",
+        "content": "“Write an original statement or inspiring quote”"
+      },
+      {
+        "type": "text",
+        "content": "— Include a credit, citation, or supporting message"
+      }
+    ],
+    "note": ""
+  },
+  {
+    "id": "u3GVA_YOz7",
+    "index": 19,
+    "slide": 20,
+    "elements": [
+      {
+        "type": "text",
+        "content": "123 Anywhere St., Any City,ST 12345"
+      },
+      {
+        "type": "text",
+        "content": "123-456-7890"
+      },
+      {
+        "type": "text",
+        "content": "hello@reallygreatsite.com"
+      },
+      {
+        "type": "text",
+        "content": "reallygreatsite.com"
+      },
+      {
+        "type": "text",
+        "content": "@reallygreatsite"
+      },
+      {
+        "type": "text",
+        "content": "Contact Us"
+      },
+      {
+        "type": "text",
+        "content": "July 2024"
+      },
+      {
+        "type": "text",
+        "content": "COMPANY NAME"
+      }
+    ],
+    "note": ""
+  },
+  {
+    "id": "L1tcvxg5FL",
+    "index": 20,
+    "slide": 21,
+    "elements": [
+      {
+        "type": "text",
+        "content": "This presentation templateuses the following free fonts:"
+      },
+      {
+        "type": "text",
+        "content": "You can find these fonts online too."
+      },
+      {
+        "type": "text",
+        "content": "TITLES:INTER HEADERS:IBM PLEX MONO BODY COPY:INTER"
+      },
+      {
+        "type": "text",
+        "content": "#FFFFFF"
+      },
+      {
+        "type": "text",
+        "content": "#83FE94"
+      },
+      {
+        "type": "text",
+        "content": "#191919"
+      },
+      {
+        "type": "text",
+        "content": "Use these design resources in your Canva Presentation."
+      },
+      {
+        "type": "text",
+        "content": "DON'T FORGET TO DELETE THIS PAGE BEFORE PRESENTING."
+      },
+      {
+        "type": "text",
+        "content": "Resource Page"
+      },
+      {
+        "type": "text",
+        "content": "Fonts"
+      },
+      {
+        "type": "text",
+        "content": "Design Elements"
+      },
+      {
+        "type": "text",
+        "content": "Colors"
+      }
+    ],
+    "note": ""
+  },
+  {
+    "id": "gGQD-orDVa",
+    "index": 21,
+    "slide": 22,
+    "elements": [
+      {
+        "type": "text",
+        "content": "This presentation template is free for everyone to use thanks to the following:"
+      },
+      {
+        "type": "text",
+        "content": "HAPPY DESIGNING!"
+      },
+      {
+        "type": "text",
+        "content": "for the presentation template"
+      },
+      {
+        "type": "text",
+        "content": "for the photos"
+      },
+      {
+        "type": "text",
+        "content": "Credits"
+      },
+      {
+        "type": "text",
+        "content": "Pexels, Pixabay"
       }
     ],
     "note": ""
