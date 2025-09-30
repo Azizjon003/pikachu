@@ -12,6 +12,7 @@ import path from "path";
 // @ts-ignore
 import pptxtojson from "pptxtojson/dist/index.cjs";
 import { SVGPathData } from "svg-pathdata";
+import sharp from "sharp";
 
 import {
   type ShapePoolItem,
@@ -75,7 +76,11 @@ const isPathComplex = (path: string): boolean => {
 const imageCounter = { value: 0 };
 const imagesDir = "images";
 
-const saveBase64Image = (base64: string, slideIndex: number): string => {
+const saveBase64Image = async (
+  base64: string,
+  slideIndex: number,
+  isBackground: boolean = false
+): Promise<string> => {
   if (!base64 || typeof base64 !== "string") return "";
 
   if (
@@ -93,6 +98,7 @@ const saveBase64Image = (base64: string, slideIndex: number): string => {
 
   let base64Data = base64;
   let extension = "png";
+  let isSvg = false;
 
   if (base64.startsWith("data:")) {
     const matches = base64.match(/^data:image\/([a-zA-Z+]+);base64,(.+)$/);
@@ -110,22 +116,34 @@ const saveBase64Image = (base64: string, slideIndex: number): string => {
       firstChars.startsWith("PHN2Zy") ||
       firstChars.startsWith("PD94bW") ||
       firstChars.startsWith("PHN2ZyB")
-    )
+    ) {
       extension = "svg";
-    else if (firstChars.startsWith("Qk")) extension = "bmp";
+      isSvg = true;
+    } else if (firstChars.startsWith("Qk")) extension = "bmp";
   }
 
   imageCounter.value++;
-  const filename = `slide${slideIndex}_img${imageCounter.value}.${extension}`;
+  const filename = `slide${slideIndex}_img${imageCounter.value}.jpeg`;
   const filepath = path.join(imagesDir, filename);
 
   try {
     const buffer = Buffer.from(base64Data, "base64");
-    fs.writeFileSync(filepath, buffer);
+
+    if (isSvg) {
+      fs.writeFileSync(filepath.replace(".jpeg", ".svg"), buffer);
+      return `./${filepath.replace(".jpeg", ".svg")}`;
+    }
+
+    const quality = isBackground ? 50 : 50;
+
+    await sharp(buffer).jpeg({ quality }).toFile(filepath);
+
     return `./${filepath}`;
   } catch (error) {
     console.error(`Error saving image ${filename}:`, error);
-    return base64;
+    const buffer = Buffer.from(base64Data, "base64");
+    fs.writeFileSync(filepath, buffer);
+    return `./${filepath}`;
   }
 };
 
@@ -423,7 +441,7 @@ export const importPPTX = async (
       background = {
         type: "image",
         image: {
-          src: saveBase64Image(value.picBase64, slideIndex),
+          src: await saveBase64Image(value.picBase64, slideIndex, true),
           size: "cover",
         },
       };
@@ -453,7 +471,10 @@ export const importPPTX = async (
       remark: item.note || "",
     };
 
-    const parseElements = (elements: Element[], currentSlideIndex: number) => {
+    const parseElements = async (
+      elements: Element[],
+      currentSlideIndex: number
+    ) => {
       const sortedElements = elements.sort((a, b) => a.order - b.order);
 
       for (const el of sortedElements) {
@@ -503,7 +524,7 @@ export const importPPTX = async (
           const element: PPTImageElement = {
             type: "image",
             id: nanoid(10),
-            src: saveBase64Image(el.src, currentSlideIndex),
+            src: await saveBase64Image(el.src, currentSlideIndex),
             width: el.width,
             height: el.height,
             left: el.left,
@@ -555,7 +576,7 @@ export const importPPTX = async (
           slide.elements.push({
             type: "image",
             id: nanoid(10),
-            src: saveBase64Image(el.picBase64, currentSlideIndex),
+            src: await saveBase64Image(el.picBase64, currentSlideIndex),
             width: el.width,
             height: el.height,
             left: el.left,
@@ -619,7 +640,10 @@ export const importPPTX = async (
 
             const pattern: string | undefined =
               el.fill?.type === "image"
-                ? saveBase64Image(el.fill.value.picBase64, currentSlideIndex)
+                ? await saveBase64Image(
+                    el.fill.value.picBase64,
+                    currentSlideIndex
+                  )
                 : undefined;
 
             const fill = el.fill?.type === "color" ? el.fill.value : "";
@@ -902,18 +926,18 @@ export const importPPTX = async (
           });
           if (el.isFlipH) elements = flipGroupElements(elements, "y");
           if (el.isFlipV) elements = flipGroupElements(elements, "x");
-          parseElements(elements, currentSlideIndex);
+          await parseElements(elements, currentSlideIndex);
         } else if (el.type === "diagram") {
           const elements = el.elements.map((_el) => ({
             ..._el,
             left: _el.left + originLeft,
             top: _el.top + originTop,
           }));
-          parseElements(elements, currentSlideIndex);
+          await parseElements(elements, currentSlideIndex);
         }
       }
     };
-    parseElements([...item.elements, ...item.layoutElements], slideIndex);
+    await parseElements([...item.elements, ...item.layoutElements], slideIndex);
     slides.push(slide);
   }
 

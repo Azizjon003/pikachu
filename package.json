@@ -16,6 +16,7 @@
     "nanoid": "^5.1.6",
     "pptxgenjs": "^4.0.1",
     "pptxtojson": "^1.6.0",
+    "sharp": "^0.33.5",
     "svg-arc-to-cubic-bezier": "^3.2.0",
     "svg-pathdata": "^7.2.0",
     "tinycolor2": "^1.6.0"
@@ -23,6 +24,7 @@
   "devDependencies": {
     "@types/jsdom": "^21.1.7",
     "@types/lodash": "^4.17.20",
+    "@types/sharp": "^0.32.0",
     "@types/svg-arc-to-cubic-bezier": "^3.2.3",
     "@types/tinycolor2": "^1.4.6",
     "ts-node": "^10.9.2",
