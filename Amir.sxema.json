@@ -1,96 +1,359 @@
 [
   {
-    "id": "awcfTxfkt7",
+    "id": "yxaulYjiDh",
     "index": 0,
     "slide": 1,
     "elements": [
+      {
+        "type": "image",
+        "src": "https://pixabay.com/get/gd490a0d0baf64ccecf2a7f1d7009a00970a79869.jpg",
+        "hasImage": true
+      },
       {
         "type": "text",
         "content": "Mirzo Ulug‘bek"
       },
       {
         "type": "text",
-        "content": "Azizjon Aliqulov"
+        "content": "Buyuk olim va hukmdor"
+      },
+      {
+        "type": "text",
+        "content": "SAMARQAND AKADEMIYASI"
+      },
+      {
+        "type": "text",
+        "content": "1394–1449"
+      },
+      {
+        "type": "text",
+        "content": "Presentation"
       }
     ],
     "note": ""
   },
   {
-    "id": "NrTGqyHu1C",
+    "id": "HY9xvafZW2",
     "index": 1,
     "slide": 2,
     "elements": [
       {
-        "type": "text",
-        "content": "Mundarija"
+        "type": "image",
+        "src": "https://www.gettyimages.com/detail/photo/ulugh-beg-observatory-museum-royalty-free-image/157305384",
+        "hasImage": true
       },
       {
         "type": "text",
-        "content": "Ulug‘bekning hayoti va faoliyati\nUlug‘bekning ilmiy merosi\nSamarqand rasadxonasi\nUlug‘bekning ta’limga qo‘shgan hissasi\nUlug‘bek merosi va ta’siri"
+        "content": "1. Kirish"
+      },
+      {
+        "type": "text",
+        "content": "2. Ulug‘bekning hayoti"
+      },
+      {
+        "type": "text",
+        "content": "3. Samarqand ilmiy markazi"
+      },
+      {
+        "type": "text",
+        "content": "4. Rasadxona"
+      },
+      {
+        "type": "text",
+        "content": "5. Ilmiy meros"
+      },
+      {
+        "type": "text",
+        "content": "6. Ta’limga qo‘shgan hissasi"
+      },
+      {
+        "type": "text",
+        "content": "7. Ulug‘bekning ta’siri"
+      },
+      {
+        "type": "text",
+        "content": "8. Madaniyat va fan"
+      },
+      {
+        "type": "text",
+        "content": "9. Merosi bugungi kunda"
+      },
+      {
+        "type": "text",
+        "content": "10. Xulosa"
+      },
+      {
+        "type": "text",
+        "content": "Agenda"
+      },
+      {
+        "type": "text",
+        "content": "History of Science"
       }
     ],
     "note": ""
   },
   {
-    "id": "gr3XBXjPWi",
+    "id": "ErapRUw-Jg",
     "index": 2,
     "slide": 3,
     "elements": [
       {
         "type": "text",
-        "content": "Mirzo Ulug‘bekning hayoti"
+        "content": "Kirish"
       },
       {
         "type": "text",
-        "content": "Tarixiy shaxs va buyuk olim"
+        "content": "1."
+      },
+      {
+        "type": "text",
+        "content": "Mirzo Ulug‘bek – Temuriylar sulolasining buyuk vakili, astronom va matematik. U ilm-fan va ta’limni rivojlantirishda beqiyos o‘rin tutadi."
       }
     ],
     "note": ""
   },
   {
-    "id": "ujoZaRaF_X",
+    "id": "3Ggzc0PdYM",
     "index": 3,
     "slide": 4,
     "elements": [
       {
-        "type": "text",
-        "content": "Mirzo Ulug‘bek: Olim va hukmdor"
+        "type": "image",
+        "src": "https://www.gettyimages.com/detail/photo/ulugh-beg-observatory-museum-royalty-free-image/497146410",
+        "hasImage": true
       },
       {
         "type": "text",
-        "content": "Mirzo Ulug‘bek (1394–1449) Temuriylar sulolasining yirik vakili, hukmdor va buyuk astronom edi. U ilm-fanga bo‘lgan mehrini yoshligidan namoyon etgan va Samarqandni ilm markaziga aylantirgan. Ulug‘bekning hukmronligi davrida ilmiy izlanishlar rivoj topdi."
+        "content": "Mirzo Ulug‘bek hayoti"
+      },
+      {
+        "type": "text",
+        "content": "Ulug‘bek 1394-yilda tug‘ilgan. Temuriylar saltanatining hukmdori bo‘lishiga qaramay, u ilmiy izlanishlarga katta e’tibor qaratdi."
+      },
+      {
+        "type": "text",
+        "content": "Samarqandni ilm markaziga aylantirdi."
+      },
+      {
+        "type": "text",
+        "content": "SAMARQAND AKADEMIYASI"
+      },
+      {
+        "type": "text",
+        "content": "XV asr"
       }
     ],
     "note": ""
   },
   {
-    "id": "nX_4owPWMm",
+    "id": "d5A6cNGzJ-",
     "index": 4,
     "slide": 5,
     "elements": [
       {
         "type": "text",
-        "content": "Samarqand rasadxonasi"
+        "content": "Samarqand ilmiy maktabi"
       },
       {
         "type": "text",
-        "content": "Ulug‘bek 1428-yilda Samarqandda ulkan rasadxona barpo qildi. Bu markaz Sharqda astronomiya taraqqiyotining eng yirik o‘choqlaridan biri bo‘lib, unda ko‘plab olimlar faoliyat olib bordi. Rasadxona orqali yulduzlar katalogi tuzildi va aniq kuzatuvlar amalga oshirildi."
+        "content": "Ulug‘bek hukmronligi davrida ko‘plab olimlar Samarqandga yig‘ildi."
+      },
+      {
+        "type": "image",
+        "src": "https://www.gettyimages.com/detail/photo/ulugh-beg-madrasah-samarkand-royalty-free-image/11577",
+        "hasImage": true
+      },
+      {
+        "type": "text",
+        "content": "Ilmiy doiralar"
+      },
+      {
+        "type": "text",
+        "content": "Matematika va astronomiya"
+      },
+      {
+        "type": "text",
+        "content": "Falsafa"
+      },
+      {
+        "type": "text",
+        "content": "SAMARQAND AKADEMIYASI"
+      },
+      {
+        "type": "text",
+        "content": "XV asr"
       }
     ],
     "note": ""
   },
   {
-    "id": "3WBbkaRkeR",
+    "id": "ZTNrnUHgzu",
     "index": 5,
     "slide": 6,
     "elements": [
       {
         "type": "text",
-        "content": "Ulug‘bekning merosi va ta’siri"
+        "content": "Rasadxona"
       },
       {
         "type": "text",
-        "content": "Ulug‘bekning ilmiy ishlari butun dunyo astronomiyasiga katta ta’sir ko‘rsatgan. Uning yulduzlar jadvali (‘Ziji Jadidi Kuragoniy’) yuz yillar davomida jahon olimlari tomonidan foydalanilgan. U nafaqat astronom, balki ta’limni rivojlantirgan buyuk alloma sifatida ham tarixda o‘chmas iz qoldirgan."
+        "content": "1428-yilda Samarqandda barpo etilgan."
+      },
+      {
+        "type": "text",
+        "content": "Eng katta ilmiy inshootlardan biri."
+      },
+      {
+        "type": "text",
+        "content": "Yulduzlar xaritasi tuzildi."
+      },
+      {
+        "type": "text",
+        "content": "Aniq astronomik kuzatuvlar."
+      },
+      {
+        "type": "text",
+        "content": "Ilmiy kashfiyot markazi."
+      },
+      {
+        "type": "text",
+        "content": "Timeline"
+      },
+      {
+        "type": "text",
+        "content": "SAMARQAND"
+      },
+      {
+        "type": "text",
+        "content": "1428"
+      }
+    ],
+    "note": ""
+  },
+  {
+    "id": "TvzG_6ZrJi",
+    "index": 6,
+    "slide": 7,
+    "elements": [
+      {
+        "type": "text",
+        "content": "Ulug‘bekning ilmiy merosi"
+      },
+      {
+        "type": "text",
+        "content": "2."
+      },
+      {
+        "type": "text",
+        "content": "‘Ziji Jadidi Kuragoniy’ – yulduzlar katalogi. Bu asar 1018 yulduzni o‘z ichiga olgan va yuz yillar davomida jahon olimlari tomonidan foydalanilgan."
+      }
+    ],
+    "note": ""
+  },
+  {
+    "id": "LzxyBZZFuW",
+    "index": 7,
+    "slide": 8,
+    "elements": [
+      {
+        "type": "image",
+        "src": "https://www.gettyimages.com/detail/photo/ulugh-beg-observatory-museum-royalty-free-image/818876121",
+        "hasImage": true
+      },
+      {
+        "type": "text",
+        "content": "Matematika"
+      },
+      {
+        "type": "text",
+        "content": "Astronomiya"
+      },
+      {
+        "type": "text",
+        "content": "Geometriya"
+      },
+      {
+        "type": "text",
+        "content": "Ta’lim tizimi"
+      },
+      {
+        "type": "text",
+        "content": "Madaniyat"
+      },
+      {
+        "type": "text",
+        "content": "Ilmiy meros"
+      },
+      {
+        "type": "text",
+        "content": "Ulug‘bekning ilm-fanga qo‘shgan hissasi ko‘plab sohalarni qamrab olgan."
+      },
+      {
+        "type": "text",
+        "content": "Our Services"
+      },
+      {
+        "type": "text",
+        "content": "SAMARQAND"
+      },
+      {
+        "type": "text",
+        "content": "XV asr"
+      }
+    ],
+    "note": ""
+  },
+  {
+    "id": "zly9kOdJ0C",
+    "index": 8,
+    "slide": 9,
+    "elements": [
+      {
+        "type": "image",
+        "src": "https://www.gettyimages.com/detail/photo/ulugh-beg-madrasah-samarkand-royalty-free-image/106467616",
+        "hasImage": true
+      },
+      {
+        "type": "text",
+        "content": "Ulug‘bekning ta’siri"
+      },
+      {
+        "type": "text",
+        "content": "Ulug‘bek ilmiy ishlari Yevropa va Sharq olimlariga kuchli ta’sir ko‘rsatdi."
+      },
+      {
+        "type": "text",
+        "content": "Uning izdoshlari ilmiy izlanishlarni davom ettirdi."
+      },
+      {
+        "type": "text",
+        "content": "Bugungi kunda ham uning merosi o‘rganilmoqda."
+      }
+    ],
+    "note": ""
+  },
+  {
+    "id": "VB85BMYxXg",
+    "index": 9,
+    "slide": 10,
+    "elements": [
+      {
+        "type": "image",
+        "src": "https://pixabay.com/get/g6fdb0f1e6ee3d8f9a07d5ba2c8bc5e1a2253f0e5.jpg",
+        "hasImage": true
+      },
+      {
+        "type": "text",
+        "content": "Xulosa"
+      },
+      {
+        "type": "text",
+        "content": "Mirzo Ulug‘bek – ilm-fan va ta’limning buyuk homiysi. U nafaqat astronomiya, balki matematika va madaniyat rivojida ham ulkan o‘rin tutadi."
+      },
+      {
+        "type": "text",
+        "content": "Uning merosi butun insoniyat uchun bebaho qadriyatdir."
       }
     ],
     "note": ""
