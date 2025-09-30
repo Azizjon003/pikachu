@@ -169,6 +169,44 @@ const convertFontSizePtToPx = (html: string, ratio: number) => {
   });
 };
 
+const extractDefaultColorFromHTML = (html: string): string | null => {
+  if (!html) return null;
+  try {
+    const dom = new JSDOM(`<body>${html}</body>`);
+    const body = dom.window.document.body;
+    const span = body.querySelector("span");
+    if (span?.style.color) {
+      return span.style.color;
+    }
+    const colorMatch = html.match(/color:\s*([^;]+)/);
+    if (colorMatch && colorMatch[1]) {
+      return colorMatch[1].trim();
+    }
+  } catch (error) {
+    return null;
+  }
+  return null;
+};
+
+const extractDefaultFontFromHTML = (html: string): string | null => {
+  if (!html) return null;
+  try {
+    const dom = new JSDOM(`<body>${html}</body>`);
+    const body = dom.window.document.body;
+    const span = body.querySelector("span");
+    if (span?.style.fontFamily) {
+      return span.style.fontFamily.replace(/['"]/g, "");
+    }
+    const fontMatch = html.match(/font-family:\s*([^;]+)/);
+    if (fontMatch && fontMatch[1]) {
+      return fontMatch[1].trim().replace(/['"]/g, "");
+    }
+  } catch (error) {
+    return null;
+  }
+  return null;
+};
+
 const rotateLine = (line: PPTLineElement, angleDeg: number) => {
   const { start, end } = line;
 
@@ -430,6 +468,8 @@ export const importPPTX = async (
         el.top = el.top * ratio;
 
         if (el.type === "text") {
+          const extractedColor = extractDefaultColorFromHTML(el.content);
+          const extractedFont = extractDefaultFontFromHTML(el.content);
           const textEl: PPTTextElement = {
             type: "text",
             id: nanoid(10),
@@ -438,8 +478,8 @@ export const importPPTX = async (
             left: el.left,
             top: el.top,
             rotate: el.rotate,
-            defaultFontName: theme.fontName,
-            defaultColor: theme.fontColor,
+            defaultFontName: extractedFont || theme.fontName,
+            defaultColor: extractedColor || theme.fontColor,
             content: convertFontSizePtToPx(el.content, ratio),
             lineHeight: 1,
             outline: {
@@ -605,8 +645,10 @@ export const importPPTX = async (
               },
               text: {
                 content: convertFontSizePtToPx(el.content, ratio),
-                defaultFontName: theme.fontName,
-                defaultColor: theme.fontColor,
+                defaultFontName:
+                  extractDefaultFontFromHTML(el.content) || theme.fontName,
+                defaultColor:
+                  extractDefaultColorFromHTML(el.content) || theme.fontColor,
                 align: vAlignMap[el.vAlign] || "middle",
               },
               flipH: el.isFlipH,

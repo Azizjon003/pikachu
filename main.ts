@@ -576,7 +576,9 @@ export const exportPPTX = (
 
     if (!slide.elements) continue;
 
-    for (const el of slide.elements) {
+    const sortedElements = [...slide.elements];
+
+    for (const el of sortedElements) {
       if (el.type === "text") {
         const textProps = formatHTML(el.content, ratioPx2Pt);
 
@@ -685,6 +687,48 @@ export const exportPPTX = (
               pptxSlide.addImage(options);
             }
           } else {
+            const scale = {
+              x: el.width / el.viewBox[0],
+              y: el.height / el.viewBox[1],
+            };
+            const points = formatPoints(toPoints(el.path), ratioPx2Inch, scale);
+
+            let fillColor = formatColor(el.fill);
+
+            if (el.gradient) {
+              const colors: any = el.gradient.colors;
+              const color1 = colors[0].color;
+              const color2 = colors[colors.length - 1].color;
+              const color = tinycolor.mix(color1, color2).toHexString();
+              fillColor = formatColor(color);
+            }
+            if (el.pattern) fillColor = formatColor("#00000000");
+            const opacity = el.opacity === undefined ? 1 : el.opacity;
+
+            const options: pptxgen.ShapeProps = {
+              x: el.left / ratioPx2Inch,
+              y: el.top / ratioPx2Inch,
+              w: el.width / ratioPx2Inch,
+              h: el.height / ratioPx2Inch,
+              fill: {
+                color: fillColor.color,
+                transparency: (1 - fillColor.alpha * opacity) * 100,
+              },
+              points,
+            };
+            if (el.flipH) options.flipH = el.flipH;
+            if (el.flipV) options.flipV = el.flipV;
+            if (el.shadow)
+              options.shadow = getShadowOption(el.shadow, ratioPx2Pt);
+            if (el.outline?.width)
+              options.line = getOutlineOption(el.outline, ratioPx2Pt);
+            if (el.rotate) options.rotate = el.rotate;
+            if (el.link) {
+              const linkOption = getLinkOption(el.link, _slides);
+              if (linkOption) options.hyperlink = linkOption;
+            }
+
+            pptxSlide.addShape("custGeom" as pptxgen.ShapeType, options);
           }
         } else {
           const scale = {
