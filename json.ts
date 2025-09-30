@@ -7,8 +7,11 @@ import {
 } from "pptxtojson";
 import { nanoid } from "nanoid";
 import { JSDOM } from "jsdom";
+import fs from "fs";
+import path from "path";
 // @ts-ignore
 import pptxtojson from "pptxtojson/dist/index.cjs";
+import { SVGPathData } from "svg-pathdata";
 
 import {
   type ShapePoolItem,
@@ -39,6 +42,125 @@ let theme: SlideTheme = {
   fontName: "Arial",
   outline: { style: "solid", width: 1, color: "#000000" },
   shadow: { h: 0, v: 0, blur: 0, color: "#000000" },
+};
+
+const typeMap: { [key: number]: string } = {
+  1: "Z",
+  2: "M",
+  4: "H",
+  8: "V",
+  16: "L",
+  32: "C",
+  64: "S",
+  128: "Q",
+  256: "T",
+  512: "A",
+};
+
+const isPathComplex = (path: string): boolean => {
+  try {
+    const pathData = new SVGPathData(path);
+    for (const cmd of pathData.commands) {
+      const type = typeMap[cmd.type];
+      if (type === "H" || type === "V" || type === "S" || type === "T") {
+        return true;
+      }
+    }
+    return false;
+  } catch (error) {
+    return true;
+  }
+};
+
+const imageCounter = { value: 0 };
+const imagesDir = "images";
+
+const saveBase64Image = (base64: string, slideIndex: number): string => {
+  if (!base64 || typeof base64 !== "string") return "";
+
+  if (
+    base64.startsWith("http://") ||
+    base64.startsWith("https://") ||
+    base64.startsWith("./") ||
+    base64.startsWith("../")
+  ) {
+    return base64;
+  }
+
+  if (!fs.existsSync(imagesDir)) {
+    fs.mkdirSync(imagesDir, { recursive: true });
+  }
+
+  let base64Data = base64;
+  let extension = "png";
+
+  if (base64.startsWith("data:")) {
+    const matches = base64.match(/^data:image\/([a-zA-Z+]+);base64,(.+)$/);
+    if (matches) {
+      extension = matches[1].replace("+", "");
+      base64Data = matches[2];
+    }
+  } else {
+    const firstChars = base64.substring(0, 10);
+    if (firstChars.startsWith("/9j/")) extension = "jpeg";
+    else if (firstChars.startsWith("iVBOR")) extension = "png";
+    else if (firstChars.startsWith("R0lGOD")) extension = "gif";
+    else if (firstChars.startsWith("UklGR")) extension = "webp";
+    else if (
+      firstChars.startsWith("PHN2Zy") ||
+      firstChars.startsWith("PD94bW") ||
+      firstChars.startsWith("PHN2ZyB")
+    )
+      extension = "svg";
+    else if (firstChars.startsWith("Qk")) extension = "bmp";
+  }
+
+  imageCounter.value++;
+  const filename = `slide${slideIndex}_img${imageCounter.value}.${extension}`;
+  const filepath = path.join(imagesDir, filename);
+
+  try {
+    const buffer = Buffer.from(base64Data, "base64");
+    fs.writeFileSync(filepath, buffer);
+    return `./${filepath}`;
+  } catch (error) {
+    console.error(`Error saving image ${filename}:`, error);
+    return base64;
+  }
+};
+
+export const ensureBase64Header = (base64: string): string => {
+  if (!base64 || typeof base64 !== "string") return base64 || "";
+
+  if (base64.startsWith("data:")) {
+    return base64;
+  }
+
+  if (
+    base64.startsWith("http://") ||
+    base64.startsWith("https://") ||
+    base64.startsWith("./") ||
+    base64.startsWith("../")
+  ) {
+    return base64;
+  }
+
+  let mimeType = "image/png";
+  const firstChars = base64.substring(0, 10);
+
+  if (firstChars.startsWith("/9j/")) mimeType = "image/jpeg";
+  else if (firstChars.startsWith("iVBOR")) mimeType = "image/png";
+  else if (firstChars.startsWith("R0lGOD")) mimeType = "image/gif";
+  else if (firstChars.startsWith("UklGR")) mimeType = "image/webp";
+  else if (
+    firstChars.startsWith("PHN2Zy") ||
+    firstChars.startsWith("PD94bW") ||
+    firstChars.startsWith("PHN2ZyB")
+  )
+    mimeType = "image/svg+xml";
+  else if (firstChars.startsWith("Qk")) mimeType = "image/bmp";
+
+  return `data:${mimeType};base64,${base64}`;
 };
 
 const convertFontSizePtToPx = (html: string, ratio: number) => {
@@ -253,14 +375,17 @@ export const importPPTX = async (
   };
 
   const slides: Slide[] = [];
-  for (const item of json.slides) {
+  imageCounter.value = 0;
+
+  for (let slideIndex = 0; slideIndex < json.slides.length; slideIndex++) {
+    const item = json.slides[slideIndex];
     const { type, value } = item.fill;
     let background: SlideBackground;
     if (type === "image") {
       background = {
         type: "image",
         image: {
-          src: value.picBase64,
+          src: saveBase64Image(value.picBase64, slideIndex),
           size: "cover",
         },
       };
@@ -290,7 +415,7 @@ export const importPPTX = async (
       remark: item.note || "",
     };
 
-    const parseElements = (elements: Element[]) => {
+    const parseElements = (elements: Element[], currentSlideIndex: number) => {
       const sortedElements = elements.sort((a, b) => a.order - b.order);
 
       for (const el of sortedElements) {
@@ -338,7 +463,7 @@ export const importPPTX = async (
           const element: PPTImageElement = {
             type: "image",
             id: nanoid(10),
-            src: el.src,
+            src: saveBase64Image(el.src, currentSlideIndex),
             width: el.width,
             height: el.height,
             left: el.left,
@@ -390,7 +515,7 @@ export const importPPTX = async (
           slide.elements.push({
             type: "image",
             id: nanoid(10),
-            src: el.picBase64,
+            src: saveBase64Image(el.picBase64, currentSlideIndex),
             width: el.width,
             height: el.height,
             left: el.left,
@@ -453,7 +578,9 @@ export const importPPTX = async (
                 : undefined;
 
             const pattern: string | undefined =
-              el.fill?.type === "image" ? el.fill.value.picBase64 : undefined;
+              el.fill?.type === "image"
+                ? saveBase64Image(el.fill.value.picBase64, currentSlideIndex)
+                : undefined;
 
             const fill = el.fill?.type === "color" ? el.fill.value : "";
 
@@ -526,9 +653,10 @@ export const importPPTX = async (
                 if (element.width === 0) element.width = 0.1;
                 if (element.height === 0) element.height = 0.1;
                 element.path = el.path!.replace(/NaN/g, "0");
-              } else {
                 element.special = true;
+              } else {
                 element.path = el.path!;
+                element.special = isPathComplex(element.path);
               }
               const { maxX, maxY } = getSvgPathRange(element.path);
               if (maxX / maxY > originWidth / originHeight) {
@@ -732,18 +860,18 @@ export const importPPTX = async (
           });
           if (el.isFlipH) elements = flipGroupElements(elements, "y");
           if (el.isFlipV) elements = flipGroupElements(elements, "x");
-          parseElements(elements);
+          parseElements(elements, currentSlideIndex);
         } else if (el.type === "diagram") {
           const elements = el.elements.map((_el) => ({
             ..._el,
             left: _el.left + originLeft,
             top: _el.top + originTop,
           }));
-          parseElements(elements);
+          parseElements(elements, currentSlideIndex);
         }
       }
     };
-    parseElements([...item.elements, ...item.layoutElements]);
+    parseElements([...item.elements, ...item.layoutElements], slideIndex);
     slides.push(slide);
   }
 

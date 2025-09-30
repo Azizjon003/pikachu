@@ -1,7 +1,7 @@
 import { importPPTX } from "./json";
 import fs from "fs";
 
-const buffer = fs.readFileSync("Amir.pptx");
+const buffer = fs.readFileSync("pr-1.pptx");
 
 const start = async () => {
   // ⚠️ Hack: buffer’ni FileList sifatida cast qilamiz

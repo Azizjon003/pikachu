@@ -1,6 +1,8 @@
 import { trim } from "lodash";
 import pptxgen from "pptxgenjs";
 import tinycolor from "tinycolor2";
+import fs from "fs";
+import path from "path";
 import type {
   PPTElementOutline,
   PPTElementShadow,
@@ -15,6 +17,7 @@ import {
 } from "./utils/element";
 import { type SvgPoints, toPoints } from "./utils/svgPathParser";
 import { svg2Base64 } from "./utils/svg2Base64";
+import { ensureBase64Header } from "./json";
 
 import { AST, toAST } from "./utils/htmlParser/index";
 
@@ -380,6 +383,49 @@ const isSVGImage = (url: string) => {
   return isSVGBase64 || isSVGUrl;
 };
 
+// 从文件路径读取并转换为base64
+const loadImageAsBase64 = (imagePath: string): string => {
+  try {
+    if (!imagePath || typeof imagePath !== "string") {
+      return "";
+    }
+
+    if (imagePath.startsWith("data:")) {
+      return imagePath;
+    }
+
+    if (imagePath.startsWith("http://") || imagePath.startsWith("https://")) {
+      return imagePath;
+    }
+
+    // Normalize path for cross-platform compatibility
+    const normalizedPath = imagePath.replace(/\\/g, "/");
+
+    if (fs.existsSync(normalizedPath)) {
+      const buffer = fs.readFileSync(normalizedPath);
+      const base64 = buffer.toString("base64");
+
+      const ext = path.extname(normalizedPath).toLowerCase().substring(1);
+      let mimeType = "image/png";
+
+      if (ext === "jpg" || ext === "jpeg") mimeType = "image/jpeg";
+      else if (ext === "png") mimeType = "image/png";
+      else if (ext === "gif") mimeType = "image/gif";
+      else if (ext === "webp") mimeType = "image/webp";
+      else if (ext === "svg") mimeType = "image/svg+xml";
+      else if (ext === "bmp") mimeType = "image/bmp";
+
+      return `data:${mimeType};base64,${base64}`;
+    }
+
+    console.warn(`Image file not found: ${imagePath}`);
+    return "";
+  } catch (error) {
+    console.error(`Error loading image ${imagePath}:`, error);
+    return "";
+  }
+};
+
 export const exportPPTX = (
   _slides: Slide[],
   masterOverwrite: boolean,
@@ -483,18 +529,21 @@ export const exportPPTX = (
     if (slide.background) {
       const background = slide.background;
       if (background.type === "image" && background.image) {
-        if (isSVGImage(background.image.src)) {
-          pptxSlide.addImage({
-            data: background.image.src,
-            x: 0,
-            y: 0,
-            w: viewportSize.value / ratioPx2Inch,
-            h: (viewportSize.value * viewportRatio.value) / ratioPx2Inch,
-          });
-        } else if (isBase64Image(background.image.src)) {
-          pptxSlide.background = { data: background.image.src };
-        } else {
-          pptxSlide.background = { path: background.image.src };
+        const src = loadImageAsBase64(background.image.src);
+        if (src) {
+          if (isSVGImage(src)) {
+            pptxSlide.addImage({
+              data: src,
+              x: 0,
+              y: 0,
+              w: viewportSize.value / ratioPx2Inch,
+              h: (viewportSize.value * viewportRatio.value) / ratioPx2Inch,
+            });
+          } else if (isBase64Image(src)) {
+            pptxSlide.background = { data: src };
+          } else {
+            pptxSlide.background = { path: src };
+          }
         }
       } else if (background.type === "solid" && background.color) {
         const c = formatColor(background.color);
@@ -574,9 +623,7 @@ export const exportPPTX = (
           w: el.width / ratioPx2Inch,
           h: el.height / ratioPx2Inch,
         };
-        if (isBase64Image(el.src)) options.data = el.src;
-        else options.path = el.src;
-
+        options.path = el.src;
         if (el.flipH) options.flipH = el.flipH;
         if (el.flipV) options.flipV = el.flipV;
         if (el.rotate) options.rotate = el.rotate;
@@ -593,50 +640,52 @@ export const exportPPTX = (
           const [startX, startY] = start;
           const [endX, endY] = end;
 
-          const originW = el.width / (endX - startX);
-          const originH = el.height / (endY - startY);
+          const originW = el.width / ((endX - startX) / ratioPx2Inch);
+          const originH = el.height / ((endY - startY) / ratioPx2Inch);
 
           options.w = originW / ratioPx2Inch;
           options.h = originH / ratioPx2Inch;
 
           options.sizing = {
             type: "crop",
-            x: startX,
-            y: startY,
-            w: endX - startX,
-            h: endY - startY,
+            x: ((startX / ratioPx2Inch) * originW) / ratioPx2Inch,
+            y: ((startY / ratioPx2Inch) * originH) / ratioPx2Inch,
+            w: (((endX - startX) / ratioPx2Inch) * originW) / 100,
+            h: (((endY - startY) / ratioPx2Inch) * originH) / 100,
           };
         }
 
         pptxSlide.addImage(options);
       } else if (el.type === "shape") {
         if (el.special) {
-          //   const svgRef = document.querySelector(
-          //     `.thumbnail-list .base-element-${el.id} svg`
-          //   ) as HTMLElement;
-          //   if (svgRef.clientWidth < 1 || svgRef.clientHeight < 1) continue; // 临时处理（导入PPTX文件带来的异常数据）
-          const svgRef = {
-            clientWidth: el.width,
-            clientHeight: el.height,
-          };
-          //   const base64SVG = svg2Base64(svgRef as unknown as Element);
+          if (
+            el.path &&
+            (el.path.startsWith("data:") ||
+              el.path.startsWith("http") ||
+              el.path.startsWith("./") ||
+              el.path.startsWith("../"))
+          ) {
+            const pathData = loadImageAsBase64(el.path);
+            if (pathData) {
+              const options: pptxgen.ImageProps = {
+                data: pathData,
+                x: el.left / ratioPx2Inch,
+                y: el.top / ratioPx2Inch,
+                w: el.width / ratioPx2Inch,
+                h: el.height / ratioPx2Inch,
+              };
+              if (el.rotate) options.rotate = el.rotate;
+              if (el.flipH) options.flipH = el.flipH;
+              if (el.flipV) options.flipV = el.flipV;
+              if (el.link) {
+                const linkOption = getLinkOption(el.link, _slides);
+                if (linkOption) options.hyperlink = linkOption;
+              }
 
-          const options: pptxgen.ImageProps = {
-            data: el.path,
-            x: el.left / ratioPx2Inch,
-            y: el.top / ratioPx2Inch,
-            w: el.width / ratioPx2Inch,
-            h: el.height / ratioPx2Inch,
-          };
-          if (el.rotate) options.rotate = el.rotate;
-          if (el.flipH) options.flipH = el.flipH;
-          if (el.flipV) options.flipV = el.flipV;
-          if (el.link) {
-            const linkOption = getLinkOption(el.link, _slides);
-            if (linkOption) options.hyperlink = linkOption;
+              pptxSlide.addImage(options);
+            }
+          } else {
           }
-
-          pptxSlide.addImage(options);
         } else {
           const scale = {
             x: el.width / el.viewBox[0],
@@ -645,6 +694,7 @@ export const exportPPTX = (
           const points = formatPoints(toPoints(el.path), ratioPx2Inch, scale);
 
           let fillColor = formatColor(el.fill);
+
           if (el.gradient) {
             const colors: any = el.gradient.colors;
             const color1 = colors[0].color;
@@ -703,24 +753,27 @@ export const exportPPTX = (
           pptxSlide.addText(textProps, options);
         }
         if (el.pattern) {
-          const options: pptxgen.ImageProps = {
-            x: el.left / ratioPx2Inch,
-            y: el.top / ratioPx2Inch,
-            w: el.width / ratioPx2Inch,
-            h: el.height / ratioPx2Inch,
-          };
-          if (isBase64Image(el.pattern)) options.data = el.pattern;
-          else options.path = el.pattern;
+          const pattern = loadImageAsBase64(el.pattern);
+          if (pattern) {
+            const options: pptxgen.ImageProps = {
+              x: el.left / ratioPx2Inch,
+              y: el.top / ratioPx2Inch,
+              w: el.width / ratioPx2Inch,
+              h: el.height / ratioPx2Inch,
+            };
+            if (isBase64Image(pattern)) options.data = pattern;
+            else options.path = pattern;
 
-          if (el.flipH) options.flipH = el.flipH;
-          if (el.flipV) options.flipV = el.flipV;
-          if (el.rotate) options.rotate = el.rotate;
-          if (el.link) {
-            const linkOption = getLinkOption(el.link, _slides);
-            if (linkOption) options.hyperlink = linkOption;
+            if (el.flipH) options.flipH = el.flipH;
+            if (el.flipV) options.flipV = el.flipV;
+            if (el.rotate) options.rotate = el.rotate;
+            if (el.link) {
+              const linkOption = getLinkOption(el.link, _slides);
+              if (linkOption) options.hyperlink = linkOption;
+            }
+
+            pptxSlide.addImage(options);
           }
-
-          pptxSlide.addImage(options);
         }
       } else if (el.type === "line") {
         const path = getLineElementPath(el);
@@ -983,7 +1036,10 @@ export const exportPPTX = (
           path: el.src,
           type: el.type,
         };
-        if (el.type === "video" && el.poster) options.cover = el.poster;
+        if (el.type === "video" && el.poster) {
+          const poster = loadImageAsBase64(el.poster);
+          if (poster) options.cover = poster;
+        }
 
         const extMatch = el.src.match(/\.([a-zA-Z0-9]+)(?:[\?#]|$)/);
         if (extMatch && extMatch[1]) options.extn = extMatch[1];
