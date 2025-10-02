@@ -228,12 +228,12 @@ const saveBase64Image = async (
       await sharp(buffer)
         .png({
           compressionLevel: 6, // 0-9, default 6
-          quality: 100,
+          quality: 70,
         })
         .toFile(filepath);
     } else if (extension === "jpeg") {
       // JPEG ni minimal siqish bilan saqlash
-      const quality = isBackground ? 85 : 95; // Yuqori sifat
+      const quality = isBackground ? 50 : 70; // Yuqori sifat
       await sharp(buffer)
         .jpeg({
           quality,
@@ -243,7 +243,7 @@ const saveBase64Image = async (
     } else if (extension === "webp") {
       // WebP original formatda saqlash
       await sharp(buffer)
-        .webp({ quality: 95, lossless: false })
+        .webp({ quality: 50, lossless: false })
         .toFile(filepath);
     } else {
       // Boshqa formatlar uchun oddiy saqlash
