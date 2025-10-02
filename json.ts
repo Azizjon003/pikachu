@@ -76,11 +76,8 @@ const isPathComplex = (path: string): boolean => {
 const imageCounter = { value: 0 };
 const imagesDir = "images";
 
-const saveBase64Image = async (
-  base64: string,
-  slideIndex: number,
-  isBackground: boolean = false
-): Promise<string> => {
+// Rasmni format o'zgartirishsiz saqlash (original sifat)
+const saveBase64ImageRaw = (base64: string, slideIndex: number): string => {
   if (!base64 || typeof base64 !== "string") return "";
 
   if (
@@ -98,16 +95,23 @@ const saveBase64Image = async (
 
   let base64Data = base64;
   let extension = "png";
-  let isSvg = false;
 
   if (base64.startsWith("data:")) {
     const matches = base64.match(/^data:image\/([a-zA-Z+]+);base64,(.+)$/);
     if (matches) {
-      extension = matches[1].replace("+", "");
+      const format = matches[1].toLowerCase().replace("+xml", "");
       base64Data = matches[2];
+
+      if (format === "jpeg" || format === "jpg") extension = "jpeg";
+      else if (format === "png") extension = "png";
+      else if (format === "gif") extension = "gif";
+      else if (format === "webp") extension = "webp";
+      else if (format === "svg" || format === "svg+xml") extension = "svg";
+      else if (format === "bmp") extension = "bmp";
+      else extension = format;
     }
   } else {
-    const firstChars = base64.substring(0, 10);
+    const firstChars = base64.substring(0, 20);
     if (firstChars.startsWith("/9j/")) extension = "jpeg";
     else if (firstChars.startsWith("iVBOR")) extension = "png";
     else if (firstChars.startsWith("R0lGOD")) extension = "gif";
@@ -116,34 +120,148 @@ const saveBase64Image = async (
       firstChars.startsWith("PHN2Zy") ||
       firstChars.startsWith("PD94bW") ||
       firstChars.startsWith("PHN2ZyB")
-    ) {
+    )
       extension = "svg";
-      isSvg = true;
-    } else if (firstChars.startsWith("Qk")) extension = "bmp";
+    else if (firstChars.startsWith("Qk")) extension = "bmp";
   }
 
   imageCounter.value++;
-  const filename = `slide${slideIndex}_img${imageCounter.value}.jpeg`;
+  const filename = `slide${slideIndex}_img${imageCounter.value}.${extension}`;
+  const filepath = path.join(imagesDir, filename);
+
+  try {
+    const buffer = Buffer.from(base64Data, "base64");
+    fs.writeFileSync(filepath, buffer);
+    return `./${filepath}`;
+  } catch (error) {
+    console.error(`Error saving raw image ${filename}:`, error);
+    return "";
+  }
+};
+
+const saveBase64Image = async (
+  base64: string,
+  slideIndex: number,
+  isBackground: boolean = false
+): Promise<string> => {
+  if (!base64 || typeof base64 !== "string") return "";
+
+  // URL manzillarni o'zgartirmay qaytarish
+  if (
+    base64.startsWith("http://") ||
+    base64.startsWith("https://") ||
+    base64.startsWith("./") ||
+    base64.startsWith("../")
+  ) {
+    return base64;
+  }
+
+  if (!fs.existsSync(imagesDir)) {
+    fs.mkdirSync(imagesDir, { recursive: true });
+  }
+
+  let base64Data = base64;
+  let extension = "png";
+  let mimeType = "image/png";
+
+  // Data URL dan formatni aniqlash
+  if (base64.startsWith("data:")) {
+    const matches = base64.match(/^data:image\/([a-zA-Z+]+);base64,(.+)$/);
+    if (matches) {
+      const format = matches[1].toLowerCase().replace("+xml", "");
+      base64Data = matches[2];
+      mimeType = `image/${format}`;
+
+      // Extension mapping
+      if (format === "jpeg" || format === "jpg") extension = "jpeg";
+      else if (format === "png") extension = "png";
+      else if (format === "gif") extension = "gif";
+      else if (format === "webp") extension = "webp";
+      else if (format === "svg" || format === "svg+xml") extension = "svg";
+      else if (format === "bmp") extension = "bmp";
+      else extension = format;
+    }
+  } else {
+    // Base64 boshidan formatni aniqlash
+    const firstChars = base64.substring(0, 20);
+    if (firstChars.startsWith("/9j/")) {
+      extension = "jpeg";
+      mimeType = "image/jpeg";
+    } else if (firstChars.startsWith("iVBOR")) {
+      extension = "png";
+      mimeType = "image/png";
+    } else if (firstChars.startsWith("R0lGOD")) {
+      extension = "gif";
+      mimeType = "image/gif";
+    } else if (firstChars.startsWith("UklGR")) {
+      extension = "webp";
+      mimeType = "image/webp";
+    } else if (
+      firstChars.startsWith("PHN2Zy") ||
+      firstChars.startsWith("PD94bW") ||
+      firstChars.startsWith("PHN2ZyB")
+    ) {
+      extension = "svg";
+      mimeType = "image/svg+xml";
+    } else if (firstChars.startsWith("Qk")) {
+      extension = "bmp";
+      mimeType = "image/bmp";
+    }
+  }
+
+  imageCounter.value++;
+  const filename = `slide${slideIndex}_img${imageCounter.value}.${extension}`;
   const filepath = path.join(imagesDir, filename);
 
   try {
     const buffer = Buffer.from(base64Data, "base64");
 
-    if (isSvg) {
-      fs.writeFileSync(filepath.replace(".jpeg", ".svg"), buffer);
-      return `./${filepath.replace(".jpeg", ".svg")}`;
+    // SVG va GIF ni to'g'ridan-to'g'ri saqlash (siqmasdan)
+    if (extension === "svg" || extension === "gif") {
+      fs.writeFileSync(filepath, buffer);
+      return `./${filepath}`;
     }
 
-    const quality = isBackground ? 50 : 50;
-
-    await sharp(buffer).jpeg({ quality }).toFile(filepath);
+    // Raster rasmlarni optimallash bilan saqlash
+    if (extension === "png") {
+      // PNG ni siqmasdan saqlash (lossless)
+      await sharp(buffer)
+        .png({
+          compressionLevel: 6, // 0-9, default 6
+          quality: 100,
+        })
+        .toFile(filepath);
+    } else if (extension === "jpeg") {
+      // JPEG ni minimal siqish bilan saqlash
+      const quality = isBackground ? 85 : 95; // Yuqori sifat
+      await sharp(buffer)
+        .jpeg({
+          quality,
+          mozjpeg: true, // Yaxshiroq siqish algoritmi
+        })
+        .toFile(filepath);
+    } else if (extension === "webp") {
+      // WebP original formatda saqlash
+      await sharp(buffer)
+        .webp({ quality: 95, lossless: false })
+        .toFile(filepath);
+    } else {
+      // Boshqa formatlar uchun oddiy saqlash
+      fs.writeFileSync(filepath, buffer);
+    }
 
     return `./${filepath}`;
   } catch (error) {
     console.error(`Error saving image ${filename}:`, error);
-    const buffer = Buffer.from(base64Data, "base64");
-    fs.writeFileSync(filepath, buffer);
-    return `./${filepath}`;
+    // Xatolik bo'lsa, original bufferdan to'g'ridan-to'g'ri saqlash
+    try {
+      const buffer = Buffer.from(base64Data, "base64");
+      fs.writeFileSync(filepath, buffer);
+      return `./${filepath}`;
+    } catch (fallbackError) {
+      console.error(`Fallback save failed for ${filename}:`, fallbackError);
+      return "";
+    }
   }
 };
 
