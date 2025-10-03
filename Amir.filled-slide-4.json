@@ -1,105 +1,64 @@
 {
-  "id": "9Fjc-EOMTl",
-  "index": 5,
-  "slide": 6,
+  "id": "K-Jt3ow7KB",
+  "index": 6,
+  "slide": 7,
   "elements": [
     {
       "type": "image",
-      "src": "./images\\slide5_img56.png",
+      "src": "./images\\slide6_img69.png",
       "hasImage": true,
       "elementIndex": 0
     },
     {
       "type": "image",
-      "src": "./images\\slide5_img57.png",
+      "src": "./images\\slide6_img70.png",
       "hasImage": true,
       "elementIndex": 1
     },
     {
-      "type": "image",
-      "src": "./images\\slide5_img58.png",
-      "hasImage": true,
-      "elementIndex": 4
+      "type": "shape",
+      "content": "Davolash usullari: Asosiy tushunchalar",
+      "elementIndex": 3
     },
     {
-      "type": "image",
-      "src": "./images\\slide5_img59.png",
-      "hasImage": true,
+      "type": "shape",
+      "content": "Davolash usullari inson salomatligini tiklash va saqlash uchun muhimdir. Turli kasalliklar uchun turli usullar qo'llaniladi, masalan, dori-darmonlar, jismoniy terapiya va operatsiyalar.",
       "elementIndex": 5
     },
     {
-      "type": "image",
-      "src": "./images\\slide5_img60.png",
-      "hasImage": true,
-      "elementIndex": 8
+      "type": "shape",
+      "content": "Dori-darmonlar",
+      "elementIndex": 7
     },
     {
-      "type": "image",
-      "src": "./images\\slide5_img61.png",
-      "hasImage": true,
+      "type": "shape",
+      "content": "Dori-darmonlar ko'plab kasalliklarni davolashda asosiy vosita hisoblanadi. Ular turli shaklda bo'lishi mumkin: tabletkalar, in'ektsiyalar va sirop. Har bir dori o'ziga xos ta'sir ko'rsatadi.",
       "elementIndex": 9
     },
     {
-      "type": "image",
-      "src": "./images\\slide5_img62.png",
-      "hasImage": true,
-      "elementIndex": 12
+      "type": "shape",
+      "content": "Jismoniy terapiya",
+      "elementIndex": 11
     },
     {
-      "type": "image",
-      "src": "./images\\slide5_img63.png",
-      "hasImage": true,
+      "type": "shape",
+      "content": "Jismoniy terapiya bemorlarning harakatlarini tiklash va kuchaytirish uchun muhim ahamiyatga ega. Bu usul og'riqni kamaytirish va funktsiyalarni yaxshilashda yordam beradi.",
       "elementIndex": 13
     },
     {
-      "type": "image",
-      "src": "./images\\slide5_img64.png",
-      "hasImage": true,
-      "elementIndex": 16
+      "type": "shape",
+      "content": "Operatsiyalar",
+      "elementIndex": 15
     },
     {
-      "type": "image",
-      "src": "./images\\slide5_img65.png",
-      "hasImage": true,
+      "type": "shape",
+      "content": "Operatsiyalar ko'pincha og'ir holatlarda qo'llaniladi. Ular zarar ko'rgan to'qimalarni tuzatish yoki kasalliklarni bartaraf etish maqsadida amalga oshiriladi.",
       "elementIndex": 17
     },
     {
-      "type": "image",
-      "src": "./images\\slide5_img66.png",
-      "hasImage": true,
-      "elementIndex": 20
-    },
-    {
-      "type": "image",
-      "src": "./images\\slide5_img67.png",
-      "hasImage": true,
-      "elementIndex": 21
-    },
-    {
-      "type": "image",
-      "src": "./images\\slide5_img68.png",
-      "hasImage": true,
-      "elementIndex": 24
-    },
-    {
       "type": "shape",
-      "content": "O'smalarni Davolash Usullari",
-      "elementIndex": 26
-    },
-    {
-      "type": "shape",
-      "content": "O'smalarni davolashda bir nechta usullar mavjud. Bu usullar o'smaning turiga, o'sha joyda joylashgan joyiga va bemorning sog'lig'iga bog'liq. O'smalarni davolashda asosan jarrohlik, kimyoviy terapiya va radiatsiya terapiyasi qo'llaniladi.",
-      "elementIndex": 28
-    },
-    {
-      "type": "shape",
-      "content": "O'smalarni davolash jarayonida bemorlarning sog'lig'ini saqlash va ularning hayot sifatini yaxshilash muhimdir. Shuningdek, davolash usullarining yanada samarali bo'lishi uchun zamonaviy texnologiyalarni qo'llash zarur.",
-      "elementIndex": 30
-    },
-    {
-      "type": "shape",
-      "content": "O'smalarni davolashda individual yondashuv juda muhim. Har bir bemor uchun maxsus davolash rejasi ishlab chiqilishi kerak. Bu yondashuv bemorning ehtiyojlariga mos ravishda amalga oshiriladi.",
-      "elementIndex": 32
+      "content": "Davolash usullarining kombinatsiyasi",
+      "elementIndex": 19
     }
   ],
   "note": ""

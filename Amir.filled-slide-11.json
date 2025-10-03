@@ -1,0 +1,75 @@
+{
+  "id": "V2PZHWGT8g",
+  "index": 13,
+  "slide": 14,
+  "elements": [
+    {
+      "type": "image",
+      "src": "./images\\slide13_img110.png",
+      "hasImage": true,
+      "elementIndex": 0
+    },
+    {
+      "type": "image",
+      "src": "./images\\slide13_img111.png",
+      "hasImage": true,
+      "elementIndex": 1
+    },
+    {
+      "type": "image",
+      "src": "./images\\slide13_img112.png",
+      "hasImage": true,
+      "elementIndex": 4
+    },
+    {
+      "type": "image",
+      "src": "./images\\slide13_img113.png",
+      "hasImage": true,
+      "elementIndex": 5
+    },
+    {
+      "type": "image",
+      "src": "./images\\slide13_img114.png",
+      "hasImage": true,
+      "elementIndex": 8
+    },
+    {
+      "type": "shape",
+      "content": "Yoshi va O'smalar",
+      "elementIndex": 10
+    },
+    {
+      "type": "shape",
+      "content": "O'sish jarayoni haqida umumiy ma'lumotlar",
+      "elementIndex": 12
+    },
+    {
+      "type": "shape",
+      "content": "O'sish va rivojlanishning asosiy bosqichlari",
+      "elementIndex": 14
+    },
+    {
+      "type": "shape",
+      "content": "Yosh kattalar hayotining turli bosqichlari, jumladan, jismoniy, ruhiy va ijtimoiy rivojlanishni o'z ichiga oladi. Har bir bosqichda o'smirlar va kattalar uchun o'ziga xos muammolar va qiyinchiliklar mavjud.",
+      "elementIndex": 16
+    },
+    {
+      "type": "shape",
+      "content": "O'sish jarayonida qiyinchiliklarni bartaraf etish uchun qo'llaniladigan strategiyalar va psixologik yordam ko'rsatish usullarini o'rganish zarur.",
+      "elementIndex": 18
+    },
+    {
+      "type": "image",
+      "src": "./images\\slide13_img115.png",
+      "hasImage": true,
+      "elementIndex": 19
+    },
+    {
+      "type": "image",
+      "src": "./images\\slide13_img116.png",
+      "hasImage": true,
+      "elementIndex": 20
+    }
+  ],
+  "note": ""
+}

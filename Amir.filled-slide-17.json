@@ -1,0 +1,65 @@
+{
+  "id": "K-Jt3ow7KB",
+  "index": 6,
+  "slide": 7,
+  "elements": [
+    {
+      "type": "image",
+      "src": "./images\\slide6_img69.png",
+      "hasImage": true,
+      "elementIndex": 0
+    },
+    {
+      "type": "image",
+      "src": "./images\\slide6_img70.png",
+      "hasImage": true,
+      "elementIndex": 1
+    },
+    {
+      "type": "shape",
+      "content": "Davolash usullari",
+      "elementIndex": 3
+    },
+    {
+      "type": "shape",
+      "content": "Davolash usullari, bemorlar sog'lig'ini tiklash va kasalliklarni oldini olish uchun turli xil texnologiyalar va usullarni o'z ichiga oladi. Ularning samaradorligi va qo'llanilishi kasallikning turiga, bemorning holatiga va boshqa omillarga bog'liq.",
+      "elementIndex": 5
+    },
+    {
+      "type": "shape",
+      "content": "Dori-darmonlar",
+      "elementIndex": 7
+    },
+    {
+      "type": "shape",
+      "content": "Dori-darmonlar kasalliklarni davolashda asosiy vosita hisoblanadi. Ular bemorning holatini yaxshilash va belgilangan kasalliklarni yo'qotishga yordam beradi. Dori-darmonlarni qo'llashda doimo shifokor maslahatiga murojaat qilish zarur.",
+      "elementIndex": 9
+    },
+    {
+      "type": "shape",
+      "content": "Jismoniy terapiya",
+      "elementIndex": 11
+    },
+    {
+      "type": "shape",
+      "content": "Jismoniy terapiya jarrohlikdan keyin tiklanishga yordam beradi va mushaklar kuchini oshiradi. Fizioterapevtlar tomonidan belgilangan mashqlar va davolash usullari muhimdir.",
+      "elementIndex": 13
+    },
+    {
+      "type": "shape",
+      "content": "Psixologik yordam",
+      "elementIndex": 15
+    },
+    {
+      "type": "shape",
+      "content": "Psixologik yordam bemorlarning ruhiy holatini yaxshilashga qaratilgan. Stressni boshqarish va tashvishlarni kamaytirishga yordam beradigan turli xil usullar qo'llaniladi.",
+      "elementIndex": 17
+    },
+    {
+      "type": "shape",
+      "content": "Alternativ tibbiyot",
+      "elementIndex": 19
+    }
+  ],
+  "note": ""
+}

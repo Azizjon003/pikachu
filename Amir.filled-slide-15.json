@@ -14,41 +14,35 @@
       "data": [
         [
           "Belgi",
-          "Tashxis",
-          "Mavjudlik"
+          "Sharh"
         ],
         [
-          "Bosh og'rig'i",
-          "Tumor",
-          "Ha"
+          "Yuqori harorat",
+          "Tanada yallig'lanish jarayonlari mavjud"
         ],
         [
-          "Bosh aylanishi",
-          "Neyroblastoma",
-          "Yo'q"
+          "Teri o'zgarishlari",
+          "Teri rangining o'zgarishi yoki shishishi"
         ],
         [
-          "Qon bosimi yuqoriligi",
-          "Meningioma",
-          "Ha"
+          "Og'riq",
+          "O'zgacha og'riq hissi"
         ],
         [
-          "Tez charchoq",
-          "Lymphoma",
-          "Ha"
+          "Charchoq",
+          "Doimiy charchoq va energiya yetishmasligi"
         ],
         [
-          "Mushak zaifligi",
-          "Sarcoma",
-          "Yo'q"
+          "Quloqdan qon ketishi",
+          "Quloqdan qon yoki suyuqlik chiqishi"
         ]
       ],
       "elementIndex": 1,
-      "content": "Belgilar va Tashxislar"
+      "content": ""
     },
     {
       "type": "shape",
-      "content": "Tumor tasnifi jadvali",
+      "content": "Belgilari haqida ma'lumotlar",
       "elementIndex": 3
     },
     {

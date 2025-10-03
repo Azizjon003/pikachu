@@ -88,17 +88,17 @@
     },
     {
       "type": "shape",
-      "content": "Diagnostika usullari tibbiyotda kasalliklarni aniqlashda muhim ahamiyatga ega. Ular turli xil metodlar va vositalarni o'z ichiga oladi, bu esa shifokorlarga aniq va tezkor tashxis qo'yishga yordam beradi.",
+      "content": "Diagnostika usullari — sog'liqni saqlash sohasida muhim ahamiyatga ega. Ular kasalliklarni aniqlash va davolash jarayonida qo'llaniladi. Har bir usulning o'ziga xos afzalliklari va kamchiliklari mavjud.",
       "elementIndex": 28
     },
     {
       "type": "shape",
-      "content": "Asosiy diagnostika usullari: klinik tekshiruv, laboratoriya tahlillari, tasviriy diagnostika va genetik testlar. Har bir usul o'ziga xos afzalliklarga ega bo'lib, kasallikning turiga qarab tanlanadi.",
+      "content": "Asosiy diagnostika usullari quyidagilardan iborat:\n- Laboratoriya tahlillari\n- Tasviriy diagnostika (ultrasonografiya, rentgen)\n- Klinik tekshiruvlar",
       "elementIndex": 30
     },
     {
       "type": "shape",
-      "content": "Bu usullar yordamida kasalliklarning oldini olish, vaqtida aniqlash va to'g'ri davolash strategiyalarini ishlab chiqish mumkin. Shuningdek, zamonaviy texnologiyalar diagnostikani yanada samarali qilishda yordam beradi.",
+      "content": "Yana bir muhim jihati — to'g'ri diagnostika usulini tanlash. Bu bemorning holati va kasallikning tabiatiga bog'liq. Har bir usulning o'ziga xos shartlari bor.",
       "elementIndex": 32
     }
   ],

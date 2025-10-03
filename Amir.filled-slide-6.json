@@ -1,74 +1,88 @@
 {
-  "id": "V2PZHWGT8g",
-  "index": 13,
-  "slide": 14,
+  "id": "aO5ZTPFtge",
+  "index": 8,
+  "slide": 9,
   "elements": [
     {
       "type": "image",
-      "src": "./images\\slide13_img110.png",
+      "src": "./images\\slide8_img79.png",
       "hasImage": true,
       "elementIndex": 0
     },
     {
       "type": "image",
-      "src": "./images\\slide13_img111.png",
+      "src": "./images\\slide8_img80.png",
       "hasImage": true,
       "elementIndex": 1
     },
     {
       "type": "image",
-      "src": "./images\\slide13_img112.png",
+      "src": "./images\\slide8_img81.png",
       "hasImage": true,
-      "elementIndex": 4
+      "elementIndex": 2
     },
     {
       "type": "image",
-      "src": "./images\\slide13_img113.png",
+      "src": "./images\\slide8_img82.png",
       "hasImage": true,
       "elementIndex": 5
     },
     {
       "type": "image",
-      "src": "./images\\slide13_img114.png",
+      "src": "./images\\slide8_img83.png",
       "hasImage": true,
       "elementIndex": 8
     },
     {
-      "type": "shape",
-      "content": "Kelajakni Prognozlash",
-      "elementIndex": 10
-    },
-    {
-      "type": "shape",
-      "content": "Innovatsiyalar va Rivojlanish",
-      "elementIndex": 12
-    },
-    {
-      "type": "shape",
-      "content": "Maqsadlar va Rejalar",
-      "elementIndex": 14
-    },
-    {
-      "type": "shape",
-      "content": "Prognozlar muhim qarorlar qabul qilishda asosiy rol o'ynaydi. Ular iqtisodiy, ijtimoiy va texnologik tendentsiyalarni oldindan bilish imkonini beradi, bu esa resurslarni samarali taqsimlashga yordam beradi.",
-      "elementIndex": 16
-    },
-    {
-      "type": "shape",
-      "content": "Kelajakni rejalashtirishda aniq prognozlar tayyorlash zarur. Bu nafaqat kompaniyalar, balki davlatlar va jamiyatlar uchun ham muhimdir. Prognozlar o'zgaruvchan sharoitlarga moslashish imkonini beradi va strategik yo'nalishlarni belgilaydi.",
-      "elementIndex": 18
-    },
-    {
       "type": "image",
-      "src": "./images\\slide13_img115.png",
+      "src": "./images\\slide8_img84.png",
       "hasImage": true,
+      "elementIndex": 11
+    },
+    {
+      "type": "shape",
+      "content": "Statistikalar: Muvaffaqiyatni O'lchash",
+      "elementIndex": 15
+    },
+    {
+      "type": "shape",
+      "content": "Statistikalar bizga qarorlar qabul qilishda yordam beradi. Ular ma'lumotlarni tahlil qilish va tendentsiyalarni aniqlash imkonini beradi.",
+      "elementIndex": 17
+    },
+    {
+      "type": "shape",
+      "content": "Statistikalar va Ma'lumotlar",
       "elementIndex": 19
     },
     {
-      "type": "image",
-      "src": "./images\\slide13_img116.png",
-      "hasImage": true,
-      "elementIndex": 20
+      "type": "shape",
+      "content": "Statistika tadqiqotlar, marketing va iqtisodiyot sohalarida muhim rol o'ynaydi. Ular bizga ma'lumotlar asosida strategiyalarni ishlab chiqishga yordam beradi.",
+      "elementIndex": 21
+    },
+    {
+      "type": "shape",
+      "content": "Statistik usullar",
+      "elementIndex": 23
+    },
+    {
+      "type": "shape",
+      "content": "O'rtacha, median va modalar kabi statistik ko'rsatkichlar bizga ma'lumotlarning asosiy xususiyatlarini tushunishga yordam beradi.",
+      "elementIndex": 25
+    },
+    {
+      "type": "shape",
+      "content": "Statistika turlari",
+      "elementIndex": 27
+    },
+    {
+      "type": "shape",
+      "content": "Tasodifiy va tasodifiy bo'lmagan statistikalar, o'zaro bog'liqliklarni aniqlashda muhim ahamiyatga ega.",
+      "elementIndex": 29
+    },
+    {
+      "type": "shape",
+      "content": "Statistikani qo'llash sohalari",
+      "elementIndex": 31
     }
   ],
   "note": ""

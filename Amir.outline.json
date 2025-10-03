@@ -1,78 +1,126 @@
 {
   "outline": [
     {
-      "title": "Nerv tizimi o'smalari: Ta'rif va Turlari",
-      "title_eng": "Nerv System Tumors: Definition and Types"
+      "title": "Nerv tizimi o'smalari turlari va belgilari",
+      "title_eng": "Types and Symptoms of Nervous System Tumors"
     },
     {
-      "title": "O'smalarni Tashxislash va Belgilari",
-      "title_eng": "Diagnosis and Symptoms of Tumors"
+      "title": "Nerv tizimi o'smalari diagnostikasi va davolash",
+      "title_eng": "Diagnosis and Treatment of Nervous System Tumors"
     },
     {
-      "title": "Davolash Usullari va Prognoz",
-      "title_eng": "Treatment Methods and Prognosis"
+      "title": "Nerv tizimi o'smalari haqida ma'lumot va statistikalar",
+      "title_eng": "Information and Statistics on Nervous System Tumors"
     }
   ],
   "slides": [
     {
-      "slideIndex": 2,
+      "slideIndex": 0,
       "title": "Nerv tizimi o'smalari",
       "title_eng": "Nervous System Tumors",
       "outlineIndex": 0
     },
     {
-      "slideIndex": 4,
-      "title": "O'sma Turlari",
+      "slideIndex": 1,
+      "title": "O'sma turlari",
       "title_eng": "Types of Tumors",
       "outlineIndex": 0
     },
     {
-      "slideIndex": 5,
-      "title": "O'smalarni Tashxislash",
-      "title_eng": "Diagnosis of Tumors",
-      "outlineIndex": 1
-    },
-    {
-      "slideIndex": 9,
-      "title": "Belgilari va Alomatlar",
-      "title_eng": "Signs and Symptoms",
-      "outlineIndex": 1
+      "slideIndex": 2,
+      "title": "Belgilari",
+      "title_eng": "Symptoms",
+      "outlineIndex": 0
     },
     {
       "slideIndex": 3,
-      "title": "O'smalarni Davolash",
-      "title_eng": "Treatment of Tumors",
+      "title": "Diagnostika usullari",
+      "title_eng": "Diagnostic Methods",
+      "outlineIndex": 1
+    },
+    {
+      "slideIndex": 4,
+      "title": "Davolash usullari",
+      "title_eng": "Treatment Methods",
+      "outlineIndex": 1
+    },
+    {
+      "slideIndex": 5,
+      "title": "O'smalarni tasnifi",
+      "title_eng": "Tumor Classification",
+      "outlineIndex": 1
+    },
+    {
+      "slideIndex": 6,
+      "title": "Statistikalar",
+      "title_eng": "Statistics",
+      "outlineIndex": 2
+    },
+    {
+      "slideIndex": 7,
+      "title": "O'smalar va ularning tarqalishi",
+      "title_eng": "Tumors and Their Incidence",
+      "outlineIndex": 2
+    },
+    {
+      "slideIndex": 8,
+      "title": "O'smalarni profilaktika qilish",
+      "title_eng": "Prevention of Tumors",
+      "outlineIndex": 2
+    },
+    {
+      "slideIndex": 9,
+      "title": "O'smalarning xavfi",
+      "title_eng": "Risks of Tumors",
       "outlineIndex": 2
     },
     {
       "slideIndex": 10,
-      "title": "Davolash usullari",
-      "title_eng": "Treatment Methods",
+      "title": "O'smalar to'g'risida umumiy ma'lumot",
+      "title_eng": "General Information on Tumors",
       "outlineIndex": 2
     },
     {
       "slideIndex": 11,
-      "title": "Prognoz va Kelajak",
-      "title_eng": "Prognosis and Future",
+      "title": "Yoshi va o'smalar",
+      "title_eng": "Age and Tumors",
       "outlineIndex": 2
     },
     {
-      "slideIndex": 6,
-      "title": "O'smalar va ularning ta'siri",
-      "title_eng": "Tumors and Their Effects",
-      "outlineIndex": 0
-    },
-    {
-      "slideIndex": 8,
-      "title": "O'smalarni oldini olish",
-      "title_eng": "Prevention of Tumors",
+      "slideIndex": 12,
+      "title": "O'smalar va davolash",
+      "title_eng": "Tumors and Treatment",
       "outlineIndex": 1
     },
     {
-      "slideIndex": 12,
-      "title": "O'smalar haqida umumiy ma'lumot",
-      "title_eng": "General Information about Tumors",
+      "slideIndex": 0,
+      "title": "Nerv tizimi o'smalari",
+      "title_eng": "Nervous System Tumors",
       "outlineIndex": 0
+    },
+    {
+      "slideIndex": 1,
+      "title": "O'sma turlari",
+      "title_eng": "Types of Tumors",
+      "outlineIndex": 0
+    },
+    {
+      "slideIndex": 2,
+      "title": "Belgilari",
+      "title_eng": "Symptoms",
+      "outlineIndex": 0
+    },
+    {
+      "slideIndex": 3,
+      "title": "Diagnostika usullari",
+      "title_eng": "Diagnostic Methods",
+      "outlineIndex": 1
+    },
+    {
+      "slideIndex": 4,
+      "title": "Davolash usullari",
+      "title_eng": "Treatment Methods",
+      "outlineIndex": 1
     }
   ]
 }

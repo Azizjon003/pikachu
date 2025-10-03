@@ -1,0 +1,30 @@
+{
+  "id": "9yrDox0mzw",
+  "index": 12,
+  "slide": 13,
+  "elements": [
+    {
+      "type": "image",
+      "src": "./images\\slide12_img108.png",
+      "hasImage": true,
+      "elementIndex": 0
+    },
+    {
+      "type": "image",
+      "src": "./images\\slide12_img109.jpeg",
+      "hasImage": true,
+      "elementIndex": 1
+    },
+    {
+      "type": "shape",
+      "content": "O'smalar: Umumiy Ma'lumotlar",
+      "elementIndex": 3
+    },
+    {
+      "type": "shape",
+      "content": "O'smalar, turli xil yashil o'simliklar bo'lib, ularning biologik va ekologik ahamiyati juda katta. Ular tabiatda kislorod ishlab chiqarish, karbonat angidridni so'rish va biosferaning barqarorligini saqlashda muhim rol o'ynaydi. O'smalarni o'rganish, ularning turlari, o'sishi va rivojlanishi haqidagi bilimlarimizni kengaytiradi. O'simliklar shuningdek, insoniyat uchun oziq-ovqat, dori-darmon va boshqa ko'plab resurslar manbaidir.",
+      "elementIndex": 5
+    }
+  ],
+  "note": ""
+}

@@ -1,84 +1,69 @@
 {
-  "id": "cHsogrB7nk",
-  "index": 14,
-  "slide": 15,
+  "id": "Kuk5CHNztq",
+  "index": 11,
+  "slide": 12,
   "elements": [
     {
       "type": "image",
-      "src": "./images\\slide14_img117.png",
+      "src": "./images\\slide11_img106.png",
       "hasImage": true,
       "elementIndex": 0
     },
     {
       "type": "image",
-      "src": "./images\\slide14_img118.png",
+      "src": "./images\\slide11_img107.png",
       "hasImage": true,
       "elementIndex": 1
     },
     {
-      "type": "image",
-      "src": "./images\\slide14_img119.png",
-      "hasImage": true,
-      "elementIndex": 4
+      "type": "shape",
+      "content": "O'smalarning Xavfi",
+      "elementIndex": 3
     },
     {
-      "type": "image",
-      "src": "./images\\slide14_img120.png",
-      "hasImage": true,
+      "type": "shape",
+      "content": "1",
       "elementIndex": 5
     },
     {
-      "type": "image",
-      "src": "./images\\slide14_img121.png",
-      "hasImage": true,
-      "elementIndex": 8
+      "type": "shape",
+      "content": "3",
+      "elementIndex": 7
     },
     {
-      "type": "image",
-      "src": "./images\\slide14_img122.jpeg",
-      "hasImage": true,
+      "type": "shape",
+      "content": "2",
       "elementIndex": 9
     },
     {
       "type": "shape",
-      "content": "O'smalar haqida umumiy ma'lumot",
+      "content": "4",
       "elementIndex": 11
     },
     {
       "type": "shape",
-      "content": "O'smalar turlari",
+      "content": "O'smalar odam organizmida xavfli o'simta bo'lishi mumkin. Ular tez o'sishi, metastaz berishi va sog'liqni yomonlashtirishi mumkin.",
       "elementIndex": 13
     },
     {
       "type": "shape",
-      "content": "O'smalarni parvarish",
+      "content": "O'smalarni erta aniqlash muhimdir. Shifokorlar muntazam tibbiy ko'riklar o'tkazib turishlari zarur.",
       "elementIndex": 15
     },
     {
       "type": "shape",
-      "content": "O'smalar va ularning foydalari",
+      "content": "O'smalarning oldini olish uchun sog'lom turmush tarzini saqlash va zararli odatlardan qochish kerak.",
       "elementIndex": 17
     },
     {
       "type": "shape",
-      "content": "O'smalar, tabiiy muhitda o'sadigan va hayot uchun zarur bo'lgan organizmlar bo'lib, ular insoniyat va tabiat uchun muhim ahamiyatga ega. O'smalar oziq-ovqat, dori-darmon va boshqa ko'plab resurslarni taqdim etadi.",
+      "content": "O'smalarning xavfi haqida xabardor bo'lishimiz zarur.",
       "elementIndex": 19
     },
     {
       "type": "shape",
-      "content": "O'smalarni parvarish qilish juda muhimdir. Ular o'sishi uchun quyosh, suv va to'g'ri tuproq kerak. To'g'ri parvarish qilish orqali o'smalar yanada sog'lom va kuchli bo'ladi.",
+      "content": "4",
       "elementIndex": 21
-    },
-    {
-      "type": "shape",
-      "content": "O'smalar inson salomatligi uchun foydali, ular vitaminlar, minerallar va antioksidantlar bilan boyitilgan. O'smalarni iste'mol qilish, turli kasalliklardan himoya qilishda yordam beradi.",
-      "elementIndex": 23
-    },
-    {
-      "type": "image",
-      "src": "./images\\slide14_img123.png",
-      "hasImage": true,
-      "elementIndex": 24
     }
   ],
   "note": ""

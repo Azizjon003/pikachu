@@ -1,0 +1,33 @@
+{
+  "slideId": "9Fjc-EOMTl",
+  "elements": [
+    {
+      "elementIndex": 13,
+      "content": "Diagnostika Usullari",
+      "tableData": {
+        "data": []
+      }
+    },
+    {
+      "elementIndex": 14,
+      "content": "Diagnostika usullari — sog'liqni saqlash sohasida muhim ahamiyatga ega. Ular kasalliklarni aniqlash va davolash jarayonida qo'llaniladi. Har bir usulning o'ziga xos afzalliklari va kamchiliklari mavjud.",
+      "tableData": {
+        "data": []
+      }
+    },
+    {
+      "elementIndex": 15,
+      "content": "Asosiy diagnostika usullari quyidagilardan iborat:\n- Laboratoriya tahlillari\n- Tasviriy diagnostika (ultrasonografiya, rentgen)\n- Klinik tekshiruvlar",
+      "tableData": {
+        "data": []
+      }
+    },
+    {
+      "elementIndex": 16,
+      "content": "Yana bir muhim jihati — to'g'ri diagnostika usulini tanlash. Bu bemorning holati va kasallikning tabiatiga bog'liq. Har bir usulning o'ziga xos shartlari bor.",
+      "tableData": {
+        "data": []
+      }
+    }
+  ]
+}

@@ -1,29 +1,90 @@
 {
-  "id": "9yrDox0mzw",
-  "index": 12,
-  "slide": 13,
+  "id": "KbQalnoI8H",
+  "index": 7,
+  "slide": 8,
   "elements": [
     {
       "type": "image",
-      "src": "./images\\slide12_img108.png",
+      "src": "./images\\slide7_img71.png",
       "hasImage": true,
       "elementIndex": 0
     },
     {
       "type": "image",
-      "src": "./images\\slide12_img109.jpeg",
+      "src": "./images\\slide7_img72.png",
       "hasImage": true,
       "elementIndex": 1
     },
     {
-      "type": "shape",
-      "content": "Davolash usullari",
-      "elementIndex": 3
+      "type": "image",
+      "src": "./images\\slide7_img73.png",
+      "hasImage": true,
+      "elementIndex": 6
     },
     {
       "type": "shape",
-      "content": "Davolash usullari turli xil metod va yondashuvlarni o'z ichiga oladi. Ular orasida dori-darmonlar, jarrohlik, fizioterapiya va alternativ davolash usullari mavjud. Har bir usulning o'ziga xos afzalliklari va kamchiliklari bor, shuning uchun bemorlarning individual ehtiyojlariga qarab tanlanadi. Samarali davolash uchun, shifokor bemorning holatini to'liq tahlil qilishi va eng mos usulni tanlashi lozim.",
-      "elementIndex": 5
+      "content": "O'smalarni tasnifi",
+      "elementIndex": 8
+    },
+    {
+      "type": "shape",
+      "content": "O'smalarni tasnifi - bu o'simliklar dunyosini tushunish va o'rganish uchun muhim jarayon. Ular turli xillik, o'sish muhitlari va xususiyatlariga ko'ra guruhlanadi. Bunday tasniflash o'simliklarni tasniflash va bioxilma-xillikni saqlashga yordam beradi.",
+      "elementIndex": 10
+    },
+    {
+      "type": "shape",
+      "content": "O'smalarni guruhlarga ajratish",
+      "elementIndex": 12
+    },
+    {
+      "type": "image",
+      "src": "./images\\slide7_img74.png",
+      "hasImage": true,
+      "elementIndex": 13
+    },
+    {
+      "type": "image",
+      "src": "./images\\slide7_img75.png",
+      "hasImage": true,
+      "elementIndex": 16
+    },
+    {
+      "type": "shape",
+      "content": "O'smalarni tasnifi asosan morfologik, anatomik va ekologik xususiyatlariga ko'ra amalga oshiriladi. Har bir o'simlik turi o'ziga xos xususiyatlarga ega bo'lib, ularni o'zaro farqlash imkonini beradi.",
+      "elementIndex": 22
+    },
+    {
+      "type": "shape",
+      "content": "Tasniflashda asosiy tushunchalar",
+      "elementIndex": 24
+    },
+    {
+      "type": "image",
+      "src": "./images\\slide7_img76.png",
+      "hasImage": true,
+      "elementIndex": 25
+    },
+    {
+      "type": "image",
+      "src": "./images\\slide7_img77.png",
+      "hasImage": true,
+      "elementIndex": 26
+    },
+    {
+      "type": "shape",
+      "content": "O'smalarni tasnifi quyidagi asosiy tushunchalarga asoslanadi: taxonomiya, filogeniya, va morfologiya. Bu tushunchalar asosida o'simliklar o'zaro bog'lanishi va rivojlanish tarixini o'rganish mumkin.",
+      "elementIndex": 32
+    },
+    {
+      "type": "shape",
+      "content": "O'simliklar turlari",
+      "elementIndex": 34
+    },
+    {
+      "type": "image",
+      "src": "./images\\slide7_img78.png",
+      "hasImage": true,
+      "elementIndex": 35
     }
   ],
   "note": ""

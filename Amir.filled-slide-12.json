@@ -1,0 +1,85 @@
+{
+  "id": "cHsogrB7nk",
+  "index": 14,
+  "slide": 15,
+  "elements": [
+    {
+      "type": "image",
+      "src": "./images\\slide14_img117.png",
+      "hasImage": true,
+      "elementIndex": 0
+    },
+    {
+      "type": "image",
+      "src": "./images\\slide14_img118.png",
+      "hasImage": true,
+      "elementIndex": 1
+    },
+    {
+      "type": "image",
+      "src": "./images\\slide14_img119.png",
+      "hasImage": true,
+      "elementIndex": 4
+    },
+    {
+      "type": "image",
+      "src": "./images\\slide14_img120.png",
+      "hasImage": true,
+      "elementIndex": 5
+    },
+    {
+      "type": "image",
+      "src": "./images\\slide14_img121.png",
+      "hasImage": true,
+      "elementIndex": 8
+    },
+    {
+      "type": "image",
+      "src": "./images\\slide14_img122.jpeg",
+      "hasImage": true,
+      "elementIndex": 9
+    },
+    {
+      "type": "shape",
+      "content": "O'smalar va davolash: Asosiy tushunchalar",
+      "elementIndex": 11
+    },
+    {
+      "type": "shape",
+      "content": "O'sma turlari",
+      "elementIndex": 13
+    },
+    {
+      "type": "shape",
+      "content": "Davolash usullari",
+      "elementIndex": 15
+    },
+    {
+      "type": "shape",
+      "content": "O'smalar va ularning alomatlari",
+      "elementIndex": 17
+    },
+    {
+      "type": "shape",
+      "content": "O'smalar, organizmdagi to'qimalarning normadan ortiqcha o'sishi bo'lib, ular benign (yaxshi) yoki malignant (yomon) bo'lishi mumkin. Ularning aniqlanishi va davolash usullari muhimdir.",
+      "elementIndex": 19
+    },
+    {
+      "type": "shape",
+      "content": "Davolash jarayonida o'smalarning turiga qarab, jarrohlik, kimyoterapiya, radioterapiya yoki immunoterapiya qo'llanilishi mumkin. Har bir usul o'zining afzalliklari va kamchiliklariga ega.",
+      "elementIndex": 21
+    },
+    {
+      "type": "shape",
+      "content": "O'smalarni erta aniqlash, davolash muvaffaqiyatiga katta ta'sir ko'rsatadi. Shuningdek, sog'lom turmush tarzini saqlash va muntazam tekshiruvlar o'tkazish muhimdir.",
+      "elementIndex": 23
+    },
+    {
+      "type": "image",
+      "src": "./images\\slide14_img123.png",
+      "hasImage": true,
+      "elementIndex": 24
+    }
+  ],
+  "note": ""
+}

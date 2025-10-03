@@ -10,7 +10,7 @@ const start = async () => {
   const outline = await generateOutline(
     aiSchema,
     "Uzbek",
-    10, // Select 5 slides
+    20, // Select 5 slides
     "Nerv tizimi o'smalari "
   );
 

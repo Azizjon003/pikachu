@@ -1,88 +1,69 @@
 {
-  "id": "aO5ZTPFtge",
-  "index": 8,
-  "slide": 9,
+  "id": "IXm0nIVSsV",
+  "index": 9,
+  "slide": 10,
   "elements": [
     {
       "type": "image",
-      "src": "./images\\slide8_img79.png",
+      "src": "./images\\slide9_img85.png",
       "hasImage": true,
       "elementIndex": 0
     },
     {
       "type": "image",
-      "src": "./images\\slide8_img80.png",
+      "src": "./images\\slide9_img86.png",
       "hasImage": true,
       "elementIndex": 1
     },
     {
       "type": "image",
-      "src": "./images\\slide8_img81.png",
+      "src": "./images\\slide9_img87.png",
       "hasImage": true,
-      "elementIndex": 2
+      "elementIndex": 4
     },
     {
       "type": "image",
-      "src": "./images\\slide8_img82.png",
+      "src": "./images\\slide9_img88.png",
       "hasImage": true,
       "elementIndex": 5
     },
     {
       "type": "image",
-      "src": "./images\\slide8_img83.png",
+      "src": "./images\\slide9_img89.png",
       "hasImage": true,
       "elementIndex": 8
     },
     {
       "type": "image",
-      "src": "./images\\slide8_img84.png",
+      "src": "./images\\slide9_img90.jpeg",
       "hasImage": true,
+      "elementIndex": 9
+    },
+    {
+      "type": "shape",
+      "content": "O'smalar va ularning tarqalishi",
       "elementIndex": 11
     },
     {
-      "type": "shape",
-      "content": "O'smalar va ularning ta'siri",
-      "elementIndex": 15
+      "type": "image",
+      "src": "./images\\slide9_img91.png",
+      "hasImage": true,
+      "elementIndex": 12
     },
     {
       "type": "shape",
-      "content": "O'smalar har qanday organizmda muhim ro'l o'ynaydi. Ular o'sish, rivojlanish va hayot jarayonlarida ishtirok etadilar.",
-      "elementIndex": 17
+      "content": "O'smalar, yoki vegetativ organizmlar, yer yuzida keng tarqalgan. Ular turli iqlim sharoitlariga moslashgan va ko'plab ekotizimlarda muhim rol o'ynaydi. O'smalar oziq-ovqat zanjirining asosi bo'lib, ko'plab hayvonlar va insonlar uchun oziq-ovqat manbai hisoblanadi.",
+      "elementIndex": 14
     },
     {
       "type": "shape",
-      "content": "O'smalarni tasniflash",
-      "elementIndex": 19
+      "content": "O'smalarni tarqatish jarayoni tabiiy va inson tomonidan amalga oshiriladigan faoliyatlar orqali sodir bo'ladi. Ular urug'lar, qishloq xo'jaligi amaliyotlari va tabiiy fenomenlar orqali kengayadi. O'smalarni saqlash va ularning tarqalishini nazorat qilish atrof-muhit muhofazasi uchun juda muhimdir.",
+      "elementIndex": 16
     },
     {
       "type": "shape",
-      "content": "O'smalar bir nechta guruhlarga bo'linadi: o'simliklar, hayvonlar, va mikroorganizmlar. Har bir guruh o'ziga xos xususiyatlarga ega.",
-      "elementIndex": 21
-    },
-    {
-      "type": "shape",
-      "content": "O'smalar va ularning foydalari",
-      "elementIndex": 23
-    },
-    {
-      "type": "shape",
-      "content": "O'smalar inson hayotida ko'plab foydali xususiyatlarga ega: oziq-ovqat manbai, dori-darmon, va ekotizimni saqlashda yordam.",
-      "elementIndex": 25
-    },
-    {
-      "type": "shape",
-      "content": "O'smalar orqali ta'sir",
-      "elementIndex": 27
-    },
-    {
-      "type": "shape",
-      "content": "O'smalar atrof-muhitga ta'sir qiladi, ularning yo'qolishi ekosistemalarga xavf tug'diradi. Shuningdek, o'smalar odamlar hayotida ham muhimdir.",
-      "elementIndex": 29
-    },
-    {
-      "type": "shape",
-      "content": "O'smalar va zamonaviy tadqiqotlar",
-      "elementIndex": 31
+      "content": "O'smalar turli xil iqlim va geografik sharoitlarga moslashadi. Ular quruqlik, suv va havo orqali tarqaladi. O'smalarni o'rganish va ularning tarqalishini tushunish ekologik muammolarni hal qilishda yordam beradi.",
+      "elementIndex": 18
     }
   ],
   "note": ""

@@ -1,5 +1,6 @@
 // OpenAI Structured Outputs version (requires openai >= 4.52.0)
 import OpenAI from "openai";
+import fs from "fs";
 import dotenv from "dotenv";
 dotenv.config();
 import { OutlineSchema, OutlineResponse } from "./schema";
@@ -360,6 +361,10 @@ MANDATORY TASK:
   const raw = completion.choices[0].message.content ?? "{}";
   const generatedData = JSON.parse(raw);
 
+  fs.writeFileSync(
+    `${slide.id}.generatedData.json`,
+    JSON.stringify(generatedData, null, 2)
+  );
   const filledCount = generatedData.elements?.length || 0;
   const expectedCount = textShapeTableElements.length;
 
@@ -404,7 +409,8 @@ MANDATORY TASK:
         // For table elements, also update tableData if provided
         if (el.type === "table" && generatedElement.tableData) {
           // updatedElement.tableData = generatedElement.tableData;
-          updatedElement.data = generatedElement.tableData;
+          updatedElement.data =
+            generatedElement.tableData?.data || generatedElement.tableData;
         }
 
         return updatedElement;

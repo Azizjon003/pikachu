@@ -1,5 +1,220 @@
 [
   {
+    "id": "xVZ9KAwebA",
+    "index": 2,
+    "slide": 3,
+    "elements": [
+      {
+        "type": "image",
+        "src": "./images\\slide2_img22.png",
+        "hasImage": true,
+        "elementIndex": 0
+      },
+      {
+        "type": "image",
+        "src": "./images\\slide2_img23.png",
+        "hasImage": true,
+        "elementIndex": 1
+      },
+      {
+        "type": "image",
+        "src": "./images\\slide2_img24.png",
+        "hasImage": true,
+        "elementIndex": 2
+      },
+      {
+        "type": "image",
+        "src": "./images\\slide2_img25.png",
+        "hasImage": true,
+        "elementIndex": 3
+      },
+      {
+        "type": "image",
+        "src": "./images\\slide2_img26.png",
+        "hasImage": true,
+        "elementIndex": 4
+      },
+      {
+        "type": "image",
+        "src": "./images\\slide2_img27.png",
+        "hasImage": true,
+        "elementIndex": 7
+      },
+      {
+        "type": "image",
+        "src": "./images\\slide2_img28.png",
+        "hasImage": true,
+        "elementIndex": 8
+      },
+      {
+        "type": "image",
+        "src": "./images\\slide2_img29.png",
+        "hasImage": true,
+        "elementIndex": 11
+      },
+      {
+        "type": "shape",
+        "content": "Nerv Tizimi O'smalari",
+        "elementIndex": 13
+      },
+      {
+        "type": "shape",
+        "content": "Asosiy Ma'lumotlar",
+        "elementIndex": 15
+      },
+      {
+        "type": "image",
+        "src": "./images\\slide2_img30.png",
+        "hasImage": true,
+        "elementIndex": 16
+      },
+      {
+        "type": "image",
+        "src": "./images\\slide2_img31.png",
+        "hasImage": true,
+        "elementIndex": 19
+      }
+    ],
+    "note": ""
+  },
+  {
+    "id": "xfw3AQw1nV",
+    "index": 3,
+    "slide": 4,
+    "elements": [
+      {
+        "type": "image",
+        "src": "./images\\slide3_img32.png",
+        "hasImage": true,
+        "elementIndex": 0
+      },
+      {
+        "type": "image",
+        "src": "./images\\slide3_img33.png",
+        "hasImage": true,
+        "elementIndex": 1
+      },
+      {
+        "type": "image",
+        "src": "./images\\slide3_img34.png",
+        "hasImage": true,
+        "elementIndex": 4
+      },
+      {
+        "type": "image",
+        "src": "./images\\slide3_img35.png",
+        "hasImage": true,
+        "elementIndex": 5
+      },
+      {
+        "type": "image",
+        "src": "./images\\slide3_img36.png",
+        "hasImage": true,
+        "elementIndex": 8
+      },
+      {
+        "type": "image",
+        "src": "./images\\slide3_img37.png",
+        "hasImage": true,
+        "elementIndex": 9
+      },
+      {
+        "type": "image",
+        "src": "./images\\slide3_img38.png",
+        "hasImage": true,
+        "elementIndex": 12
+      },
+      {
+        "type": "image",
+        "src": "./images\\slide3_img39.png",
+        "hasImage": true,
+        "elementIndex": 13
+      },
+      {
+        "type": "image",
+        "src": "./images\\slide3_img40.png",
+        "hasImage": true,
+        "elementIndex": 16
+      },
+      {
+        "type": "image",
+        "src": "./images\\slide3_img41.png",
+        "hasImage": true,
+        "elementIndex": 17
+      },
+      {
+        "type": "image",
+        "src": "./images\\slide3_img42.png",
+        "hasImage": true,
+        "elementIndex": 20
+      },
+      {
+        "type": "image",
+        "src": "./images\\slide3_img43.png",
+        "hasImage": true,
+        "elementIndex": 21
+      },
+      {
+        "type": "image",
+        "src": "./images\\slide3_img44.png",
+        "hasImage": true,
+        "elementIndex": 24
+      },
+      {
+        "type": "image",
+        "src": "./images\\slide3_img45.png",
+        "hasImage": true,
+        "elementIndex": 25
+      },
+      {
+        "type": "image",
+        "src": "./images\\slide3_img46.png",
+        "hasImage": true,
+        "elementIndex": 28
+      },
+      {
+        "type": "image",
+        "src": "./images\\slide3_img47.png",
+        "hasImage": true,
+        "elementIndex": 29
+      },
+      {
+        "type": "image",
+        "src": "./images\\slide3_img48.png",
+        "hasImage": true,
+        "elementIndex": 32
+      },
+      {
+        "type": "image",
+        "src": "./images\\slide3_img49.png",
+        "hasImage": true,
+        "elementIndex": 33
+      },
+      {
+        "type": "image",
+        "src": "./images\\slide3_img50.png",
+        "hasImage": true,
+        "elementIndex": 36
+      },
+      {
+        "type": "shape",
+        "content": "O'sma turlari haqida",
+        "elementIndex": 38
+      },
+      {
+        "type": "shape",
+        "content": "O'sma turlari turli xil o'simlik va hayvonlarda uchraydi. Ular o'simliklar va hayvonlar organizmida o'sish jarayoni davomida yuzaga keladi. O'sma turlari ko'pincha genetik o'zgarishlar yoki atrof-muhit ta'siri natijasida paydo bo'ladi. Bularning ichida benign va malign o'smalar farqlanadi, bu esa sog'liq uchun turlicha xavflarni keltirib chiqaradi.",
+        "elementIndex": 40
+      },
+      {
+        "type": "shape",
+        "content": "O'sma turlari o'simliklarda ko'plab shakllarda kuzatiladi. Ular ko'pincha o'simlikning iqlimga qarab o'sishiga, biologik faoliyatiga va boshqa stress omillariga bog'liq. O'smalarning turlari o'simlikning o'ziga xos xususiyatlarini belgilaydi va ba'zi hollarda iqtisodiy ahamiyatga ega bo'lishi mumkin.",
+        "elementIndex": 42
+      }
+    ],
+    "note": ""
+  },
+  {
     "id": "rjnuHMWJEL",
     "index": 4,
     "slide": 5,
@@ -12,36 +227,44 @@
       },
       {
         "type": "table",
-
         "data": [
-          ["O'sma turi", "Belgilari", "Davolash usullari"],
           [
-            "Astrositoma",
-            "Mushak kuchsizligi, bosh og'rig'i",
-            "Xirurgiya, radioterapiya"
+            "Belgi",
+            "Tashxis",
+            "Mavjudlik"
           ],
           [
-            "Meninjioma",
-            "Bosh og'rig'i, ko'rish qiyinlishuvi",
-            "Xirurgiya, kuzatuv"
+            "Bosh og'rig'i",
+            "Tumor",
+            "Ha"
           ],
           [
-            "Neuroblastoma",
-            "Bosh og'rig'i, tez-tez qorin og'rig'i",
-            "Xirurgiya, kimyoterapiya"
+            "Bosh aylanishi",
+            "Neyroblastoma",
+            "Yo'q"
           ],
           [
-            "Glioblastoma",
-            "Tez o'suvchi, mushak zaifligi",
-            "Kimyoterapiya, radioterapiya"
+            "Qon bosimi yuqoriligi",
+            "Meningioma",
+            "Ha"
+          ],
+          [
+            "Tez charchoq",
+            "Lymphoma",
+            "Ha"
+          ],
+          [
+            "Mushak zaifligi",
+            "Sarcoma",
+            "Yo'q"
           ]
         ],
         "elementIndex": 1,
-        "content": ""
+        "content": "Belgilar va Tashxislar"
       },
       {
         "type": "shape",
-        "content": "Tumor Classification Table",
+        "content": "Tumor tasnifi jadvali",
         "elementIndex": 3
       },
       {
@@ -67,232 +290,6 @@
         "src": "./images\\slide4_img55.png",
         "hasImage": true,
         "elementIndex": 11
-      }
-    ],
-    "note": ""
-  },
-  {
-    "id": "K-Jt3ow7KB",
-    "index": 6,
-    "slide": 7,
-    "elements": [
-      {
-        "type": "image",
-        "src": "./images\\slide6_img69.png",
-        "hasImage": true,
-        "elementIndex": 0
-      },
-      {
-        "type": "image",
-        "src": "./images\\slide6_img70.png",
-        "hasImage": true,
-        "elementIndex": 1
-      },
-      {
-        "type": "shape",
-        "content": "O'sma Turlari haqida",
-        "elementIndex": 3
-      },
-      {
-        "type": "shape",
-        "content": "O'sma turlari o'simliklarning o'ziga xos guruhidir. Ular havo orqali ko'chish va tarqalish uchun moslashgan. Bu turlar ko'plab iqlim sharoitlarida uchraydi.",
-        "elementIndex": 5
-      },
-      {
-        "type": "shape",
-        "content": "O'sma Turlari va Turlanishi",
-        "elementIndex": 7
-      },
-      {
-        "type": "shape",
-        "content": "Ushbu turlar ko'plab muhim ekotizimlarni qo'llab-quvvatlaydi, shuningdek, oziq-ovqat zanjirida muhim rol o'ynaydi. O'sma turlari asosan havo, suv va tuproqdan oziq moddalar oladi.",
-        "elementIndex": 9
-      },
-      {
-        "type": "shape",
-        "content": "O'sma Turlarining Turlari",
-        "elementIndex": 11
-      },
-      {
-        "type": "shape",
-        "content": "Ular o'z jismoniy xususiyatlari bilan bir-biridan farq qiladi. Ba'zilari tez o'sadi, boshqalari esa sekin o'sadi, bu ularning yashash joylariga bog'liq.",
-        "elementIndex": 13
-      },
-      {
-        "type": "shape",
-        "content": "O'sma Turlarini Nazorat Qilish",
-        "elementIndex": 15
-      },
-      {
-        "type": "shape",
-        "content": "O'sma turlarini nazorat qilish muhimdir, chunki ularni saqlab qolish va muhofaza qilish zarur. Ularning yo'qolishi ekotizimga salbiy ta'sir ko'rsatishi mumkin.",
-        "elementIndex": 17
-      },
-      {
-        "type": "shape",
-        "content": "O'sma Turlari va Ularning Ahmiyati",
-        "elementIndex": 19
-      }
-    ],
-    "note": ""
-  },
-  {
-    "id": "KbQalnoI8H",
-    "index": 7,
-    "slide": 8,
-    "elements": [
-      {
-        "type": "image",
-        "src": "./images\\slide7_img71.png",
-        "hasImage": true,
-        "elementIndex": 0
-      },
-      {
-        "type": "image",
-        "src": "./images\\slide7_img72.png",
-        "hasImage": true,
-        "elementIndex": 1
-      },
-      {
-        "type": "image",
-        "src": "./images\\slide7_img73.png",
-        "hasImage": true,
-        "elementIndex": 6
-      },
-      {
-        "type": "shape",
-        "content": "O'smalarni Tashxislash",
-        "elementIndex": 8
-      },
-      {
-        "type": "shape",
-        "content": "O'sma tashxislash jarayoni kasalliklarni aniqlashda muhim ahamiyatga ega. O'smalarni tez va to'g'ri aniqlash, bemorlar uchun samarali davolash imkoniyatlarini taqdim etadi.",
-        "elementIndex": 10
-      },
-      {
-        "type": "shape",
-        "content": "O'smalar va ularning turlari",
-        "elementIndex": 12
-      },
-      {
-        "type": "image",
-        "src": "./images\\slide7_img74.png",
-        "hasImage": true,
-        "elementIndex": 13
-      },
-      {
-        "type": "image",
-        "src": "./images\\slide7_img75.png",
-        "hasImage": true,
-        "elementIndex": 16
-      },
-      {
-        "type": "shape",
-        "content": "O'smalarni aniqlashda foydalaniladigan asosiy usullar: rentgenografiya, ultratovush tekshiruvi, kompyuter tomografiyasi, magnet-rezonans tomografiyasi va biopsiya. Har bir usul o'ziga xos afzalliklarga va cheklovlarga ega.",
-        "elementIndex": 22
-      },
-      {
-        "type": "shape",
-        "content": "O'smalarni tasniflash",
-        "elementIndex": 24
-      },
-      {
-        "type": "image",
-        "src": "./images\\slide7_img76.png",
-        "hasImage": true,
-        "elementIndex": 25
-      },
-      {
-        "type": "image",
-        "src": "./images\\slide7_img77.png",
-        "hasImage": true,
-        "elementIndex": 26
-      },
-      {
-        "type": "shape",
-        "content": "O'smalarni aniqlashda kasallikning belgilari, tarixiy ma'lumotlar va laboratoriya natijalari asosida tahlil qilinadi. Shu sababli, aniqlikni oshirish uchun ko'plab diagnostik usullar qo'llaniladi.",
-        "elementIndex": 32
-      },
-      {
-        "type": "shape",
-        "content": "O'smalarni davolash strategiyalari",
-        "elementIndex": 34
-      },
-      {
-        "type": "image",
-        "src": "./images\\slide7_img78.png",
-        "hasImage": true,
-        "elementIndex": 35
-      }
-    ],
-    "note": ""
-  },
-  {
-    "id": "Kuk5CHNztq",
-    "index": 11,
-    "slide": 12,
-    "elements": [
-      {
-        "type": "image",
-        "src": "./images\\slide11_img106.png",
-        "hasImage": true,
-        "elementIndex": 0
-      },
-      {
-        "type": "image",
-        "src": "./images\\slide11_img107.png",
-        "hasImage": true,
-        "elementIndex": 1
-      },
-      {
-        "type": "shape",
-        "content": "Belgilari va Alomatlar",
-        "elementIndex": 3
-      },
-      {
-        "type": "shape",
-        "content": "Belgi 1",
-        "elementIndex": 5
-      },
-      {
-        "type": "shape",
-        "content": "Belgi 3",
-        "elementIndex": 7
-      },
-      {
-        "type": "shape",
-        "content": "Belgi 2",
-        "elementIndex": 9
-      },
-      {
-        "type": "shape",
-        "content": "Belgi 4",
-        "elementIndex": 11
-      },
-      {
-        "type": "shape",
-        "content": "Belgilari va alomatlar sog'liqni saqlashda muhim ahamiyatga ega. Ular kasalliklarni aniqlash va davolashda yordam beradi.",
-        "elementIndex": 13
-      },
-      {
-        "type": "shape",
-        "content": "Har bir belgi va alomat o'ziga xos xususiyatlarga ega. Ularni to'g'ri aniqlash zarur.",
-        "elementIndex": 15
-      },
-      {
-        "type": "shape",
-        "content": "Belgilarning vaqtinchalik yoki doimiy bo'lishi mumkin. Bularni e'tiborga olish kerak.",
-        "elementIndex": 17
-      },
-      {
-        "type": "shape",
-        "content": "Belgi 5",
-        "elementIndex": 19
-      },
-      {
-        "type": "shape",
-        "content": "Belgi 4",
-        "elementIndex": 21
       }
     ],
     "note": ""
@@ -382,128 +379,179 @@
       },
       {
         "type": "shape",
-        "content": "O'smalarni Davolash Usullari",
+        "content": "Diagnostika Usullari",
         "elementIndex": 26
       },
       {
         "type": "shape",
-        "content": "O'smalarni davolashda bir nechta usullar mavjud. Bu usullar o'smaning turiga, o'sha joyda joylashgan joyiga va bemorning sog'lig'iga bog'liq. O'smalarni davolashda asosan jarrohlik, kimyoviy terapiya va radiatsiya terapiyasi qo'llaniladi.",
+        "content": "Diagnostika usullari tibbiyotda kasalliklarni aniqlashda muhim ahamiyatga ega. Ular turli xil metodlar va vositalarni o'z ichiga oladi, bu esa shifokorlarga aniq va tezkor tashxis qo'yishga yordam beradi.",
         "elementIndex": 28
       },
       {
         "type": "shape",
-        "content": "O'smalarni davolash jarayonida bemorlarning sog'lig'ini saqlash va ularning hayot sifatini yaxshilash muhimdir. Shuningdek, davolash usullarining yanada samarali bo'lishi uchun zamonaviy texnologiyalarni qo'llash zarur.",
+        "content": "Asosiy diagnostika usullari: klinik tekshiruv, laboratoriya tahlillari, tasviriy diagnostika va genetik testlar. Har bir usul o'ziga xos afzalliklarga ega bo'lib, kasallikning turiga qarab tanlanadi.",
         "elementIndex": 30
       },
       {
         "type": "shape",
-        "content": "O'smalarni davolashda individual yondashuv juda muhim. Har bir bemor uchun maxsus davolash rejasi ishlab chiqilishi kerak. Bu yondashuv bemorning ehtiyojlariga mos ravishda amalga oshiriladi.",
+        "content": "Bu usullar yordamida kasalliklarning oldini olish, vaqtida aniqlash va to'g'ri davolash strategiyalarini ishlab chiqish mumkin. Shuningdek, zamonaviy texnologiyalar diagnostikani yanada samarali qilishda yordam beradi.",
         "elementIndex": 32
       }
     ],
     "note": ""
   },
   {
-    "id": "9yrDox0mzw",
-    "index": 12,
-    "slide": 13,
+    "id": "K-Jt3ow7KB",
+    "index": 6,
+    "slide": 7,
     "elements": [
       {
         "type": "image",
-        "src": "./images\\slide12_img108.png",
+        "src": "./images\\slide6_img69.png",
         "hasImage": true,
         "elementIndex": 0
       },
       {
         "type": "image",
-        "src": "./images\\slide12_img109.jpeg",
+        "src": "./images\\slide6_img70.png",
         "hasImage": true,
         "elementIndex": 1
       },
       {
         "type": "shape",
-        "content": "Davolash usullari",
+        "content": "Davolash usullari: Asosiy tushunchalar",
         "elementIndex": 3
       },
       {
         "type": "shape",
-        "content": "Davolash usullari turli xil metod va yondashuvlarni o'z ichiga oladi. Ular orasida dori-darmonlar, jarrohlik, fizioterapiya va alternativ davolash usullari mavjud. Har bir usulning o'ziga xos afzalliklari va kamchiliklari bor, shuning uchun bemorlarning individual ehtiyojlariga qarab tanlanadi. Samarali davolash uchun, shifokor bemorning holatini to'liq tahlil qilishi va eng mos usulni tanlashi lozim.",
+        "content": "Davolash usullari inson salomatligini tiklash va saqlash uchun muhimdir. Turli kasalliklar uchun turli usullar qo'llaniladi, masalan, dori-darmonlar, jismoniy terapiya va operatsiyalar.",
         "elementIndex": 5
+      },
+      {
+        "type": "shape",
+        "content": "Dori-darmonlar",
+        "elementIndex": 7
+      },
+      {
+        "type": "shape",
+        "content": "Dori-darmonlar ko'plab kasalliklarni davolashda asosiy vosita hisoblanadi. Ular turli shaklda bo'lishi mumkin: tabletkalar, in'ektsiyalar va sirop. Har bir dori o'ziga xos ta'sir ko'rsatadi.",
+        "elementIndex": 9
+      },
+      {
+        "type": "shape",
+        "content": "Jismoniy terapiya",
+        "elementIndex": 11
+      },
+      {
+        "type": "shape",
+        "content": "Jismoniy terapiya bemorlarning harakatlarini tiklash va kuchaytirish uchun muhim ahamiyatga ega. Bu usul og'riqni kamaytirish va funktsiyalarni yaxshilashda yordam beradi.",
+        "elementIndex": 13
+      },
+      {
+        "type": "shape",
+        "content": "Operatsiyalar",
+        "elementIndex": 15
+      },
+      {
+        "type": "shape",
+        "content": "Operatsiyalar ko'pincha og'ir holatlarda qo'llaniladi. Ular zarar ko'rgan to'qimalarni tuzatish yoki kasalliklarni bartaraf etish maqsadida amalga oshiriladi.",
+        "elementIndex": 17
+      },
+      {
+        "type": "shape",
+        "content": "Davolash usullarining kombinatsiyasi",
+        "elementIndex": 19
       }
     ],
     "note": ""
   },
   {
-    "id": "V2PZHWGT8g",
-    "index": 13,
-    "slide": 14,
+    "id": "KbQalnoI8H",
+    "index": 7,
+    "slide": 8,
     "elements": [
       {
         "type": "image",
-        "src": "./images\\slide13_img110.png",
+        "src": "./images\\slide7_img71.png",
         "hasImage": true,
         "elementIndex": 0
       },
       {
         "type": "image",
-        "src": "./images\\slide13_img111.png",
+        "src": "./images\\slide7_img72.png",
         "hasImage": true,
         "elementIndex": 1
       },
       {
         "type": "image",
-        "src": "./images\\slide13_img112.png",
+        "src": "./images\\slide7_img73.png",
         "hasImage": true,
-        "elementIndex": 4
+        "elementIndex": 6
       },
       {
-        "type": "image",
-        "src": "./images\\slide13_img113.png",
-        "hasImage": true,
-        "elementIndex": 5
-      },
-      {
-        "type": "image",
-        "src": "./images\\slide13_img114.png",
-        "hasImage": true,
+        "type": "shape",
+        "content": "O'smalarni tasnifi",
         "elementIndex": 8
       },
       {
         "type": "shape",
-        "content": "Kelajakni Prognozlash",
+        "content": "O'smalarni tasnifi - bu o'simliklar dunyosini tushunish va o'rganish uchun muhim jarayon. Ular turli xillik, o'sish muhitlari va xususiyatlariga ko'ra guruhlanadi. Bunday tasniflash o'simliklarni tasniflash va bioxilma-xillikni saqlashga yordam beradi.",
         "elementIndex": 10
       },
       {
         "type": "shape",
-        "content": "Innovatsiyalar va Rivojlanish",
+        "content": "O'smalarni guruhlarga ajratish",
         "elementIndex": 12
       },
       {
-        "type": "shape",
-        "content": "Maqsadlar va Rejalar",
-        "elementIndex": 14
+        "type": "image",
+        "src": "./images\\slide7_img74.png",
+        "hasImage": true,
+        "elementIndex": 13
       },
       {
-        "type": "shape",
-        "content": "Prognozlar muhim qarorlar qabul qilishda asosiy rol o'ynaydi. Ular iqtisodiy, ijtimoiy va texnologik tendentsiyalarni oldindan bilish imkonini beradi, bu esa resurslarni samarali taqsimlashga yordam beradi.",
+        "type": "image",
+        "src": "./images\\slide7_img75.png",
+        "hasImage": true,
         "elementIndex": 16
       },
       {
         "type": "shape",
-        "content": "Kelajakni rejalashtirishda aniq prognozlar tayyorlash zarur. Bu nafaqat kompaniyalar, balki davlatlar va jamiyatlar uchun ham muhimdir. Prognozlar o'zgaruvchan sharoitlarga moslashish imkonini beradi va strategik yo'nalishlarni belgilaydi.",
-        "elementIndex": 18
+        "content": "O'smalarni tasnifi asosan morfologik, anatomik va ekologik xususiyatlariga ko'ra amalga oshiriladi. Har bir o'simlik turi o'ziga xos xususiyatlarga ega bo'lib, ularni o'zaro farqlash imkonini beradi.",
+        "elementIndex": 22
+      },
+      {
+        "type": "shape",
+        "content": "Tasniflashda asosiy tushunchalar",
+        "elementIndex": 24
       },
       {
         "type": "image",
-        "src": "./images\\slide13_img115.png",
+        "src": "./images\\slide7_img76.png",
         "hasImage": true,
-        "elementIndex": 19
+        "elementIndex": 25
       },
       {
         "type": "image",
-        "src": "./images\\slide13_img116.png",
+        "src": "./images\\slide7_img77.png",
         "hasImage": true,
-        "elementIndex": 20
+        "elementIndex": 26
+      },
+      {
+        "type": "shape",
+        "content": "O'smalarni tasnifi quyidagi asosiy tushunchalarga asoslanadi: taxonomiya, filogeniya, va morfologiya. Bu tushunchalar asosida o'simliklar o'zaro bog'lanishi va rivojlanish tarixini o'rganish mumkin.",
+        "elementIndex": 32
+      },
+      {
+        "type": "shape",
+        "content": "O'simliklar turlari",
+        "elementIndex": 34
+      },
+      {
+        "type": "image",
+        "src": "./images\\slide7_img78.png",
+        "hasImage": true,
+        "elementIndex": 35
       }
     ],
     "note": ""
@@ -551,48 +599,118 @@
       },
       {
         "type": "shape",
-        "content": "O'smalar va ularning ta'siri",
+        "content": "Statistikalar: Muvaffaqiyatni O'lchash",
         "elementIndex": 15
       },
       {
         "type": "shape",
-        "content": "O'smalar har qanday organizmda muhim ro'l o'ynaydi. Ular o'sish, rivojlanish va hayot jarayonlarida ishtirok etadilar.",
+        "content": "Statistikalar bizga qarorlar qabul qilishda yordam beradi. Ular ma'lumotlarni tahlil qilish va tendentsiyalarni aniqlash imkonini beradi.",
         "elementIndex": 17
       },
       {
         "type": "shape",
-        "content": "O'smalarni tasniflash",
+        "content": "Statistikalar va Ma'lumotlar",
         "elementIndex": 19
       },
       {
         "type": "shape",
-        "content": "O'smalar bir nechta guruhlarga bo'linadi: o'simliklar, hayvonlar, va mikroorganizmlar. Har bir guruh o'ziga xos xususiyatlarga ega.",
+        "content": "Statistika tadqiqotlar, marketing va iqtisodiyot sohalarida muhim rol o'ynaydi. Ular bizga ma'lumotlar asosida strategiyalarni ishlab chiqishga yordam beradi.",
         "elementIndex": 21
       },
       {
         "type": "shape",
-        "content": "O'smalar va ularning foydalari",
+        "content": "Statistik usullar",
         "elementIndex": 23
       },
       {
         "type": "shape",
-        "content": "O'smalar inson hayotida ko'plab foydali xususiyatlarga ega: oziq-ovqat manbai, dori-darmon, va ekotizimni saqlashda yordam.",
+        "content": "O'rtacha, median va modalar kabi statistik ko'rsatkichlar bizga ma'lumotlarning asosiy xususiyatlarini tushunishga yordam beradi.",
         "elementIndex": 25
       },
       {
         "type": "shape",
-        "content": "O'smalar orqali ta'sir",
+        "content": "Statistika turlari",
         "elementIndex": 27
       },
       {
         "type": "shape",
-        "content": "O'smalar atrof-muhitga ta'sir qiladi, ularning yo'qolishi ekosistemalarga xavf tug'diradi. Shuningdek, o'smalar odamlar hayotida ham muhimdir.",
+        "content": "Tasodifiy va tasodifiy bo'lmagan statistikalar, o'zaro bog'liqliklarni aniqlashda muhim ahamiyatga ega.",
         "elementIndex": 29
       },
       {
         "type": "shape",
-        "content": "O'smalar va zamonaviy tadqiqotlar",
+        "content": "Statistikani qo'llash sohalari",
         "elementIndex": 31
+      }
+    ],
+    "note": ""
+  },
+  {
+    "id": "IXm0nIVSsV",
+    "index": 9,
+    "slide": 10,
+    "elements": [
+      {
+        "type": "image",
+        "src": "./images\\slide9_img85.png",
+        "hasImage": true,
+        "elementIndex": 0
+      },
+      {
+        "type": "image",
+        "src": "./images\\slide9_img86.png",
+        "hasImage": true,
+        "elementIndex": 1
+      },
+      {
+        "type": "image",
+        "src": "./images\\slide9_img87.png",
+        "hasImage": true,
+        "elementIndex": 4
+      },
+      {
+        "type": "image",
+        "src": "./images\\slide9_img88.png",
+        "hasImage": true,
+        "elementIndex": 5
+      },
+      {
+        "type": "image",
+        "src": "./images\\slide9_img89.png",
+        "hasImage": true,
+        "elementIndex": 8
+      },
+      {
+        "type": "image",
+        "src": "./images\\slide9_img90.jpeg",
+        "hasImage": true,
+        "elementIndex": 9
+      },
+      {
+        "type": "shape",
+        "content": "O'smalar va ularning tarqalishi",
+        "elementIndex": 11
+      },
+      {
+        "type": "image",
+        "src": "./images\\slide9_img91.png",
+        "hasImage": true,
+        "elementIndex": 12
+      },
+      {
+        "type": "shape",
+        "content": "O'smalar, yoki vegetativ organizmlar, yer yuzida keng tarqalgan. Ular turli iqlim sharoitlariga moslashgan va ko'plab ekotizimlarda muhim rol o'ynaydi. O'smalar oziq-ovqat zanjirining asosi bo'lib, ko'plab hayvonlar va insonlar uchun oziq-ovqat manbai hisoblanadi.",
+        "elementIndex": 14
+      },
+      {
+        "type": "shape",
+        "content": "O'smalarni tarqatish jarayoni tabiiy va inson tomonidan amalga oshiriladigan faoliyatlar orqali sodir bo'ladi. Ular urug'lar, qishloq xo'jaligi amaliyotlari va tabiiy fenomenlar orqali kengayadi. O'smalarni saqlash va ularning tarqalishini nazorat qilish atrof-muhit muhofazasi uchun juda muhimdir.",
+        "elementIndex": 16
+      },
+      {
+        "type": "shape",
+        "content": "O'smalar turli xil iqlim va geografik sharoitlarga moslashadi. Ular quruqlik, suv va havo orqali tarqaladi. O'smalarni o'rganish va ularning tarqalishini tushunish ekologik muammolarni hal qilishda yordam beradi.",
+        "elementIndex": 18
       }
     ],
     "note": ""
@@ -652,7 +770,7 @@
       },
       {
         "type": "shape",
-        "content": "O'smalarni oldini olish uchun muntazam ravishda tibbiy tekshiruvlar o'tkazish kerak.",
+        "content": "O'smalarni profilaktika qilish: Asosiy yo'nalishlar",
         "elementIndex": 15
       },
       {
@@ -693,48 +811,223 @@
       },
       {
         "type": "shape",
-        "content": "87%",
+        "content": "O'sma xastaligi xavfi",
         "elementIndex": 29
       },
       {
         "type": "shape",
-        "content": "36%",
+        "content": "Profilaktika darajasi",
         "elementIndex": 31
       },
       {
         "type": "shape",
-        "content": "67%",
+        "content": "Sog'lom turmush tarzining ta'siri",
         "elementIndex": 33
       },
       {
         "type": "shape",
-        "content": "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+        "content": "O'smalarni profilaktika qilishda erkaklar va ayollarning o'ziga xos xususiyatlari mavjud. Shaxsiy sog'liqni nazorat qilish, muntazam tibbiy ko'riklar o'tkazish va to'g'ri ovqatlanish muhim ahamiyatga ega.",
         "elementIndex": 35
       },
       {
         "type": "shape",
-        "content": "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+        "content": "O'smalarni erta aniqlash va davolash, xavf omillarini kamaytirish va sog'lom turmush tarzini qo'llash - bu o'smalarni oldini olishning muhim qismidir.",
         "elementIndex": 37
       },
       {
         "type": "shape",
-        "content": "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+        "content": "O'smalarni profilaktika qilishda jismoniy faollik, stressni boshqarish va to'g'ri ovqatlanish kabi omillarni hisobga olish zarur.",
         "elementIndex": 39
       },
       {
         "type": "shape",
-        "content": "Write a main idea here",
+        "content": "O'smalarni erta aniqlash: Muntazam tibbiy tekshiruvlar",
         "elementIndex": 41
       },
       {
         "type": "shape",
-        "content": "Write a main idea here",
+        "content": "Oziqlanish: Sog'lom ovqatlanish odatlari",
         "elementIndex": 43
       },
       {
         "type": "shape",
-        "content": "Write a main idea here",
+        "content": "Jismoniy faollik: Harakatli turmush tarzi",
         "elementIndex": 45
+      }
+    ],
+    "note": ""
+  },
+  {
+    "id": "Kuk5CHNztq",
+    "index": 11,
+    "slide": 12,
+    "elements": [
+      {
+        "type": "image",
+        "src": "./images\\slide11_img106.png",
+        "hasImage": true,
+        "elementIndex": 0
+      },
+      {
+        "type": "image",
+        "src": "./images\\slide11_img107.png",
+        "hasImage": true,
+        "elementIndex": 1
+      },
+      {
+        "type": "shape",
+        "content": "O'smalarning Xavfi",
+        "elementIndex": 3
+      },
+      {
+        "type": "shape",
+        "content": "1",
+        "elementIndex": 5
+      },
+      {
+        "type": "shape",
+        "content": "3",
+        "elementIndex": 7
+      },
+      {
+        "type": "shape",
+        "content": "2",
+        "elementIndex": 9
+      },
+      {
+        "type": "shape",
+        "content": "4",
+        "elementIndex": 11
+      },
+      {
+        "type": "shape",
+        "content": "O'smalar odam organizmida xavfli o'simta bo'lishi mumkin. Ular tez o'sishi, metastaz berishi va sog'liqni yomonlashtirishi mumkin.",
+        "elementIndex": 13
+      },
+      {
+        "type": "shape",
+        "content": "O'smalarni erta aniqlash muhimdir. Shifokorlar muntazam tibbiy ko'riklar o'tkazib turishlari zarur.",
+        "elementIndex": 15
+      },
+      {
+        "type": "shape",
+        "content": "O'smalarning oldini olish uchun sog'lom turmush tarzini saqlash va zararli odatlardan qochish kerak.",
+        "elementIndex": 17
+      },
+      {
+        "type": "shape",
+        "content": "O'smalarning xavfi haqida xabardor bo'lishimiz zarur.",
+        "elementIndex": 19
+      },
+      {
+        "type": "shape",
+        "content": "4",
+        "elementIndex": 21
+      }
+    ],
+    "note": ""
+  },
+  {
+    "id": "9yrDox0mzw",
+    "index": 12,
+    "slide": 13,
+    "elements": [
+      {
+        "type": "image",
+        "src": "./images\\slide12_img108.png",
+        "hasImage": true,
+        "elementIndex": 0
+      },
+      {
+        "type": "image",
+        "src": "./images\\slide12_img109.jpeg",
+        "hasImage": true,
+        "elementIndex": 1
+      },
+      {
+        "type": "shape",
+        "content": "O'smalar: Umumiy Ma'lumotlar",
+        "elementIndex": 3
+      },
+      {
+        "type": "shape",
+        "content": "O'smalar, turli xil yashil o'simliklar bo'lib, ularning biologik va ekologik ahamiyati juda katta. Ular tabiatda kislorod ishlab chiqarish, karbonat angidridni so'rish va biosferaning barqarorligini saqlashda muhim rol o'ynaydi. O'smalarni o'rganish, ularning turlari, o'sishi va rivojlanishi haqidagi bilimlarimizni kengaytiradi. O'simliklar shuningdek, insoniyat uchun oziq-ovqat, dori-darmon va boshqa ko'plab resurslar manbaidir.",
+        "elementIndex": 5
+      }
+    ],
+    "note": ""
+  },
+  {
+    "id": "V2PZHWGT8g",
+    "index": 13,
+    "slide": 14,
+    "elements": [
+      {
+        "type": "image",
+        "src": "./images\\slide13_img110.png",
+        "hasImage": true,
+        "elementIndex": 0
+      },
+      {
+        "type": "image",
+        "src": "./images\\slide13_img111.png",
+        "hasImage": true,
+        "elementIndex": 1
+      },
+      {
+        "type": "image",
+        "src": "./images\\slide13_img112.png",
+        "hasImage": true,
+        "elementIndex": 4
+      },
+      {
+        "type": "image",
+        "src": "./images\\slide13_img113.png",
+        "hasImage": true,
+        "elementIndex": 5
+      },
+      {
+        "type": "image",
+        "src": "./images\\slide13_img114.png",
+        "hasImage": true,
+        "elementIndex": 8
+      },
+      {
+        "type": "shape",
+        "content": "Yoshi va O'smalar",
+        "elementIndex": 10
+      },
+      {
+        "type": "shape",
+        "content": "O'sish jarayoni haqida umumiy ma'lumotlar",
+        "elementIndex": 12
+      },
+      {
+        "type": "shape",
+        "content": "O'sish va rivojlanishning asosiy bosqichlari",
+        "elementIndex": 14
+      },
+      {
+        "type": "shape",
+        "content": "Yosh kattalar hayotining turli bosqichlari, jumladan, jismoniy, ruhiy va ijtimoiy rivojlanishni o'z ichiga oladi. Har bir bosqichda o'smirlar va kattalar uchun o'ziga xos muammolar va qiyinchiliklar mavjud.",
+        "elementIndex": 16
+      },
+      {
+        "type": "shape",
+        "content": "O'sish jarayonida qiyinchiliklarni bartaraf etish uchun qo'llaniladigan strategiyalar va psixologik yordam ko'rsatish usullarini o'rganish zarur.",
+        "elementIndex": 18
+      },
+      {
+        "type": "image",
+        "src": "./images\\slide13_img115.png",
+        "hasImage": true,
+        "elementIndex": 19
+      },
+      {
+        "type": "image",
+        "src": "./images\\slide13_img116.png",
+        "hasImage": true,
+        "elementIndex": 20
       }
     ],
     "note": ""
@@ -782,37 +1075,37 @@
       },
       {
         "type": "shape",
-        "content": "O'smalar haqida umumiy ma'lumot",
+        "content": "O'smalar va davolash: Asosiy tushunchalar",
         "elementIndex": 11
       },
       {
         "type": "shape",
-        "content": "O'smalar turlari",
+        "content": "O'sma turlari",
         "elementIndex": 13
       },
       {
         "type": "shape",
-        "content": "O'smalarni parvarish",
+        "content": "Davolash usullari",
         "elementIndex": 15
       },
       {
         "type": "shape",
-        "content": "O'smalar va ularning foydalari",
+        "content": "O'smalar va ularning alomatlari",
         "elementIndex": 17
       },
       {
         "type": "shape",
-        "content": "O'smalar, tabiiy muhitda o'sadigan va hayot uchun zarur bo'lgan organizmlar bo'lib, ular insoniyat va tabiat uchun muhim ahamiyatga ega. O'smalar oziq-ovqat, dori-darmon va boshqa ko'plab resurslarni taqdim etadi.",
+        "content": "O'smalar, organizmdagi to'qimalarning normadan ortiqcha o'sishi bo'lib, ular benign (yaxshi) yoki malignant (yomon) bo'lishi mumkin. Ularning aniqlanishi va davolash usullari muhimdir.",
         "elementIndex": 19
       },
       {
         "type": "shape",
-        "content": "O'smalarni parvarish qilish juda muhimdir. Ular o'sishi uchun quyosh, suv va to'g'ri tuproq kerak. To'g'ri parvarish qilish orqali o'smalar yanada sog'lom va kuchli bo'ladi.",
+        "content": "Davolash jarayonida o'smalarning turiga qarab, jarrohlik, kimyoterapiya, radioterapiya yoki immunoterapiya qo'llanilishi mumkin. Har bir usul o'zining afzalliklari va kamchiliklariga ega.",
         "elementIndex": 21
       },
       {
         "type": "shape",
-        "content": "O'smalar inson salomatligi uchun foydali, ular vitaminlar, minerallar va antioksidantlar bilan boyitilgan. O'smalarni iste'mol qilish, turli kasalliklardan himoya qilishda yordam beradi.",
+        "content": "O'smalarni erta aniqlash, davolash muvaffaqiyatiga katta ta'sir ko'rsatadi. Shuningdek, sog'lom turmush tarzini saqlash va muntazam tekshiruvlar o'tkazish muhimdir.",
         "elementIndex": 23
       },
       {
@@ -820,6 +1113,466 @@
         "src": "./images\\slide14_img123.png",
         "hasImage": true,
         "elementIndex": 24
+      }
+    ],
+    "note": ""
+  },
+  {
+    "id": "xVZ9KAwebA",
+    "index": 2,
+    "slide": 3,
+    "elements": [
+      {
+        "type": "image",
+        "src": "./images\\slide2_img22.png",
+        "hasImage": true,
+        "elementIndex": 0
+      },
+      {
+        "type": "image",
+        "src": "./images\\slide2_img23.png",
+        "hasImage": true,
+        "elementIndex": 1
+      },
+      {
+        "type": "image",
+        "src": "./images\\slide2_img24.png",
+        "hasImage": true,
+        "elementIndex": 2
+      },
+      {
+        "type": "image",
+        "src": "./images\\slide2_img25.png",
+        "hasImage": true,
+        "elementIndex": 3
+      },
+      {
+        "type": "image",
+        "src": "./images\\slide2_img26.png",
+        "hasImage": true,
+        "elementIndex": 4
+      },
+      {
+        "type": "image",
+        "src": "./images\\slide2_img27.png",
+        "hasImage": true,
+        "elementIndex": 7
+      },
+      {
+        "type": "image",
+        "src": "./images\\slide2_img28.png",
+        "hasImage": true,
+        "elementIndex": 8
+      },
+      {
+        "type": "image",
+        "src": "./images\\slide2_img29.png",
+        "hasImage": true,
+        "elementIndex": 11
+      },
+      {
+        "type": "shape",
+        "content": "Nerv Tizimi O'smalari",
+        "elementIndex": 13
+      },
+      {
+        "type": "shape",
+        "content": "1-bob",
+        "elementIndex": 15
+      },
+      {
+        "type": "image",
+        "src": "./images\\slide2_img30.png",
+        "hasImage": true,
+        "elementIndex": 16
+      },
+      {
+        "type": "image",
+        "src": "./images\\slide2_img31.png",
+        "hasImage": true,
+        "elementIndex": 19
+      }
+    ],
+    "note": ""
+  },
+  {
+    "id": "xfw3AQw1nV",
+    "index": 3,
+    "slide": 4,
+    "elements": [
+      {
+        "type": "image",
+        "src": "./images\\slide3_img32.png",
+        "hasImage": true,
+        "elementIndex": 0
+      },
+      {
+        "type": "image",
+        "src": "./images\\slide3_img33.png",
+        "hasImage": true,
+        "elementIndex": 1
+      },
+      {
+        "type": "image",
+        "src": "./images\\slide3_img34.png",
+        "hasImage": true,
+        "elementIndex": 4
+      },
+      {
+        "type": "image",
+        "src": "./images\\slide3_img35.png",
+        "hasImage": true,
+        "elementIndex": 5
+      },
+      {
+        "type": "image",
+        "src": "./images\\slide3_img36.png",
+        "hasImage": true,
+        "elementIndex": 8
+      },
+      {
+        "type": "image",
+        "src": "./images\\slide3_img37.png",
+        "hasImage": true,
+        "elementIndex": 9
+      },
+      {
+        "type": "image",
+        "src": "./images\\slide3_img38.png",
+        "hasImage": true,
+        "elementIndex": 12
+      },
+      {
+        "type": "image",
+        "src": "./images\\slide3_img39.png",
+        "hasImage": true,
+        "elementIndex": 13
+      },
+      {
+        "type": "image",
+        "src": "./images\\slide3_img40.png",
+        "hasImage": true,
+        "elementIndex": 16
+      },
+      {
+        "type": "image",
+        "src": "./images\\slide3_img41.png",
+        "hasImage": true,
+        "elementIndex": 17
+      },
+      {
+        "type": "image",
+        "src": "./images\\slide3_img42.png",
+        "hasImage": true,
+        "elementIndex": 20
+      },
+      {
+        "type": "image",
+        "src": "./images\\slide3_img43.png",
+        "hasImage": true,
+        "elementIndex": 21
+      },
+      {
+        "type": "image",
+        "src": "./images\\slide3_img44.png",
+        "hasImage": true,
+        "elementIndex": 24
+      },
+      {
+        "type": "image",
+        "src": "./images\\slide3_img45.png",
+        "hasImage": true,
+        "elementIndex": 25
+      },
+      {
+        "type": "image",
+        "src": "./images\\slide3_img46.png",
+        "hasImage": true,
+        "elementIndex": 28
+      },
+      {
+        "type": "image",
+        "src": "./images\\slide3_img47.png",
+        "hasImage": true,
+        "elementIndex": 29
+      },
+      {
+        "type": "image",
+        "src": "./images\\slide3_img48.png",
+        "hasImage": true,
+        "elementIndex": 32
+      },
+      {
+        "type": "image",
+        "src": "./images\\slide3_img49.png",
+        "hasImage": true,
+        "elementIndex": 33
+      },
+      {
+        "type": "image",
+        "src": "./images\\slide3_img50.png",
+        "hasImage": true,
+        "elementIndex": 36
+      },
+      {
+        "type": "shape",
+        "content": "O'sma turlari haqida",
+        "elementIndex": 38
+      },
+      {
+        "type": "shape",
+        "content": "O'sma turlari, o'simliklar olamidagi muhim qism bo'lib, ularning hayotiy jarayonlari va ekologik ahamiyati juda katta. O'sma turlari turli xil iqlim sharoitlariga moslashgan bo'lib, ularning ko'pchilik qismi o'simliklar va hayvonlar ekotizimlariga ijobiy ta'sir ko'rsatadi. O'sma turlarini o'rganish, ularning saqlanishi va ko'payishini ta'minlash uchun zarurdir.",
+        "elementIndex": 40
+      },
+      {
+        "type": "shape",
+        "content": "O'sma turlari ko'plab foydali xususiyatlarga ega. Ular qishloq xo'jaligida, tibbiyotda, va ekologik muvozanatni saqlashda muhim rol o'ynaydi. Ularning saqlanishi va rivojlanishi uchun zamonaviy tadqiqotlar va yangi texnologiyalar joriy etilmoqda.",
+        "elementIndex": 42
+      }
+    ],
+    "note": ""
+  },
+  {
+    "id": "rjnuHMWJEL",
+    "index": 4,
+    "slide": 5,
+    "elements": [
+      {
+        "type": "image",
+        "src": "./images\\slide4_img51.png",
+        "hasImage": true,
+        "elementIndex": 0
+      },
+      {
+        "type": "table",
+        "data": [
+          [
+            "Belgi",
+            "Sharh"
+          ],
+          [
+            "Yuqori harorat",
+            "Tanada yallig'lanish jarayonlari mavjud"
+          ],
+          [
+            "Teri o'zgarishlari",
+            "Teri rangining o'zgarishi yoki shishishi"
+          ],
+          [
+            "Og'riq",
+            "O'zgacha og'riq hissi"
+          ],
+          [
+            "Charchoq",
+            "Doimiy charchoq va energiya yetishmasligi"
+          ],
+          [
+            "Quloqdan qon ketishi",
+            "Quloqdan qon yoki suyuqlik chiqishi"
+          ]
+        ],
+        "elementIndex": 1,
+        "content": ""
+      },
+      {
+        "type": "shape",
+        "content": "Belgilari haqida ma'lumotlar",
+        "elementIndex": 3
+      },
+      {
+        "type": "image",
+        "src": "./images\\slide4_img52.png",
+        "hasImage": true,
+        "elementIndex": 4
+      },
+      {
+        "type": "image",
+        "src": "./images\\slide4_img53.png",
+        "hasImage": true,
+        "elementIndex": 7
+      },
+      {
+        "type": "image",
+        "src": "./images\\slide4_img54.png",
+        "hasImage": true,
+        "elementIndex": 8
+      },
+      {
+        "type": "image",
+        "src": "./images\\slide4_img55.png",
+        "hasImage": true,
+        "elementIndex": 11
+      }
+    ],
+    "note": ""
+  },
+  {
+    "id": "9Fjc-EOMTl",
+    "index": 5,
+    "slide": 6,
+    "elements": [
+      {
+        "type": "image",
+        "src": "./images\\slide5_img56.png",
+        "hasImage": true,
+        "elementIndex": 0
+      },
+      {
+        "type": "image",
+        "src": "./images\\slide5_img57.png",
+        "hasImage": true,
+        "elementIndex": 1
+      },
+      {
+        "type": "image",
+        "src": "./images\\slide5_img58.png",
+        "hasImage": true,
+        "elementIndex": 4
+      },
+      {
+        "type": "image",
+        "src": "./images\\slide5_img59.png",
+        "hasImage": true,
+        "elementIndex": 5
+      },
+      {
+        "type": "image",
+        "src": "./images\\slide5_img60.png",
+        "hasImage": true,
+        "elementIndex": 8
+      },
+      {
+        "type": "image",
+        "src": "./images\\slide5_img61.png",
+        "hasImage": true,
+        "elementIndex": 9
+      },
+      {
+        "type": "image",
+        "src": "./images\\slide5_img62.png",
+        "hasImage": true,
+        "elementIndex": 12
+      },
+      {
+        "type": "image",
+        "src": "./images\\slide5_img63.png",
+        "hasImage": true,
+        "elementIndex": 13
+      },
+      {
+        "type": "image",
+        "src": "./images\\slide5_img64.png",
+        "hasImage": true,
+        "elementIndex": 16
+      },
+      {
+        "type": "image",
+        "src": "./images\\slide5_img65.png",
+        "hasImage": true,
+        "elementIndex": 17
+      },
+      {
+        "type": "image",
+        "src": "./images\\slide5_img66.png",
+        "hasImage": true,
+        "elementIndex": 20
+      },
+      {
+        "type": "image",
+        "src": "./images\\slide5_img67.png",
+        "hasImage": true,
+        "elementIndex": 21
+      },
+      {
+        "type": "image",
+        "src": "./images\\slide5_img68.png",
+        "hasImage": true,
+        "elementIndex": 24
+      },
+      {
+        "type": "shape",
+        "content": "Diagnostika Usullari",
+        "elementIndex": 26
+      },
+      {
+        "type": "shape",
+        "content": "Diagnostika usullari — sog'liqni saqlash sohasida muhim ahamiyatga ega. Ular kasalliklarni aniqlash va davolash jarayonida qo'llaniladi. Har bir usulning o'ziga xos afzalliklari va kamchiliklari mavjud.",
+        "elementIndex": 28
+      },
+      {
+        "type": "shape",
+        "content": "Asosiy diagnostika usullari quyidagilardan iborat:\n- Laboratoriya tahlillari\n- Tasviriy diagnostika (ultrasonografiya, rentgen)\n- Klinik tekshiruvlar",
+        "elementIndex": 30
+      },
+      {
+        "type": "shape",
+        "content": "Yana bir muhim jihati — to'g'ri diagnostika usulini tanlash. Bu bemorning holati va kasallikning tabiatiga bog'liq. Har bir usulning o'ziga xos shartlari bor.",
+        "elementIndex": 32
+      }
+    ],
+    "note": ""
+  },
+  {
+    "id": "K-Jt3ow7KB",
+    "index": 6,
+    "slide": 7,
+    "elements": [
+      {
+        "type": "image",
+        "src": "./images\\slide6_img69.png",
+        "hasImage": true,
+        "elementIndex": 0
+      },
+      {
+        "type": "image",
+        "src": "./images\\slide6_img70.png",
+        "hasImage": true,
+        "elementIndex": 1
+      },
+      {
+        "type": "shape",
+        "content": "Davolash usullari",
+        "elementIndex": 3
+      },
+      {
+        "type": "shape",
+        "content": "Davolash usullari, bemorlar sog'lig'ini tiklash va kasalliklarni oldini olish uchun turli xil texnologiyalar va usullarni o'z ichiga oladi. Ularning samaradorligi va qo'llanilishi kasallikning turiga, bemorning holatiga va boshqa omillarga bog'liq.",
+        "elementIndex": 5
+      },
+      {
+        "type": "shape",
+        "content": "Dori-darmonlar",
+        "elementIndex": 7
+      },
+      {
+        "type": "shape",
+        "content": "Dori-darmonlar kasalliklarni davolashda asosiy vosita hisoblanadi. Ular bemorning holatini yaxshilash va belgilangan kasalliklarni yo'qotishga yordam beradi. Dori-darmonlarni qo'llashda doimo shifokor maslahatiga murojaat qilish zarur.",
+        "elementIndex": 9
+      },
+      {
+        "type": "shape",
+        "content": "Jismoniy terapiya",
+        "elementIndex": 11
+      },
+      {
+        "type": "shape",
+        "content": "Jismoniy terapiya jarrohlikdan keyin tiklanishga yordam beradi va mushaklar kuchini oshiradi. Fizioterapevtlar tomonidan belgilangan mashqlar va davolash usullari muhimdir.",
+        "elementIndex": 13
+      },
+      {
+        "type": "shape",
+        "content": "Psixologik yordam",
+        "elementIndex": 15
+      },
+      {
+        "type": "shape",
+        "content": "Psixologik yordam bemorlarning ruhiy holatini yaxshilashga qaratilgan. Stressni boshqarish va tashvishlarni kamaytirishga yordam beradigan turli xil usullar qo'llaniladi.",
+        "elementIndex": 17
+      },
+      {
+        "type": "shape",
+        "content": "Alternativ tibbiyot",
+        "elementIndex": 19
       }
     ],
     "note": ""

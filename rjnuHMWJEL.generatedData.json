@@ -1,0 +1,44 @@
+{
+  "slideId": "rjnuHMWJEL",
+  "elements": [
+    {
+      "elementIndex": 1,
+      "content": "",
+      "tableData": {
+        "data": [
+          [
+            "Belgi",
+            "Sharh"
+          ],
+          [
+            "Yuqori harorat",
+            "Tanada yallig'lanish jarayonlari mavjud"
+          ],
+          [
+            "Teri o'zgarishlari",
+            "Teri rangining o'zgarishi yoki shishishi"
+          ],
+          [
+            "Og'riq",
+            "O'zgacha og'riq hissi"
+          ],
+          [
+            "Charchoq",
+            "Doimiy charchoq va energiya yetishmasligi"
+          ],
+          [
+            "Quloqdan qon ketishi",
+            "Quloqdan qon yoki suyuqlik chiqishi"
+          ]
+        ]
+      }
+    },
+    {
+      "elementIndex": 2,
+      "content": "Belgilari haqida ma'lumotlar",
+      "tableData": {
+        "data": []
+      }
+    }
+  ]
+}
