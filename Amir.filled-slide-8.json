@@ -1,37 +1,53 @@
 {
-  "id": "t_g7gCjkXW",
-  "index": 9,
-  "slide": 10,
+  "id": "7OtuWYebCV",
+  "index": 16,
+  "slide": 17,
   "elements": [
     {
       "type": "image",
-      "src": "./images\\slide9_img28.png",
+      "src": "./images\\slide16_img126.png",
       "hasImage": true,
       "elementIndex": 0
     },
     {
-      "type": "shape",
-      "width": 852,
-      "height": 63.343727034120725,
-      "left": 54,
-      "top": 82.14981627296586,
-      "content": "Foydalanilgan adabiyotlar",
-      "elementIndex": 3
+      "type": "image",
+      "src": "./images\\slide16_img127.png",
+      "hasImage": true,
+      "elementIndex": 1
     },
     {
       "type": "image",
-      "src": "./images\\slide9_img29.png",
+      "src": "./images\\slide16_img128.png",
       "hasImage": true,
-      "elementIndex": 4
+      "elementIndex": 2
+    },
+    {
+      "type": "image",
+      "src": "./images\\slide16_img129.png",
+      "hasImage": true,
+      "elementIndex": 5
     },
     {
       "type": "shape",
-      "width": 747.7007874015746,
-      "height": 49.79685039370078,
-      "left": 106.14960629921259,
-      "top": 209.4584776902887,
-      "content": "1. Abduqodirov, A. Nerv tizimi o'smalari: Tahlil va davolash usullari. 2020. Tashkent: Ilmiy nashrlar.\n2. Karimov, Sh. va Xolikov, D. Nerv tizimi o'smalari va ularning klinik ko'rinishlari. 2019. Tashkent: Tibbiyot nashriyoti.\n3. Murodov, R. M. Nerv tizimi o'smalarida molekulyar biomarkerlar. 2021. Buxoro: Fan va texnologiya.\n4. Nuriddinov, E. va Davlatov, M. Nerv tizimi o'smalari: Patologik anatomiya va diagnostika. 2022. Samarqand: Oliy o'quv yurtlari.\n5. Qodirov, A. Nerv tizimi o'smalari patologiyasi. 2018. Toshkent: O'zbekiston tibbiyot akademiyasi.",
+      "width": 852,
+      "height": 50,
+      "left": 59,
+      "top": 82.25312335958004,
+      "content": "Adabiyotlar ro'yxati",
+      "fontSize": 24,
+      "maxCharacters": 59,
       "elementIndex": 7
+    },
+    {
+      "type": "shape",
+      "width": 852,
+      "height": 302.72986876640414,
+      "left": 59,
+      "top": 137.28682414698162,
+      "content": "1. Abdalimov, A. S., Nizomov, M. O., & Xayrullayev, T. T. (2020). Nerv tizimi o'smalari: diagnoz va davolash. Tashkent: Fann. 2. Karimov, R. U. (2021). O'smalar va ularning nerv tizimiga ta'siri. Tibbiyot jurnali, 45(3), 245-256. 3. Murodov, S., & Abdullayev, A. (2022). Nerv tizimi o'smalari bo'yicha ilmiy tadqiqotlar. O'zbekiston sog'liqni saqlash ilmiy markazi. 4. Salimov, J. X., & Raxmonov, S. (2019). Muolajalar va nerv tizimi o'smalari. Davolash va tahlil, 12(1), 103-119. 5. Tashkent Medical University. (2018). Nerv tizimi patologiyalari. O'qituvchi uchun qo'llanma. Tashkent: O'zbekiston. ",
+      "fontSize": 18,
+      "maxCharacters": 1092,
+      "elementIndex": 9
     }
   ],
   "note": ""

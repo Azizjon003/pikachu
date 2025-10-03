@@ -25,17 +25,68 @@ const extractTextFromHTML = (html: string): string => {
   }
 };
 
-// AI uchun minimal JSON sxema
-// AI uchun minimal JSON sxema (elementIndex qo'shildi)
+/**
+ * Extract font size from HTML content
+ * Looks for font-size style attribute (e.g., "font-size: 48.0px")
+ */
+const extractFontSize = (html: string): number => {
+  if (!html || typeof html !== "string") return 14; // Default font size
+
+  try {
+    // Match font-size in style attribute: font-size: XXpx or font-size:XXpx
+    const fontSizeMatch = html.match(/font-size:\s*(\d+(?:\.\d+)?)\s*px/i);
+    if (fontSizeMatch && fontSizeMatch[1]) {
+      return parseFloat(fontSizeMatch[1]);
+    }
+  } catch (error) {
+    console.warn("Error extracting font size:", error);
+  }
+
+  return 14; // Default fallback
+};
+
+/**
+ * TASK 2: Calculate maximum characters with more generous limits (multiplied by 1.2)
+ * Based on element dimensions and font size
+ *
+ * Formula accounts for:
+ * - Average character width (fontSize * 0.6)
+ * - Line height (fontSize * 1.2)
+ * - Available space (width and height)
+ * - 20% buffer for more natural content (multiplied by 1.2)
+ */
+const calculateMaxCharacters = (
+  width: number,
+  height: number,
+  fontSize: number
+): number => {
+  const avgCharWidth = fontSize * 0.6; // Average character width
+  const lineHeight = fontSize * 1.2; // Typical line height
+
+  const charsPerLine = Math.floor(width / avgCharWidth);
+  const maxLines = Math.floor(height / lineHeight);
+
+  const baseMaxChars = charsPerLine * maxLines;
+
+  // TASK 2: Apply 1.2x multiplier for more generous character limits
+  const generousMaxChars = Math.floor(baseMaxChars * 1.2);
+
+  // Return at least 10 characters to avoid too restrictive limits
+  return Math.max(10, generousMaxChars);
+};
+
+// AI uchun minimal JSON sxema (fontSize va maxCharacters qo'shildi)
 export const generateAISchema = (slides: Slide[]) => {
   return slides.map((slide, slideIndex) => {
     const elements = slide.elements
       .map((el, elementIndex) => {
-        // ⬅️ elementIndex qo'shildi
         let aiElement = null;
 
         if (el.type === "text") {
           const textContent = extractTextFromHTML(el.content);
+          const fontSize = extractFontSize(el.content);
+          const maxCharacters = calculateMaxCharacters(el.width, el.height, fontSize);
+
           if (textContent) {
             aiElement = {
               type: "text",
@@ -44,17 +95,22 @@ export const generateAISchema = (slides: Slide[]) => {
               left: el.left,
               top: el.top,
               content: textContent,
+              fontSize, // Added font size
+              maxCharacters, // Added character limit (now 1.2x more generous)
             };
           }
         } else if (el.type === "image") {
           aiElement = {
             type: "image",
-            src: el.src, // AI rasm src manbasini o'zgartirishi mumkin
+            src: el.src,
             hasImage: true,
           };
         } else if (el.type === "shape") {
           if (el.text?.content) {
             const shapeText = extractTextFromHTML(el.text.content);
+            const fontSize = extractFontSize(el.text.content);
+            const maxCharacters = calculateMaxCharacters(el.width, el.height, fontSize);
+
             if (shapeText) {
               aiElement = {
                 type: "shape",
@@ -63,6 +119,8 @@ export const generateAISchema = (slides: Slide[]) => {
                 left: el.left,
                 top: el.top,
                 content: shapeText,
+                fontSize, // Added font size
+                maxCharacters, // Added character limit (now 1.2x more generous)
               };
             }
           }
@@ -74,7 +132,6 @@ export const generateAISchema = (slides: Slide[]) => {
           if (tableData.length > 0) {
             aiElement = {
               type: "table",
-
               data: tableData,
             };
           }
@@ -94,7 +151,7 @@ export const generateAISchema = (slides: Slide[]) => {
 
     return {
       id: slide.id,
-      index: slideIndex, // Slide index ham saqlab qolinadi
+      index: slideIndex,
       slide: slideIndex + 1,
       elements,
       note: slide.remark || "",

@@ -1,43 +1,41 @@
 {
-  "id": "N2zLA0zEot",
-  "index": 8,
-  "slide": 9,
+  "id": "gys_ewGxU-",
+  "index": 15,
+  "slide": 16,
   "elements": [
     {
       "type": "image",
-      "src": "./images\\slide8_img25.png",
+      "src": "./images\\slide15_img124.png",
       "hasImage": true,
       "elementIndex": 0
     },
     {
       "type": "image",
-      "src": "./images\\slide8_img26.jpeg",
+      "src": "./images\\slide15_img125.jpeg",
       "hasImage": true,
-      "elementIndex": 2
+      "elementIndex": 1
     },
     {
-      "type": "image",
-      "src": "./images\\slide8_img27.png",
-      "hasImage": true,
+      "type": "shape",
+      "width": 821.7174803149605,
+      "height": 58,
+      "left": 64.47622047244093,
+      "top": 231.80902887139104,
+      "content": "Xulosa",
+      "fontSize": 24,
+      "maxCharacters": 114,
       "elementIndex": 3
     },
     {
       "type": "shape",
-      "width": 383.03937007874015,
-      "height": 177.85942257217846,
-      "left": 531.238530183727,
-      "top": 201.04881889763777,
-      "content": "Nerv tizimi o'smalari, asosan, nerv hujayralaridan yoki ularning atrofidagi tuzilmalaridan kelib chiqadi. Ushbu o'smalar benign (yaxshi) yoki malignant (yomon) bo'lishi mumkin. Nerv tizimida o'smalar ko'plab alomatlar bilan kechishi mumkin, jumladan bosh og'rig'i, boshqa hislarni yo'qotish va harakatlarining cheklanishi. Diagnostika asosan tasviriy tekshirish usullari, masalan, MRT yoki KT yordamida amalga oshiriladi. Davolash usullari o'smaning turiga va joylashuviga qarab, jarrohlik, kimyoviy terapiya yoki nurlantirish kabi usullarni o'z ichiga oladi. O'smalarni erta aniqlash va davolash hayotni saqlab qolish uchun juda muhimdir.",
-      "elementIndex": 6
-    },
-    {
-      "type": "shape",
-      "width": 383.04587926509186,
-      "height": 63.343727034120725,
-      "left": 525.7154855643043,
-      "top": 106.18456692913385,
-      "content": "XULOSA",
-      "elementIndex": 7
+      "width": 816.7562204724409,
+      "height": 226.68745406824146,
+      "left": 69.43737532808399,
+      "top": 281.80902887139104,
+      "content": "Nerv tizimi o'smalari, asab tizimining hujayralaridan paydo bo'ladigan o'zgarishlardir. Bu o'smalar jigarlik keltirishi, asab tizimi faoliyatini buzishi va turli belgilarga olib kelishi mumkin. O'smalarning turlariga benign (javob beruvchi) va malignant (qattiq) o'smalar kiradi. Ularning simptomlari, joylashuvi va mauzum muammo darajasiga qarab farq qiladi. Davolash usullari orasida jarrohlik, radiatsiya va kimyoviy terapiya mavjud. Vaqtida tashxis qo'yish va davolanish o'sma bilan bog'liq salbiy ta'sirlarni kamaytiradi va bemorning hayot sifatini yaxshilaydi. Har qanday alomatlar paydo bo'lganida, mutaxassisga murojaat qilish zarur.",
+      "fontSize": 13,
+      "maxCharacters": 1456,
+      "elementIndex": 5
     }
   ],
   "note": ""

@@ -1,37 +1,118 @@
 {
-  "id": "n_s-FGDyWB",
-  "index": 2,
-  "slide": 3,
+  "id": "Gb50ZvJTTu",
+  "index": 6,
+  "slide": 7,
   "elements": [
     {
       "type": "image",
-      "src": "./images\\slide2_img4.png",
+      "src": "./images\\slide6_img69.png",
       "hasImage": true,
       "elementIndex": 0
     },
     {
+      "type": "image",
+      "src": "./images\\slide6_img70.png",
+      "hasImage": true,
+      "elementIndex": 1
+    },
+    {
       "type": "shape",
-      "width": 852,
-      "height": 63.343727034120725,
-      "left": 54,
-      "top": 82.14981627296586,
-      "content": "KIRISH",
+      "width": 665.7322834645669,
+      "height": 50,
+      "left": 147.13721784776902,
+      "top": 16.931653543307085,
+      "content": "Tumor tasnifi asoslari",
+      "fontSize": 40,
+      "maxCharacters": 27,
       "elementIndex": 3
     },
     {
-      "type": "image",
-      "src": "./images\\slide2_img5.png",
-      "hasImage": true,
-      "elementIndex": 4
+      "type": "shape",
+      "width": 212.77165354330705,
+      "height": 36.695328083989494,
+      "left": 684.2036745406823,
+      "top": 224.64881889763777,
+      "content": "Tumorlar o'sish joyi va xususiyatlariga qarab tasniflanadi. Har bir turli xil tumor o'ziga xos klinik ko'rinishga ega.",
+      "fontSize": 13,
+      "maxCharacters": 54,
+      "elementIndex": 5
     },
     {
       "type": "shape",
-      "width": 747.7007874015746,
-      "height": 159.20314960629918,
-      "left": 106.14960629921259,
-      "top": 209.4584776902887,
-      "content": "Ushbu taqdimotda biz kirish jarayonini va uning ahamiyatini muhokama qilamiz. Kirish, biror soha yoki mavzuga kirish nuqtasi bo'lib, u bizga asosiy tushunchalarni va muhim ma'lumotlarni taqdim etadi. Shuningdek, kirish, o'zaro aloqalar va dastlabki qadamlarni belgilashda muhim rol o'ynaydi. Bu jarayon orqali biz yangi ma'lumotlarni o'zlashtirishga tayyor bo'lamiz.",
+      "width": 212.77165354330705,
+      "height": 25.343727034120732,
+      "left": 676.7618897637794,
+      "top": 159.58414698162727,
+      "content": "Tumor turlari",
+      "fontSize": 15,
+      "maxCharacters": 23,
       "elementIndex": 7
+    },
+    {
+      "type": "shape",
+      "width": 212.77165354330705,
+      "height": 36.695328083989494,
+      "left": 684.2036745406823,
+      "top": 411.93784776902885,
+      "content": "Tumorlar benign va malign bo'lishi mumkin. Benign tumorlar ko'pincha xavfsizdir.",
+      "fontSize": 13,
+      "maxCharacters": 54,
+      "elementIndex": 9
+    },
+    {
+      "type": "shape",
+      "width": 212.77165354330705,
+      "height": 25.343727034120732,
+      "left": 680.4828346456692,
+      "top": 347.24094488188973,
+      "content": "Tasniflashda usullar",
+      "fontSize": 15,
+      "maxCharacters": 23,
+      "elementIndex": 11
+    },
+    {
+      "type": "shape",
+      "width": 212.77165354330705,
+      "height": 36.695328083989494,
+      "left": 63.03128608923883,
+      "top": 211.92787401574802,
+      "content": "Tumorlar histologik tuzilishi va genetik xususiyatlariga qarab tasniflanadi.",
+      "fontSize": 13,
+      "maxCharacters": 54,
+      "elementIndex": 13
+    },
+    {
+      "type": "shape",
+      "width": 212.77165354330705,
+      "height": 25.343727034120732,
+      "left": 63.03128608923883,
+      "top": 152.95191601049868,
+      "content": "Qayta tekshirish va monitoring",
+      "fontSize": 15,
+      "maxCharacters": 23,
+      "elementIndex": 15
+    },
+    {
+      "type": "shape",
+      "width": 212.77165354330705,
+      "height": 36.695328083989494,
+      "left": 63.03128608923883,
+      "top": 405.93784776902885,
+      "content": "Tumorlarni davolashda ularning tasnifi muhim ahamiyatga ega.",
+      "fontSize": 13,
+      "maxCharacters": 54,
+      "elementIndex": 17
+    },
+    {
+      "type": "shape",
+      "width": 212.77165354330705,
+      "height": 25.343727034120732,
+      "left": 50.62813648293963,
+      "top": 347.24094488188973,
+      "content": "Klinik tashxis va davolash rejalashtirish uchun zarur.",
+      "fontSize": 15,
+      "maxCharacters": 23,
+      "elementIndex": 19
     }
   ],
   "note": ""

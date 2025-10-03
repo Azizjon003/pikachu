@@ -1,0 +1,42 @@
+{
+  "slideId": "uio-8W9H_o",
+  "elements": [
+    {
+      "elementIndex": 5,
+      "content": "Nerv tizimi o'smalarini davolash",
+      "tableData": {
+        "data": []
+      }
+    },
+    {
+      "elementIndex": 6,
+      "content": "O'smalarni aniqlash usullari",
+      "tableData": {
+        "data": []
+      },
+      "adjustedFontSize": 15.428571428571429
+    },
+    {
+      "elementIndex": 7,
+      "content": "Davolash jarayonining bosqichlari",
+      "tableData": {
+        "data": []
+      },
+      "adjustedFontSize": 13.575757575757576
+    },
+    {
+      "elementIndex": 8,
+      "content": "Nerv tizimi o'smalarini davolashda muhim omillar: diagnostika, jarrohlik, radioterapiya va kimyoterapiya. Ularning har biri bemorning holatiga qarab tanlanadi.",
+      "tableData": {
+        "data": []
+      }
+    },
+    {
+      "elementIndex": 9,
+      "content": "Jarrohlikdan keyin tiklanish jarayonida bemorlar uchun reabilitatsiya dasturlari ishlab chiqiladi. Bu dastur bemorning holatini yaxshilashga yordam beradi va hayot sifatini oshiradi.",
+      "tableData": {
+        "data": []
+      }
+    }
+  ]
+}

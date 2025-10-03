@@ -1,43 +1,104 @@
 {
-  "id": "umlMzXLtdI",
-  "index": 7,
-  "slide": 8,
+  "id": "uio-8W9H_o",
+  "index": 13,
+  "slide": 14,
   "elements": [
     {
       "type": "image",
-      "src": "./images\\slide7_img22.png",
+      "src": "./images\\slide13_img110.png",
       "hasImage": true,
       "elementIndex": 0
     },
     {
       "type": "image",
-      "src": "./images\\slide7_img23.jpeg",
+      "src": "./images\\slide13_img111.png",
       "hasImage": true,
-      "elementIndex": 2
+      "elementIndex": 1
     },
     {
       "type": "image",
-      "src": "./images\\slide7_img24.png",
+      "src": "./images\\slide13_img112.png",
       "hasImage": true,
-      "elementIndex": 3
+      "elementIndex": 4
+    },
+    {
+      "type": "image",
+      "src": "./images\\slide13_img113.png",
+      "hasImage": true,
+      "elementIndex": 5
+    },
+    {
+      "type": "image",
+      "src": "./images\\slide13_img114.png",
+      "hasImage": true,
+      "elementIndex": 8
     },
     {
       "type": "shape",
-      "width": 367.6850393700787,
-      "height": 177.85942257217846,
-      "left": 549.2190026246718,
-      "top": 148.86425196850394,
-      "content": "Nerv tizimi o'smalari davolash usullari: zamonaviy yondashuvlar va tadqiqotlar. Ushbu o'smalarni davolashda muhim metodlar, xususan, jarrohlik, radioterapiya va kimyoterapiya haqida ma'lumot beriladi. Har bir usulning afzalliklari va kamchiliklarini ko'rib chiqamiz, shuningdek, bemorlarni qo'llab-quvvatlash strategiyalari ham muhokama qilinadi.",
-      "elementIndex": 6
+      "width": 776.4740157480314,
+      "height": 50,
+      "left": 91.76293963254592,
+      "top": 44.62866141732283,
+      "content": "Nerv tizimi o'smalarini davolash",
+      "fontSize": 40,
+      "maxCharacters": 32,
+      "elementIndex": 10
     },
     {
       "type": "shape",
-      "width": 367.69039370078735,
-      "height": 63.343727034120725,
-      "left": 549.2190026246718,
-      "top": 54,
-      "content": "Davolash usullari",
-      "elementIndex": 7
+      "width": 264.67947506561677,
+      "height": 36.5709186351706,
+      "left": 135.54855643044618,
+      "top": 382.8205774278215,
+      "content": "O'smalarni aniqlash usullari",
+      "fontSize": 16,
+      "maxCharacters": 27,
+      "elementIndex": 12
+    },
+    {
+      "type": "shape",
+      "width": 274.02278215223095,
+      "height": 35.33060367454068,
+      "left": 538.8139632545931,
+      "top": 372.89816272965874,
+      "content": "Davolash jarayonining bosqichlari",
+      "fontSize": 16,
+      "maxCharacters": 28,
+      "elementIndex": 14
+    },
+    {
+      "type": "shape",
+      "width": 347.51128608923887,
+      "height": 63.390656167978996,
+      "left": 132.48871391076113,
+      "top": 423.92881889763777,
+      "content": "Nerv tizimi o'smalarini davolashda muhim omillar: diagnostika, jarrohlik, radioterapiya va kimyoterapiya. Ularning har biri bemorning holatiga qarab tanlanadi.",
+      "fontSize": 13,
+      "maxCharacters": 176,
+      "elementIndex": 16
+    },
+    {
+      "type": "shape",
+      "width": 384.32839895013115,
+      "height": 63.390656167978996,
+      "left": 549.3974803149606,
+      "top": 423.92881889763777,
+      "content": "Jarrohlikdan keyin tiklanish jarayonida bemorlar uchun reabilitatsiya dasturlari ishlab chiqiladi. Bu dastur bemorning holatini yaxshilashga yordam beradi va hayot sifatini oshiradi.",
+      "fontSize": 13,
+      "maxCharacters": 196,
+      "elementIndex": 18
+    },
+    {
+      "type": "image",
+      "src": "./images\\slide13_img115.png",
+      "hasImage": true,
+      "elementIndex": 19
+    },
+    {
+      "type": "image",
+      "src": "./images\\slide13_img116.png",
+      "hasImage": true,
+      "elementIndex": 20
     }
   ],
   "note": ""

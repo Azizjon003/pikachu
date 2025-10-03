@@ -1,0 +1,36 @@
+{
+  "slideId": "UIV9L1AYyp",
+  "elements": [
+    {
+      "elementIndex": 13,
+      "content": "Nerv tizimi o'smalari: Tahlil",
+      "tableData": {
+        "data": []
+      }
+    },
+    {
+      "elementIndex": 14,
+      "content": "Nerv tizimi o'smalari asosan bosh miyada va orqa miya nerv to'qimalaridan kelib chiqadi. Ularning paydo bo'lishi va rivojlanishi murakkab jarayonlardir.",
+      "tableData": {
+        "data": []
+      },
+      "adjustedFontSize": 10.263157894736842
+    },
+    {
+      "elementIndex": 15,
+      "content": "Bu o'smalar turli xil simptomlar keltirib chiqarishi mumkin, masalan, bosh og'rig'i, muvofiqlik va boshqa nevrologik alomatlar. Tezda diagnoz qo'yish muhimdir.",
+      "tableData": {
+        "data": []
+      },
+      "adjustedFontSize": 9.484276729559747
+    },
+    {
+      "elementIndex": 16,
+      "content": "O'smalarni davolash usullari orasida jarrohlik, radiatsiya terapiyasi va kimyoviy terapiya mavjud. Har bir holatda individual yondashuv talab etiladi.",
+      "tableData": {
+        "data": []
+      },
+      "adjustedFontSize": 10.053333333333333
+    }
+  ]
+}

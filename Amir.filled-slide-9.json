@@ -1,25 +1,24 @@
 {
-  "id": "JajBF26vDA",
-  "index": 10,
-  "slide": 11,
+  "id": "f2GyaNTs5Z",
+  "index": 17,
+  "slide": 18,
   "elements": [
     {
-      "type": "shape",
-      "width": 836.4882939632545,
-      "height": 70,
-      "left": 54,
-      "top": 175,
-      "content": "Etiboringiz uchun rahmat",
+      "type": "image",
+      "src": "./images\\slide17_img130.png",
+      "hasImage": true,
       "elementIndex": 0
     },
     {
       "type": "shape",
-      "width": 300,
-      "height": 22,
-      "left": 0,
-      "top": 0,
+      "width": 852,
+      "height": 70,
+      "left": 46.55811023622047,
+      "top": 214.96629921259841,
       "content": "Etiboringiz uchun rahmat!",
-      "elementIndex": 1
+      "fontSize": 60,
+      "maxCharacters": 10,
+      "elementIndex": 2
     }
   ],
   "note": ""

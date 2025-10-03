@@ -1,0 +1,49 @@
+{
+  "slideId": "A_Q31dICg1",
+  "elements": [
+    {
+      "elementIndex": 2,
+      "content": "Nerv tizimi o'smalarining belgilari",
+      "tableData": {
+        "data": []
+      },
+      "adjustedFontSize": 38.857142857142854
+    },
+    {
+      "elementIndex": 3,
+      "content": "Nerv tizimi o'smalarining simptomlari, odatda, bosh og'rig'i, muvozanatni yo'qotish, ko'rish muammolari va his-tuyg'ularning o'zgarishi kabi belgilarni o'z ichiga oladi. Boshqa alomatlar, masalan, mushaklarning kuchsizlik hissi, kognitiv qiyinchiliklar va xotira muammolari ham paydo bo'lishi mumkin. Ushbu simptomlar o'sma joylashuvi va o'lchamiga qarab farqlanadi. Davolash usullari simptomlarni kamaytirish va bemorlarning sifatini yaxshilashga qaratilgan.",
+      "tableData": {
+        "data": [
+          [
+            "Belgi",
+            "Tavsif"
+          ],
+          [
+            "Bosh og'rig'i",
+            "Odatda o'zgaruvchan, kuchli yoki yumshoq bo'lishi mumkin."
+          ],
+          [
+            "Muvozanatni yo'qotish",
+            "Yurish yoki turish vaqtida beqarorlik hissi."
+          ],
+          [
+            "Ko'rish muammolari",
+            "Ko'z oldida nuqtalar yoki qorong'iliklar."
+          ],
+          [
+            "Mushaklarning kuchsizlik hissi",
+            "Harakat qilish qiyinlashishi yoki kuch yo'qligi."
+          ],
+          [
+            "Kognitiv qiyinchiliklar",
+            "Diqqatni jamlashda yoki fikr yuritishda qiyinchilik."
+          ],
+          [
+            "Xotira muammolari",
+            "O'z vaqtida ma'lumotlarni eslab qolishdagi qiyinchiliklar."
+          ]
+        ]
+      }
+    }
+  ]
+}

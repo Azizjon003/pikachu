@@ -1,0 +1,40 @@
+{
+  "slideId": "fW2hnyR_rB",
+  "elements": [
+    {
+      "elementIndex": 1,
+      "content": "Nerv tizimi o'smalari haqida ma'lumotlar",
+      "tableData": {
+        "data": [
+          [
+            "O'sma nomi",
+            "Turi",
+            "Joylashuvi"
+          ],
+          [
+            "Astrositoma",
+            "Benign",
+            "Miya"
+          ],
+          [
+            "Meningioma",
+            "Benign",
+            "Miya qoplamasi"
+          ],
+          [
+            "Neuroblastoma",
+            "Malign",
+            "Nerv tizimi"
+          ]
+        ]
+      }
+    },
+    {
+      "elementIndex": 2,
+      "content": "Nerv tizimi o'smalari turlari",
+      "tableData": {
+        "data": []
+      }
+    }
+  ]
+}
