@@ -1,0 +1,85 @@
+{
+  "id": "cHsogrB7nk",
+  "index": 14,
+  "slide": 15,
+  "elements": [
+    {
+      "type": "image",
+      "src": "./images\\slide14_img117.png",
+      "hasImage": true,
+      "elementIndex": 0
+    },
+    {
+      "type": "image",
+      "src": "./images\\slide14_img118.png",
+      "hasImage": true,
+      "elementIndex": 1
+    },
+    {
+      "type": "image",
+      "src": "./images\\slide14_img119.png",
+      "hasImage": true,
+      "elementIndex": 4
+    },
+    {
+      "type": "image",
+      "src": "./images\\slide14_img120.png",
+      "hasImage": true,
+      "elementIndex": 5
+    },
+    {
+      "type": "image",
+      "src": "./images\\slide14_img121.png",
+      "hasImage": true,
+      "elementIndex": 8
+    },
+    {
+      "type": "image",
+      "src": "./images\\slide14_img122.jpeg",
+      "hasImage": true,
+      "elementIndex": 9
+    },
+    {
+      "type": "shape",
+      "content": "O'smalar haqida umumiy ma'lumot",
+      "elementIndex": 11
+    },
+    {
+      "type": "shape",
+      "content": "O'smalar turlari",
+      "elementIndex": 13
+    },
+    {
+      "type": "shape",
+      "content": "O'smalarni parvarish",
+      "elementIndex": 15
+    },
+    {
+      "type": "shape",
+      "content": "O'smalar va ularning foydalari",
+      "elementIndex": 17
+    },
+    {
+      "type": "shape",
+      "content": "O'smalar, tabiiy muhitda o'sadigan va hayot uchun zarur bo'lgan organizmlar bo'lib, ular insoniyat va tabiat uchun muhim ahamiyatga ega. O'smalar oziq-ovqat, dori-darmon va boshqa ko'plab resurslarni taqdim etadi.",
+      "elementIndex": 19
+    },
+    {
+      "type": "shape",
+      "content": "O'smalarni parvarish qilish juda muhimdir. Ular o'sishi uchun quyosh, suv va to'g'ri tuproq kerak. To'g'ri parvarish qilish orqali o'smalar yanada sog'lom va kuchli bo'ladi.",
+      "elementIndex": 21
+    },
+    {
+      "type": "shape",
+      "content": "O'smalar inson salomatligi uchun foydali, ular vitaminlar, minerallar va antioksidantlar bilan boyitilgan. O'smalarni iste'mol qilish, turli kasalliklardan himoya qilishda yordam beradi.",
+      "elementIndex": 23
+    },
+    {
+      "type": "image",
+      "src": "./images\\slide14_img123.png",
+      "hasImage": true,
+      "elementIndex": 24
+    }
+  ],
+  "note": ""
+}

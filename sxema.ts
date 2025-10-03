@@ -26,55 +26,51 @@ const extractTextFromHTML = (html: string): string => {
 };
 
 // AI uchun minimal JSON sxema
+// AI uchun minimal JSON sxema (elementIndex qo'shildi)
 export const generateAISchema = (slides: Slide[]) => {
-  return slides.map((slide, index) => {
+  return slides.map((slide, slideIndex) => {
     const elements = slide.elements
-      .map((el) => {
+      .map((el, elementIndex) => {
+        // ⬅️ elementIndex qo'shildi
+        let aiElement = null;
+
         if (el.type === "text") {
           const textContent = extractTextFromHTML(el.content);
-          if (!textContent) return null;
-
-          return {
-            type: "text",
-            content: textContent,
-          };
-        }
-
-        if (el.type === "image") {
-          return {
+          if (textContent) {
+            aiElement = {
+              type: "text",
+              content: textContent,
+            };
+          }
+        } else if (el.type === "image") {
+          aiElement = {
             type: "image",
-            src: el.src,
+            src: el.src, // AI rasm src manbasini o'zgartirishi mumkin
             hasImage: true,
           };
-        }
-
-        if (el.type === "shape") {
-          if (!el.text?.content) return null;
-
-          const shapeText = extractTextFromHTML(el.text.content);
-          if (!shapeText || shapeText.length === 0) return null;
-
-          return {
-            type: "shape",
-            content: shapeText,
-          };
-        }
-
-        if (el.type === "table") {
+        } else if (el.type === "shape") {
+          if (el.text?.content) {
+            const shapeText = extractTextFromHTML(el.text.content);
+            if (shapeText) {
+              aiElement = {
+                type: "shape",
+                content: shapeText,
+              };
+            }
+          }
+        } else if (el.type === "table") {
           const tableData = el.data
             .map((row) => row.map((cell) => cell.text.trim()))
             .filter((row) => row.some((cell) => cell.length > 0));
 
-          if (tableData.length === 0) return null;
-
-          return {
-            type: "table",
-            data: tableData,
-          };
-        }
-
-        if (el.type === "chart") {
-          return {
+          if (tableData.length > 0) {
+            aiElement = {
+              type: "table",
+              data: tableData,
+            };
+          }
+        } else if (el.type === "chart") {
+          aiElement = {
             type: "chart",
             chartType: el.chartType,
             labels: el.data.labels,
@@ -82,14 +78,15 @@ export const generateAISchema = (slides: Slide[]) => {
           };
         }
 
-        return null;
+        // ElementIndex ni qo'shish
+        return aiElement ? { ...aiElement, elementIndex } : null;
       })
       .filter((el) => el !== null);
 
     return {
       id: slide.id,
-      index: index,
-      slide: index + 1,
+      index: slideIndex, // Slide index ham saqlab qolinadi
+      slide: slideIndex + 1,
       elements,
       note: slide.remark || "",
     };
@@ -144,8 +141,7 @@ const updateHTMLContent = (originalHTML: string, newText: string): string => {
     return originalHTML;
   }
 };
-
-// AI sxemasidan to'liq Slide sxemasini yaratish
+// AI sxemasidan to'liq Slide sxemasini yaratish (Optimallashtirilgan)
 export const generateSlideFromAI = (
   aiSchema: any[],
   originalData: {
@@ -155,135 +151,131 @@ export const generateSlideFromAI = (
     viewportHeight: number;
   }
 ) => {
-  const updatedSlides = aiSchema.map((aiSlide, index) => {
-    const originalSlide =
-      originalData.slide.find((s) => s.id === aiSlide.id) ||
-      originalData.slide[aiSlide.index];
+  const updatedSlides: Slide[] = aiSchema.map((aiSlide) => {
+    // 1. Original slaydni topish
+    const originalSlide = originalData.slide.find((s) => s.id === aiSlide.id);
 
     if (!originalSlide) {
-      throw new Error(`Slide topilmadi: ${aiSlide.id}`);
+      // Agar slayd ID topilmasa, xato berish (yoki original ma'lumotni qaytarish)
+      console.error(`Slide topilmadi: ${aiSlide.id}`);
+      return originalData.slide[aiSlide.index] || aiSlide;
     }
 
-    let elementIndex = 0;
-    const updatedElements = originalSlide.elements.map((originalEl) => {
-      if (originalEl.type === "text") {
-        const aiElement = aiSlide.elements.find((el: any, idx: number) => {
-          if (el.type === "text" && idx >= elementIndex) {
-            elementIndex = idx + 1;
-            return true;
-          }
-          return false;
-        });
-
-        if (aiElement) {
-          return {
-            ...originalEl,
-            content: updateHTMLContent(originalEl.content, aiElement.content),
-          } as PPTTextElement;
-        }
-        return originalEl;
-      }
-
-      if (originalEl.type === "image") {
-        const aiElement = aiSlide.elements.find((el: any, idx: number) => {
-          if (el.type === "image" && idx >= elementIndex) {
-            elementIndex = idx + 1;
-            return true;
-          }
-          return false;
-        });
-
-        if (aiElement && aiElement.src) {
-          return {
-            ...originalEl,
-            src: aiElement.src,
-          } as PPTImageElement;
-        }
-        return originalEl;
-      }
-
-      if (originalEl.type === "shape" && originalEl.text) {
-        const aiElement = aiSlide.elements.find((el: any, idx: number) => {
-          if (el.type === "shape" && idx >= elementIndex) {
-            elementIndex = idx + 1;
-            return true;
-          }
-          return false;
-        });
-
-        if (aiElement) {
-          return {
-            ...originalEl,
-            text: {
-              ...originalEl.text,
-              content: updateHTMLContent(
-                originalEl.text.content,
-                aiElement.content
-              ),
-            },
-          } as PPTShapeElement;
-        }
-        return originalEl;
-      }
-
-      if (originalEl.type === "table") {
-        const aiElement = aiSlide.elements.find((el: any, idx: number) => {
-          if (el.type === "table" && idx >= elementIndex) {
-            elementIndex = idx + 1;
-            return true;
-          }
-          return false;
-        });
-
-        if (aiElement && aiElement.data) {
-          const updatedData = originalEl.data.map((row, rowIdx) => {
-            return row.map((cell, colIdx) => {
-              const newText = aiElement.data[rowIdx]?.[colIdx] || cell.text;
-              return {
-                ...cell,
-                text: newText,
-              };
-            });
-          });
-
-          return {
-            ...originalEl,
-            data: updatedData,
-          } as PPTTableElement;
-        }
-        return originalEl;
-      }
-
-      if (originalEl.type === "chart") {
-        const aiElement = aiSlide.elements.find((el: any, idx: number) => {
-          if (el.type === "chart" && idx >= elementIndex) {
-            elementIndex = idx + 1;
-            return true;
-          }
-          return false;
-        });
-
-        if (aiElement) {
-          return {
-            ...originalEl,
-            data: {
-              labels: aiElement.labels || originalEl.data.labels,
-              legends: originalEl.data.legends,
-              series: aiElement.data || originalEl.data.series,
-            },
-          } as PPTChartElement;
-        }
-        return originalEl;
-      }
-
-      return originalEl;
+    // 2. Original elementlarni elementIndex bo'yicha Map ga solish
+    const originalElementsMap = new Map<number, any>();
+    originalSlide.elements.forEach((el, idx) => {
+      originalElementsMap.set(idx, el);
     });
 
+    // 3. Yangi elementlar uchun Map yaratish (original elementlar nusxasi)
+    const newElementsMap = new Map(originalElementsMap);
+
+    // 4. AI dan kelgan ma'lumotlar bilan yangilash
+    aiSlide.elements.forEach((aiElement: any) => {
+      const elementIndex = aiElement.elementIndex;
+
+      if (elementIndex === undefined) return; // elementIndex mavjudligini tekshirish
+
+      const originalElement = originalElementsMap.get(elementIndex);
+
+      if (!originalElement || originalElement.type !== aiElement.type) {
+        console.warn(
+          `Element topilmadi yoki turi mos emas: index ${elementIndex}`
+        );
+        return;
+      }
+
+      let updatedElement = { ...originalElement };
+
+      // Turiga qarab ma'lumotni yangilash
+      if (aiElement.type === "text" && originalElement.type === "text") {
+        updatedElement = {
+          ...originalElement,
+          content: updateHTMLContent(
+            originalElement.content,
+            aiElement.content
+          ),
+        } as PPTTextElement;
+      } else if (
+        aiElement.type === "image" &&
+        originalElement.type === "image" &&
+        aiElement.src
+      ) {
+        updatedElement = {
+          ...originalElement,
+          src: aiElement.src,
+        } as PPTImageElement;
+      } else if (
+        aiElement.type === "shape" &&
+        originalElement.type === "shape" &&
+        originalElement.text
+      ) {
+        updatedElement = {
+          ...originalElement,
+          text: {
+            ...originalElement.text,
+            content: updateHTMLContent(
+              originalElement.text.content,
+              aiElement.content
+            ),
+          },
+        } as PPTShapeElement;
+      } else if (
+        aiElement.type === "table" &&
+        originalElement.type === "table" &&
+        aiElement.data
+      ) {
+        // AI dan kelgan tableData ni original formatga o'tkazish
+        const updatedData = aiElement.data.map(
+          (row: string[], rowIndex: number) => {
+            // Original satrni topish (agar mavjud bo'lsa, stilni saqlash uchun)
+            const originalRow = originalElement.data[rowIndex] || [];
+
+            return row.map((cellText: string, colIndex: number) => {
+              // Original uslubni (style) saqlashga harakat qilish
+              const originalCell = originalRow[colIndex] || {};
+              return {
+                text: cellText,
+                style: originalCell.style || { fontSize: 14, color: "#000000" },
+              };
+            });
+          }
+        );
+
+        updatedElement = {
+          ...originalElement,
+          data: updatedData,
+        } as PPTTableElement;
+      } else if (
+        aiElement.type === "chart" &&
+        originalElement.type === "chart"
+      ) {
+        updatedElement = {
+          ...originalElement,
+          data: {
+            labels: aiElement.labels || originalElement.data.labels,
+            legends: originalElement.data.legends,
+            series: aiElement.data || originalElement.data.series,
+          },
+        } as PPTChartElement;
+      }
+
+      // Yangilangan elementni Map ga joylash
+      newElementsMap.set(elementIndex, updatedElement);
+    });
+
+    // 5. Natijaviy elementlarni original tartibda olish
+    // Map kalitlari (indexlar) bo'yicha tartiblash
+    const finalElements = Array.from(newElementsMap.keys())
+      .sort((a, b) => a - b)
+      .map((key) => newElementsMap.get(key));
+
+    // 6. Yakuniy slayd obyektini yaratish
     return {
       ...originalSlide,
-      elements: updatedElements,
+      elements: finalElements.filter((el) => el !== undefined), // undefined elementlarni filtrlash
       remark: aiSlide.note || originalSlide.remark,
-    };
+    } as Slide;
   });
 
   return {

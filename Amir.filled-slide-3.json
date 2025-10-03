@@ -1,0 +1,70 @@
+{
+  "id": "Kuk5CHNztq",
+  "index": 11,
+  "slide": 12,
+  "elements": [
+    {
+      "type": "image",
+      "src": "./images\\slide11_img106.png",
+      "hasImage": true,
+      "elementIndex": 0
+    },
+    {
+      "type": "image",
+      "src": "./images\\slide11_img107.png",
+      "hasImage": true,
+      "elementIndex": 1
+    },
+    {
+      "type": "shape",
+      "content": "Belgilari va Alomatlar",
+      "elementIndex": 3
+    },
+    {
+      "type": "shape",
+      "content": "Belgi 1",
+      "elementIndex": 5
+    },
+    {
+      "type": "shape",
+      "content": "Belgi 3",
+      "elementIndex": 7
+    },
+    {
+      "type": "shape",
+      "content": "Belgi 2",
+      "elementIndex": 9
+    },
+    {
+      "type": "shape",
+      "content": "Belgi 4",
+      "elementIndex": 11
+    },
+    {
+      "type": "shape",
+      "content": "Belgilari va alomatlar sog'liqni saqlashda muhim ahamiyatga ega. Ular kasalliklarni aniqlash va davolashda yordam beradi.",
+      "elementIndex": 13
+    },
+    {
+      "type": "shape",
+      "content": "Har bir belgi va alomat o'ziga xos xususiyatlarga ega. Ularni to'g'ri aniqlash zarur.",
+      "elementIndex": 15
+    },
+    {
+      "type": "shape",
+      "content": "Belgilarning vaqtinchalik yoki doimiy bo'lishi mumkin. Bularni e'tiborga olish kerak.",
+      "elementIndex": 17
+    },
+    {
+      "type": "shape",
+      "content": "Belgi 5",
+      "elementIndex": 19
+    },
+    {
+      "type": "shape",
+      "content": "Belgi 4",
+      "elementIndex": 21
+    }
+  ],
+  "note": ""
+}

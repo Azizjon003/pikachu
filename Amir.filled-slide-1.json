@@ -1,0 +1,65 @@
+{
+  "id": "K-Jt3ow7KB",
+  "index": 6,
+  "slide": 7,
+  "elements": [
+    {
+      "type": "image",
+      "src": "./images\\slide6_img69.png",
+      "hasImage": true,
+      "elementIndex": 0
+    },
+    {
+      "type": "image",
+      "src": "./images\\slide6_img70.png",
+      "hasImage": true,
+      "elementIndex": 1
+    },
+    {
+      "type": "shape",
+      "content": "O'sma Turlari haqida",
+      "elementIndex": 3
+    },
+    {
+      "type": "shape",
+      "content": "O'sma turlari o'simliklarning o'ziga xos guruhidir. Ular havo orqali ko'chish va tarqalish uchun moslashgan. Bu turlar ko'plab iqlim sharoitlarida uchraydi.",
+      "elementIndex": 5
+    },
+    {
+      "type": "shape",
+      "content": "O'sma Turlari va Turlanishi",
+      "elementIndex": 7
+    },
+    {
+      "type": "shape",
+      "content": "Ushbu turlar ko'plab muhim ekotizimlarni qo'llab-quvvatlaydi, shuningdek, oziq-ovqat zanjirida muhim rol o'ynaydi. O'sma turlari asosan havo, suv va tuproqdan oziq moddalar oladi.",
+      "elementIndex": 9
+    },
+    {
+      "type": "shape",
+      "content": "O'sma Turlarining Turlari",
+      "elementIndex": 11
+    },
+    {
+      "type": "shape",
+      "content": "Ular o'z jismoniy xususiyatlari bilan bir-biridan farq qiladi. Ba'zilari tez o'sadi, boshqalari esa sekin o'sadi, bu ularning yashash joylariga bog'liq.",
+      "elementIndex": 13
+    },
+    {
+      "type": "shape",
+      "content": "O'sma Turlarini Nazorat Qilish",
+      "elementIndex": 15
+    },
+    {
+      "type": "shape",
+      "content": "O'sma turlarini nazorat qilish muhimdir, chunki ularni saqlab qolish va muhofaza qilish zarur. Ularning yo'qolishi ekotizimga salbiy ta'sir ko'rsatishi mumkin.",
+      "elementIndex": 17
+    },
+    {
+      "type": "shape",
+      "content": "O'sma Turlari va Ularning Ahmiyati",
+      "elementIndex": 19
+    }
+  ],
+  "note": ""
+}

@@ -1,0 +1,78 @@
+{
+  "outline": [
+    {
+      "title": "Nerv tizimi o'smalari: Ta'rif va Turlari",
+      "title_eng": "Nerv System Tumors: Definition and Types"
+    },
+    {
+      "title": "O'smalarni Tashxislash va Belgilari",
+      "title_eng": "Diagnosis and Symptoms of Tumors"
+    },
+    {
+      "title": "Davolash Usullari va Prognoz",
+      "title_eng": "Treatment Methods and Prognosis"
+    }
+  ],
+  "slides": [
+    {
+      "slideIndex": 2,
+      "title": "Nerv tizimi o'smalari",
+      "title_eng": "Nervous System Tumors",
+      "outlineIndex": 0
+    },
+    {
+      "slideIndex": 4,
+      "title": "O'sma Turlari",
+      "title_eng": "Types of Tumors",
+      "outlineIndex": 0
+    },
+    {
+      "slideIndex": 5,
+      "title": "O'smalarni Tashxislash",
+      "title_eng": "Diagnosis of Tumors",
+      "outlineIndex": 1
+    },
+    {
+      "slideIndex": 9,
+      "title": "Belgilari va Alomatlar",
+      "title_eng": "Signs and Symptoms",
+      "outlineIndex": 1
+    },
+    {
+      "slideIndex": 3,
+      "title": "O'smalarni Davolash",
+      "title_eng": "Treatment of Tumors",
+      "outlineIndex": 2
+    },
+    {
+      "slideIndex": 10,
+      "title": "Davolash usullari",
+      "title_eng": "Treatment Methods",
+      "outlineIndex": 2
+    },
+    {
+      "slideIndex": 11,
+      "title": "Prognoz va Kelajak",
+      "title_eng": "Prognosis and Future",
+      "outlineIndex": 2
+    },
+    {
+      "slideIndex": 6,
+      "title": "O'smalar va ularning ta'siri",
+      "title_eng": "Tumors and Their Effects",
+      "outlineIndex": 0
+    },
+    {
+      "slideIndex": 8,
+      "title": "O'smalarni oldini olish",
+      "title_eng": "Prevention of Tumors",
+      "outlineIndex": 1
+    },
+    {
+      "slideIndex": 12,
+      "title": "O'smalar haqida umumiy ma'lumot",
+      "title_eng": "General Information about Tumors",
+      "outlineIndex": 0
+    }
+  ]
+}

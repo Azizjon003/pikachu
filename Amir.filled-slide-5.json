@@ -1,0 +1,30 @@
+{
+  "id": "9yrDox0mzw",
+  "index": 12,
+  "slide": 13,
+  "elements": [
+    {
+      "type": "image",
+      "src": "./images\\slide12_img108.png",
+      "hasImage": true,
+      "elementIndex": 0
+    },
+    {
+      "type": "image",
+      "src": "./images\\slide12_img109.jpeg",
+      "hasImage": true,
+      "elementIndex": 1
+    },
+    {
+      "type": "shape",
+      "content": "Davolash usullari",
+      "elementIndex": 3
+    },
+    {
+      "type": "shape",
+      "content": "Davolash usullari turli xil metod va yondashuvlarni o'z ichiga oladi. Ular orasida dori-darmonlar, jarrohlik, fizioterapiya va alternativ davolash usullari mavjud. Har bir usulning o'ziga xos afzalliklari va kamchiliklari bor, shuning uchun bemorlarning individual ehtiyojlariga qarab tanlanadi. Samarali davolash uchun, shifokor bemorning holatini to'liq tahlil qilishi va eng mos usulni tanlashi lozim.",
+      "elementIndex": 5
+    }
+  ],
+  "note": ""
+}

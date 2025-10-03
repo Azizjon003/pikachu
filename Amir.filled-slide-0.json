@@ -1,0 +1,77 @@
+{
+  "id": "rjnuHMWJEL",
+  "index": 4,
+  "slide": 5,
+  "elements": [
+    {
+      "type": "image",
+      "src": "./images\\slide4_img51.png",
+      "hasImage": true,
+      "elementIndex": 0
+    },
+    {
+      "type": "table",
+      "data": {
+        "data": [
+          [
+            "O'sma turi",
+            "Belgilari",
+            "Davolash usullari"
+          ],
+          [
+            "Astrositoma",
+            "Mushak kuchsizligi, bosh og'rig'i",
+            "Xirurgiya, radioterapiya"
+          ],
+          [
+            "Meninjioma",
+            "Bosh og'rig'i, ko'rish qiyinlishuvi",
+            "Xirurgiya, kuzatuv"
+          ],
+          [
+            "Neuroblastoma",
+            "Bosh og'rig'i, tez-tez qorin og'rig'i",
+            "Xirurgiya, kimyoterapiya"
+          ],
+          [
+            "Glioblastoma",
+            "Tez o'suvchi, mushak zaifligi",
+            "Kimyoterapiya, radioterapiya"
+          ]
+        ]
+      },
+      "elementIndex": 1,
+      "content": ""
+    },
+    {
+      "type": "shape",
+      "content": "Tumor Classification Table",
+      "elementIndex": 3
+    },
+    {
+      "type": "image",
+      "src": "./images\\slide4_img52.png",
+      "hasImage": true,
+      "elementIndex": 4
+    },
+    {
+      "type": "image",
+      "src": "./images\\slide4_img53.png",
+      "hasImage": true,
+      "elementIndex": 7
+    },
+    {
+      "type": "image",
+      "src": "./images\\slide4_img54.png",
+      "hasImage": true,
+      "elementIndex": 8
+    },
+    {
+      "type": "image",
+      "src": "./images\\slide4_img55.png",
+      "hasImage": true,
+      "elementIndex": 11
+    }
+  ],
+  "note": ""
+}

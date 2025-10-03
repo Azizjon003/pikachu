@@ -1,0 +1,89 @@
+{
+  "id": "aO5ZTPFtge",
+  "index": 8,
+  "slide": 9,
+  "elements": [
+    {
+      "type": "image",
+      "src": "./images\\slide8_img79.png",
+      "hasImage": true,
+      "elementIndex": 0
+    },
+    {
+      "type": "image",
+      "src": "./images\\slide8_img80.png",
+      "hasImage": true,
+      "elementIndex": 1
+    },
+    {
+      "type": "image",
+      "src": "./images\\slide8_img81.png",
+      "hasImage": true,
+      "elementIndex": 2
+    },
+    {
+      "type": "image",
+      "src": "./images\\slide8_img82.png",
+      "hasImage": true,
+      "elementIndex": 5
+    },
+    {
+      "type": "image",
+      "src": "./images\\slide8_img83.png",
+      "hasImage": true,
+      "elementIndex": 8
+    },
+    {
+      "type": "image",
+      "src": "./images\\slide8_img84.png",
+      "hasImage": true,
+      "elementIndex": 11
+    },
+    {
+      "type": "shape",
+      "content": "O'smalar va ularning ta'siri",
+      "elementIndex": 15
+    },
+    {
+      "type": "shape",
+      "content": "O'smalar har qanday organizmda muhim ro'l o'ynaydi. Ular o'sish, rivojlanish va hayot jarayonlarida ishtirok etadilar.",
+      "elementIndex": 17
+    },
+    {
+      "type": "shape",
+      "content": "O'smalarni tasniflash",
+      "elementIndex": 19
+    },
+    {
+      "type": "shape",
+      "content": "O'smalar bir nechta guruhlarga bo'linadi: o'simliklar, hayvonlar, va mikroorganizmlar. Har bir guruh o'ziga xos xususiyatlarga ega.",
+      "elementIndex": 21
+    },
+    {
+      "type": "shape",
+      "content": "O'smalar va ularning foydalari",
+      "elementIndex": 23
+    },
+    {
+      "type": "shape",
+      "content": "O'smalar inson hayotida ko'plab foydali xususiyatlarga ega: oziq-ovqat manbai, dori-darmon, va ekotizimni saqlashda yordam.",
+      "elementIndex": 25
+    },
+    {
+      "type": "shape",
+      "content": "O'smalar orqali ta'sir",
+      "elementIndex": 27
+    },
+    {
+      "type": "shape",
+      "content": "O'smalar atrof-muhitga ta'sir qiladi, ularning yo'qolishi ekosistemalarga xavf tug'diradi. Shuningdek, o'smalar odamlar hayotida ham muhimdir.",
+      "elementIndex": 29
+    },
+    {
+      "type": "shape",
+      "content": "O'smalar va zamonaviy tadqiqotlar",
+      "elementIndex": 31
+    }
+  ],
+  "note": ""
+}

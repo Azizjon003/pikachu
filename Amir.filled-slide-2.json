@@ -1,0 +1,91 @@
+{
+  "id": "KbQalnoI8H",
+  "index": 7,
+  "slide": 8,
+  "elements": [
+    {
+      "type": "image",
+      "src": "./images\\slide7_img71.png",
+      "hasImage": true,
+      "elementIndex": 0
+    },
+    {
+      "type": "image",
+      "src": "./images\\slide7_img72.png",
+      "hasImage": true,
+      "elementIndex": 1
+    },
+    {
+      "type": "image",
+      "src": "./images\\slide7_img73.png",
+      "hasImage": true,
+      "elementIndex": 6
+    },
+    {
+      "type": "shape",
+      "content": "O'smalarni Tashxislash",
+      "elementIndex": 8
+    },
+    {
+      "type": "shape",
+      "content": "O'sma tashxislash jarayoni kasalliklarni aniqlashda muhim ahamiyatga ega. O'smalarni tez va to'g'ri aniqlash, bemorlar uchun samarali davolash imkoniyatlarini taqdim etadi.",
+      "elementIndex": 10
+    },
+    {
+      "type": "shape",
+      "content": "O'smalar va ularning turlari",
+      "elementIndex": 12
+    },
+    {
+      "type": "image",
+      "src": "./images\\slide7_img74.png",
+      "hasImage": true,
+      "elementIndex": 13
+    },
+    {
+      "type": "image",
+      "src": "./images\\slide7_img75.png",
+      "hasImage": true,
+      "elementIndex": 16
+    },
+    {
+      "type": "shape",
+      "content": "O'smalarni aniqlashda foydalaniladigan asosiy usullar: rentgenografiya, ultratovush tekshiruvi, kompyuter tomografiyasi, magnet-rezonans tomografiyasi va biopsiya. Har bir usul o'ziga xos afzalliklarga va cheklovlarga ega.",
+      "elementIndex": 22
+    },
+    {
+      "type": "shape",
+      "content": "O'smalarni tasniflash",
+      "elementIndex": 24
+    },
+    {
+      "type": "image",
+      "src": "./images\\slide7_img76.png",
+      "hasImage": true,
+      "elementIndex": 25
+    },
+    {
+      "type": "image",
+      "src": "./images\\slide7_img77.png",
+      "hasImage": true,
+      "elementIndex": 26
+    },
+    {
+      "type": "shape",
+      "content": "O'smalarni aniqlashda kasallikning belgilari, tarixiy ma'lumotlar va laboratoriya natijalari asosida tahlil qilinadi. Shu sababli, aniqlikni oshirish uchun ko'plab diagnostik usullar qo'llaniladi.",
+      "elementIndex": 32
+    },
+    {
+      "type": "shape",
+      "content": "O'smalarni davolash strategiyalari",
+      "elementIndex": 34
+    },
+    {
+      "type": "image",
+      "src": "./images\\slide7_img78.png",
+      "hasImage": true,
+      "elementIndex": 35
+    }
+  ],
+  "note": ""
+}

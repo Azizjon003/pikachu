@@ -1,0 +1,827 @@
+[
+  {
+    "id": "rjnuHMWJEL",
+    "index": 4,
+    "slide": 5,
+    "elements": [
+      {
+        "type": "image",
+        "src": "./images\\slide4_img51.png",
+        "hasImage": true,
+        "elementIndex": 0
+      },
+      {
+        "type": "table",
+
+        "data": [
+          ["O'sma turi", "Belgilari", "Davolash usullari"],
+          [
+            "Astrositoma",
+            "Mushak kuchsizligi, bosh og'rig'i",
+            "Xirurgiya, radioterapiya"
+          ],
+          [
+            "Meninjioma",
+            "Bosh og'rig'i, ko'rish qiyinlishuvi",
+            "Xirurgiya, kuzatuv"
+          ],
+          [
+            "Neuroblastoma",
+            "Bosh og'rig'i, tez-tez qorin og'rig'i",
+            "Xirurgiya, kimyoterapiya"
+          ],
+          [
+            "Glioblastoma",
+            "Tez o'suvchi, mushak zaifligi",
+            "Kimyoterapiya, radioterapiya"
+          ]
+        ],
+        "elementIndex": 1,
+        "content": ""
+      },
+      {
+        "type": "shape",
+        "content": "Tumor Classification Table",
+        "elementIndex": 3
+      },
+      {
+        "type": "image",
+        "src": "./images\\slide4_img52.png",
+        "hasImage": true,
+        "elementIndex": 4
+      },
+      {
+        "type": "image",
+        "src": "./images\\slide4_img53.png",
+        "hasImage": true,
+        "elementIndex": 7
+      },
+      {
+        "type": "image",
+        "src": "./images\\slide4_img54.png",
+        "hasImage": true,
+        "elementIndex": 8
+      },
+      {
+        "type": "image",
+        "src": "./images\\slide4_img55.png",
+        "hasImage": true,
+        "elementIndex": 11
+      }
+    ],
+    "note": ""
+  },
+  {
+    "id": "K-Jt3ow7KB",
+    "index": 6,
+    "slide": 7,
+    "elements": [
+      {
+        "type": "image",
+        "src": "./images\\slide6_img69.png",
+        "hasImage": true,
+        "elementIndex": 0
+      },
+      {
+        "type": "image",
+        "src": "./images\\slide6_img70.png",
+        "hasImage": true,
+        "elementIndex": 1
+      },
+      {
+        "type": "shape",
+        "content": "O'sma Turlari haqida",
+        "elementIndex": 3
+      },
+      {
+        "type": "shape",
+        "content": "O'sma turlari o'simliklarning o'ziga xos guruhidir. Ular havo orqali ko'chish va tarqalish uchun moslashgan. Bu turlar ko'plab iqlim sharoitlarida uchraydi.",
+        "elementIndex": 5
+      },
+      {
+        "type": "shape",
+        "content": "O'sma Turlari va Turlanishi",
+        "elementIndex": 7
+      },
+      {
+        "type": "shape",
+        "content": "Ushbu turlar ko'plab muhim ekotizimlarni qo'llab-quvvatlaydi, shuningdek, oziq-ovqat zanjirida muhim rol o'ynaydi. O'sma turlari asosan havo, suv va tuproqdan oziq moddalar oladi.",
+        "elementIndex": 9
+      },
+      {
+        "type": "shape",
+        "content": "O'sma Turlarining Turlari",
+        "elementIndex": 11
+      },
+      {
+        "type": "shape",
+        "content": "Ular o'z jismoniy xususiyatlari bilan bir-biridan farq qiladi. Ba'zilari tez o'sadi, boshqalari esa sekin o'sadi, bu ularning yashash joylariga bog'liq.",
+        "elementIndex": 13
+      },
+      {
+        "type": "shape",
+        "content": "O'sma Turlarini Nazorat Qilish",
+        "elementIndex": 15
+      },
+      {
+        "type": "shape",
+        "content": "O'sma turlarini nazorat qilish muhimdir, chunki ularni saqlab qolish va muhofaza qilish zarur. Ularning yo'qolishi ekotizimga salbiy ta'sir ko'rsatishi mumkin.",
+        "elementIndex": 17
+      },
+      {
+        "type": "shape",
+        "content": "O'sma Turlari va Ularning Ahmiyati",
+        "elementIndex": 19
+      }
+    ],
+    "note": ""
+  },
+  {
+    "id": "KbQalnoI8H",
+    "index": 7,
+    "slide": 8,
+    "elements": [
+      {
+        "type": "image",
+        "src": "./images\\slide7_img71.png",
+        "hasImage": true,
+        "elementIndex": 0
+      },
+      {
+        "type": "image",
+        "src": "./images\\slide7_img72.png",
+        "hasImage": true,
+        "elementIndex": 1
+      },
+      {
+        "type": "image",
+        "src": "./images\\slide7_img73.png",
+        "hasImage": true,
+        "elementIndex": 6
+      },
+      {
+        "type": "shape",
+        "content": "O'smalarni Tashxislash",
+        "elementIndex": 8
+      },
+      {
+        "type": "shape",
+        "content": "O'sma tashxislash jarayoni kasalliklarni aniqlashda muhim ahamiyatga ega. O'smalarni tez va to'g'ri aniqlash, bemorlar uchun samarali davolash imkoniyatlarini taqdim etadi.",
+        "elementIndex": 10
+      },
+      {
+        "type": "shape",
+        "content": "O'smalar va ularning turlari",
+        "elementIndex": 12
+      },
+      {
+        "type": "image",
+        "src": "./images\\slide7_img74.png",
+        "hasImage": true,
+        "elementIndex": 13
+      },
+      {
+        "type": "image",
+        "src": "./images\\slide7_img75.png",
+        "hasImage": true,
+        "elementIndex": 16
+      },
+      {
+        "type": "shape",
+        "content": "O'smalarni aniqlashda foydalaniladigan asosiy usullar: rentgenografiya, ultratovush tekshiruvi, kompyuter tomografiyasi, magnet-rezonans tomografiyasi va biopsiya. Har bir usul o'ziga xos afzalliklarga va cheklovlarga ega.",
+        "elementIndex": 22
+      },
+      {
+        "type": "shape",
+        "content": "O'smalarni tasniflash",
+        "elementIndex": 24
+      },
+      {
+        "type": "image",
+        "src": "./images\\slide7_img76.png",
+        "hasImage": true,
+        "elementIndex": 25
+      },
+      {
+        "type": "image",
+        "src": "./images\\slide7_img77.png",
+        "hasImage": true,
+        "elementIndex": 26
+      },
+      {
+        "type": "shape",
+        "content": "O'smalarni aniqlashda kasallikning belgilari, tarixiy ma'lumotlar va laboratoriya natijalari asosida tahlil qilinadi. Shu sababli, aniqlikni oshirish uchun ko'plab diagnostik usullar qo'llaniladi.",
+        "elementIndex": 32
+      },
+      {
+        "type": "shape",
+        "content": "O'smalarni davolash strategiyalari",
+        "elementIndex": 34
+      },
+      {
+        "type": "image",
+        "src": "./images\\slide7_img78.png",
+        "hasImage": true,
+        "elementIndex": 35
+      }
+    ],
+    "note": ""
+  },
+  {
+    "id": "Kuk5CHNztq",
+    "index": 11,
+    "slide": 12,
+    "elements": [
+      {
+        "type": "image",
+        "src": "./images\\slide11_img106.png",
+        "hasImage": true,
+        "elementIndex": 0
+      },
+      {
+        "type": "image",
+        "src": "./images\\slide11_img107.png",
+        "hasImage": true,
+        "elementIndex": 1
+      },
+      {
+        "type": "shape",
+        "content": "Belgilari va Alomatlar",
+        "elementIndex": 3
+      },
+      {
+        "type": "shape",
+        "content": "Belgi 1",
+        "elementIndex": 5
+      },
+      {
+        "type": "shape",
+        "content": "Belgi 3",
+        "elementIndex": 7
+      },
+      {
+        "type": "shape",
+        "content": "Belgi 2",
+        "elementIndex": 9
+      },
+      {
+        "type": "shape",
+        "content": "Belgi 4",
+        "elementIndex": 11
+      },
+      {
+        "type": "shape",
+        "content": "Belgilari va alomatlar sog'liqni saqlashda muhim ahamiyatga ega. Ular kasalliklarni aniqlash va davolashda yordam beradi.",
+        "elementIndex": 13
+      },
+      {
+        "type": "shape",
+        "content": "Har bir belgi va alomat o'ziga xos xususiyatlarga ega. Ularni to'g'ri aniqlash zarur.",
+        "elementIndex": 15
+      },
+      {
+        "type": "shape",
+        "content": "Belgilarning vaqtinchalik yoki doimiy bo'lishi mumkin. Bularni e'tiborga olish kerak.",
+        "elementIndex": 17
+      },
+      {
+        "type": "shape",
+        "content": "Belgi 5",
+        "elementIndex": 19
+      },
+      {
+        "type": "shape",
+        "content": "Belgi 4",
+        "elementIndex": 21
+      }
+    ],
+    "note": ""
+  },
+  {
+    "id": "9Fjc-EOMTl",
+    "index": 5,
+    "slide": 6,
+    "elements": [
+      {
+        "type": "image",
+        "src": "./images\\slide5_img56.png",
+        "hasImage": true,
+        "elementIndex": 0
+      },
+      {
+        "type": "image",
+        "src": "./images\\slide5_img57.png",
+        "hasImage": true,
+        "elementIndex": 1
+      },
+      {
+        "type": "image",
+        "src": "./images\\slide5_img58.png",
+        "hasImage": true,
+        "elementIndex": 4
+      },
+      {
+        "type": "image",
+        "src": "./images\\slide5_img59.png",
+        "hasImage": true,
+        "elementIndex": 5
+      },
+      {
+        "type": "image",
+        "src": "./images\\slide5_img60.png",
+        "hasImage": true,
+        "elementIndex": 8
+      },
+      {
+        "type": "image",
+        "src": "./images\\slide5_img61.png",
+        "hasImage": true,
+        "elementIndex": 9
+      },
+      {
+        "type": "image",
+        "src": "./images\\slide5_img62.png",
+        "hasImage": true,
+        "elementIndex": 12
+      },
+      {
+        "type": "image",
+        "src": "./images\\slide5_img63.png",
+        "hasImage": true,
+        "elementIndex": 13
+      },
+      {
+        "type": "image",
+        "src": "./images\\slide5_img64.png",
+        "hasImage": true,
+        "elementIndex": 16
+      },
+      {
+        "type": "image",
+        "src": "./images\\slide5_img65.png",
+        "hasImage": true,
+        "elementIndex": 17
+      },
+      {
+        "type": "image",
+        "src": "./images\\slide5_img66.png",
+        "hasImage": true,
+        "elementIndex": 20
+      },
+      {
+        "type": "image",
+        "src": "./images\\slide5_img67.png",
+        "hasImage": true,
+        "elementIndex": 21
+      },
+      {
+        "type": "image",
+        "src": "./images\\slide5_img68.png",
+        "hasImage": true,
+        "elementIndex": 24
+      },
+      {
+        "type": "shape",
+        "content": "O'smalarni Davolash Usullari",
+        "elementIndex": 26
+      },
+      {
+        "type": "shape",
+        "content": "O'smalarni davolashda bir nechta usullar mavjud. Bu usullar o'smaning turiga, o'sha joyda joylashgan joyiga va bemorning sog'lig'iga bog'liq. O'smalarni davolashda asosan jarrohlik, kimyoviy terapiya va radiatsiya terapiyasi qo'llaniladi.",
+        "elementIndex": 28
+      },
+      {
+        "type": "shape",
+        "content": "O'smalarni davolash jarayonida bemorlarning sog'lig'ini saqlash va ularning hayot sifatini yaxshilash muhimdir. Shuningdek, davolash usullarining yanada samarali bo'lishi uchun zamonaviy texnologiyalarni qo'llash zarur.",
+        "elementIndex": 30
+      },
+      {
+        "type": "shape",
+        "content": "O'smalarni davolashda individual yondashuv juda muhim. Har bir bemor uchun maxsus davolash rejasi ishlab chiqilishi kerak. Bu yondashuv bemorning ehtiyojlariga mos ravishda amalga oshiriladi.",
+        "elementIndex": 32
+      }
+    ],
+    "note": ""
+  },
+  {
+    "id": "9yrDox0mzw",
+    "index": 12,
+    "slide": 13,
+    "elements": [
+      {
+        "type": "image",
+        "src": "./images\\slide12_img108.png",
+        "hasImage": true,
+        "elementIndex": 0
+      },
+      {
+        "type": "image",
+        "src": "./images\\slide12_img109.jpeg",
+        "hasImage": true,
+        "elementIndex": 1
+      },
+      {
+        "type": "shape",
+        "content": "Davolash usullari",
+        "elementIndex": 3
+      },
+      {
+        "type": "shape",
+        "content": "Davolash usullari turli xil metod va yondashuvlarni o'z ichiga oladi. Ular orasida dori-darmonlar, jarrohlik, fizioterapiya va alternativ davolash usullari mavjud. Har bir usulning o'ziga xos afzalliklari va kamchiliklari bor, shuning uchun bemorlarning individual ehtiyojlariga qarab tanlanadi. Samarali davolash uchun, shifokor bemorning holatini to'liq tahlil qilishi va eng mos usulni tanlashi lozim.",
+        "elementIndex": 5
+      }
+    ],
+    "note": ""
+  },
+  {
+    "id": "V2PZHWGT8g",
+    "index": 13,
+    "slide": 14,
+    "elements": [
+      {
+        "type": "image",
+        "src": "./images\\slide13_img110.png",
+        "hasImage": true,
+        "elementIndex": 0
+      },
+      {
+        "type": "image",
+        "src": "./images\\slide13_img111.png",
+        "hasImage": true,
+        "elementIndex": 1
+      },
+      {
+        "type": "image",
+        "src": "./images\\slide13_img112.png",
+        "hasImage": true,
+        "elementIndex": 4
+      },
+      {
+        "type": "image",
+        "src": "./images\\slide13_img113.png",
+        "hasImage": true,
+        "elementIndex": 5
+      },
+      {
+        "type": "image",
+        "src": "./images\\slide13_img114.png",
+        "hasImage": true,
+        "elementIndex": 8
+      },
+      {
+        "type": "shape",
+        "content": "Kelajakni Prognozlash",
+        "elementIndex": 10
+      },
+      {
+        "type": "shape",
+        "content": "Innovatsiyalar va Rivojlanish",
+        "elementIndex": 12
+      },
+      {
+        "type": "shape",
+        "content": "Maqsadlar va Rejalar",
+        "elementIndex": 14
+      },
+      {
+        "type": "shape",
+        "content": "Prognozlar muhim qarorlar qabul qilishda asosiy rol o'ynaydi. Ular iqtisodiy, ijtimoiy va texnologik tendentsiyalarni oldindan bilish imkonini beradi, bu esa resurslarni samarali taqsimlashga yordam beradi.",
+        "elementIndex": 16
+      },
+      {
+        "type": "shape",
+        "content": "Kelajakni rejalashtirishda aniq prognozlar tayyorlash zarur. Bu nafaqat kompaniyalar, balki davlatlar va jamiyatlar uchun ham muhimdir. Prognozlar o'zgaruvchan sharoitlarga moslashish imkonini beradi va strategik yo'nalishlarni belgilaydi.",
+        "elementIndex": 18
+      },
+      {
+        "type": "image",
+        "src": "./images\\slide13_img115.png",
+        "hasImage": true,
+        "elementIndex": 19
+      },
+      {
+        "type": "image",
+        "src": "./images\\slide13_img116.png",
+        "hasImage": true,
+        "elementIndex": 20
+      }
+    ],
+    "note": ""
+  },
+  {
+    "id": "aO5ZTPFtge",
+    "index": 8,
+    "slide": 9,
+    "elements": [
+      {
+        "type": "image",
+        "src": "./images\\slide8_img79.png",
+        "hasImage": true,
+        "elementIndex": 0
+      },
+      {
+        "type": "image",
+        "src": "./images\\slide8_img80.png",
+        "hasImage": true,
+        "elementIndex": 1
+      },
+      {
+        "type": "image",
+        "src": "./images\\slide8_img81.png",
+        "hasImage": true,
+        "elementIndex": 2
+      },
+      {
+        "type": "image",
+        "src": "./images\\slide8_img82.png",
+        "hasImage": true,
+        "elementIndex": 5
+      },
+      {
+        "type": "image",
+        "src": "./images\\slide8_img83.png",
+        "hasImage": true,
+        "elementIndex": 8
+      },
+      {
+        "type": "image",
+        "src": "./images\\slide8_img84.png",
+        "hasImage": true,
+        "elementIndex": 11
+      },
+      {
+        "type": "shape",
+        "content": "O'smalar va ularning ta'siri",
+        "elementIndex": 15
+      },
+      {
+        "type": "shape",
+        "content": "O'smalar har qanday organizmda muhim ro'l o'ynaydi. Ular o'sish, rivojlanish va hayot jarayonlarida ishtirok etadilar.",
+        "elementIndex": 17
+      },
+      {
+        "type": "shape",
+        "content": "O'smalarni tasniflash",
+        "elementIndex": 19
+      },
+      {
+        "type": "shape",
+        "content": "O'smalar bir nechta guruhlarga bo'linadi: o'simliklar, hayvonlar, va mikroorganizmlar. Har bir guruh o'ziga xos xususiyatlarga ega.",
+        "elementIndex": 21
+      },
+      {
+        "type": "shape",
+        "content": "O'smalar va ularning foydalari",
+        "elementIndex": 23
+      },
+      {
+        "type": "shape",
+        "content": "O'smalar inson hayotida ko'plab foydali xususiyatlarga ega: oziq-ovqat manbai, dori-darmon, va ekotizimni saqlashda yordam.",
+        "elementIndex": 25
+      },
+      {
+        "type": "shape",
+        "content": "O'smalar orqali ta'sir",
+        "elementIndex": 27
+      },
+      {
+        "type": "shape",
+        "content": "O'smalar atrof-muhitga ta'sir qiladi, ularning yo'qolishi ekosistemalarga xavf tug'diradi. Shuningdek, o'smalar odamlar hayotida ham muhimdir.",
+        "elementIndex": 29
+      },
+      {
+        "type": "shape",
+        "content": "O'smalar va zamonaviy tadqiqotlar",
+        "elementIndex": 31
+      }
+    ],
+    "note": ""
+  },
+  {
+    "id": "-FYKbTLrT1",
+    "index": 10,
+    "slide": 11,
+    "elements": [
+      {
+        "type": "image",
+        "src": "./images\\slide10_img92.png",
+        "hasImage": true,
+        "elementIndex": 0
+      },
+      {
+        "type": "image",
+        "src": "./images\\slide10_img93.png",
+        "hasImage": true,
+        "elementIndex": 1
+      },
+      {
+        "type": "image",
+        "src": "./images\\slide10_img94.png",
+        "hasImage": true,
+        "elementIndex": 2
+      },
+      {
+        "type": "image",
+        "src": "./images\\slide10_img95.png",
+        "hasImage": true,
+        "elementIndex": 5
+      },
+      {
+        "type": "image",
+        "src": "./images\\slide10_img96.png",
+        "hasImage": true,
+        "elementIndex": 6
+      },
+      {
+        "type": "image",
+        "src": "./images\\slide10_img97.png",
+        "hasImage": true,
+        "elementIndex": 9
+      },
+      {
+        "type": "image",
+        "src": "./images\\slide10_img98.png",
+        "hasImage": true,
+        "elementIndex": 10
+      },
+      {
+        "type": "image",
+        "src": "./images\\slide10_img99.png",
+        "hasImage": true,
+        "elementIndex": 13
+      },
+      {
+        "type": "shape",
+        "content": "O'smalarni oldini olish uchun muntazam ravishda tibbiy tekshiruvlar o'tkazish kerak.",
+        "elementIndex": 15
+      },
+      {
+        "type": "image",
+        "src": "./images\\slide10_img100.png",
+        "hasImage": true,
+        "elementIndex": 16
+      },
+      {
+        "type": "image",
+        "src": "./images\\slide10_img101.png",
+        "hasImage": true,
+        "elementIndex": 19
+      },
+      {
+        "type": "image",
+        "src": "./images\\slide10_img102.png",
+        "hasImage": true,
+        "elementIndex": 20
+      },
+      {
+        "type": "image",
+        "src": "./images\\slide10_img103.png",
+        "hasImage": true,
+        "elementIndex": 23
+      },
+      {
+        "type": "image",
+        "src": "./images\\slide10_img104.png",
+        "hasImage": true,
+        "elementIndex": 24
+      },
+      {
+        "type": "image",
+        "src": "./images\\slide10_img105.png",
+        "hasImage": true,
+        "elementIndex": 27
+      },
+      {
+        "type": "shape",
+        "content": "87%",
+        "elementIndex": 29
+      },
+      {
+        "type": "shape",
+        "content": "36%",
+        "elementIndex": 31
+      },
+      {
+        "type": "shape",
+        "content": "67%",
+        "elementIndex": 33
+      },
+      {
+        "type": "shape",
+        "content": "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+        "elementIndex": 35
+      },
+      {
+        "type": "shape",
+        "content": "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+        "elementIndex": 37
+      },
+      {
+        "type": "shape",
+        "content": "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+        "elementIndex": 39
+      },
+      {
+        "type": "shape",
+        "content": "Write a main idea here",
+        "elementIndex": 41
+      },
+      {
+        "type": "shape",
+        "content": "Write a main idea here",
+        "elementIndex": 43
+      },
+      {
+        "type": "shape",
+        "content": "Write a main idea here",
+        "elementIndex": 45
+      }
+    ],
+    "note": ""
+  },
+  {
+    "id": "cHsogrB7nk",
+    "index": 14,
+    "slide": 15,
+    "elements": [
+      {
+        "type": "image",
+        "src": "./images\\slide14_img117.png",
+        "hasImage": true,
+        "elementIndex": 0
+      },
+      {
+        "type": "image",
+        "src": "./images\\slide14_img118.png",
+        "hasImage": true,
+        "elementIndex": 1
+      },
+      {
+        "type": "image",
+        "src": "./images\\slide14_img119.png",
+        "hasImage": true,
+        "elementIndex": 4
+      },
+      {
+        "type": "image",
+        "src": "./images\\slide14_img120.png",
+        "hasImage": true,
+        "elementIndex": 5
+      },
+      {
+        "type": "image",
+        "src": "./images\\slide14_img121.png",
+        "hasImage": true,
+        "elementIndex": 8
+      },
+      {
+        "type": "image",
+        "src": "./images\\slide14_img122.jpeg",
+        "hasImage": true,
+        "elementIndex": 9
+      },
+      {
+        "type": "shape",
+        "content": "O'smalar haqida umumiy ma'lumot",
+        "elementIndex": 11
+      },
+      {
+        "type": "shape",
+        "content": "O'smalar turlari",
+        "elementIndex": 13
+      },
+      {
+        "type": "shape",
+        "content": "O'smalarni parvarish",
+        "elementIndex": 15
+      },
+      {
+        "type": "shape",
+        "content": "O'smalar va ularning foydalari",
+        "elementIndex": 17
+      },
+      {
+        "type": "shape",
+        "content": "O'smalar, tabiiy muhitda o'sadigan va hayot uchun zarur bo'lgan organizmlar bo'lib, ular insoniyat va tabiat uchun muhim ahamiyatga ega. O'smalar oziq-ovqat, dori-darmon va boshqa ko'plab resurslarni taqdim etadi.",
+        "elementIndex": 19
+      },
+      {
+        "type": "shape",
+        "content": "O'smalarni parvarish qilish juda muhimdir. Ular o'sishi uchun quyosh, suv va to'g'ri tuproq kerak. To'g'ri parvarish qilish orqali o'smalar yanada sog'lom va kuchli bo'ladi.",
+        "elementIndex": 21
+      },
+      {
+        "type": "shape",
+        "content": "O'smalar inson salomatligi uchun foydali, ular vitaminlar, minerallar va antioksidantlar bilan boyitilgan. O'smalarni iste'mol qilish, turli kasalliklardan himoya qilishda yordam beradi.",
+        "elementIndex": 23
+      },
+      {
+        "type": "image",
+        "src": "./images\\slide14_img123.png",
+        "hasImage": true,
+        "elementIndex": 24
+      }
+    ],
+    "note": ""
+  }
+]

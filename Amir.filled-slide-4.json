@@ -1,0 +1,106 @@
+{
+  "id": "9Fjc-EOMTl",
+  "index": 5,
+  "slide": 6,
+  "elements": [
+    {
+      "type": "image",
+      "src": "./images\\slide5_img56.png",
+      "hasImage": true,
+      "elementIndex": 0
+    },
+    {
+      "type": "image",
+      "src": "./images\\slide5_img57.png",
+      "hasImage": true,
+      "elementIndex": 1
+    },
+    {
+      "type": "image",
+      "src": "./images\\slide5_img58.png",
+      "hasImage": true,
+      "elementIndex": 4
+    },
+    {
+      "type": "image",
+      "src": "./images\\slide5_img59.png",
+      "hasImage": true,
+      "elementIndex": 5
+    },
+    {
+      "type": "image",
+      "src": "./images\\slide5_img60.png",
+      "hasImage": true,
+      "elementIndex": 8
+    },
+    {
+      "type": "image",
+      "src": "./images\\slide5_img61.png",
+      "hasImage": true,
+      "elementIndex": 9
+    },
+    {
+      "type": "image",
+      "src": "./images\\slide5_img62.png",
+      "hasImage": true,
+      "elementIndex": 12
+    },
+    {
+      "type": "image",
+      "src": "./images\\slide5_img63.png",
+      "hasImage": true,
+      "elementIndex": 13
+    },
+    {
+      "type": "image",
+      "src": "./images\\slide5_img64.png",
+      "hasImage": true,
+      "elementIndex": 16
+    },
+    {
+      "type": "image",
+      "src": "./images\\slide5_img65.png",
+      "hasImage": true,
+      "elementIndex": 17
+    },
+    {
+      "type": "image",
+      "src": "./images\\slide5_img66.png",
+      "hasImage": true,
+      "elementIndex": 20
+    },
+    {
+      "type": "image",
+      "src": "./images\\slide5_img67.png",
+      "hasImage": true,
+      "elementIndex": 21
+    },
+    {
+      "type": "image",
+      "src": "./images\\slide5_img68.png",
+      "hasImage": true,
+      "elementIndex": 24
+    },
+    {
+      "type": "shape",
+      "content": "O'smalarni Davolash Usullari",
+      "elementIndex": 26
+    },
+    {
+      "type": "shape",
+      "content": "O'smalarni davolashda bir nechta usullar mavjud. Bu usullar o'smaning turiga, o'sha joyda joylashgan joyiga va bemorning sog'lig'iga bog'liq. O'smalarni davolashda asosan jarrohlik, kimyoviy terapiya va radiatsiya terapiyasi qo'llaniladi.",
+      "elementIndex": 28
+    },
+    {
+      "type": "shape",
+      "content": "O'smalarni davolash jarayonida bemorlarning sog'lig'ini saqlash va ularning hayot sifatini yaxshilash muhimdir. Shuningdek, davolash usullarining yanada samarali bo'lishi uchun zamonaviy texnologiyalarni qo'llash zarur.",
+      "elementIndex": 30
+    },
+    {
+      "type": "shape",
+      "content": "O'smalarni davolashda individual yondashuv juda muhim. Har bir bemor uchun maxsus davolash rejasi ishlab chiqilishi kerak. Bu yondashuv bemorning ehtiyojlariga mos ravishda amalga oshiriladi.",
+      "elementIndex": 32
+    }
+  ],
+  "note": ""
+}

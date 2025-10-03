@@ -1,0 +1,1403 @@
+[
+  {
+    "id": "WT_8SMwpsK",
+    "index": 0,
+    "slide": 1,
+    "elements": [
+      {
+        "type": "image",
+        "src": "./images\\slide0_img1.png",
+        "hasImage": true,
+        "elementIndex": 0
+      },
+      {
+        "type": "image",
+        "src": "./images\\slide0_img2.png",
+        "hasImage": true,
+        "elementIndex": 1
+      },
+      {
+        "type": "image",
+        "src": "./images\\slide0_img3.png",
+        "hasImage": true,
+        "elementIndex": 2
+      },
+      {
+        "type": "image",
+        "src": "./images\\slide0_img4.png",
+        "hasImage": true,
+        "elementIndex": 3
+      },
+      {
+        "type": "shape",
+        "content": "TUMORS OF NERVOUS SYSTEM",
+        "elementIndex": 5
+      },
+      {
+        "type": "image",
+        "src": "./images\\slide0_img5.png",
+        "hasImage": true,
+        "elementIndex": 6
+      },
+      {
+        "type": "image",
+        "src": "./images\\slide0_img6.png",
+        "hasImage": true,
+        "elementIndex": 7
+      },
+      {
+        "type": "shape",
+        "content": "Azizjon Aliqulov",
+        "elementIndex": 9
+      }
+    ],
+    "note": ""
+  },
+  {
+    "id": "S42EIAwT7Q",
+    "index": 1,
+    "slide": 2,
+    "elements": [
+      {
+        "type": "image",
+        "src": "./images\\slide1_img7.png",
+        "hasImage": true,
+        "elementIndex": 0
+      },
+      {
+        "type": "image",
+        "src": "./images\\slide1_img8.png",
+        "hasImage": true,
+        "elementIndex": 1
+      },
+      {
+        "type": "image",
+        "src": "./images\\slide1_img9.png",
+        "hasImage": true,
+        "elementIndex": 4
+      },
+      {
+        "type": "image",
+        "src": "./images\\slide1_img10.png",
+        "hasImage": true,
+        "elementIndex": 5
+      },
+      {
+        "type": "image",
+        "src": "./images\\slide1_img11.png",
+        "hasImage": true,
+        "elementIndex": 8
+      },
+      {
+        "type": "image",
+        "src": "./images\\slide1_img12.png",
+        "hasImage": true,
+        "elementIndex": 9
+      },
+      {
+        "type": "image",
+        "src": "./images\\slide1_img13.png",
+        "hasImage": true,
+        "elementIndex": 12
+      },
+      {
+        "type": "image",
+        "src": "./images\\slide1_img14.png",
+        "hasImage": true,
+        "elementIndex": 13
+      },
+      {
+        "type": "image",
+        "src": "./images\\slide1_img15.png",
+        "hasImage": true,
+        "elementIndex": 16
+      },
+      {
+        "type": "image",
+        "src": "./images\\slide1_img16.png",
+        "hasImage": true,
+        "elementIndex": 17
+      },
+      {
+        "type": "image",
+        "src": "./images\\slide1_img17.png",
+        "hasImage": true,
+        "elementIndex": 20
+      },
+      {
+        "type": "image",
+        "src": "./images\\slide1_img18.png",
+        "hasImage": true,
+        "elementIndex": 21
+      },
+      {
+        "type": "image",
+        "src": "./images\\slide1_img19.png",
+        "hasImage": true,
+        "elementIndex": 24
+      },
+      {
+        "type": "shape",
+        "content": "Table of Contents",
+        "elementIndex": 26
+      },
+      {
+        "type": "shape",
+        "content": "1",
+        "elementIndex": 28
+      },
+      {
+        "type": "shape",
+        "content": "2",
+        "elementIndex": 30
+      },
+      {
+        "type": "shape",
+        "content": "3",
+        "elementIndex": 32
+      },
+      {
+        "type": "shape",
+        "content": "Nervous System Tumors",
+        "elementIndex": 34
+      },
+      {
+        "type": "shape",
+        "content": "Diagnostic Techniques",
+        "elementIndex": 36
+      },
+      {
+        "type": "shape",
+        "content": "Treatment Approaches",
+        "elementIndex": 38
+      },
+      {
+        "type": "image",
+        "src": "./images\\slide1_img20.png",
+        "hasImage": true,
+        "elementIndex": 39
+      },
+      {
+        "type": "image",
+        "src": "./images\\slide1_img21.png",
+        "hasImage": true,
+        "elementIndex": 43
+      }
+    ],
+    "note": ""
+  },
+  {
+    "id": "xVZ9KAwebA",
+    "index": 2,
+    "slide": 3,
+    "elements": [
+      {
+        "type": "image",
+        "src": "./images\\slide2_img22.png",
+        "hasImage": true,
+        "elementIndex": 0
+      },
+      {
+        "type": "image",
+        "src": "./images\\slide2_img23.png",
+        "hasImage": true,
+        "elementIndex": 1
+      },
+      {
+        "type": "image",
+        "src": "./images\\slide2_img24.png",
+        "hasImage": true,
+        "elementIndex": 2
+      },
+      {
+        "type": "image",
+        "src": "./images\\slide2_img25.png",
+        "hasImage": true,
+        "elementIndex": 3
+      },
+      {
+        "type": "image",
+        "src": "./images\\slide2_img26.png",
+        "hasImage": true,
+        "elementIndex": 4
+      },
+      {
+        "type": "image",
+        "src": "./images\\slide2_img27.png",
+        "hasImage": true,
+        "elementIndex": 7
+      },
+      {
+        "type": "image",
+        "src": "./images\\slide2_img28.png",
+        "hasImage": true,
+        "elementIndex": 8
+      },
+      {
+        "type": "image",
+        "src": "./images\\slide2_img29.png",
+        "hasImage": true,
+        "elementIndex": 11
+      },
+      {
+        "type": "shape",
+        "content": "Nervous System TumorsNervous System TumorsNervous System TumorsNervous System TumorsNervous System TumorsNervous System TumorsNervous System Tumors",
+        "elementIndex": 13
+      },
+      {
+        "type": "shape",
+        "content": "01",
+        "elementIndex": 15
+      },
+      {
+        "type": "image",
+        "src": "./images\\slide2_img30.png",
+        "hasImage": true,
+        "elementIndex": 16
+      },
+      {
+        "type": "image",
+        "src": "./images\\slide2_img31.png",
+        "hasImage": true,
+        "elementIndex": 19
+      }
+    ],
+    "note": ""
+  },
+  {
+    "id": "xfw3AQw1nV",
+    "index": 3,
+    "slide": 4,
+    "elements": [
+      {
+        "type": "image",
+        "src": "./images\\slide3_img32.png",
+        "hasImage": true,
+        "elementIndex": 0
+      },
+      {
+        "type": "image",
+        "src": "./images\\slide3_img33.png",
+        "hasImage": true,
+        "elementIndex": 1
+      },
+      {
+        "type": "image",
+        "src": "./images\\slide3_img34.png",
+        "hasImage": true,
+        "elementIndex": 4
+      },
+      {
+        "type": "image",
+        "src": "./images\\slide3_img35.png",
+        "hasImage": true,
+        "elementIndex": 5
+      },
+      {
+        "type": "image",
+        "src": "./images\\slide3_img36.png",
+        "hasImage": true,
+        "elementIndex": 8
+      },
+      {
+        "type": "image",
+        "src": "./images\\slide3_img37.png",
+        "hasImage": true,
+        "elementIndex": 9
+      },
+      {
+        "type": "image",
+        "src": "./images\\slide3_img38.png",
+        "hasImage": true,
+        "elementIndex": 12
+      },
+      {
+        "type": "image",
+        "src": "./images\\slide3_img39.png",
+        "hasImage": true,
+        "elementIndex": 13
+      },
+      {
+        "type": "image",
+        "src": "./images\\slide3_img40.png",
+        "hasImage": true,
+        "elementIndex": 16
+      },
+      {
+        "type": "image",
+        "src": "./images\\slide3_img41.png",
+        "hasImage": true,
+        "elementIndex": 17
+      },
+      {
+        "type": "image",
+        "src": "./images\\slide3_img42.png",
+        "hasImage": true,
+        "elementIndex": 20
+      },
+      {
+        "type": "image",
+        "src": "./images\\slide3_img43.png",
+        "hasImage": true,
+        "elementIndex": 21
+      },
+      {
+        "type": "image",
+        "src": "./images\\slide3_img44.png",
+        "hasImage": true,
+        "elementIndex": 24
+      },
+      {
+        "type": "image",
+        "src": "./images\\slide3_img45.png",
+        "hasImage": true,
+        "elementIndex": 25
+      },
+      {
+        "type": "image",
+        "src": "./images\\slide3_img46.png",
+        "hasImage": true,
+        "elementIndex": 28
+      },
+      {
+        "type": "image",
+        "src": "./images\\slide3_img47.png",
+        "hasImage": true,
+        "elementIndex": 29
+      },
+      {
+        "type": "image",
+        "src": "./images\\slide3_img48.png",
+        "hasImage": true,
+        "elementIndex": 32
+      },
+      {
+        "type": "image",
+        "src": "./images\\slide3_img49.png",
+        "hasImage": true,
+        "elementIndex": 33
+      },
+      {
+        "type": "image",
+        "src": "./images\\slide3_img50.png",
+        "hasImage": true,
+        "elementIndex": 36
+      },
+      {
+        "type": "shape",
+        "content": "Write a main idea here",
+        "elementIndex": 38
+      },
+      {
+        "type": "shape",
+        "content": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
+        "elementIndex": 40
+      },
+      {
+        "type": "shape",
+        "content": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
+        "elementIndex": 42
+      }
+    ],
+    "note": ""
+  },
+  {
+    "id": "rjnuHMWJEL",
+    "index": 4,
+    "slide": 5,
+    "elements": [
+      {
+        "type": "image",
+        "src": "./images\\slide4_img51.png",
+        "hasImage": true,
+        "elementIndex": 0
+      },
+      {
+        "type": "table",
+        "data": [
+          [
+            "Tumor Type",
+            "Location",
+            "Benign/Malignant",
+            "Common Symptoms"
+          ],
+          [
+            "Glioma",
+            "Brain/Spinal Cord",
+            "Malignant",
+            "Headaches, Seizures"
+          ],
+          [
+            "Meningioma",
+            "Brain Meninges",
+            "Benign",
+            "Vision Issues, Headaches"
+          ],
+          [
+            "Schwannoma",
+            "Peripheral Nerves",
+            "Benign",
+            "Hearing Loss, Balance Problems"
+          ],
+          [
+            "Medulloblastoma",
+            "Cerebellum (Pediatric)",
+            "Malignant",
+            "Nausea, Coordination Issues"
+          ],
+          [
+            "Pituitary Adenoma",
+            "Pituitary Gland",
+            "Benign/Malignant",
+            "Hormonal Imbalance"
+          ]
+        ],
+        "elementIndex": 1
+      },
+      {
+        "type": "shape",
+        "content": "Tumor Classification Table",
+        "elementIndex": 3
+      },
+      {
+        "type": "image",
+        "src": "./images\\slide4_img52.png",
+        "hasImage": true,
+        "elementIndex": 4
+      },
+      {
+        "type": "image",
+        "src": "./images\\slide4_img53.png",
+        "hasImage": true,
+        "elementIndex": 7
+      },
+      {
+        "type": "image",
+        "src": "./images\\slide4_img54.png",
+        "hasImage": true,
+        "elementIndex": 8
+      },
+      {
+        "type": "image",
+        "src": "./images\\slide4_img55.png",
+        "hasImage": true,
+        "elementIndex": 11
+      }
+    ],
+    "note": ""
+  },
+  {
+    "id": "9Fjc-EOMTl",
+    "index": 5,
+    "slide": 6,
+    "elements": [
+      {
+        "type": "image",
+        "src": "./images\\slide5_img56.png",
+        "hasImage": true,
+        "elementIndex": 0
+      },
+      {
+        "type": "image",
+        "src": "./images\\slide5_img57.png",
+        "hasImage": true,
+        "elementIndex": 1
+      },
+      {
+        "type": "image",
+        "src": "./images\\slide5_img58.png",
+        "hasImage": true,
+        "elementIndex": 4
+      },
+      {
+        "type": "image",
+        "src": "./images\\slide5_img59.png",
+        "hasImage": true,
+        "elementIndex": 5
+      },
+      {
+        "type": "image",
+        "src": "./images\\slide5_img60.png",
+        "hasImage": true,
+        "elementIndex": 8
+      },
+      {
+        "type": "image",
+        "src": "./images\\slide5_img61.png",
+        "hasImage": true,
+        "elementIndex": 9
+      },
+      {
+        "type": "image",
+        "src": "./images\\slide5_img62.png",
+        "hasImage": true,
+        "elementIndex": 12
+      },
+      {
+        "type": "image",
+        "src": "./images\\slide5_img63.png",
+        "hasImage": true,
+        "elementIndex": 13
+      },
+      {
+        "type": "image",
+        "src": "./images\\slide5_img64.png",
+        "hasImage": true,
+        "elementIndex": 16
+      },
+      {
+        "type": "image",
+        "src": "./images\\slide5_img65.png",
+        "hasImage": true,
+        "elementIndex": 17
+      },
+      {
+        "type": "image",
+        "src": "./images\\slide5_img66.png",
+        "hasImage": true,
+        "elementIndex": 20
+      },
+      {
+        "type": "image",
+        "src": "./images\\slide5_img67.png",
+        "hasImage": true,
+        "elementIndex": 21
+      },
+      {
+        "type": "image",
+        "src": "./images\\slide5_img68.png",
+        "hasImage": true,
+        "elementIndex": 24
+      },
+      {
+        "type": "shape",
+        "content": "Write a main idea here",
+        "elementIndex": 26
+      },
+      {
+        "type": "shape",
+        "content": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+        "elementIndex": 28
+      },
+      {
+        "type": "shape",
+        "content": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+        "elementIndex": 30
+      },
+      {
+        "type": "shape",
+        "content": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+        "elementIndex": 32
+      }
+    ],
+    "note": ""
+  },
+  {
+    "id": "K-Jt3ow7KB",
+    "index": 6,
+    "slide": 7,
+    "elements": [
+      {
+        "type": "image",
+        "src": "./images\\slide6_img69.png",
+        "hasImage": true,
+        "elementIndex": 0
+      },
+      {
+        "type": "image",
+        "src": "./images\\slide6_img70.png",
+        "hasImage": true,
+        "elementIndex": 1
+      },
+      {
+        "type": "shape",
+        "content": "Write a main idea here",
+        "elementIndex": 3
+      },
+      {
+        "type": "shape",
+        "content": "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+        "elementIndex": 5
+      },
+      {
+        "type": "shape",
+        "content": "Write a main idea here",
+        "elementIndex": 7
+      },
+      {
+        "type": "shape",
+        "content": "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+        "elementIndex": 9
+      },
+      {
+        "type": "shape",
+        "content": "Write a main idea here",
+        "elementIndex": 11
+      },
+      {
+        "type": "shape",
+        "content": "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+        "elementIndex": 13
+      },
+      {
+        "type": "shape",
+        "content": "Write a main idea here",
+        "elementIndex": 15
+      },
+      {
+        "type": "shape",
+        "content": "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+        "elementIndex": 17
+      },
+      {
+        "type": "shape",
+        "content": "Write a main idea here",
+        "elementIndex": 19
+      }
+    ],
+    "note": ""
+  },
+  {
+    "id": "KbQalnoI8H",
+    "index": 7,
+    "slide": 8,
+    "elements": [
+      {
+        "type": "image",
+        "src": "./images\\slide7_img71.png",
+        "hasImage": true,
+        "elementIndex": 0
+      },
+      {
+        "type": "image",
+        "src": "./images\\slide7_img72.png",
+        "hasImage": true,
+        "elementIndex": 1
+      },
+      {
+        "type": "image",
+        "src": "./images\\slide7_img73.png",
+        "hasImage": true,
+        "elementIndex": 6
+      },
+      {
+        "type": "shape",
+        "content": "Write a main idea here",
+        "elementIndex": 8
+      },
+      {
+        "type": "shape",
+        "content": "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+        "elementIndex": 10
+      },
+      {
+        "type": "shape",
+        "content": "Write a main idea here",
+        "elementIndex": 12
+      },
+      {
+        "type": "image",
+        "src": "./images\\slide7_img74.png",
+        "hasImage": true,
+        "elementIndex": 13
+      },
+      {
+        "type": "image",
+        "src": "./images\\slide7_img75.png",
+        "hasImage": true,
+        "elementIndex": 16
+      },
+      {
+        "type": "shape",
+        "content": "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+        "elementIndex": 22
+      },
+      {
+        "type": "shape",
+        "content": "Write a main idea here",
+        "elementIndex": 24
+      },
+      {
+        "type": "image",
+        "src": "./images\\slide7_img76.png",
+        "hasImage": true,
+        "elementIndex": 25
+      },
+      {
+        "type": "image",
+        "src": "./images\\slide7_img77.png",
+        "hasImage": true,
+        "elementIndex": 26
+      },
+      {
+        "type": "shape",
+        "content": "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+        "elementIndex": 32
+      },
+      {
+        "type": "shape",
+        "content": "Write a main idea here",
+        "elementIndex": 34
+      },
+      {
+        "type": "image",
+        "src": "./images\\slide7_img78.png",
+        "hasImage": true,
+        "elementIndex": 35
+      }
+    ],
+    "note": ""
+  },
+  {
+    "id": "aO5ZTPFtge",
+    "index": 8,
+    "slide": 9,
+    "elements": [
+      {
+        "type": "image",
+        "src": "./images\\slide8_img79.png",
+        "hasImage": true,
+        "elementIndex": 0
+      },
+      {
+        "type": "image",
+        "src": "./images\\slide8_img80.png",
+        "hasImage": true,
+        "elementIndex": 1
+      },
+      {
+        "type": "image",
+        "src": "./images\\slide8_img81.png",
+        "hasImage": true,
+        "elementIndex": 2
+      },
+      {
+        "type": "image",
+        "src": "./images\\slide8_img82.png",
+        "hasImage": true,
+        "elementIndex": 5
+      },
+      {
+        "type": "image",
+        "src": "./images\\slide8_img83.png",
+        "hasImage": true,
+        "elementIndex": 8
+      },
+      {
+        "type": "image",
+        "src": "./images\\slide8_img84.png",
+        "hasImage": true,
+        "elementIndex": 11
+      },
+      {
+        "type": "shape",
+        "content": "Write a main idea here",
+        "elementIndex": 15
+      },
+      {
+        "type": "shape",
+        "content": "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+        "elementIndex": 17
+      },
+      {
+        "type": "shape",
+        "content": "Write a main idea here",
+        "elementIndex": 19
+      },
+      {
+        "type": "shape",
+        "content": "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+        "elementIndex": 21
+      },
+      {
+        "type": "shape",
+        "content": "Write a main idea here",
+        "elementIndex": 23
+      },
+      {
+        "type": "shape",
+        "content": "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+        "elementIndex": 25
+      },
+      {
+        "type": "shape",
+        "content": "Write a main idea here",
+        "elementIndex": 27
+      },
+      {
+        "type": "shape",
+        "content": "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+        "elementIndex": 29
+      },
+      {
+        "type": "shape",
+        "content": "Write a main idea here",
+        "elementIndex": 31
+      }
+    ],
+    "note": ""
+  },
+  {
+    "id": "IXm0nIVSsV",
+    "index": 9,
+    "slide": 10,
+    "elements": [
+      {
+        "type": "image",
+        "src": "./images\\slide9_img85.png",
+        "hasImage": true,
+        "elementIndex": 0
+      },
+      {
+        "type": "image",
+        "src": "./images\\slide9_img86.png",
+        "hasImage": true,
+        "elementIndex": 1
+      },
+      {
+        "type": "image",
+        "src": "./images\\slide9_img87.png",
+        "hasImage": true,
+        "elementIndex": 4
+      },
+      {
+        "type": "image",
+        "src": "./images\\slide9_img88.png",
+        "hasImage": true,
+        "elementIndex": 5
+      },
+      {
+        "type": "image",
+        "src": "./images\\slide9_img89.png",
+        "hasImage": true,
+        "elementIndex": 8
+      },
+      {
+        "type": "image",
+        "src": "./images\\slide9_img90.jpeg",
+        "hasImage": true,
+        "elementIndex": 9
+      },
+      {
+        "type": "shape",
+        "content": "Write a main idea here",
+        "elementIndex": 11
+      },
+      {
+        "type": "image",
+        "src": "./images\\slide9_img91.png",
+        "hasImage": true,
+        "elementIndex": 12
+      },
+      {
+        "type": "shape",
+        "content": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+        "elementIndex": 14
+      },
+      {
+        "type": "shape",
+        "content": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+        "elementIndex": 16
+      },
+      {
+        "type": "shape",
+        "content": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+        "elementIndex": 18
+      }
+    ],
+    "note": ""
+  },
+  {
+    "id": "-FYKbTLrT1",
+    "index": 10,
+    "slide": 11,
+    "elements": [
+      {
+        "type": "image",
+        "src": "./images\\slide10_img92.png",
+        "hasImage": true,
+        "elementIndex": 0
+      },
+      {
+        "type": "image",
+        "src": "./images\\slide10_img93.png",
+        "hasImage": true,
+        "elementIndex": 1
+      },
+      {
+        "type": "image",
+        "src": "./images\\slide10_img94.png",
+        "hasImage": true,
+        "elementIndex": 2
+      },
+      {
+        "type": "image",
+        "src": "./images\\slide10_img95.png",
+        "hasImage": true,
+        "elementIndex": 5
+      },
+      {
+        "type": "image",
+        "src": "./images\\slide10_img96.png",
+        "hasImage": true,
+        "elementIndex": 6
+      },
+      {
+        "type": "image",
+        "src": "./images\\slide10_img97.png",
+        "hasImage": true,
+        "elementIndex": 9
+      },
+      {
+        "type": "image",
+        "src": "./images\\slide10_img98.png",
+        "hasImage": true,
+        "elementIndex": 10
+      },
+      {
+        "type": "image",
+        "src": "./images\\slide10_img99.png",
+        "hasImage": true,
+        "elementIndex": 13
+      },
+      {
+        "type": "shape",
+        "content": "Write a main idea here",
+        "elementIndex": 15
+      },
+      {
+        "type": "image",
+        "src": "./images\\slide10_img100.png",
+        "hasImage": true,
+        "elementIndex": 16
+      },
+      {
+        "type": "image",
+        "src": "./images\\slide10_img101.png",
+        "hasImage": true,
+        "elementIndex": 19
+      },
+      {
+        "type": "image",
+        "src": "./images\\slide10_img102.png",
+        "hasImage": true,
+        "elementIndex": 20
+      },
+      {
+        "type": "image",
+        "src": "./images\\slide10_img103.png",
+        "hasImage": true,
+        "elementIndex": 23
+      },
+      {
+        "type": "image",
+        "src": "./images\\slide10_img104.png",
+        "hasImage": true,
+        "elementIndex": 24
+      },
+      {
+        "type": "image",
+        "src": "./images\\slide10_img105.png",
+        "hasImage": true,
+        "elementIndex": 27
+      },
+      {
+        "type": "shape",
+        "content": "87%",
+        "elementIndex": 29
+      },
+      {
+        "type": "shape",
+        "content": "36%",
+        "elementIndex": 31
+      },
+      {
+        "type": "shape",
+        "content": "67%",
+        "elementIndex": 33
+      },
+      {
+        "type": "shape",
+        "content": "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+        "elementIndex": 35
+      },
+      {
+        "type": "shape",
+        "content": "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+        "elementIndex": 37
+      },
+      {
+        "type": "shape",
+        "content": "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+        "elementIndex": 39
+      },
+      {
+        "type": "shape",
+        "content": "Write a main idea here",
+        "elementIndex": 41
+      },
+      {
+        "type": "shape",
+        "content": "Write a main idea here",
+        "elementIndex": 43
+      },
+      {
+        "type": "shape",
+        "content": "Write a main idea here",
+        "elementIndex": 45
+      }
+    ],
+    "note": ""
+  },
+  {
+    "id": "Kuk5CHNztq",
+    "index": 11,
+    "slide": 12,
+    "elements": [
+      {
+        "type": "image",
+        "src": "./images\\slide11_img106.png",
+        "hasImage": true,
+        "elementIndex": 0
+      },
+      {
+        "type": "image",
+        "src": "./images\\slide11_img107.png",
+        "hasImage": true,
+        "elementIndex": 1
+      },
+      {
+        "type": "shape",
+        "content": "Write a main idea here",
+        "elementIndex": 3
+      },
+      {
+        "type": "shape",
+        "content": "01",
+        "elementIndex": 5
+      },
+      {
+        "type": "shape",
+        "content": "03",
+        "elementIndex": 7
+      },
+      {
+        "type": "shape",
+        "content": "02",
+        "elementIndex": 9
+      },
+      {
+        "type": "shape",
+        "content": "04",
+        "elementIndex": 11
+      },
+      {
+        "type": "shape",
+        "content": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor.",
+        "elementIndex": 13
+      },
+      {
+        "type": "shape",
+        "content": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor.",
+        "elementIndex": 15
+      },
+      {
+        "type": "shape",
+        "content": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor.",
+        "elementIndex": 17
+      },
+      {
+        "type": "shape",
+        "content": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor.",
+        "elementIndex": 19
+      },
+      {
+        "type": "shape",
+        "content": "04",
+        "elementIndex": 21
+      }
+    ],
+    "note": ""
+  },
+  {
+    "id": "9yrDox0mzw",
+    "index": 12,
+    "slide": 13,
+    "elements": [
+      {
+        "type": "image",
+        "src": "./images\\slide12_img108.png",
+        "hasImage": true,
+        "elementIndex": 0
+      },
+      {
+        "type": "image",
+        "src": "./images\\slide12_img109.jpeg",
+        "hasImage": true,
+        "elementIndex": 1
+      },
+      {
+        "type": "shape",
+        "content": "Write a main idea here",
+        "elementIndex": 3
+      },
+      {
+        "type": "shape",
+        "content": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
+        "elementIndex": 5
+      }
+    ],
+    "note": ""
+  },
+  {
+    "id": "V2PZHWGT8g",
+    "index": 13,
+    "slide": 14,
+    "elements": [
+      {
+        "type": "image",
+        "src": "./images\\slide13_img110.png",
+        "hasImage": true,
+        "elementIndex": 0
+      },
+      {
+        "type": "image",
+        "src": "./images\\slide13_img111.png",
+        "hasImage": true,
+        "elementIndex": 1
+      },
+      {
+        "type": "image",
+        "src": "./images\\slide13_img112.png",
+        "hasImage": true,
+        "elementIndex": 4
+      },
+      {
+        "type": "image",
+        "src": "./images\\slide13_img113.png",
+        "hasImage": true,
+        "elementIndex": 5
+      },
+      {
+        "type": "image",
+        "src": "./images\\slide13_img114.png",
+        "hasImage": true,
+        "elementIndex": 8
+      },
+      {
+        "type": "shape",
+        "content": "Write a main idea here",
+        "elementIndex": 10
+      },
+      {
+        "type": "shape",
+        "content": "Write a main idea here",
+        "elementIndex": 12
+      },
+      {
+        "type": "shape",
+        "content": "Write a main idea here",
+        "elementIndex": 14
+      },
+      {
+        "type": "shape",
+        "content": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+        "elementIndex": 16
+      },
+      {
+        "type": "shape",
+        "content": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+        "elementIndex": 18
+      },
+      {
+        "type": "image",
+        "src": "./images\\slide13_img115.png",
+        "hasImage": true,
+        "elementIndex": 19
+      },
+      {
+        "type": "image",
+        "src": "./images\\slide13_img116.png",
+        "hasImage": true,
+        "elementIndex": 20
+      }
+    ],
+    "note": ""
+  },
+  {
+    "id": "cHsogrB7nk",
+    "index": 14,
+    "slide": 15,
+    "elements": [
+      {
+        "type": "image",
+        "src": "./images\\slide14_img117.png",
+        "hasImage": true,
+        "elementIndex": 0
+      },
+      {
+        "type": "image",
+        "src": "./images\\slide14_img118.png",
+        "hasImage": true,
+        "elementIndex": 1
+      },
+      {
+        "type": "image",
+        "src": "./images\\slide14_img119.png",
+        "hasImage": true,
+        "elementIndex": 4
+      },
+      {
+        "type": "image",
+        "src": "./images\\slide14_img120.png",
+        "hasImage": true,
+        "elementIndex": 5
+      },
+      {
+        "type": "image",
+        "src": "./images\\slide14_img121.png",
+        "hasImage": true,
+        "elementIndex": 8
+      },
+      {
+        "type": "image",
+        "src": "./images\\slide14_img122.jpeg",
+        "hasImage": true,
+        "elementIndex": 9
+      },
+      {
+        "type": "shape",
+        "content": "Write a main idea here",
+        "elementIndex": 11
+      },
+      {
+        "type": "shape",
+        "content": "01",
+        "elementIndex": 13
+      },
+      {
+        "type": "shape",
+        "content": "02",
+        "elementIndex": 15
+      },
+      {
+        "type": "shape",
+        "content": "03",
+        "elementIndex": 17
+      },
+      {
+        "type": "shape",
+        "content": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+        "elementIndex": 19
+      },
+      {
+        "type": "shape",
+        "content": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+        "elementIndex": 21
+      },
+      {
+        "type": "shape",
+        "content": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+        "elementIndex": 23
+      },
+      {
+        "type": "image",
+        "src": "./images\\slide14_img123.png",
+        "hasImage": true,
+        "elementIndex": 24
+      }
+    ],
+    "note": ""
+  },
+  {
+    "id": "6i_RLR6hEM",
+    "index": 15,
+    "slide": 16,
+    "elements": [
+      {
+        "type": "image",
+        "src": "./images\\slide15_img124.png",
+        "hasImage": true,
+        "elementIndex": 0
+      },
+      {
+        "type": "image",
+        "src": "./images\\slide15_img125.jpeg",
+        "hasImage": true,
+        "elementIndex": 1
+      },
+      {
+        "type": "shape",
+        "content": "Xulosa",
+        "elementIndex": 3
+      },
+      {
+        "type": "shape",
+        "content": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
+        "elementIndex": 5
+      }
+    ],
+    "note": ""
+  },
+  {
+    "id": "zECRdyO-LC",
+    "index": 16,
+    "slide": 17,
+    "elements": [
+      {
+        "type": "image",
+        "src": "./images\\slide16_img126.png",
+        "hasImage": true,
+        "elementIndex": 0
+      },
+      {
+        "type": "image",
+        "src": "./images\\slide16_img127.png",
+        "hasImage": true,
+        "elementIndex": 1
+      },
+      {
+        "type": "image",
+        "src": "./images\\slide16_img128.png",
+        "hasImage": true,
+        "elementIndex": 2
+      },
+      {
+        "type": "image",
+        "src": "./images\\slide16_img129.png",
+        "hasImage": true,
+        "elementIndex": 5
+      },
+      {
+        "type": "shape",
+        "content": "Foydalanilgan adabiyotlar",
+        "elementIndex": 7
+      },
+      {
+        "type": "shape",
+        "content": "Foydalanilgan adabiyotlarFoydalanilgan adabiyotlarFoydalanilgan adabiyotlarFoydalanilgan adabiyotlarFoydalanilgan adabiyotlarFoydalanilgan adabiyotlarFoydalanilgan adabiyotlarFoydalanilgan adabiyotlarFoydalanilgan adabiyotlarFoydalanilgan adabiyotlar",
+        "elementIndex": 9
+      }
+    ],
+    "note": ""
+  },
+  {
+    "id": "uFZMc04BHB",
+    "index": 17,
+    "slide": 18,
+    "elements": [
+      {
+        "type": "image",
+        "src": "./images\\slide17_img130.png",
+        "hasImage": true,
+        "elementIndex": 0
+      },
+      {
+        "type": "shape",
+        "content": "Etiboringiz uchun rahmat",
+        "elementIndex": 2
+      }
+    ],
+    "note": ""
+  }
+]

@@ -1,0 +1,142 @@
+{
+  "id": "-FYKbTLrT1",
+  "index": 10,
+  "slide": 11,
+  "elements": [
+    {
+      "type": "image",
+      "src": "./images\\slide10_img92.png",
+      "hasImage": true,
+      "elementIndex": 0
+    },
+    {
+      "type": "image",
+      "src": "./images\\slide10_img93.png",
+      "hasImage": true,
+      "elementIndex": 1
+    },
+    {
+      "type": "image",
+      "src": "./images\\slide10_img94.png",
+      "hasImage": true,
+      "elementIndex": 2
+    },
+    {
+      "type": "image",
+      "src": "./images\\slide10_img95.png",
+      "hasImage": true,
+      "elementIndex": 5
+    },
+    {
+      "type": "image",
+      "src": "./images\\slide10_img96.png",
+      "hasImage": true,
+      "elementIndex": 6
+    },
+    {
+      "type": "image",
+      "src": "./images\\slide10_img97.png",
+      "hasImage": true,
+      "elementIndex": 9
+    },
+    {
+      "type": "image",
+      "src": "./images\\slide10_img98.png",
+      "hasImage": true,
+      "elementIndex": 10
+    },
+    {
+      "type": "image",
+      "src": "./images\\slide10_img99.png",
+      "hasImage": true,
+      "elementIndex": 13
+    },
+    {
+      "type": "shape",
+      "content": "O'smalarni oldini olish uchun muntazam ravishda tibbiy tekshiruvlar o'tkazish kerak.",
+      "elementIndex": 15
+    },
+    {
+      "type": "image",
+      "src": "./images\\slide10_img100.png",
+      "hasImage": true,
+      "elementIndex": 16
+    },
+    {
+      "type": "image",
+      "src": "./images\\slide10_img101.png",
+      "hasImage": true,
+      "elementIndex": 19
+    },
+    {
+      "type": "image",
+      "src": "./images\\slide10_img102.png",
+      "hasImage": true,
+      "elementIndex": 20
+    },
+    {
+      "type": "image",
+      "src": "./images\\slide10_img103.png",
+      "hasImage": true,
+      "elementIndex": 23
+    },
+    {
+      "type": "image",
+      "src": "./images\\slide10_img104.png",
+      "hasImage": true,
+      "elementIndex": 24
+    },
+    {
+      "type": "image",
+      "src": "./images\\slide10_img105.png",
+      "hasImage": true,
+      "elementIndex": 27
+    },
+    {
+      "type": "shape",
+      "content": "87%",
+      "elementIndex": 29
+    },
+    {
+      "type": "shape",
+      "content": "36%",
+      "elementIndex": 31
+    },
+    {
+      "type": "shape",
+      "content": "67%",
+      "elementIndex": 33
+    },
+    {
+      "type": "shape",
+      "content": "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+      "elementIndex": 35
+    },
+    {
+      "type": "shape",
+      "content": "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+      "elementIndex": 37
+    },
+    {
+      "type": "shape",
+      "content": "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+      "elementIndex": 39
+    },
+    {
+      "type": "shape",
+      "content": "Write a main idea here",
+      "elementIndex": 41
+    },
+    {
+      "type": "shape",
+      "content": "Write a main idea here",
+      "elementIndex": 43
+    },
+    {
+      "type": "shape",
+      "content": "Write a main idea here",
+      "elementIndex": 45
+    }
+  ],
+  "note": ""
+}

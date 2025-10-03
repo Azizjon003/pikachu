@@ -1,7 +1,7 @@
 import fs from "fs";
 import { exportPPTX } from "./main";
 
-const json = fs.readFileSync("Amir.json", "utf-8");
+const json = fs.readFileSync("Amir.fullSxema.json", "utf-8");
 
 const data = JSON.parse(json);
 
