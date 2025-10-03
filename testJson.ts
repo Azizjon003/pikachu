@@ -1,7 +1,7 @@
 import { importPPTX } from "./json";
 import fs from "fs";
 
-const buffer = fs.readFileSync("PR-3.pptx");
+const buffer = fs.readFileSync("PR-1.pptx");
 
 const start = async () => {
   const slides = await importPPTX(buffer as unknown as ArrayBuffer, {

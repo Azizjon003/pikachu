@@ -2,136 +2,71 @@
   "slideId": "K-Jt3ow7KB",
   "elements": [
     {
+      "elementIndex": 1,
+      "content": "O'sma tasnifi jadvali",
+      "tableData": {
+        "data": [
+          [
+            "Tasnif",
+            "Tushuntirish"
+          ],
+          [
+            "O'sma o'simliklar",
+            "O'simliklar orasida ko'p yillik va yillik o'simliklar, asosan, ildizdan yuqoriga o'sadi."
+          ],
+          [
+            "Yillik o'simliklar",
+            "Har yili o'sib, meva berib, keyin o'ladi."
+          ],
+          [
+            "Ko'p yillik o'simliklar",
+            "Bir necha yil davomida o'sib, har yili meva beradi."
+          ],
+          [
+            "O'sma o'simliklar turlari",
+            "Yashil, gul va mevali o'simliklar kabi turli xil turlarga ega."
+          ]
+        ]
+      }
+    },
+    {
       "elementIndex": 2,
-      "content": "Nerv tizimi o'smalari: Turlari va simptomlari",
+      "content": "O'sma Tasnifi Jadvali",
       "tableData": {
         "data": []
       }
     },
     {
       "elementIndex": 3,
-      "content": "Nerv tizimi o'smalari, asosan, beyning, orqa miyaning va nerv tolalarining o'smalari hisoblanadi. Ular turli xil turlarga ega bo'lib, har birining o'ziga xos simptomlari mavjud.",
+      "content": "O'sma O'simliklarning Turlari",
       "tableData": {
         "data": []
       }
     },
     {
-      "elementIndex": 4,
-      "content": "O'sma turlari",
-      "tableData": {
-        "data": [
-          [
-            "O'sma turi",
-            "Simptomlari"
-          ],
-          [
-            "Astrositoma",
-            "Bosh og'rig'i, bosh aylanishi"
-          ],
-          [
-            "Meningioma",
-            "Ko'rish qobiliyatining pasayishi, bosh og'rig'i"
-          ],
-          [
-            "Neuroblastoma",
-            "Qorin og'rig'i, tez-tez qichish"
-          ],
-          [
-            "Glioblastoma",
-            "Yodlanishning pasayishi, muammoli nutq"
-          ]
-        ]
-      }
-    },
-    {
       "elementIndex": 5,
-      "content": "O'smalarning simptomlari ko'pincha bemorning umumiy holatiga ta'sir qiladi. Bosh og'rig'i, qusish, ko'rish qobiliyatining pasayishi kabi belgilar kuzatilishi mumkin.",
+      "content": "O'simliklarning Ko'payishi",
       "tableData": {
         "data": []
       }
     },
     {
       "elementIndex": 6,
-      "content": "O'smalarning sabablari",
+      "content": "O'simliklar va Ularning Muhimligi",
       "tableData": {
-        "data": [
-          [
-            "Sabab",
-            "Tavsif"
-          ],
-          [
-            "Genetik omillar",
-            "O'smalar ba'zan irsiy bo'lishi mumkin."
-          ],
-          [
-            "Atrof-muhit faktorlari",
-            "Noxush kimyoviy moddalar bilan aloqa."
-          ],
-          [
-            "Immun tizimi muammolari",
-            "Ba'zi hollarda immun tizimining zaifligi sabab bo'lishi mumkin."
-          ]
-        ]
-      }
-    },
-    {
-      "elementIndex": 7,
-      "content": "O'smalarni aniqlash usullari",
-      "tableData": {
-        "data": [
-          [
-            "Usul",
-            "Tavsif"
-          ],
-          [
-            "MRI",
-            "Miya va orqa miya tasvirlari olish uchun."
-          ],
-          [
-            "Kompyuter tomografiyasi",
-            "O'smalarni aniqlashda yordam beradi."
-          ],
-          [
-            "Biopsiya",
-            "O'smadan to'qima namunasi olish."
-          ]
-        ]
-      }
-    },
-    {
-      "elementIndex": 8,
-      "content": "O'smalarni davolash usullari",
-      "tableData": {
-        "data": [
-          [
-            "Usul",
-            "Tavsif"
-          ],
-          [
-            "Xirurgiya",
-            "O'smani olib tashlash operatsiyasi."
-          ],
-          [
-            "Kimyoterapiya",
-            "O'smalarning o'sishini to'xtatadi."
-          ],
-          [
-            "Radioterapiya",
-            "O'sma hujayralarini yo'q qilish uchun."
-          ]
-        ]
+        "data": []
       }
     },
     {
       "elementIndex": 9,
-      "content": "Mavzuni muhokama qilish",
+      "content": "O'simliklar Ekologik Tizimda",
       "tableData": {
         "data": []
       }
     },
     {
       "elementIndex": 10,
-      "content": "Bizning maqsadimiz nerv tizimi o'smalarini erta aniqlash va davolash usullarini yaxshilashdir.",
+      "content": "O'simliklar va Oziqlanish",
       "tableData": {
         "data": []
       }

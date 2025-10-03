@@ -1,69 +1,25 @@
 {
-  "id": "Kuk5CHNztq",
-  "index": 11,
-  "slide": 12,
+  "id": "JajBF26vDA",
+  "index": 10,
+  "slide": 11,
   "elements": [
     {
-      "type": "image",
-      "src": "./images\\slide11_img106.png",
-      "hasImage": true,
+      "type": "shape",
+      "width": 836.4882939632545,
+      "height": 70,
+      "left": 54,
+      "top": 175,
+      "content": "Etiboringiz uchun rahmat",
       "elementIndex": 0
     },
     {
-      "type": "image",
-      "src": "./images\\slide11_img107.png",
-      "hasImage": true,
+      "type": "shape",
+      "width": 300,
+      "height": 22,
+      "left": 0,
+      "top": 0,
+      "content": "Etiboringiz uchun rahmat!",
       "elementIndex": 1
-    },
-    {
-      "type": "shape",
-      "content": "Nerv tizimi o'smalari turlari va ularning simptomlari",
-      "elementIndex": 3
-    },
-    {
-      "type": "shape",
-      "content": "1",
-      "elementIndex": 5
-    },
-    {
-      "type": "shape",
-      "content": "3",
-      "elementIndex": 7
-    },
-    {
-      "type": "shape",
-      "content": "2",
-      "elementIndex": 9
-    },
-    {
-      "type": "shape",
-      "content": "Nerv tizimining o'smalari asosan miya va umurtqa pog'onasida paydo bo'ladi. Ular turli xil simptomlarni keltirib chiqarishi mumkin.",
-      "elementIndex": 11
-    },
-    {
-      "type": "shape",
-      "content": "Nerv tizimi o'smalari umumiy simptomlari: bosh og'rig'i, ko'rish va eshitish qobiliyatining pasayishi, muvozanatni yo'qotish.",
-      "elementIndex": 13
-    },
-    {
-      "type": "shape",
-      "content": "Maxsus simptomlar: yodda saqlash qobiliyatining pasayishi, mantiqiy fikrlashda qiyinchilik. Ular o'sma joylashuvi va turiga bog'liq.",
-      "elementIndex": 15
-    },
-    {
-      "type": "shape",
-      "content": "O'smalarning turlari: benign (yaxshi sifatli) va malign (yomon sifatli). Har biri o'ziga xos simptomlarga ega.",
-      "elementIndex": 17
-    },
-    {
-      "type": "shape",
-      "content": "4",
-      "elementIndex": 19
-    },
-    {
-      "type": "shape",
-      "content": "2",
-      "elementIndex": 21
     }
   ],
   "note": ""

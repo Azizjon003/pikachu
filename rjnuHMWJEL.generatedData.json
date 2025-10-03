@@ -2,36 +2,71 @@
   "slideId": "rjnuHMWJEL",
   "elements": [
     {
-      "elementIndex": 1,
-      "content": "",
+      "elementIndex": 5,
+      "content": "Nerv tizimi o'smalari, asosan, miya va orqa miyada joylashgan o'smalardir. Bu o'smalar benign (yaxshi sifatli) yoki malign (yomon sifatli) bo'lishi mumkin. Tashxis qo'yish jarayoni ko'plab bosqichlardan iborat bo'lib, simptomlar, tasviriy tekshiruvlar va histologik tahlillarni o'z ichiga oladi.",
       "tableData": {
-        "data": [
-          [
-            "Nerv tizimi o'smalari turi",
-            "Tavsif",
-            "Belgilari"
-          ],
-          [
-            "Astrositoma",
-            "Miya nerv hujayralaridan kelib chiqadi",
-            "Bosh og'rig'i, o'zgaruvchan ruhiy holat"
-          ],
-          [
-            "Meningioma",
-            "Meningeal hujayralardan rivojlanadi",
-            "Ko'pincha asimptomatik, lekin bosh og'rig'i keltirib chiqarishi mumkin"
-          ],
-          [
-            "Neuroblastoma",
-            "Nerv tizimining embrional o'smasi",
-            "Qon aylanishi buzilishi, og'riq"
-          ]
-        ]
+        "data": []
       }
     },
     {
-      "elementIndex": 2,
-      "content": "Nerv tizimi o'smalari haqida umumiy ma'lumot",
+      "elementIndex": 6,
+      "content": "O'smalarni aniqlashda asosiy simptomlar quyidagilar: bosh og'rig'i, ko'rish yoki eshitish qobiliyatining pasayishi, muvozanatni yo'qotish, mushak kuchining zaiflashishi va boshqa nevrologik belgilar. Ushbu simptomlar o'sma joylashgan joyga qarab farqlanadi.",
+      "tableData": {
+        "data": []
+      }
+    },
+    {
+      "elementIndex": 9,
+      "content": "O'smalarni tasvirlash uchun foydalaniladigan asosiy usullar: Kompyuter tomografiyasi (KT), magnit-rezonans tomografiya (MRT) va ultratovush tekshiruvi. Bu usullar o'sma joylashuvi va o'lchamini aniqlashda muhim rol o'ynaydi.",
+      "tableData": {
+        "data": []
+      }
+    },
+    {
+      "elementIndex": 10,
+      "content": "Histologik tahlil – o'sma to'qimalarini mikroskop yordamida o'rganish. Bu jarayon o'smaning xususiyatlarini aniqlashga yordam beradi, jumladan, uning malign yoki benign ekanligini belgilaydi.",
+      "tableData": {
+        "data": []
+      }
+    },
+    {
+      "elementIndex": 12,
+      "content": "O'smalarni tashxis qilishda qo'llaniladigan laboratoriya tahlillari: qon tahlili, onkomarkerlar tahlili va genetik testlar. Bu tahlillar o'sma bilan bog'liq bo'lgan biologik belgilarni aniqlashga yordam beradi.",
+      "tableData": {
+        "data": []
+      }
+    },
+    {
+      "elementIndex": 13,
+      "content": "Tashxis jarayonida bemorlar bilan aloqada bo'lish, ularni xabardor qilish va qo'llab-quvvatlash muhimdir. Psixologik yordam ham muhim ahamiyatga ega, chunki o'sma tashxisi bemorlar uchun ruhiy bosim keltirishi mumkin.",
+      "tableData": {
+        "data": []
+      }
+    },
+    {
+      "elementIndex": 14,
+      "content": "Tashxis qo'yilgandan so'ng, davolash strategiyasi aniqlanadi. Bu jarayonda jarrohlik, radioterapiya va kimyoterapiya kabi usullar qo'llaniladi.",
+      "tableData": {
+        "data": []
+      }
+    },
+    {
+      "elementIndex": 15,
+      "content": "O'smalarni davolashda bemorning yoshiga, umumiy sog'lig'iga va o'smaning joylashuvi va turiga qarab individual yondashuv amalga oshiriladi. Har bir bemor uchun eng yaxshi davolash rejasi ishlab chiqiladi.",
+      "tableData": {
+        "data": []
+      }
+    },
+    {
+      "elementIndex": 17,
+      "content": "O'smalarni erta aniqlash hayotiy ahamiyatga ega. O'smalarning erta bosqichda aniqlanishi davolash muvaffaqiyatini oshiradi va bemorning umri uzayishiga yordam beradi.",
+      "tableData": {
+        "data": []
+      }
+    },
+    {
+      "elementIndex": 18,
+      "content": "O'smalarni aniqlash va davolash jarayonida bemorlar va ularning oilalari uchun ma'lumot va ko'mak berish muhimdir. Bemorlarning o'zlarini qanday his qilishlari va ularga yordam berish uchun qo'llanma taqdim etish zarur.",
       "tableData": {
         "data": []
       }

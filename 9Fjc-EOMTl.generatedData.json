@@ -2,29 +2,169 @@
   "slideId": "9Fjc-EOMTl",
   "elements": [
     {
-      "elementIndex": 13,
-      "content": "Nerv tizimi o'smalari haqida umumiy ma'lumot",
+      "elementIndex": 2,
+      "content": "Nerv tizimi o'smalari - bu nerv hujayralaridan kelib chiqadigan, asosan, o'simta yoki zararlanishlar. Ular turli xil shakl va o'lchamlarda bo'lishi mumkin, ko'pincha benign (yaxshi sifatli) yoki malign (yomon sifatli) bo'ladi. O'smalar asab tizimining har qanday qismida paydo bo'lishi mumkin, shu jumladan miya, orqa miya va periferik nervlar.",
+      "tableData": {
+        "data": []
+      }
+    },
+    {
+      "elementIndex": 3,
+      "content": "O'smalarning ko'p turlari mavjud, jumladan:  \n- Nevrinoma: periferik nervlardan kelib chiqadigan o'smalar.  \n- Gglioma: miya va orqa miyadagi glial hujayralardan kelib chiqadi.  \n- Meningioma: meningesdan paydo bo'lgan o'smalar.  \n- Astrotsitoma: astrotsitlardan kelib chiqadigan o'smalar, miya hujayralarining bir turi.",
+      "tableData": {
+        "data": []
+      }
+    },
+    {
+      "elementIndex": 6,
+      "content": "Nerv tizimi o'smalarining belgilari o'smaning joylashishi va o'lchamiga bog'liq. Odatda, belgilarga quyidagilar kiradi:  \n- Bosh og'rig'i  \n- Mijozning muvozanatni yo'qotishi  \n- Ko'rish yoki eshitish qobiliyatining pasayishi  \n- Mushak kuchining yo'qolishi yoki zaifligi.",
+      "tableData": {
+        "data": []
+      }
+    },
+    {
+      "elementIndex": 7,
+      "content": "Nerv tizimi o'smalarini aniqlash uchun bir nechta diagnostik usullar mavjud:  \n- MRI (magnit-rezonans tomografiya)  \n- CT (kompyuter tomografiyasi)  \n- Biopsiya: o'sma hujayralarini olish va ularni laboratoriyada tekshirish.",
+      "tableData": {
+        "data": []
+      }
+    },
+    {
+      "elementIndex": 10,
+      "content": "O'smalarni davolash usullari o'sma turiga, joylashuviga va bemorning umumiy sog'lig'iga bog'liq. Davolash usullariga quyidagilar kiradi:  \n- Jarrohlik: o'smani olib tashlash.  \n- Radioterapiya: o'sma joyiga nurlanish.  \n- Kimyoterapiya: o'sma hujayralarini o'ldirish uchun dori-darmonlar.",
+      "tableData": {
+        "data": []
+      }
+    },
+    {
+      "elementIndex": 11,
+      "content": "O'smalarni davolashda bemor uchun qo'shimcha yordam ko'rsatish juda muhim. Bu psixologik yordam, reabilitatsiya va sog'liqni saqlash xizmatlarini o'z ichiga oladi. Bemorning holatini yaxshilash va hayot sifatini oshirish uchun zarur.",
       "tableData": {
         "data": []
       }
     },
     {
       "elementIndex": 14,
-      "content": "Nerv tizimi o'smalari, asosan, nerv to'qimalaridan hosil bo'ladigan o'smalardir. Ular benign (yaxshi sifatli) yoki malign (yomon sifatli) bo'lishi mumkin. Ushbu o'smalar asosan bosh miya, orqa miya va periferal nervlarda uchraydi.",
+      "content": "O'smalarni oldini olish uchun sog'lom turmush tarzini saqlash, stressni kamaytirish va muntazam tibbiy ko'riklardan o'tish zarur. Oziqlanish, jismoniy faollik va zararli odatlardan qochish o'smalar xavfini kamaytiradi.",
       "tableData": {
         "data": []
       }
     },
     {
       "elementIndex": 15,
-      "content": "Nerv tizimi o'smalari simptomlari orasida bosh og'rig'i, muvofiqlikning yo'qolishi, his-tuyg'u o'zgarishlari va harakat qobiliyatida muammolar kiradi. Katta o'smalar atrofdagi to'qimalarga bosim o'tkazishi mumkin.",
+      "content": "Yana bir muhim jihat, o'smalarni erta bosqichda aniqlashdir. O'smalarni aniqlash va davolash jarayoni bemorlar va ularning oilalari uchun juda muhimdir. O'smalarni erta aniqlash ko'plab hayotlarni saqlab qolishi mumkin.",
       "tableData": {
         "data": []
       }
     },
     {
-      "elementIndex": 16,
-      "content": "Davolash usullari o'smaning turiga, joylashuviga va bemorning umumiy holatiga bog'liq. Jarrohlik, radiatsiya terapiyasi va kimyoviy terapiya keng tarqalgan usullardir.",
+      "elementIndex": 18,
+      "content": "O'smalarni davolash jarayonida bemorlarni qo'llab-quvvatlash muhimdir. Bemorlar va ularning yaqinlari uchun psixologik yordam hamda reabilitatsiya dasturlari juda muhim.",
+      "tableData": {
+        "data": []
+      }
+    },
+    {
+      "elementIndex": 19,
+      "content": "Nerv tizimi o'smalarining ko'pchiligi o'simta yoki zararlanish sifatida paydo bo'ladi. Ular har qanday yoshda va jinsda paydo bo'lishi mumkin.",
+      "tableData": {
+        "data": []
+      }
+    },
+    {
+      "elementIndex": 22,
+      "content": "O'smalarni o'rganish uchun ko'plab tadqiqotlar o'tkazilmoqda. Zamonaviy tibbiyot texnologiyalari yordamida o'smalarni aniqlash va davolash usullari doimiy ravishda yangilanmoqda.",
+      "tableData": {
+        "data": []
+      }
+    },
+    {
+      "elementIndex": 23,
+      "content": "O'smalarni o'rganish va davolash jarayonida bemorlar uchun qo'llab-quvvatlash juda muhim. O'smalarga qarshi kurashda bilim va tajribaga ega bo'lgan mutaxassislar bilan ishlash zarur.",
+      "tableData": {
+        "data": []
+      }
+    },
+    {
+      "elementIndex": 26,
+      "content": "O'smalarni davolashda innovatsion yondashuvlar, masalan, gen terapiyasi va immunoterapiya kabi yangi usullar tadqiq qilinmoqda. Bu usullar o'sma hujayralarini maqsadli ravishda yo'q qilishga yordam beradi.",
+      "tableData": {
+        "data": []
+      }
+    },
+    {
+      "elementIndex": 27,
+      "content": "O'smalarni davolashda bemorlar uchun individual yondashuv zarur. Har bir bemorning o'ziga xos holati va ehtiyojlari hisobga olinishi kerak.",
+      "tableData": {
+        "data": []
+      }
+    },
+    {
+      "elementIndex": 30,
+      "content": "O'smalarni oldini olish uchun sog'lom turmush tarzini saqlash, stressni kamaytirish va muntazam tibbiy ko'riklardan o'tish zarur. Oziqlanish, jismoniy faollik va zararli odatlardan qochish o'smalar xavfini kamaytiradi.",
+      "tableData": {
+        "data": []
+      }
+    },
+    {
+      "elementIndex": 31,
+      "content": "O'smalarni erta aniqlash ko'plab hayotlarni saqlab qolishi mumkin. O'smalarni aniqlash va davolash jarayoni bemorlar va ularning oilalari uchun juda muhimdir.",
+      "tableData": {
+        "data": []
+      }
+    },
+    {
+      "elementIndex": 34,
+      "content": "Nerv tizimi o'smalarini o'rganish va davolash jarayonida bemorlarni qo'llab-quvvatlash muhimdir. Psixologik yordam va reabilitatsiya dasturlari bemorlar uchun zarur.",
+      "tableData": {
+        "data": []
+      }
+    },
+    {
+      "elementIndex": 35,
+      "content": "O'smalarni o'rganish va davolash jarayonida bemorlar uchun ko'plab imkoniyatlar mavjud. O'smalarni aniqlash va davolash jarayoni bemorlar va ularning oilalari uchun juda muhimdir.",
+      "tableData": {
+        "data": []
+      }
+    },
+    {
+      "elementIndex": 37,
+      "content": "Nerv tizimi o'smalari haqida umumiy ma'lumot",
+      "tableData": {
+        "data": []
+      }
+    },
+    {
+      "elementIndex": 38,
+      "content": "Nerv tizimi o'smalari: Tushuncha va Davolash",
+      "tableData": {
+        "data": []
+      }
+    },
+    {
+      "elementIndex": 39,
+      "content": "O'smalarni aniqlash va davolash jarayoni bemorlar va ularning oilalari uchun juda muhimdir. O'smalarni erta aniqlash ko'plab hayotlarni saqlab qolishi mumkin.",
+      "tableData": {
+        "data": []
+      }
+    },
+    {
+      "elementIndex": 40,
+      "content": "O'smalarni o'rganish va davolash jarayonida bemorlarni qo'llab-quvvatlash muhimdir. Psixologik yordam va reabilitatsiya dasturlari bemorlar uchun zarur.",
+      "tableData": {
+        "data": []
+      }
+    },
+    {
+      "elementIndex": 41,
+      "content": "O'smalarni oldini olish uchun sog'lom turmush tarzini saqlash, stressni kamaytirish va muntazam tibbiy ko'riklardan o'tish zarur.",
+      "tableData": {
+        "data": []
+      }
+    },
+    {
+      "elementIndex": 42,
+      "content": "O'smalarni o'rganish va davolash jarayonida bemorlar uchun ko'plab imkoniyatlar mavjud. O'smalarni aniqlash va davolash jarayoni bemorlar va ularning oilalari uchun juda muhimdir.",
       "tableData": {
         "data": []
       }

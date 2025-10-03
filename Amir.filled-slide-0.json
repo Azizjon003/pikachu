@@ -1,53 +1,37 @@
 {
-  "id": "WT_8SMwpsK",
+  "id": "v9_E9kb5eB",
   "index": 0,
   "slide": 1,
   "elements": [
     {
-      "type": "image",
-      "src": "./images\\slide0_img1.png",
-      "hasImage": true,
+      "type": "shape",
+      "width": 311.22477690288713,
+      "height": 58,
+      "left": 55,
+      "top": 45.64724409448819,
+      "content": "Amir Temur",
       "elementIndex": 0
     },
     {
-      "type": "image",
-      "src": "./images\\slide0_img2.png",
-      "hasImage": true,
+      "type": "shape",
+      "width": 286.23097112860887,
+      "height": 40,
+      "left": 651.7767979002624,
+      "top": 133.36041994750656,
+      "content": "Azizjon Aliqulov",
       "elementIndex": 1
     },
     {
       "type": "image",
-      "src": "./images\\slide0_img3.png",
+      "src": "./images\\slide0_img1.png",
       "hasImage": true,
       "elementIndex": 2
     },
     {
       "type": "image",
-      "src": "./images\\slide0_img4.png",
+      "src": "./images\\slide0_img2.png",
       "hasImage": true,
-      "elementIndex": 3
-    },
-    {
-      "type": "shape",
-      "content": "Nerv tizimi o'smalari",
       "elementIndex": 5
-    },
-    {
-      "type": "image",
-      "src": "./images\\slide0_img5.png",
-      "hasImage": true,
-      "elementIndex": 6
-    },
-    {
-      "type": "image",
-      "src": "./images\\slide0_img6.png",
-      "hasImage": true,
-      "elementIndex": 7
-    },
-    {
-      "type": "shape",
-      "content": "Azizjon Aliqulov",
-      "elementIndex": 9
     }
   ],
   "note": ""

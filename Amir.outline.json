@@ -1,120 +1,48 @@
 {
   "outline": [
     {
-      "title": "Nerv tizimi o'smalari haqida umumiy ma'lumot",
-      "title_eng": "General Information about Nervous System Tumors"
+      "title": "Nerv tizimi o'smalari va ularning sabablari",
+      "title_eng": "Nerv System Tumors and Their Causes"
     },
     {
-      "title": "Nerv tizimi o'smalari turlari va ularning simptomlari",
-      "title_eng": "Types of Nervous System Tumors and Their Symptoms"
+      "title": "Nerv tizimi o'smalari alomatlari",
+      "title_eng": "Symptoms of Nerv System Tumors"
     },
     {
-      "title": "Nerv tizimi o'smalarini davolash usullari",
-      "title_eng": "Treatment Methods for Nervous System Tumors"
+      "title": "Nerv tizimi o'smalari davolash usullari",
+      "title_eng": "Treatment Methods for Nerv System Tumors"
     }
   ],
   "slides": [
     {
-      "slideIndex": 2,
-      "title": "Nerv tizimi o'smalari haqida umumiy ma'lumot",
-      "title_eng": "General Information about Nervous System Tumors",
+      "slideIndex": 0,
+      "title": "Kirish",
+      "title_eng": "Introduction",
       "outlineIndex": 0
     },
     {
-      "slideIndex": 3,
-      "title": "Nerv tizimi o'smalari haqida umumiy ma'lumot",
-      "title_eng": "General Information about Nervous System Tumors",
+      "slideIndex": 2,
+      "title": "Nerv tizimi o'smalari va sabablar",
+      "title_eng": "Nerv System Tumors and Causes",
       "outlineIndex": 0
     },
     {
       "slideIndex": 4,
-      "title": "Nerv tizimi o'smalari turlari va ularning simptomlari",
-      "title_eng": "Types of Nervous System Tumors and Their Symptoms",
+      "title": "Nerv tizimi o'smalari alomatlari",
+      "title_eng": "Symptoms of Nerv System Tumors",
       "outlineIndex": 1
     },
     {
       "slideIndex": 5,
-      "title": "Nerv tizimi o'smalari turlari va ularning simptomlari",
-      "title_eng": "Types of Nervous System Tumors and Their Symptoms",
-      "outlineIndex": 1
-    },
-    {
-      "slideIndex": 6,
-      "title": "Nerv tizimi o'smalarini davolash usullari",
-      "title_eng": "Treatment Methods for Nervous System Tumors",
+      "title": "Nerv tizimi o'smalari davolash usullari",
+      "title_eng": "Treatment Methods for Nerv System Tumors",
       "outlineIndex": 2
-    },
-    {
-      "slideIndex": 7,
-      "title": "Nerv tizimi o'smalarini davolash usullari",
-      "title_eng": "Treatment Methods for Nervous System Tumors",
-      "outlineIndex": 2
-    },
-    {
-      "slideIndex": 8,
-      "title": "Nerv tizimi o'smalari haqida umumiy ma'lumot",
-      "title_eng": "General Information about Nervous System Tumors",
-      "outlineIndex": 0
-    },
-    {
-      "slideIndex": 9,
-      "title": "Nerv tizimi o'smalari turlari va ularning simptomlari",
-      "title_eng": "Types of Nervous System Tumors and Their Symptoms",
-      "outlineIndex": 1
-    },
-    {
-      "slideIndex": 10,
-      "title": "Nerv tizimi o'smalarini davolash usullari",
-      "title_eng": "Treatment Methods for Nervous System Tumors",
-      "outlineIndex": 2
-    },
-    {
-      "slideIndex": 11,
-      "title": "Nerv tizimi o'smalari turlari va ularning simptomlari",
-      "title_eng": "Types of Nervous System Tumors and Their Symptoms",
-      "outlineIndex": 1
-    },
-    {
-      "slideIndex": 12,
-      "title": "Nerv tizimi o'smalarini davolash usullari",
-      "title_eng": "Treatment Methods for Nervous System Tumors",
-      "outlineIndex": 2
-    },
-    {
-      "slideIndex": 2,
-      "title": "Nerv tizimi o'smalari haqida umumiy ma'lumot",
-      "title_eng": "General Information about Nervous System Tumors",
-      "outlineIndex": 0
     },
     {
       "slideIndex": 3,
-      "title": "Nerv tizimi o'smalari haqida umumiy ma'lumot",
-      "title_eng": "General Information about Nervous System Tumors",
-      "outlineIndex": 0
-    },
-    {
-      "slideIndex": 4,
-      "title": "Nerv tizimi o'smalari turlari va ularning simptomlari",
-      "title_eng": "Types of Nervous System Tumors and Their Symptoms",
+      "title": "Ta'sirlar",
+      "title_eng": "Impacts",
       "outlineIndex": 1
-    },
-    {
-      "slideIndex": 5,
-      "title": "Nerv tizimi o'smalari turlari va ularning simptomlari",
-      "title_eng": "Types of Nervous System Tumors and Their Symptoms",
-      "outlineIndex": 1
-    },
-    {
-      "slideIndex": 6,
-      "title": "Nerv tizimi o'smalarini davolash usullari",
-      "title_eng": "Treatment Methods for Nervous System Tumors",
-      "outlineIndex": 2
-    },
-    {
-      "slideIndex": 7,
-      "title": "Nerv tizimi o'smalarini davolash usullari",
-      "title_eng": "Treatment Methods for Nervous System Tumors",
-      "outlineIndex": 2
     }
   ]
 }

@@ -1,21 +1,21 @@
 {
-  "slideId": "thankyou-nerv-tizimi-osmalari",
+  "slideId": "thank_you_slide_01",
   "elements": [
     {
       "elementIndex": 1,
-      "content": "Hammaga assalom!"
+      "content": "Etiboringiz uchun rahmat!"
     },
     {
       "elementIndex": 2,
-      "content": "Nerv tizimi o'smalari haqida eslatib o'tganingiz uchun katta rahmat!"
+      "content": "Nerv tizimi o'smalari bo'yicha taqdimotimizda ishtirok etganingiz uchun minnatdormiz."
     },
     {
       "elementIndex": 3,
-      "content": "Savollaringiz bo'lsa, ularga javob berishga tayyorman."
+      "content": "Savollaringiz bo'lsa, bemalol so'rang!"
     },
     {
       "elementIndex": 4,
-      "content": "Sizlarning e'tiboringiz va qiziqishingiz uchun rahmat!"
+      "content": "Sizga sog'lik va muvaffaqiyatlar tilaymiz!"
     }
   ]
 }

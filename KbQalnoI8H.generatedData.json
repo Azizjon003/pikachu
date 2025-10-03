@@ -2,50 +2,141 @@
   "slideId": "KbQalnoI8H",
   "elements": [
     {
+      "elementIndex": 2,
+      "content": "Nerv tizimi o'smalari, asosan, miyaning, orqa miya va periferik nerv tizimining turli qismlarida paydo bo'ladigan o'smalardir. Ular benign (yaxshi) yoki malign (yomon) bo'lishi mumkin.",
+      "tableData": {
+        "data": []
+      }
+    },
+    {
       "elementIndex": 3,
-      "content": "Nerv tizimi o'smalari turlari",
+      "content": "O'smalar turlicha simptomlar va belgilar bilan namoyon bo'lishi mumkin. Bu belgilar o'smaning joylashuvi, o'lchami va turiga bog'liq ravishda farqlanadi.",
       "tableData": {
         "data": []
       }
     },
     {
-      "elementIndex": 4,
-      "content": "Nerv tizimi o'smalari asosan ikki turga bo'linadi: benign (yaxshi) va malign (yomon). Har bir tur o'ziga xos simptomlar va davolash usullariga ega.",
+      "elementIndex": 6,
+      "content": "Nerv tizimi o'smalarining umumiy belgilaridan biri bosh og'rig'idir. Bu og'riqlar ko'pincha kuchli va davomiy bo'lishi mumkin.",
       "tableData": {
         "data": []
       }
     },
     {
-      "elementIndex": 5,
-      "content": "Benign nerv tizimi o'smalari",
+      "elementIndex": 7,
+      "content": "Bosh og'rig'idan tashqari, boshqa belgilar quyidagilarni o'z ichiga olishi mumkin:\n- His-tuyg'ularni yo'qotish yoki o'zgarishlar\n- Ko'rish yoki eshitish bilan bog'liq muammolar\n- Mushaklar kuchsizlik yoki paraliya\n- Muvozanatni saqlash qiyinlishuvi",
       "tableData": {
         "data": []
       }
     },
     {
-      "elementIndex": 8,
-      "content": "Ular asta-sekin o'sadi va atrofdagi to'qimalarga zarar yetkazmaydi, bu esa bemorlarning umidini yaxshilaydi. Misol: meningioma.",
+      "elementIndex": 10,
+      "content": "O'smalar o'z joylashuviga qarab, simptomlarni ham o'zgartirishi mumkin. Misol uchun, miyada joylashgan o'smalar bosh og'rig'i, bosh aylanishi va xotira muammolarini keltirib chiqarishi mumkin.",
       "tableData": {
         "data": []
       }
     },
     {
-      "elementIndex": 9,
-      "content": "Malign nerv tizimi o'smalari",
+      "elementIndex": 11,
+      "content": "Orqa miyadagi o'smalar esa, asosan, mushaklar kuchsizlik, og'riq va his-tuyg'ularni yo'qotish kabi belgilarni keltirib chiqaradi.",
       "tableData": {
         "data": []
       }
     },
     {
-      "elementIndex": 12,
-      "content": "Bu o'smalar tez o'sadi va atrofdagi to'qimalarga tarqalishi mumkin. Misol: glioblastoma, neuroblastoma.",
+      "elementIndex": 14,
+      "content": "O'smalarni aniqlash uchun quyidagi usullar qo'llaniladi:\n- Tomografiya (CT yoki MRI)\n- Biopsiya (to'qima namunasini olish)\n- Klinik tekshiruvlar",
       "tableData": {
         "data": []
       }
     },
     {
-      "elementIndex": 13,
-      "content": "Simptomlar va belgilari",
+      "elementIndex": 15,
+      "content": "O'sma aniqlanganda, davolash usullari o'smaning turiga va joylashuviga bog'liq ravishda farqlanadi. Davolash quyidagilarni o'z ichiga olishi mumkin:\n- Xirurgik olib tashlash\n- Radiatsion terapiya\n- Kimyoviy terapiya",
+      "tableData": {
+        "data": []
+      }
+    },
+    {
+      "elementIndex": 18,
+      "content": "O'smalarni oldini olish uchun sog'lom turmush tarzini olib borish muhimdir. Bu quyidagilarni o'z ichiga oladi:\n- Sog'lom ovqatlanish\n- Muntazam jismoniy faollik\n- Stressni boshqarish",
+      "tableData": {
+        "data": []
+      }
+    },
+    {
+      "elementIndex": 19,
+      "content": "O'z vaqtida tibbiy yordam olish va belgilarni e'tiborga olish juda muhim. O'smalar erta aniqlansa, davolash samaradorligi oshadi.",
+      "tableData": {
+        "data": []
+      }
+    },
+    {
+      "elementIndex": 22,
+      "content": "O'smalarning oldini olishda, genetik omillarni ham inobatga olish zarur. Agar oilada nerv tizimi o'smalari tarqalgan bo'lsa, shifokor bilan maslahatlashish muhimdir.",
+      "tableData": {
+        "data": []
+      }
+    },
+    {
+      "elementIndex": 23,
+      "content": "O'smalar haqida ko'proq ma'lumot olish uchun quyidagi manbalarni o'rganishingiz mumkin:\n- Tibbiyot kitoblari\n- Tibbiy maqolalar\n- Internetdagi ishonchli manbalar",
+      "tableData": {
+        "data": []
+      }
+    },
+    {
+      "elementIndex": 25,
+      "content": "Nerv Tizimi O'smalari: Umumiy Belgilar",
+      "tableData": {
+        "data": []
+      }
+    },
+    {
+      "elementIndex": 26,
+      "content": "O'smalarning Turlari va Davolash Usullari",
+      "tableData": {
+        "data": []
+      }
+    },
+    {
+      "elementIndex": 27,
+      "content": "Bosh og'rig'i va boshqa belgilarni e'tiborga olish zarur.",
+      "tableData": {
+        "data": []
+      }
+    },
+    {
+      "elementIndex": 28,
+      "content": "O'z vaqtida tekshiruvlar o'tkazish va davolanish kerak.",
+      "tableData": {
+        "data": []
+      }
+    },
+    {
+      "elementIndex": 29,
+      "content": "O'smalarni aniqlash va davolashda mutaxassislar bilan maslahatlashish muhimdir.",
+      "tableData": {
+        "data": []
+      }
+    },
+    {
+      "elementIndex": 30,
+      "content": "O'smalarning oldini olish uchun sog'lom turmush tarzi olib borilishi kerak.",
+      "tableData": {
+        "data": []
+      }
+    },
+    {
+      "elementIndex": 31,
+      "content": "O'smalarning belgilari haqida ma'lumot olish uchun tibbiyot mutaxassislari bilan bog'laning.",
+      "tableData": {
+        "data": []
+      }
+    },
+    {
+      "elementIndex": 32,
+      "content": "Nerv tizimi o'smalari haqida o'z bilimlaringizni kengaytiring.",
       "tableData": {
         "data": []
       }

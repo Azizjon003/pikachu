@@ -1,0 +1,25 @@
+{
+  "slideId": "slide_1",
+  "elements": [
+    {
+      "elementIndex": 1,
+      "content": "Etiboringiz uchun rahmat!"
+    },
+    {
+      "elementIndex": 2,
+      "content": "Sizni nerv tizimi o'smalari haqidagi ma'lumotimiz bilan tanishtirganimizdan mamnunmiz."
+    },
+    {
+      "elementIndex": 3,
+      "content": "Savollaringiz bo'lsa, so'rashdan tortinmang!"
+    },
+    {
+      "elementIndex": 4,
+      "content": "O'smalarni erta aniqlash va davolash, sog'lom hayot uchun kalit!"
+    },
+    {
+      "elementIndex": 5,
+      "content": "Biz bilan birga bo'lganingiz uchun yana bir bor rahmat!"
+    }
+  ]
+}

@@ -1,64 +1,118 @@
 {
-  "id": "K-Jt3ow7KB",
+  "id": "Gmer8yUHif",
   "index": 6,
   "slide": 7,
   "elements": [
     {
       "type": "image",
-      "src": "./images\\slide6_img69.png",
+      "src": "./images\\slide6_img17.png",
       "hasImage": true,
       "elementIndex": 0
     },
     {
       "type": "image",
-      "src": "./images\\slide6_img70.png",
+      "src": "./images\\slide6_img18.jpeg",
       "hasImage": true,
-      "elementIndex": 1
-    },
-    {
-      "type": "shape",
-      "content": "Nerv tizimi o'smalari turlari",
       "elementIndex": 3
     },
     {
-      "type": "shape",
-      "content": "Nerv tizimi o'smalari asosan ikkiga bo'linadi: benign (yomon emas) va malign (yomon). Har bir tur o'ziga xos simptomlar va davolash usullariga ega.",
+      "type": "image",
+      "src": "./images\\slide6_img19.jpeg",
+      "hasImage": true,
+      "elementIndex": 4
+    },
+    {
+      "type": "image",
+      "src": "./images\\slide6_img20.jpeg",
+      "hasImage": true,
       "elementIndex": 5
     },
     {
+      "type": "image",
+      "src": "./images\\slide6_img21.jpeg",
+      "hasImage": true,
+      "elementIndex": 6
+    },
+    {
       "type": "shape",
-      "content": "Benign o'smalar",
+      "width": 337.27559055118104,
+      "height": 63.343727034120725,
+      "left": 311.3617847769028,
+      "top": 46,
+      "content": "Nerv tizimi o'smalari alomatlari",
       "elementIndex": 7
     },
     {
       "type": "shape",
-      "content": "Benign nerv o'smalari ko'pincha sekin o'sadi va atrofdagi to'qimalarga zarar yetkazmaydi. Misollar: meningioma, neuroma.",
+      "width": 181.32283464566927,
+      "height": 56.04682414698162,
+      "left": 84.31580052493437,
+      "top": 418.7860367454068,
+      "content": "Nerv tizimi o'smalari ko'p turli alomatlar bilan namoyon bo'ladi. Ularning ba'zilari og'riq, bosh aylanishi va asabiylashuvni o'z ichiga oladi.",
+      "elementIndex": 8
+    },
+    {
+      "type": "shape",
+      "width": 181.31758530183725,
+      "height": 26.64839895013123,
+      "left": 84.31580052493437,
+      "top": 386.8015748031496,
+      "content": "Og'riq",
       "elementIndex": 9
     },
     {
       "type": "shape",
-      "content": "Malign o'smalar",
+      "width": 181.32283464566927,
+      "height": 56.04682414698162,
+      "left": 287.6660367454068,
+      "top": 418.7860367454068,
+      "content": "Nerv tizimidagi o'smalar og'riq keltirib chiqarishi mumkin, ayniqsa, o'sma joylashgan joyga qarab.",
+      "elementIndex": 10
+    },
+    {
+      "type": "shape",
+      "width": 181.31758530183725,
+      "height": 26.64839895013123,
+      "left": 287.6660367454068,
+      "top": 386.8015748031496,
+      "content": "Bosh aylanishi",
       "elementIndex": 11
     },
     {
       "type": "shape",
-      "content": "Malign nerv o'smalari tez o'sadi va atrofdagi to'qimalarga ta'sir qiladi. Misollar: glioblastoma, schwannoma.",
+      "width": 181.32283464566927,
+      "height": 56.04682414698162,
+      "left": 491.01627296587924,
+      "top": 418.7860367454068,
+      "content": "Nerv tizimida o'smalar bosh aylanishiga sabab bo'lishi mumkin, bu esa muvofiqlik va qulaylikni yo'qotishga olib keladi.",
+      "elementIndex": 12
+    },
+    {
+      "type": "shape",
+      "width": 181.31758530183725,
+      "height": 26.64839895013123,
+      "left": 491.01627296587924,
+      "top": 386.8015748031496,
+      "content": "Asabiylashuv",
       "elementIndex": 13
     },
     {
       "type": "shape",
-      "content": "O'smalar simptomlari",
+      "width": 181.32283464566927,
+      "height": 56.04682414698162,
+      "left": 694.3339632545931,
+      "top": 418.7860367454068,
+      "content": "O'smalar asab tizimida asabiylashuv va depressiya kabi alomatlarni kuchaytirishi mumkin.",
+      "elementIndex": 14
+    },
+    {
+      "type": "shape",
+      "width": 181.31758530183725,
+      "height": 26.64839895013123,
+      "left": 694.3339632545931,
+      "top": 386.8015748031496,
+      "content": "Konsentratsiya muammolari",
       "elementIndex": 15
-    },
-    {
-      "type": "shape",
-      "content": "Umumiy simptomlar: bosh og'rig'i, muvozanatni yo'qotish, sezgi o'zgarishlari, mushaklar zaifligi. Har bir o'sma turiga qarab simptomlar farq qiladi.",
-      "elementIndex": 17
-    },
-    {
-      "type": "shape",
-      "content": "Davolash usullari",
-      "elementIndex": 19
     }
   ],
   "note": ""

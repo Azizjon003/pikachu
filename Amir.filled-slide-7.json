@@ -1,69 +1,43 @@
 {
-  "id": "IXm0nIVSsV",
-  "index": 9,
-  "slide": 10,
+  "id": "N2zLA0zEot",
+  "index": 8,
+  "slide": 9,
   "elements": [
     {
       "type": "image",
-      "src": "./images\\slide9_img85.png",
+      "src": "./images\\slide8_img25.png",
       "hasImage": true,
       "elementIndex": 0
     },
     {
       "type": "image",
-      "src": "./images\\slide9_img86.png",
+      "src": "./images\\slide8_img26.jpeg",
       "hasImage": true,
-      "elementIndex": 1
+      "elementIndex": 2
     },
     {
       "type": "image",
-      "src": "./images\\slide9_img87.png",
+      "src": "./images\\slide8_img27.png",
       "hasImage": true,
-      "elementIndex": 4
-    },
-    {
-      "type": "image",
-      "src": "./images\\slide9_img88.png",
-      "hasImage": true,
-      "elementIndex": 5
-    },
-    {
-      "type": "image",
-      "src": "./images\\slide9_img89.png",
-      "hasImage": true,
-      "elementIndex": 8
-    },
-    {
-      "type": "image",
-      "src": "./images\\slide9_img90.jpeg",
-      "hasImage": true,
-      "elementIndex": 9
+      "elementIndex": 3
     },
     {
       "type": "shape",
-      "content": "Nerv tizimi o'smalarini davolash usullari",
-      "elementIndex": 11
-    },
-    {
-      "type": "image",
-      "src": "./images\\slide9_img91.png",
-      "hasImage": true,
-      "elementIndex": 12
-    },
-    {
-      "type": "shape",
-      "content": "Nerv tizimida o'smalarni davolashda bir nechta usullar mavjud. Ushbu usullar jarrohlik, radiatsiya terapiyasi va kimyoviy terapiyani o'z ichiga oladi. Har bir usulning o'ziga xos afzalliklari va kamchiliklari bor.",
-      "elementIndex": 14
+      "width": 383.03937007874015,
+      "height": 177.85942257217846,
+      "left": 531.238530183727,
+      "top": 201.04881889763777,
+      "content": "Nerv tizimi o'smalari, asosan, nerv hujayralaridan yoki ularning atrofidagi tuzilmalaridan kelib chiqadi. Ushbu o'smalar benign (yaxshi) yoki malignant (yomon) bo'lishi mumkin. Nerv tizimida o'smalar ko'plab alomatlar bilan kechishi mumkin, jumladan bosh og'rig'i, boshqa hislarni yo'qotish va harakatlarining cheklanishi. Diagnostika asosan tasviriy tekshirish usullari, masalan, MRT yoki KT yordamida amalga oshiriladi. Davolash usullari o'smaning turiga va joylashuviga qarab, jarrohlik, kimyoviy terapiya yoki nurlantirish kabi usullarni o'z ichiga oladi. O'smalarni erta aniqlash va davolash hayotni saqlab qolish uchun juda muhimdir.",
+      "elementIndex": 6
     },
     {
       "type": "shape",
-      "content": "O'smalarni davolashda individual yondashuv muhimdir. Bemorning yoshi, umumiy salomatligi va o'sma turi kabi omillarni hisobga olish zarur. Muvaffaqiyatli davolash uchun multidisiplinar jamoa bilan ishlash kerak.",
-      "elementIndex": 16
-    },
-    {
-      "type": "shape",
-      "content": "Davolash usullari:\n- Jarrohlik\n- Radiatsiya terapiyasi\n- Kimyoviy terapiya\n- Imunoterapiya\n\nHar bir usulning samaradorligi bemorlarning holatiga qarab farq qiladi.",
-      "elementIndex": 18
+      "width": 383.04587926509186,
+      "height": 63.343727034120725,
+      "left": 525.7154855643043,
+      "top": 106.18456692913385,
+      "content": "XULOSA",
+      "elementIndex": 7
     }
   ],
   "note": ""

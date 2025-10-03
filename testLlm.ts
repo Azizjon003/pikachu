@@ -9,6 +9,7 @@ import {
 
 const start = async () => {
   // 1. Load AI schema (simplified slide structure)
+  const fullschema = JSON.parse(fs.readFileSync("Amir.json", "utf-8")).slide;
   let aiSchema = JSON.parse(fs.readFileSync("Amir.sxema.json", "utf-8"));
   const topic = "Nerv tizimi o'smalari";
   // 2. Generate outline
@@ -16,7 +17,7 @@ const start = async () => {
   const outline = await generateOutline(
     aiSchema,
     "Uzbek",
-    20, // Select 5 slides
+    5, // Select 5 slides
     topic
   );
 
@@ -80,6 +81,14 @@ const start = async () => {
       slide.index !== aiSchema.length - 2 &&
       slide.index !== aiSchema.length - 1
   );
+  const filteredSchemaFull = fullschema.filter(
+    (slide: any) =>
+      slide.index !== 0 &&
+      slide.index !== 1 &&
+      slide.index !== fullschema.length - 3 &&
+      slide.index !== fullschema.length - 2 &&
+      slide.index !== fullschema.length - 1
+  );
   console.log(`   - Original: ${aiSchema.length} slides`);
   console.log(`   - Filtered: ${filteredSchema.length} slides\n`);
 
@@ -87,7 +96,9 @@ const start = async () => {
   const slidesToFill = outline.slides.map(
     (outlineSlide: any) => filteredSchema[outlineSlide.slideIndex]
   );
-
+  const slidesToFillFull = outline.slides.map(
+    (outlineSlide: any) => filteredSchemaFull[outlineSlide.slideIndex]
+  );
   // 5. Initialize allFilledSlides and add first two slides
   let allFilledSlides = [];
   allFilledSlides.push(firstSlide);
@@ -107,13 +118,9 @@ const start = async () => {
   console.log(`📄 Generating content for ${slidesToFill.length} slides...`);
   for (let i = 0; i < slidesToFill.length; i++) {
     const slide = slidesToFill[i];
+    const slideFull = slidesToFillFull[i];
     const outlineForSlide = outline.slides[i];
-    console.log(
-      `📄 Generating content for slide ${i + 3}...`,
-      slide,
-      outlineForSlide,
-      i
-    );
+
     const filledSlide = await generateContent(slide, outlineForSlide, "Uzbek");
     allFilledSlides.push(filledSlide);
     await new Promise((resolve) => setTimeout(resolve, 1000));

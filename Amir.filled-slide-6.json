@@ -1,88 +1,46 @@
 {
-  "id": "aO5ZTPFtge",
-  "index": 8,
-  "slide": 9,
+  "id": "PU1gTz0Yff",
+  "index": 5,
+  "slide": 6,
   "elements": [
     {
-      "type": "image",
-      "src": "./images\\slide8_img79.png",
-      "hasImage": true,
+      "type": "shape",
+      "width": 844.5624146981627,
+      "height": 37,
+      "left": 81.98488188976377,
+      "top": 44.26330708661417,
+      "content": "Ta'sirlar va Ularning Ta'siri",
       "elementIndex": 0
     },
     {
       "type": "image",
-      "src": "./images\\slide8_img80.png",
-      "hasImage": true,
-      "elementIndex": 1
-    },
-    {
-      "type": "image",
-      "src": "./images\\slide8_img81.png",
+      "src": "./images\\slide5_img15.png",
       "hasImage": true,
       "elementIndex": 2
     },
     {
       "type": "image",
-      "src": "./images\\slide8_img82.png",
+      "src": "./images\\slide5_img16.png",
       "hasImage": true,
       "elementIndex": 5
     },
     {
-      "type": "image",
-      "src": "./images\\slide8_img83.png",
-      "hasImage": true,
-      "elementIndex": 8
+      "type": "shape",
+      "width": 354.59013123359574,
+      "height": 233.78908136482937,
+      "left": 86.35149606299213,
+      "top": 180.96766404199474,
+      "content": "Ta'sirlar, inson hayoti va jamiyatda muhim rol o'ynaydi. Ular bizning fikrlarimiz, his-tuyg'ularimiz va qarorlarimizga ta'sir qiladi. Har bir inson o'z atrofidagi muhitdan ta'sirlanadi, bu esa ijtimoiy o'zgarishlarga olib keladi. Ta'sirlar ijtimoiy normativlar, madaniyat va shaxsiy tajribalar orqali shakllanadi. Shuning uchun, ularni tushunish va tahlil qilish muhimdir.",
+      "elementIndex": 10
     },
     {
-      "type": "image",
-      "src": "./images\\slide8_img84.png",
-      "hasImage": true,
+      "type": "shape",
+      "width": 349.6288713910761,
+      "height": 261.76566929133855,
+      "left": 542.6245669291338,
+      "top": 173.49165354330708,
+      "content": "Ta'sirlarning turlari:\n- Ijtimoiy ta'sir\n- Madaniy ta'sir\n- O'z-o'zini ta'sir etish\n- Psixologik ta'sir",
       "elementIndex": 11
-    },
-    {
-      "type": "shape",
-      "content": "Nerv tizimi o'smalarini davolash usullari",
-      "elementIndex": 15
-    },
-    {
-      "type": "shape",
-      "content": "Nerv tizimi o'smalari, asosan, ikkiga bo'linadi: benign (yaxshi) va malign (yomon). Har bir tur uchun alohida davolash usullari mavjud.",
-      "elementIndex": 17
-    },
-    {
-      "type": "shape",
-      "content": "Jarrohlik aralashuvi",
-      "elementIndex": 19
-    },
-    {
-      "type": "shape",
-      "content": "Nerv tizimida joylashgan o'smalarni olib tashlash uchun jarrohlik ko'rsatmalari bo'lishi mumkin. Bu usul, odatda, o'sma o'sishining oldini olish va simptomlarni kamaytirish uchun qo'llaniladi.",
-      "elementIndex": 21
-    },
-    {
-      "type": "shape",
-      "content": "Radiatsion terapiya",
-      "elementIndex": 23
-    },
-    {
-      "type": "shape",
-      "content": "Radiatsion terapiya, o'smalarni kamaytirish yoki yo'q qilish maqsadida, o'sma joylashgan joyga radiatsiya yuborish orqali amalga oshiriladi.",
-      "elementIndex": 25
-    },
-    {
-      "type": "shape",
-      "content": "Kimyoviy terapiya",
-      "elementIndex": 27
-    },
-    {
-      "type": "shape",
-      "content": "Kimyoviy terapiya, o'smalarni yo'q qilish uchun maxsus dori vositalaridan foydalanishni o'z ichiga oladi, bu esa malign o'smalarni davolashda keng qo'llaniladi.",
-      "elementIndex": 29
-    },
-    {
-      "type": "shape",
-      "content": "Maqsadli terapiya",
-      "elementIndex": 31
     }
   ],
   "note": ""

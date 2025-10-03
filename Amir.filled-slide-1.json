@@ -1,132 +1,49 @@
 {
-  "id": "S42EIAwT7Q",
+  "id": "NlYr_1dsb1",
   "index": 1,
   "slide": 2,
   "elements": [
     {
       "type": "image",
-      "src": "./images\\slide1_img7.png",
+      "src": "./images\\slide1_img3.png",
       "hasImage": true,
       "elementIndex": 0
     },
     {
-      "type": "image",
-      "src": "./images\\slide1_img8.png",
-      "hasImage": true,
-      "elementIndex": 1
+      "type": "shape",
+      "width": 426,
+      "height": 76.64839895013122,
+      "left": 33.65606299212598,
+      "top": 240.08314960629917,
+      "content": "Reja:",
+      "elementIndex": 3
     },
     {
-      "type": "image",
-      "src": "./images\\slide1_img9.png",
-      "hasImage": true,
+      "type": "shape",
+      "width": 387.6975328083989,
+      "height": 46,
+      "left": 498.7000524934383,
+      "top": 82.79391076115485,
+      "content": "1.Navoiyning hayoti va ijodining asosiy nuqtalari",
       "elementIndex": 4
     },
     {
-      "type": "image",
-      "src": "./images\\slide1_img10.png",
-      "hasImage": true,
+      "type": "shape",
+      "width": 387.6975328083989,
+      "height": 46,
+      "left": 498.7000524934383,
+      "top": 145.0417847769029,
+      "content": "2.Navoiyning hayoti va ijodining asosiy nuqtalari",
       "elementIndex": 5
     },
     {
-      "type": "image",
-      "src": "./images\\slide1_img11.png",
-      "hasImage": true,
-      "elementIndex": 8
-    },
-    {
-      "type": "image",
-      "src": "./images\\slide1_img12.png",
-      "hasImage": true,
-      "elementIndex": 9
-    },
-    {
-      "type": "image",
-      "src": "./images\\slide1_img13.png",
-      "hasImage": true,
-      "elementIndex": 12
-    },
-    {
-      "type": "image",
-      "src": "./images\\slide1_img14.png",
-      "hasImage": true,
-      "elementIndex": 13
-    },
-    {
-      "type": "image",
-      "src": "./images\\slide1_img15.png",
-      "hasImage": true,
-      "elementIndex": 16
-    },
-    {
-      "type": "image",
-      "src": "./images\\slide1_img16.png",
-      "hasImage": true,
-      "elementIndex": 17
-    },
-    {
-      "type": "image",
-      "src": "./images\\slide1_img17.png",
-      "hasImage": true,
-      "elementIndex": 20
-    },
-    {
-      "type": "image",
-      "src": "./images\\slide1_img18.png",
-      "hasImage": true,
-      "elementIndex": 21
-    },
-    {
-      "type": "image",
-      "src": "./images\\slide1_img19.png",
-      "hasImage": true,
-      "elementIndex": 24
-    },
-    {
       "type": "shape",
-      "content": "Reja: ",
-      "elementIndex": 26
-    },
-    {
-      "type": "shape",
-      "content": "1",
-      "elementIndex": 28
-    },
-    {
-      "type": "shape",
-      "content": "2",
-      "elementIndex": 30
-    },
-    {
-      "type": "shape",
-      "content": "3",
-      "elementIndex": 32
-    },
-    {
-      "type": "shape",
-      "content": "1. Nerv tizimi o'smalari haqida umumiy ma'lumot",
-      "elementIndex": 34
-    },
-    {
-      "type": "shape",
-      "content": "2. Nerv tizimi o'smalari turlari va ularning simptomlari",
-      "elementIndex": 36
-    },
-    {
-      "type": "shape",
-      "content": "3. Nerv tizimi o'smalarini davolash usullari",
-      "elementIndex": 38
-    },
-    {
-      "type": "image",
-      "src": "./images\\slide1_img20.png",
-      "hasImage": true,
-      "elementIndex": 39
-    },
-    {
-      "type": "image",
-      "src": "./images\\slide1_img21.png",
-      "hasImage": true,
-      "elementIndex": 43
+      "width": 387.6975328083989,
+      "height": 46,
+      "left": 507.06278215223097,
+      "top": 212.05721784776898,
+      "content": "3.Navoiyning hayoti va ijodining asosiy nuqtalari",
+      "elementIndex": 6
     }
   ],
   "note": ""

@@ -3,72 +3,238 @@
   "elements": [
     {
       "elementIndex": 8,
-      "content": "Nerv Tizimi O'smalari: Umumiy Ma'lumotlar",
+      "content": "Asosiy tashxis usullari",
       "tableData": {
-        "data": []
+        "data": [
+          [
+            "Ko'rish",
+            "Magnit-rezonans tomografiya (MRT)"
+          ],
+          [
+            "Laboratoriya",
+            "Biopsiya"
+          ],
+          [
+            "Radiologiya",
+            "Kompyuter tomografiya (KT)"
+          ]
+        ]
       }
     },
     {
       "elementIndex": 15,
-      "content": "O'smalarning 87%",
+      "content": "Tashxisning aniqligi",
       "tableData": {
-        "data": []
+        "data": [
+          [
+            "Usul",
+            "Aniqlik foizi"
+          ],
+          [
+            "MRT",
+            "87%"
+          ],
+          [
+            "KT",
+            "67%"
+          ],
+          [
+            "Biopsiya",
+            "99%"
+          ]
+        ]
       }
     },
     {
       "elementIndex": 16,
-      "content": "Samarali davolash 36%",
+      "content": "Og'ir holatlar",
       "tableData": {
-        "data": []
+        "data": [
+          [
+            "Holat",
+            "Foiz"
+          ],
+          [
+            "Metastazlar",
+            "36%"
+          ],
+          [
+            "Katta o'smalar",
+            "42%"
+          ],
+          [
+            "Davolanishga chidamli",
+            "22%"
+          ]
+        ]
       }
     },
     {
       "elementIndex": 17,
-      "content": "Yoshlar orasida 67%",
+      "content": "Reabilitatsiya ehtiyoji",
       "tableData": {
-        "data": []
+        "data": [
+          [
+            "Holat",
+            "Ehtiyoj foizi"
+          ],
+          [
+            "Operatsiyadan keyin",
+            "67%"
+          ],
+          [
+            "Kimyoterapiya",
+            "50%"
+          ],
+          [
+            "Radioterapiya",
+            "40%"
+          ]
+        ]
       }
     },
     {
       "elementIndex": 18,
-      "content": "Nerv tizimi o'smalari, asosan, nerv to'qimalaridan kelib chiqadigan o'smalardir. Ular miya va orqa miya kabi markaziy nerv tizimida paydo bo'lishi mumkin.",
+      "content": "O'smalarni aniqlash usullari",
       "tableData": {
-        "data": []
+        "data": [
+          [
+            "Usul",
+            "Tavsifi"
+          ],
+          [
+            "MRT",
+            "Yuqori aniqlikdagi tasvirlar"
+          ],
+          [
+            "KT",
+            "Ko'plab kesimlarni ko'rsatadi"
+          ],
+          [
+            "Biopsiya",
+            "To'qimalarni tahlil qiladi"
+          ]
+        ]
       }
     },
     {
       "elementIndex": 19,
-      "content": "O'smalar benign (yaxshi sifatli) yoki malign (yomon sifatli) bo'lishi mumkin. Malign o'smalar tezda tarqalishi va muammolar keltirib chiqarishi mumkin.",
+      "content": "Dastlabki belgilar",
       "tableData": {
-        "data": []
+        "data": [
+          [
+            "Belgi",
+            "Ko'rinish"
+          ],
+          [
+            "Bosh og'rig'i",
+            "Doimiy yoki kuchayuvchi"
+          ],
+          [
+            "Ko'rish muammolari",
+            "Tumanli ko'rish"
+          ],
+          [
+            "Tuyg'ularni yo'qotish",
+            "Nerv tizimi ta'siri"
+          ]
+        ]
       }
     },
     {
       "elementIndex": 20,
-      "content": "O'smalarning belgilari ko'pincha ularning joylashuvi va o'lchamiga bog'liq. Bular bosh og'rig'i, asabiylashish, harakat buzilishlari kabi belgilarni o'z ichiga olishi mumkin.",
+      "content": "Davolash usullari",
       "tableData": {
-        "data": []
+        "data": [
+          [
+            "Usul",
+            "Tavsifi"
+          ],
+          [
+            "Operatsiya",
+            "O'smani olib tashlash"
+          ],
+          [
+            "Kimyoterapiya",
+            "Kimyoviy dorilar bilan davolash"
+          ],
+          [
+            "Radioterapiya",
+            "Nurlanish yordamida davolash"
+          ]
+        ]
       }
     },
     {
       "elementIndex": 21,
-      "content": "Davolash usullari:",
+      "content": "Tashxis qo'yish qiyinchiliklari",
       "tableData": {
-        "data": []
+        "data": [
+          [
+            "Qiyinchilik",
+            "Sababi"
+          ],
+          [
+            "O'smalarni aniqlash",
+            "Kichik o'lchamlar va joylashuv"
+          ],
+          [
+            "Noto'g'ri tashxis",
+            "O'xshash simptomlar"
+          ],
+          [
+            "Davolanishga chidamlilik",
+            "Genetik omillar"
+          ]
+        ]
       }
     },
     {
       "elementIndex": 22,
-      "content": "1. Xirurgik aralashuv\n2. Kimyoterapiya\n3. Radioterapiya",
+      "content": "Profilaktika strategiyalari",
       "tableData": {
-        "data": []
+        "data": [
+          [
+            "Strategiya",
+            "Tavsifi"
+          ],
+          [
+            "Sog'lom turmush tarzi",
+            "To'g'ri ovqatlanish va jismoniy faollik"
+          ],
+          [
+            "Erta aniqlash",
+            "Muntazam tibbiy ko'riklar"
+          ],
+          [
+            "Genetik maslahat",
+            "Oilaviy tarixni o'rganish"
+          ]
+        ]
       }
     },
     {
       "elementIndex": 23,
-      "content": "O'smalarni erta aniqlash muhimdir, chunki bu davolanish imkoniyatlarini oshiradi.",
+      "content": "Kelajakdagi tadqiqotlar",
       "tableData": {
-        "data": []
+        "data": [
+          [
+            "Yo'nalish",
+            "Maqsad"
+          ],
+          [
+            "Genom tahlili",
+            "Individual davolash rejasi"
+          ],
+          [
+            "Yangi dorilar",
+            "Davolanish samaradorligini oshirish"
+          ],
+          [
+            "Noninvaziv usullar",
+            "Tashxis shikastlanishsiz"
+          ]
+        ]
       }
     }
   ]

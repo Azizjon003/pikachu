@@ -39,6 +39,10 @@ export const generateAISchema = (slides: Slide[]) => {
           if (textContent) {
             aiElement = {
               type: "text",
+              width: el.width,
+              height: el.height,
+              left: el.left,
+              top: el.top,
               content: textContent,
             };
           }
@@ -54,6 +58,10 @@ export const generateAISchema = (slides: Slide[]) => {
             if (shapeText) {
               aiElement = {
                 type: "shape",
+                width: el.width,
+                height: el.height,
+                left: el.left,
+                top: el.top,
                 content: shapeText,
               };
             }
@@ -66,6 +74,7 @@ export const generateAISchema = (slides: Slide[]) => {
           if (tableData.length > 0) {
             aiElement = {
               type: "table",
+
               data: tableData,
             };
           }

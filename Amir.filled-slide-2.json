@@ -1,69 +1,37 @@
 {
-  "id": "rjnuHMWJEL",
-  "index": 4,
-  "slide": 5,
+  "id": "n_s-FGDyWB",
+  "index": 2,
+  "slide": 3,
   "elements": [
     {
       "type": "image",
-      "src": "./images\\slide4_img51.png",
+      "src": "./images\\slide2_img4.png",
       "hasImage": true,
       "elementIndex": 0
     },
     {
-      "type": "table",
-      "data": [
-        [
-          "O'sma Turi",
-          "Qisqacha Tavsif"
-        ],
-        [
-          "Astrositoma",
-          "Miya astrositlaridan kelib chiqadi."
-        ],
-        [
-          "Meningioma",
-          "Meningesdan kelib chiqadigan o'smalar."
-        ],
-        [
-          "Neuroblastoma",
-          "Asosan bolalarda uchraydigan o'sma."
-        ],
-        [
-          "Glioblastoma",
-          "Eng agressiv nerv tizimi o'smasi."
-        ]
-      ],
-      "elementIndex": 1,
-      "content": ""
-    },
-    {
       "type": "shape",
-      "content": "Nerv tizimi o'smalari haqida umumiy ma'lumot",
+      "width": 852,
+      "height": 63.343727034120725,
+      "left": 54,
+      "top": 82.14981627296586,
+      "content": "KIRISH",
       "elementIndex": 3
     },
     {
       "type": "image",
-      "src": "./images\\slide4_img52.png",
+      "src": "./images\\slide2_img5.png",
       "hasImage": true,
       "elementIndex": 4
     },
     {
-      "type": "image",
-      "src": "./images\\slide4_img53.png",
-      "hasImage": true,
+      "type": "shape",
+      "width": 747.7007874015746,
+      "height": 159.20314960629918,
+      "left": 106.14960629921259,
+      "top": 209.4584776902887,
+      "content": "Ushbu taqdimotda biz kirish jarayonini va uning ahamiyatini muhokama qilamiz. Kirish, biror soha yoki mavzuga kirish nuqtasi bo'lib, u bizga asosiy tushunchalarni va muhim ma'lumotlarni taqdim etadi. Shuningdek, kirish, o'zaro aloqalar va dastlabki qadamlarni belgilashda muhim rol o'ynaydi. Bu jarayon orqali biz yangi ma'lumotlarni o'zlashtirishga tayyor bo'lamiz.",
       "elementIndex": 7
-    },
-    {
-      "type": "image",
-      "src": "./images\\slide4_img54.png",
-      "hasImage": true,
-      "elementIndex": 8
-    },
-    {
-      "type": "image",
-      "src": "./images\\slide4_img55.png",
-      "hasImage": true,
-      "elementIndex": 11
     }
   ],
   "note": ""

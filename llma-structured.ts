@@ -420,6 +420,230 @@ MANDATORY TASK:
   return updatedSlide;
 };
 
+// export const generateContent = async (
+//   slide: any,
+//   outline: any,
+//   language: string
+// ) => {
+//   // Extract and prepare text/shape/table elements with full details
+//   const textShapeTableElements = slide.elements
+//     .map((el: any, idx: number) => ({
+//       index: idx,
+//       type: el.type,
+//       width: el.width || 0,
+//       height: el.height || 0,
+//       left: el.left || 0,
+//       top: el.top || 0,
+//       currentContent: el.content || "",
+//       tableData: el.data || null,
+//     }))
+//     .filter(
+//       (el: any) =>
+//         el.type === "text" || el.type === "shape" || el.type === "table"
+//     );
+
+//   const contentSchema = {
+//     type: "object",
+//     properties: {
+//       slideId: {
+//         type: "string",
+//         description: "The ID of the slide being filled",
+//       },
+//       elements: {
+//         type: "array",
+//         items: {
+//           type: "object",
+//           properties: {
+//             elementIndex: {
+//               type: "number",
+//               description: "Index of the element in the slide's elements array",
+//             },
+//             content: {
+//               type: "string",
+//               description: `Generated content in ${language} language`,
+//             },
+//             tableData: {
+//               type: "object",
+//               description: "Table data structure for table elements",
+//               properties: {
+//                 data: {
+//                   type: "array",
+//                   items: {
+//                     type: "array",
+//                     items: {
+//                       type: "string",
+//                     },
+//                   },
+//                 },
+//               },
+//               required: ["data"],
+//               additionalProperties: false,
+//             },
+//           },
+//           required: ["elementIndex", "content", "tableData"],
+//           additionalProperties: false,
+//         },
+//       },
+//     },
+//     required: ["slideId", "elements"],
+//     additionalProperties: false,
+//   };
+
+//   const completion = await client.chat.completions.create({
+//     model: "gpt-4o-mini",
+//     messages: [
+//       {
+//         role: "system",
+//         content: `You are a world-class presentation strategist and an expert content creator specializing in the topic: "${
+//           outline.title || outline.title_eng
+//         }".
+// Your mission is to transform a slide's structural layout into a visually perfect and informative narrative.
+
+// ### Core Directives
+// 1.  **COMPLETE COVERAGE:** You MUST generate content for EVERY SINGLE element provided.
+// 2.  **LANGUAGE ADHERENCE:** All generated content MUST be in ${language}.
+// 3.  **JSON SCHEMA COMPLIANCE:** Your output MUST strictly follow the provided JSON schema. For non-table elements, "tableData" MUST be \`null\`.
+// 4.  **CONTEXTUAL INTELLIGENCE:** Analyze element relationships to create a coherent and non-redundant narrative.
+// 5.  **VISUAL AND SPATIAL AWARENESS (NO OVERFLOW) - CRITICAL RULE:** The provided dimensions (width, height) for each element are strict boundaries. The content you generate **MUST** be concise enough to fit comfortably within its element without overflowing or overlapping with other elements. **Shorten your text aggressively if the element size is small.**
+
+// ### Content Generation Philosophy
+// -   **Expert-Level Depth:** Provide insightful, accurate, and valuable content.
+// -   **Clarity and Conciseness:** Maximum impact, minimum words. **Adjust content length based on element dimensions to prevent visual overflow.**
+// -   **Information Hierarchy and Synergy:** Each element must have a distinct purpose and add new value. Avoid restating the same information in different boxes. The title states the 'what', the body explains the 'why/how'.
+// -   **Meticulous Proofreading:** All text must be grammatically perfect and professionally toned.
+
+// ### Thought Process (Your internal monologue before generating the JSON)
+// 1.  What is the core message of this slide for the topic "${
+//           outline.title || outline.title_eng
+//         }"?
+// 2.  How does the layout guide the information flow?
+// 3.  How can I ensure each element has a unique, non-repeating purpose?
+// 4.  I will generate content for each element sequentially, ensuring a logical build-up.
+// 5.  **Fit-Check:** Before finalizing the content for an element, I will mentally check its length against the element's size (width x height). The text must fit comfortably. I will shorten it if necessary to prevent any overflow.
+// 6.  Finally, I will double-check that all ${
+//           textShapeTableElements.length
+//         } elements are filled and the JSON is perfect.`,
+//       },
+//       {
+//         role: "user",
+//         content: `TASK BRIEF: Generate expert-level presentation content. Pay critical attention to element dimensions to ensure text fits perfectly without overflowing.
+
+// CONTEXT:
+// - Slide ID: ${slide.id}
+// - Core Topic: ${outline.title || outline.title_eng}
+// - Language: ${language}
+// - Total Elements to Fill: ${textShapeTableElements.length}
+
+// SLIDE ELEMENTS TO POPULATE (You must provide distinct, non-repetitive, and properly sized content for all ${
+//           textShapeTableElements.length
+//         } elements):
+// ${textShapeTableElements
+//   .map(
+//     (el: any, i: number) =>
+//       `
+// ---
+// ${i + 1}. Element [${el.index}]
+//    - Type: ${el.type.toUpperCase()}
+//    - Size (w x h): ${el.width} x ${el.height}
+//    - Position (left, top): (${el.left}, ${el.top})
+//    - STRUCTURAL HINT: ${
+//      el.type === "table"
+//        ? "This is a TABLE. Generate a concise title and structured data."
+//        : el.top < 150 && el.width > 400
+//        ? "This is the MAIN TITLE. Keep it short and impactful (3-8 words)."
+//        : el.height > 200 && el.width > 300
+//        ? `This is BODY CONTENT. Elaborate on the title's message. **CRITICAL: The element size is ${el.width}x${el.height}. Keep your text concise enough to fit within these dimensions to avoid overflow.**`
+//        : el.width < 200 || el.height < 100
+//        ? `This is likely a LABEL or CALLOUT. The size is small (${el.width}x${el.height}). Use very short text (1-5 words).`
+//        : `Standard content block. **Ensure text length is appropriate for its size (${el.width}x${el.height}).**`
+//    }`
+//   )
+//   .join("\n")}
+
+// MANDATORY FINAL INSTRUCTIONS:
+// 1.  Generate content for ALL ${textShapeTableElements.length} elements.
+// 2.  Ensure content is unique, non-repetitive, and **appropriately sized for each element's dimensions.** NO TEXT OVERFLOW.
+// 3.  Adhere to all directives from the system prompt.
+// 4.  Return a single, valid JSON object for slideId "${slide.id}".`,
+//       },
+//     ],
+//     response_format: {
+//       type: "json_schema",
+//       json_schema: {
+//         name: "slide_content_generation",
+//         strict: true,
+//         schema: contentSchema,
+//       },
+//     },
+//     temperature: 0.6,
+//   });
+
+//   const raw = completion.choices[0].message.content ?? "{}";
+//   // ... (qolgan mantiq o'zgarishsiz qoladi)
+//   // ...
+//   // ... (rest of your logic remains the same)
+//   const generatedData = JSON.parse(raw);
+
+//   fs.writeFileSync(
+//     `${slide.id}.generatedData.json`,
+//     JSON.stringify(generatedData, null, 2)
+//   );
+//   const filledCount = generatedData.elements?.length || 0;
+//   const expectedCount = textShapeTableElements.length;
+
+//   console.log(`✅ Content generated for slide ${slide.id}`);
+//   console.log(
+//     `   - Filled: ${filledCount}/${expectedCount} text/shape/table elements`
+//   );
+
+//   if (filledCount < expectedCount) {
+//     console.warn(
+//       `   ⚠️ WARNING: ${expectedCount - filledCount} elements were not filled!`
+//     );
+//     console.log(
+//       "   Missing indexes:",
+//       textShapeTableElements
+//         .filter(
+//           (el: any) =>
+//             !generatedData.elements?.find(
+//               (ge: any) => ge.elementIndex === el.index
+//             )
+//         )
+//         .map((el: any) => el.index)
+//     );
+//   }
+
+//   const updatedSlide = {
+//     ...slide,
+//     elements: slide.elements.map((el: any, idx: number) => {
+//       const generatedElement = generatedData.elements?.find(
+//         (ge: any) => ge.elementIndex === idx
+//       );
+
+//       if (
+//         generatedElement &&
+//         (el.type === "text" || el.type === "shape" || el.type === "table")
+//       ) {
+//         const updatedElement = {
+//           ...el,
+//           content: generatedElement.content,
+//         }; // For table elements, also update tableData if provided
+
+//         if (el.type === "table" && generatedElement.tableData) {
+//           updatedElement.data =
+//             generatedElement.tableData?.data || generatedElement.tableData;
+//         }
+
+//         return updatedElement;
+//       }
+
+//       return el;
+//     }),
+//   };
+
+//   return updatedSlide;
+// };
+
 export const generateConculation = async (
   topicName: string,
   language: string,
@@ -806,6 +1030,7 @@ MANDATORY TASK:
 
   return updatedSlide;
 };
+
 export const generateThankYouSlide = async (
   topicName: string,
   language: string,
@@ -860,7 +1085,9 @@ export const generateThankYouSlide = async (
     messages: [
       {
         role: "system",
-        content: `Generate a thank you slide for the topic: **${topicName}**. The slide should be written entirely in **${language}**.`,
+        content: `Generate a thank you slide for the topic: **${topicName}**. The slide should be written entirely in **${language}**.
+        
+**CRITICAL INSTRUCTION**: Ensure the main title or a prominent element on the slide contains the phrase for "Thank you for your attention" or "Thank you for listening" translated into the **${language}** language. For example, if the language is Uzbek, use "Etiboringiz uchun rahmat".`,
       },
     ],
     response_format: {

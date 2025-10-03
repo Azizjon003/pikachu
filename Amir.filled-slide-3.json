@@ -1,105 +1,106 @@
 {
-  "id": "9Fjc-EOMTl",
-  "index": 5,
-  "slide": 6,
+  "id": "E7xd5liD1v",
+  "index": 4,
+  "slide": 5,
   "elements": [
     {
-      "type": "image",
-      "src": "./images\\slide5_img56.png",
-      "hasImage": true,
+      "type": "shape",
+      "width": 337.27559055118104,
+      "height": 119.19527559055116,
+      "left": 81.98488188976377,
+      "top": 86.76325459317584,
+      "content": "Nerv Tizimi O'smalari",
       "elementIndex": 0
     },
     {
       "type": "image",
-      "src": "./images\\slide5_img57.png",
+      "src": "./images\\slide4_img9.png",
       "hasImage": true,
       "elementIndex": 1
     },
     {
       "type": "image",
-      "src": "./images\\slide5_img58.png",
+      "src": "./images\\slide4_img10.png",
       "hasImage": true,
       "elementIndex": 4
     },
     {
       "type": "image",
-      "src": "./images\\slide5_img59.png",
+      "src": "./images\\slide4_img11.png",
       "hasImage": true,
-      "elementIndex": 5
+      "elementIndex": 7
     },
     {
       "type": "image",
-      "src": "./images\\slide5_img60.png",
+      "src": "./images\\slide4_img12.png",
       "hasImage": true,
-      "elementIndex": 8
+      "elementIndex": 10
     },
     {
       "type": "image",
-      "src": "./images\\slide5_img61.png",
-      "hasImage": true,
-      "elementIndex": 9
-    },
-    {
-      "type": "image",
-      "src": "./images\\slide5_img62.png",
-      "hasImage": true,
-      "elementIndex": 12
-    },
-    {
-      "type": "image",
-      "src": "./images\\slide5_img63.png",
+      "src": "./images\\slide4_img13.png",
       "hasImage": true,
       "elementIndex": 13
     },
     {
       "type": "image",
-      "src": "./images\\slide5_img64.png",
+      "src": "./images\\slide4_img14.png",
       "hasImage": true,
       "elementIndex": 16
     },
     {
-      "type": "image",
-      "src": "./images\\slide5_img65.png",
-      "hasImage": true,
-      "elementIndex": 17
+      "type": "shape",
+      "width": 326.06299212598424,
+      "height": 47.2969028871391,
+      "left": 87.59181102362204,
+      "top": 299.23937007874014,
+      "content": "Nerv tizimi o'smalari asosan genetik omillar, atrof muhit ta'siri va immun tizimidagi muammolar natijasida yuzaga keladi.",
+      "elementIndex": 19
     },
     {
-      "type": "image",
-      "src": "./images\\slide5_img66.png",
-      "hasImage": true,
+      "type": "shape",
+      "width": 326.06299212598424,
+      "height": 47.2969028871391,
+      "left": 87.59181102362204,
+      "top": 410.9849868766404,
+      "content": "O'smalarning rivojlanishiga olib keladigan sabablar orasida stress, toksinlar va radiatsiya mavjud.",
       "elementIndex": 20
     },
     {
-      "type": "image",
-      "src": "./images\\slide5_img67.png",
-      "hasImage": true,
+      "type": "shape",
+      "width": 326.06299212598424,
+      "height": 47.2969028871391,
+      "left": 546.345406824147,
+      "top": 75.7483464566929,
+      "content": "Genetik omillar",
       "elementIndex": 21
     },
     {
-      "type": "image",
-      "src": "./images\\slide5_img68.png",
-      "hasImage": true,
+      "type": "shape",
+      "width": 326.06299212598424,
+      "height": 47.2969028871391,
+      "left": 546.345406824147,
+      "top": 187.49385826771652,
+      "content": "Atrof muhit ta'siri",
+      "elementIndex": 22
+    },
+    {
+      "type": "shape",
+      "width": 326.06299212598424,
+      "height": 47.2969028871391,
+      "left": 546.345406824147,
+      "top": 299.00881889763775,
+      "content": "Immun tizimi muammolari",
+      "elementIndex": 23
+    },
+    {
+      "type": "shape",
+      "width": 326.06299212598424,
+      "height": 47.2969028871391,
+      "left": 546.345406824147,
+      "top": 410.754435695538,
+      "content": "Toksik moddalar va stress",
       "elementIndex": 24
-    },
-    {
-      "type": "shape",
-      "content": "Nerv tizimi o'smalari: Umumiy ma'lumot",
-      "elementIndex": 26
-    },
-    {
-      "type": "shape",
-      "content": "Nerv tizimi o'smalari asosan miyada yoki orqa miya nervlarida paydo bo'ladi. Ular benign (yaxshi sifatli) yoki malign (yomon sifatli) bo'lishi mumkin. O'smalar nerv to'qimalaridan yoki boshqa to'qimalardan kelib chiqishi mumkin.",
-      "elementIndex": 28
-    },
-    {
-      "type": "shape",
-      "content": "Umumiy belgilari: bosh og'rig'i, muvozanatni yo'qotish, ko'rish qobiliyatining pasayishi. Shuningdek, o'smalar o'sishi davomida nerv tizimining boshqa qismlariga ta'sir ko'rsatishi mumkin.",
-      "elementIndex": 30
-    },
-    {
-      "type": "shape",
-      "content": "O'smalarni aniqlash uchun MRT, KT va boshqa tasviriy tekshiruvlar qo'llaniladi. Davolash usullari xirurgik aralashuv, radioterapiya va kimyoterapiyani o'z ichiga oladi.",
-      "elementIndex": 32
     }
   ],
   "note": ""
