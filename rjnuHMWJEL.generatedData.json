@@ -7,35 +7,31 @@
       "tableData": {
         "data": [
           [
-            "Belgi",
-            "Sharh"
+            "O'sma Turi",
+            "Tavsif",
+            "Belgilari"
           ],
           [
-            "Yuqori harorat",
-            "Tanada yallig'lanish jarayonlari mavjud"
+            "Astrositoma",
+            "Miya nerv hujayralaridan kelib chiqadi",
+            "G'ayritabiiy bosh og'rig'i, muvozanatni yo'qotish"
           ],
           [
-            "Teri o'zgarishlari",
-            "Teri rangining o'zgarishi yoki shishishi"
+            "Meningioma",
+            "Meningesdan kelib chiqadi",
+            "Bosh og'rig'i, quloqdan shovqin eshitish"
           ],
           [
-            "Og'riq",
-            "O'zgacha og'riq hissi"
-          ],
-          [
-            "Charchoq",
-            "Doimiy charchoq va energiya yetishmasligi"
-          ],
-          [
-            "Quloqdan qon ketishi",
-            "Quloqdan qon yoki suyuqlik chiqishi"
+            "Neuroblastoma",
+            "Nerv sistemasining o'simta turi",
+            "Bolalarda ko'proq uchraydi, qorin og'rig'i"
           ]
         ]
       }
     },
     {
       "elementIndex": 2,
-      "content": "Belgilari haqida ma'lumotlar",
+      "content": "Nerv tizimi o'smalariga oid umumiy ma'lumotlar",
       "tableData": {
         "data": []
       }

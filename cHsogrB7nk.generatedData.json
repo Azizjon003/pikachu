@@ -3,49 +3,49 @@
   "elements": [
     {
       "elementIndex": 6,
-      "content": "O'smalar va davolash: Asosiy tushunchalar",
+      "content": "Nerv tizimi o'smalari: Umumiy ma'lumot",
       "tableData": {
         "data": []
       }
     },
     {
       "elementIndex": 7,
-      "content": "O'sma turlari",
+      "content": "1",
       "tableData": {
         "data": []
       }
     },
     {
       "elementIndex": 8,
-      "content": "Davolash usullari",
+      "content": "2",
       "tableData": {
         "data": []
       }
     },
     {
       "elementIndex": 9,
-      "content": "O'smalar va ularning alomatlari",
+      "content": "3",
       "tableData": {
         "data": []
       }
     },
     {
       "elementIndex": 10,
-      "content": "O'smalar, organizmdagi to'qimalarning normadan ortiqcha o'sishi bo'lib, ular benign (yaxshi) yoki malignant (yomon) bo'lishi mumkin. Ularning aniqlanishi va davolash usullari muhimdir.",
+      "content": "Nerv tizimi o'smalari, nerv hujayralaridan kelib chiqadigan o'smalardir. Ular ko'plab xilma-xil turlarga ega bo'lib, benign (yaxshi) va malign (yomon) o'smalarni o'z ichiga oladi. Ushbu o'smalar asab tizimining turli qismlarida joylashishi mumkin.",
       "tableData": {
         "data": []
       }
     },
     {
       "elementIndex": 11,
-      "content": "Davolash jarayonida o'smalarning turiga qarab, jarrohlik, kimyoterapiya, radioterapiya yoki immunoterapiya qo'llanilishi mumkin. Har bir usul o'zining afzalliklari va kamchiliklariga ega.",
+      "content": "O'smalar ko'pincha asab tizimining funktsiyasini buzadi, og'riq, harakat cheklovlari yoki boshqa nerv tizimi belgilarini keltirib chiqarishi mumkin. Diagnostika uchun ko'plab usullar, jumladan, tasvirlash va biopsiya usullari qo'llaniladi.",
       "tableData": {
         "data": []
       }
     },
     {
       "elementIndex": 12,
-      "content": "O'smalarni erta aniqlash, davolash muvaffaqiyatiga katta ta'sir ko'rsatadi. Shuningdek, sog'lom turmush tarzini saqlash va muntazam tekshiruvlar o'tkazish muhimdir.",
+      "content": "Tuzilishiga qarab, nerv tizimi o'smalarini davolashda jarrohlik, radiatsiya terapiyasi yoki kimyoviy terapiya qo'llanilishi mumkin. Har bir holat individual tarzda baholanadi va mos davolash rejalashtiriladi.",
       "tableData": {
         "data": []
       }

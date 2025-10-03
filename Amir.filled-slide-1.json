@@ -1,136 +1,132 @@
 {
-  "id": "xfw3AQw1nV",
-  "index": 3,
-  "slide": 4,
+  "id": "S42EIAwT7Q",
+  "index": 1,
+  "slide": 2,
   "elements": [
     {
       "type": "image",
-      "src": "./images\\slide3_img32.png",
+      "src": "./images\\slide1_img7.png",
       "hasImage": true,
       "elementIndex": 0
     },
     {
       "type": "image",
-      "src": "./images\\slide3_img33.png",
+      "src": "./images\\slide1_img8.png",
       "hasImage": true,
       "elementIndex": 1
     },
     {
       "type": "image",
-      "src": "./images\\slide3_img34.png",
+      "src": "./images\\slide1_img9.png",
       "hasImage": true,
       "elementIndex": 4
     },
     {
       "type": "image",
-      "src": "./images\\slide3_img35.png",
+      "src": "./images\\slide1_img10.png",
       "hasImage": true,
       "elementIndex": 5
     },
     {
       "type": "image",
-      "src": "./images\\slide3_img36.png",
+      "src": "./images\\slide1_img11.png",
       "hasImage": true,
       "elementIndex": 8
     },
     {
       "type": "image",
-      "src": "./images\\slide3_img37.png",
+      "src": "./images\\slide1_img12.png",
       "hasImage": true,
       "elementIndex": 9
     },
     {
       "type": "image",
-      "src": "./images\\slide3_img38.png",
+      "src": "./images\\slide1_img13.png",
       "hasImage": true,
       "elementIndex": 12
     },
     {
       "type": "image",
-      "src": "./images\\slide3_img39.png",
+      "src": "./images\\slide1_img14.png",
       "hasImage": true,
       "elementIndex": 13
     },
     {
       "type": "image",
-      "src": "./images\\slide3_img40.png",
+      "src": "./images\\slide1_img15.png",
       "hasImage": true,
       "elementIndex": 16
     },
     {
       "type": "image",
-      "src": "./images\\slide3_img41.png",
+      "src": "./images\\slide1_img16.png",
       "hasImage": true,
       "elementIndex": 17
     },
     {
       "type": "image",
-      "src": "./images\\slide3_img42.png",
+      "src": "./images\\slide1_img17.png",
       "hasImage": true,
       "elementIndex": 20
     },
     {
       "type": "image",
-      "src": "./images\\slide3_img43.png",
+      "src": "./images\\slide1_img18.png",
       "hasImage": true,
       "elementIndex": 21
     },
     {
       "type": "image",
-      "src": "./images\\slide3_img44.png",
+      "src": "./images\\slide1_img19.png",
       "hasImage": true,
       "elementIndex": 24
     },
     {
-      "type": "image",
-      "src": "./images\\slide3_img45.png",
-      "hasImage": true,
-      "elementIndex": 25
+      "type": "shape",
+      "content": "Reja: ",
+      "elementIndex": 26
     },
     {
-      "type": "image",
-      "src": "./images\\slide3_img46.png",
-      "hasImage": true,
+      "type": "shape",
+      "content": "1",
       "elementIndex": 28
     },
     {
-      "type": "image",
-      "src": "./images\\slide3_img47.png",
-      "hasImage": true,
-      "elementIndex": 29
+      "type": "shape",
+      "content": "2",
+      "elementIndex": 30
     },
     {
-      "type": "image",
-      "src": "./images\\slide3_img48.png",
-      "hasImage": true,
+      "type": "shape",
+      "content": "3",
       "elementIndex": 32
     },
     {
-      "type": "image",
-      "src": "./images\\slide3_img49.png",
-      "hasImage": true,
-      "elementIndex": 33
+      "type": "shape",
+      "content": "1. Nerv tizimi o'smalari turlari va belgilari",
+      "elementIndex": 34
     },
     {
-      "type": "image",
-      "src": "./images\\slide3_img50.png",
-      "hasImage": true,
+      "type": "shape",
+      "content": "2. Nerv tizimi o'smalari diagnostikasi va davolash usullari",
       "elementIndex": 36
     },
     {
       "type": "shape",
-      "content": "O'sma turlari haqida",
+      "content": "3. Nerv tizimi o'smalari bilan bog'liq muammolar va kelajak istiqbollari",
       "elementIndex": 38
     },
     {
-      "type": "shape",
-      "content": "O'sma turlari turli xil o'simlik va hayvonlarda uchraydi. Ular o'simliklar va hayvonlar organizmida o'sish jarayoni davomida yuzaga keladi. O'sma turlari ko'pincha genetik o'zgarishlar yoki atrof-muhit ta'siri natijasida paydo bo'ladi. Bularning ichida benign va malign o'smalar farqlanadi, bu esa sog'liq uchun turlicha xavflarni keltirib chiqaradi.",
-      "elementIndex": 40
+      "type": "image",
+      "src": "./images\\slide1_img20.png",
+      "hasImage": true,
+      "elementIndex": 39
     },
     {
-      "type": "shape",
-      "content": "O'sma turlari o'simliklarda ko'plab shakllarda kuzatiladi. Ular ko'pincha o'simlikning iqlimga qarab o'sishiga, biologik faoliyatiga va boshqa stress omillariga bog'liq. O'smalarning turlari o'simlikning o'ziga xos xususiyatlarini belgilaydi va ba'zi hollarda iqtisodiy ahamiyatga ega bo'lishi mumkin.",
-      "elementIndex": 42
+      "type": "image",
+      "src": "./images\\slide1_img21.png",
+      "hasImage": true,
+      "elementIndex": 43
     }
   ],
   "note": ""

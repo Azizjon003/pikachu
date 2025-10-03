@@ -3,49 +3,49 @@
   "elements": [
     {
       "elementIndex": 3,
-      "content": "O'smalarni tasnifi",
+      "content": "Diagnostika va Davolash Usullari",
       "tableData": {
         "data": []
       }
     },
     {
       "elementIndex": 4,
-      "content": "O'smalarni tasnifi - bu o'simliklar dunyosini tushunish va o'rganish uchun muhim jarayon. Ular turli xillik, o'sish muhitlari va xususiyatlariga ko'ra guruhlanadi. Bunday tasniflash o'simliklarni tasniflash va bioxilma-xillikni saqlashga yordam beradi.",
+      "content": "Diagnostika jarayoni bemorning holatini aniqlash uchun muhimdir. Ushbu jarayon turli usullar orqali amalga oshiriladi, jumladan laboratoriya tekshiruvlari va tasviriy diagnostika.",
       "tableData": {
         "data": []
       }
     },
     {
       "elementIndex": 5,
-      "content": "O'smalarni guruhlarga ajratish",
+      "content": "Bemorlarni baholashda zamonaviy texnologiyalarni qo‘llash muhim ahamiyatga ega. Bu jarayonda ultratovush, radiologiya va kompyuter tomografiyasi kabi usullar qo‘llaniladi.",
       "tableData": {
         "data": []
       }
     },
     {
       "elementIndex": 8,
-      "content": "O'smalarni tasnifi asosan morfologik, anatomik va ekologik xususiyatlariga ko'ra amalga oshiriladi. Har bir o'simlik turi o'ziga xos xususiyatlarga ega bo'lib, ularni o'zaro farqlash imkonini beradi.",
+      "content": "Davolash usullari bemorning kasallik turiga qarab farq qiladi. Ular dori-darmonlar, fizioterapiya, jarrohlik va alternativ tibbiyotni o‘z ichiga oladi.",
       "tableData": {
         "data": []
       }
     },
     {
       "elementIndex": 9,
-      "content": "Tasniflashda asosiy tushunchalar",
+      "content": "Dori-darmonlar bilan davolash",
       "tableData": {
         "data": []
       }
     },
     {
       "elementIndex": 12,
-      "content": "O'smalarni tasnifi quyidagi asosiy tushunchalarga asoslanadi: taxonomiya, filogeniya, va morfologiya. Bu tushunchalar asosida o'simliklar o'zaro bog'lanishi va rivojlanish tarixini o'rganish mumkin.",
+      "content": "Fizioterapiya va reabilitatsiya usullari bemorlarning tiklanish jarayonini tezlashtiradi. Bu usullar mushak va suyak tizimini mustahkamlashga yordam beradi.",
       "tableData": {
         "data": []
       }
     },
     {
       "elementIndex": 13,
-      "content": "O'simliklar turlari",
+      "content": "Alternativ tibbiyot usullari",
       "tableData": {
         "data": []
       }

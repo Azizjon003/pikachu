@@ -1,77 +1,53 @@
 {
-  "id": "xVZ9KAwebA",
-  "index": 2,
-  "slide": 3,
+  "id": "WT_8SMwpsK",
+  "index": 0,
+  "slide": 1,
   "elements": [
     {
       "type": "image",
-      "src": "./images\\slide2_img22.png",
+      "src": "./images\\slide0_img1.png",
       "hasImage": true,
       "elementIndex": 0
     },
     {
       "type": "image",
-      "src": "./images\\slide2_img23.png",
+      "src": "./images\\slide0_img2.png",
       "hasImage": true,
       "elementIndex": 1
     },
     {
       "type": "image",
-      "src": "./images\\slide2_img24.png",
+      "src": "./images\\slide0_img3.png",
       "hasImage": true,
       "elementIndex": 2
     },
     {
       "type": "image",
-      "src": "./images\\slide2_img25.png",
+      "src": "./images\\slide0_img4.png",
       "hasImage": true,
       "elementIndex": 3
     },
     {
-      "type": "image",
-      "src": "./images\\slide2_img26.png",
-      "hasImage": true,
-      "elementIndex": 4
+      "type": "shape",
+      "content": "Nerv tizimi o'smalari",
+      "elementIndex": 5
     },
     {
       "type": "image",
-      "src": "./images\\slide2_img27.png",
+      "src": "./images\\slide0_img5.png",
+      "hasImage": true,
+      "elementIndex": 6
+    },
+    {
+      "type": "image",
+      "src": "./images\\slide0_img6.png",
       "hasImage": true,
       "elementIndex": 7
     },
     {
-      "type": "image",
-      "src": "./images\\slide2_img28.png",
-      "hasImage": true,
-      "elementIndex": 8
-    },
-    {
-      "type": "image",
-      "src": "./images\\slide2_img29.png",
-      "hasImage": true,
-      "elementIndex": 11
-    },
-    {
       "type": "shape",
-      "content": "Nerv Tizimi O'smalari",
-      "elementIndex": 13
-    },
-    {
-      "type": "shape",
-      "content": "Asosiy Ma'lumotlar",
-      "elementIndex": 15
-    },
-    {
-      "type": "image",
-      "src": "./images\\slide2_img30.png",
-      "hasImage": true,
-      "elementIndex": 16
-    },
-    {
-      "type": "image",
-      "src": "./images\\slide2_img31.png",
-      "hasImage": true,
-      "elementIndex": 19
+      "content": "Azizjon Aliqulov",
+      "elementIndex": 9
     }
   ],
   "note": ""

@@ -1,69 +1,18 @@
 {
-  "id": "Kuk5CHNztq",
-  "index": 11,
-  "slide": 12,
+  "id": "uFZMc04BHB",
+  "index": 17,
+  "slide": 18,
   "elements": [
     {
       "type": "image",
-      "src": "./images\\slide11_img106.png",
+      "src": "./images\\slide17_img130.png",
       "hasImage": true,
       "elementIndex": 0
     },
     {
-      "type": "image",
-      "src": "./images\\slide11_img107.png",
-      "hasImage": true,
-      "elementIndex": 1
-    },
-    {
       "type": "shape",
-      "content": "O'smalarning Xavfi",
-      "elementIndex": 3
-    },
-    {
-      "type": "shape",
-      "content": "1",
-      "elementIndex": 5
-    },
-    {
-      "type": "shape",
-      "content": "3",
-      "elementIndex": 7
-    },
-    {
-      "type": "shape",
-      "content": "2",
-      "elementIndex": 9
-    },
-    {
-      "type": "shape",
-      "content": "4",
-      "elementIndex": 11
-    },
-    {
-      "type": "shape",
-      "content": "O'smalar odam organizmida xavfli o'simta bo'lishi mumkin. Ular tez o'sishi, metastaz berishi va sog'liqni yomonlashtirishi mumkin.",
-      "elementIndex": 13
-    },
-    {
-      "type": "shape",
-      "content": "O'smalarni erta aniqlash muhimdir. Shifokorlar muntazam tibbiy ko'riklar o'tkazib turishlari zarur.",
-      "elementIndex": 15
-    },
-    {
-      "type": "shape",
-      "content": "O'smalarning oldini olish uchun sog'lom turmush tarzini saqlash va zararli odatlardan qochish kerak.",
-      "elementIndex": 17
-    },
-    {
-      "type": "shape",
-      "content": "O'smalarning xavfi haqida xabardor bo'lishimiz zarur.",
-      "elementIndex": 19
-    },
-    {
-      "type": "shape",
-      "content": "4",
-      "elementIndex": 21
+      "content": "Etiboringiz uchun rahmat!",
+      "elementIndex": 2
     }
   ],
   "note": ""

@@ -83,22 +83,22 @@
     },
     {
       "type": "shape",
-      "content": "Diagnostika Usullari",
+      "content": "Nerv Tizimi O'smalari: Asosiy Ma'lumotlar",
       "elementIndex": 26
     },
     {
       "type": "shape",
-      "content": "Diagnostika usullari tibbiyotda kasalliklarni aniqlashda muhim ahamiyatga ega. Ular turli xil metodlar va vositalarni o'z ichiga oladi, bu esa shifokorlarga aniq va tezkor tashxis qo'yishga yordam beradi.",
+      "content": "Nerv tizimi o'smalari, inson organizmida nerv hujayralaridan kelib chiqadigan benign yoki malign o'smalardir. Ular asosan bosh miya, orqa miya va nervlarni ta'sir qiladi. O'smalar turli belgilarga va muammolarga olib kelishi mumkin.",
       "elementIndex": 28
     },
     {
       "type": "shape",
-      "content": "Asosiy diagnostika usullari: klinik tekshiruv, laboratoriya tahlillari, tasviriy diagnostika va genetik testlar. Har bir usul o'ziga xos afzalliklarga ega bo'lib, kasallikning turiga qarab tanlanadi.",
+      "content": "O'smalar asosan quyidagi turlarga bo'linadi: meningioma, glioma, schwannoma va neuroblastoma. Har bir o'sma turi o'ziga xos simptomlar va davolash usullariga ega. O'smalarning aniqlanishi va davolanishi uchun tezkor tashxis qo'yish muhimdir.",
       "elementIndex": 30
     },
     {
       "type": "shape",
-      "content": "Bu usullar yordamida kasalliklarning oldini olish, vaqtida aniqlash va to'g'ri davolash strategiyalarini ishlab chiqish mumkin. Shuningdek, zamonaviy texnologiyalar diagnostikani yanada samarali qilishda yordam beradi.",
+      "content": "Davolash usullari orasida jarrohlik, kimyoterapiya va radioterapiya mavjud. O'sma turiga qarab, davolash rejasi individual ravishda belgilanadi. O'smalarni erta aniqlash hayotni saqlashda muhim rol o'ynaydi.",
       "elementIndex": 32
     }
   ],

@@ -3,65 +3,86 @@
   "elements": [
     {
       "elementIndex": 2,
-      "content": "Davolash usullari",
+      "content": "O'sma turlari",
       "tableData": {
         "data": []
       }
     },
     {
       "elementIndex": 3,
-      "content": "Davolash usullari, bemorlar sog'lig'ini tiklash va kasalliklarni oldini olish uchun turli xil texnologiyalar va usullarni o'z ichiga oladi. Ularning samaradorligi va qo'llanilishi kasallikning turiga, bemorning holatiga va boshqa omillarga bog'liq.",
+      "content": "O'sma turlari, o'simliklar o'rtasida eng ko'p tarqalgan va ko'p qirrali xilma-xillikni namoyon etadi. Ular nafaqat ko'rinish, balki o'sish sharoitlari va ekologik rol bilan ham ajralib turadi.",
       "tableData": {
         "data": []
       }
     },
     {
       "elementIndex": 4,
-      "content": "Dori-darmonlar",
+      "content": "O'sma turlari haqida ma'lumotlar",
       "tableData": {
         "data": []
       }
     },
     {
       "elementIndex": 5,
-      "content": "Dori-darmonlar kasalliklarni davolashda asosiy vosita hisoblanadi. Ular bemorning holatini yaxshilash va belgilangan kasalliklarni yo'qotishga yordam beradi. Dori-darmonlarni qo'llashda doimo shifokor maslahatiga murojaat qilish zarur.",
+      "content": "O'sma turlari ko'plab ekologik tizimlarda muhim rol o'ynaydi. Ular ekotizimlarning barqarorligini ta'minlaydi va turli xil hayvonlar uchun yashash joyi hisoblanadi.",
       "tableData": {
         "data": []
       }
     },
     {
       "elementIndex": 6,
-      "content": "Jismoniy terapiya",
+      "content": "O'sma turlari turlari",
       "tableData": {
         "data": []
       }
     },
     {
       "elementIndex": 7,
-      "content": "Jismoniy terapiya jarrohlikdan keyin tiklanishga yordam beradi va mushaklar kuchini oshiradi. Fizioterapevtlar tomonidan belgilangan mashqlar va davolash usullari muhimdir.",
+      "content": "1. O'rmon o'smalari: Bu o'smalar, asosan, o'rmon ekosistemalarida uchraydi va ko'plab hayvonlar uchun yashash joyi bo'lib xizmat qiladi.  \n2. Sahrada o'smalari: Ular qurg'oqchil sharoitlarda yashaydi va suvni tejashga qodir.\n3. Suv o'smalari: Suvda yashovchi o'smalar ko'plab ekotizimlarning asosiy qismi hisoblanadi.",
       "tableData": {
         "data": []
       }
     },
     {
       "elementIndex": 8,
-      "content": "Psixologik yordam",
+      "content": "O'sma turlari va ularning ahamiyati",
       "tableData": {
         "data": []
       }
     },
     {
       "elementIndex": 9,
-      "content": "Psixologik yordam bemorlarning ruhiy holatini yaxshilashga qaratilgan. Stressni boshqarish va tashvishlarni kamaytirishga yordam beradigan turli xil usullar qo'llaniladi.",
+      "content": "O'sma turlari tabiiy muhitda muhim rol o'ynaydi. Ular havoni tozalash, tuproqni mustahkamlash va iqlimni boshqarishga yordam beradi.",
       "tableData": {
         "data": []
       }
     },
     {
       "elementIndex": 10,
-      "content": "Alternativ tibbiyot",
+      "content": "O'sma turlari: Nomi, Turi, Ekologik ahamiyati",
       "tableData": {
-        "data": []
+        "data": [
+          [
+            "Nomi",
+            "Turi",
+            "Ekologik ahamiyati"
+          ],
+          [
+            "Qizil tulki",
+            "O'rmon o'smasi",
+            "Yashash joyi"
+          ],
+          [
+            "Suv o'zagi",
+            "Suv o'smasi",
+            "Suvni tozalash"
+          ],
+          [
+            "Tosh o'smasi",
+            "Sahradagi o'sma",
+            "Qurg'oqchilikka chidamli"
+          ]
+        ]
       }
     }
   ]

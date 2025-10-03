@@ -1,88 +1,84 @@
 {
-  "id": "aO5ZTPFtge",
-  "index": 8,
-  "slide": 9,
+  "id": "cHsogrB7nk",
+  "index": 14,
+  "slide": 15,
   "elements": [
     {
       "type": "image",
-      "src": "./images\\slide8_img79.png",
+      "src": "./images\\slide14_img117.png",
       "hasImage": true,
       "elementIndex": 0
     },
     {
       "type": "image",
-      "src": "./images\\slide8_img80.png",
+      "src": "./images\\slide14_img118.png",
       "hasImage": true,
       "elementIndex": 1
     },
     {
       "type": "image",
-      "src": "./images\\slide8_img81.png",
+      "src": "./images\\slide14_img119.png",
       "hasImage": true,
-      "elementIndex": 2
+      "elementIndex": 4
     },
     {
       "type": "image",
-      "src": "./images\\slide8_img82.png",
+      "src": "./images\\slide14_img120.png",
       "hasImage": true,
       "elementIndex": 5
     },
     {
       "type": "image",
-      "src": "./images\\slide8_img83.png",
+      "src": "./images\\slide14_img121.png",
       "hasImage": true,
       "elementIndex": 8
     },
     {
       "type": "image",
-      "src": "./images\\slide8_img84.png",
+      "src": "./images\\slide14_img122.jpeg",
       "hasImage": true,
+      "elementIndex": 9
+    },
+    {
+      "type": "shape",
+      "content": "Nerv tizimi o'smalari: Umumiy ma'lumot",
       "elementIndex": 11
     },
     {
       "type": "shape",
-      "content": "Statistikalar: Muvaffaqiyatni O'lchash",
+      "content": "1",
+      "elementIndex": 13
+    },
+    {
+      "type": "shape",
+      "content": "2",
       "elementIndex": 15
     },
     {
       "type": "shape",
-      "content": "Statistikalar bizga qarorlar qabul qilishda yordam beradi. Ular ma'lumotlarni tahlil qilish va tendentsiyalarni aniqlash imkonini beradi.",
+      "content": "3",
       "elementIndex": 17
     },
     {
       "type": "shape",
-      "content": "Statistikalar va Ma'lumotlar",
+      "content": "Nerv tizimi o'smalari, nerv hujayralaridan kelib chiqadigan o'smalardir. Ular ko'plab xilma-xil turlarga ega bo'lib, benign (yaxshi) va malign (yomon) o'smalarni o'z ichiga oladi. Ushbu o'smalar asab tizimining turli qismlarida joylashishi mumkin.",
       "elementIndex": 19
     },
     {
       "type": "shape",
-      "content": "Statistika tadqiqotlar, marketing va iqtisodiyot sohalarida muhim rol o'ynaydi. Ular bizga ma'lumotlar asosida strategiyalarni ishlab chiqishga yordam beradi.",
+      "content": "O'smalar ko'pincha asab tizimining funktsiyasini buzadi, og'riq, harakat cheklovlari yoki boshqa nerv tizimi belgilarini keltirib chiqarishi mumkin. Diagnostika uchun ko'plab usullar, jumladan, tasvirlash va biopsiya usullari qo'llaniladi.",
       "elementIndex": 21
     },
     {
       "type": "shape",
-      "content": "Statistik usullar",
+      "content": "Tuzilishiga qarab, nerv tizimi o'smalarini davolashda jarrohlik, radiatsiya terapiyasi yoki kimyoviy terapiya qo'llanilishi mumkin. Har bir holat individual tarzda baholanadi va mos davolash rejalashtiriladi.",
       "elementIndex": 23
     },
     {
-      "type": "shape",
-      "content": "O'rtacha, median va modalar kabi statistik ko'rsatkichlar bizga ma'lumotlarning asosiy xususiyatlarini tushunishga yordam beradi.",
-      "elementIndex": 25
-    },
-    {
-      "type": "shape",
-      "content": "Statistika turlari",
-      "elementIndex": 27
-    },
-    {
-      "type": "shape",
-      "content": "Tasodifiy va tasodifiy bo'lmagan statistikalar, o'zaro bog'liqliklarni aniqlashda muhim ahamiyatga ega.",
-      "elementIndex": 29
-    },
-    {
-      "type": "shape",
-      "content": "Statistikani qo'llash sohalari",
-      "elementIndex": 31
+      "type": "image",
+      "src": "./images\\slide14_img123.png",
+      "hasImage": true,
+      "elementIndex": 24
     }
   ],
   "note": ""

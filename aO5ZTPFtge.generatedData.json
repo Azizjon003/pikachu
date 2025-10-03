@@ -3,63 +3,63 @@
   "elements": [
     {
       "elementIndex": 6,
-      "content": "Statistikalar: Muvaffaqiyatni O'lchash",
+      "content": "Nerv tizimi o'smalari: Davolash usullari",
       "tableData": {
         "data": []
       }
     },
     {
       "elementIndex": 7,
-      "content": "Statistikalar bizga qarorlar qabul qilishda yordam beradi. Ular ma'lumotlarni tahlil qilish va tendentsiyalarni aniqlash imkonini beradi.",
+      "content": "Nerv tizimi o'smalari ko'plab turli xil shakllarda bo'lishi mumkin. Ularning davolash usullari kasallikning turiga, joylashuviga va og'irligiga bog'liq.",
       "tableData": {
         "data": []
       }
     },
     {
       "elementIndex": 8,
-      "content": "Statistikalar va Ma'lumotlar",
+      "content": "Davolash usullari",
       "tableData": {
         "data": []
       }
     },
     {
       "elementIndex": 9,
-      "content": "Statistika tadqiqotlar, marketing va iqtisodiyot sohalarida muhim rol o'ynaydi. Ular bizga ma'lumotlar asosida strategiyalarni ishlab chiqishga yordam beradi.",
+      "content": "Nerv tizimi o'smalarini davolashda quyidagi usullar qo'llaniladi: jarrohlik aralashuvi, radiatsiya terapiyasi va kimyoviy terapiya. Har bir usulning o'ziga xos afzalliklari va kamchiliklari mavjud.",
       "tableData": {
         "data": []
       }
     },
     {
       "elementIndex": 10,
-      "content": "Statistik usullar",
+      "content": "Jarohat va radiatsiya terapiyasi",
       "tableData": {
         "data": []
       }
     },
     {
       "elementIndex": 11,
-      "content": "O'rtacha, median va modalar kabi statistik ko'rsatkichlar bizga ma'lumotlarning asosiy xususiyatlarini tushunishga yordam beradi.",
+      "content": "Jarohatni olib tashlash o'sma joylashgan joyga qarab amalga oshiriladi. Radiatsiya terapiyasi esa o'smaning o'sishini to'xtatishga yordam beradi.",
       "tableData": {
         "data": []
       }
     },
     {
       "elementIndex": 12,
-      "content": "Statistika turlari",
+      "content": "Kimyoviy terapiya",
       "tableData": {
         "data": []
       }
     },
     {
       "elementIndex": 13,
-      "content": "Tasodifiy va tasodifiy bo'lmagan statistikalar, o'zaro bog'liqliklarni aniqlashda muhim ahamiyatga ega.",
+      "content": "Kimyoviy terapiya o'smalarni kamaytirish yoki ularning o'sishini sekinlashtirish uchun dori-darmonlardan foydalanishni o'z ichiga oladi.",
       "tableData": {
         "data": []
       }
     },
     {
       "elementIndex": 14,
-      "content": "Statistikani qo'llash sohalari",
+      "content": "Davolashni rejalashtirish",
       "tableData": {
         "data": []
       }
