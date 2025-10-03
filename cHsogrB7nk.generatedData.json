@@ -3,7 +3,7 @@
   "elements": [
     {
       "elementIndex": 6,
-      "content": "Nerv tizimi o'smalari: Umumiy ma'lumot",
+      "content": "Nerv Tizimi O'smalarini Davolash Usullari",
       "tableData": {
         "data": []
       }
@@ -31,21 +31,21 @@
     },
     {
       "elementIndex": 10,
-      "content": "Nerv tizimi o'smalari, nerv hujayralaridan kelib chiqadigan o'smalardir. Ular ko'plab xilma-xil turlarga ega bo'lib, benign (yaxshi) va malign (yomon) o'smalarni o'z ichiga oladi. Ushbu o'smalar asab tizimining turli qismlarida joylashishi mumkin.",
+      "content": "Nerv tizimi o'smalarini davolash bir nechta usullarni o'z ichiga oladi, jumladan, jarrohlik, radioterapiya va kimyoterapiya. Har bir usulning o'ziga xos afzalliklari va kamchiliklari bor. Bunday davolash usullari keng qamrovli tibbiy baholash va individual yondashuvni talab qiladi.",
       "tableData": {
         "data": []
       }
     },
     {
       "elementIndex": 11,
-      "content": "O'smalar ko'pincha asab tizimining funktsiyasini buzadi, og'riq, harakat cheklovlari yoki boshqa nerv tizimi belgilarini keltirib chiqarishi mumkin. Diagnostika uchun ko'plab usullar, jumladan, tasvirlash va biopsiya usullari qo'llaniladi.",
+      "content": "O'smalarni davolash uchun eng yaxshi usulni tanlashda bemorning umumiy salomatligi, o'smaning turi va rivojlanish bosqichi muhim ahamiyatga ega. Tegishli davolash rejasi individual ravishda ishlab chiqilishi kerak.",
       "tableData": {
         "data": []
       }
     },
     {
       "elementIndex": 12,
-      "content": "Tuzilishiga qarab, nerv tizimi o'smalarini davolashda jarrohlik, radiatsiya terapiyasi yoki kimyoviy terapiya qo'llanilishi mumkin. Har bir holat individual tarzda baholanadi va mos davolash rejalashtiriladi.",
+      "content": "Nerv tizimi o'smalarini davolashda zamonaviy texnologiyalar, masalan, stereotaktik radioterapiya va immunoterapiya, samarali bo'lishi mumkin. Bu usullar bemorlarga yanada qulay va samarali davolash imkoniyatini taqdim etadi.",
       "tableData": {
         "data": []
       }

@@ -3,17 +3,11 @@
   "elements": [
     {
       "elementIndex": 2,
-      "content": "Xulosa",
-      "tableData": {
-        "data": []
-      }
+      "content": "Xulosa"
     },
     {
       "elementIndex": 3,
-      "content": "Konsultatsiya jarayoni sizning muammolaringizni hal qilishda yordam berishi mumkin. Biz sizga sohalar bo'yicha mutaxassislar bilan bog'lanib, kerakli ma'lumotlarni taqdim etamiz. Har bir konsultatsiya individual ravishda amalga oshiriladi va sizning ehtiyojlaringizga mos keladi. Bizning maqsadimiz - sizga eng yaxshi yechimlarni taqdim etishdir.",
-      "tableData": {
-        "data": []
-      }
+      "content": "Nerv tizimi o'smalari, asab hujayralaridan va ularning atrofidagi to'qimalardan hosil bo'lgan ba'zi yaxshi yoki yomon xulq-atvorga ega o'smalardir. Ushbu o'smalar benign (yaxshi sifatli) yoki malign (yomon sifatli) bo'lishi mumkin. Nerv tizimi o'smalari ko'pincha asab tizimining turli qismlarida, masalan, bosh va orqa miyada paydo bo'ladi. O'smalar simptomlari individual bo'lib, bosh og'rig'i, muvofiqlik muammolari va his-tuyg'ularni yo'qotishni o'z ichiga olishi mumkin. Diagnostika usullari orasida tasviriy tekshiruvlar, biopsis va boshqa laboratoriya tahlillari mavjud. O'smalarni davolash usullari operatsiya, radiatsion terapiya va kimyoviy terapiyani o'z ichiga oladi."
     }
   ]
 }

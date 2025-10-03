@@ -7,31 +7,31 @@
       "tableData": {
         "data": [
           [
-            "O'sma Turi",
+            "Nerv tizimi o'smalari turi",
             "Tavsif",
             "Belgilari"
           ],
           [
             "Astrositoma",
             "Miya nerv hujayralaridan kelib chiqadi",
-            "G'ayritabiiy bosh og'rig'i, muvozanatni yo'qotish"
+            "Bosh og'rig'i, o'zgaruvchan ruhiy holat"
           ],
           [
             "Meningioma",
-            "Meningesdan kelib chiqadi",
-            "Bosh og'rig'i, quloqdan shovqin eshitish"
+            "Meningeal hujayralardan rivojlanadi",
+            "Ko'pincha asimptomatik, lekin bosh og'rig'i keltirib chiqarishi mumkin"
           ],
           [
             "Neuroblastoma",
-            "Nerv sistemasining o'simta turi",
-            "Bolalarda ko'proq uchraydi, qorin og'rig'i"
+            "Nerv tizimining embrional o'smasi",
+            "Qon aylanishi buzilishi, og'riq"
           ]
         ]
       }
     },
     {
       "elementIndex": 2,
-      "content": "Nerv tizimi o'smalariga oid umumiy ma'lumotlar",
+      "content": "Nerv tizimi o'smalari haqida umumiy ma'lumot",
       "tableData": {
         "data": []
       }

@@ -3,49 +3,49 @@
   "elements": [
     {
       "elementIndex": 3,
-      "content": "Diagnostika va Davolash Usullari",
+      "content": "Nerv tizimi o'smalari turlari",
       "tableData": {
         "data": []
       }
     },
     {
       "elementIndex": 4,
-      "content": "Diagnostika jarayoni bemorning holatini aniqlash uchun muhimdir. Ushbu jarayon turli usullar orqali amalga oshiriladi, jumladan laboratoriya tekshiruvlari va tasviriy diagnostika.",
+      "content": "Nerv tizimi o'smalari asosan ikki turga bo'linadi: benign (yaxshi) va malign (yomon). Har bir tur o'ziga xos simptomlar va davolash usullariga ega.",
       "tableData": {
         "data": []
       }
     },
     {
       "elementIndex": 5,
-      "content": "Bemorlarni baholashda zamonaviy texnologiyalarni qo‘llash muhim ahamiyatga ega. Bu jarayonda ultratovush, radiologiya va kompyuter tomografiyasi kabi usullar qo‘llaniladi.",
+      "content": "Benign nerv tizimi o'smalari",
       "tableData": {
         "data": []
       }
     },
     {
       "elementIndex": 8,
-      "content": "Davolash usullari bemorning kasallik turiga qarab farq qiladi. Ular dori-darmonlar, fizioterapiya, jarrohlik va alternativ tibbiyotni o‘z ichiga oladi.",
+      "content": "Ular asta-sekin o'sadi va atrofdagi to'qimalarga zarar yetkazmaydi, bu esa bemorlarning umidini yaxshilaydi. Misol: meningioma.",
       "tableData": {
         "data": []
       }
     },
     {
       "elementIndex": 9,
-      "content": "Dori-darmonlar bilan davolash",
+      "content": "Malign nerv tizimi o'smalari",
       "tableData": {
         "data": []
       }
     },
     {
       "elementIndex": 12,
-      "content": "Fizioterapiya va reabilitatsiya usullari bemorlarning tiklanish jarayonini tezlashtiradi. Bu usullar mushak va suyak tizimini mustahkamlashga yordam beradi.",
+      "content": "Bu o'smalar tez o'sadi va atrofdagi to'qimalarga tarqalishi mumkin. Misol: glioblastoma, neuroblastoma.",
       "tableData": {
         "data": []
       }
     },
     {
       "elementIndex": 13,
-      "content": "Alternativ tibbiyot usullari",
+      "content": "Simptomlar va belgilari",
       "tableData": {
         "data": []
       }

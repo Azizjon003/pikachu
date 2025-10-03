@@ -1,90 +1,64 @@
 {
-  "id": "KbQalnoI8H",
-  "index": 7,
-  "slide": 8,
+  "id": "K-Jt3ow7KB",
+  "index": 6,
+  "slide": 7,
   "elements": [
     {
       "type": "image",
-      "src": "./images\\slide7_img71.png",
+      "src": "./images\\slide6_img69.png",
       "hasImage": true,
       "elementIndex": 0
     },
     {
       "type": "image",
-      "src": "./images\\slide7_img72.png",
+      "src": "./images\\slide6_img70.png",
       "hasImage": true,
       "elementIndex": 1
     },
     {
-      "type": "image",
-      "src": "./images\\slide7_img73.png",
-      "hasImage": true,
-      "elementIndex": 6
+      "type": "shape",
+      "content": "Nerv tizimi o'smalari turlari",
+      "elementIndex": 3
     },
     {
       "type": "shape",
-      "content": "Diagnostika va Davolash Usullari",
-      "elementIndex": 8
+      "content": "Nerv tizimi o'smalari asosan ikkiga bo'linadi: benign (yomon emas) va malign (yomon). Har bir tur o'ziga xos simptomlar va davolash usullariga ega.",
+      "elementIndex": 5
     },
     {
       "type": "shape",
-      "content": "Diagnostika jarayoni bemorning holatini aniqlash uchun muhimdir. Ushbu jarayon turli usullar orqali amalga oshiriladi, jumladan laboratoriya tekshiruvlari va tasviriy diagnostika.",
-      "elementIndex": 10
+      "content": "Benign o'smalar",
+      "elementIndex": 7
     },
     {
       "type": "shape",
-      "content": "Bemorlarni baholashda zamonaviy texnologiyalarni qo‘llash muhim ahamiyatga ega. Bu jarayonda ultratovush, radiologiya va kompyuter tomografiyasi kabi usullar qo‘llaniladi.",
-      "elementIndex": 12
+      "content": "Benign nerv o'smalari ko'pincha sekin o'sadi va atrofdagi to'qimalarga zarar yetkazmaydi. Misollar: meningioma, neuroma.",
+      "elementIndex": 9
     },
     {
-      "type": "image",
-      "src": "./images\\slide7_img74.png",
-      "hasImage": true,
+      "type": "shape",
+      "content": "Malign o'smalar",
+      "elementIndex": 11
+    },
+    {
+      "type": "shape",
+      "content": "Malign nerv o'smalari tez o'sadi va atrofdagi to'qimalarga ta'sir qiladi. Misollar: glioblastoma, schwannoma.",
       "elementIndex": 13
     },
     {
-      "type": "image",
-      "src": "./images\\slide7_img75.png",
-      "hasImage": true,
-      "elementIndex": 16
+      "type": "shape",
+      "content": "O'smalar simptomlari",
+      "elementIndex": 15
     },
     {
       "type": "shape",
-      "content": "Davolash usullari bemorning kasallik turiga qarab farq qiladi. Ular dori-darmonlar, fizioterapiya, jarrohlik va alternativ tibbiyotni o‘z ichiga oladi.",
-      "elementIndex": 22
+      "content": "Umumiy simptomlar: bosh og'rig'i, muvozanatni yo'qotish, sezgi o'zgarishlari, mushaklar zaifligi. Har bir o'sma turiga qarab simptomlar farq qiladi.",
+      "elementIndex": 17
     },
     {
       "type": "shape",
-      "content": "Dori-darmonlar bilan davolash",
-      "elementIndex": 24
-    },
-    {
-      "type": "image",
-      "src": "./images\\slide7_img76.png",
-      "hasImage": true,
-      "elementIndex": 25
-    },
-    {
-      "type": "image",
-      "src": "./images\\slide7_img77.png",
-      "hasImage": true,
-      "elementIndex": 26
-    },
-    {
-      "type": "shape",
-      "content": "Fizioterapiya va reabilitatsiya usullari bemorlarning tiklanish jarayonini tezlashtiradi. Bu usullar mushak va suyak tizimini mustahkamlashga yordam beradi.",
-      "elementIndex": 32
-    },
-    {
-      "type": "shape",
-      "content": "Alternativ tibbiyot usullari",
-      "elementIndex": 34
-    },
-    {
-      "type": "image",
-      "src": "./images\\slide7_img78.png",
-      "hasImage": true,
-      "elementIndex": 35
+      "content": "Davolash usullari",
+      "elementIndex": 19
     }
   ],
   "note": ""

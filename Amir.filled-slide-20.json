@@ -1,0 +1,42 @@
+{
+  "id": "zECRdyO-LC",
+  "index": 16,
+  "slide": 17,
+  "elements": [
+    {
+      "type": "image",
+      "src": "./images\\slide16_img126.png",
+      "hasImage": true,
+      "elementIndex": 0
+    },
+    {
+      "type": "image",
+      "src": "./images\\slide16_img127.png",
+      "hasImage": true,
+      "elementIndex": 1
+    },
+    {
+      "type": "image",
+      "src": "./images\\slide16_img128.png",
+      "hasImage": true,
+      "elementIndex": 2
+    },
+    {
+      "type": "image",
+      "src": "./images\\slide16_img129.png",
+      "hasImage": true,
+      "elementIndex": 5
+    },
+    {
+      "type": "shape",
+      "content": "Foydalanilgan adabiyotlar",
+      "elementIndex": 7
+    },
+    {
+      "type": "shape",
+      "content": "1. Abdurahmonov A., Abdullayev V. Otagiga nerv sistemi o'smalari. Tibbiyot, 2019. \"Tibbiyot\" nashriyoti. 2. Davlatov Sh., Qodirov O. Nerv tizimining o'smalari: Diagnostika va davolash. Diagnostika va davolash jurnali, 2021. 3. Jumanov B. Nerv tizimi o'smalarining biologiyasi. Biologiya va tibbiyot, 2020. \"Tibbiyot\" nashriyoti. 4. Musayev M., Tashkentova G. O'smalarda nerv tizimi: Klinik va eksperimental tadqiqotlar. Tibbiyot jurnali, 2018. 5. Pirov A., Xamrayev B. Nerv tizimi o'smalariga doir muammolar va echimlar. Tibbiy ilmiy tadqiqotlar, 2022.",
+      "elementIndex": 9
+    }
+  ],
+  "note": ""
+}

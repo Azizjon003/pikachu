@@ -1,136 +1,105 @@
 {
-  "id": "xfw3AQw1nV",
-  "index": 3,
-  "slide": 4,
+  "id": "9Fjc-EOMTl",
+  "index": 5,
+  "slide": 6,
   "elements": [
     {
       "type": "image",
-      "src": "./images\\slide3_img32.png",
+      "src": "./images\\slide5_img56.png",
       "hasImage": true,
       "elementIndex": 0
     },
     {
       "type": "image",
-      "src": "./images\\slide3_img33.png",
+      "src": "./images\\slide5_img57.png",
       "hasImage": true,
       "elementIndex": 1
     },
     {
       "type": "image",
-      "src": "./images\\slide3_img34.png",
+      "src": "./images\\slide5_img58.png",
       "hasImage": true,
       "elementIndex": 4
     },
     {
       "type": "image",
-      "src": "./images\\slide3_img35.png",
+      "src": "./images\\slide5_img59.png",
       "hasImage": true,
       "elementIndex": 5
     },
     {
       "type": "image",
-      "src": "./images\\slide3_img36.png",
+      "src": "./images\\slide5_img60.png",
       "hasImage": true,
       "elementIndex": 8
     },
     {
       "type": "image",
-      "src": "./images\\slide3_img37.png",
+      "src": "./images\\slide5_img61.png",
       "hasImage": true,
       "elementIndex": 9
     },
     {
       "type": "image",
-      "src": "./images\\slide3_img38.png",
+      "src": "./images\\slide5_img62.png",
       "hasImage": true,
       "elementIndex": 12
     },
     {
       "type": "image",
-      "src": "./images\\slide3_img39.png",
+      "src": "./images\\slide5_img63.png",
       "hasImage": true,
       "elementIndex": 13
     },
     {
       "type": "image",
-      "src": "./images\\slide3_img40.png",
+      "src": "./images\\slide5_img64.png",
       "hasImage": true,
       "elementIndex": 16
     },
     {
       "type": "image",
-      "src": "./images\\slide3_img41.png",
+      "src": "./images\\slide5_img65.png",
       "hasImage": true,
       "elementIndex": 17
     },
     {
       "type": "image",
-      "src": "./images\\slide3_img42.png",
+      "src": "./images\\slide5_img66.png",
       "hasImage": true,
       "elementIndex": 20
     },
     {
       "type": "image",
-      "src": "./images\\slide3_img43.png",
+      "src": "./images\\slide5_img67.png",
       "hasImage": true,
       "elementIndex": 21
     },
     {
       "type": "image",
-      "src": "./images\\slide3_img44.png",
+      "src": "./images\\slide5_img68.png",
       "hasImage": true,
       "elementIndex": 24
     },
     {
-      "type": "image",
-      "src": "./images\\slide3_img45.png",
-      "hasImage": true,
-      "elementIndex": 25
+      "type": "shape",
+      "content": "Nerv tizimi o'smalari haqida umumiy ma'lumot",
+      "elementIndex": 26
     },
     {
-      "type": "image",
-      "src": "./images\\slide3_img46.png",
-      "hasImage": true,
+      "type": "shape",
+      "content": "Nerv tizimi o'smalari, asosan, nerv to'qimalaridan hosil bo'ladigan o'smalardir. Ular benign (yaxshi sifatli) yoki malign (yomon sifatli) bo'lishi mumkin. Ushbu o'smalar asosan bosh miya, orqa miya va periferal nervlarda uchraydi.",
       "elementIndex": 28
     },
     {
-      "type": "image",
-      "src": "./images\\slide3_img47.png",
-      "hasImage": true,
-      "elementIndex": 29
+      "type": "shape",
+      "content": "Nerv tizimi o'smalari simptomlari orasida bosh og'rig'i, muvofiqlikning yo'qolishi, his-tuyg'u o'zgarishlari va harakat qobiliyatida muammolar kiradi. Katta o'smalar atrofdagi to'qimalarga bosim o'tkazishi mumkin.",
+      "elementIndex": 30
     },
     {
-      "type": "image",
-      "src": "./images\\slide3_img48.png",
-      "hasImage": true,
+      "type": "shape",
+      "content": "Davolash usullari o'smaning turiga, joylashuviga va bemorning umumiy holatiga bog'liq. Jarrohlik, radiatsiya terapiyasi va kimyoviy terapiya keng tarqalgan usullardir.",
       "elementIndex": 32
-    },
-    {
-      "type": "image",
-      "src": "./images\\slide3_img49.png",
-      "hasImage": true,
-      "elementIndex": 33
-    },
-    {
-      "type": "image",
-      "src": "./images\\slide3_img50.png",
-      "hasImage": true,
-      "elementIndex": 36
-    },
-    {
-      "type": "shape",
-      "content": "O'sma turlari haqida",
-      "elementIndex": 38
-    },
-    {
-      "type": "shape",
-      "content": "O'sma turlari, o'simliklar olamidagi muhim qism bo'lib, ularning hayotiy jarayonlari va ekologik ahamiyati juda katta. O'sma turlari turli xil iqlim sharoitlariga moslashgan bo'lib, ularning ko'pchilik qismi o'simliklar va hayvonlar ekotizimlariga ijobiy ta'sir ko'rsatadi. O'sma turlarini o'rganish, ularning saqlanishi va ko'payishini ta'minlash uchun zarurdir.",
-      "elementIndex": 40
-    },
-    {
-      "type": "shape",
-      "content": "O'sma turlari ko'plab foydali xususiyatlarga ega. Ular qishloq xo'jaligida, tibbiyotda, va ekologik muvozanatni saqlashda muhim rol o'ynaydi. Ularning saqlanishi va rivojlanishi uchun zamonaviy tadqiqotlar va yangi texnologiyalar joriy etilmoqda.",
-      "elementIndex": 42
     }
   ],
   "note": ""

@@ -1,17 +1,23 @@
 import fs from "fs";
-import { generateOutline, generateContent } from "./llma-structured";
+import {
+  generateOutline,
+  generateContent,
+  generateConculation,
+  generateReferences,
+  generateThankYouSlide,
+} from "./llma-structured";
 
 const start = async () => {
   // 1. Load AI schema (simplified slide structure)
   let aiSchema = JSON.parse(fs.readFileSync("Amir.sxema.json", "utf-8"));
-
+  const topic = "Nerv tizimi o'smalari";
   // 2. Generate outline
   console.log("📝 Generating outline...");
   const outline = await generateOutline(
     aiSchema,
     "Uzbek",
-    5, // Select 5 slides
-    "Nerv tizimi o'smalari "
+    20, // Select 5 slides
+    topic
   );
 
   fs.writeFileSync("Amir.outline.json", JSON.stringify(outline, null, 2));
@@ -20,14 +26,14 @@ const start = async () => {
   // 3. Prepare first two slides with topic and outlines
   console.log("🔧 Preparing first two slides...");
 
-  // First slide: Topic name
+  // First slide: Dynamic topic name from outline
   const firstSlide = {
     ...aiSchema[0],
     elements: aiSchema[0].elements.map((element: any) => {
       if (element.type === "shape" && element.elementIndex === 5) {
         return {
           ...element,
-          content: "Nerv tizimi o'smalari",
+          content: outline.outline[0].title.split(" ").slice(0, 3).join(" "), // Dynamic topic from outline
         };
       }
       return element;
@@ -118,49 +124,42 @@ const start = async () => {
     );
   }
 
-  // 7. Generate additional slides using LLM (consultation, references, thank you)
+  // 7. Generate additional slides using LLM with topic-specific content
   console.log("📄 Generating additional slides using LLM...");
 
+  // Create dynamic context from the main presentation
   // Generate consultation slide content
   console.log("📄 Generating consultation slide...");
-  const consultationOutline = {
-    title: "Konsultatsiya",
-    title_eng: "Consultation",
-  };
-  const consultationSlide = await generateContent(
-    aiSchema[aiSchema.length - 3],
-    consultationOutline,
-    "Uzbek"
+  // Generate consultation slide content
+  console.log("📄 Generating consultation slide...");
+
+  const consultationSlide = await generateConculation(
+    topic,
+    "Uzbek",
+    aiSchema[aiSchema.length - 3]
   );
   await new Promise((resolve) => setTimeout(resolve, 1000));
   console.log("✅ Consultation slide generated");
 
-  // Generate references slide content
+  // Generate references slide content with numbered format
   console.log("📄 Generating references slide...");
-  const referencesOutline = {
-    title: "Foydalanilgan adabiyotlar",
-    title_eng: "References",
-  };
-  const referencesSlide = await generateContent(
-    aiSchema[aiSchema.length - 2],
-    referencesOutline,
-    "Uzbek"
+
+  const referencesSlide = await generateReferences(
+    topic,
+    "Uzbek",
+    5,
+    aiSchema[aiSchema.length - 2]
   );
   await new Promise((resolve) => setTimeout(resolve, 1000));
   console.log("✅ References slide generated");
 
-  // Generate thank you slide content
-  console.log("📄 Generating thank you slide...");
-  const thankYouOutline = {
-    title: "Etiboringiz uchun rahmat",
-    title_eng: "Thank you for your attention",
-  };
+  // Generate conclusion slide content
+  console.log("📄 Generating conclusion slide...");
 
-  console.log(aiSchema[aiSchema.length], "aiSchema[aiSchema.length]");
-  const thankYouSlide = await generateContent(
-    aiSchema[aiSchema.length - 1],
-    thankYouOutline,
-    "Uzbek"
+  const thankYouSlide = await generateThankYouSlide(
+    topic,
+    "Uzbek",
+    aiSchema[aiSchema.length - 1]
   );
   await new Promise((resolve) => setTimeout(resolve, 1000));
   console.log("✅ Thank you slide generated");

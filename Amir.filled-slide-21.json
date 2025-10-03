@@ -1,0 +1,19 @@
+{
+  "id": "uFZMc04BHB",
+  "index": 17,
+  "slide": 18,
+  "elements": [
+    {
+      "type": "image",
+      "src": "./images\\slide17_img130.png",
+      "hasImage": true,
+      "elementIndex": 0
+    },
+    {
+      "type": "shape",
+      "content": "Hammaga assalom!",
+      "elementIndex": 2
+    }
+  ],
+  "note": ""
+}

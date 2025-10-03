@@ -3,63 +3,63 @@
   "elements": [
     {
       "elementIndex": 6,
-      "content": "Nerv tizimi o'smalari: Davolash usullari",
+      "content": "Nerv tizimi o'smalarini davolash usullari",
       "tableData": {
         "data": []
       }
     },
     {
       "elementIndex": 7,
-      "content": "Nerv tizimi o'smalari ko'plab turli xil shakllarda bo'lishi mumkin. Ularning davolash usullari kasallikning turiga, joylashuviga va og'irligiga bog'liq.",
+      "content": "Nerv tizimida o'smalarni davolash murakkab jarayon bo'lib, bir qancha usullarni o'z ichiga oladi. Ushbu usullar orasida jarrohlik, radioterapiya va kimyoterapiya mavjud.",
       "tableData": {
         "data": []
       }
     },
     {
       "elementIndex": 8,
-      "content": "Davolash usullari",
+      "content": "Jarrohlik usuli",
       "tableData": {
         "data": []
       }
     },
     {
       "elementIndex": 9,
-      "content": "Nerv tizimi o'smalarini davolashda quyidagi usullar qo'llaniladi: jarrohlik aralashuvi, radiatsiya terapiyasi va kimyoviy terapiya. Har bir usulning o'ziga xos afzalliklari va kamchiliklari mavjud.",
+      "content": "Jarrohlik usuli nerv tizimidagi o'smalarni olib tashlashda eng samarali usullardan biridir. O'sma joylashuvi va o'lchamiga qarab, turli xil jarrohlik usullari qo'llanilishi mumkin.",
       "tableData": {
         "data": []
       }
     },
     {
       "elementIndex": 10,
-      "content": "Jarohat va radiatsiya terapiyasi",
+      "content": "Radioterapiya",
       "tableData": {
         "data": []
       }
     },
     {
       "elementIndex": 11,
-      "content": "Jarohatni olib tashlash o'sma joylashgan joyga qarab amalga oshiriladi. Radiatsiya terapiyasi esa o'smaning o'sishini to'xtatishga yordam beradi.",
+      "content": "Radioterapiya o'smalarni yo'q qilish uchun yuqori energiyali nurlardan foydalanadi. Bu usul asosan jarrohlikdan keyin qo'llaniladi yoki o'sma operatsiya qilish mumkin bo'lmagan joylarda ishlatiladi.",
       "tableData": {
         "data": []
       }
     },
     {
       "elementIndex": 12,
-      "content": "Kimyoviy terapiya",
+      "content": "Kimyoterapiya",
       "tableData": {
         "data": []
       }
     },
     {
       "elementIndex": 13,
-      "content": "Kimyoviy terapiya o'smalarni kamaytirish yoki ularning o'sishini sekinlashtirish uchun dori-darmonlardan foydalanishni o'z ichiga oladi.",
+      "content": "Kimyoterapiya o'sma hujayralarini yo'q qilish uchun dori-darmonlardan foydalanadi. Bu usul o'sma tarqalgan hollarda qo'llaniladi.",
       "tableData": {
         "data": []
       }
     },
     {
       "elementIndex": 14,
-      "content": "Davolashni rejalashtirish",
+      "content": "Reabilitatsiya va qo'shimcha usullar",
       "tableData": {
         "data": []
       }

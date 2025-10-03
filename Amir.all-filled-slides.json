@@ -158,17 +158,17 @@
       },
       {
         "type": "shape",
-        "content": "1. Nerv tizimi o'smalari turlari va belgilari",
+        "content": "1. Nerv tizimi o'smalari haqida umumiy ma'lumot",
         "elementIndex": 34
       },
       {
         "type": "shape",
-        "content": "2. Nerv tizimi o'smalari diagnostikasi va davolash usullari",
+        "content": "2. Nerv tizimi o'smalari turlari va ularning simptomlari",
         "elementIndex": 36
       },
       {
         "type": "shape",
-        "content": "3. Nerv tizimi o'smalari bilan bog'liq muammolar va kelajak istiqbollari",
+        "content": "3. Nerv tizimi o'smalarini davolash usullari",
         "elementIndex": 38
       },
       {
@@ -187,66 +187,71 @@
     "note": ""
   },
   {
-    "id": "K-Jt3ow7KB",
-    "index": 6,
-    "slide": 7,
+    "id": "rjnuHMWJEL",
+    "index": 4,
+    "slide": 5,
     "elements": [
       {
         "type": "image",
-        "src": "./images\\slide6_img69.png",
+        "src": "./images\\slide4_img51.png",
         "hasImage": true,
         "elementIndex": 0
       },
       {
-        "type": "image",
-        "src": "./images\\slide6_img70.png",
-        "hasImage": true,
-        "elementIndex": 1
+        "type": "table",
+        "data": [
+          [
+            "O'sma Turi",
+            "Qisqacha Tavsif"
+          ],
+          [
+            "Astrositoma",
+            "Miya astrositlaridan kelib chiqadi."
+          ],
+          [
+            "Meningioma",
+            "Meningesdan kelib chiqadigan o'smalar."
+          ],
+          [
+            "Neuroblastoma",
+            "Asosan bolalarda uchraydigan o'sma."
+          ],
+          [
+            "Glioblastoma",
+            "Eng agressiv nerv tizimi o'smasi."
+          ]
+        ],
+        "elementIndex": 1,
+        "content": ""
       },
       {
         "type": "shape",
-        "content": "O'sma turlari",
+        "content": "Nerv tizimi o'smalari haqida umumiy ma'lumot",
         "elementIndex": 3
       },
       {
-        "type": "shape",
-        "content": "O'sma turlari, o'simliklar o'rtasida eng ko'p tarqalgan va ko'p qirrali xilma-xillikni namoyon etadi. Ular nafaqat ko'rinish, balki o'sish sharoitlari va ekologik rol bilan ham ajralib turadi.",
-        "elementIndex": 5
+        "type": "image",
+        "src": "./images\\slide4_img52.png",
+        "hasImage": true,
+        "elementIndex": 4
       },
       {
-        "type": "shape",
-        "content": "O'sma turlari haqida ma'lumotlar",
+        "type": "image",
+        "src": "./images\\slide4_img53.png",
+        "hasImage": true,
         "elementIndex": 7
       },
       {
-        "type": "shape",
-        "content": "O'sma turlari ko'plab ekologik tizimlarda muhim rol o'ynaydi. Ular ekotizimlarning barqarorligini ta'minlaydi va turli xil hayvonlar uchun yashash joyi hisoblanadi.",
-        "elementIndex": 9
+        "type": "image",
+        "src": "./images\\slide4_img54.png",
+        "hasImage": true,
+        "elementIndex": 8
       },
       {
-        "type": "shape",
-        "content": "O'sma turlari turlari",
+        "type": "image",
+        "src": "./images\\slide4_img55.png",
+        "hasImage": true,
         "elementIndex": 11
-      },
-      {
-        "type": "shape",
-        "content": "1. O'rmon o'smalari: Bu o'smalar, asosan, o'rmon ekosistemalarida uchraydi va ko'plab hayvonlar uchun yashash joyi bo'lib xizmat qiladi.  \n2. Sahrada o'smalari: Ular qurg'oqchil sharoitlarda yashaydi va suvni tejashga qodir.\n3. Suv o'smalari: Suvda yashovchi o'smalar ko'plab ekotizimlarning asosiy qismi hisoblanadi.",
-        "elementIndex": 13
-      },
-      {
-        "type": "shape",
-        "content": "O'sma turlari va ularning ahamiyati",
-        "elementIndex": 15
-      },
-      {
-        "type": "shape",
-        "content": "O'sma turlari tabiiy muhitda muhim rol o'ynaydi. Ular havoni tozalash, tuproqni mustahkamlash va iqlimni boshqarishga yordam beradi.",
-        "elementIndex": 17
-      },
-      {
-        "type": "shape",
-        "content": "O'sma turlari: Nomi, Turi, Ekologik ahamiyati",
-        "elementIndex": 19
       }
     ],
     "note": ""
@@ -336,23 +341,88 @@
       },
       {
         "type": "shape",
-        "content": "Nerv Tizimi O'smalari: Asosiy Ma'lumotlar",
+        "content": "Nerv tizimi o'smalari: Umumiy ma'lumot",
         "elementIndex": 26
       },
       {
         "type": "shape",
-        "content": "Nerv tizimi o'smalari, inson organizmida nerv hujayralaridan kelib chiqadigan benign yoki malign o'smalardir. Ular asosan bosh miya, orqa miya va nervlarni ta'sir qiladi. O'smalar turli belgilarga va muammolarga olib kelishi mumkin.",
+        "content": "Nerv tizimi o'smalari asosan miyada yoki orqa miya nervlarida paydo bo'ladi. Ular benign (yaxshi sifatli) yoki malign (yomon sifatli) bo'lishi mumkin. O'smalar nerv to'qimalaridan yoki boshqa to'qimalardan kelib chiqishi mumkin.",
         "elementIndex": 28
       },
       {
         "type": "shape",
-        "content": "O'smalar asosan quyidagi turlarga bo'linadi: meningioma, glioma, schwannoma va neuroblastoma. Har bir o'sma turi o'ziga xos simptomlar va davolash usullariga ega. O'smalarning aniqlanishi va davolanishi uchun tezkor tashxis qo'yish muhimdir.",
+        "content": "Umumiy belgilari: bosh og'rig'i, muvozanatni yo'qotish, ko'rish qobiliyatining pasayishi. Shuningdek, o'smalar o'sishi davomida nerv tizimining boshqa qismlariga ta'sir ko'rsatishi mumkin.",
         "elementIndex": 30
       },
       {
         "type": "shape",
-        "content": "Davolash usullari orasida jarrohlik, kimyoterapiya va radioterapiya mavjud. O'sma turiga qarab, davolash rejasi individual ravishda belgilanadi. O'smalarni erta aniqlash hayotni saqlashda muhim rol o'ynaydi.",
+        "content": "O'smalarni aniqlash uchun MRT, KT va boshqa tasviriy tekshiruvlar qo'llaniladi. Davolash usullari xirurgik aralashuv, radioterapiya va kimyoterapiyani o'z ichiga oladi.",
         "elementIndex": 32
+      }
+    ],
+    "note": ""
+  },
+  {
+    "id": "K-Jt3ow7KB",
+    "index": 6,
+    "slide": 7,
+    "elements": [
+      {
+        "type": "image",
+        "src": "./images\\slide6_img69.png",
+        "hasImage": true,
+        "elementIndex": 0
+      },
+      {
+        "type": "image",
+        "src": "./images\\slide6_img70.png",
+        "hasImage": true,
+        "elementIndex": 1
+      },
+      {
+        "type": "shape",
+        "content": "Nerv tizimi o'smalari turlari",
+        "elementIndex": 3
+      },
+      {
+        "type": "shape",
+        "content": "Nerv tizimi o'smalari asosan ikkiga bo'linadi: benign (yomon emas) va malign (yomon). Har bir tur o'ziga xos simptomlar va davolash usullariga ega.",
+        "elementIndex": 5
+      },
+      {
+        "type": "shape",
+        "content": "Benign o'smalar",
+        "elementIndex": 7
+      },
+      {
+        "type": "shape",
+        "content": "Benign nerv o'smalari ko'pincha sekin o'sadi va atrofdagi to'qimalarga zarar yetkazmaydi. Misollar: meningioma, neuroma.",
+        "elementIndex": 9
+      },
+      {
+        "type": "shape",
+        "content": "Malign o'smalar",
+        "elementIndex": 11
+      },
+      {
+        "type": "shape",
+        "content": "Malign nerv o'smalari tez o'sadi va atrofdagi to'qimalarga ta'sir qiladi. Misollar: glioblastoma, schwannoma.",
+        "elementIndex": 13
+      },
+      {
+        "type": "shape",
+        "content": "O'smalar simptomlari",
+        "elementIndex": 15
+      },
+      {
+        "type": "shape",
+        "content": "Umumiy simptomlar: bosh og'rig'i, muvozanatni yo'qotish, sezgi o'zgarishlari, mushaklar zaifligi. Har bir o'sma turiga qarab simptomlar farq qiladi.",
+        "elementIndex": 17
+      },
+      {
+        "type": "shape",
+        "content": "Davolash usullari",
+        "elementIndex": 19
       }
     ],
     "note": ""
@@ -382,17 +452,17 @@
       },
       {
         "type": "shape",
-        "content": "Diagnostika va Davolash Usullari",
+        "content": "Nerv tizimi o'smalari: Turlari va simptomlari",
         "elementIndex": 8
       },
       {
         "type": "shape",
-        "content": "Diagnostika jarayoni bemorning holatini aniqlash uchun muhimdir. Ushbu jarayon turli usullar orqali amalga oshiriladi, jumladan laboratoriya tekshiruvlari va tasviriy diagnostika.",
+        "content": "Nerv tizimi o'smalari, asosan, miya va umurtqa pog'onasida rivojlanadi. Ushbu o'smalar har xil simptomlarga sabab bo'lishi mumkin, bu esa bemorning hayot sifatiga ta'sir qiladi. O'smalar bening va malign bo'lishi mumkin, har bir turi turlicha davolash usullarini talab qiladi.",
         "elementIndex": 10
       },
       {
         "type": "shape",
-        "content": "Bemorlarni baholashda zamonaviy texnologiyalarni qo‘llash muhim ahamiyatga ega. Bu jarayonda ultratovush, radiologiya va kompyuter tomografiyasi kabi usullar qo‘llaniladi.",
+        "content": "O'smalar turlari",
         "elementIndex": 12
       },
       {
@@ -409,12 +479,12 @@
       },
       {
         "type": "shape",
-        "content": "Davolash usullari bemorning kasallik turiga qarab farq qiladi. Ular dori-darmonlar, fizioterapiya, jarrohlik va alternativ tibbiyotni o‘z ichiga oladi.",
+        "content": "1. Meningioma: Bosh miya o'smasi, asosan, bening.\n2. Astrositoma: Miya to'qimasida paydo bo'ladi, malign bo'lishi mumkin.\n3. Neuroblastoma: Asosan, bolalarda uchraydi, malign xarakterga ega.\n4. Ependimoma: Umurtqa pog'onasi va miyaning ichki qismida paydo bo'ladi.",
         "elementIndex": 22
       },
       {
         "type": "shape",
-        "content": "Dori-darmonlar bilan davolash",
+        "content": "Simptomlar",
         "elementIndex": 24
       },
       {
@@ -431,12 +501,12 @@
       },
       {
         "type": "shape",
-        "content": "Fizioterapiya va reabilitatsiya usullari bemorlarning tiklanish jarayonini tezlashtiradi. Bu usullar mushak va suyak tizimini mustahkamlashga yordam beradi.",
+        "content": "- Bosh og'rig'i\n- Ko'rish yoki eshitishdagi o'zgarishlar\n- Nerv tizimining boshqa faoliyatlarida buzilishlar\n- O'z-o'zidan kelib chiqadigan tutqanoqlar",
         "elementIndex": 32
       },
       {
         "type": "shape",
-        "content": "Alternativ tibbiyot usullari",
+        "content": "Davolash usullari",
         "elementIndex": 34
       },
       {
@@ -444,6 +514,307 @@
         "src": "./images\\slide7_img78.png",
         "hasImage": true,
         "elementIndex": 35
+      }
+    ],
+    "note": ""
+  },
+  {
+    "id": "aO5ZTPFtge",
+    "index": 8,
+    "slide": 9,
+    "elements": [
+      {
+        "type": "image",
+        "src": "./images\\slide8_img79.png",
+        "hasImage": true,
+        "elementIndex": 0
+      },
+      {
+        "type": "image",
+        "src": "./images\\slide8_img80.png",
+        "hasImage": true,
+        "elementIndex": 1
+      },
+      {
+        "type": "image",
+        "src": "./images\\slide8_img81.png",
+        "hasImage": true,
+        "elementIndex": 2
+      },
+      {
+        "type": "image",
+        "src": "./images\\slide8_img82.png",
+        "hasImage": true,
+        "elementIndex": 5
+      },
+      {
+        "type": "image",
+        "src": "./images\\slide8_img83.png",
+        "hasImage": true,
+        "elementIndex": 8
+      },
+      {
+        "type": "image",
+        "src": "./images\\slide8_img84.png",
+        "hasImage": true,
+        "elementIndex": 11
+      },
+      {
+        "type": "shape",
+        "content": "Nerv tizimi o'smalarini davolash usullari",
+        "elementIndex": 15
+      },
+      {
+        "type": "shape",
+        "content": "Nerv tizimi o'smalari, asosan, ikkiga bo'linadi: benign (yaxshi) va malign (yomon). Har bir tur uchun alohida davolash usullari mavjud.",
+        "elementIndex": 17
+      },
+      {
+        "type": "shape",
+        "content": "Jarrohlik aralashuvi",
+        "elementIndex": 19
+      },
+      {
+        "type": "shape",
+        "content": "Nerv tizimida joylashgan o'smalarni olib tashlash uchun jarrohlik ko'rsatmalari bo'lishi mumkin. Bu usul, odatda, o'sma o'sishining oldini olish va simptomlarni kamaytirish uchun qo'llaniladi.",
+        "elementIndex": 21
+      },
+      {
+        "type": "shape",
+        "content": "Radiatsion terapiya",
+        "elementIndex": 23
+      },
+      {
+        "type": "shape",
+        "content": "Radiatsion terapiya, o'smalarni kamaytirish yoki yo'q qilish maqsadida, o'sma joylashgan joyga radiatsiya yuborish orqali amalga oshiriladi.",
+        "elementIndex": 25
+      },
+      {
+        "type": "shape",
+        "content": "Kimyoviy terapiya",
+        "elementIndex": 27
+      },
+      {
+        "type": "shape",
+        "content": "Kimyoviy terapiya, o'smalarni yo'q qilish uchun maxsus dori vositalaridan foydalanishni o'z ichiga oladi, bu esa malign o'smalarni davolashda keng qo'llaniladi.",
+        "elementIndex": 29
+      },
+      {
+        "type": "shape",
+        "content": "Maqsadli terapiya",
+        "elementIndex": 31
+      }
+    ],
+    "note": ""
+  },
+  {
+    "id": "IXm0nIVSsV",
+    "index": 9,
+    "slide": 10,
+    "elements": [
+      {
+        "type": "image",
+        "src": "./images\\slide9_img85.png",
+        "hasImage": true,
+        "elementIndex": 0
+      },
+      {
+        "type": "image",
+        "src": "./images\\slide9_img86.png",
+        "hasImage": true,
+        "elementIndex": 1
+      },
+      {
+        "type": "image",
+        "src": "./images\\slide9_img87.png",
+        "hasImage": true,
+        "elementIndex": 4
+      },
+      {
+        "type": "image",
+        "src": "./images\\slide9_img88.png",
+        "hasImage": true,
+        "elementIndex": 5
+      },
+      {
+        "type": "image",
+        "src": "./images\\slide9_img89.png",
+        "hasImage": true,
+        "elementIndex": 8
+      },
+      {
+        "type": "image",
+        "src": "./images\\slide9_img90.jpeg",
+        "hasImage": true,
+        "elementIndex": 9
+      },
+      {
+        "type": "shape",
+        "content": "Nerv tizimi o'smalarini davolash usullari",
+        "elementIndex": 11
+      },
+      {
+        "type": "image",
+        "src": "./images\\slide9_img91.png",
+        "hasImage": true,
+        "elementIndex": 12
+      },
+      {
+        "type": "shape",
+        "content": "Nerv tizimida o'smalarni davolashda bir nechta usullar mavjud. Ushbu usullar jarrohlik, radiatsiya terapiyasi va kimyoviy terapiyani o'z ichiga oladi. Har bir usulning o'ziga xos afzalliklari va kamchiliklari bor.",
+        "elementIndex": 14
+      },
+      {
+        "type": "shape",
+        "content": "O'smalarni davolashda individual yondashuv muhimdir. Bemorning yoshi, umumiy salomatligi va o'sma turi kabi omillarni hisobga olish zarur. Muvaffaqiyatli davolash uchun multidisiplinar jamoa bilan ishlash kerak.",
+        "elementIndex": 16
+      },
+      {
+        "type": "shape",
+        "content": "Davolash usullari:\n- Jarrohlik\n- Radiatsiya terapiyasi\n- Kimyoviy terapiya\n- Imunoterapiya\n\nHar bir usulning samaradorligi bemorlarning holatiga qarab farq qiladi.",
+        "elementIndex": 18
+      }
+    ],
+    "note": ""
+  },
+  {
+    "id": "-FYKbTLrT1",
+    "index": 10,
+    "slide": 11,
+    "elements": [
+      {
+        "type": "image",
+        "src": "./images\\slide10_img92.png",
+        "hasImage": true,
+        "elementIndex": 0
+      },
+      {
+        "type": "image",
+        "src": "./images\\slide10_img93.png",
+        "hasImage": true,
+        "elementIndex": 1
+      },
+      {
+        "type": "image",
+        "src": "./images\\slide10_img94.png",
+        "hasImage": true,
+        "elementIndex": 2
+      },
+      {
+        "type": "image",
+        "src": "./images\\slide10_img95.png",
+        "hasImage": true,
+        "elementIndex": 5
+      },
+      {
+        "type": "image",
+        "src": "./images\\slide10_img96.png",
+        "hasImage": true,
+        "elementIndex": 6
+      },
+      {
+        "type": "image",
+        "src": "./images\\slide10_img97.png",
+        "hasImage": true,
+        "elementIndex": 9
+      },
+      {
+        "type": "image",
+        "src": "./images\\slide10_img98.png",
+        "hasImage": true,
+        "elementIndex": 10
+      },
+      {
+        "type": "image",
+        "src": "./images\\slide10_img99.png",
+        "hasImage": true,
+        "elementIndex": 13
+      },
+      {
+        "type": "shape",
+        "content": "Nerv Tizimi O'smalari: Umumiy Ma'lumotlar",
+        "elementIndex": 15
+      },
+      {
+        "type": "image",
+        "src": "./images\\slide10_img100.png",
+        "hasImage": true,
+        "elementIndex": 16
+      },
+      {
+        "type": "image",
+        "src": "./images\\slide10_img101.png",
+        "hasImage": true,
+        "elementIndex": 19
+      },
+      {
+        "type": "image",
+        "src": "./images\\slide10_img102.png",
+        "hasImage": true,
+        "elementIndex": 20
+      },
+      {
+        "type": "image",
+        "src": "./images\\slide10_img103.png",
+        "hasImage": true,
+        "elementIndex": 23
+      },
+      {
+        "type": "image",
+        "src": "./images\\slide10_img104.png",
+        "hasImage": true,
+        "elementIndex": 24
+      },
+      {
+        "type": "image",
+        "src": "./images\\slide10_img105.png",
+        "hasImage": true,
+        "elementIndex": 27
+      },
+      {
+        "type": "shape",
+        "content": "O'smalarning 87%",
+        "elementIndex": 29
+      },
+      {
+        "type": "shape",
+        "content": "Samarali davolash 36%",
+        "elementIndex": 31
+      },
+      {
+        "type": "shape",
+        "content": "Yoshlar orasida 67%",
+        "elementIndex": 33
+      },
+      {
+        "type": "shape",
+        "content": "Nerv tizimi o'smalari, asosan, nerv to'qimalaridan kelib chiqadigan o'smalardir. Ular miya va orqa miya kabi markaziy nerv tizimida paydo bo'lishi mumkin.",
+        "elementIndex": 35
+      },
+      {
+        "type": "shape",
+        "content": "O'smalar benign (yaxshi sifatli) yoki malign (yomon sifatli) bo'lishi mumkin. Malign o'smalar tezda tarqalishi va muammolar keltirib chiqarishi mumkin.",
+        "elementIndex": 37
+      },
+      {
+        "type": "shape",
+        "content": "O'smalarning belgilari ko'pincha ularning joylashuvi va o'lchamiga bog'liq. Bular bosh og'rig'i, asabiylashish, harakat buzilishlari kabi belgilarni o'z ichiga olishi mumkin.",
+        "elementIndex": 39
+      },
+      {
+        "type": "shape",
+        "content": "Davolash usullari:",
+        "elementIndex": 41
+      },
+      {
+        "type": "shape",
+        "content": "1. Xirurgik aralashuv\n2. Kimyoterapiya\n3. Radioterapiya",
+        "elementIndex": 43
+      },
+      {
+        "type": "shape",
+        "content": "O'smalarni erta aniqlash muhimdir, chunki bu davolanish imkoniyatlarini oshiradi.",
+        "elementIndex": 45
       }
     ],
     "note": ""
@@ -467,7 +838,7 @@
       },
       {
         "type": "shape",
-        "content": "Muammolar va kelajak istiqbollari",
+        "content": "Nerv tizimi o'smalari turlari va ularning simptomlari",
         "elementIndex": 3
       },
       {
@@ -487,33 +858,138 @@
       },
       {
         "type": "shape",
-        "content": "4",
+        "content": "Nerv tizimining o'smalari asosan miya va umurtqa pog'onasida paydo bo'ladi. Ular turli xil simptomlarni keltirib chiqarishi mumkin.",
         "elementIndex": 11
       },
       {
         "type": "shape",
-        "content": "Muammolarni hal etishning zamonaviy usullari va strategiyalari haqida o‘rganish zarur.",
+        "content": "Nerv tizimi o'smalari umumiy simptomlari: bosh og'rig'i, ko'rish va eshitish qobiliyatining pasayishi, muvozanatni yo'qotish.",
         "elementIndex": 13
       },
       {
         "type": "shape",
-        "content": "Kelajak istiqbollari, iqtisodiy va ijtimoiy taraqqiyotga ta'sir etuvchi omillarni tahlil qilish.",
+        "content": "Maxsus simptomlar: yodda saqlash qobiliyatining pasayishi, mantiqiy fikrlashda qiyinchilik. Ular o'sma joylashuvi va turiga bog'liq.",
         "elementIndex": 15
       },
       {
         "type": "shape",
-        "content": "O'zbekistondagi muammolar va ularni hal qilish rejalari haqida batafsil ma'lumot.",
+        "content": "O'smalarning turlari: benign (yaxshi sifatli) va malign (yomon sifatli). Har biri o'ziga xos simptomlarga ega.",
         "elementIndex": 17
       },
       {
         "type": "shape",
-        "content": "Muammolarni hal etish uchun xalqaro tajribalar va innovatsion yondashuvlarni qo'llash.",
+        "content": "4",
         "elementIndex": 19
       },
       {
         "type": "shape",
-        "content": "4",
+        "content": "2",
         "elementIndex": 21
+      }
+    ],
+    "note": ""
+  },
+  {
+    "id": "9yrDox0mzw",
+    "index": 12,
+    "slide": 13,
+    "elements": [
+      {
+        "type": "image",
+        "src": "./images\\slide12_img108.png",
+        "hasImage": true,
+        "elementIndex": 0
+      },
+      {
+        "type": "image",
+        "src": "./images\\slide12_img109.jpeg",
+        "hasImage": true,
+        "elementIndex": 1
+      },
+      {
+        "type": "shape",
+        "content": "Nerv tizimi o'smalarini davolashning asosiy usullari",
+        "elementIndex": 3
+      },
+      {
+        "type": "shape",
+        "content": "Nerv tizimi o'smalarini davolashda bir nechta usullar mavjud, jumladan: jarrohlik, radioterapiya, kimyoterapiya va immunoterapiya. Har bir usulning o'ziga xos afzalliklari va kamchiliklari bor. Davolash strategiyasi bemorning holatiga, o'smaning joylashuvi va boshqa omillarga qarab tanlanadi. Klinik tadqiqotlar va yangi texnologiyalar yordamida davolash usullari doimiy ravishda takomillashmoqda.",
+        "elementIndex": 5
+      }
+    ],
+    "note": ""
+  },
+  {
+    "id": "V2PZHWGT8g",
+    "index": 13,
+    "slide": 14,
+    "elements": [
+      {
+        "type": "image",
+        "src": "./images\\slide13_img110.png",
+        "hasImage": true,
+        "elementIndex": 0
+      },
+      {
+        "type": "image",
+        "src": "./images\\slide13_img111.png",
+        "hasImage": true,
+        "elementIndex": 1
+      },
+      {
+        "type": "image",
+        "src": "./images\\slide13_img112.png",
+        "hasImage": true,
+        "elementIndex": 4
+      },
+      {
+        "type": "image",
+        "src": "./images\\slide13_img113.png",
+        "hasImage": true,
+        "elementIndex": 5
+      },
+      {
+        "type": "image",
+        "src": "./images\\slide13_img114.png",
+        "hasImage": true,
+        "elementIndex": 8
+      },
+      {
+        "type": "shape",
+        "content": "Nerv tizimi o'smalari turlari",
+        "elementIndex": 10
+      },
+      {
+        "type": "shape",
+        "content": "Nerv tizimining o'smalari va ularning simptomlari",
+        "elementIndex": 12
+      },
+      {
+        "type": "shape",
+        "content": "O'smalar turlari va belgilari",
+        "elementIndex": 14
+      },
+      {
+        "type": "shape",
+        "content": "1. Glioma: Bosh miya va orqa miya o'smalari. Simptomlar: bosh og'rig'i, ko'rish muammolari, muvofiqlik yo'qotish.\n2. Meningioma: Meninges o'smasi. Simptomlar: bosh og'rig'i, xotira muammolari.\n3. Neiroblastoma: Bolalarda uchraydigan o'sma. Simptomlar: qorin og'rig'i, vazn yo'qotish.",
+        "elementIndex": 16
+      },
+      {
+        "type": "shape",
+        "content": "1. O'sma turi: Glioma\n   Simptomlar: Bosh og'rig'i, ko'rish muammolari\n\n2. O'sma turi: Meningioma\n   Simptomlar: Bosh og'rig'i, xotira muammolari\n\n3. O'sma turi: Neiroblastoma\n   Simptomlar: Qorin og'rig'i, vazn yo'qotish",
+        "elementIndex": 18
+      },
+      {
+        "type": "image",
+        "src": "./images\\slide13_img115.png",
+        "hasImage": true,
+        "elementIndex": 19
+      },
+      {
+        "type": "image",
+        "src": "./images\\slide13_img116.png",
+        "hasImage": true,
+        "elementIndex": 20
       }
     ],
     "note": ""
@@ -561,7 +1037,7 @@
       },
       {
         "type": "shape",
-        "content": "Nerv tizimi o'smalari: Umumiy ma'lumot",
+        "content": "Nerv Tizimi O'smalarini Davolash Usullari",
         "elementIndex": 11
       },
       {
@@ -581,17 +1057,17 @@
       },
       {
         "type": "shape",
-        "content": "Nerv tizimi o'smalari, nerv hujayralaridan kelib chiqadigan o'smalardir. Ular ko'plab xilma-xil turlarga ega bo'lib, benign (yaxshi) va malign (yomon) o'smalarni o'z ichiga oladi. Ushbu o'smalar asab tizimining turli qismlarida joylashishi mumkin.",
+        "content": "Nerv tizimi o'smalarini davolash bir nechta usullarni o'z ichiga oladi, jumladan, jarrohlik, radioterapiya va kimyoterapiya. Har bir usulning o'ziga xos afzalliklari va kamchiliklari bor. Bunday davolash usullari keng qamrovli tibbiy baholash va individual yondashuvni talab qiladi.",
         "elementIndex": 19
       },
       {
         "type": "shape",
-        "content": "O'smalar ko'pincha asab tizimining funktsiyasini buzadi, og'riq, harakat cheklovlari yoki boshqa nerv tizimi belgilarini keltirib chiqarishi mumkin. Diagnostika uchun ko'plab usullar, jumladan, tasvirlash va biopsiya usullari qo'llaniladi.",
+        "content": "O'smalarni davolash uchun eng yaxshi usulni tanlashda bemorning umumiy salomatligi, o'smaning turi va rivojlanish bosqichi muhim ahamiyatga ega. Tegishli davolash rejasi individual ravishda ishlab chiqilishi kerak.",
         "elementIndex": 21
       },
       {
         "type": "shape",
-        "content": "Tuzilishiga qarab, nerv tizimi o'smalarini davolashda jarrohlik, radiatsiya terapiyasi yoki kimyoviy terapiya qo'llanilishi mumkin. Har bir holat individual tarzda baholanadi va mos davolash rejalashtiriladi.",
+        "content": "Nerv tizimi o'smalarini davolashda zamonaviy texnologiyalar, masalan, stereotaktik radioterapiya va immunoterapiya, samarali bo'lishi mumkin. Bu usullar bemorlarga yanada qulay va samarali davolash imkoniyatini taqdim etadi.",
         "elementIndex": 23
       },
       {
@@ -599,6 +1075,497 @@
         "src": "./images\\slide14_img123.png",
         "hasImage": true,
         "elementIndex": 24
+      }
+    ],
+    "note": ""
+  },
+  {
+    "id": "rjnuHMWJEL",
+    "index": 4,
+    "slide": 5,
+    "elements": [
+      {
+        "type": "image",
+        "src": "./images\\slide4_img51.png",
+        "hasImage": true,
+        "elementIndex": 0
+      },
+      {
+        "type": "table",
+        "data": [
+          [
+            "Nerv tizimi o'smalari turi",
+            "Tavsif",
+            "Belgilari"
+          ],
+          [
+            "Astrositoma",
+            "Miya nerv hujayralaridan kelib chiqadi",
+            "Bosh og'rig'i, o'zgaruvchan ruhiy holat"
+          ],
+          [
+            "Meningioma",
+            "Meningeal hujayralardan rivojlanadi",
+            "Ko'pincha asimptomatik, lekin bosh og'rig'i keltirib chiqarishi mumkin"
+          ],
+          [
+            "Neuroblastoma",
+            "Nerv tizimining embrional o'smasi",
+            "Qon aylanishi buzilishi, og'riq"
+          ]
+        ],
+        "elementIndex": 1,
+        "content": ""
+      },
+      {
+        "type": "shape",
+        "content": "Nerv tizimi o'smalari haqida umumiy ma'lumot",
+        "elementIndex": 3
+      },
+      {
+        "type": "image",
+        "src": "./images\\slide4_img52.png",
+        "hasImage": true,
+        "elementIndex": 4
+      },
+      {
+        "type": "image",
+        "src": "./images\\slide4_img53.png",
+        "hasImage": true,
+        "elementIndex": 7
+      },
+      {
+        "type": "image",
+        "src": "./images\\slide4_img54.png",
+        "hasImage": true,
+        "elementIndex": 8
+      },
+      {
+        "type": "image",
+        "src": "./images\\slide4_img55.png",
+        "hasImage": true,
+        "elementIndex": 11
+      }
+    ],
+    "note": ""
+  },
+  {
+    "id": "9Fjc-EOMTl",
+    "index": 5,
+    "slide": 6,
+    "elements": [
+      {
+        "type": "image",
+        "src": "./images\\slide5_img56.png",
+        "hasImage": true,
+        "elementIndex": 0
+      },
+      {
+        "type": "image",
+        "src": "./images\\slide5_img57.png",
+        "hasImage": true,
+        "elementIndex": 1
+      },
+      {
+        "type": "image",
+        "src": "./images\\slide5_img58.png",
+        "hasImage": true,
+        "elementIndex": 4
+      },
+      {
+        "type": "image",
+        "src": "./images\\slide5_img59.png",
+        "hasImage": true,
+        "elementIndex": 5
+      },
+      {
+        "type": "image",
+        "src": "./images\\slide5_img60.png",
+        "hasImage": true,
+        "elementIndex": 8
+      },
+      {
+        "type": "image",
+        "src": "./images\\slide5_img61.png",
+        "hasImage": true,
+        "elementIndex": 9
+      },
+      {
+        "type": "image",
+        "src": "./images\\slide5_img62.png",
+        "hasImage": true,
+        "elementIndex": 12
+      },
+      {
+        "type": "image",
+        "src": "./images\\slide5_img63.png",
+        "hasImage": true,
+        "elementIndex": 13
+      },
+      {
+        "type": "image",
+        "src": "./images\\slide5_img64.png",
+        "hasImage": true,
+        "elementIndex": 16
+      },
+      {
+        "type": "image",
+        "src": "./images\\slide5_img65.png",
+        "hasImage": true,
+        "elementIndex": 17
+      },
+      {
+        "type": "image",
+        "src": "./images\\slide5_img66.png",
+        "hasImage": true,
+        "elementIndex": 20
+      },
+      {
+        "type": "image",
+        "src": "./images\\slide5_img67.png",
+        "hasImage": true,
+        "elementIndex": 21
+      },
+      {
+        "type": "image",
+        "src": "./images\\slide5_img68.png",
+        "hasImage": true,
+        "elementIndex": 24
+      },
+      {
+        "type": "shape",
+        "content": "Nerv tizimi o'smalari haqida umumiy ma'lumot",
+        "elementIndex": 26
+      },
+      {
+        "type": "shape",
+        "content": "Nerv tizimi o'smalari, asosan, nerv to'qimalaridan hosil bo'ladigan o'smalardir. Ular benign (yaxshi sifatli) yoki malign (yomon sifatli) bo'lishi mumkin. Ushbu o'smalar asosan bosh miya, orqa miya va periferal nervlarda uchraydi.",
+        "elementIndex": 28
+      },
+      {
+        "type": "shape",
+        "content": "Nerv tizimi o'smalari simptomlari orasida bosh og'rig'i, muvofiqlikning yo'qolishi, his-tuyg'u o'zgarishlari va harakat qobiliyatida muammolar kiradi. Katta o'smalar atrofdagi to'qimalarga bosim o'tkazishi mumkin.",
+        "elementIndex": 30
+      },
+      {
+        "type": "shape",
+        "content": "Davolash usullari o'smaning turiga, joylashuviga va bemorning umumiy holatiga bog'liq. Jarrohlik, radiatsiya terapiyasi va kimyoviy terapiya keng tarqalgan usullardir.",
+        "elementIndex": 32
+      }
+    ],
+    "note": ""
+  },
+  {
+    "id": "K-Jt3ow7KB",
+    "index": 6,
+    "slide": 7,
+    "elements": [
+      {
+        "type": "image",
+        "src": "./images\\slide6_img69.png",
+        "hasImage": true,
+        "elementIndex": 0
+      },
+      {
+        "type": "image",
+        "src": "./images\\slide6_img70.png",
+        "hasImage": true,
+        "elementIndex": 1
+      },
+      {
+        "type": "shape",
+        "content": "Nerv tizimi o'smalari: Turlari va simptomlari",
+        "elementIndex": 3
+      },
+      {
+        "type": "shape",
+        "content": "Nerv tizimi o'smalari, asosan, beyning, orqa miyaning va nerv tolalarining o'smalari hisoblanadi. Ular turli xil turlarga ega bo'lib, har birining o'ziga xos simptomlari mavjud.",
+        "elementIndex": 5
+      },
+      {
+        "type": "shape",
+        "content": "O'sma turlari",
+        "elementIndex": 7
+      },
+      {
+        "type": "shape",
+        "content": "O'smalarning simptomlari ko'pincha bemorning umumiy holatiga ta'sir qiladi. Bosh og'rig'i, qusish, ko'rish qobiliyatining pasayishi kabi belgilar kuzatilishi mumkin.",
+        "elementIndex": 9
+      },
+      {
+        "type": "shape",
+        "content": "O'smalarning sabablari",
+        "elementIndex": 11
+      },
+      {
+        "type": "shape",
+        "content": "O'smalarni aniqlash usullari",
+        "elementIndex": 13
+      },
+      {
+        "type": "shape",
+        "content": "O'smalarni davolash usullari",
+        "elementIndex": 15
+      },
+      {
+        "type": "shape",
+        "content": "Mavzuni muhokama qilish",
+        "elementIndex": 17
+      },
+      {
+        "type": "shape",
+        "content": "Bizning maqsadimiz nerv tizimi o'smalarini erta aniqlash va davolash usullarini yaxshilashdir.",
+        "elementIndex": 19
+      }
+    ],
+    "note": ""
+  },
+  {
+    "id": "KbQalnoI8H",
+    "index": 7,
+    "slide": 8,
+    "elements": [
+      {
+        "type": "image",
+        "src": "./images\\slide7_img71.png",
+        "hasImage": true,
+        "elementIndex": 0
+      },
+      {
+        "type": "image",
+        "src": "./images\\slide7_img72.png",
+        "hasImage": true,
+        "elementIndex": 1
+      },
+      {
+        "type": "image",
+        "src": "./images\\slide7_img73.png",
+        "hasImage": true,
+        "elementIndex": 6
+      },
+      {
+        "type": "shape",
+        "content": "Nerv tizimi o'smalari turlari",
+        "elementIndex": 8
+      },
+      {
+        "type": "shape",
+        "content": "Nerv tizimi o'smalari asosan ikki turga bo'linadi: benign (yaxshi) va malign (yomon). Har bir tur o'ziga xos simptomlar va davolash usullariga ega.",
+        "elementIndex": 10
+      },
+      {
+        "type": "shape",
+        "content": "Benign nerv tizimi o'smalari",
+        "elementIndex": 12
+      },
+      {
+        "type": "image",
+        "src": "./images\\slide7_img74.png",
+        "hasImage": true,
+        "elementIndex": 13
+      },
+      {
+        "type": "image",
+        "src": "./images\\slide7_img75.png",
+        "hasImage": true,
+        "elementIndex": 16
+      },
+      {
+        "type": "shape",
+        "content": "Ular asta-sekin o'sadi va atrofdagi to'qimalarga zarar yetkazmaydi, bu esa bemorlarning umidini yaxshilaydi. Misol: meningioma.",
+        "elementIndex": 22
+      },
+      {
+        "type": "shape",
+        "content": "Malign nerv tizimi o'smalari",
+        "elementIndex": 24
+      },
+      {
+        "type": "image",
+        "src": "./images\\slide7_img76.png",
+        "hasImage": true,
+        "elementIndex": 25
+      },
+      {
+        "type": "image",
+        "src": "./images\\slide7_img77.png",
+        "hasImage": true,
+        "elementIndex": 26
+      },
+      {
+        "type": "shape",
+        "content": "Bu o'smalar tez o'sadi va atrofdagi to'qimalarga tarqalishi mumkin. Misol: glioblastoma, neuroblastoma.",
+        "elementIndex": 32
+      },
+      {
+        "type": "shape",
+        "content": "Simptomlar va belgilari",
+        "elementIndex": 34
+      },
+      {
+        "type": "image",
+        "src": "./images\\slide7_img78.png",
+        "hasImage": true,
+        "elementIndex": 35
+      }
+    ],
+    "note": ""
+  },
+  {
+    "id": "aO5ZTPFtge",
+    "index": 8,
+    "slide": 9,
+    "elements": [
+      {
+        "type": "image",
+        "src": "./images\\slide8_img79.png",
+        "hasImage": true,
+        "elementIndex": 0
+      },
+      {
+        "type": "image",
+        "src": "./images\\slide8_img80.png",
+        "hasImage": true,
+        "elementIndex": 1
+      },
+      {
+        "type": "image",
+        "src": "./images\\slide8_img81.png",
+        "hasImage": true,
+        "elementIndex": 2
+      },
+      {
+        "type": "image",
+        "src": "./images\\slide8_img82.png",
+        "hasImage": true,
+        "elementIndex": 5
+      },
+      {
+        "type": "image",
+        "src": "./images\\slide8_img83.png",
+        "hasImage": true,
+        "elementIndex": 8
+      },
+      {
+        "type": "image",
+        "src": "./images\\slide8_img84.png",
+        "hasImage": true,
+        "elementIndex": 11
+      },
+      {
+        "type": "shape",
+        "content": "Nerv tizimi o'smalarini davolash usullari",
+        "elementIndex": 15
+      },
+      {
+        "type": "shape",
+        "content": "Nerv tizimida o'smalarni davolash murakkab jarayon bo'lib, bir qancha usullarni o'z ichiga oladi. Ushbu usullar orasida jarrohlik, radioterapiya va kimyoterapiya mavjud.",
+        "elementIndex": 17
+      },
+      {
+        "type": "shape",
+        "content": "Jarrohlik usuli",
+        "elementIndex": 19
+      },
+      {
+        "type": "shape",
+        "content": "Jarrohlik usuli nerv tizimidagi o'smalarni olib tashlashda eng samarali usullardan biridir. O'sma joylashuvi va o'lchamiga qarab, turli xil jarrohlik usullari qo'llanilishi mumkin.",
+        "elementIndex": 21
+      },
+      {
+        "type": "shape",
+        "content": "Radioterapiya",
+        "elementIndex": 23
+      },
+      {
+        "type": "shape",
+        "content": "Radioterapiya o'smalarni yo'q qilish uchun yuqori energiyali nurlardan foydalanadi. Bu usul asosan jarrohlikdan keyin qo'llaniladi yoki o'sma operatsiya qilish mumkin bo'lmagan joylarda ishlatiladi.",
+        "elementIndex": 25
+      },
+      {
+        "type": "shape",
+        "content": "Kimyoterapiya",
+        "elementIndex": 27
+      },
+      {
+        "type": "shape",
+        "content": "Kimyoterapiya o'sma hujayralarini yo'q qilish uchun dori-darmonlardan foydalanadi. Bu usul o'sma tarqalgan hollarda qo'llaniladi.",
+        "elementIndex": 29
+      },
+      {
+        "type": "shape",
+        "content": "Reabilitatsiya va qo'shimcha usullar",
+        "elementIndex": 31
+      }
+    ],
+    "note": ""
+  },
+  {
+    "id": "IXm0nIVSsV",
+    "index": 9,
+    "slide": 10,
+    "elements": [
+      {
+        "type": "image",
+        "src": "./images\\slide9_img85.png",
+        "hasImage": true,
+        "elementIndex": 0
+      },
+      {
+        "type": "image",
+        "src": "./images\\slide9_img86.png",
+        "hasImage": true,
+        "elementIndex": 1
+      },
+      {
+        "type": "image",
+        "src": "./images\\slide9_img87.png",
+        "hasImage": true,
+        "elementIndex": 4
+      },
+      {
+        "type": "image",
+        "src": "./images\\slide9_img88.png",
+        "hasImage": true,
+        "elementIndex": 5
+      },
+      {
+        "type": "image",
+        "src": "./images\\slide9_img89.png",
+        "hasImage": true,
+        "elementIndex": 8
+      },
+      {
+        "type": "image",
+        "src": "./images\\slide9_img90.jpeg",
+        "hasImage": true,
+        "elementIndex": 9
+      },
+      {
+        "type": "shape",
+        "content": "Nerv tizimi o'smalarini davolash usullari",
+        "elementIndex": 11
+      },
+      {
+        "type": "image",
+        "src": "./images\\slide9_img91.png",
+        "hasImage": true,
+        "elementIndex": 12
+      },
+      {
+        "type": "shape",
+        "content": "Nerv tizimi o'smalarini davolash usullari bir nechta usullar orqali amalga oshiriladi. Asosiy usullar quyidagilardan iborat: jarrohlik, radioterapiya, kimyoterapiya va immunoterapiya. Har bir usul o'ziga xos ko'rsatmalarga ega va bemorning holatiga qarab tanlanadi.",
+        "elementIndex": 14
+      },
+      {
+        "type": "shape",
+        "content": "Jarrohlik usuli: O'smani olib tashlash uchun amalga oshiriladi. Bu usul, o'sma joylashgan joy va uning o'lchamiga qarab rejalashtiriladi. O'sma jarrohlik orqali to'liq olib tashlanganda bemor uchun eng yaxshi natijalar ko'rsatiladi.",
+        "elementIndex": 16
+      },
+      {
+        "type": "shape",
+        "content": "Radioterapiya: O'smalarni nurlanish orqali davolash usuli. Bu usul ko'pincha jarrohlikdan keyin qo'llaniladi yoki o'smalarni kichraytirish uchun dastlabki davolash sifatida ishlatiladi. Radioterapiya o'smalarni yo'qotish va ularning o'sishini to'xtatish uchun samarali hisoblanadi.",
+        "elementIndex": 18
       }
     ],
     "note": ""
@@ -627,7 +1594,7 @@
       },
       {
         "type": "shape",
-        "content": "Konsultatsiya jarayoni sizning muammolaringizni hal qilishda yordam berishi mumkin. Biz sizga sohalar bo'yicha mutaxassislar bilan bog'lanib, kerakli ma'lumotlarni taqdim etamiz. Har bir konsultatsiya individual ravishda amalga oshiriladi va sizning ehtiyojlaringizga mos keladi. Bizning maqsadimiz - sizga eng yaxshi yechimlarni taqdim etishdir.",
+        "content": "Nerv tizimi o'smalari, asab hujayralaridan va ularning atrofidagi to'qimalardan hosil bo'lgan ba'zi yaxshi yoki yomon xulq-atvorga ega o'smalardir. Ushbu o'smalar benign (yaxshi sifatli) yoki malign (yomon sifatli) bo'lishi mumkin. Nerv tizimi o'smalari ko'pincha asab tizimining turli qismlarida, masalan, bosh va orqa miyada paydo bo'ladi. O'smalar simptomlari individual bo'lib, bosh og'rig'i, muvofiqlik muammolari va his-tuyg'ularni yo'qotishni o'z ichiga olishi mumkin. Diagnostika usullari orasida tasviriy tekshiruvlar, biopsis va boshqa laboratoriya tahlillari mavjud. O'smalarni davolash usullari operatsiya, radiatsion terapiya va kimyoviy terapiyani o'z ichiga oladi.",
         "elementIndex": 5
       }
     ],
@@ -669,7 +1636,7 @@
       },
       {
         "type": "shape",
-        "content": "1. O‘zbekiston Respublikasi qonunlari\n2. O‘zbekiston ta’lim standartlari\n3. Mahalliy va xalqaro ilmiy maqolalar\n4. O‘zbekiston Respublikasi Prezidentining farmonlari\n5. O‘zbekiston Respublikasi Moliya vazirligining hisobotlari",
+        "content": "1. Abdurahmonov A., Abdullayev V. Otagiga nerv sistemi o'smalari. Tibbiyot, 2019. \"Tibbiyot\" nashriyoti. 2. Davlatov Sh., Qodirov O. Nerv tizimining o'smalari: Diagnostika va davolash. Diagnostika va davolash jurnali, 2021. 3. Jumanov B. Nerv tizimi o'smalarining biologiyasi. Biologiya va tibbiyot, 2020. \"Tibbiyot\" nashriyoti. 4. Musayev M., Tashkentova G. O'smalarda nerv tizimi: Klinik va eksperimental tadqiqotlar. Tibbiyot jurnali, 2018. 5. Pirov A., Xamrayev B. Nerv tizimi o'smalariga doir muammolar va echimlar. Tibbiy ilmiy tadqiqotlar, 2022.",
         "elementIndex": 9
       }
     ],
@@ -688,7 +1655,7 @@
       },
       {
         "type": "shape",
-        "content": "Etiboringiz uchun rahmat!",
+        "content": "Hammaga assalom!",
         "elementIndex": 2
       }
     ],

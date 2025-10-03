@@ -3,86 +3,137 @@
   "elements": [
     {
       "elementIndex": 2,
-      "content": "O'sma turlari",
+      "content": "Nerv tizimi o'smalari: Turlari va simptomlari",
       "tableData": {
         "data": []
       }
     },
     {
       "elementIndex": 3,
-      "content": "O'sma turlari, o'simliklar o'rtasida eng ko'p tarqalgan va ko'p qirrali xilma-xillikni namoyon etadi. Ular nafaqat ko'rinish, balki o'sish sharoitlari va ekologik rol bilan ham ajralib turadi.",
+      "content": "Nerv tizimi o'smalari, asosan, beyning, orqa miyaning va nerv tolalarining o'smalari hisoblanadi. Ular turli xil turlarga ega bo'lib, har birining o'ziga xos simptomlari mavjud.",
       "tableData": {
         "data": []
       }
     },
     {
       "elementIndex": 4,
-      "content": "O'sma turlari haqida ma'lumotlar",
+      "content": "O'sma turlari",
       "tableData": {
-        "data": []
+        "data": [
+          [
+            "O'sma turi",
+            "Simptomlari"
+          ],
+          [
+            "Astrositoma",
+            "Bosh og'rig'i, bosh aylanishi"
+          ],
+          [
+            "Meningioma",
+            "Ko'rish qobiliyatining pasayishi, bosh og'rig'i"
+          ],
+          [
+            "Neuroblastoma",
+            "Qorin og'rig'i, tez-tez qichish"
+          ],
+          [
+            "Glioblastoma",
+            "Yodlanishning pasayishi, muammoli nutq"
+          ]
+        ]
       }
     },
     {
       "elementIndex": 5,
-      "content": "O'sma turlari ko'plab ekologik tizimlarda muhim rol o'ynaydi. Ular ekotizimlarning barqarorligini ta'minlaydi va turli xil hayvonlar uchun yashash joyi hisoblanadi.",
+      "content": "O'smalarning simptomlari ko'pincha bemorning umumiy holatiga ta'sir qiladi. Bosh og'rig'i, qusish, ko'rish qobiliyatining pasayishi kabi belgilar kuzatilishi mumkin.",
       "tableData": {
         "data": []
       }
     },
     {
       "elementIndex": 6,
-      "content": "O'sma turlari turlari",
+      "content": "O'smalarning sabablari",
       "tableData": {
-        "data": []
+        "data": [
+          [
+            "Sabab",
+            "Tavsif"
+          ],
+          [
+            "Genetik omillar",
+            "O'smalar ba'zan irsiy bo'lishi mumkin."
+          ],
+          [
+            "Atrof-muhit faktorlari",
+            "Noxush kimyoviy moddalar bilan aloqa."
+          ],
+          [
+            "Immun tizimi muammolari",
+            "Ba'zi hollarda immun tizimining zaifligi sabab bo'lishi mumkin."
+          ]
+        ]
       }
     },
     {
       "elementIndex": 7,
-      "content": "1. O'rmon o'smalari: Bu o'smalar, asosan, o'rmon ekosistemalarida uchraydi va ko'plab hayvonlar uchun yashash joyi bo'lib xizmat qiladi.  \n2. Sahrada o'smalari: Ular qurg'oqchil sharoitlarda yashaydi va suvni tejashga qodir.\n3. Suv o'smalari: Suvda yashovchi o'smalar ko'plab ekotizimlarning asosiy qismi hisoblanadi.",
+      "content": "O'smalarni aniqlash usullari",
       "tableData": {
-        "data": []
+        "data": [
+          [
+            "Usul",
+            "Tavsif"
+          ],
+          [
+            "MRI",
+            "Miya va orqa miya tasvirlari olish uchun."
+          ],
+          [
+            "Kompyuter tomografiyasi",
+            "O'smalarni aniqlashda yordam beradi."
+          ],
+          [
+            "Biopsiya",
+            "O'smadan to'qima namunasi olish."
+          ]
+        ]
       }
     },
     {
       "elementIndex": 8,
-      "content": "O'sma turlari va ularning ahamiyati",
+      "content": "O'smalarni davolash usullari",
       "tableData": {
-        "data": []
+        "data": [
+          [
+            "Usul",
+            "Tavsif"
+          ],
+          [
+            "Xirurgiya",
+            "O'smani olib tashlash operatsiyasi."
+          ],
+          [
+            "Kimyoterapiya",
+            "O'smalarning o'sishini to'xtatadi."
+          ],
+          [
+            "Radioterapiya",
+            "O'sma hujayralarini yo'q qilish uchun."
+          ]
+        ]
       }
     },
     {
       "elementIndex": 9,
-      "content": "O'sma turlari tabiiy muhitda muhim rol o'ynaydi. Ular havoni tozalash, tuproqni mustahkamlash va iqlimni boshqarishga yordam beradi.",
+      "content": "Mavzuni muhokama qilish",
       "tableData": {
         "data": []
       }
     },
     {
       "elementIndex": 10,
-      "content": "O'sma turlari: Nomi, Turi, Ekologik ahamiyati",
+      "content": "Bizning maqsadimiz nerv tizimi o'smalarini erta aniqlash va davolash usullarini yaxshilashdir.",
       "tableData": {
-        "data": [
-          [
-            "Nomi",
-            "Turi",
-            "Ekologik ahamiyati"
-          ],
-          [
-            "Qizil tulki",
-            "O'rmon o'smasi",
-            "Yashash joyi"
-          ],
-          [
-            "Suv o'zagi",
-            "Suv o'smasi",
-            "Suvni tozalash"
-          ],
-          [
-            "Tosh o'smasi",
-            "Sahradagi o'sma",
-            "Qurg'oqchilikka chidamli"
-          ]
-        ]
+        "data": []
       }
     }
   ]

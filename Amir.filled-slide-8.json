@@ -1,41 +1,141 @@
 {
-  "id": "zECRdyO-LC",
-  "index": 16,
-  "slide": 17,
+  "id": "-FYKbTLrT1",
+  "index": 10,
+  "slide": 11,
   "elements": [
     {
       "type": "image",
-      "src": "./images\\slide16_img126.png",
+      "src": "./images\\slide10_img92.png",
       "hasImage": true,
       "elementIndex": 0
     },
     {
       "type": "image",
-      "src": "./images\\slide16_img127.png",
+      "src": "./images\\slide10_img93.png",
       "hasImage": true,
       "elementIndex": 1
     },
     {
       "type": "image",
-      "src": "./images\\slide16_img128.png",
+      "src": "./images\\slide10_img94.png",
       "hasImage": true,
       "elementIndex": 2
     },
     {
       "type": "image",
-      "src": "./images\\slide16_img129.png",
+      "src": "./images\\slide10_img95.png",
       "hasImage": true,
       "elementIndex": 5
     },
     {
-      "type": "shape",
-      "content": "Foydalanilgan adabiyotlar",
-      "elementIndex": 7
+      "type": "image",
+      "src": "./images\\slide10_img96.png",
+      "hasImage": true,
+      "elementIndex": 6
+    },
+    {
+      "type": "image",
+      "src": "./images\\slide10_img97.png",
+      "hasImage": true,
+      "elementIndex": 9
+    },
+    {
+      "type": "image",
+      "src": "./images\\slide10_img98.png",
+      "hasImage": true,
+      "elementIndex": 10
+    },
+    {
+      "type": "image",
+      "src": "./images\\slide10_img99.png",
+      "hasImage": true,
+      "elementIndex": 13
     },
     {
       "type": "shape",
-      "content": "1. O‘zbekiston Respublikasi qonunlari\n2. O‘zbekiston ta’lim standartlari\n3. Mahalliy va xalqaro ilmiy maqolalar\n4. O‘zbekiston Respublikasi Prezidentining farmonlari\n5. O‘zbekiston Respublikasi Moliya vazirligining hisobotlari",
-      "elementIndex": 9
+      "content": "Nerv Tizimi O'smalari: Umumiy Ma'lumotlar",
+      "elementIndex": 15
+    },
+    {
+      "type": "image",
+      "src": "./images\\slide10_img100.png",
+      "hasImage": true,
+      "elementIndex": 16
+    },
+    {
+      "type": "image",
+      "src": "./images\\slide10_img101.png",
+      "hasImage": true,
+      "elementIndex": 19
+    },
+    {
+      "type": "image",
+      "src": "./images\\slide10_img102.png",
+      "hasImage": true,
+      "elementIndex": 20
+    },
+    {
+      "type": "image",
+      "src": "./images\\slide10_img103.png",
+      "hasImage": true,
+      "elementIndex": 23
+    },
+    {
+      "type": "image",
+      "src": "./images\\slide10_img104.png",
+      "hasImage": true,
+      "elementIndex": 24
+    },
+    {
+      "type": "image",
+      "src": "./images\\slide10_img105.png",
+      "hasImage": true,
+      "elementIndex": 27
+    },
+    {
+      "type": "shape",
+      "content": "O'smalarning 87%",
+      "elementIndex": 29
+    },
+    {
+      "type": "shape",
+      "content": "Samarali davolash 36%",
+      "elementIndex": 31
+    },
+    {
+      "type": "shape",
+      "content": "Yoshlar orasida 67%",
+      "elementIndex": 33
+    },
+    {
+      "type": "shape",
+      "content": "Nerv tizimi o'smalari, asosan, nerv to'qimalaridan kelib chiqadigan o'smalardir. Ular miya va orqa miya kabi markaziy nerv tizimida paydo bo'lishi mumkin.",
+      "elementIndex": 35
+    },
+    {
+      "type": "shape",
+      "content": "O'smalar benign (yaxshi sifatli) yoki malign (yomon sifatli) bo'lishi mumkin. Malign o'smalar tezda tarqalishi va muammolar keltirib chiqarishi mumkin.",
+      "elementIndex": 37
+    },
+    {
+      "type": "shape",
+      "content": "O'smalarning belgilari ko'pincha ularning joylashuvi va o'lchamiga bog'liq. Bular bosh og'rig'i, asabiylashish, harakat buzilishlari kabi belgilarni o'z ichiga olishi mumkin.",
+      "elementIndex": 39
+    },
+    {
+      "type": "shape",
+      "content": "Davolash usullari:",
+      "elementIndex": 41
+    },
+    {
+      "type": "shape",
+      "content": "1. Xirurgik aralashuv\n2. Kimyoterapiya\n3. Radioterapiya",
+      "elementIndex": 43
+    },
+    {
+      "type": "shape",
+      "content": "O'smalarni erta aniqlash muhimdir, chunki bu davolanish imkoniyatlarini oshiradi.",
+      "elementIndex": 45
     }
   ],
   "note": ""

@@ -1,105 +1,90 @@
 {
-  "id": "9Fjc-EOMTl",
-  "index": 5,
-  "slide": 6,
+  "id": "KbQalnoI8H",
+  "index": 7,
+  "slide": 8,
   "elements": [
     {
       "type": "image",
-      "src": "./images\\slide5_img56.png",
+      "src": "./images\\slide7_img71.png",
       "hasImage": true,
       "elementIndex": 0
     },
     {
       "type": "image",
-      "src": "./images\\slide5_img57.png",
+      "src": "./images\\slide7_img72.png",
       "hasImage": true,
       "elementIndex": 1
     },
     {
       "type": "image",
-      "src": "./images\\slide5_img58.png",
+      "src": "./images\\slide7_img73.png",
       "hasImage": true,
-      "elementIndex": 4
+      "elementIndex": 6
     },
     {
-      "type": "image",
-      "src": "./images\\slide5_img59.png",
-      "hasImage": true,
-      "elementIndex": 5
-    },
-    {
-      "type": "image",
-      "src": "./images\\slide5_img60.png",
-      "hasImage": true,
+      "type": "shape",
+      "content": "Nerv tizimi o'smalari turlari",
       "elementIndex": 8
     },
     {
-      "type": "image",
-      "src": "./images\\slide5_img61.png",
-      "hasImage": true,
-      "elementIndex": 9
+      "type": "shape",
+      "content": "Nerv tizimi o'smalari asosan ikki turga bo'linadi: benign (yaxshi) va malign (yomon). Har bir tur o'ziga xos simptomlar va davolash usullariga ega.",
+      "elementIndex": 10
     },
     {
-      "type": "image",
-      "src": "./images\\slide5_img62.png",
-      "hasImage": true,
+      "type": "shape",
+      "content": "Benign nerv tizimi o'smalari",
       "elementIndex": 12
     },
     {
       "type": "image",
-      "src": "./images\\slide5_img63.png",
+      "src": "./images\\slide7_img74.png",
       "hasImage": true,
       "elementIndex": 13
     },
     {
       "type": "image",
-      "src": "./images\\slide5_img64.png",
+      "src": "./images\\slide7_img75.png",
       "hasImage": true,
       "elementIndex": 16
     },
     {
-      "type": "image",
-      "src": "./images\\slide5_img65.png",
-      "hasImage": true,
-      "elementIndex": 17
-    },
-    {
-      "type": "image",
-      "src": "./images\\slide5_img66.png",
-      "hasImage": true,
-      "elementIndex": 20
-    },
-    {
-      "type": "image",
-      "src": "./images\\slide5_img67.png",
-      "hasImage": true,
-      "elementIndex": 21
-    },
-    {
-      "type": "image",
-      "src": "./images\\slide5_img68.png",
-      "hasImage": true,
-      "elementIndex": 24
+      "type": "shape",
+      "content": "Ular asta-sekin o'sadi va atrofdagi to'qimalarga zarar yetkazmaydi, bu esa bemorlarning umidini yaxshilaydi. Misol: meningioma.",
+      "elementIndex": 22
     },
     {
       "type": "shape",
-      "content": "Diagnostika Usullari",
+      "content": "Malign nerv tizimi o'smalari",
+      "elementIndex": 24
+    },
+    {
+      "type": "image",
+      "src": "./images\\slide7_img76.png",
+      "hasImage": true,
+      "elementIndex": 25
+    },
+    {
+      "type": "image",
+      "src": "./images\\slide7_img77.png",
+      "hasImage": true,
       "elementIndex": 26
     },
     {
       "type": "shape",
-      "content": "Diagnostika usullari — sog'liqni saqlash sohasida muhim ahamiyatga ega. Ular kasalliklarni aniqlash va davolash jarayonida qo'llaniladi. Har bir usulning o'ziga xos afzalliklari va kamchiliklari mavjud.",
-      "elementIndex": 28
-    },
-    {
-      "type": "shape",
-      "content": "Asosiy diagnostika usullari quyidagilardan iborat:\n- Laboratoriya tahlillari\n- Tasviriy diagnostika (ultrasonografiya, rentgen)\n- Klinik tekshiruvlar",
-      "elementIndex": 30
-    },
-    {
-      "type": "shape",
-      "content": "Yana bir muhim jihati — to'g'ri diagnostika usulini tanlash. Bu bemorning holati va kasallikning tabiatiga bog'liq. Har bir usulning o'ziga xos shartlari bor.",
+      "content": "Bu o'smalar tez o'sadi va atrofdagi to'qimalarga tarqalishi mumkin. Misol: glioblastoma, neuroblastoma.",
       "elementIndex": 32
+    },
+    {
+      "type": "shape",
+      "content": "Simptomlar va belgilari",
+      "elementIndex": 34
+    },
+    {
+      "type": "image",
+      "src": "./images\\slide7_img78.png",
+      "hasImage": true,
+      "elementIndex": 35
     }
   ],
   "note": ""

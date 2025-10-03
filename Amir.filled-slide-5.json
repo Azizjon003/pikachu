@@ -1,69 +1,90 @@
 {
-  "id": "Kuk5CHNztq",
-  "index": 11,
-  "slide": 12,
+  "id": "KbQalnoI8H",
+  "index": 7,
+  "slide": 8,
   "elements": [
     {
       "type": "image",
-      "src": "./images\\slide11_img106.png",
+      "src": "./images\\slide7_img71.png",
       "hasImage": true,
       "elementIndex": 0
     },
     {
       "type": "image",
-      "src": "./images\\slide11_img107.png",
+      "src": "./images\\slide7_img72.png",
       "hasImage": true,
       "elementIndex": 1
     },
     {
-      "type": "shape",
-      "content": "Muammolar va kelajak istiqbollari",
-      "elementIndex": 3
+      "type": "image",
+      "src": "./images\\slide7_img73.png",
+      "hasImage": true,
+      "elementIndex": 6
     },
     {
       "type": "shape",
-      "content": "1",
-      "elementIndex": 5
+      "content": "Nerv tizimi o'smalari: Turlari va simptomlari",
+      "elementIndex": 8
     },
     {
       "type": "shape",
-      "content": "3",
-      "elementIndex": 7
+      "content": "Nerv tizimi o'smalari, asosan, miya va umurtqa pog'onasida rivojlanadi. Ushbu o'smalar har xil simptomlarga sabab bo'lishi mumkin, bu esa bemorning hayot sifatiga ta'sir qiladi. O'smalar bening va malign bo'lishi mumkin, har bir turi turlicha davolash usullarini talab qiladi.",
+      "elementIndex": 10
     },
     {
       "type": "shape",
-      "content": "2",
-      "elementIndex": 9
+      "content": "O'smalar turlari",
+      "elementIndex": 12
     },
     {
-      "type": "shape",
-      "content": "4",
-      "elementIndex": 11
-    },
-    {
-      "type": "shape",
-      "content": "Muammolarni hal etishning zamonaviy usullari va strategiyalari haqida o‘rganish zarur.",
+      "type": "image",
+      "src": "./images\\slide7_img74.png",
+      "hasImage": true,
       "elementIndex": 13
     },
     {
-      "type": "shape",
-      "content": "Kelajak istiqbollari, iqtisodiy va ijtimoiy taraqqiyotga ta'sir etuvchi omillarni tahlil qilish.",
-      "elementIndex": 15
+      "type": "image",
+      "src": "./images\\slide7_img75.png",
+      "hasImage": true,
+      "elementIndex": 16
     },
     {
       "type": "shape",
-      "content": "O'zbekistondagi muammolar va ularni hal qilish rejalari haqida batafsil ma'lumot.",
-      "elementIndex": 17
+      "content": "1. Meningioma: Bosh miya o'smasi, asosan, bening.\n2. Astrositoma: Miya to'qimasida paydo bo'ladi, malign bo'lishi mumkin.\n3. Neuroblastoma: Asosan, bolalarda uchraydi, malign xarakterga ega.\n4. Ependimoma: Umurtqa pog'onasi va miyaning ichki qismida paydo bo'ladi.",
+      "elementIndex": 22
     },
     {
       "type": "shape",
-      "content": "Muammolarni hal etish uchun xalqaro tajribalar va innovatsion yondashuvlarni qo'llash.",
-      "elementIndex": 19
+      "content": "Simptomlar",
+      "elementIndex": 24
+    },
+    {
+      "type": "image",
+      "src": "./images\\slide7_img76.png",
+      "hasImage": true,
+      "elementIndex": 25
+    },
+    {
+      "type": "image",
+      "src": "./images\\slide7_img77.png",
+      "hasImage": true,
+      "elementIndex": 26
     },
     {
       "type": "shape",
-      "content": "4",
-      "elementIndex": 21
+      "content": "- Bosh og'rig'i\n- Ko'rish yoki eshitishdagi o'zgarishlar\n- Nerv tizimining boshqa faoliyatlarida buzilishlar\n- O'z-o'zidan kelib chiqadigan tutqanoqlar",
+      "elementIndex": 32
+    },
+    {
+      "type": "shape",
+      "content": "Davolash usullari",
+      "elementIndex": 34
+    },
+    {
+      "type": "image",
+      "src": "./images\\slide7_img78.png",
+      "hasImage": true,
+      "elementIndex": 35
     }
   ],
   "note": ""

@@ -41,37 +41,37 @@
     },
     {
       "type": "shape",
-      "content": "O'smalar va davolash: Asosiy tushunchalar",
+      "content": "Nerv Tizimi O'smalarini Davolash Usullari",
       "elementIndex": 11
     },
     {
       "type": "shape",
-      "content": "O'sma turlari",
+      "content": "1",
       "elementIndex": 13
     },
     {
       "type": "shape",
-      "content": "Davolash usullari",
+      "content": "2",
       "elementIndex": 15
     },
     {
       "type": "shape",
-      "content": "O'smalar va ularning alomatlari",
+      "content": "3",
       "elementIndex": 17
     },
     {
       "type": "shape",
-      "content": "O'smalar, organizmdagi to'qimalarning normadan ortiqcha o'sishi bo'lib, ular benign (yaxshi) yoki malignant (yomon) bo'lishi mumkin. Ularning aniqlanishi va davolash usullari muhimdir.",
+      "content": "Nerv tizimi o'smalarini davolash bir nechta usullarni o'z ichiga oladi, jumladan, jarrohlik, radioterapiya va kimyoterapiya. Har bir usulning o'ziga xos afzalliklari va kamchiliklari bor. Bunday davolash usullari keng qamrovli tibbiy baholash va individual yondashuvni talab qiladi.",
       "elementIndex": 19
     },
     {
       "type": "shape",
-      "content": "Davolash jarayonida o'smalarning turiga qarab, jarrohlik, kimyoterapiya, radioterapiya yoki immunoterapiya qo'llanilishi mumkin. Har bir usul o'zining afzalliklari va kamchiliklariga ega.",
+      "content": "O'smalarni davolash uchun eng yaxshi usulni tanlashda bemorning umumiy salomatligi, o'smaning turi va rivojlanish bosqichi muhim ahamiyatga ega. Tegishli davolash rejasi individual ravishda ishlab chiqilishi kerak.",
       "elementIndex": 21
     },
     {
       "type": "shape",
-      "content": "O'smalarni erta aniqlash, davolash muvaffaqiyatiga katta ta'sir ko'rsatadi. Shuningdek, sog'lom turmush tarzini saqlash va muntazam tekshiruvlar o'tkazish muhimdir.",
+      "content": "Nerv tizimi o'smalarini davolashda zamonaviy texnologiyalar, masalan, stereotaktik radioterapiya va immunoterapiya, samarali bo'lishi mumkin. Bu usullar bemorlarga yanada qulay va samarali davolash imkoniyatini taqdim etadi.",
       "elementIndex": 23
     },
     {

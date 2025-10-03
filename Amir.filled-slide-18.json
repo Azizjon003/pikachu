@@ -52,17 +52,17 @@
     },
     {
       "type": "shape",
-      "content": "Nerv tizimida o'smalarni davolashda bir nechta usullar mavjud. Ushbu usullar jarrohlik, radiatsiya terapiyasi va kimyoviy terapiyani o'z ichiga oladi. Har bir usulning o'ziga xos afzalliklari va kamchiliklari bor.",
+      "content": "Nerv tizimi o'smalarini davolash usullari bir nechta usullar orqali amalga oshiriladi. Asosiy usullar quyidagilardan iborat: jarrohlik, radioterapiya, kimyoterapiya va immunoterapiya. Har bir usul o'ziga xos ko'rsatmalarga ega va bemorning holatiga qarab tanlanadi.",
       "elementIndex": 14
     },
     {
       "type": "shape",
-      "content": "O'smalarni davolashda individual yondashuv muhimdir. Bemorning yoshi, umumiy salomatligi va o'sma turi kabi omillarni hisobga olish zarur. Muvaffaqiyatli davolash uchun multidisiplinar jamoa bilan ishlash kerak.",
+      "content": "Jarrohlik usuli: O'smani olib tashlash uchun amalga oshiriladi. Bu usul, o'sma joylashgan joy va uning o'lchamiga qarab rejalashtiriladi. O'sma jarrohlik orqali to'liq olib tashlanganda bemor uchun eng yaxshi natijalar ko'rsatiladi.",
       "elementIndex": 16
     },
     {
       "type": "shape",
-      "content": "Davolash usullari:\n- Jarrohlik\n- Radiatsiya terapiyasi\n- Kimyoviy terapiya\n- Imunoterapiya\n\nHar bir usulning samaradorligi bemorlarning holatiga qarab farq qiladi.",
+      "content": "Radioterapiya: O'smalarni nurlanish orqali davolash usuli. Bu usul ko'pincha jarrohlikdan keyin qo'llaniladi yoki o'smalarni kichraytirish uchun dastlabki davolash sifatida ishlatiladi. Radioterapiya o'smalarni yo'qotish va ularning o'sishini to'xtatish uchun samarali hisoblanadi.",
       "elementIndex": 18
     }
   ],

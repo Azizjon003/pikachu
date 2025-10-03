@@ -3,17 +3,11 @@
   "elements": [
     {
       "elementIndex": 4,
-      "content": "Foydalanilgan adabiyotlar",
-      "tableData": {
-        "data": []
-      }
+      "content": "Foydalanilgan adabiyotlar"
     },
     {
       "elementIndex": 5,
-      "content": "1. O‘zbekiston Respublikasi qonunlari\n2. O‘zbekiston ta’lim standartlari\n3. Mahalliy va xalqaro ilmiy maqolalar\n4. O‘zbekiston Respublikasi Prezidentining farmonlari\n5. O‘zbekiston Respublikasi Moliya vazirligining hisobotlari",
-      "tableData": {
-        "data": []
-      }
+      "content": "1. Abdurahmonov A., Abdullayev V. Otagiga nerv sistemi o'smalari. Tibbiyot, 2019. \"Tibbiyot\" nashriyoti. 2. Davlatov Sh., Qodirov O. Nerv tizimining o'smalari: Diagnostika va davolash. Diagnostika va davolash jurnali, 2021. 3. Jumanov B. Nerv tizimi o'smalarining biologiyasi. Biologiya va tibbiyot, 2020. \"Tibbiyot\" nashriyoti. 4. Musayev M., Tashkentova G. O'smalarda nerv tizimi: Klinik va eksperimental tadqiqotlar. Tibbiyot jurnali, 2018. 5. Pirov A., Xamrayev B. Nerv tizimi o'smalariga doir muammolar va echimlar. Tibbiy ilmiy tadqiqotlar, 2022."
     }
   ]
 }

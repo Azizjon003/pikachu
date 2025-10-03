@@ -1,77 +1,69 @@
 {
-  "id": "xVZ9KAwebA",
-  "index": 2,
-  "slide": 3,
+  "id": "rjnuHMWJEL",
+  "index": 4,
+  "slide": 5,
   "elements": [
     {
       "type": "image",
-      "src": "./images\\slide2_img22.png",
+      "src": "./images\\slide4_img51.png",
       "hasImage": true,
       "elementIndex": 0
     },
     {
-      "type": "image",
-      "src": "./images\\slide2_img23.png",
-      "hasImage": true,
-      "elementIndex": 1
+      "type": "table",
+      "data": [
+        [
+          "Nerv tizimi o'smalari turi",
+          "Tavsif",
+          "Belgilari"
+        ],
+        [
+          "Astrositoma",
+          "Miya nerv hujayralaridan kelib chiqadi",
+          "Bosh og'rig'i, o'zgaruvchan ruhiy holat"
+        ],
+        [
+          "Meningioma",
+          "Meningeal hujayralardan rivojlanadi",
+          "Ko'pincha asimptomatik, lekin bosh og'rig'i keltirib chiqarishi mumkin"
+        ],
+        [
+          "Neuroblastoma",
+          "Nerv tizimining embrional o'smasi",
+          "Qon aylanishi buzilishi, og'riq"
+        ]
+      ],
+      "elementIndex": 1,
+      "content": ""
     },
     {
-      "type": "image",
-      "src": "./images\\slide2_img24.png",
-      "hasImage": true,
-      "elementIndex": 2
-    },
-    {
-      "type": "image",
-      "src": "./images\\slide2_img25.png",
-      "hasImage": true,
+      "type": "shape",
+      "content": "Nerv tizimi o'smalari haqida umumiy ma'lumot",
       "elementIndex": 3
     },
     {
       "type": "image",
-      "src": "./images\\slide2_img26.png",
+      "src": "./images\\slide4_img52.png",
       "hasImage": true,
       "elementIndex": 4
     },
     {
       "type": "image",
-      "src": "./images\\slide2_img27.png",
+      "src": "./images\\slide4_img53.png",
       "hasImage": true,
       "elementIndex": 7
     },
     {
       "type": "image",
-      "src": "./images\\slide2_img28.png",
+      "src": "./images\\slide4_img54.png",
       "hasImage": true,
       "elementIndex": 8
     },
     {
       "type": "image",
-      "src": "./images\\slide2_img29.png",
+      "src": "./images\\slide4_img55.png",
       "hasImage": true,
       "elementIndex": 11
-    },
-    {
-      "type": "shape",
-      "content": "Nerv Tizimi O'smalari",
-      "elementIndex": 13
-    },
-    {
-      "type": "shape",
-      "content": "1-bob",
-      "elementIndex": 15
-    },
-    {
-      "type": "image",
-      "src": "./images\\slide2_img30.png",
-      "hasImage": true,
-      "elementIndex": 16
-    },
-    {
-      "type": "image",
-      "src": "./images\\slide2_img31.png",
-      "hasImage": true,
-      "elementIndex": 19
     }
   ],
   "note": ""

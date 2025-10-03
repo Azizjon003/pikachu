@@ -1,64 +1,88 @@
 {
-  "id": "K-Jt3ow7KB",
-  "index": 6,
-  "slide": 7,
+  "id": "aO5ZTPFtge",
+  "index": 8,
+  "slide": 9,
   "elements": [
     {
       "type": "image",
-      "src": "./images\\slide6_img69.png",
+      "src": "./images\\slide8_img79.png",
       "hasImage": true,
       "elementIndex": 0
     },
     {
       "type": "image",
-      "src": "./images\\slide6_img70.png",
+      "src": "./images\\slide8_img80.png",
       "hasImage": true,
       "elementIndex": 1
     },
     {
-      "type": "shape",
-      "content": "Davolash usullari",
-      "elementIndex": 3
+      "type": "image",
+      "src": "./images\\slide8_img81.png",
+      "hasImage": true,
+      "elementIndex": 2
     },
     {
-      "type": "shape",
-      "content": "Davolash usullari, bemorlar sog'lig'ini tiklash va kasalliklarni oldini olish uchun turli xil texnologiyalar va usullarni o'z ichiga oladi. Ularning samaradorligi va qo'llanilishi kasallikning turiga, bemorning holatiga va boshqa omillarga bog'liq.",
+      "type": "image",
+      "src": "./images\\slide8_img82.png",
+      "hasImage": true,
       "elementIndex": 5
     },
     {
-      "type": "shape",
-      "content": "Dori-darmonlar",
-      "elementIndex": 7
+      "type": "image",
+      "src": "./images\\slide8_img83.png",
+      "hasImage": true,
+      "elementIndex": 8
     },
     {
-      "type": "shape",
-      "content": "Dori-darmonlar kasalliklarni davolashda asosiy vosita hisoblanadi. Ular bemorning holatini yaxshilash va belgilangan kasalliklarni yo'qotishga yordam beradi. Dori-darmonlarni qo'llashda doimo shifokor maslahatiga murojaat qilish zarur.",
-      "elementIndex": 9
-    },
-    {
-      "type": "shape",
-      "content": "Jismoniy terapiya",
+      "type": "image",
+      "src": "./images\\slide8_img84.png",
+      "hasImage": true,
       "elementIndex": 11
     },
     {
       "type": "shape",
-      "content": "Jismoniy terapiya jarrohlikdan keyin tiklanishga yordam beradi va mushaklar kuchini oshiradi. Fizioterapevtlar tomonidan belgilangan mashqlar va davolash usullari muhimdir.",
-      "elementIndex": 13
-    },
-    {
-      "type": "shape",
-      "content": "Psixologik yordam",
+      "content": "Nerv tizimi o'smalarini davolash usullari",
       "elementIndex": 15
     },
     {
       "type": "shape",
-      "content": "Psixologik yordam bemorlarning ruhiy holatini yaxshilashga qaratilgan. Stressni boshqarish va tashvishlarni kamaytirishga yordam beradigan turli xil usullar qo'llaniladi.",
+      "content": "Nerv tizimida o'smalarni davolash murakkab jarayon bo'lib, bir qancha usullarni o'z ichiga oladi. Ushbu usullar orasida jarrohlik, radioterapiya va kimyoterapiya mavjud.",
       "elementIndex": 17
     },
     {
       "type": "shape",
-      "content": "Alternativ tibbiyot",
+      "content": "Jarrohlik usuli",
       "elementIndex": 19
+    },
+    {
+      "type": "shape",
+      "content": "Jarrohlik usuli nerv tizimidagi o'smalarni olib tashlashda eng samarali usullardan biridir. O'sma joylashuvi va o'lchamiga qarab, turli xil jarrohlik usullari qo'llanilishi mumkin.",
+      "elementIndex": 21
+    },
+    {
+      "type": "shape",
+      "content": "Radioterapiya",
+      "elementIndex": 23
+    },
+    {
+      "type": "shape",
+      "content": "Radioterapiya o'smalarni yo'q qilish uchun yuqori energiyali nurlardan foydalanadi. Bu usul asosan jarrohlikdan keyin qo'llaniladi yoki o'sma operatsiya qilish mumkin bo'lmagan joylarda ishlatiladi.",
+      "elementIndex": 25
+    },
+    {
+      "type": "shape",
+      "content": "Kimyoterapiya",
+      "elementIndex": 27
+    },
+    {
+      "type": "shape",
+      "content": "Kimyoterapiya o'sma hujayralarini yo'q qilish uchun dori-darmonlardan foydalanadi. Bu usul o'sma tarqalgan hollarda qo'llaniladi.",
+      "elementIndex": 29
+    },
+    {
+      "type": "shape",
+      "content": "Reabilitatsiya va qo'shimcha usullar",
+      "elementIndex": 31
     }
   ],
   "note": ""

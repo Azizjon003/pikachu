@@ -1,73 +1,64 @@
 {
-  "id": "rjnuHMWJEL",
-  "index": 4,
-  "slide": 5,
+  "id": "K-Jt3ow7KB",
+  "index": 6,
+  "slide": 7,
   "elements": [
     {
       "type": "image",
-      "src": "./images\\slide4_img51.png",
+      "src": "./images\\slide6_img69.png",
       "hasImage": true,
       "elementIndex": 0
     },
     {
-      "type": "table",
-      "data": [
-        [
-          "Belgi",
-          "Sharh"
-        ],
-        [
-          "Yuqori harorat",
-          "Tanada yallig'lanish jarayonlari mavjud"
-        ],
-        [
-          "Teri o'zgarishlari",
-          "Teri rangining o'zgarishi yoki shishishi"
-        ],
-        [
-          "Og'riq",
-          "O'zgacha og'riq hissi"
-        ],
-        [
-          "Charchoq",
-          "Doimiy charchoq va energiya yetishmasligi"
-        ],
-        [
-          "Quloqdan qon ketishi",
-          "Quloqdan qon yoki suyuqlik chiqishi"
-        ]
-      ],
-      "elementIndex": 1,
-      "content": ""
+      "type": "image",
+      "src": "./images\\slide6_img70.png",
+      "hasImage": true,
+      "elementIndex": 1
     },
     {
       "type": "shape",
-      "content": "Belgilari haqida ma'lumotlar",
+      "content": "Nerv tizimi o'smalari: Turlari va simptomlari",
       "elementIndex": 3
     },
     {
-      "type": "image",
-      "src": "./images\\slide4_img52.png",
-      "hasImage": true,
-      "elementIndex": 4
+      "type": "shape",
+      "content": "Nerv tizimi o'smalari, asosan, beyning, orqa miyaning va nerv tolalarining o'smalari hisoblanadi. Ular turli xil turlarga ega bo'lib, har birining o'ziga xos simptomlari mavjud.",
+      "elementIndex": 5
     },
     {
-      "type": "image",
-      "src": "./images\\slide4_img53.png",
-      "hasImage": true,
+      "type": "shape",
+      "content": "O'sma turlari",
       "elementIndex": 7
     },
     {
-      "type": "image",
-      "src": "./images\\slide4_img54.png",
-      "hasImage": true,
-      "elementIndex": 8
+      "type": "shape",
+      "content": "O'smalarning simptomlari ko'pincha bemorning umumiy holatiga ta'sir qiladi. Bosh og'rig'i, qusish, ko'rish qobiliyatining pasayishi kabi belgilar kuzatilishi mumkin.",
+      "elementIndex": 9
     },
     {
-      "type": "image",
-      "src": "./images\\slide4_img55.png",
-      "hasImage": true,
+      "type": "shape",
+      "content": "O'smalarning sabablari",
       "elementIndex": 11
+    },
+    {
+      "type": "shape",
+      "content": "O'smalarni aniqlash usullari",
+      "elementIndex": 13
+    },
+    {
+      "type": "shape",
+      "content": "O'smalarni davolash usullari",
+      "elementIndex": 15
+    },
+    {
+      "type": "shape",
+      "content": "Mavzuni muhokama qilish",
+      "elementIndex": 17
+    },
+    {
+      "type": "shape",
+      "content": "Bizning maqsadimiz nerv tizimi o'smalarini erta aniqlash va davolash usullarini yaxshilashdir.",
+      "elementIndex": 19
     }
   ],
   "note": ""

@@ -1,64 +1,69 @@
 {
-  "id": "K-Jt3ow7KB",
-  "index": 6,
-  "slide": 7,
+  "id": "rjnuHMWJEL",
+  "index": 4,
+  "slide": 5,
   "elements": [
     {
       "type": "image",
-      "src": "./images\\slide6_img69.png",
+      "src": "./images\\slide4_img51.png",
       "hasImage": true,
       "elementIndex": 0
     },
     {
-      "type": "image",
-      "src": "./images\\slide6_img70.png",
-      "hasImage": true,
-      "elementIndex": 1
+      "type": "table",
+      "data": [
+        [
+          "O'sma Turi",
+          "Qisqacha Tavsif"
+        ],
+        [
+          "Astrositoma",
+          "Miya astrositlaridan kelib chiqadi."
+        ],
+        [
+          "Meningioma",
+          "Meningesdan kelib chiqadigan o'smalar."
+        ],
+        [
+          "Neuroblastoma",
+          "Asosan bolalarda uchraydigan o'sma."
+        ],
+        [
+          "Glioblastoma",
+          "Eng agressiv nerv tizimi o'smasi."
+        ]
+      ],
+      "elementIndex": 1,
+      "content": ""
     },
     {
       "type": "shape",
-      "content": "O'sma turlari",
+      "content": "Nerv tizimi o'smalari haqida umumiy ma'lumot",
       "elementIndex": 3
     },
     {
-      "type": "shape",
-      "content": "O'sma turlari, o'simliklar o'rtasida eng ko'p tarqalgan va ko'p qirrali xilma-xillikni namoyon etadi. Ular nafaqat ko'rinish, balki o'sish sharoitlari va ekologik rol bilan ham ajralib turadi.",
-      "elementIndex": 5
+      "type": "image",
+      "src": "./images\\slide4_img52.png",
+      "hasImage": true,
+      "elementIndex": 4
     },
     {
-      "type": "shape",
-      "content": "O'sma turlari haqida ma'lumotlar",
+      "type": "image",
+      "src": "./images\\slide4_img53.png",
+      "hasImage": true,
       "elementIndex": 7
     },
     {
-      "type": "shape",
-      "content": "O'sma turlari ko'plab ekologik tizimlarda muhim rol o'ynaydi. Ular ekotizimlarning barqarorligini ta'minlaydi va turli xil hayvonlar uchun yashash joyi hisoblanadi.",
-      "elementIndex": 9
+      "type": "image",
+      "src": "./images\\slide4_img54.png",
+      "hasImage": true,
+      "elementIndex": 8
     },
     {
-      "type": "shape",
-      "content": "O'sma turlari turlari",
+      "type": "image",
+      "src": "./images\\slide4_img55.png",
+      "hasImage": true,
       "elementIndex": 11
-    },
-    {
-      "type": "shape",
-      "content": "1. O'rmon o'smalari: Bu o'smalar, asosan, o'rmon ekosistemalarida uchraydi va ko'plab hayvonlar uchun yashash joyi bo'lib xizmat qiladi.  \n2. Sahrada o'smalari: Ular qurg'oqchil sharoitlarda yashaydi va suvni tejashga qodir.\n3. Suv o'smalari: Suvda yashovchi o'smalar ko'plab ekotizimlarning asosiy qismi hisoblanadi.",
-      "elementIndex": 13
-    },
-    {
-      "type": "shape",
-      "content": "O'sma turlari va ularning ahamiyati",
-      "elementIndex": 15
-    },
-    {
-      "type": "shape",
-      "content": "O'sma turlari tabiiy muhitda muhim rol o'ynaydi. Ular havoni tozalash, tuproqni mustahkamlash va iqlimni boshqarishga yordam beradi.",
-      "elementIndex": 17
-    },
-    {
-      "type": "shape",
-      "content": "O'sma turlari: Nomi, Turi, Ekologik ahamiyati",
-      "elementIndex": 19
     }
   ],
   "note": ""

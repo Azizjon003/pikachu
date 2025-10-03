@@ -83,22 +83,22 @@
     },
     {
       "type": "shape",
-      "content": "Nerv Tizimi O'smalari: Asosiy Ma'lumotlar",
+      "content": "Nerv tizimi o'smalari: Umumiy ma'lumot",
       "elementIndex": 26
     },
     {
       "type": "shape",
-      "content": "Nerv tizimi o'smalari, inson organizmida nerv hujayralaridan kelib chiqadigan benign yoki malign o'smalardir. Ular asosan bosh miya, orqa miya va nervlarni ta'sir qiladi. O'smalar turli belgilarga va muammolarga olib kelishi mumkin.",
+      "content": "Nerv tizimi o'smalari asosan miyada yoki orqa miya nervlarida paydo bo'ladi. Ular benign (yaxshi sifatli) yoki malign (yomon sifatli) bo'lishi mumkin. O'smalar nerv to'qimalaridan yoki boshqa to'qimalardan kelib chiqishi mumkin.",
       "elementIndex": 28
     },
     {
       "type": "shape",
-      "content": "O'smalar asosan quyidagi turlarga bo'linadi: meningioma, glioma, schwannoma va neuroblastoma. Har bir o'sma turi o'ziga xos simptomlar va davolash usullariga ega. O'smalarning aniqlanishi va davolanishi uchun tezkor tashxis qo'yish muhimdir.",
+      "content": "Umumiy belgilari: bosh og'rig'i, muvozanatni yo'qotish, ko'rish qobiliyatining pasayishi. Shuningdek, o'smalar o'sishi davomida nerv tizimining boshqa qismlariga ta'sir ko'rsatishi mumkin.",
       "elementIndex": 30
     },
     {
       "type": "shape",
-      "content": "Davolash usullari orasida jarrohlik, kimyoterapiya va radioterapiya mavjud. O'sma turiga qarab, davolash rejasi individual ravishda belgilanadi. O'smalarni erta aniqlash hayotni saqlashda muhim rol o'ynaydi.",
+      "content": "O'smalarni aniqlash uchun MRT, KT va boshqa tasviriy tekshiruvlar qo'llaniladi. Davolash usullari xirurgik aralashuv, radioterapiya va kimyoterapiyani o'z ichiga oladi.",
       "elementIndex": 32
     }
   ],

@@ -3,28 +3,28 @@
   "elements": [
     {
       "elementIndex": 6,
-      "content": "O'smalar va ularning tarqalishi",
+      "content": "Nerv tizimi o'smalarini davolash usullari",
       "tableData": {
         "data": []
       }
     },
     {
       "elementIndex": 8,
-      "content": "O'smalar, yoki vegetativ organizmlar, yer yuzida keng tarqalgan. Ular turli iqlim sharoitlariga moslashgan va ko'plab ekotizimlarda muhim rol o'ynaydi. O'smalar oziq-ovqat zanjirining asosi bo'lib, ko'plab hayvonlar va insonlar uchun oziq-ovqat manbai hisoblanadi.",
+      "content": "Nerv tizimi o'smalarini davolash usullari bir nechta usullar orqali amalga oshiriladi. Asosiy usullar quyidagilardan iborat: jarrohlik, radioterapiya, kimyoterapiya va immunoterapiya. Har bir usul o'ziga xos ko'rsatmalarga ega va bemorning holatiga qarab tanlanadi.",
       "tableData": {
         "data": []
       }
     },
     {
       "elementIndex": 9,
-      "content": "O'smalarni tarqatish jarayoni tabiiy va inson tomonidan amalga oshiriladigan faoliyatlar orqali sodir bo'ladi. Ular urug'lar, qishloq xo'jaligi amaliyotlari va tabiiy fenomenlar orqali kengayadi. O'smalarni saqlash va ularning tarqalishini nazorat qilish atrof-muhit muhofazasi uchun juda muhimdir.",
+      "content": "Jarrohlik usuli: O'smani olib tashlash uchun amalga oshiriladi. Bu usul, o'sma joylashgan joy va uning o'lchamiga qarab rejalashtiriladi. O'sma jarrohlik orqali to'liq olib tashlanganda bemor uchun eng yaxshi natijalar ko'rsatiladi.",
       "tableData": {
         "data": []
       }
     },
     {
       "elementIndex": 10,
-      "content": "O'smalar turli xil iqlim va geografik sharoitlarga moslashadi. Ular quruqlik, suv va havo orqali tarqaladi. O'smalarni o'rganish va ularning tarqalishini tushunish ekologik muammolarni hal qilishda yordam beradi.",
+      "content": "Radioterapiya: O'smalarni nurlanish orqali davolash usuli. Bu usul ko'pincha jarrohlikdan keyin qo'llaniladi yoki o'smalarni kichraytirish uchun dastlabki davolash sifatida ishlatiladi. Radioterapiya o'smalarni yo'qotish va ularning o'sishini to'xtatish uchun samarali hisoblanadi.",
       "tableData": {
         "data": []
       }

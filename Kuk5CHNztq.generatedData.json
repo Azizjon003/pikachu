@@ -3,7 +3,7 @@
   "elements": [
     {
       "elementIndex": 2,
-      "content": "Muammolar va kelajak istiqbollari",
+      "content": "Nerv tizimi o'smalari turlari va ularning simptomlari",
       "tableData": {
         "data": []
       }
@@ -31,42 +31,42 @@
     },
     {
       "elementIndex": 6,
-      "content": "4",
+      "content": "Nerv tizimining o'smalari asosan miya va umurtqa pog'onasida paydo bo'ladi. Ular turli xil simptomlarni keltirib chiqarishi mumkin.",
       "tableData": {
         "data": []
       }
     },
     {
       "elementIndex": 7,
-      "content": "Muammolarni hal etishning zamonaviy usullari va strategiyalari haqida o‘rganish zarur.",
+      "content": "Nerv tizimi o'smalari umumiy simptomlari: bosh og'rig'i, ko'rish va eshitish qobiliyatining pasayishi, muvozanatni yo'qotish.",
       "tableData": {
         "data": []
       }
     },
     {
       "elementIndex": 8,
-      "content": "Kelajak istiqbollari, iqtisodiy va ijtimoiy taraqqiyotga ta'sir etuvchi omillarni tahlil qilish.",
+      "content": "Maxsus simptomlar: yodda saqlash qobiliyatining pasayishi, mantiqiy fikrlashda qiyinchilik. Ular o'sma joylashuvi va turiga bog'liq.",
       "tableData": {
         "data": []
       }
     },
     {
       "elementIndex": 9,
-      "content": "O'zbekistondagi muammolar va ularni hal qilish rejalari haqida batafsil ma'lumot.",
+      "content": "O'smalarning turlari: benign (yaxshi sifatli) va malign (yomon sifatli). Har biri o'ziga xos simptomlarga ega.",
       "tableData": {
         "data": []
       }
     },
     {
       "elementIndex": 10,
-      "content": "Muammolarni hal etish uchun xalqaro tajribalar va innovatsion yondashuvlarni qo'llash.",
+      "content": "4",
       "tableData": {
         "data": []
       }
     },
     {
       "elementIndex": 11,
-      "content": "4",
+      "content": "2",
       "tableData": {
         "data": []
       }
