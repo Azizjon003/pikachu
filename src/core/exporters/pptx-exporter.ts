@@ -582,6 +582,23 @@ export const exportPPTX = (
       if (el.type === "text") {
         const textProps = formatHTML(el.content, ratioPx2Pt);
 
+        // Calculate text content metrics
+        const plainText = el.content.replace(/<[^>]*>/g, '');
+        const lineCount = (plainText.match(/\n/g) || []).length + 1;
+        const hasLargeText = textProps.some(prop => (prop.options?.fontSize || defaultFontSize / ratioPx2Pt) > 20);
+
+        // Calculate available height and needed height
+        const elementHeight = el.height / ratioPx2Inch;
+        const baseFontSize = textProps.reduce((max, prop) =>
+          Math.max(max, prop.options?.fontSize || defaultFontSize / ratioPx2Pt),
+          defaultFontSize / ratioPx2Pt
+        );
+
+        // Estimate needed height (font size * line count * line spacing + margins)
+        const lineSpacing = el.lineHeight || 1.5;
+        const estimatedHeight = (baseFontSize * lineCount * lineSpacing) / 72; // convert pt to inches
+        const needsFontReduction = estimatedHeight > elementHeight && hasLargeText;
+
         const options: pptxgen.TextPropsOptions = {
           x: el.left / ratioPx2Inch,
           y: el.top / ratioPx2Inch,
@@ -593,12 +610,13 @@ export const exportPPTX = (
           valign: "top",
           margin: 10 / ratioPx2Pt,
           paraSpaceBefore: 5 / ratioPx2Pt,
-          lineSpacingMultiple: 1.5 / 1.25,
+          lineSpacingMultiple: 1.5,
           autoFit: true,
+          shrinkText: needsFontReduction,
         };
         if (el.rotate) options.rotate = el.rotate;
         if (el.wordSpace) options.charSpacing = el.wordSpace / ratioPx2Pt;
-        if (el.lineHeight) options.lineSpacingMultiple = el.lineHeight / 1.25;
+        if (el.lineHeight) options.lineSpacingMultiple = el.lineHeight;
         if (el.fill) {
           const c = formatColor(el.fill?.value || "#ffffff");
           const opacity = el.opacity === undefined ? 1 : el.opacity;
