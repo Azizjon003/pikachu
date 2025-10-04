@@ -1,11 +1,6 @@
 /**
- * Core Exporters Module
- *
- * Export functionality for presentations
+ * Exporters Module - Barrel Export
+ * File export utilities (PPTX, etc.)
  */
 
-// Will export after migration:
-// export * from './pptx-exporter';
-
-// Placeholder until migration
-export {};
+export * from './pptx-exporter';

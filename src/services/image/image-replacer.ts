@@ -1,7 +1,7 @@
 import * as fs from 'fs';
 import * as path from 'path';
 import axios from 'axios';
-import BingLinks from './image.search';
+import BingLinks from './image-search';
 
 interface ImageElement {
   type: 'image';

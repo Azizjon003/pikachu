@@ -1,12 +1,6 @@
 /**
- * Image Services Module
- *
- * Image search and replacement functionality
+ * Image Service - Barrel Export
  */
 
-// Will export after migration:
-// export * from './image-search';
-// export * from './image-replacer';
-
-// Placeholder until migration
-export {};
+export * from './image-search';
+export * from './image-replacer';

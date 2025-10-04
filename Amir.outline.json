@@ -1,47 +1,47 @@
 {
   "outline": [
     {
-      "title": "Nerv tizimining o'smalari: Tushuncha va Turlari",
-      "title_eng": "Understanding and Types of Nervous System Tumors"
+      "title": "Nerv tizimi o'smalari haqida umumiy ma'lumot",
+      "title_eng": "General Information about Nervous System Tumors"
     },
     {
-      "title": "Nerv tizimi o'smalarining Belgilari va Diagnostika",
-      "title_eng": "Symptoms and Diagnosis of Nervous System Tumors"
+      "title": "O'sma turlari va ularning belgilari",
+      "title_eng": "Types of Tumors and Their Symptoms"
     },
     {
-      "title": "Nerv tizimi o'smalarining Davolash Usullari",
-      "title_eng": "Treatment Methods for Nervous System Tumors"
+      "title": "Davolash usullari va prognozlar",
+      "title_eng": "Treatment Methods and Prognosis"
     }
   ],
   "slides": [
     {
       "slideIndex": 3,
-      "title": "Tumor Turi va Belgilari",
-      "title_eng": "Tumor Types and Symptoms",
+      "title": "Nerv tizimi o'smalari haqida umumiy ma'lumot",
+      "title_eng": "General Information about Nervous System Tumors",
       "outlineIndex": 0
     },
     {
       "slideIndex": 4,
-      "title": "Tumor Tasnifi Jadvali",
-      "title_eng": "Tumor Classification Table",
-      "outlineIndex": 0
-    },
-    {
-      "slideIndex": 2,
-      "title": "Nerv tizimining o'smalari",
-      "title_eng": "Nervous System Tumors",
+      "title": "O'sma turlari va ularning belgilari",
+      "title_eng": "Types of Tumors and Their Symptoms",
       "outlineIndex": 1
     },
     {
-      "slideIndex": 9,
-      "title": "Davolash Usullari",
-      "title_eng": "Treatment Methods",
+      "slideIndex": 5,
+      "title": "O'sma turlari va ularning belgilari",
+      "title_eng": "Types of Tumors and Their Symptoms",
+      "outlineIndex": 1
+    },
+    {
+      "slideIndex": 10,
+      "title": "Davolash usullari va prognozlar",
+      "title_eng": "Treatment Methods and Prognosis",
       "outlineIndex": 2
     },
     {
-      "slideIndex": 12,
-      "title": "Tadqiqot va Statistika",
-      "title_eng": "Research and Statistics",
+      "slideIndex": 6,
+      "title": "Davolash usullari va prognozlar",
+      "title_eng": "Treatment Methods and Prognosis",
       "outlineIndex": 2
     }
   ]

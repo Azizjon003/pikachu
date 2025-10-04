@@ -1,5 +1,5 @@
 import fs from "fs";
-import { generateAISchema } from "./sxema";
+import { generateAISchema } from "../core/processors/schema-processor";
 
 const json = fs.readFileSync("Amir.json", "utf-8");
 

@@ -1,13 +1,10 @@
 /**
- * Core Generators Module
- *
- * LLM-based content generation for presentations
+ * Generators Module - Barrel Export
+ * LLM and content generation utilities
  */
 
-// Will export after migration:
-// export * from './llm-client';
-// export * from './structured-generator';
-// export * from './enhanced-generator';
-
-// Placeholder until migration
-export {};
+export * from './llm-client';
+export * from './structured-generator';
+export * from './enhanced-generator';
+export * from './integrated-generator';
+export * from './resilient-generator';

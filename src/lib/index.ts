@@ -1,15 +1,10 @@
 /**
- * Library Module
- *
- * Reusable utilities and helper classes
+ * Library Module - Barrel Export
+ * Centralized exports for utility libraries
  */
 
-// Will export after migration:
-// export { EnhancedLogger, LogLevel } from './logger';
-// export { ConfigManager } from './config-manager';
-// export { ProgressTracker, ProgressStage } from './progress-tracker';
-// export { PromptOptimizer, OptimizedPrompt, TokenUsage } from './prompt-optimizer';
-// export { QualityValidator, ValidationResult } from './quality-validator';
-
-// Placeholder until migration
-export {};
+export * from './logger';
+export * from './config-manager';
+export * from './progress-tracker';
+export * from './prompt-optimizer';
+export * from './quality-validator';

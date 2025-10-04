@@ -11,7 +11,7 @@ import {
   generateReferences,
   generateThankYouSlide,
   integratedGenerator,
-} from "./llma-structured-enhanced";
+} from "../core/generators/enhanced-generator";
 
 const start = async () => {
   console.log("\n" + "=".repeat(60));

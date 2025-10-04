@@ -5,12 +5,12 @@
 
 import OpenAI from 'openai';
 import { ResilientSlideGenerator } from './resilient-generator';
-import { QualityValidator, ValidationResult } from './quality-validator';
-import { ContentIntelligence, ElementAnalysis } from './content-analyzer';
-import { PromptOptimizer, OptimizedPrompt, TokenUsage } from './prompt-optimizer';
-import { ProgressTracker, ProgressStage } from './progress-tracker';
-import { EnhancedLogger, LogLevel } from './enhanced-logger';
-import { ConfigManager } from './config-manager';
+import { QualityValidator, ValidationResult } from '../../lib/quality-validator';
+import { ContentIntelligence, ElementAnalysis } from '../processors/content-analyzer';
+import { PromptOptimizer, OptimizedPrompt, TokenUsage } from '../../lib/prompt-optimizer';
+import { ProgressTracker, ProgressStage } from '../../lib/progress-tracker';
+import { EnhancedLogger, LogLevel } from '../../lib/logger';
+import { ConfigManager } from '../../lib/config-manager';
 
 export interface GenerationResult {
   success: boolean;

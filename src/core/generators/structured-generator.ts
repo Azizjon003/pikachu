@@ -3,7 +3,7 @@ import OpenAI from "openai";
 import fs from "fs";
 import dotenv from "dotenv";
 dotenv.config();
-import { OutlineSchema, OutlineResponse } from "./schema";
+import { OutlineSchema, OutlineResponse } from "../processors/schema-processor";
 
 const client = new OpenAI({ apiKey: process.env.OPENAI_API_KEY });
 

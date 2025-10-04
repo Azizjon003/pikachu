@@ -1,5 +1,5 @@
 import fs from "fs";
-import { generateOutline, generateContent } from "./llma-structured";
+import { generateOutline, generateContent } from "../core/generators/structured-generator";
 
 const start = async () => {
   // 1. Load slides

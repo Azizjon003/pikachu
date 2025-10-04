@@ -4,7 +4,7 @@
  */
 
 import OpenAI from 'openai';
-import { EnhancedLogger } from './enhanced-logger';
+import { EnhancedLogger } from '../../lib/logger';
 
 export interface GenerationMetrics {
   attempts: number;

@@ -1,13 +1,8 @@
 /**
- * Core Processors Module
- *
- * Data processing and transformation
+ * Processors Module - Barrel Export
+ * Data processing and transformation utilities
  */
 
-// Will export after migration:
-// export * from './json-processor';
-// export * from './schema-processor';
-// export * from './content-analyzer';
-
-// Placeholder until migration
-export {};
+export * from './json-processor';
+export * from './content-analyzer';
+export * from './schema-processor';

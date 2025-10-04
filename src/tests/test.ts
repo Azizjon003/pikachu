@@ -1,5 +1,5 @@
 import fs from "fs";
-import { exportPPTX } from "./main";
+import { exportPPTX } from "../core/exporters/pptx-exporter";
 
 const json = fs.readFileSync("Amir.fullSxema.json", "utf-8");
 

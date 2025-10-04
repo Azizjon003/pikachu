@@ -18,8 +18,8 @@ import {
   type ShapePoolItem,
   SHAPE_LIST,
   SHAPE_PATH_FORMULAS,
-} from "./configs/shapes";
-import { getSvgPathRange } from "./utils/svgPathParser";
+} from "../../../configs/shapes";
+import { getSvgPathRange } from "../../../utils/svgPathParser";
 import type {
   Slide,
   TableCellStyle,
@@ -34,7 +34,7 @@ import type {
   ChartOptions,
   Gradient,
   SlideTheme,
-} from "./types/slides";
+} from "../../../types/slides";
 
 let theme: SlideTheme = {
   backgroundColor: "#ffffff",

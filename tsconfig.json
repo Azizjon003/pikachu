@@ -3,7 +3,13 @@
     /* === File Layout === */
     "baseUrl": ".",
     "paths": {
-      "@/*": ["./*"]
+      "@/*": ["./*"],
+      "@/core/*": ["src/core/*"],
+      "@/services/*": ["src/services/*"],
+      "@/lib/*": ["src/lib/*"],
+      "@/types/*": ["types/*"],
+      "@/utils/*": ["utils/*"],
+      "@/configs/*": ["configs/*"]
     },
 
     /* === Module & Target === */
@@ -27,7 +33,7 @@
     "exactOptionalPropertyTypes": false,
     "forceConsistentCasingInFileNames": false
 
-    /* === Optional stricter flags (hozircha o‘chirib qo‘yilgan) === */
+    /* === Optional stricter flags (hozircha o'chirib qo'yilgan) === */
     // "noImplicitReturns": true,
     // "noUnusedLocals": true,
     // "noUnusedParameters": true,

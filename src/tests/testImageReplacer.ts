@@ -1,4 +1,4 @@
-import ImageReplacerService from './services/image-replacer';
+import ImageReplacerService from '../services/image/image-replacer';
 import * as path from 'path';
 
 /**

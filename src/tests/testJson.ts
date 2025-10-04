@@ -1,4 +1,4 @@
-import { importPPTX } from "./json";
+import { importPPTX } from "../core/processors/json-processor";
 import fs from "fs";
 
 const buffer = fs.readFileSync("PR-3.pptx");

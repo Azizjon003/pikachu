@@ -8,9 +8,9 @@ import fs from "fs";
 import dotenv from "dotenv";
 dotenv.config();
 
-import { OutlineSchema, OutlineResponse } from "./schema";
+import { OutlineSchema, OutlineResponse } from "../processors/schema-processor";
 import { IntegratedSlideGenerator } from "./integrated-generator";
-import { EnhancedLogger, LogLevel } from "./enhanced-logger";
+import { EnhancedLogger, LogLevel } from "../../lib/logger";
 
 const client = new OpenAI({ apiKey: process.env.OPENAI_API_KEY });
 const logger = new EnhancedLogger(LogLevel.INFO);

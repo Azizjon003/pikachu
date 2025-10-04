@@ -1,11 +1,5 @@
 /**
- * API Services Module
- *
- * External API client integrations
+ * API Service - Barrel Export
  */
 
-// Will export after migration:
-// export * from './api-client';
-
-// Placeholder until migration
-export {};
+export * from './api-client';

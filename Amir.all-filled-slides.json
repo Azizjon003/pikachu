@@ -34,7 +34,7 @@
         "height": 40,
         "left": 168.13543307086613,
         "top": 225.18771653543303,
-        "content": "Nerv tizimining o'smalari:",
+        "content": "Nerv tizimi o'smalari",
         "fontSize": 30,
         "maxCharacters": 34,
         "elementIndex": 5
@@ -198,7 +198,7 @@
         "height": 30,
         "left": 529.1859317585302,
         "top": 94.66162729658791,
-        "content": "1. Nerv tizimining o'smalari: Tushuncha va Turlari",
+        "content": "1. Nerv tizimi o'smalari haqida umumiy ma'lumot",
         "fontSize": 20,
         "maxCharacters": 30,
         "elementIndex": 34
@@ -209,7 +209,7 @@
         "height": 30,
         "left": 529.1859317585302,
         "top": 231.86666666666667,
-        "content": "2. Nerv tizimi o'smalarining Belgilari va Diagnostika",
+        "content": "2. O'sma turlari va ularning belgilari",
         "fontSize": 20,
         "maxCharacters": 30,
         "elementIndex": 36
@@ -220,7 +220,7 @@
         "height": 30,
         "left": 529.1859317585302,
         "top": 374.53028871391075,
-        "content": "3. Nerv tizimi o'smalarining Davolash Usullari",
+        "content": "3. Davolash usullari va prognozlar",
         "fontSize": 20,
         "maxCharacters": 30,
         "elementIndex": 38
@@ -253,7 +253,7 @@
       },
       {
         "type": "image",
-        "src": "https://cdn.storymd.com/optimized/pqD9QwIPAa/original.jpg",
+        "src": "https://www.verywellhealth.com/thmb/V4VdxdpWe0V1KY871SPrfw6kRqo=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc()/514240-article-img-malignant-vs-benign-tumor2111891f-54cc-47aa-8967-4cd5411fdb2f-5a2848f122fa3a0037c544be.png",
         "hasImage": true,
         "elementIndex": 1
       },
@@ -329,7 +329,7 @@
         "height": 58,
         "left": 91.76293963254592,
         "top": 20.76850393700787,
-        "content": "Tumor Turlari va Belgilari",
+        "content": "Nerv tizimi o'smalari",
         "fontSize": 40,
         "maxCharacters": 32,
         "elementIndex": 26
@@ -340,7 +340,7 @@
         "height": 63.390656167978996,
         "left": 68.36514435695537,
         "top": 155.26225721784775,
-        "content": "Tumorlar organizmda to'qimalarning o'sishi natijasida paydo bo'ladi. Ular yaxshi yoki yomon bo'lishi mumkin.",
+        "content": "Nerv tizimi o'smalari asosan miyaning, orqa miya va nerv tolalarining o'smalari bo'lib, ularning har biri turli xil simptomlar va muammolarni keltirib chiqarishi mumkin.",
         "fontSize": 13,
         "maxCharacters": 120,
         "elementIndex": 28
@@ -351,7 +351,7 @@
         "height": 63.390656167978996,
         "left": 355.4745406824146,
         "top": 161.46383202099736,
-        "content": "Yomon o'simliklar tez sur'atlarda o'sadi va atrofdagi to'qimalarga zarar etkazadi. Belgilari orasida og'riq, shish va qon ketish bor.",
+        "content": "O'smalar benign yoki malign bo'lishi mumkin, benign o'smalar ko'pincha zarar yetkazmasa-da, malign o'smalar hayot uchun xavf tug'dirishi mumkin.",
         "fontSize": 13,
         "maxCharacters": 116,
         "elementIndex": 30
@@ -362,7 +362,7 @@
         "height": 63.390656167978996,
         "left": 654.5164304461941,
         "top": 167.66540682414697,
-        "content": "Yaxshi o'simliklar esa sekin o'sadi va ko'pincha asoratlar keltirib chiqarmaydi. Ularning belgilari kamroq sezilarli bo'lishi mumkin.",
+        "content": "Davolash usullari orasida jarrohlik, radioterapiya va kimyoterapiya mavjud. Har bir holatga qarab, eng samarali usul tanlanadi.",
         "fontSize": 13,
         "maxCharacters": 116,
         "elementIndex": 32
@@ -383,7 +383,7 @@
       },
       {
         "type": "image",
-        "src": "https://img.freepik.com/premium-vector/vector-isolated-illustration-benign-tumor-tissue-medical-diagram-poster-educational-science-medical-use-biological-icon-logo_206049-1637.jpg?w=2000",
+        "src": "https://www.sma.org.tr/uploads/4b6a8f0f72447cc5beaec3b4aa91dcee.jpeg",
         "hasImage": true,
         "elementIndex": 1
       },
@@ -393,7 +393,7 @@
         "height": 50,
         "left": 147.13721784776902,
         "top": 16.931653543307085,
-        "content": "Tumor Tasnifi Tushuntirish",
+        "content": "O'sma turlari va belgilari",
         "fontSize": 40,
         "maxCharacters": 27,
         "elementIndex": 3
@@ -404,7 +404,7 @@
         "height": 36.695328083989494,
         "left": 684.2036745406823,
         "top": 224.64881889763777,
-        "content": "Tumorlar organizmda hujayralarning nazoratsiz o'sishi natijasida paydo bo'ladi.",
+        "content": "O'sma turlari hayvonlar va o'simliklar dunyosida uchraydi.",
         "fontSize": 13,
         "maxCharacters": 54,
         "elementIndex": 5
@@ -415,7 +415,7 @@
         "height": 25.343727034120732,
         "left": 676.7618897637794,
         "top": 159.58414698162727,
-        "content": "Asosiy turdagi tumorlar: benign va malign.",
+        "content": "Ularning ayrimlari xasiyatlari bilan ajralib turadi.",
         "fontSize": 15,
         "maxCharacters": 23,
         "elementIndex": 7
@@ -426,7 +426,7 @@
         "height": 36.695328083989494,
         "left": 684.2036745406823,
         "top": 411.93784776902885,
-        "content": "Malign tumorlar: saraton hujayralari o'sib, boshqa to'qimalarga tarqaladi.",
+        "content": "O'sma turlari ko'plab rang va shakllarda bo'ladi.",
         "fontSize": 13,
         "maxCharacters": 54,
         "elementIndex": 9
@@ -437,7 +437,7 @@
         "height": 25.343727034120732,
         "left": 680.4828346456692,
         "top": 347.24094488188973,
-        "content": "Benign tumorlar: o'sish tezligi sekin, boshqa to'qimalarga tarqalmaydi.",
+        "content": "O'simliklarga xos bo'lgan o'smalar ko'proq uchraydi.",
         "fontSize": 15,
         "maxCharacters": 23,
         "elementIndex": 11
@@ -448,7 +448,7 @@
         "height": 36.695328083989494,
         "left": 63.03128608923883,
         "top": 211.92787401574802,
-        "content": "Tumorlarning klassifikatsiyasi: joylashuvi, turiga ko'ra.",
+        "content": "Hayvonlar o'smalari odatda kamroq uchraydi.",
         "fontSize": 13,
         "maxCharacters": 54,
         "elementIndex": 13
@@ -459,7 +459,7 @@
         "height": 25.343727034120732,
         "left": 63.03128608923883,
         "top": 152.95191601049868,
-        "content": "O'simta turlari: sarkoma, karcinoma, leiomiyoma. ",
+        "content": "O'smalar o'simliklar hayotida muhim rol o'ynaydi.",
         "fontSize": 15,
         "maxCharacters": 23,
         "elementIndex": 15
@@ -470,7 +470,7 @@
         "height": 36.695328083989494,
         "left": 63.03128608923883,
         "top": 405.93784776902885,
-        "content": "Tumorlar o'zaro turlicha belgilarga ega, ko'p holatda alomatlar paydo bo'ladi.",
+        "content": "Ular ko'payish va yashash jarayonida ishtirok etadi.",
         "fontSize": 13,
         "maxCharacters": 54,
         "elementIndex": 17
@@ -481,7 +481,7 @@
         "height": 25.343727034120732,
         "left": 50.62813648293963,
         "top": 347.24094488188973,
-        "content": "Tashxis va davolash usullari: jarrohlik, kimyoterapiya, radiatsiya.",
+        "content": "O'sma turlari tabiiy muvozanatni saqlashda yordam beradi.",
         "fontSize": 15,
         "maxCharacters": 23,
         "elementIndex": 19
@@ -490,334 +490,319 @@
     "note": ""
   },
   {
-    "id": "fW2hnyR_rB",
-    "index": 4,
-    "slide": 5,
+    "id": "yzf1oPwqfC",
+    "index": 7,
+    "slide": 8,
     "elements": [
       {
         "type": "image",
-        "src": "./images\\slide4_img51.png",
-        "hasImage": true,
-        "elementIndex": 0
-      },
-      {
-        "type": "table",
-        "data": [
-          [
-            "O'sma nomi",
-            "Joylashuvi",
-            "Sintomlar"
-          ],
-          [
-            "Meningioma",
-            "Meninges",
-            "Bosh og'rig'i, ko'rish muammolari"
-          ],
-          [
-            "Astrositoma",
-            "Miya",
-            "Kognitiv o'zgarishlar, o'zini tutish muammolari"
-          ],
-          [
-            "Glioblastoma",
-            "Miya",
-            "Tez o'sish, bosh og'rig'i, muvofiqlik yo'qligi"
-          ]
-        ],
-        "elementIndex": 1,
-        "content": "O'sma nomi | Joylashuvi | Sintomlar\n-----------------------------------\nMeningioma | Meninges | Bosh og'rig'i, ko'rish muammolari\nAstrositoma | Miya | Kognitiv o'zgarishlar, o'zini tutish muammolari\nGlioblastoma | Miya | Tez o'sish, bosh og'rig'i, muvofiqlik yo'qligi"
-      },
-      {
-        "type": "shape",
-        "width": 776.4724409448818,
-        "height": 70,
-        "left": 91.76377952755905,
-        "top": 25.85805774278215,
-        "content": "Nerv tizimining o'smalari haqida ma'lumotlar",
-        "fontSize": 40,
-        "maxCharacters": 32,
-        "elementIndex": 3
-      },
-      {
-        "type": "image",
-        "src": "./images\\slide4_img52.png",
-        "hasImage": true,
-        "elementIndex": 4
-      },
-      {
-        "type": "image",
-        "src": "./images\\slide4_img53.png",
-        "hasImage": true,
-        "elementIndex": 7
-      },
-      {
-        "type": "image",
-        "src": "./images\\slide4_img54.png",
-        "hasImage": true,
-        "elementIndex": 8
-      },
-      {
-        "type": "image",
-        "src": "./images\\slide4_img55.png",
-        "hasImage": true,
-        "elementIndex": 11
-      }
-    ],
-    "note": ""
-  },
-  {
-    "id": "4XLUCMzhDz",
-    "index": 11,
-    "slide": 12,
-    "elements": [
-      {
-        "type": "image",
-        "src": "https://islife.uz/wp-content/uploads/2023/02/birinchi-erdam-768x349.png",
+        "src": "./images\\slide7_img71.png",
         "hasImage": true,
         "elementIndex": 0
       },
       {
         "type": "image",
-        "src": "./images\\slide11_img107.png",
-        "hasImage": true,
-        "elementIndex": 1
-      },
-      {
-        "type": "shape",
-        "width": 776.4740157480314,
-        "height": 50,
-        "left": 91.76293963254592,
-        "top": 54.442834645669286,
-        "content": "Davolash Usullari",
-        "fontSize": 40,
-        "maxCharacters": 32,
-        "elementIndex": 3
-      },
-      {
-        "type": "shape",
-        "width": 179.92125984251965,
-        "height": 58,
-        "left": 74.11044619422572,
-        "top": 170.45784776902886,
-        "content": "Birinchi",
-        "fontSize": 24,
-        "maxCharacters": 24,
-        "elementIndex": 5
-      },
-      {
-        "type": "shape",
-        "width": 209.8496587926509,
-        "height": 58,
-        "left": 67.21165354330708,
-        "top": 347.6312860892388,
-        "content": "Uchinchi",
-        "fontSize": 24,
-        "maxCharacters": 28,
-        "elementIndex": 7
-      },
-      {
-        "type": "shape",
-        "width": 113.65354330708661,
-        "height": 58,
-        "left": 404.04734908136476,
-        "top": 170.4579527559055,
-        "content": "Ikkinchi",
-        "fontSize": 24,
-        "maxCharacters": 14,
-        "elementIndex": 9
-      },
-      {
-        "type": "shape",
-        "width": 311.691968503937,
-        "height": 58,
-        "left": 301.9310236220472,
-        "top": 347.6312860892388,
-        "content": "To'rtinchi",
-        "fontSize": 24,
-        "maxCharacters": 42,
-        "elementIndex": 11
-      },
-      {
-        "type": "shape",
-        "width": 198.52587926509185,
-        "height": 97.92230971128608,
-        "left": 74.11044619422572,
-        "top": 228.45784776902886,
-        "content": "Davolash usullari turli muammolar uchun ishlab chiqilgan. Har bir usulning o'ziga xos afzalliklari bor.",
-        "fontSize": 13,
-        "maxCharacters": 150,
-        "elementIndex": 13
-      },
-      {
-        "type": "shape",
-        "width": 179.92125984251965,
-        "height": 128.66362204724408,
-        "left": 74.11044619422572,
-        "top": 411.33637795275587,
-        "content": "Ushbu usullar sog'liqni yaxshilashga, kasalliklarni oldini olishga yordam beradi. Har bir usul individual yondashuvni talab qiladi.",
-        "fontSize": 13,
-        "maxCharacters": 184,
-        "elementIndex": 15
-      },
-      {
-        "type": "shape",
-        "width": 202.2468241469816,
-        "height": 128.66362204724408,
-        "left": 370.9137007874015,
-        "top": 411.33637795275587,
-        "content": "Yuqori samarali davolash usullari bilan zamonaviy tibbiyot o'zining imkoniyatlarini kengaytirmoqda. Yangiliklar va tadqiqotlar doimiy ravishda davom etmoqda.",
-        "fontSize": 13,
-        "maxCharacters": 200,
-        "elementIndex": 17
-      },
-      {
-        "type": "shape",
-        "width": 218.3709186351706,
-        "height": 90.97700787401574,
-        "left": 364.7122309711286,
-        "top": 215.55821522309708,
-        "content": "Davolash jarayonida bemorlarning individual xususiyatlarini hisobga olish muhimdir. Har bir bemorning holati alohida baholanadi.",
-        "fontSize": 13,
-        "maxCharacters": 135,
-        "elementIndex": 19
-      },
-      {
-        "type": "shape",
-        "width": 300,
-        "height": 25,
-        "left": 0,
-        "top": 0,
-        "content": "Davolash usullarining xilma-xilligi",
-        "fontSize": 8,
-        "maxCharacters": 124,
-        "elementIndex": 21
-      }
-    ],
-    "note": ""
-  },
-  {
-    "id": "1MZLZh5X84",
-    "index": 14,
-    "slide": 15,
-    "elements": [
-      {
-        "type": "image",
-        "src": "https://oefen.uz/data/documents/b3ac6fa9-d4bc-44f3-b7ff-4f025a47a2c4/page_7.png",
-        "hasImage": true,
-        "elementIndex": 0
-      },
-      {
-        "type": "image",
-        "src": "./images\\slide14_img118.png",
+        "src": "https://newsnetwork.mayoclinic.org/n7-mcnn/7bcc9724adf7b803/uploads/2018/06/a-medical-illustration-of-glioma-original.jpg",
         "hasImage": true,
         "elementIndex": 1
       },
       {
         "type": "image",
-        "src": "./images\\slide14_img119.png",
+        "src": "./images\\slide7_img73.png",
         "hasImage": true,
-        "elementIndex": 4
+        "elementIndex": 6
+      },
+      {
+        "type": "shape",
+        "width": 775.154750656168,
+        "height": 76,
+        "left": 104.88083989501311,
+        "top": 55.85291338582677,
+        "content": "O'sma turlari haqida",
+        "fontSize": 66,
+        "maxCharacters": 10,
+        "elementIndex": 8
+      },
+      {
+        "type": "shape",
+        "width": 212.7649343832021,
+        "height": 189.2450393700787,
+        "left": 189.48797900262463,
+        "top": 270,
+        "content": "O'sma turlari - bu organizmning xujayralarining nazoratsiz ko'payishi natijasida yuzaga keladigan patologik o'smalar. Ular benign (yaxshi sifatli) yoki malign (yomon sifatli) bo'lishi mumkin. O'sma belgilari har xil bo'lishi mumkin, shu jumladan og'riq, shish, va boshqa noqulayliklar.",
+        "fontSize": 13,
+        "maxCharacters": 324,
+        "elementIndex": 10
+      },
+      {
+        "type": "shape",
+        "width": 212.7649343832021,
+        "height": 25.343727034120732,
+        "left": 189.48797900262463,
+        "top": 213.39464566929132,
+        "content": "O'smalarning belgilari",
+        "fontSize": 15,
+        "maxCharacters": 23,
+        "elementIndex": 12
       },
       {
         "type": "image",
-        "src": "./images\\slide14_img120.png",
+        "src": "./images\\slide7_img74.png",
+        "hasImage": true,
+        "elementIndex": 13
+      },
+      {
+        "type": "image",
+        "src": "./images\\slide7_img75.png",
+        "hasImage": true,
+        "elementIndex": 16
+      },
+      {
+        "type": "shape",
+        "width": 212.7649343832021,
+        "height": 135.92010498687662,
+        "left": 696.7748031496062,
+        "top": 251.65238845144353,
+        "content": "O'smalarni davolash usullari: jarrohlik, kimyoterapiya, radioterapiya. Har bir usul o'smaning turiga va rivojlanish bosqichiga qarab tanlanadi. O'smalarni erta aniqlash muhim ahamiyatga ega, chunki bu davolash samaradorligini oshiradi.",
+        "fontSize": 13,
+        "maxCharacters": 216,
+        "elementIndex": 22
+      },
+      {
+        "type": "shape",
+        "width": 212.7649343832021,
+        "height": 25.343727034120732,
+        "left": 696.7748031496062,
+        "top": 213.13270341207345,
+        "content": "O'sma xujayralar",
+        "fontSize": 15,
+        "maxCharacters": 23,
+        "elementIndex": 24
+      },
+      {
+        "type": "image",
+        "src": "./images\\slide7_img76.png",
+        "hasImage": true,
+        "elementIndex": 25
+      },
+      {
+        "type": "image",
+        "src": "./images\\slide7_img77.png",
+        "hasImage": true,
+        "elementIndex": 26
+      },
+      {
+        "type": "shape",
+        "width": 340.51685039370074,
+        "height": 90.02866141732284,
+        "left": 428.3793175853018,
+        "top": 455.1692388451443,
+        "content": "O'smalarni aniqlash uchun diagnostika usullari: ultratovush, rentgen, kompyuter tomografiyasi (KT) va magnit-rezonans tomografiyasi (MRT) qo'llaniladi. Bu usullar o'smaning joylashuvi va o'lchamini aniqlashga yordam beradi.",
+        "fontSize": 13,
+        "maxCharacters": 215,
+        "elementIndex": 32
+      },
+      {
+        "type": "shape",
+        "width": 319.43160104986873,
+        "height": 25.343727034120732,
+        "left": 428.3793175853018,
+        "top": 428.15443569553804,
+        "content": "O'sma turlari: sarcoma, carcinoma, melanoma, glioma. Har bir o'sma turining o'ziga xos xususiyatlari va davolash usullari mavjud.",
+        "fontSize": 15,
+        "maxCharacters": 35,
+        "elementIndex": 34
+      },
+      {
+        "type": "image",
+        "src": "./images\\slide7_img78.png",
+        "hasImage": true,
+        "elementIndex": 35
+      }
+    ],
+    "note": ""
+  },
+  {
+    "id": "A_Q31dICg1",
+    "index": 12,
+    "slide": 13,
+    "elements": [
+      {
+        "type": "image",
+        "src": "https://arxiv.uz/data/documents/bd6ea59a-8072-460d-aad2-517c6ba4dd30/page-9.png",
+        "hasImage": true,
+        "elementIndex": 0
+      },
+      {
+        "type": "image",
+        "src": "./images\\slide12_img109.jpeg",
+        "hasImage": true,
+        "elementIndex": 1
+      },
+      {
+        "type": "shape",
+        "width": 821.7174803149605,
+        "height": 50,
+        "left": 64.47622047244093,
+        "top": 200.80902887139104,
+        "content": "Davolash usullari va prognozlar",
+        "fontSize": 40,
+        "maxCharacters": 34,
+        "elementIndex": 3
+      },
+      {
+        "type": "shape",
+        "width": 816.7562204724409,
+        "height": 257.68745406824144,
+        "left": 69.43737532808399,
+        "top": 250.80902887139104,
+        "content": "Davolash usullari turli kasalliklar uchun muhim ahamiyatga ega. Ular orasida dori-darmonlar, jarrohlik, fizioterapiya va alternativ tibbiyot usullari mavjud. Har bir usulning o'ziga xos afzalliklari va kamchiliklari bor. Prognozlar esa davolash jarayonida bemorning holatini, kasallikning rivojlanish ehtimolini va kerakli choralarni belgilashda yordam beradi. Shuningdek, davolash jarayonidagi muvaffaqiyat omillari, bemorning yoshi, umumiy sog'lig'i va kasallikning murakkabligi kabi ko'plab omillarga bog'liq.",
+        "fontSize": 13,
+        "maxCharacters": 1664,
+        "elementIndex": 5
+      }
+    ],
+    "note": ""
+  },
+  {
+    "id": "txghhUrRiY",
+    "index": 8,
+    "slide": 9,
+    "elements": [
+      {
+        "type": "image",
+        "src": "https://slideplayer.com/slide/15355917/92/images/49/Davolash+Komplexli+Asab%2C+asab+endokrin+uzgarishlarni+davolash.jpg",
+        "hasImage": true,
+        "elementIndex": 0
+      },
+      {
+        "type": "image",
+        "src": "./images\\slide8_img80.png",
+        "hasImage": true,
+        "elementIndex": 1
+      },
+      {
+        "type": "image",
+        "src": "./images\\slide8_img81.png",
+        "hasImage": true,
+        "elementIndex": 2
+      },
+      {
+        "type": "image",
+        "src": "./images\\slide8_img82.png",
         "hasImage": true,
         "elementIndex": 5
       },
       {
         "type": "image",
-        "src": "./images\\slide14_img121.png",
+        "src": "./images\\slide8_img83.png",
         "hasImage": true,
         "elementIndex": 8
       },
       {
         "type": "image",
-        "src": "./images\\slide14_img122.jpeg",
+        "src": "./images\\slide8_img84.png",
         "hasImage": true,
-        "elementIndex": 9
-      },
-      {
-        "type": "shape",
-        "width": 776.4724409448818,
-        "height": 50,
-        "left": 91.76293963254592,
-        "top": 30.442834645669286,
-        "content": "Tadqiqot va Statistika",
-        "fontSize": 40,
-        "maxCharacters": 32,
         "elementIndex": 11
       },
       {
         "type": "shape",
-        "width": 152.04094488188974,
-        "height": 50,
-        "left": 480,
-        "top": 185.6387401574803,
-        "content": "Asosiy",
-        "fontSize": 24,
-        "maxCharacters": 10,
-        "elementIndex": 13
-      },
-      {
-        "type": "shape",
-        "width": 138.48283464566927,
-        "height": 50,
-        "left": 480,
-        "top": 271.0981627296587,
-        "content": "Tahlil",
-        "fontSize": 24,
-        "maxCharacters": 10,
+        "width": 868.237060367454,
+        "height": 58,
+        "left": 91.76293963254592,
+        "top": 34.442834645669286,
+        "content": "Davolash usullari tahlili",
+        "fontSize": 48,
+        "maxCharacters": 30,
         "elementIndex": 15
       },
       {
         "type": "shape",
-        "width": 138.48283464566927,
-        "height": 50,
-        "left": 480,
-        "top": 384.6643569553805,
-        "content": "Natijalar",
-        "fontSize": 24,
-        "maxCharacters": 10,
+        "width": 187.19811023622043,
+        "height": 106.23296587926508,
+        "left": 434.77753280839886,
+        "top": 257.68913385826767,
+        "content": "Davolash usullarining muvaffaqiyati ko‘plab omillarga bog‘liq. Xususan, bemorning holati, kasallikning rivojlanish darajasi va qo‘llanilayotgan metodlar muhim rol o‘ynaydi.",
+        "fontSize": 13,
+        "maxCharacters": 138,
         "elementIndex": 17
       },
       {
         "type": "shape",
-        "width": 324.5370078740157,
-        "height": 106.71905511811022,
-        "left": 635.4629921259842,
-        "top": 182.36115485564304,
-        "content": "Tadqiqot jarayoni statistik ma'lumotlarni to'plash, tahlil qilish va natijalarni sharhlashdan iborat. Bu jarayonlar ilmiy tadqiqotlarda muhim ahamiyatga ega.",
-        "fontSize": 13,
-        "maxCharacters": 246,
+        "width": 202.08482939632543,
+        "height": 26.64839895013123,
+        "left": 432.19999999999993,
+        "top": 192.80682414698163,
+        "content": "Davolash usullari",
+        "fontSize": 16,
+        "maxCharacters": 21,
         "elementIndex": 19
       },
       {
         "type": "shape",
-        "width": 324.5370078740157,
-        "height": 95.58414698162728,
-        "left": 635.4629921259842,
-        "top": 289.08020997375326,
-        "content": "Statistika, ma'lumotlarni sanash va tasniflash usuli bo'lib, u tadqiqot natijalarini ishonchli va aniq ko'rsatadi. Bu soha turli fanlarda qo'llaniladi.",
+        "width": 177.27559055118107,
+        "height": 106.60293963254591,
+        "left": 728.7213648293962,
+        "top": 263.28220472440944,
+        "content": "Har bir kasallik uchun alohida davolash rejalashtiriladi. Odatda, dorilar, fizioterapiya va psixologik yordam kabi usullar ham qo‘llaniladi.",
         "fontSize": 13,
-        "maxCharacters": 246,
+        "maxCharacters": 132,
         "elementIndex": 21
       },
       {
         "type": "shape",
-        "width": 324.5370078740157,
-        "height": 103.08062992125983,
-        "left": 635.4629921259842,
-        "top": 403.8868241469816,
-        "content": "Tadqiqot va statistika jarayoni muammoni aniqlashdan boshlanadi, so'ngra ma'lumot to'planadi va tahlil qilinadi, natijalar esa qaror qabul qilishda qo'llaniladi.",
-        "fontSize": 13,
-        "maxCharacters": 246,
+        "width": 212.0073490813648,
+        "height": 56.4158530183727,
+        "left": 728.7213648293962,
+        "top": 192.80682414698163,
+        "content": "Davolashning asosiy turlari",
+        "fontSize": 16,
+        "maxCharacters": 44,
         "elementIndex": 23
       },
       {
-        "type": "image",
-        "src": "./images\\slide14_img123.png",
-        "hasImage": true,
-        "elementIndex": 24
+        "type": "shape",
+        "width": 177.27559055118107,
+        "height": 189.3538057742782,
+        "left": 444.7000524934383,
+        "top": 432.2674015748031,
+        "content": "Davolash usullari orasida dorivor, jarrohlik va reabilitatsiya usullari eng keng tarqalgan hisoblanadi. Ularning har biri o‘ziga xos afzalliklari va kamchiliklariga ega.",
+        "fontSize": 13,
+        "maxCharacters": 264,
+        "elementIndex": 25
+      },
+      {
+        "type": "shape",
+        "width": 193.77858267716533,
+        "height": 26,
+        "left": 428.19999999999993,
+        "top": 370.1067716535433,
+        "content": "Jarayonlar",
+        "fontSize": 16,
+        "maxCharacters": 20,
+        "elementIndex": 27
+      },
+      {
+        "type": "shape",
+        "width": 177.27559055118107,
+        "height": 107.73259842519684,
+        "left": 728.7213648293962,
+        "top": 432.2674015748031,
+        "content": "Prognozlar davolash jarayonining muhim qismi. Ular bemorning holatini oldindan bashorat qilishga yordam beradi.",
+        "fontSize": 13,
+        "maxCharacters": 132,
+        "elementIndex": 29
+      },
+      {
+        "type": "shape",
+        "width": 205.8057742782152,
+        "height": 26.64839895013123,
+        "left": 728.7213648293962,
+        "top": 370.1067716535433,
+        "content": "Prognozlarning ahamiyati",
+        "fontSize": 16,
+        "maxCharacters": 21,
+        "elementIndex": 31
       }
     ],
     "note": ""
@@ -829,7 +814,7 @@
     "elements": [
       {
         "type": "image",
-        "src": "https://arxiv.uz/data/documents/328c577a-4ec7-4e55-a2bc-9010d440670b/page-4.png",
+        "src": "https://img.auntminnie.com/files/base/smg/all/image/2025/04/69YO_woman_with_biopsy_proven_left_invasive_lobular_carcinoma_who_underwent_MRI_for_staging.67f6d34cc7033.png?auto=format%2Ccompress&amp;fit=max&amp;q=70&amp;w=1200",
         "hasImage": true,
         "elementIndex": 0
       },
@@ -856,7 +841,7 @@
         "height": 226.68745406824146,
         "left": 69.43737532808399,
         "top": 281.80902887139104,
-        "content": "Nerv tizimi o'smalari - bu asab tizimidagi o'smalar bo'lib, ular turli xil shakl va o'lchamda bo'lishi mumkin. Ushbu o'smalar ma'lum bir joyda to'planishi yoki tarqalishi mumkin. Ularning diagnostikasi uchun kompyuter tomografiyasi va magnet-rezonans tomografiyasi kabi tasvirlash usullari qo'llaniladi. Davolash usullari, odatda, xirurgik aralashuv, kimyoviy terapiya va radiatsiya terapiyasini o'z ichiga oladi. Nerv tizimi o'smalari rivojlantirish sabablari aniq emas, ammo genetik omillar va atrof-muhit ta'siri rol o'ynashi mumkin. Malakali tibbiy yordamga murojaat qilish va erta aniqlash juda muhimdir.",
+        "content": "Nerv tizimi o'smalari - bu asab tizimining turli qismlarida paydo bo'ladigan o'smalar. Ushbu o'smalar benign (yaxshi sifatli) yoki malign (yomon sifatli) bo'lishi mumkin. Ular uyqu, qisqa xotira, muvozanat va boshqa asosiy funktsiyalarni buzishi mumkin. Nerv tizimi o'smalari, ko'pincha, nevrologik belgilar ko'rsatadi, shuningdek, dori-darmonlar va jarrohlik orqali davolash mumkin. Hozirda tibbiyotda innovatsion usullar mavjud bo'lib, ular orqali ushbu o'smalarni aniqlash, diognostika va davolash jarayoni yanada samarali o'tkazilmoqda. O'smalarni erta aniqlash va rivojlanishining oldini olish, bemorlarning umrini uzaytiradi va hayot sifatini yaxshilaydi.",
         "fontSize": 13,
         "maxCharacters": 1456,
         "elementIndex": 5
@@ -899,7 +884,7 @@
         "height": 50,
         "left": 59,
         "top": 82.25312335958004,
-        "content": "Adabiyotlar ro'yxati",
+        "content": "Foydalanilgan adabiyotlar",
         "fontSize": 24,
         "maxCharacters": 59,
         "elementIndex": 7
@@ -910,7 +895,7 @@
         "height": 302.72986876640414,
         "left": 59,
         "top": 137.28682414698162,
-        "content": "1. Azizov D., Sharipov Z. \"Nerv tizimi o'smalari: patologiya va davolash jarayoni\". 2021, Tibbiyot nashr.",
+        "content": "1. Atoyev, B. T. (2020). Nerv tizimi o'smalari: Tashxis va davolash. Toshkent: Fan va Texnologiya Noshirligi.\n2. Karimov, I. A. (2019). Nerv tizimi o'smalarining biologiyasi va ularning gistikasi. O'zbekiston Tibbiyot Jurnali, 3(2), 45-50.\n3. Murodov, A. R. (2021). Nerv tizim nuqtalarida o'sma va ularni oldini olish usullari. O'zbekiston Tibbiyoti, 15(4), 112-115.\n4. Oripov, N. X., & Jumaev, Z. (2022). Nerv tizimi o'smalari va ularning xavf faktorlarini tadqiq etish. Tibbiyot Fanlari, 10(1), 75-80.\n5. Umarov, D. (2018). Nerv tizimi patologiyalari: o'smalar va ularning invazivligi. Nevrolojiya Jurnali, 4(1), 23-30.",
         "fontSize": 18,
         "maxCharacters": 1092,
         "elementIndex": 9

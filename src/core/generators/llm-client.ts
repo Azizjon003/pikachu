@@ -1,8 +1,8 @@
 import OpenAI from "openai";
 import dotenv from "dotenv";
 dotenv.config();
-import { OutlineSchema, OutlineResponse } from "./schema";
-import { Slide } from "./types/slides";
+import { OutlineSchema, OutlineResponse } from "../processors/schema-processor";
+import { Slide } from "../../../types/slides";
 
 console.log(process.env.OPENAI_API_KEY, "OPENAI_API_KEY");
 const client = new OpenAI({ apiKey: process.env.OPENAI_API_KEY });

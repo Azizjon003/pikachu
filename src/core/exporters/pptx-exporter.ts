@@ -9,16 +9,16 @@ import type {
   PPTElementLink,
   Slide,
   SlideTheme,
-} from "./types/slides";
+} from "../../../types/slides";
 import {
   getElementRange,
   getLineElementPath,
   getTableSubThemeColor,
-} from "./utils/element";
-import { type SvgPoints, toPoints } from "./utils/svgPathParser";
-import { svg2Base64 } from "./utils/svg2Base64";
+} from "../../../utils/element";
+import { type SvgPoints, toPoints } from "../../../utils/svgPathParser";
+import { svg2Base64 } from "../../../utils/svg2Base64";
 
-import { AST, toAST } from "./utils/htmlParser/index";
+import { AST, toAST } from "../../../utils/htmlParser/index";
 
 const defaultFontSize = 14;
 

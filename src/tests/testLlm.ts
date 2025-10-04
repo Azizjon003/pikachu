@@ -5,8 +5,8 @@ import {
   generateConculation,
   generateReferences,
   generateThankYouSlide,
-} from "./llma-structured";
-import ImageReplacerService from "./services/image-replacer";
+} from "../core/generators/structured-generator";
+import ImageReplacerService from '../services/image/image-replacer';
 
 const start = async () => {
   // 1. Load AI schema (simplified slide structure)

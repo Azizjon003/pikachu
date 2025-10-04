@@ -1,5 +1,5 @@
 import fs from "fs";
-import { generateSlideFromAI } from "./sxema";
+import { generateSlideFromAI } from "../core/processors/schema-processor";
 
 const jsonFull = fs.readFileSync("Amir.json", "utf-8");
 
