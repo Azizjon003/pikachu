@@ -17,7 +17,6 @@ import {
 } from "./utils/element";
 import { type SvgPoints, toPoints } from "./utils/svgPathParser";
 import { svg2Base64 } from "./utils/svg2Base64";
-import { ensureBase64Header } from "./json";
 
 import { AST, toAST } from "./utils/htmlParser/index";
 
