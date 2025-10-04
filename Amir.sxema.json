@@ -499,18 +499,8 @@
       {
         "type": "table",
         "data": [
-          [
-            "Tumor Type",
-            "Location",
-            "Benign/Malignant",
-            "Common Symptoms"
-          ],
-          [
-            "Glioma",
-            "Brain/Spinal Cord",
-            "Malignant",
-            "Headaches, Seizures"
-          ],
+          ["Tumor Type", "Location", "Benign/Malignant", "Common Symptoms"],
+          ["Glioma", "Brain/Spinal Cord", "Malignant", "Headaches, Seizures"],
           [
             "Meningioma",
             "Brain Meninges",
@@ -1110,6 +1100,7 @@
         "type": "image",
         "src": "./images\\slide9_img85.png",
         "hasImage": true,
+        "isEdited": true,
         "elementIndex": 0
       },
       {
