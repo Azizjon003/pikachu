@@ -115,15 +115,6 @@ const start = async () => {
     allFilledSlides.push(firstSlide);
     allFilledSlides.push(secondSlide);
 
-    fs.writeFileSync(
-      "Amir.filled-slide-0.json",
-      JSON.stringify(firstSlide, null, 2)
-    );
-    fs.writeFileSync(
-      "Amir.filled-slide-1.json",
-      JSON.stringify(secondSlide, null, 2)
-    );
-
     // 5. Generate content for slides with integrated system
     console.log(`📄 Generating content for ${slidesToFill.length} slides...`);
     console.log("─".repeat(60));
@@ -136,13 +127,12 @@ const start = async () => {
       console.log(`\n🔄 Processing Slide ${i + 3}/${slidesToFill.length + 2}`);
       console.log(`   Topic: ${outlineForSlide.title}`);
 
-      const filledSlide = await generateContent(slide, outlineForSlide, "Uzbek");
-      allFilledSlides.push(filledSlide);
-
-      fs.writeFileSync(
-        `Amir.filled-slide-${i + 2}.json`,
-        JSON.stringify(filledSlide, null, 2)
+      const filledSlide = await generateContent(
+        slide,
+        outlineForSlide,
+        "Uzbek"
       );
+      allFilledSlides.push(filledSlide);
 
       console.log(`   ✅ Slide ${i + 3} completed\n`);
 
@@ -187,29 +177,8 @@ const start = async () => {
     allFilledSlides.push(referencesSlide);
     allFilledSlides.push(thankYouSlide);
 
-    const additionalSlideIndex = slidesToFill.length + 2;
-    fs.writeFileSync(
-      `Amir.filled-slide-${additionalSlideIndex}.json`,
-      JSON.stringify(consultationSlide, null, 2)
-    );
-    fs.writeFileSync(
-      `Amir.filled-slide-${additionalSlideIndex + 1}.json`,
-      JSON.stringify(referencesSlide, null, 2)
-    );
-    fs.writeFileSync(
-      `Amir.filled-slide-${additionalSlideIndex + 2}.json`,
-      JSON.stringify(thankYouSlide, null, 2)
-    );
-
-    // 7. Save all results
-    fs.writeFileSync(
-      "Amir.all-filled-slides.json",
-      JSON.stringify(allFilledSlides, null, 2)
-    );
-
     const totalDuration = Date.now() - startTime;
 
-    // 8. Print comprehensive statistics
     console.log("\n" + "=".repeat(60));
     console.log("  GENERATION COMPLETE");
     console.log("=".repeat(60) + "\n");
@@ -217,7 +186,13 @@ const start = async () => {
     console.log("📊 Summary:");
     console.log(`   Total Slides Generated: ${allFilledSlides.length}`);
     console.log(`   Total Duration: ${(totalDuration / 1000).toFixed(2)}s`);
-    console.log(`   Average per Slide: ${(totalDuration / allFilledSlides.length / 1000).toFixed(2)}s\n`);
+    console.log(
+      `   Average per Slide: ${(
+        totalDuration /
+        allFilledSlides.length /
+        1000
+      ).toFixed(2)}s\n`
+    );
 
     // Get integrated generator statistics
     console.log("─".repeat(60));
@@ -229,7 +204,6 @@ const start = async () => {
     console.log("   - Amir.all-filled-slides.json (complete presentation)\n");
 
     console.log("=".repeat(60) + "\n");
-
   } catch (error: any) {
     console.error("\n❌ Error during generation:", error.message);
     console.error("\nStack trace:");

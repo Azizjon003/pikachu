@@ -22,8 +22,12 @@ const findNearbyElements = (
     const isNearby =
       Math.abs(el.left - currentElement.left) < threshold ||
       Math.abs(el.top - currentElement.top) < threshold ||
-      Math.abs(el.left + el.width - (currentElement.left + currentElement.width)) < threshold ||
-      Math.abs(el.top + el.height - (currentElement.top + currentElement.height)) < threshold;
+      Math.abs(
+        el.left + el.width - (currentElement.left + currentElement.width)
+      ) < threshold ||
+      Math.abs(
+        el.top + el.height - (currentElement.top + currentElement.height)
+      ) < threshold;
 
     return isNearby;
   });
@@ -52,7 +56,12 @@ const validateContent = (
   generatedContent: string,
   originalFontSize: number,
   maxCharacters: number
-): { isValid: boolean; content: string; fontSize?: number; warnings: string[] } => {
+): {
+  isValid: boolean;
+  content: string;
+  fontSize?: number;
+  warnings: string[];
+} => {
   const warnings: string[] = [];
   let content = generatedContent;
   let adjustedFontSize: number | undefined;
@@ -74,7 +83,11 @@ const validateContent = (
     adjustedFontSize = newFontSize;
 
     warnings.push(
-      `Font size reduced from ${originalFontSize}px to ${newFontSize.toFixed(1)}px due to content length (${content.length} chars, max: ${maxCharacters})`
+      `Font size reduced from ${originalFontSize}px to ${newFontSize.toFixed(
+        1
+      )}px due to content length (${
+        content.length
+      } chars, max: ${maxCharacters})`
     );
   }
 
@@ -98,7 +111,9 @@ const validateContent = (
     content.length < minExpectedChars
   ) {
     warnings.push(
-      `Content may be too short for element size (${content.length} chars, expected ~${Math.floor(minExpectedChars)})`
+      `Content may be too short for element size (${
+        content.length
+      } chars, expected ~${Math.floor(minExpectedChars)})`
     );
   }
 
@@ -113,7 +128,10 @@ const validateContent = (
 /**
  * TASK 2: Group elements by similar sizes for diversity awareness
  */
-const groupBySimilarSize = (elements: any[], threshold: number = 50): Map<number, any[]> => {
+const groupBySimilarSize = (
+  elements: any[],
+  threshold: number = 50
+): Map<number, any[]> => {
   const groups = new Map<number, any[]>();
 
   elements.forEach((el) => {
@@ -491,26 +509,45 @@ ELEMENTS TO FILL (you must fill ALL ${textShapeTableElements.length} elements):
 ${textShapeTableElements
   .map((el: any, i: number) => {
     const nearby = findNearbyElements(el, textShapeTableElements);
-    const nearbyInfo = nearby.length > 0
-      ? `\n   ⚠️ NEARBY ELEMENTS: ${nearby.map(n => `[${n.index}] at (${n.left},${n.top})`).join(", ")}`
-      : "";
+    const nearbyInfo =
+      nearby.length > 0
+        ? `\n   ⚠️ NEARBY ELEMENTS: ${nearby
+            .map((n) => `[${n.index}] at (${n.left},${n.top})`)
+            .join(", ")}`
+        : "";
 
     return `
 ${i + 1}. Element [${el.index}] - ${el.type.toUpperCase()} - ID: #${el.index}
    Size: ${el.width} x ${el.height}
    Position: (${el.left}, ${el.top})
    Font Size: ${el.fontSize}px
-   ⚠️ MAX CHARACTERS: ${el.maxCharacters} (guideline - font will auto-adjust if slightly exceeded)
+   ⚠️ MAX CHARACTERS: ${
+     el.maxCharacters
+   } (guideline - font will auto-adjust if slightly exceeded)
    Current: "${el.currentContent || "EMPTY - FILL THIS"}"
    ${
      el.type === "table"
        ? `Table Data: ${JSON.stringify(el.tableData) || "EMPTY"}`
        : ""
    }
-   ${el.top < 100 && el.width > 500 ? ">>> LIKELY MAIN TITLE (keep it short and UNIQUE!)" : ""}
-   ${el.height > 300 ? ">>> LIKELY BODY CONTENT (detailed and DISTINCT from other elements!)" : ""}
-   ${el.width < 200 && el.height < 100 ? ">>> LIKELY LABEL (very brief and UNIQUE!)" : ""}
-   ${el.type === "table" ? ">>> TABLE - GENERATE ROWS AND COLUMNS" : ""}${nearbyInfo}`;
+   ${
+     el.top < 100 && el.width > 500
+       ? ">>> LIKELY MAIN TITLE (keep it short and UNIQUE!)"
+       : ""
+   }
+   ${
+     el.height > 300
+       ? ">>> LIKELY BODY CONTENT (detailed and DISTINCT from other elements!)"
+       : ""
+   }
+   ${
+     el.width < 200 && el.height < 100
+       ? ">>> LIKELY LABEL (very brief and UNIQUE!)"
+       : ""
+   }
+   ${
+     el.type === "table" ? ">>> TABLE - GENERATE ROWS AND COLUMNS" : ""
+   }${nearbyInfo}`;
   })
   .join("\n")}
 
@@ -577,11 +614,6 @@ MANDATORY TASK:
       return genEl;
     });
   }
-
-  fs.writeFileSync(
-    `${slide.id}.generatedData.json`,
-    JSON.stringify(generatedData, null, 2)
-  );
 
   // Log validation results
   const hasWarnings = validationResults.some((v) => v.warnings.length > 0);
@@ -808,10 +840,6 @@ MANDATORY TASK:
 
   const generatedData = JSON.parse(raw);
 
-  fs.writeFileSync(
-    `${slide.id}.generatedData.json`,
-    JSON.stringify(generatedData, null, 2)
-  );
   const filledCount = generatedData.elements?.length || 0;
   const expectedCount = textShapeTableElements.length;
 
@@ -1019,10 +1047,6 @@ MANDATORY TASK:
 
   const generatedData = JSON.parse(raw);
 
-  fs.writeFileSync(
-    `${slide.id}.generatedData.json`,
-    JSON.stringify(generatedData, null, 2)
-  );
   const filledCount = generatedData.elements?.length || 0;
   const expectedCount = textShapeTableElements.length;
 
@@ -1152,10 +1176,6 @@ Try to stay within maxCharacters limits (slight overflow is OK - font will auto-
 
   const generatedData = JSON.parse(raw);
 
-  fs.writeFileSync(
-    `${slide.id}.generatedData.json`,
-    JSON.stringify(generatedData, null, 2)
-  );
   const filledCount = generatedData.elements?.length || 0;
   const expectedCount = textShapeTableElements.length;
 

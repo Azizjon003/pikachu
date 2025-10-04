@@ -17,7 +17,6 @@ const start = async () => {
     "Nerv tizimi o'smalari" // topic
   );
 
-  fs.writeFileSync("demo.outline.json", JSON.stringify(outline, null, 2));
   console.log(`✅ Outline saved to demo.outline.json\n`);
 
   // 3. Generate content for first slide
@@ -43,11 +42,6 @@ const start = async () => {
     }
   });
 
-  // Save filled slide
-  fs.writeFileSync(
-    "demo.filled-slide.json",
-    JSON.stringify(filledSlide, null, 2)
-  );
   console.log(`\n✅ Filled slide saved to demo.filled-slide.json`);
 
   // 4. Generate content for ALL selected slides
@@ -73,12 +67,6 @@ const start = async () => {
       await new Promise((resolve) => setTimeout(resolve, 1000));
     }
   }
-
-  // Save all filled slides
-  fs.writeFileSync(
-    "demo.all-filled-slides.json",
-    JSON.stringify(allFilledSlides, null, 2)
-  );
 
   console.log(`\n✅ All ${allFilledSlides.length} slides filled and saved!`);
   console.log(`   File: demo.all-filled-slides.json\n`);

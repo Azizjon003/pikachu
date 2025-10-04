@@ -34,8 +34,12 @@ const findNearbyElements = (
     const isNearby =
       Math.abs(el.left - currentElement.left) < threshold ||
       Math.abs(el.top - currentElement.top) < threshold ||
-      Math.abs(el.left + el.width - (currentElement.left + currentElement.width)) < threshold ||
-      Math.abs(el.top + el.height - (currentElement.top + currentElement.height)) < threshold;
+      Math.abs(
+        el.left + el.width - (currentElement.left + currentElement.width)
+      ) < threshold ||
+      Math.abs(
+        el.top + el.height - (currentElement.top + currentElement.height)
+      ) < threshold;
 
     return isNearby;
   });
@@ -59,7 +63,12 @@ const validateContent = (
   generatedContent: string,
   originalFontSize: number,
   maxCharacters: number
-): { isValid: boolean; content: string; fontSize?: number; warnings: string[] } => {
+): {
+  isValid: boolean;
+  content: string;
+  fontSize?: number;
+  warnings: string[];
+} => {
   const warnings: string[] = [];
   let content = generatedContent;
   let adjustedFontSize: number | undefined;
@@ -77,7 +86,9 @@ const validateContent = (
     adjustedFontSize = newFontSize;
 
     warnings.push(
-      `Font size reduced from ${originalFontSize}px to ${newFontSize.toFixed(1)}px due to content length`
+      `Font size reduced from ${originalFontSize}px to ${newFontSize.toFixed(
+        1
+      )}px due to content length`
     );
   }
 
@@ -98,7 +109,9 @@ const validateContent = (
     content.length < minExpectedChars
   ) {
     warnings.push(
-      `Content may be too short for element size (${content.length} chars, expected ~${Math.floor(minExpectedChars)})`
+      `Content may be too short for element size (${
+        content.length
+      } chars, expected ~${Math.floor(minExpectedChars)})`
     );
   }
 
@@ -119,7 +132,11 @@ export const generateOutline = async (
   page: number,
   topic: string
 ): Promise<OutlineResponse> => {
-  logger.info("Starting outline generation", { topic, language, slideCount: slides.length });
+  logger.info("Starting outline generation", {
+    topic,
+    language,
+    slideCount: slides.length,
+  });
 
   // Filter slides (remove first 2 and last 3)
   slides = slides.filter(
@@ -134,10 +151,17 @@ export const generateOutline = async (
   logger.info(`Filtered slides`, { available: slides.length, requested: page });
 
   // Use integrated generator
-  const result = await integratedGenerator.generateOutline(slides, language, page, topic);
+  const result = await integratedGenerator.generateOutline(
+    slides,
+    language,
+    page,
+    topic
+  );
 
   if (!result.success) {
-    logger.error("Outline generation failed", undefined, { errors: result.errors });
+    logger.error("Outline generation failed", undefined, {
+      errors: result.errors,
+    });
     throw new Error(`Outline generation failed: ${result.errors?.join(", ")}`);
   }
 
@@ -170,7 +194,11 @@ export const generateContent = async (
   });
 
   // Use integrated generator
-  const result = await integratedGenerator.generateSlideContent(slide, outline, language);
+  const result = await integratedGenerator.generateSlideContent(
+    slide,
+    outline,
+    language
+  );
 
   if (!result.success) {
     logger.error(`Content generation failed for slide ${slide.id}`, undefined, {
@@ -183,9 +211,14 @@ export const generateContent = async (
   logger.info(`Content generated for slide ${slide.id}`, {
     duration: `${result.metadata.totalDuration}ms`,
     qualityScore: result.metadata.qualityScore,
-    qualityRating: result.metadata.validationResult.score >= 90 ? "Excellent" :
-                   result.metadata.validationResult.score >= 75 ? "Good" :
-                   result.metadata.validationResult.score >= 60 ? "Fair" : "Poor",
+    qualityRating:
+      result.metadata.validationResult.score >= 90
+        ? "Excellent"
+        : result.metadata.validationResult.score >= 75
+        ? "Good"
+        : result.metadata.validationResult.score >= 60
+        ? "Fair"
+        : "Poor",
     issues: result.metadata.validationResult.issues.length,
     tokenUsage: result.metadata.tokenUsage.totalTokens,
   });
@@ -196,12 +229,6 @@ export const generateContent = async (
       issues: result.metadata.validationResult.issues.slice(0, 3), // First 3 issues
     });
   }
-
-  // Save generated data
-  fs.writeFileSync(
-    `${slide.id}.generatedData.json`,
-    JSON.stringify(result.data, null, 2)
-  );
 
   return result.data;
 };
@@ -276,11 +303,6 @@ export const generateConculation = async (
 
   const raw = completion.choices[0].message.content ?? "{}";
   const generatedData = JSON.parse(raw);
-
-  fs.writeFileSync(
-    `${slide.id}.generatedData.json`,
-    JSON.stringify(generatedData, null, 2)
-  );
 
   logger.info("Conclusion slide generated", { slideId: slide.id });
 
@@ -372,11 +394,6 @@ export const generateReferences = async (
   const raw = completion.choices[0].message.content ?? "{}";
   const generatedData = JSON.parse(raw);
 
-  fs.writeFileSync(
-    `${slide.id}.generatedData.json`,
-    JSON.stringify(generatedData, null, 2)
-  );
-
   logger.info("References slide generated", { slideId: slide.id });
 
   const updatedSlide = {
@@ -465,11 +482,6 @@ export const generateThankYouSlide = async (
 
   const raw = completion.choices[0].message.content ?? "{}";
   const generatedData = JSON.parse(raw);
-
-  fs.writeFileSync(
-    `${slide.id}.generatedData.json`,
-    JSON.stringify(generatedData, null, 2)
-  );
 
   logger.info("Thank you slide generated", { slideId: slide.id });
 

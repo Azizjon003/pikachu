@@ -469,13 +469,6 @@ export const generateContent = async (
     generatedData.elements.push(...topUp);
   }
 
-  // Filega yozish (audit)
-  fs.writeFileSync(
-    `${slide.id}.generatedData.json`,
-    JSON.stringify(generatedData, null, 2),
-    "utf-8"
-  );
-
   console.log(`✅ Content generated for slide ${slide.id}`);
   console.log(
     `   - Filled: ${generatedData.elements.length}/${textShapeTableElements.length}`

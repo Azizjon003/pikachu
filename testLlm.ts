@@ -104,16 +104,6 @@ const start = async () => {
   allFilledSlides.push(firstSlide);
   allFilledSlides.push(secondSlide);
 
-  // Save first two slides
-  fs.writeFileSync(
-    "Amir.filled-slide-0.json",
-    JSON.stringify(firstSlide, null, 2)
-  );
-  fs.writeFileSync(
-    "Amir.filled-slide-1.json",
-    JSON.stringify(secondSlide, null, 2)
-  );
-
   // 6. Generate content for remaining slides
   console.log(`📄 Generating content for ${slidesToFill.length} slides...`);
   for (let i = 0; i < slidesToFill.length; i++) {
@@ -125,10 +115,6 @@ const start = async () => {
     allFilledSlides.push(filledSlide);
     await new Promise((resolve) => setTimeout(resolve, 1000));
     console.log(`📄 Generated content for slide ${i + 3}...`);
-    fs.writeFileSync(
-      `Amir.filled-slide-${i + 2}.json`,
-      JSON.stringify(filledSlide, null, 2)
-    );
   }
 
   // 7. Generate additional slides using LLM with topic-specific content
@@ -177,19 +163,6 @@ const start = async () => {
   allFilledSlides.push(thankYouSlide);
 
   // Save additional slides
-  const additionalSlideIndex = slidesToFill.length + 2;
-  fs.writeFileSync(
-    `Amir.filled-slide-${additionalSlideIndex}.json`,
-    JSON.stringify(consultationSlide, null, 2)
-  );
-  fs.writeFileSync(
-    `Amir.filled-slide-${additionalSlideIndex + 1}.json`,
-    JSON.stringify(referencesSlide, null, 2)
-  );
-  fs.writeFileSync(
-    `Amir.filled-slide-${additionalSlideIndex + 2}.json`,
-    JSON.stringify(thankYouSlide, null, 2)
-  );
 
   console.log("✅ Additional slides generated\n");
 
