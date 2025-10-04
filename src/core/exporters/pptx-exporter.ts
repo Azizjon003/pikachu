@@ -1100,7 +1100,7 @@ export const exportPPTX = (
       }
     }
   }
-
+  console.log("path", path);
   setTimeout(() => {
     pptx
       .writeFile({ fileName: path as never })

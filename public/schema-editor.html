@@ -1,0 +1,1056 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Schema Editor - PowerPoint Template Manager</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        .toast {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            min-width: 300px;
+            z-index: 1000;
+            animation: slideIn 0.3s ease-out;
+        }
+
+        @keyframes slideIn {
+            from {
+                transform: translateX(400px);
+                opacity: 0;
+            }
+            to {
+                transform: translateX(0);
+                opacity: 1;
+            }
+        }
+
+        @keyframes slideOut {
+            from {
+                transform: translateX(0);
+                opacity: 1;
+            }
+            to {
+                transform: translateX(400px);
+                opacity: 0;
+            }
+        }
+
+        .toast.hiding {
+            animation: slideOut 0.3s ease-in;
+        }
+
+        .slide-accordion {
+            transition: all 0.3s ease;
+        }
+
+        .slide-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease;
+        }
+
+        .slide-content.expanded {
+            max-height: 5000px;
+        }
+
+        .image-element {
+            transition: all 0.2s ease;
+        }
+
+        .image-element:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+        }
+
+        .thumbnail {
+            max-width: 100px;
+            max-height: 80px;
+            object-fit: contain;
+            cursor: pointer;
+        }
+
+        .badge {
+            transition: all 0.2s ease;
+        }
+
+        .toggle-edited {
+            transition: all 0.2s ease;
+        }
+
+        .toggle-edited:hover {
+            transform: scale(1.05);
+        }
+
+        .spinner {
+            border: 3px solid #f3f4f6;
+            border-top: 3px solid #3b82f6;
+            border-radius: 50%;
+            width: 24px;
+            height: 24px;
+            animation: spin 1s linear infinite;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.75);
+            animation: fadeIn 0.3s ease;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        .modal-content {
+            margin: 5% auto;
+            max-width: 90%;
+            max-height: 80vh;
+            animation: zoomIn 0.3s ease;
+        }
+
+        @keyframes zoomIn {
+            from {
+                transform: scale(0.7);
+                opacity: 0;
+            }
+            to {
+                transform: scale(1);
+                opacity: 1;
+            }
+        }
+
+        .stat-card {
+            transition: all 0.2s ease;
+        }
+
+        .stat-card:hover {
+            transform: translateY(-2px);
+        }
+    </style>
+</head>
+<body class="bg-gray-50">
+    <!-- Header -->
+    <header class="bg-white shadow-sm border-b border-gray-200">
+        <div class="max-w-7xl mx-auto px-4 py-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between">
+                <div>
+                    <h1 class="text-2xl font-bold text-gray-900">Schema Editor</h1>
+                    <p class="text-sm text-gray-600">Manage PowerPoint template schemas and mark images for AI editing</p>
+                </div>
+                <a href="/" class="px-4 py-2 text-sm font-medium text-gray-700 bg-white border border-gray-300 rounded-md hover:bg-gray-50 transition">
+                    Back to Home
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="max-w-7xl mx-auto px-4 py-6 sm:px-6 lg:px-8">
+        <!-- Template Selection Section -->
+        <section class="bg-white rounded-lg shadow-sm border border-gray-200 p-6 mb-6">
+            <h2 class="text-lg font-semibold text-gray-900 mb-4">Template Selection</h2>
+            <div class="flex flex-col sm:flex-row gap-4">
+                <div class="flex-1">
+                    <label for="templateSelect" class="block text-sm font-medium text-gray-700 mb-2">
+                        Select Template
+                    </label>
+                    <select
+                        id="templateSelect"
+                        class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                    >
+                        <option value="">-- Choose a template --</option>
+                    </select>
+                </div>
+                <div class="flex items-end">
+                    <button
+                        id="loadSchemaBtn"
+                        class="px-6 py-2 bg-blue-600 text-white font-medium rounded-md hover:bg-blue-700 transition disabled:bg-gray-400 disabled:cursor-not-allowed flex items-center gap-2"
+                        disabled
+                    >
+                        <span>Load Schema</span>
+                        <span id="loadSpinner" class="spinner hidden"></span>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Template Info -->
+            <div id="templateInfo" class="mt-4 hidden">
+                <div class="bg-blue-50 border border-blue-200 rounded-md p-4">
+                    <div class="flex items-center gap-2 mb-2">
+                        <svg class="w-5 h-5 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                        </svg>
+                        <h3 class="font-semibold text-blue-900">Template Information</h3>
+                    </div>
+                    <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 text-sm">
+                        <div>
+                            <span class="text-blue-700 font-medium">Template:</span>
+                            <span id="infoTemplateName" class="ml-2 text-blue-900"></span>
+                        </div>
+                        <div>
+                            <span class="text-blue-700 font-medium">Total Slides:</span>
+                            <span id="infoSlideCount" class="ml-2 text-blue-900"></span>
+                        </div>
+                        <div>
+                            <span class="text-blue-700 font-medium">Total Elements:</span>
+                            <span id="infoElementCount" class="ml-2 text-blue-900"></span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Main Content Area -->
+        <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+            <!-- Schema Viewer/Editor (Left - 2/3) -->
+            <section class="lg:col-span-2 bg-white rounded-lg shadow-sm border border-gray-200 p-6">
+                <div class="flex items-center justify-between mb-4">
+                    <h2 class="text-lg font-semibold text-gray-900">Schema Editor</h2>
+                    <div class="flex gap-2">
+                        <button
+                            id="expandAllBtn"
+                            class="px-3 py-1 text-sm text-gray-700 bg-gray-100 rounded hover:bg-gray-200 transition"
+                        >
+                            Expand All
+                        </button>
+                        <button
+                            id="collapseAllBtn"
+                            class="px-3 py-1 text-sm text-gray-700 bg-gray-100 rounded hover:bg-gray-200 transition"
+                        >
+                            Collapse All
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Search/Filter -->
+                <div class="mb-4">
+                    <input
+                        type="text"
+                        id="searchInput"
+                        placeholder="Search elements by path, index, or content..."
+                        class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                    >
+                </div>
+
+                <!-- Schema Content -->
+                <div id="schemaContent" class="space-y-4">
+                    <div class="text-center py-12 text-gray-500">
+                        <svg class="w-16 h-16 mx-auto mb-4 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path>
+                        </svg>
+                        <p class="text-lg font-medium">No schema loaded</p>
+                        <p class="text-sm mt-1">Select a template and click "Load Schema" to begin</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Actions Panel (Right - 1/3) -->
+            <aside class="space-y-6">
+                <!-- Statistics -->
+                <div class="bg-white rounded-lg shadow-sm border border-gray-200 p-6">
+                    <h3 class="text-lg font-semibold text-gray-900 mb-4">Statistics</h3>
+                    <div class="space-y-3">
+                        <div class="stat-card bg-gradient-to-r from-blue-50 to-blue-100 rounded-lg p-4">
+                            <div class="flex items-center justify-between">
+                                <div>
+                                    <p class="text-sm text-blue-700 font-medium">Total Slides</p>
+                                    <p id="statTotalSlides" class="text-2xl font-bold text-blue-900">0</p>
+                                </div>
+                                <div class="w-12 h-12 bg-blue-200 rounded-full flex items-center justify-center">
+                                    <svg class="w-6 h-6 text-blue-700" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path>
+                                    </svg>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="stat-card bg-gradient-to-r from-purple-50 to-purple-100 rounded-lg p-4">
+                            <div class="flex items-center justify-between">
+                                <div>
+                                    <p class="text-sm text-purple-700 font-medium">Total Images</p>
+                                    <p id="statTotalImages" class="text-2xl font-bold text-purple-900">0</p>
+                                </div>
+                                <div class="w-12 h-12 bg-purple-200 rounded-full flex items-center justify-center">
+                                    <svg class="w-6 h-6 text-purple-700" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"></path>
+                                    </svg>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="stat-card bg-gradient-to-r from-green-50 to-green-100 rounded-lg p-4">
+                            <div class="flex items-center justify-between">
+                                <div>
+                                    <p class="text-sm text-green-700 font-medium">Edited Images</p>
+                                    <p id="statEditedImages" class="text-2xl font-bold text-green-900">0</p>
+                                </div>
+                                <div class="w-12 h-12 bg-green-200 rounded-full flex items-center justify-center">
+                                    <svg class="w-6 h-6 text-green-700" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                                    </svg>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="stat-card bg-gradient-to-r from-indigo-50 to-indigo-100 rounded-lg p-4">
+                            <div class="flex items-center justify-between">
+                                <div>
+                                    <p class="text-sm text-indigo-700 font-medium">Shape Elements</p>
+                                    <p id="statTotalShapes" class="text-2xl font-bold text-indigo-900">0</p>
+                                </div>
+                                <div class="w-12 h-12 bg-indigo-200 rounded-full flex items-center justify-center">
+                                    <svg class="w-6 h-6 text-indigo-700" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 21a4 4 0 01-4-4V5a2 2 0 012-2h4a2 2 0 012 2v12a4 4 0 01-4 4zm0 0h12a2 2 0 002-2v-4a2 2 0 00-2-2h-2.343M11 7.343l1.657-1.657a2 2 0 012.828 0l2.829 2.829a2 2 0 010 2.828l-8.486 8.485M7 17h.01"></path>
+                                    </svg>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Actions -->
+                <div class="bg-white rounded-lg shadow-sm border border-gray-200 p-6">
+                    <h3 class="text-lg font-semibold text-gray-900 mb-4">Actions</h3>
+                    <div class="space-y-3">
+                        <button
+                            id="saveSchemaBtn"
+                            class="w-full px-4 py-3 bg-green-600 text-white font-medium rounded-md hover:bg-green-700 transition disabled:bg-gray-400 disabled:cursor-not-allowed flex items-center justify-center gap-2"
+                            disabled
+                        >
+                            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7H5a2 2 0 00-2 2v9a2 2 0 002 2h14a2 2 0 002-2V9a2 2 0 00-2-2h-3m-1 4l-3 3m0 0l-3-3m3 3V4"></path>
+                            </svg>
+                            <span>Save Changes</span>
+                        </button>
+
+                        <button
+                            id="resetSchemaBtn"
+                            class="w-full px-4 py-3 bg-gray-600 text-white font-medium rounded-md hover:bg-gray-700 transition disabled:bg-gray-400 disabled:cursor-not-allowed flex items-center justify-center gap-2"
+                            disabled
+                        >
+                            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"></path>
+                            </svg>
+                            <span>Reset</span>
+                        </button>
+
+                        <button
+                            id="exportSchemaBtn"
+                            class="w-full px-4 py-3 bg-blue-600 text-white font-medium rounded-md hover:bg-blue-700 transition disabled:bg-gray-400 disabled:cursor-not-allowed flex items-center justify-center gap-2"
+                            disabled
+                        >
+                            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path>
+                            </svg>
+                            <span>Export JSON</span>
+                        </button>
+
+                        <div class="pt-3 border-t border-gray-200">
+                            <button
+                                id="markAllBtn"
+                                class="w-full px-4 py-3 bg-amber-600 text-white font-medium rounded-md hover:bg-amber-700 transition disabled:bg-gray-400 disabled:cursor-not-allowed flex items-center justify-center gap-2"
+                                disabled
+                            >
+                                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                                </svg>
+                                <span>Mark All Images as Edited</span>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Help -->
+                <div class="bg-blue-50 border border-blue-200 rounded-lg p-4">
+                    <h4 class="font-semibold text-blue-900 mb-2 flex items-center gap-2">
+                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                        </svg>
+                        Quick Help
+                    </h4>
+                    <ul class="text-sm text-blue-800 space-y-1">
+                        <li>Click on images to mark them as "edited"</li>
+                        <li>Green badge = marked for AI editing</li>
+                        <li>Click thumbnail to preview full image</li>
+                        <li>Use search to filter elements</li>
+                        <li>Save changes to update schema file</li>
+                    </ul>
+                </div>
+            </aside>
+        </div>
+    </main>
+
+    <!-- Image Preview Modal -->
+    <div id="imageModal" class="modal">
+        <div class="modal-content">
+            <div class="bg-white rounded-lg overflow-hidden">
+                <div class="flex items-center justify-between p-4 border-b border-gray-200">
+                    <h3 class="text-lg font-semibold text-gray-900">Image Preview</h3>
+                    <button id="closeModal" class="text-gray-500 hover:text-gray-700 transition">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+                        </svg>
+                    </button>
+                </div>
+                <div class="p-4 flex items-center justify-center bg-gray-100">
+                    <img id="modalImage" src="" alt="Preview" class="max-w-full max-h-[70vh] object-contain">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Global state
+        let currentTemplate = null;
+        let schemaData = null;
+        let originalSchemaData = null;
+
+        // DOM elements
+        const templateSelect = document.getElementById('templateSelect');
+        const loadSchemaBtn = document.getElementById('loadSchemaBtn');
+        const loadSpinner = document.getElementById('loadSpinner');
+        const templateInfo = document.getElementById('templateInfo');
+        const schemaContent = document.getElementById('schemaContent');
+        const searchInput = document.getElementById('searchInput');
+        const saveSchemaBtn = document.getElementById('saveSchemaBtn');
+        const resetSchemaBtn = document.getElementById('resetSchemaBtn');
+        const exportSchemaBtn = document.getElementById('exportSchemaBtn');
+        const markAllBtn = document.getElementById('markAllBtn');
+        const expandAllBtn = document.getElementById('expandAllBtn');
+        const collapseAllBtn = document.getElementById('collapseAllBtn');
+        const imageModal = document.getElementById('imageModal');
+        const modalImage = document.getElementById('modalImage');
+        const closeModal = document.getElementById('closeModal');
+
+        // Initialize
+        document.addEventListener('DOMContentLoaded', () => {
+            loadTemplates();
+            setupEventListeners();
+        });
+
+        // Setup event listeners
+        function setupEventListeners() {
+            templateSelect.addEventListener('change', () => {
+                loadSchemaBtn.disabled = !templateSelect.value;
+            });
+
+            loadSchemaBtn.addEventListener('click', () => {
+                if (templateSelect.value) {
+                    loadSchema(templateSelect.value);
+                }
+            });
+
+            saveSchemaBtn.addEventListener('click', saveSchema);
+            resetSchemaBtn.addEventListener('click', resetSchema);
+            exportSchemaBtn.addEventListener('click', exportSchema);
+            markAllBtn.addEventListener('click', markAllImagesAsEdited);
+            expandAllBtn.addEventListener('click', () => toggleAllSlides(true));
+            collapseAllBtn.addEventListener('click', () => toggleAllSlides(false));
+
+            searchInput.addEventListener('input', filterElements);
+
+            closeModal.addEventListener('click', () => {
+                imageModal.style.display = 'none';
+            });
+
+            imageModal.addEventListener('click', (e) => {
+                if (e.target === imageModal) {
+                    imageModal.style.display = 'none';
+                }
+            });
+        }
+
+        // Load available templates
+        async function loadTemplates() {
+            try {
+                const response = await fetch('/api/template/templates');
+                const data = await response.json();
+
+                if (data.success && data.templates) {
+                    templateSelect.innerHTML = '<option value="">-- Choose a template --</option>';
+                    data.templates.forEach(template => {
+                        const option = document.createElement('option');
+                        // Remove .sxema.json from display
+                        const displayName = template.replace('.sxema.json', '');
+                        option.value = displayName;
+                        option.textContent = displayName;
+                        templateSelect.appendChild(option);
+                    });
+                }
+            } catch (error) {
+                showToast('Failed to load templates', 'error');
+                console.error('Error loading templates:', error);
+            }
+        }
+
+        // Load schema for selected template
+        async function loadSchema(template) {
+            try {
+                loadSpinner.classList.remove('hidden');
+                loadSchemaBtn.disabled = true;
+
+                const response = await fetch(`/api/schema/${template}`);
+                const data = await response.json();
+
+                if (data.success && data.data) {
+                    currentTemplate = template;
+                    schemaData = data.data;
+                    originalSchemaData = JSON.parse(JSON.stringify(data.data)); // Deep copy
+
+                    renderSchema();
+                    updateStatistics();
+                    updateTemplateInfo();
+                    enableActionButtons();
+
+                    showToast('Schema loaded successfully', 'success');
+                } else {
+                    showToast(data.error || 'Failed to load schema', 'error');
+                }
+            } catch (error) {
+                showToast('Failed to load schema', 'error');
+                console.error('Error loading schema:', error);
+            } finally {
+                loadSpinner.classList.add('hidden');
+                loadSchemaBtn.disabled = false;
+            }
+        }
+
+        // Render schema
+        function renderSchema() {
+            if (!schemaData || !Array.isArray(schemaData)) {
+                schemaContent.innerHTML = `
+                    <div class="text-center py-12 text-gray-500">
+                        <p class="text-lg font-medium">No schema data available</p>
+                    </div>
+                `;
+                return;
+            }
+
+            schemaContent.innerHTML = '';
+
+            schemaData.forEach((slide, slideIndex) => {
+                const slideElement = createSlideElement(slide, slideIndex);
+                schemaContent.appendChild(slideElement);
+            });
+        }
+
+        // Create slide element
+        function createSlideElement(slide, slideIndex) {
+            const div = document.createElement('div');
+            div.className = 'slide-accordion border border-gray-200 rounded-lg overflow-hidden';
+            div.dataset.slideIndex = slideIndex;
+
+            // Count elements by type
+            const images = slide.elements.filter(el => el.type === 'image');
+            const shapes = slide.elements.filter(el => el.type === 'shape');
+            const editedImages = images.filter(img => img.isEdited);
+
+            div.innerHTML = `
+                <div class="slide-header bg-gray-50 px-4 py-3 cursor-pointer hover:bg-gray-100 transition flex items-center justify-between" onclick="toggleSlide(${slideIndex})">
+                    <div class="flex items-center gap-3">
+                        <svg class="w-5 h-5 text-gray-600 slide-chevron transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+                        </svg>
+                        <div>
+                            <h3 class="font-semibold text-gray-900">Slide ${slide.index + 1}</h3>
+                            <p class="text-sm text-gray-600">ID: ${slide.id}</p>
+                        </div>
+                    </div>
+                    <div class="flex items-center gap-4 text-sm">
+                        <div class="flex items-center gap-1">
+                            <svg class="w-4 h-4 text-purple-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"></path>
+                            </svg>
+                            <span class="text-purple-700 font-medium">${images.length}</span>
+                            ${editedImages.length > 0 ? `<span class="text-green-600 font-medium">(${editedImages.length} edited)</span>` : ''}
+                        </div>
+                        <div class="flex items-center gap-1">
+                            <svg class="w-4 h-4 text-indigo-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 21a4 4 0 01-4-4V5a2 2 0 012-2h4a2 2 0 012 2v12a4 4 0 01-4 4zm0 0h12a2 2 0 002-2v-4a2 2 0 00-2-2h-2.343M11 7.343l1.657-1.657a2 2 0 012.828 0l2.829 2.829a2 2 0 010 2.828l-8.486 8.485M7 17h.01"></path>
+                            </svg>
+                            <span class="text-indigo-700 font-medium">${shapes.length}</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="slide-content bg-white p-4">
+                    ${renderSlideElements(slide, slideIndex)}
+                </div>
+            `;
+
+            return div;
+        }
+
+        // Render slide elements
+        function renderSlideElements(slide, slideIndex) {
+            const images = slide.elements.filter(el => el.type === 'image');
+            const shapes = slide.elements.filter(el => el.type === 'shape');
+
+            let html = '';
+
+            // Images section
+            if (images.length > 0) {
+                html += `
+                    <div class="mb-6">
+                        <h4 class="font-semibold text-gray-900 mb-3 flex items-center gap-2">
+                            <svg class="w-5 h-5 text-purple-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"></path>
+                            </svg>
+                            Images (${images.length})
+                        </h4>
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                            ${images.map(img => renderImageElement(img, slideIndex)).join('')}
+                        </div>
+                    </div>
+                `;
+            }
+
+            // Shapes section
+            if (shapes.length > 0) {
+                html += `
+                    <div>
+                        <h4 class="font-semibold text-gray-900 mb-3 flex items-center gap-2">
+                            <svg class="w-5 h-5 text-indigo-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 21a4 4 0 01-4-4V5a2 2 0 012-2h4a2 2 0 012 2v12a4 4 0 01-4 4zm0 0h12a2 2 0 002-2v-4a2 2 0 00-2-2h-2.343M11 7.343l1.657-1.657a2 2 0 012.828 0l2.829 2.829a2 2 0 010 2.828l-8.486 8.485M7 17h.01"></path>
+                            </svg>
+                            Text Shapes (${shapes.length})
+                        </h4>
+                        <div class="space-y-3">
+                            ${shapes.map(shape => renderShapeElement(shape, slideIndex)).join('')}
+                        </div>
+                    </div>
+                `;
+            }
+
+            if (images.length === 0 && shapes.length === 0) {
+                html = '<p class="text-gray-500 text-center py-4">No elements in this slide</p>';
+            }
+
+            return html;
+        }
+
+        // Render image element
+        function renderImageElement(img, slideIndex) {
+            const isEdited = img.isEdited || false;
+            const imagePath = img.src.replace('./', '/templates/');
+
+            return `
+                <div class="image-element border rounded-lg p-4 ${isEdited ? 'border-green-500 bg-green-50' : 'border-gray-300'}"
+                     data-slide="${slideIndex}"
+                     data-element="${img.elementIndex}"
+                     data-type="image"
+                     data-path="${img.src}">
+                    <div class="flex gap-3">
+                        <div class="flex-shrink-0">
+                            <img
+                                src="${imagePath}"
+                                alt="Element ${img.elementIndex}"
+                                class="thumbnail border border-gray-200 rounded"
+                                onclick="showImagePreview('${imagePath}')"
+                                onerror="this.src='data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 width=%22100%22 height=%2280%22%3E%3Crect width=%22100%22 height=%2280%22 fill=%22%23f3f4f6%22/%3E%3Ctext x=%2250%25%22 y=%2250%25%22 text-anchor=%22middle%22 dy=%22.3em%22 fill=%22%239ca3af%22%3ENo Image%3C/text%3E%3C/svg%3E'"
+                            >
+                        </div>
+                        <div class="flex-1 min-w-0">
+                            <div class="mb-2">
+                                <span class="inline-block px-2 py-1 text-xs font-medium bg-purple-100 text-purple-700 rounded">
+                                    Element #${img.elementIndex}
+                                </span>
+                            </div>
+                            <p class="text-sm text-gray-600 truncate" title="${img.src}">
+                                ${img.src}
+                            </p>
+                            <button
+                                onclick="toggleImageEdited(${slideIndex}, ${img.elementIndex})"
+                                class="toggle-edited mt-3 w-full px-3 py-2 rounded-md font-medium transition ${
+                                    isEdited
+                                        ? 'bg-green-600 text-white hover:bg-green-700'
+                                        : 'bg-gray-200 text-gray-700 hover:bg-gray-300'
+                                }"
+                            >
+                                ${isEdited
+                                    ? '<span class="flex items-center justify-center gap-2"><svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg> Marked as Edited</span>'
+                                    : 'Mark as Edited'
+                                }
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            `;
+        }
+
+        // Render shape element
+        function renderShapeElement(shape, slideIndex) {
+            const contentPreview = shape.content.substring(0, 100) + (shape.content.length > 100 ? '...' : '');
+
+            return `
+                <div class="border border-indigo-200 bg-indigo-50 rounded-lg p-4"
+                     data-slide="${slideIndex}"
+                     data-element="${shape.elementIndex}"
+                     data-type="shape">
+                    <div class="flex items-start justify-between mb-2">
+                        <span class="inline-block px-2 py-1 text-xs font-medium bg-indigo-100 text-indigo-700 rounded">
+                            Element #${shape.elementIndex}
+                        </span>
+                        ${shape.fontSize ? `<span class="text-xs text-indigo-600">Font: ${shape.fontSize}pt</span>` : ''}
+                    </div>
+                    <p class="text-sm text-gray-700 mb-2">${contentPreview}</p>
+                    ${shape.maxCharacters ? `<p class="text-xs text-indigo-600">Max: ${shape.maxCharacters} chars</p>` : ''}
+                </div>
+            `;
+        }
+
+        // Toggle slide accordion
+        function toggleSlide(slideIndex) {
+            const slideElement = document.querySelector(`[data-slide-index="${slideIndex}"]`);
+            if (!slideElement) return;
+
+            const content = slideElement.querySelector('.slide-content');
+            const chevron = slideElement.querySelector('.slide-chevron');
+
+            if (content.classList.contains('expanded')) {
+                content.classList.remove('expanded');
+                chevron.style.transform = 'rotate(0deg)';
+            } else {
+                content.classList.add('expanded');
+                chevron.style.transform = 'rotate(90deg)';
+            }
+        }
+
+        // Toggle all slides
+        function toggleAllSlides(expand) {
+            const allSlides = document.querySelectorAll('.slide-accordion');
+            allSlides.forEach(slide => {
+                const content = slide.querySelector('.slide-content');
+                const chevron = slide.querySelector('.slide-chevron');
+
+                if (expand) {
+                    content.classList.add('expanded');
+                    chevron.style.transform = 'rotate(90deg)';
+                } else {
+                    content.classList.remove('expanded');
+                    chevron.style.transform = 'rotate(0deg)';
+                }
+            });
+        }
+
+        // Toggle image edited status
+        async function toggleImageEdited(slideIndex, elementIndex) {
+            if (!currentTemplate) return;
+
+            try {
+                const response = await fetch('/api/schema/image/toggle', {
+                    method: 'PATCH',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({
+                        template: currentTemplate,
+                        slideIndex,
+                        elementIndex
+                    })
+                });
+
+                const data = await response.json();
+
+                if (data.success) {
+                    // Update local state
+                    const slide = schemaData[slideIndex];
+                    const element = slide.elements.find(el => el.elementIndex === elementIndex);
+                    if (element && element.type === 'image') {
+                        element.isEdited = data.data.isEdited;
+                    }
+
+                    // Update UI
+                    updateImageElement(slideIndex, elementIndex, data.data.isEdited);
+                    updateStatistics();
+
+                    showToast(data.message, 'success');
+                } else {
+                    showToast(data.error || 'Failed to toggle image status', 'error');
+                }
+            } catch (error) {
+                showToast('Failed to toggle image status', 'error');
+                console.error('Error toggling image:', error);
+            }
+        }
+
+        // Update image element UI
+        function updateImageElement(slideIndex, elementIndex, isEdited) {
+            const imageElement = document.querySelector(
+                `.image-element[data-slide="${slideIndex}"][data-element="${elementIndex}"]`
+            );
+
+            if (imageElement) {
+                const button = imageElement.querySelector('.toggle-edited');
+
+                if (isEdited) {
+                    imageElement.classList.add('border-green-500', 'bg-green-50');
+                    imageElement.classList.remove('border-gray-300');
+                    button.className = 'toggle-edited mt-3 w-full px-3 py-2 rounded-md font-medium transition bg-green-600 text-white hover:bg-green-700';
+                    button.innerHTML = '<span class="flex items-center justify-center gap-2"><svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg> Marked as Edited</span>';
+                } else {
+                    imageElement.classList.remove('border-green-500', 'bg-green-50');
+                    imageElement.classList.add('border-gray-300');
+                    button.className = 'toggle-edited mt-3 w-full px-3 py-2 rounded-md font-medium transition bg-gray-200 text-gray-700 hover:bg-gray-300';
+                    button.innerHTML = 'Mark as Edited';
+                }
+            }
+
+            // Update slide header counts
+            renderSchema();
+        }
+
+        // Save schema
+        async function saveSchema() {
+            if (!currentTemplate || !schemaData) return;
+
+            if (!confirm('Are you sure you want to save the changes to the schema file?')) {
+                return;
+            }
+
+            try {
+                saveSchemaBtn.disabled = true;
+
+                const response = await fetch('/api/schema', {
+                    method: 'PUT',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({
+                        template: currentTemplate,
+                        schema: schemaData
+                    })
+                });
+
+                const data = await response.json();
+
+                if (data.success) {
+                    originalSchemaData = JSON.parse(JSON.stringify(schemaData));
+                    showToast('Schema saved successfully', 'success');
+                } else {
+                    showToast(data.error || 'Failed to save schema', 'error');
+                }
+            } catch (error) {
+                showToast('Failed to save schema', 'error');
+                console.error('Error saving schema:', error);
+            } finally {
+                saveSchemaBtn.disabled = false;
+            }
+        }
+
+        // Reset schema
+        function resetSchema() {
+            if (!originalSchemaData) return;
+
+            if (!confirm('Are you sure you want to reset all changes?')) {
+                return;
+            }
+
+            schemaData = JSON.parse(JSON.stringify(originalSchemaData));
+            renderSchema();
+            updateStatistics();
+            showToast('Schema reset to original state', 'info');
+        }
+
+        // Export schema
+        function exportSchema() {
+            if (!schemaData || !currentTemplate) return;
+
+            const dataStr = JSON.stringify(schemaData, null, 2);
+            const dataBlob = new Blob([dataStr], { type: 'application/json' });
+            const url = URL.createObjectURL(dataBlob);
+            const link = document.createElement('a');
+            link.href = url;
+            link.download = `${currentTemplate}.sxema.json`;
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
+            URL.revokeObjectURL(url);
+
+            showToast('Schema exported successfully', 'success');
+        }
+
+        // Mark all images as edited
+        async function markAllImagesAsEdited() {
+            if (!schemaData || !currentTemplate) return;
+
+            if (!confirm('Mark ALL images in ALL slides as edited?')) {
+                return;
+            }
+
+            try {
+                markAllBtn.disabled = true;
+                let toggleCount = 0;
+
+                for (let slideIndex = 0; slideIndex < schemaData.length; slideIndex++) {
+                    const slide = schemaData[slideIndex];
+                    for (const element of slide.elements) {
+                        if (element.type === 'image' && !element.isEdited) {
+                            await toggleImageEdited(slideIndex, element.elementIndex);
+                            toggleCount++;
+                        }
+                    }
+                }
+
+                showToast(`Marked ${toggleCount} images as edited`, 'success');
+            } catch (error) {
+                showToast('Failed to mark all images', 'error');
+                console.error('Error marking all images:', error);
+            } finally {
+                markAllBtn.disabled = false;
+            }
+        }
+
+        // Filter elements
+        function filterElements() {
+            const searchTerm = searchInput.value.toLowerCase();
+
+            if (!searchTerm) {
+                document.querySelectorAll('.image-element, [data-type="shape"]').forEach(el => {
+                    el.style.display = '';
+                });
+                return;
+            }
+
+            document.querySelectorAll('.image-element').forEach(el => {
+                const path = el.dataset.path || '';
+                const elementIndex = el.dataset.element || '';
+
+                if (path.toLowerCase().includes(searchTerm) || elementIndex.includes(searchTerm)) {
+                    el.style.display = '';
+                } else {
+                    el.style.display = 'none';
+                }
+            });
+
+            document.querySelectorAll('[data-type="shape"]').forEach(el => {
+                const content = el.textContent.toLowerCase();
+
+                if (content.includes(searchTerm)) {
+                    el.style.display = '';
+                } else {
+                    el.style.display = 'none';
+                }
+            });
+        }
+
+        // Show image preview
+        function showImagePreview(imagePath) {
+            modalImage.src = imagePath;
+            imageModal.style.display = 'block';
+        }
+
+        // Update statistics
+        function updateStatistics() {
+            if (!schemaData) {
+                document.getElementById('statTotalSlides').textContent = '0';
+                document.getElementById('statTotalImages').textContent = '0';
+                document.getElementById('statEditedImages').textContent = '0';
+                document.getElementById('statTotalShapes').textContent = '0';
+                return;
+            }
+
+            let totalImages = 0;
+            let editedImages = 0;
+            let totalShapes = 0;
+
+            schemaData.forEach(slide => {
+                slide.elements.forEach(element => {
+                    if (element.type === 'image') {
+                        totalImages++;
+                        if (element.isEdited) editedImages++;
+                    } else if (element.type === 'shape') {
+                        totalShapes++;
+                    }
+                });
+            });
+
+            document.getElementById('statTotalSlides').textContent = schemaData.length;
+            document.getElementById('statTotalImages').textContent = totalImages;
+            document.getElementById('statEditedImages').textContent = editedImages;
+            document.getElementById('statTotalShapes').textContent = totalShapes;
+        }
+
+        // Update template info
+        function updateTemplateInfo() {
+            if (!schemaData || !currentTemplate) {
+                templateInfo.classList.add('hidden');
+                return;
+            }
+
+            let totalElements = 0;
+            schemaData.forEach(slide => {
+                totalElements += slide.elements.length;
+            });
+
+            document.getElementById('infoTemplateName').textContent = currentTemplate;
+            document.getElementById('infoSlideCount').textContent = schemaData.length;
+            document.getElementById('infoElementCount').textContent = totalElements;
+
+            templateInfo.classList.remove('hidden');
+        }
+
+        // Enable action buttons
+        function enableActionButtons() {
+            saveSchemaBtn.disabled = false;
+            resetSchemaBtn.disabled = false;
+            exportSchemaBtn.disabled = false;
+            markAllBtn.disabled = false;
+        }
+
+        // Show toast notification
+        function showToast(message, type = 'info') {
+            const colors = {
+                success: 'bg-green-600',
+                error: 'bg-red-600',
+                info: 'bg-blue-600',
+                warning: 'bg-amber-600'
+            };
+
+            const icons = {
+                success: '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>',
+                error: '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>',
+                info: '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>',
+                warning: '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"></path>'
+            };
+
+            const toast = document.createElement('div');
+            toast.className = `toast ${colors[type]} text-white rounded-lg shadow-lg p-4`;
+            toast.innerHTML = `
+                <div class="flex items-center gap-3">
+                    <svg class="w-6 h-6 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        ${icons[type]}
+                    </svg>
+                    <p class="font-medium">${message}</p>
+                </div>
+            `;
+
+            document.body.appendChild(toast);
+
+            setTimeout(() => {
+                toast.classList.add('hiding');
+                setTimeout(() => {
+                    document.body.removeChild(toast);
+                }, 300);
+            }, 3000);
+        }
+
+        // Make functions globally available
+        window.toggleSlide = toggleSlide;
+        window.toggleImageEdited = toggleImageEdited;
+        window.showImagePreview = showImagePreview;
+    </script>
+</body>
+</html>

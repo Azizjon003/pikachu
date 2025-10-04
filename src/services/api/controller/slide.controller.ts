@@ -81,10 +81,19 @@ export const generateSlide = async (req: Request, res: Response) => {
 
     // Debug logging
     console.log("\n📋 Outline Detection Debug:");
-    console.log("  Header found:", outlineHeader ? `elementIndex ${outlineHeader.elementIndex} - "${outlineHeader.content}"` : "NOT FOUND");
+    console.log(
+      "  Header found:",
+      outlineHeader
+        ? `elementIndex ${outlineHeader.elementIndex} - "${outlineHeader.content}"`
+        : "NOT FOUND"
+    );
     console.log("  Outline items found:", outlineItems.length);
     outlineItems.forEach((item, i) => {
-      console.log(`    ${i + 1}. elementIndex ${item.elementIndex} - "${item.content}" (fontSize: ${item.fontSize})`);
+      console.log(
+        `    ${i + 1}. elementIndex ${item.elementIndex} - "${
+          item.content
+        }" (fontSize: ${item.fontSize})`
+      );
     });
 
     let secondSlide;
@@ -106,7 +115,9 @@ export const generateSlide = async (req: Request, res: Response) => {
             element.type === "shape" &&
             element.elementIndex === outlineHeader.elementIndex
           ) {
-            console.log(`  ✅ Updating header at index ${element.elementIndex}`);
+            console.log(
+              `  ✅ Updating header at index ${element.elementIndex}`
+            );
             return {
               ...element,
               content: "Reja:",
@@ -114,12 +125,20 @@ export const generateSlide = async (req: Request, res: Response) => {
           }
 
           // Update outline item elements
-          for (let i = 0; i < outlineItems.length && i < outline.outline.length; i++) {
+          for (
+            let i = 0;
+            i < outlineItems.length && i < outline.outline.length;
+            i++
+          ) {
             if (
               element.type === "shape" &&
               element.elementIndex === outlineItems[i].elementIndex
             ) {
-              console.log(`  ✅ Updating outline item ${i + 1} at index ${element.elementIndex}`);
+              console.log(
+                `  ✅ Updating outline item ${i + 1} at index ${
+                  element.elementIndex
+                }`
+              );
               return {
                 ...element,
                 content: `${i + 1}. ${outline.outline[i].title}`,
@@ -204,7 +223,8 @@ export const generateSlide = async (req: Request, res: Response) => {
     allFilledSlides.push(thankYouSlide);
     const fullFilledSlides = path.join(
       process.cwd(),
-      template.replace(".sxema.json", "full-filled-slides.json")
+      "generated",
+      template.replace(".sxema.json", ".full-filled-slides.json")
     );
     fs.writeFileSync(
       fullFilledSlides,
@@ -212,6 +232,7 @@ export const generateSlide = async (req: Request, res: Response) => {
     );
     console.log("✅ All filled slides saved\n");
 
+    await sleep(1000);
     // 9. Replace edited images with Bing search results
     console.log("🖼️  Replacing edited images...");
     const imageReplacer = new ImageReplacerService(
@@ -234,7 +255,13 @@ export const generateSlide = async (req: Request, res: Response) => {
       });
     }
 
-    const dataFullSxema = generateSlideFromAI(allFilledSlides, fullSxema);
+    const allFilledSlidesFromData = fs.readFileSync(fullFilledSlides, "utf-8");
+    const allFilledSlidesFromDataJson = JSON.parse(allFilledSlidesFromData);
+
+    const dataFullSxema = generateSlideFromAI(
+      allFilledSlidesFromDataJson,
+      fullSxema
+    );
     const slideName = `${Date.now()}.pptx`;
     if (!fs.existsSync(path.join(process.cwd(), "generated"))) {
       fs.mkdirSync(path.join(process.cwd(), "generated"), { recursive: true });
