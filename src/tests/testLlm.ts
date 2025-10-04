@@ -6,7 +6,7 @@ import {
   generateReferences,
   generateThankYouSlide,
 } from "../core/generators/structured-generator";
-import ImageReplacerService from '../services/image/image-replacer';
+import ImageReplacerService from "../services/image/image-replacer";
 
 const start = async () => {
   // 1. Load AI schema (simplified slide structure)
@@ -118,12 +118,6 @@ const start = async () => {
     console.log(`📄 Generated content for slide ${i + 3}...`);
   }
 
-  // 7. Generate additional slides using LLM with topic-specific content
-  console.log("📄 Generating additional slides using LLM...");
-
-  // Create dynamic context from the main presentation
-  // Generate consultation slide content
-  console.log("📄 Generating consultation slide...");
   // Generate consultation slide content
   console.log("📄 Generating consultation slide...");
 

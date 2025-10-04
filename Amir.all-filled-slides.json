@@ -1,6 +1,6 @@
 [
   {
-    "id": "skZN1LrhW8",
+    "id": "EtRjJzS3gM",
     "index": 0,
     "slide": 1,
     "elements": [
@@ -34,22 +34,22 @@
         "height": 40,
         "left": 168.13543307086613,
         "top": 225.18771653543303,
-        "content": "Nerv tizimi o'smalari",
+        "content": "O'zbekiston armiyasi",
         "fontSize": 30,
-        "maxCharacters": 34,
-        "elementIndex": 5
+        "maxCharacters": 40,
+        "elementIndex": 7
       },
       {
         "type": "image",
         "src": "./images\\slide0_img5.png",
         "hasImage": true,
-        "elementIndex": 6
+        "elementIndex": 8
       },
       {
         "type": "image",
         "src": "./images\\slide0_img6.png",
         "hasImage": true,
-        "elementIndex": 7
+        "elementIndex": 9
       },
       {
         "type": "shape",
@@ -57,16 +57,16 @@
         "height": 32,
         "left": 334.945091863517,
         "top": 346.4566929133858,
-        "content": "Azizjon Aliqulov",
+        "content": "Javlon Rabbimov",
         "fontSize": 22,
-        "maxCharacters": 33,
-        "elementIndex": 9
+        "maxCharacters": 39,
+        "elementIndex": 13
       }
     ],
     "note": ""
   },
   {
-    "id": "Kx25LG3jKV",
+    "id": "YsXSoAkZ8-",
     "index": 1,
     "slide": 2,
     "elements": [
@@ -86,67 +86,67 @@
         "type": "image",
         "src": "./images\\slide1_img9.png",
         "hasImage": true,
-        "elementIndex": 4
+        "elementIndex": 6
       },
       {
         "type": "image",
         "src": "./images\\slide1_img10.png",
         "hasImage": true,
-        "elementIndex": 5
+        "elementIndex": 7
       },
       {
         "type": "image",
         "src": "./images\\slide1_img11.png",
         "hasImage": true,
-        "elementIndex": 8
+        "elementIndex": 12
       },
       {
         "type": "image",
         "src": "./images\\slide1_img12.png",
         "hasImage": true,
-        "elementIndex": 9
+        "elementIndex": 13
       },
       {
         "type": "image",
         "src": "./images\\slide1_img13.png",
         "hasImage": true,
-        "elementIndex": 12
+        "elementIndex": 18
       },
       {
         "type": "image",
         "src": "./images\\slide1_img14.png",
         "hasImage": true,
-        "elementIndex": 13
+        "elementIndex": 19
       },
       {
         "type": "image",
         "src": "./images\\slide1_img15.png",
         "hasImage": true,
-        "elementIndex": 16
+        "elementIndex": 24
       },
       {
         "type": "image",
         "src": "./images\\slide1_img16.png",
         "hasImage": true,
-        "elementIndex": 17
+        "elementIndex": 25
       },
       {
         "type": "image",
         "src": "./images\\slide1_img17.png",
         "hasImage": true,
-        "elementIndex": 20
+        "elementIndex": 30
       },
       {
         "type": "image",
         "src": "./images\\slide1_img18.png",
         "hasImage": true,
-        "elementIndex": 21
+        "elementIndex": 31
       },
       {
         "type": "image",
         "src": "./images\\slide1_img19.png",
         "hasImage": true,
-        "elementIndex": 24
+        "elementIndex": 36
       },
       {
         "type": "shape",
@@ -154,10 +154,10 @@
         "height": 54,
         "left": 9.151391076115484,
         "top": 78.17301837270341,
-        "content": "Reja: ",
+        "content": "Reja:",
         "fontSize": 44,
-        "maxCharacters": 15,
-        "elementIndex": 26
+        "maxCharacters": 18,
+        "elementIndex": 40
       },
       {
         "type": "shape",
@@ -168,7 +168,7 @@
         "content": "1",
         "fontSize": 77,
         "maxCharacters": 10,
-        "elementIndex": 28
+        "elementIndex": 44
       },
       {
         "type": "shape",
@@ -179,7 +179,7 @@
         "content": "2",
         "fontSize": 77,
         "maxCharacters": 10,
-        "elementIndex": 30
+        "elementIndex": 48
       },
       {
         "type": "shape",
@@ -190,7 +190,7 @@
         "content": "3",
         "fontSize": 77,
         "maxCharacters": 10,
-        "elementIndex": 32
+        "elementIndex": 52
       },
       {
         "type": "shape",
@@ -198,10 +198,10 @@
         "height": 30,
         "left": 529.1859317585302,
         "top": 94.66162729658791,
-        "content": "1. Nerv tizimi o'smalari haqida umumiy ma'lumot",
+        "content": "1. Nerv tizimining o'smalari: Tushuncha va Turlari",
         "fontSize": 20,
-        "maxCharacters": 30,
-        "elementIndex": 34
+        "maxCharacters": 36,
+        "elementIndex": 56
       },
       {
         "type": "shape",
@@ -209,10 +209,10 @@
         "height": 30,
         "left": 529.1859317585302,
         "top": 231.86666666666667,
-        "content": "2. O'sma turlari va ularning belgilari",
+        "content": "2. Nerv tizimi o'smalarining Belgilari va Diagnostika",
         "fontSize": 20,
-        "maxCharacters": 30,
-        "elementIndex": 36
+        "maxCharacters": 36,
+        "elementIndex": 60
       },
       {
         "type": "shape",
@@ -220,108 +220,517 @@
         "height": 30,
         "left": 529.1859317585302,
         "top": 374.53028871391075,
-        "content": "3. Davolash usullari va prognozlar",
+        "content": "3. Nerv tizimi o'smalarining Davolash Usullari",
         "fontSize": 20,
-        "maxCharacters": 30,
-        "elementIndex": 38
+        "maxCharacters": 36,
+        "elementIndex": 64
       },
       {
         "type": "image",
         "src": "./images\\slide1_img20.png",
         "hasImage": true,
-        "elementIndex": 39
+        "elementIndex": 65
       },
       {
         "type": "image",
         "src": "./images\\slide1_img21.png",
         "hasImage": true,
-        "elementIndex": 43
+        "elementIndex": 72
       }
     ],
     "note": ""
   },
   {
-    "id": "UIV9L1AYyp",
-    "index": 5,
-    "slide": 6,
+    "id": "GWgHMahyjV",
+    "index": 4,
+    "slide": 5,
     "elements": [
       {
         "type": "image",
-        "src": "./images\\slide5_img56.png",
+        "src": "./images\\slide4_img37.png",
         "hasImage": true,
         "elementIndex": 0
       },
       {
-        "type": "image",
-        "src": "https://www.verywellhealth.com/thmb/V4VdxdpWe0V1KY871SPrfw6kRqo=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc()/514240-article-img-malignant-vs-benign-tumor2111891f-54cc-47aa-8967-4cd5411fdb2f-5a2848f122fa3a0037c544be.png",
-        "hasImage": true,
-        "elementIndex": 1
+        "type": "table",
+        "data": [
+          [
+            "Yil",
+            "Voqea"
+          ],
+          [
+            "1991",
+            "O'zbekiston mustaqilligi"
+          ],
+          [
+            "2005",
+            "Yangi harbiy doktrina qabul qilindi"
+          ],
+          [
+            "2018",
+            "Armiyada modernizatsiya jarayonlari"
+          ],
+          [
+            "2021",
+            "O'zbekistonning ilk harbiy doktrinasi chiqdi"
+          ]
+        ],
+        "elementIndex": 1,
+        "content": "O'zbekiston armiyasi tarixi bo'yicha asosiy ma'lumotlar"
       },
       {
-        "type": "image",
-        "src": "./images\\slide5_img58.png",
-        "hasImage": true,
-        "elementIndex": 4
-      },
-      {
-        "type": "image",
-        "src": "./images\\slide5_img59.png",
-        "hasImage": true,
+        "type": "shape",
+        "width": 776.4724409448818,
+        "height": 70,
+        "left": 91.76377952755905,
+        "top": 25.85805774278215,
+        "content": "O'zbekiston armiyasining tarixi",
+        "fontSize": 40,
+        "maxCharacters": 38,
         "elementIndex": 5
       },
       {
         "type": "image",
-        "src": "./images\\slide5_img60.png",
+        "src": "./images\\slide4_img38.png",
         "hasImage": true,
-        "elementIndex": 8
+        "elementIndex": 6
       },
       {
         "type": "image",
-        "src": "./images\\slide5_img61.png",
+        "src": "./images\\slide4_img39.png",
         "hasImage": true,
-        "elementIndex": 9
+        "elementIndex": 11
       },
       {
         "type": "image",
-        "src": "./images\\slide5_img62.png",
+        "src": "./images\\slide4_img40.png",
         "hasImage": true,
         "elementIndex": 12
       },
       {
         "type": "image",
-        "src": "./images\\slide5_img63.png",
+        "src": "./images\\slide4_img41.png",
+        "hasImage": true,
+        "elementIndex": 17
+      }
+    ],
+    "note": ""
+  },
+  {
+    "id": "GWgHMahyjV",
+    "index": 4,
+    "slide": 5,
+    "elements": [
+      {
+        "type": "image",
+        "src": "./images\\slide4_img37.png",
+        "hasImage": true,
+        "elementIndex": 0
+      },
+      {
+        "type": "table",
+        "data": [
+          [
+            "Yil",
+            "Voqea"
+          ],
+          [
+            "1924",
+            "O'zbekiston SSR tashkil topdi"
+          ],
+          [
+            "1991",
+            "Mustaqillik e'lon qilindi"
+          ],
+          [
+            "2005",
+            "Armiyani modernizatsiya qilish jarayoni boshlanadi"
+          ],
+          [
+            "2017",
+            "Yangi harbiy dasturlar e'lon qilindi"
+          ]
+        ],
+        "elementIndex": 1,
+        "content": "O'zbekiston armiyasining asosiy sanalari"
+      },
+      {
+        "type": "shape",
+        "width": 776.4724409448818,
+        "height": 70,
+        "left": 91.76377952755905,
+        "top": 25.85805774278215,
+        "content": "O'zbekiston armiyasining tarixi va rivoji haqida",
+        "fontSize": 40,
+        "maxCharacters": 38,
+        "elementIndex": 5
+      },
+      {
+        "type": "image",
+        "src": "./images\\slide4_img38.png",
+        "hasImage": true,
+        "elementIndex": 6
+      },
+      {
+        "type": "image",
+        "src": "./images\\slide4_img39.png",
+        "hasImage": true,
+        "elementIndex": 11
+      },
+      {
+        "type": "image",
+        "src": "./images\\slide4_img40.png",
+        "hasImage": true,
+        "elementIndex": 12
+      },
+      {
+        "type": "image",
+        "src": "./images\\slide4_img41.png",
+        "hasImage": true,
+        "elementIndex": 17
+      }
+    ],
+    "note": ""
+  },
+  {
+    "id": "lZhU6Txm9g",
+    "index": 5,
+    "slide": 6,
+    "elements": [
+      {
+        "type": "image",
+        "src": "./images\\slide5_img42.png",
+        "hasImage": true,
+        "elementIndex": 0
+      },
+      {
+        "type": "image",
+        "src": "./images\\slide5_img43.png",
+        "hasImage": true,
+        "elementIndex": 1
+      },
+      {
+        "type": "shape",
+        "width": 776.4740157480314,
+        "height": 50,
+        "left": 91.76293963254592,
+        "top": 54.442834645669286,
+        "content": "O'zbekiston Armiyasi",
+        "fontSize": 40,
+        "maxCharacters": 38,
+        "elementIndex": 5
+      },
+      {
+        "type": "shape",
+        "width": 179.92125984251965,
+        "height": 58,
+        "left": 74.11044619422572,
+        "top": 170.45784776902886,
+        "content": "Tuzilishi",
+        "fontSize": 24,
+        "maxCharacters": 28,
+        "elementIndex": 9
+      },
+      {
+        "type": "shape",
+        "width": 209.8496587926509,
+        "height": 58,
+        "left": 67.21165354330708,
+        "top": 347.6312860892388,
+        "content": "Tashkiloti",
+        "fontSize": 24,
+        "maxCharacters": 33,
+        "elementIndex": 13
+      },
+      {
+        "type": "shape",
+        "width": 113.65354330708661,
+        "height": 58,
+        "left": 404.04734908136476,
+        "top": 170.4579527559055,
+        "content": "Harbiy Qism",
+        "fontSize": 24,
+        "maxCharacters": 16,
+        "elementIndex": 17
+      },
+      {
+        "type": "shape",
+        "width": 311.691968503937,
+        "height": 58,
+        "left": 301.9310236220472,
+        "top": 347.6312860892388,
+        "content": "Bo'linmalar",
+        "fontSize": 24,
+        "maxCharacters": 50,
+        "elementIndex": 21
+      },
+      {
+        "type": "shape",
+        "width": 198.52587926509185,
+        "height": 97.92230971128608,
+        "left": 74.11044619422572,
+        "top": 228.45784776902886,
+        "content": "O'zbekiston armiyasi o'zining tuzilishi va tashkiloti bilan davlat mudofaasini ta'minlaydi. Harbiy qism va bo'linmalar o'zaro bog'liq.",
+        "fontSize": 13,
+        "maxCharacters": 180,
+        "elementIndex": 25
+      },
+      {
+        "type": "shape",
+        "width": 179.92125984251965,
+        "height": 128.66362204724408,
+        "left": 74.11044619422572,
+        "top": 411.33637795275587,
+        "content": "O'zbekiston armiyasining asosiy vazifalari: milliy xavfsizlikni ta'minlash, terrosizmga qarshi kurash va tinchlikni saqlash.",
+        "fontSize": 13,
+        "maxCharacters": 220,
+        "elementIndex": 29
+      },
+      {
+        "type": "shape",
+        "width": 202.2468241469816,
+        "height": 128.66362204724408,
+        "left": 370.9137007874015,
+        "top": 411.33637795275587,
+        "content": "O'zbekiston armiyasi zamonaviy texnologiyalar bilan jihozlangan. Har bir bo'linma o'zining maxsus vazifalariga ega.",
+        "fontSize": 13,
+        "maxCharacters": 240,
+        "elementIndex": 33
+      },
+      {
+        "type": "shape",
+        "width": 218.3709186351706,
+        "height": 90.97700787401574,
+        "left": 364.7122309711286,
+        "top": 215.55821522309708,
+        "content": "O'zbekiston armiyasining harbiy tuzilishi jangovar tayyorgarlik va strategik rejalashtirish asosida shakllanadi.",
+        "fontSize": 13,
+        "maxCharacters": 162,
+        "elementIndex": 37
+      },
+      {
+        "type": "shape",
+        "width": 300,
+        "height": 25,
+        "left": 0,
+        "top": 0,
+        "content": "O'zbekiston armiyasining vazifalari va tuzilishi haqida ma'lumotlar",
+        "fontSize": 8,
+        "maxCharacters": 148,
+        "elementIndex": 41
+      }
+    ],
+    "note": ""
+  },
+  {
+    "id": "hw80b8Rrg-",
+    "index": 6,
+    "slide": 7,
+    "elements": [
+      {
+        "type": "image",
+        "src": "./images\\slide6_img44.png",
+        "hasImage": true,
+        "elementIndex": 0
+      },
+      {
+        "type": "image",
+        "src": "./images\\slide6_img45.png",
+        "hasImage": true,
+        "elementIndex": 1
+      },
+      {
+        "type": "image",
+        "src": "./images\\slide6_img46.png",
+        "hasImage": true,
+        "elementIndex": 6
+      },
+      {
+        "type": "image",
+        "src": "./images\\slide6_img47.png",
+        "hasImage": true,
+        "elementIndex": 7
+      },
+      {
+        "type": "image",
+        "src": "./images\\slide6_img48.png",
+        "hasImage": true,
+        "elementIndex": 12
+      },
+      {
+        "type": "image",
+        "src": "./images\\slide6_img49.jpeg",
+        "hasImage": true,
+        "elementIndex": 13
+      },
+      {
+        "type": "shape",
+        "width": 776.4724409448818,
+        "height": 50,
+        "left": 91.76293963254592,
+        "top": 30.442834645669286,
+        "content": "O'zbekiston Armiyasining Strategiyasi",
+        "fontSize": 40,
+        "maxCharacters": 38,
+        "elementIndex": 17
+      },
+      {
+        "type": "shape",
+        "width": 152.04094488188974,
+        "height": 50,
+        "left": 480,
+        "top": 185.6387401574803,
+        "content": "Maqsad",
+        "fontSize": 24,
+        "maxCharacters": 12,
+        "elementIndex": 21
+      },
+      {
+        "type": "shape",
+        "width": 138.48283464566927,
+        "height": 50,
+        "left": 480,
+        "top": 271.0981627296587,
+        "content": "Ishonch",
+        "fontSize": 24,
+        "maxCharacters": 10,
+        "elementIndex": 25
+      },
+      {
+        "type": "shape",
+        "width": 138.48283464566927,
+        "height": 50,
+        "left": 480,
+        "top": 384.6643569553805,
+        "content": "O'zgarishlar",
+        "fontSize": 24,
+        "maxCharacters": 10,
+        "elementIndex": 29
+      },
+      {
+        "type": "shape",
+        "width": 324.5370078740157,
+        "height": 106.71905511811022,
+        "left": 635.4629921259842,
+        "top": 182.36115485564304,
+        "content": "O'zbekiston armiyasi zamonaviy strategiyalarni ishlab chiqishda va qo'llashda ilg'or texnologiyalarni qo'llaydi. Harbiy taktikalar zamonaviy tahdidlarga moslashtirilmoqda.",
+        "fontSize": 13,
+        "maxCharacters": 295,
+        "elementIndex": 33
+      },
+      {
+        "type": "shape",
+        "width": 324.5370078740157,
+        "height": 95.58414698162728,
+        "left": 635.4629921259842,
+        "top": 289.08020997375326,
+        "content": "Zamonaviy harbiy statistika, harbiy operatsiyalarni baholash va strategik qarorlar qabul qilishda muhim ahamiyatga ega. Bu ma'lumotlar harbiy kuchlarni kuchaytiradi.",
+        "fontSize": 13,
+        "maxCharacters": 295,
+        "elementIndex": 37
+      },
+      {
+        "type": "shape",
+        "width": 324.5370078740157,
+        "height": 103.08062992125983,
+        "left": 635.4629921259842,
+        "top": 403.8868241469816,
+        "content": "Zamonaviy harbiy tadqiqotlar, harbiy strategiyalarni tahlil qilib, yangi taktikalar va texnologiyalarni joriy qilishga yordam beradi, bu esa armiyaning samaradorligini oshiradi.",
+        "fontSize": 13,
+        "maxCharacters": 295,
+        "elementIndex": 41
+      },
+      {
+        "type": "image",
+        "src": "./images\\slide6_img50.png",
+        "hasImage": true,
+        "elementIndex": 42
+      }
+    ],
+    "note": ""
+  },
+  {
+    "id": "JD9vD5Z2On",
+    "index": 2,
+    "slide": 3,
+    "elements": [
+      {
+        "type": "image",
+        "src": "./images\\slide2_img22.png",
+        "hasImage": true,
+        "elementIndex": 0
+      },
+      {
+        "type": "image",
+        "src": "./images\\slide2_img23.jpeg",
+        "hasImage": true,
+        "elementIndex": 1
+      },
+      {
+        "type": "image",
+        "src": "./images\\slide2_img24.png",
+        "hasImage": true,
+        "elementIndex": 6
+      },
+      {
+        "type": "image",
+        "src": "./images\\slide2_img25.png",
+        "hasImage": true,
+        "elementIndex": 7
+      },
+      {
+        "type": "image",
+        "src": "./images\\slide2_img26.png",
+        "hasImage": true,
+        "elementIndex": 12
+      },
+      {
+        "type": "image",
+        "src": "./images\\slide2_img27.png",
         "hasImage": true,
         "elementIndex": 13
       },
       {
         "type": "image",
-        "src": "./images\\slide5_img64.png",
+        "src": "./images\\slide2_img28.png",
         "hasImage": true,
-        "elementIndex": 16
+        "elementIndex": 18
       },
       {
         "type": "image",
-        "src": "./images\\slide5_img65.png",
+        "src": "./images\\slide2_img29.png",
         "hasImage": true,
-        "elementIndex": 17
+        "elementIndex": 19
       },
       {
         "type": "image",
-        "src": "./images\\slide5_img66.png",
-        "hasImage": true,
-        "elementIndex": 20
-      },
-      {
-        "type": "image",
-        "src": "./images\\slide5_img67.png",
-        "hasImage": true,
-        "elementIndex": 21
-      },
-      {
-        "type": "image",
-        "src": "./images\\slide5_img68.png",
+        "src": "./images\\slide2_img30.png",
         "hasImage": true,
         "elementIndex": 24
+      },
+      {
+        "type": "image",
+        "src": "./images\\slide2_img31.png",
+        "hasImage": true,
+        "elementIndex": 25
+      },
+      {
+        "type": "image",
+        "src": "./images\\slide2_img32.png",
+        "hasImage": true,
+        "elementIndex": 30
+      },
+      {
+        "type": "image",
+        "src": "./images\\slide2_img33.png",
+        "hasImage": true,
+        "elementIndex": 31
+      },
+      {
+        "type": "image",
+        "src": "./images\\slide2_img34.png",
+        "hasImage": true,
+        "elementIndex": 36
       },
       {
         "type": "shape",
@@ -329,10 +738,10 @@
         "height": 58,
         "left": 91.76293963254592,
         "top": 20.76850393700787,
-        "content": "Nerv tizimi o'smalari",
+        "content": "O'zbekiston Armiyasi Tarixi",
         "fontSize": 40,
-        "maxCharacters": 32,
-        "elementIndex": 26
+        "maxCharacters": 38,
+        "elementIndex": 40
       },
       {
         "type": "shape",
@@ -340,10 +749,10 @@
         "height": 63.390656167978996,
         "left": 68.36514435695537,
         "top": 155.26225721784775,
-        "content": "Nerv tizimi o'smalari asosan miyaning, orqa miya va nerv tolalarining o'smalari bo'lib, ularning har biri turli xil simptomlar va muammolarni keltirib chiqarishi mumkin.",
+        "content": "O'zbekiston armiyasi 1992-yilda tashkil etilgan. Tarixiy an'analar va mustaqillik ruhida rivojlanmoqda.",
         "fontSize": 13,
-        "maxCharacters": 120,
-        "elementIndex": 28
+        "maxCharacters": 144,
+        "elementIndex": 44
       },
       {
         "type": "shape",
@@ -351,10 +760,10 @@
         "height": 63.390656167978996,
         "left": 355.4745406824146,
         "top": 161.46383202099736,
-        "content": "O'smalar benign yoki malign bo'lishi mumkin, benign o'smalar ko'pincha zarar yetkazmasa-da, malign o'smalar hayot uchun xavf tug'dirishi mumkin.",
+        "content": "Armiyaning vazifalari xalqni himoya qilish va davlat mustaqilligini saqlashdan iborat. O'zbekiston harbiy kuchlari zamonaviy texnologiyalar bilan ta'minlanmoqda.",
         "fontSize": 13,
-        "maxCharacters": 116,
-        "elementIndex": 30
+        "maxCharacters": 139,
+        "elementIndex": 48
       },
       {
         "type": "shape",
@@ -362,28 +771,28 @@
         "height": 63.390656167978996,
         "left": 654.5164304461941,
         "top": 167.66540682414697,
-        "content": "Davolash usullari orasida jarrohlik, radioterapiya va kimyoterapiya mavjud. Har bir holatga qarab, eng samarali usul tanlanadi.",
+        "content": "O'zbekiston harbiylari xalqaro tinchlikni saqlashda faol ishtirok etmoqda. BMT va boshqa tashkilotlar bilan hamkorlik o'rnatilgan.",
         "fontSize": 13,
-        "maxCharacters": 116,
-        "elementIndex": 32
+        "maxCharacters": 139,
+        "elementIndex": 52
       }
     ],
     "note": ""
   },
   {
-    "id": "Gb50ZvJTTu",
-    "index": 6,
-    "slide": 7,
+    "id": "phMhkjkG1y",
+    "index": 3,
+    "slide": 4,
     "elements": [
       {
         "type": "image",
-        "src": "./images\\slide6_img69.png",
+        "src": "./images\\slide3_img35.png",
         "hasImage": true,
         "elementIndex": 0
       },
       {
         "type": "image",
-        "src": "https://www.sma.org.tr/uploads/4b6a8f0f72447cc5beaec3b4aa91dcee.jpeg",
+        "src": "./images\\slide3_img36.jpeg",
         "hasImage": true,
         "elementIndex": 1
       },
@@ -393,10 +802,10 @@
         "height": 50,
         "left": 147.13721784776902,
         "top": 16.931653543307085,
-        "content": "O'sma turlari va belgilari",
+        "content": "O'zbekiston armiyasining tuzilishi",
         "fontSize": 40,
-        "maxCharacters": 27,
-        "elementIndex": 3
+        "maxCharacters": 32,
+        "elementIndex": 5
       },
       {
         "type": "shape",
@@ -404,10 +813,10 @@
         "height": 36.695328083989494,
         "left": 684.2036745406823,
         "top": 224.64881889763777,
-        "content": "O'sma turlari hayvonlar va o'simliklar dunyosida uchraydi.",
+        "content": "O'zbekiston armiyasi mamlakatimizni mudofaa qilishga tayyor va kuchli tuzilishga ega.",
         "fontSize": 13,
-        "maxCharacters": 54,
-        "elementIndex": 5
+        "maxCharacters": 64,
+        "elementIndex": 9
       },
       {
         "type": "shape",
@@ -415,10 +824,10 @@
         "height": 25.343727034120732,
         "left": 676.7618897637794,
         "top": 159.58414698162727,
-        "content": "Ularning ayrimlari xasiyatlari bilan ajralib turadi.",
+        "content": "Harbiy qismlar: quruqlik, havo va dengiz kuchlari.",
         "fontSize": 15,
-        "maxCharacters": 23,
-        "elementIndex": 7
+        "maxCharacters": 27,
+        "elementIndex": 13
       },
       {
         "type": "shape",
@@ -426,10 +835,10 @@
         "height": 36.695328083989494,
         "left": 684.2036745406823,
         "top": 411.93784776902885,
-        "content": "O'sma turlari ko'plab rang va shakllarda bo'ladi.",
+        "content": "Quruqlik kuchlari: jangovar birliklar va texnika.",
         "fontSize": 13,
-        "maxCharacters": 54,
-        "elementIndex": 9
+        "maxCharacters": 64,
+        "elementIndex": 17
       },
       {
         "type": "shape",
@@ -437,10 +846,10 @@
         "height": 25.343727034120732,
         "left": 680.4828346456692,
         "top": 347.24094488188973,
-        "content": "O'simliklarga xos bo'lgan o'smalar ko'proq uchraydi.",
+        "content": "Havo kuchlari: havo hujumlariga qarshi kurashish.",
         "fontSize": 15,
-        "maxCharacters": 23,
-        "elementIndex": 11
+        "maxCharacters": 27,
+        "elementIndex": 21
       },
       {
         "type": "shape",
@@ -448,10 +857,10 @@
         "height": 36.695328083989494,
         "left": 63.03128608923883,
         "top": 211.92787401574802,
-        "content": "Hayvonlar o'smalari odatda kamroq uchraydi.",
+        "content": "Dengiz kuchlari: suvda harakat qilish va mudofaa.",
         "fontSize": 13,
-        "maxCharacters": 54,
-        "elementIndex": 13
+        "maxCharacters": 64,
+        "elementIndex": 25
       },
       {
         "type": "shape",
@@ -459,10 +868,10 @@
         "height": 25.343727034120732,
         "left": 63.03128608923883,
         "top": 152.95191601049868,
-        "content": "O'smalar o'simliklar hayotida muhim rol o'ynaydi.",
+        "content": "Armiyaning o'qitish va tayyorgarlik jarayoni muhim ahamiyatga ega.",
         "fontSize": 15,
-        "maxCharacters": 23,
-        "elementIndex": 15
+        "maxCharacters": 27,
+        "elementIndex": 29
       },
       {
         "type": "shape",
@@ -470,10 +879,10 @@
         "height": 36.695328083989494,
         "left": 63.03128608923883,
         "top": 405.93784776902885,
-        "content": "Ular ko'payish va yashash jarayonida ishtirok etadi.",
+        "content": "O'zbekiston armiyasining maqsadi: tinchlikni saqlash va xavfsizlikni ta'minlash.",
         "fontSize": 13,
-        "maxCharacters": 54,
-        "elementIndex": 17
+        "maxCharacters": 64,
+        "elementIndex": 33
       },
       {
         "type": "shape",
@@ -481,346 +890,28 @@
         "height": 25.343727034120732,
         "left": 50.62813648293963,
         "top": 347.24094488188973,
-        "content": "O'sma turlari tabiiy muvozanatni saqlashda yordam beradi.",
+        "content": "Harbiy xizmat: vatanparvarlik va jasorat mezoni.",
         "fontSize": 15,
-        "maxCharacters": 23,
-        "elementIndex": 19
+        "maxCharacters": 27,
+        "elementIndex": 37
       }
     ],
     "note": ""
   },
   {
-    "id": "yzf1oPwqfC",
+    "id": "4At1wOlORV",
     "index": 7,
     "slide": 8,
     "elements": [
       {
         "type": "image",
-        "src": "./images\\slide7_img71.png",
+        "src": "./images\\slide7_img51.png",
         "hasImage": true,
         "elementIndex": 0
       },
       {
         "type": "image",
-        "src": "https://newsnetwork.mayoclinic.org/n7-mcnn/7bcc9724adf7b803/uploads/2018/06/a-medical-illustration-of-glioma-original.jpg",
-        "hasImage": true,
-        "elementIndex": 1
-      },
-      {
-        "type": "image",
-        "src": "./images\\slide7_img73.png",
-        "hasImage": true,
-        "elementIndex": 6
-      },
-      {
-        "type": "shape",
-        "width": 775.154750656168,
-        "height": 76,
-        "left": 104.88083989501311,
-        "top": 55.85291338582677,
-        "content": "O'sma turlari haqida",
-        "fontSize": 66,
-        "maxCharacters": 10,
-        "elementIndex": 8
-      },
-      {
-        "type": "shape",
-        "width": 212.7649343832021,
-        "height": 189.2450393700787,
-        "left": 189.48797900262463,
-        "top": 270,
-        "content": "O'sma turlari - bu organizmning xujayralarining nazoratsiz ko'payishi natijasida yuzaga keladigan patologik o'smalar. Ular benign (yaxshi sifatli) yoki malign (yomon sifatli) bo'lishi mumkin. O'sma belgilari har xil bo'lishi mumkin, shu jumladan og'riq, shish, va boshqa noqulayliklar.",
-        "fontSize": 13,
-        "maxCharacters": 324,
-        "elementIndex": 10
-      },
-      {
-        "type": "shape",
-        "width": 212.7649343832021,
-        "height": 25.343727034120732,
-        "left": 189.48797900262463,
-        "top": 213.39464566929132,
-        "content": "O'smalarning belgilari",
-        "fontSize": 15,
-        "maxCharacters": 23,
-        "elementIndex": 12
-      },
-      {
-        "type": "image",
-        "src": "./images\\slide7_img74.png",
-        "hasImage": true,
-        "elementIndex": 13
-      },
-      {
-        "type": "image",
-        "src": "./images\\slide7_img75.png",
-        "hasImage": true,
-        "elementIndex": 16
-      },
-      {
-        "type": "shape",
-        "width": 212.7649343832021,
-        "height": 135.92010498687662,
-        "left": 696.7748031496062,
-        "top": 251.65238845144353,
-        "content": "O'smalarni davolash usullari: jarrohlik, kimyoterapiya, radioterapiya. Har bir usul o'smaning turiga va rivojlanish bosqichiga qarab tanlanadi. O'smalarni erta aniqlash muhim ahamiyatga ega, chunki bu davolash samaradorligini oshiradi.",
-        "fontSize": 13,
-        "maxCharacters": 216,
-        "elementIndex": 22
-      },
-      {
-        "type": "shape",
-        "width": 212.7649343832021,
-        "height": 25.343727034120732,
-        "left": 696.7748031496062,
-        "top": 213.13270341207345,
-        "content": "O'sma xujayralar",
-        "fontSize": 15,
-        "maxCharacters": 23,
-        "elementIndex": 24
-      },
-      {
-        "type": "image",
-        "src": "./images\\slide7_img76.png",
-        "hasImage": true,
-        "elementIndex": 25
-      },
-      {
-        "type": "image",
-        "src": "./images\\slide7_img77.png",
-        "hasImage": true,
-        "elementIndex": 26
-      },
-      {
-        "type": "shape",
-        "width": 340.51685039370074,
-        "height": 90.02866141732284,
-        "left": 428.3793175853018,
-        "top": 455.1692388451443,
-        "content": "O'smalarni aniqlash uchun diagnostika usullari: ultratovush, rentgen, kompyuter tomografiyasi (KT) va magnit-rezonans tomografiyasi (MRT) qo'llaniladi. Bu usullar o'smaning joylashuvi va o'lchamini aniqlashga yordam beradi.",
-        "fontSize": 13,
-        "maxCharacters": 215,
-        "elementIndex": 32
-      },
-      {
-        "type": "shape",
-        "width": 319.43160104986873,
-        "height": 25.343727034120732,
-        "left": 428.3793175853018,
-        "top": 428.15443569553804,
-        "content": "O'sma turlari: sarcoma, carcinoma, melanoma, glioma. Har bir o'sma turining o'ziga xos xususiyatlari va davolash usullari mavjud.",
-        "fontSize": 15,
-        "maxCharacters": 35,
-        "elementIndex": 34
-      },
-      {
-        "type": "image",
-        "src": "./images\\slide7_img78.png",
-        "hasImage": true,
-        "elementIndex": 35
-      }
-    ],
-    "note": ""
-  },
-  {
-    "id": "A_Q31dICg1",
-    "index": 12,
-    "slide": 13,
-    "elements": [
-      {
-        "type": "image",
-        "src": "https://arxiv.uz/data/documents/bd6ea59a-8072-460d-aad2-517c6ba4dd30/page-9.png",
-        "hasImage": true,
-        "elementIndex": 0
-      },
-      {
-        "type": "image",
-        "src": "./images\\slide12_img109.jpeg",
-        "hasImage": true,
-        "elementIndex": 1
-      },
-      {
-        "type": "shape",
-        "width": 821.7174803149605,
-        "height": 50,
-        "left": 64.47622047244093,
-        "top": 200.80902887139104,
-        "content": "Davolash usullari va prognozlar",
-        "fontSize": 40,
-        "maxCharacters": 34,
-        "elementIndex": 3
-      },
-      {
-        "type": "shape",
-        "width": 816.7562204724409,
-        "height": 257.68745406824144,
-        "left": 69.43737532808399,
-        "top": 250.80902887139104,
-        "content": "Davolash usullari turli kasalliklar uchun muhim ahamiyatga ega. Ular orasida dori-darmonlar, jarrohlik, fizioterapiya va alternativ tibbiyot usullari mavjud. Har bir usulning o'ziga xos afzalliklari va kamchiliklari bor. Prognozlar esa davolash jarayonida bemorning holatini, kasallikning rivojlanish ehtimolini va kerakli choralarni belgilashda yordam beradi. Shuningdek, davolash jarayonidagi muvaffaqiyat omillari, bemorning yoshi, umumiy sog'lig'i va kasallikning murakkabligi kabi ko'plab omillarga bog'liq.",
-        "fontSize": 13,
-        "maxCharacters": 1664,
-        "elementIndex": 5
-      }
-    ],
-    "note": ""
-  },
-  {
-    "id": "txghhUrRiY",
-    "index": 8,
-    "slide": 9,
-    "elements": [
-      {
-        "type": "image",
-        "src": "https://slideplayer.com/slide/15355917/92/images/49/Davolash+Komplexli+Asab%2C+asab+endokrin+uzgarishlarni+davolash.jpg",
-        "hasImage": true,
-        "elementIndex": 0
-      },
-      {
-        "type": "image",
-        "src": "./images\\slide8_img80.png",
-        "hasImage": true,
-        "elementIndex": 1
-      },
-      {
-        "type": "image",
-        "src": "./images\\slide8_img81.png",
-        "hasImage": true,
-        "elementIndex": 2
-      },
-      {
-        "type": "image",
-        "src": "./images\\slide8_img82.png",
-        "hasImage": true,
-        "elementIndex": 5
-      },
-      {
-        "type": "image",
-        "src": "./images\\slide8_img83.png",
-        "hasImage": true,
-        "elementIndex": 8
-      },
-      {
-        "type": "image",
-        "src": "./images\\slide8_img84.png",
-        "hasImage": true,
-        "elementIndex": 11
-      },
-      {
-        "type": "shape",
-        "width": 868.237060367454,
-        "height": 58,
-        "left": 91.76293963254592,
-        "top": 34.442834645669286,
-        "content": "Davolash usullari tahlili",
-        "fontSize": 48,
-        "maxCharacters": 30,
-        "elementIndex": 15
-      },
-      {
-        "type": "shape",
-        "width": 187.19811023622043,
-        "height": 106.23296587926508,
-        "left": 434.77753280839886,
-        "top": 257.68913385826767,
-        "content": "Davolash usullarining muvaffaqiyati ko‘plab omillarga bog‘liq. Xususan, bemorning holati, kasallikning rivojlanish darajasi va qo‘llanilayotgan metodlar muhim rol o‘ynaydi.",
-        "fontSize": 13,
-        "maxCharacters": 138,
-        "elementIndex": 17
-      },
-      {
-        "type": "shape",
-        "width": 202.08482939632543,
-        "height": 26.64839895013123,
-        "left": 432.19999999999993,
-        "top": 192.80682414698163,
-        "content": "Davolash usullari",
-        "fontSize": 16,
-        "maxCharacters": 21,
-        "elementIndex": 19
-      },
-      {
-        "type": "shape",
-        "width": 177.27559055118107,
-        "height": 106.60293963254591,
-        "left": 728.7213648293962,
-        "top": 263.28220472440944,
-        "content": "Har bir kasallik uchun alohida davolash rejalashtiriladi. Odatda, dorilar, fizioterapiya va psixologik yordam kabi usullar ham qo‘llaniladi.",
-        "fontSize": 13,
-        "maxCharacters": 132,
-        "elementIndex": 21
-      },
-      {
-        "type": "shape",
-        "width": 212.0073490813648,
-        "height": 56.4158530183727,
-        "left": 728.7213648293962,
-        "top": 192.80682414698163,
-        "content": "Davolashning asosiy turlari",
-        "fontSize": 16,
-        "maxCharacters": 44,
-        "elementIndex": 23
-      },
-      {
-        "type": "shape",
-        "width": 177.27559055118107,
-        "height": 189.3538057742782,
-        "left": 444.7000524934383,
-        "top": 432.2674015748031,
-        "content": "Davolash usullari orasida dorivor, jarrohlik va reabilitatsiya usullari eng keng tarqalgan hisoblanadi. Ularning har biri o‘ziga xos afzalliklari va kamchiliklariga ega.",
-        "fontSize": 13,
-        "maxCharacters": 264,
-        "elementIndex": 25
-      },
-      {
-        "type": "shape",
-        "width": 193.77858267716533,
-        "height": 26,
-        "left": 428.19999999999993,
-        "top": 370.1067716535433,
-        "content": "Jarayonlar",
-        "fontSize": 16,
-        "maxCharacters": 20,
-        "elementIndex": 27
-      },
-      {
-        "type": "shape",
-        "width": 177.27559055118107,
-        "height": 107.73259842519684,
-        "left": 728.7213648293962,
-        "top": 432.2674015748031,
-        "content": "Prognozlar davolash jarayonining muhim qismi. Ular bemorning holatini oldindan bashorat qilishga yordam beradi.",
-        "fontSize": 13,
-        "maxCharacters": 132,
-        "elementIndex": 29
-      },
-      {
-        "type": "shape",
-        "width": 205.8057742782152,
-        "height": 26.64839895013123,
-        "left": 728.7213648293962,
-        "top": 370.1067716535433,
-        "content": "Prognozlarning ahamiyati",
-        "fontSize": 16,
-        "maxCharacters": 21,
-        "elementIndex": 31
-      }
-    ],
-    "note": ""
-  },
-  {
-    "id": "gys_ewGxU-",
-    "index": 15,
-    "slide": 16,
-    "elements": [
-      {
-        "type": "image",
-        "src": "https://img.auntminnie.com/files/base/smg/all/image/2025/04/69YO_woman_with_biopsy_proven_left_invasive_lobular_carcinoma_who_underwent_MRI_for_staging.67f6d34cc7033.png?auto=format%2Ccompress&amp;fit=max&amp;q=70&amp;w=1200",
-        "hasImage": true,
-        "elementIndex": 0
-      },
-      {
-        "type": "image",
-        "src": "./images\\slide15_img125.jpeg",
+        "src": "./images\\slide7_img52.jpeg",
         "hasImage": true,
         "elementIndex": 1
       },
@@ -832,8 +923,8 @@
         "top": 231.80902887139104,
         "content": "Xulosa",
         "fontSize": 24,
-        "maxCharacters": 114,
-        "elementIndex": 3
+        "maxCharacters": 136,
+        "elementIndex": 5
       },
       {
         "type": "shape",
@@ -841,42 +932,42 @@
         "height": 226.68745406824146,
         "left": 69.43737532808399,
         "top": 281.80902887139104,
-        "content": "Nerv tizimi o'smalari - bu asab tizimining turli qismlarida paydo bo'ladigan o'smalar. Ushbu o'smalar benign (yaxshi sifatli) yoki malign (yomon sifatli) bo'lishi mumkin. Ular uyqu, qisqa xotira, muvozanat va boshqa asosiy funktsiyalarni buzishi mumkin. Nerv tizimi o'smalari, ko'pincha, nevrologik belgilar ko'rsatadi, shuningdek, dori-darmonlar va jarrohlik orqali davolash mumkin. Hozirda tibbiyotda innovatsion usullar mavjud bo'lib, ular orqali ushbu o'smalarni aniqlash, diognostika va davolash jarayoni yanada samarali o'tkazilmoqda. O'smalarni erta aniqlash va rivojlanishining oldini olish, bemorlarning umrini uzaytiradi va hayot sifatini yaxshilaydi.",
+        "content": "O'zbekiston armiyasi mamlakatimizning xavfsizligini ta'minlashda muhim rol o'ynaydi. U 1992 yilda tashkil etilgan bo'lib, bugungi kunda turli xil yo'nalishlarda harbiy kuchlarni rivojlantiradi. O'zbekiston armiyasi zamonaviy texnologiyalar bilan qurollangan bo'lib, uning maqsadi nafaqat mamlakatni himoya qilish, balki mintaqaviy barqarorlikni saqlashdir. Harbiy tayyorgarlik, professional o'qitish va xalqaro hamkorlik armiyaning asosiy ustunliklaridir. O'zbekiston armiyasining o'ziga xos xususiyatlaridan biri, ijtimoiy sohada amalga oshirilayotgan dasturlar orqali harbiy xizmatchilar va ularning oilalariga yordam berishdir. Ta'lim va tibbiy yordamga oid tashabbuslar harbiy xizmatchilarning farovonligini oshirishga qaratilgan.",
         "fontSize": 13,
-        "maxCharacters": 1456,
-        "elementIndex": 5
+        "maxCharacters": 1747,
+        "elementIndex": 9
       }
     ],
     "note": ""
   },
   {
-    "id": "7OtuWYebCV",
-    "index": 16,
-    "slide": 17,
+    "id": "9s1CMJC5NQ",
+    "index": 8,
+    "slide": 9,
     "elements": [
       {
         "type": "image",
-        "src": "./images\\slide16_img126.png",
+        "src": "./images\\slide8_img53.png",
         "hasImage": true,
         "elementIndex": 0
       },
       {
         "type": "image",
-        "src": "./images\\slide16_img127.png",
+        "src": "./images\\slide8_img54.png",
         "hasImage": true,
         "elementIndex": 1
       },
       {
         "type": "image",
-        "src": "./images\\slide16_img128.png",
+        "src": "./images\\slide8_img55.png",
         "hasImage": true,
         "elementIndex": 2
       },
       {
         "type": "image",
-        "src": "./images\\slide16_img129.png",
+        "src": "./images\\slide8_img56.png",
         "hasImage": true,
-        "elementIndex": 5
+        "elementIndex": 7
       },
       {
         "type": "shape",
@@ -884,10 +975,10 @@
         "height": 50,
         "left": 59,
         "top": 82.25312335958004,
-        "content": "Foydalanilgan adabiyotlar",
+        "content": "Adabiyotlar ro'yxati",
         "fontSize": 24,
-        "maxCharacters": 59,
-        "elementIndex": 7
+        "maxCharacters": 70,
+        "elementIndex": 11
       },
       {
         "type": "shape",
@@ -895,22 +986,22 @@
         "height": 302.72986876640414,
         "left": 59,
         "top": 137.28682414698162,
-        "content": "1. Atoyev, B. T. (2020). Nerv tizimi o'smalari: Tashxis va davolash. Toshkent: Fan va Texnologiya Noshirligi.\n2. Karimov, I. A. (2019). Nerv tizimi o'smalarining biologiyasi va ularning gistikasi. O'zbekiston Tibbiyot Jurnali, 3(2), 45-50.\n3. Murodov, A. R. (2021). Nerv tizim nuqtalarida o'sma va ularni oldini olish usullari. O'zbekiston Tibbiyoti, 15(4), 112-115.\n4. Oripov, N. X., & Jumaev, Z. (2022). Nerv tizimi o'smalari va ularning xavf faktorlarini tadqiq etish. Tibbiyot Fanlari, 10(1), 75-80.\n5. Umarov, D. (2018). Nerv tizimi patologiyalari: o'smalar va ularning invazivligi. Nevrolojiya Jurnali, 4(1), 23-30.",
+        "content": "1. Azizov D., Sharipov Z. \"O'zbekiston armiyasining tarixi: xronologiya va muhim voqealar\". 2020, Harbiy nashr.\n2. G'ulomov A., Rahimov B. \"O'zbekiston armiyasi va strategik xavfsizlik\". 2019, Xalqaro munosabatlar jurnali.\n3. Jo'rayev T. \"O'zbekistonning mudofaa siyosati va armiyasi\". 2021, Milliy himoya ishlari.\n4. Murodov I. \"O'zbekiston armiyasida kichik xavfli grippning ta'siri\". 2022, Tibbiyot jurnali.\n5. To'raev S. \"O'zbekiston armiyasining zamonaviy rivojlanishiga oid tahlil\". 2023, Mudofaa vazirligi.",
         "fontSize": 18,
-        "maxCharacters": 1092,
-        "elementIndex": 9
+        "maxCharacters": 1310,
+        "elementIndex": 15
       }
     ],
     "note": ""
   },
   {
-    "id": "f2GyaNTs5Z",
-    "index": 17,
-    "slide": 18,
+    "id": "gBJzzseH-q",
+    "index": 9,
+    "slide": 10,
     "elements": [
       {
         "type": "image",
-        "src": "./images\\slide17_img130.png",
+        "src": "./images\\slide9_img57.png",
         "hasImage": true,
         "elementIndex": 0
       },
@@ -923,7 +1014,7 @@
         "content": "Etiboringiz uchun rahmat!",
         "fontSize": 60,
         "maxCharacters": 10,
-        "elementIndex": 2
+        "elementIndex": 4
       }
     ],
     "note": ""

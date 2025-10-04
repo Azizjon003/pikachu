@@ -430,7 +430,8 @@ export const exportPPTX = (
   masterOverwrite: boolean,
   ignoreMedia: boolean,
   theme: SlideTheme,
-  viewPort: { width: number; height: number }
+  viewPort: { width: number; height: number },
+  path: string
 ) => {
   viewportSize.value = viewPort.width;
   viewportHeight.value = viewPort.height;
@@ -1102,7 +1103,7 @@ export const exportPPTX = (
 
   setTimeout(() => {
     pptx
-      .writeFile({ fileName: `azimut.pptx` as never })
+      .writeFile({ fileName: path as never })
       .then(() => {})
       .catch((e) => {
         console.log("Error writing file", e);
