@@ -290,6 +290,7 @@
       {
         "type": "image",
         "src": "./images\\slide2_img29.png",
+        "isEdited": true,
         "hasImage": true,
         "elementIndex": 11
       },
@@ -447,6 +448,7 @@
         "type": "image",
         "src": "./images\\slide3_img50.png",
         "hasImage": true,
+        "isEdited": true,
         "elementIndex": 36
       },
       {
@@ -581,6 +583,7 @@
         "type": "image",
         "src": "./images\\slide5_img57.png",
         "hasImage": true,
+        "isEdited": true,
         "elementIndex": 1
       },
       {
@@ -711,6 +714,7 @@
         "type": "image",
         "src": "./images\\slide6_img70.png",
         "hasImage": true,
+        "isEdited": true,
         "elementIndex": 1
       },
       {
@@ -830,6 +834,7 @@
         "type": "image",
         "src": "./images\\slide7_img72.png",
         "hasImage": true,
+        "isEdited": true,
         "elementIndex": 1
       },
       {
@@ -957,6 +962,7 @@
         "type": "image",
         "src": "./images\\slide8_img79.png",
         "hasImage": true,
+        "isEdited": true,
         "elementIndex": 0
       },
       {
@@ -1195,6 +1201,7 @@
         "type": "image",
         "src": "./images\\slide10_img92.png",
         "hasImage": true,
+        "isEdited": true,
         "elementIndex": 0
       },
       {
@@ -1397,6 +1404,7 @@
         "type": "image",
         "src": "./images\\slide11_img106.png",
         "hasImage": true,
+        "isEdited": true,
         "elementIndex": 0
       },
       {
@@ -1527,6 +1535,7 @@
         "type": "image",
         "src": "./images\\slide12_img108.png",
         "hasImage": true,
+        "isEdited": true,
         "elementIndex": 0
       },
       {
@@ -1569,6 +1578,7 @@
         "type": "image",
         "src": "./images\\slide13_img110.png",
         "hasImage": true,
+        "isEdited": true,
         "elementIndex": 0
       },
       {
@@ -1674,6 +1684,7 @@
         "type": "image",
         "src": "./images\\slide14_img117.png",
         "hasImage": true,
+        "isEdited": true,
         "elementIndex": 0
       },
       {
@@ -1801,6 +1812,7 @@
         "type": "image",
         "src": "./images\\slide15_img124.png",
         "hasImage": true,
+        "isEdited": true,
         "elementIndex": 0
       },
       {

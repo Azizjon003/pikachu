@@ -4,7 +4,10 @@
   "main": "index.js",
   "scripts": {
     "start": "ts-node main.ts",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "test:image-replacer": "ts-node testImageReplacer.ts",
+    "test:image-replacer:single": "ts-node testImageReplacer.ts single",
+    "test:image-replacer:keywords": "ts-node testImageReplacer.ts keywords"
   },
   "keywords": [],
   "author": "",

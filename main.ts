@@ -1105,6 +1105,8 @@ export const exportPPTX = (
     pptx
       .writeFile({ fileName: `azimut.pptx` as never })
       .then(() => {})
-      .catch(() => {});
+      .catch((e) => {
+        console.log("Error writing file", e);
+      });
   }, 200);
 };

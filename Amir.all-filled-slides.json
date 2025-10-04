@@ -1,0 +1,946 @@
+[
+  {
+    "id": "skZN1LrhW8",
+    "index": 0,
+    "slide": 1,
+    "elements": [
+      {
+        "type": "image",
+        "src": "./images\\slide0_img1.png",
+        "hasImage": true,
+        "elementIndex": 0
+      },
+      {
+        "type": "image",
+        "src": "./images\\slide0_img2.png",
+        "hasImage": true,
+        "elementIndex": 1
+      },
+      {
+        "type": "image",
+        "src": "./images\\slide0_img3.png",
+        "hasImage": true,
+        "elementIndex": 2
+      },
+      {
+        "type": "image",
+        "src": "./images\\slide0_img4.png",
+        "hasImage": true,
+        "elementIndex": 3
+      },
+      {
+        "type": "shape",
+        "width": 620.82624671916,
+        "height": 40,
+        "left": 168.13543307086613,
+        "top": 225.18771653543303,
+        "content": "Nerv tizimining o'smalari:",
+        "fontSize": 30,
+        "maxCharacters": 34,
+        "elementIndex": 5
+      },
+      {
+        "type": "image",
+        "src": "./images\\slide0_img5.png",
+        "hasImage": true,
+        "elementIndex": 6
+      },
+      {
+        "type": "image",
+        "src": "./images\\slide0_img6.png",
+        "hasImage": true,
+        "elementIndex": 7
+      },
+      {
+        "type": "shape",
+        "width": 440.98131233595797,
+        "height": 32,
+        "left": 334.945091863517,
+        "top": 346.4566929133858,
+        "content": "Azizjon Aliqulov",
+        "fontSize": 22,
+        "maxCharacters": 33,
+        "elementIndex": 9
+      }
+    ],
+    "note": ""
+  },
+  {
+    "id": "Kx25LG3jKV",
+    "index": 1,
+    "slide": 2,
+    "elements": [
+      {
+        "type": "image",
+        "src": "./images\\slide1_img7.png",
+        "hasImage": true,
+        "elementIndex": 0
+      },
+      {
+        "type": "image",
+        "src": "./images\\slide1_img8.png",
+        "hasImage": true,
+        "elementIndex": 1
+      },
+      {
+        "type": "image",
+        "src": "./images\\slide1_img9.png",
+        "hasImage": true,
+        "elementIndex": 4
+      },
+      {
+        "type": "image",
+        "src": "./images\\slide1_img10.png",
+        "hasImage": true,
+        "elementIndex": 5
+      },
+      {
+        "type": "image",
+        "src": "./images\\slide1_img11.png",
+        "hasImage": true,
+        "elementIndex": 8
+      },
+      {
+        "type": "image",
+        "src": "./images\\slide1_img12.png",
+        "hasImage": true,
+        "elementIndex": 9
+      },
+      {
+        "type": "image",
+        "src": "./images\\slide1_img13.png",
+        "hasImage": true,
+        "elementIndex": 12
+      },
+      {
+        "type": "image",
+        "src": "./images\\slide1_img14.png",
+        "hasImage": true,
+        "elementIndex": 13
+      },
+      {
+        "type": "image",
+        "src": "./images\\slide1_img15.png",
+        "hasImage": true,
+        "elementIndex": 16
+      },
+      {
+        "type": "image",
+        "src": "./images\\slide1_img16.png",
+        "hasImage": true,
+        "elementIndex": 17
+      },
+      {
+        "type": "image",
+        "src": "./images\\slide1_img17.png",
+        "hasImage": true,
+        "elementIndex": 20
+      },
+      {
+        "type": "image",
+        "src": "./images\\slide1_img18.png",
+        "hasImage": true,
+        "elementIndex": 21
+      },
+      {
+        "type": "image",
+        "src": "./images\\slide1_img19.png",
+        "hasImage": true,
+        "elementIndex": 24
+      },
+      {
+        "type": "shape",
+        "width": 411.37480314960624,
+        "height": 54,
+        "left": 9.151391076115484,
+        "top": 78.17301837270341,
+        "content": "Reja: ",
+        "fontSize": 44,
+        "maxCharacters": 15,
+        "elementIndex": 26
+      },
+      {
+        "type": "shape",
+        "width": 54.49448818897637,
+        "height": 87,
+        "left": 455.62435695538056,
+        "top": 82.93459317585301,
+        "content": "1",
+        "fontSize": 77,
+        "maxCharacters": 10,
+        "elementIndex": 28
+      },
+      {
+        "type": "shape",
+        "width": 54.49448818897637,
+        "height": 87,
+        "left": 455.62435695538056,
+        "top": 225.43590551181103,
+        "content": "2",
+        "fontSize": 77,
+        "maxCharacters": 10,
+        "elementIndex": 30
+      },
+      {
+        "type": "shape",
+        "width": 54.49448818897637,
+        "height": 87,
+        "left": 455.62435695538056,
+        "top": 367.93721784776903,
+        "content": "3",
+        "fontSize": 77,
+        "maxCharacters": 10,
+        "elementIndex": 32
+      },
+      {
+        "type": "shape",
+        "width": 364.3911811023622,
+        "height": 30,
+        "left": 529.1859317585302,
+        "top": 94.66162729658791,
+        "content": "1. Nerv tizimining o'smalari: Tushuncha va Turlari",
+        "fontSize": 20,
+        "maxCharacters": 30,
+        "elementIndex": 34
+      },
+      {
+        "type": "shape",
+        "width": 364.3911811023622,
+        "height": 30,
+        "left": 529.1859317585302,
+        "top": 231.86666666666667,
+        "content": "2. Nerv tizimi o'smalarining Belgilari va Diagnostika",
+        "fontSize": 20,
+        "maxCharacters": 30,
+        "elementIndex": 36
+      },
+      {
+        "type": "shape",
+        "width": 364.3911811023622,
+        "height": 30,
+        "left": 529.1859317585302,
+        "top": 374.53028871391075,
+        "content": "3. Nerv tizimi o'smalarining Davolash Usullari",
+        "fontSize": 20,
+        "maxCharacters": 30,
+        "elementIndex": 38
+      },
+      {
+        "type": "image",
+        "src": "./images\\slide1_img20.png",
+        "hasImage": true,
+        "elementIndex": 39
+      },
+      {
+        "type": "image",
+        "src": "./images\\slide1_img21.png",
+        "hasImage": true,
+        "elementIndex": 43
+      }
+    ],
+    "note": ""
+  },
+  {
+    "id": "UIV9L1AYyp",
+    "index": 5,
+    "slide": 6,
+    "elements": [
+      {
+        "type": "image",
+        "src": "./images\\slide5_img56.png",
+        "hasImage": true,
+        "elementIndex": 0
+      },
+      {
+        "type": "image",
+        "src": "https://cdn.storymd.com/optimized/pqD9QwIPAa/original.jpg",
+        "hasImage": true,
+        "elementIndex": 1
+      },
+      {
+        "type": "image",
+        "src": "./images\\slide5_img58.png",
+        "hasImage": true,
+        "elementIndex": 4
+      },
+      {
+        "type": "image",
+        "src": "./images\\slide5_img59.png",
+        "hasImage": true,
+        "elementIndex": 5
+      },
+      {
+        "type": "image",
+        "src": "./images\\slide5_img60.png",
+        "hasImage": true,
+        "elementIndex": 8
+      },
+      {
+        "type": "image",
+        "src": "./images\\slide5_img61.png",
+        "hasImage": true,
+        "elementIndex": 9
+      },
+      {
+        "type": "image",
+        "src": "./images\\slide5_img62.png",
+        "hasImage": true,
+        "elementIndex": 12
+      },
+      {
+        "type": "image",
+        "src": "./images\\slide5_img63.png",
+        "hasImage": true,
+        "elementIndex": 13
+      },
+      {
+        "type": "image",
+        "src": "./images\\slide5_img64.png",
+        "hasImage": true,
+        "elementIndex": 16
+      },
+      {
+        "type": "image",
+        "src": "./images\\slide5_img65.png",
+        "hasImage": true,
+        "elementIndex": 17
+      },
+      {
+        "type": "image",
+        "src": "./images\\slide5_img66.png",
+        "hasImage": true,
+        "elementIndex": 20
+      },
+      {
+        "type": "image",
+        "src": "./images\\slide5_img67.png",
+        "hasImage": true,
+        "elementIndex": 21
+      },
+      {
+        "type": "image",
+        "src": "./images\\slide5_img68.png",
+        "hasImage": true,
+        "elementIndex": 24
+      },
+      {
+        "type": "shape",
+        "width": 776.4724409448818,
+        "height": 58,
+        "left": 91.76293963254592,
+        "top": 20.76850393700787,
+        "content": "Tumor Turlari va Belgilari",
+        "fontSize": 40,
+        "maxCharacters": 32,
+        "elementIndex": 26
+      },
+      {
+        "type": "shape",
+        "width": 238.25102362204723,
+        "height": 63.390656167978996,
+        "left": 68.36514435695537,
+        "top": 155.26225721784775,
+        "content": "Tumorlar organizmda to'qimalarning o'sishi natijasida paydo bo'ladi. Ular yaxshi yoki yomon bo'lishi mumkin.",
+        "fontSize": 13,
+        "maxCharacters": 120,
+        "elementIndex": 28
+      },
+      {
+        "type": "shape",
+        "width": 232.7155905511811,
+        "height": 63.390656167978996,
+        "left": 355.4745406824146,
+        "top": 161.46383202099736,
+        "content": "Yomon o'simliklar tez sur'atlarda o'sadi va atrofdagi to'qimalarga zarar etkazadi. Belgilari orasida og'riq, shish va qon ketish bor.",
+        "fontSize": 13,
+        "maxCharacters": 116,
+        "elementIndex": 30
+      },
+      {
+        "type": "shape",
+        "width": 233.99611548556427,
+        "height": 63.390656167978996,
+        "left": 654.5164304461941,
+        "top": 167.66540682414697,
+        "content": "Yaxshi o'simliklar esa sekin o'sadi va ko'pincha asoratlar keltirib chiqarmaydi. Ularning belgilari kamroq sezilarli bo'lishi mumkin.",
+        "fontSize": 13,
+        "maxCharacters": 116,
+        "elementIndex": 32
+      }
+    ],
+    "note": ""
+  },
+  {
+    "id": "Gb50ZvJTTu",
+    "index": 6,
+    "slide": 7,
+    "elements": [
+      {
+        "type": "image",
+        "src": "./images\\slide6_img69.png",
+        "hasImage": true,
+        "elementIndex": 0
+      },
+      {
+        "type": "image",
+        "src": "https://img.freepik.com/premium-vector/vector-isolated-illustration-benign-tumor-tissue-medical-diagram-poster-educational-science-medical-use-biological-icon-logo_206049-1637.jpg?w=2000",
+        "hasImage": true,
+        "elementIndex": 1
+      },
+      {
+        "type": "shape",
+        "width": 665.7322834645669,
+        "height": 50,
+        "left": 147.13721784776902,
+        "top": 16.931653543307085,
+        "content": "Tumor Tasnifi Tushuntirish",
+        "fontSize": 40,
+        "maxCharacters": 27,
+        "elementIndex": 3
+      },
+      {
+        "type": "shape",
+        "width": 212.77165354330705,
+        "height": 36.695328083989494,
+        "left": 684.2036745406823,
+        "top": 224.64881889763777,
+        "content": "Tumorlar organizmda hujayralarning nazoratsiz o'sishi natijasida paydo bo'ladi.",
+        "fontSize": 13,
+        "maxCharacters": 54,
+        "elementIndex": 5
+      },
+      {
+        "type": "shape",
+        "width": 212.77165354330705,
+        "height": 25.343727034120732,
+        "left": 676.7618897637794,
+        "top": 159.58414698162727,
+        "content": "Asosiy turdagi tumorlar: benign va malign.",
+        "fontSize": 15,
+        "maxCharacters": 23,
+        "elementIndex": 7
+      },
+      {
+        "type": "shape",
+        "width": 212.77165354330705,
+        "height": 36.695328083989494,
+        "left": 684.2036745406823,
+        "top": 411.93784776902885,
+        "content": "Malign tumorlar: saraton hujayralari o'sib, boshqa to'qimalarga tarqaladi.",
+        "fontSize": 13,
+        "maxCharacters": 54,
+        "elementIndex": 9
+      },
+      {
+        "type": "shape",
+        "width": 212.77165354330705,
+        "height": 25.343727034120732,
+        "left": 680.4828346456692,
+        "top": 347.24094488188973,
+        "content": "Benign tumorlar: o'sish tezligi sekin, boshqa to'qimalarga tarqalmaydi.",
+        "fontSize": 15,
+        "maxCharacters": 23,
+        "elementIndex": 11
+      },
+      {
+        "type": "shape",
+        "width": 212.77165354330705,
+        "height": 36.695328083989494,
+        "left": 63.03128608923883,
+        "top": 211.92787401574802,
+        "content": "Tumorlarning klassifikatsiyasi: joylashuvi, turiga ko'ra.",
+        "fontSize": 13,
+        "maxCharacters": 54,
+        "elementIndex": 13
+      },
+      {
+        "type": "shape",
+        "width": 212.77165354330705,
+        "height": 25.343727034120732,
+        "left": 63.03128608923883,
+        "top": 152.95191601049868,
+        "content": "O'simta turlari: sarkoma, karcinoma, leiomiyoma. ",
+        "fontSize": 15,
+        "maxCharacters": 23,
+        "elementIndex": 15
+      },
+      {
+        "type": "shape",
+        "width": 212.77165354330705,
+        "height": 36.695328083989494,
+        "left": 63.03128608923883,
+        "top": 405.93784776902885,
+        "content": "Tumorlar o'zaro turlicha belgilarga ega, ko'p holatda alomatlar paydo bo'ladi.",
+        "fontSize": 13,
+        "maxCharacters": 54,
+        "elementIndex": 17
+      },
+      {
+        "type": "shape",
+        "width": 212.77165354330705,
+        "height": 25.343727034120732,
+        "left": 50.62813648293963,
+        "top": 347.24094488188973,
+        "content": "Tashxis va davolash usullari: jarrohlik, kimyoterapiya, radiatsiya.",
+        "fontSize": 15,
+        "maxCharacters": 23,
+        "elementIndex": 19
+      }
+    ],
+    "note": ""
+  },
+  {
+    "id": "fW2hnyR_rB",
+    "index": 4,
+    "slide": 5,
+    "elements": [
+      {
+        "type": "image",
+        "src": "./images\\slide4_img51.png",
+        "hasImage": true,
+        "elementIndex": 0
+      },
+      {
+        "type": "table",
+        "data": [
+          [
+            "O'sma nomi",
+            "Joylashuvi",
+            "Sintomlar"
+          ],
+          [
+            "Meningioma",
+            "Meninges",
+            "Bosh og'rig'i, ko'rish muammolari"
+          ],
+          [
+            "Astrositoma",
+            "Miya",
+            "Kognitiv o'zgarishlar, o'zini tutish muammolari"
+          ],
+          [
+            "Glioblastoma",
+            "Miya",
+            "Tez o'sish, bosh og'rig'i, muvofiqlik yo'qligi"
+          ]
+        ],
+        "elementIndex": 1,
+        "content": "O'sma nomi | Joylashuvi | Sintomlar\n-----------------------------------\nMeningioma | Meninges | Bosh og'rig'i, ko'rish muammolari\nAstrositoma | Miya | Kognitiv o'zgarishlar, o'zini tutish muammolari\nGlioblastoma | Miya | Tez o'sish, bosh og'rig'i, muvofiqlik yo'qligi"
+      },
+      {
+        "type": "shape",
+        "width": 776.4724409448818,
+        "height": 70,
+        "left": 91.76377952755905,
+        "top": 25.85805774278215,
+        "content": "Nerv tizimining o'smalari haqida ma'lumotlar",
+        "fontSize": 40,
+        "maxCharacters": 32,
+        "elementIndex": 3
+      },
+      {
+        "type": "image",
+        "src": "./images\\slide4_img52.png",
+        "hasImage": true,
+        "elementIndex": 4
+      },
+      {
+        "type": "image",
+        "src": "./images\\slide4_img53.png",
+        "hasImage": true,
+        "elementIndex": 7
+      },
+      {
+        "type": "image",
+        "src": "./images\\slide4_img54.png",
+        "hasImage": true,
+        "elementIndex": 8
+      },
+      {
+        "type": "image",
+        "src": "./images\\slide4_img55.png",
+        "hasImage": true,
+        "elementIndex": 11
+      }
+    ],
+    "note": ""
+  },
+  {
+    "id": "4XLUCMzhDz",
+    "index": 11,
+    "slide": 12,
+    "elements": [
+      {
+        "type": "image",
+        "src": "https://islife.uz/wp-content/uploads/2023/02/birinchi-erdam-768x349.png",
+        "hasImage": true,
+        "elementIndex": 0
+      },
+      {
+        "type": "image",
+        "src": "./images\\slide11_img107.png",
+        "hasImage": true,
+        "elementIndex": 1
+      },
+      {
+        "type": "shape",
+        "width": 776.4740157480314,
+        "height": 50,
+        "left": 91.76293963254592,
+        "top": 54.442834645669286,
+        "content": "Davolash Usullari",
+        "fontSize": 40,
+        "maxCharacters": 32,
+        "elementIndex": 3
+      },
+      {
+        "type": "shape",
+        "width": 179.92125984251965,
+        "height": 58,
+        "left": 74.11044619422572,
+        "top": 170.45784776902886,
+        "content": "Birinchi",
+        "fontSize": 24,
+        "maxCharacters": 24,
+        "elementIndex": 5
+      },
+      {
+        "type": "shape",
+        "width": 209.8496587926509,
+        "height": 58,
+        "left": 67.21165354330708,
+        "top": 347.6312860892388,
+        "content": "Uchinchi",
+        "fontSize": 24,
+        "maxCharacters": 28,
+        "elementIndex": 7
+      },
+      {
+        "type": "shape",
+        "width": 113.65354330708661,
+        "height": 58,
+        "left": 404.04734908136476,
+        "top": 170.4579527559055,
+        "content": "Ikkinchi",
+        "fontSize": 24,
+        "maxCharacters": 14,
+        "elementIndex": 9
+      },
+      {
+        "type": "shape",
+        "width": 311.691968503937,
+        "height": 58,
+        "left": 301.9310236220472,
+        "top": 347.6312860892388,
+        "content": "To'rtinchi",
+        "fontSize": 24,
+        "maxCharacters": 42,
+        "elementIndex": 11
+      },
+      {
+        "type": "shape",
+        "width": 198.52587926509185,
+        "height": 97.92230971128608,
+        "left": 74.11044619422572,
+        "top": 228.45784776902886,
+        "content": "Davolash usullari turli muammolar uchun ishlab chiqilgan. Har bir usulning o'ziga xos afzalliklari bor.",
+        "fontSize": 13,
+        "maxCharacters": 150,
+        "elementIndex": 13
+      },
+      {
+        "type": "shape",
+        "width": 179.92125984251965,
+        "height": 128.66362204724408,
+        "left": 74.11044619422572,
+        "top": 411.33637795275587,
+        "content": "Ushbu usullar sog'liqni yaxshilashga, kasalliklarni oldini olishga yordam beradi. Har bir usul individual yondashuvni talab qiladi.",
+        "fontSize": 13,
+        "maxCharacters": 184,
+        "elementIndex": 15
+      },
+      {
+        "type": "shape",
+        "width": 202.2468241469816,
+        "height": 128.66362204724408,
+        "left": 370.9137007874015,
+        "top": 411.33637795275587,
+        "content": "Yuqori samarali davolash usullari bilan zamonaviy tibbiyot o'zining imkoniyatlarini kengaytirmoqda. Yangiliklar va tadqiqotlar doimiy ravishda davom etmoqda.",
+        "fontSize": 13,
+        "maxCharacters": 200,
+        "elementIndex": 17
+      },
+      {
+        "type": "shape",
+        "width": 218.3709186351706,
+        "height": 90.97700787401574,
+        "left": 364.7122309711286,
+        "top": 215.55821522309708,
+        "content": "Davolash jarayonida bemorlarning individual xususiyatlarini hisobga olish muhimdir. Har bir bemorning holati alohida baholanadi.",
+        "fontSize": 13,
+        "maxCharacters": 135,
+        "elementIndex": 19
+      },
+      {
+        "type": "shape",
+        "width": 300,
+        "height": 25,
+        "left": 0,
+        "top": 0,
+        "content": "Davolash usullarining xilma-xilligi",
+        "fontSize": 8,
+        "maxCharacters": 124,
+        "elementIndex": 21
+      }
+    ],
+    "note": ""
+  },
+  {
+    "id": "1MZLZh5X84",
+    "index": 14,
+    "slide": 15,
+    "elements": [
+      {
+        "type": "image",
+        "src": "https://oefen.uz/data/documents/b3ac6fa9-d4bc-44f3-b7ff-4f025a47a2c4/page_7.png",
+        "hasImage": true,
+        "elementIndex": 0
+      },
+      {
+        "type": "image",
+        "src": "./images\\slide14_img118.png",
+        "hasImage": true,
+        "elementIndex": 1
+      },
+      {
+        "type": "image",
+        "src": "./images\\slide14_img119.png",
+        "hasImage": true,
+        "elementIndex": 4
+      },
+      {
+        "type": "image",
+        "src": "./images\\slide14_img120.png",
+        "hasImage": true,
+        "elementIndex": 5
+      },
+      {
+        "type": "image",
+        "src": "./images\\slide14_img121.png",
+        "hasImage": true,
+        "elementIndex": 8
+      },
+      {
+        "type": "image",
+        "src": "./images\\slide14_img122.jpeg",
+        "hasImage": true,
+        "elementIndex": 9
+      },
+      {
+        "type": "shape",
+        "width": 776.4724409448818,
+        "height": 50,
+        "left": 91.76293963254592,
+        "top": 30.442834645669286,
+        "content": "Tadqiqot va Statistika",
+        "fontSize": 40,
+        "maxCharacters": 32,
+        "elementIndex": 11
+      },
+      {
+        "type": "shape",
+        "width": 152.04094488188974,
+        "height": 50,
+        "left": 480,
+        "top": 185.6387401574803,
+        "content": "Asosiy",
+        "fontSize": 24,
+        "maxCharacters": 10,
+        "elementIndex": 13
+      },
+      {
+        "type": "shape",
+        "width": 138.48283464566927,
+        "height": 50,
+        "left": 480,
+        "top": 271.0981627296587,
+        "content": "Tahlil",
+        "fontSize": 24,
+        "maxCharacters": 10,
+        "elementIndex": 15
+      },
+      {
+        "type": "shape",
+        "width": 138.48283464566927,
+        "height": 50,
+        "left": 480,
+        "top": 384.6643569553805,
+        "content": "Natijalar",
+        "fontSize": 24,
+        "maxCharacters": 10,
+        "elementIndex": 17
+      },
+      {
+        "type": "shape",
+        "width": 324.5370078740157,
+        "height": 106.71905511811022,
+        "left": 635.4629921259842,
+        "top": 182.36115485564304,
+        "content": "Tadqiqot jarayoni statistik ma'lumotlarni to'plash, tahlil qilish va natijalarni sharhlashdan iborat. Bu jarayonlar ilmiy tadqiqotlarda muhim ahamiyatga ega.",
+        "fontSize": 13,
+        "maxCharacters": 246,
+        "elementIndex": 19
+      },
+      {
+        "type": "shape",
+        "width": 324.5370078740157,
+        "height": 95.58414698162728,
+        "left": 635.4629921259842,
+        "top": 289.08020997375326,
+        "content": "Statistika, ma'lumotlarni sanash va tasniflash usuli bo'lib, u tadqiqot natijalarini ishonchli va aniq ko'rsatadi. Bu soha turli fanlarda qo'llaniladi.",
+        "fontSize": 13,
+        "maxCharacters": 246,
+        "elementIndex": 21
+      },
+      {
+        "type": "shape",
+        "width": 324.5370078740157,
+        "height": 103.08062992125983,
+        "left": 635.4629921259842,
+        "top": 403.8868241469816,
+        "content": "Tadqiqot va statistika jarayoni muammoni aniqlashdan boshlanadi, so'ngra ma'lumot to'planadi va tahlil qilinadi, natijalar esa qaror qabul qilishda qo'llaniladi.",
+        "fontSize": 13,
+        "maxCharacters": 246,
+        "elementIndex": 23
+      },
+      {
+        "type": "image",
+        "src": "./images\\slide14_img123.png",
+        "hasImage": true,
+        "elementIndex": 24
+      }
+    ],
+    "note": ""
+  },
+  {
+    "id": "gys_ewGxU-",
+    "index": 15,
+    "slide": 16,
+    "elements": [
+      {
+        "type": "image",
+        "src": "https://arxiv.uz/data/documents/328c577a-4ec7-4e55-a2bc-9010d440670b/page-4.png",
+        "hasImage": true,
+        "elementIndex": 0
+      },
+      {
+        "type": "image",
+        "src": "./images\\slide15_img125.jpeg",
+        "hasImage": true,
+        "elementIndex": 1
+      },
+      {
+        "type": "shape",
+        "width": 821.7174803149605,
+        "height": 58,
+        "left": 64.47622047244093,
+        "top": 231.80902887139104,
+        "content": "Xulosa",
+        "fontSize": 24,
+        "maxCharacters": 114,
+        "elementIndex": 3
+      },
+      {
+        "type": "shape",
+        "width": 816.7562204724409,
+        "height": 226.68745406824146,
+        "left": 69.43737532808399,
+        "top": 281.80902887139104,
+        "content": "Nerv tizimi o'smalari - bu asab tizimidagi o'smalar bo'lib, ular turli xil shakl va o'lchamda bo'lishi mumkin. Ushbu o'smalar ma'lum bir joyda to'planishi yoki tarqalishi mumkin. Ularning diagnostikasi uchun kompyuter tomografiyasi va magnet-rezonans tomografiyasi kabi tasvirlash usullari qo'llaniladi. Davolash usullari, odatda, xirurgik aralashuv, kimyoviy terapiya va radiatsiya terapiyasini o'z ichiga oladi. Nerv tizimi o'smalari rivojlantirish sabablari aniq emas, ammo genetik omillar va atrof-muhit ta'siri rol o'ynashi mumkin. Malakali tibbiy yordamga murojaat qilish va erta aniqlash juda muhimdir.",
+        "fontSize": 13,
+        "maxCharacters": 1456,
+        "elementIndex": 5
+      }
+    ],
+    "note": ""
+  },
+  {
+    "id": "7OtuWYebCV",
+    "index": 16,
+    "slide": 17,
+    "elements": [
+      {
+        "type": "image",
+        "src": "./images\\slide16_img126.png",
+        "hasImage": true,
+        "elementIndex": 0
+      },
+      {
+        "type": "image",
+        "src": "./images\\slide16_img127.png",
+        "hasImage": true,
+        "elementIndex": 1
+      },
+      {
+        "type": "image",
+        "src": "./images\\slide16_img128.png",
+        "hasImage": true,
+        "elementIndex": 2
+      },
+      {
+        "type": "image",
+        "src": "./images\\slide16_img129.png",
+        "hasImage": true,
+        "elementIndex": 5
+      },
+      {
+        "type": "shape",
+        "width": 852,
+        "height": 50,
+        "left": 59,
+        "top": 82.25312335958004,
+        "content": "Adabiyotlar ro'yxati",
+        "fontSize": 24,
+        "maxCharacters": 59,
+        "elementIndex": 7
+      },
+      {
+        "type": "shape",
+        "width": 852,
+        "height": 302.72986876640414,
+        "left": 59,
+        "top": 137.28682414698162,
+        "content": "1. Azizov D., Sharipov Z. \"Nerv tizimi o'smalari: patologiya va davolash jarayoni\". 2021, Tibbiyot nashr.",
+        "fontSize": 18,
+        "maxCharacters": 1092,
+        "elementIndex": 9
+      }
+    ],
+    "note": ""
+  },
+  {
+    "id": "f2GyaNTs5Z",
+    "index": 17,
+    "slide": 18,
+    "elements": [
+      {
+        "type": "image",
+        "src": "./images\\slide17_img130.png",
+        "hasImage": true,
+        "elementIndex": 0
+      },
+      {
+        "type": "shape",
+        "width": 852,
+        "height": 70,
+        "left": 46.55811023622047,
+        "top": 214.96629921259841,
+        "content": "Etiboringiz uchun rahmat!",
+        "fontSize": 60,
+        "maxCharacters": 10,
+        "elementIndex": 2
+      }
+    ],
+    "note": ""
+  }
+]

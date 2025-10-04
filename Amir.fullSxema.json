@@ -132,7 +132,7 @@
             "style": "solid"
           },
           "text": {
-            "content": "<p style=\"text-align: center;\"><span style=\"color: #45464D;font-size: 30.0px;font-family: Caveat Brush;\">Nerv tizimi o'smalari</span></p>",
+            "content": "<p style=\"text-align: center;\"><span style=\"color: #45464D;font-size: 30.0px;font-family: Caveat Brush;\">Nerv tizimining o'smalari:</span></p>",
             "defaultFontName": "Caveat Brush",
             "defaultColor": "rgb(69, 70, 77)",
             "align": "top"
@@ -1058,7 +1058,7 @@
             "style": "solid"
           },
           "text": {
-            "content": "<p style=\"text-align: left;\"><span style=\"color: #45464D;font-size: 20.0px;font-family: Caveat Brush;\">1. Nerv tizimi o'smalari haqida umumiy ma'lumot</span></p>",
+            "content": "<p style=\"text-align: left;\"><span style=\"color: #45464D;font-size: 20.0px;font-family: Caveat Brush;\">1. Nerv tizimining o'smalari: Tushuncha va Turlari</span></p>",
             "defaultFontName": "Caveat Brush",
             "defaultColor": "rgb(69, 70, 77)",
             "align": "top"
@@ -1117,7 +1117,7 @@
             "style": "solid"
           },
           "text": {
-            "content": "<p style=\"text-align: left;\"><span style=\"color: #45464D;font-size: 20.0px;font-family: Caveat Brush;\">2. Nerv tizimi o'smalari turlari va belgilar</span></p>",
+            "content": "<p style=\"text-align: left;\"><span style=\"color: #45464D;font-size: 20.0px;font-family: Caveat Brush;\">2. Nerv tizimi o'smalarining Belgilari va Diagnostika</span></p>",
             "defaultFontName": "Caveat Brush",
             "defaultColor": "rgb(69, 70, 77)",
             "align": "top"
@@ -1176,7 +1176,7 @@
             "style": "solid"
           },
           "text": {
-            "content": "<p style=\"text-align: left;\"><span style=\"color: #45464D;font-size: 20.0px;font-family: Caveat Brush;\">3. Nerv tizimi o'smalarini davolash usullari</span></p>",
+            "content": "<p style=\"text-align: left;\"><span style=\"color: #45464D;font-size: 20.0px;font-family: Caveat Brush;\">3. Nerv tizimi o'smalarining Davolash Usullari</span></p>",
             "defaultFontName": "Caveat Brush",
             "defaultColor": "rgb(69, 70, 77)",
             "align": "top"
@@ -1306,400 +1306,6 @@
       "remark": ""
     },
     {
-      "id": "fW2hnyR_rB",
-      "elements": [
-        {
-          "type": "image",
-          "id": "wV1r0YYSnh",
-          "src": "./images\\slide4_img51.png",
-          "width": 960,
-          "height": 540,
-          "left": 0,
-          "top": 0,
-          "fixedRatio": true,
-          "rotate": 0,
-          "flipH": false,
-          "flipV": false
-        },
-        {
-          "type": "table",
-          "id": "2XLWVHM4kE",
-          "width": 750.3485564304461,
-          "height": 290.96871391076115,
-          "left": 104.82572178477689,
-          "top": 119.37133858267715,
-          "colWidths": [
-            0.23740637771842169,
-            0.2453625051944363,
-            0.2122071002522712,
-            0.3050240168348708
-          ],
-          "rotate": 0,
-          "data": [
-            [
-              {
-                "text": "O'sma nomi",
-                "style": {
-                  "fontname": "Nunito",
-                  "color": "rgb(0, 0, 0)",
-                  "align": "left",
-                  "fontsize": "12.0px",
-                  "backcolor": "#C1C5D4"
-                }
-              },
-              {
-                "text": "Turi",
-                "style": {
-                  "fontname": "Nunito",
-                  "color": "rgb(0, 0, 0)",
-                  "align": "left",
-                  "fontsize": "12.0px",
-                  "backcolor": "#C1C5D4"
-                }
-              },
-              {
-                "text": "Joylashuvi",
-                "style": {
-                  "fontname": "Nunito",
-                  "color": "rgb(0, 0, 0)",
-                  "align": "left",
-                  "fontsize": "12.0px",
-                  "backcolor": "#C1C5D4"
-                }
-              }
-            ],
-            [
-              {
-                "text": "Astrositoma",
-                "style": {
-                  "fontname": "Calibri",
-                  "color": "rgb(0, 0, 0)",
-                  "align": "left",
-                  "fontsize": "12.0px"
-                }
-              },
-              {
-                "text": "Benign",
-                "style": {
-                  "fontname": "Calibri",
-                  "color": "rgb(0, 0, 0)",
-                  "align": "left",
-                  "fontsize": "12.0px"
-                }
-              },
-              {
-                "text": "Miya",
-                "style": {
-                  "fontname": "Calibri",
-                  "color": "rgb(0, 0, 0)",
-                  "align": "left",
-                  "fontsize": "12.0px"
-                }
-              }
-            ],
-            [
-              {
-                "text": "Meningioma",
-                "style": {
-                  "fontname": "Calibri",
-                  "color": "rgb(0, 0, 0)",
-                  "align": "left",
-                  "fontsize": "12.0px"
-                }
-              },
-              {
-                "text": "Benign",
-                "style": {
-                  "fontname": "Calibri",
-                  "color": "rgb(0, 0, 0)",
-                  "align": "left",
-                  "fontsize": "12.0px"
-                }
-              },
-              {
-                "text": "Miya qoplamasi",
-                "style": {
-                  "fontname": "Calibri",
-                  "color": "rgb(0, 0, 0)",
-                  "align": "left",
-                  "fontsize": "12.0px"
-                }
-              }
-            ],
-            [
-              {
-                "text": "Neuroblastoma",
-                "style": {
-                  "fontname": "Calibri",
-                  "color": "rgb(0, 0, 0)",
-                  "align": "left",
-                  "fontsize": "12.0px"
-                }
-              },
-              {
-                "text": "Malign",
-                "style": {
-                  "fontname": "Calibri",
-                  "color": "rgb(0, 0, 0)",
-                  "align": "left",
-                  "fontsize": "12.0px"
-                }
-              },
-              {
-                "text": "Nerv tizimi",
-                "style": {
-                  "fontname": "Calibri",
-                  "color": "rgb(0, 0, 0)",
-                  "align": "left",
-                  "fontsize": "12.0px"
-                }
-              }
-            ]
-          ],
-          "outline": {
-            "width": 0.5,
-            "style": "solid",
-            "color": "#000000"
-          },
-          "cellMinHeight": 48.4948031496063
-        },
-        {
-          "type": "shape",
-          "id": "AA6IOXQvK2",
-          "width": 776.4724409448818,
-          "height": 70,
-          "left": 91.76377952755905,
-          "top": 25.85805774278215,
-          "viewBox": [
-            582.3543307086613,
-            52.5
-          ],
-          "path": " M0,0 L582.3543307086613,0 L582.3543307086613,52.5 L0,52.5z",
-          "fill": "#00000000",
-          "fixedRatio": false,
-          "rotate": 0,
-          "outline": {
-            "color": "#000000",
-            "width": 0,
-            "style": "solid"
-          },
-          "text": {
-            "content": "",
-            "defaultFontName": "Arial",
-            "defaultColor": "#000000",
-            "align": "top"
-          },
-          "flipH": false,
-          "flipV": false,
-          "special": false
-        },
-        {
-          "type": "shape",
-          "id": "qZRGMmOdy8",
-          "width": 776.4724409448818,
-          "height": 70,
-          "left": 91.76377952755905,
-          "top": 25.85805774278215,
-          "viewBox": [
-            200,
-            200
-          ],
-          "path": "M 0 0 L 200 0 L 200 200 L 0 200 Z",
-          "fill": "",
-          "fixedRatio": false,
-          "rotate": 0,
-          "outline": {
-            "color": "#000000",
-            "width": 0,
-            "style": "solid"
-          },
-          "text": {
-            "content": "<p style=\"text-align: center;\"><span style=\"color: #45464D;font-size: 40.0px;font-family: Caveat Brush;\">Nerv tizimi o'smalari turlari</span></p>",
-            "defaultFontName": "Caveat Brush",
-            "defaultColor": "rgb(69, 70, 77)",
-            "align": "top"
-          },
-          "flipH": false,
-          "flipV": false
-        },
-        {
-          "type": "image",
-          "id": "T3jQ-47DAP",
-          "src": "./images\\slide4_img52.png",
-          "width": 125.80167979002624,
-          "height": 179.25112860892386,
-          "left": 833.2307611548556,
-          "top": 206.77679790026244,
-          "fixedRatio": true,
-          "rotate": -30,
-          "flipH": false,
-          "flipV": false
-        },
-        {
-          "type": "shape",
-          "id": "4SudpM7XJA",
-          "width": 125.80167979002624,
-          "height": 179.25112860892386,
-          "left": 833.2307611548556,
-          "top": 206.77679790026244,
-          "viewBox": [
-            94.35125984251968,
-            134.4383464566929
-          ],
-          "path": " M0,0 L94.35125984251968,0 L94.35125984251968,134.4383464566929 L0,134.4383464566929z",
-          "fill": "#00000000",
-          "fixedRatio": false,
-          "rotate": -30,
-          "outline": {
-            "color": "#000000",
-            "width": 0,
-            "style": "solid"
-          },
-          "text": {
-            "content": "",
-            "defaultFontName": "Arial",
-            "defaultColor": "#000000",
-            "align": "top"
-          },
-          "flipH": false,
-          "flipV": false,
-          "special": false
-        },
-        {
-          "type": "shape",
-          "id": "pnUwmNwAEZ",
-          "width": 125.80167979002624,
-          "height": 179.25112860892386,
-          "left": 833.2307611548556,
-          "top": 206.77679790026244,
-          "viewBox": [
-            200,
-            200
-          ],
-          "path": "M 0 0 L 200 0 L 200 200 L 0 200 Z",
-          "fill": "",
-          "fixedRatio": false,
-          "rotate": -30,
-          "outline": {
-            "color": "#000000",
-            "width": 0,
-            "style": "solid"
-          },
-          "text": {
-            "content": "<p style=\"text-align: left;\"><span style=\"font-size: 24.0px;font-family: Calibri;\">&nbsp;</span></p>",
-            "defaultFontName": "Calibri",
-            "defaultColor": "#000000",
-            "align": "top"
-          },
-          "flipH": false,
-          "flipV": false
-        },
-        {
-          "type": "image",
-          "id": "Q5QCcaU4Zs",
-          "src": "./images\\slide4_img53.png",
-          "width": 125.80167979002624,
-          "height": 179.25112860892386,
-          "left": 833.2307611548556,
-          "top": 206.77679790026244,
-          "fixedRatio": true,
-          "rotate": -30,
-          "flipH": false,
-          "flipV": false
-        },
-        {
-          "type": "image",
-          "id": "6FZtW8aJPI",
-          "src": "./images\\slide4_img54.png",
-          "width": 114.04913385826771,
-          "height": 162.50540682414697,
-          "left": -29.68482939632546,
-          "top": 362.46309711286085,
-          "fixedRatio": true,
-          "rotate": 77,
-          "flipH": false,
-          "flipV": false
-        },
-        {
-          "type": "shape",
-          "id": "e4T0KuVImH",
-          "width": 114.04913385826771,
-          "height": 162.50540682414697,
-          "left": -29.68482939632546,
-          "top": 362.46309711286085,
-          "viewBox": [
-            85.53685039370079,
-            121.87905511811023
-          ],
-          "path": " M0,0 L85.53685039370079,0 L85.53685039370079,121.87905511811023 L0,121.87905511811023z",
-          "fill": "#00000000",
-          "fixedRatio": false,
-          "rotate": 77,
-          "outline": {
-            "color": "#000000",
-            "width": 0,
-            "style": "solid"
-          },
-          "text": {
-            "content": "",
-            "defaultFontName": "Arial",
-            "defaultColor": "#000000",
-            "align": "top"
-          },
-          "flipH": false,
-          "flipV": false,
-          "special": false
-        },
-        {
-          "type": "shape",
-          "id": "LDXqrq9O8a",
-          "width": 114.04913385826771,
-          "height": 162.50540682414697,
-          "left": -29.68482939632546,
-          "top": 362.46309711286085,
-          "viewBox": [
-            200,
-            200
-          ],
-          "path": "M 0 0 L 200 0 L 200 200 L 0 200 Z",
-          "fill": "",
-          "fixedRatio": false,
-          "rotate": 77,
-          "outline": {
-            "color": "#000000",
-            "width": 0,
-            "style": "solid"
-          },
-          "text": {
-            "content": "<p style=\"text-align: left;\"><span style=\"font-size: 24.0px;font-family: Calibri;\">&nbsp;</span></p>",
-            "defaultFontName": "Calibri",
-            "defaultColor": "#000000",
-            "align": "top"
-          },
-          "flipH": false,
-          "flipV": false
-        },
-        {
-          "type": "image",
-          "id": "bqCpdJV50E",
-          "src": "./images\\slide4_img55.png",
-          "width": 114.04913385826771,
-          "height": 162.50540682414697,
-          "left": -29.68482939632546,
-          "top": 362.46309711286085,
-          "fixedRatio": true,
-          "rotate": 77,
-          "flipH": false,
-          "flipV": false
-        }
-      ],
-      "background": {
-        "type": "solid",
-        "color": "#F1F1F1"
-      },
-      "remark": ""
-    },
-    {
       "id": "UIV9L1AYyp",
       "elements": [
         {
@@ -1718,7 +1324,7 @@
         {
           "type": "image",
           "id": "-QWFecJqYu",
-          "src": "./images\\slide5_img57.png",
+          "src": "https://cdn.storymd.com/optimized/pqD9QwIPAa/original.jpg",
           "width": 241.40094488188973,
           "height": 241.40094488188973,
           "left": 355.4745406824146,
@@ -2276,7 +1882,7 @@
             "style": "solid"
           },
           "text": {
-            "content": "<p style=\"text-align: center;\"><span style=\"color: #45464D;font-size: 40.0px;font-family: Caveat Brush;\">Nerv tizimi o'smalari turlari</span></p>",
+            "content": "<p style=\"text-align: center;\"><span style=\"color: #45464D;font-size: 40.0px;font-family: Caveat Brush;\">Tumor Turlari va Belgilari</span></p>",
             "defaultFontName": "Caveat Brush",
             "defaultColor": "rgb(69, 70, 77)",
             "align": "top"
@@ -2335,7 +1941,7 @@
             "style": "solid"
           },
           "text": {
-            "content": "<p style=\"text-align: left;\"><span style=\"color: #000000;font-size: 13.0px;font-family: Nunito;\">Nerv tizimi o'smalari asosan uch turga bo'linadi: benign, malign, va metastatik. Har bir tur o'ziga xos belgilarga ega.</span></p>",
+            "content": "<p style=\"text-align: left;\"><span style=\"color: #000000;font-size: 13.0px;font-family: Nunito;\">Tumorlar organizmda to'qimalarning o'sishi natijasida paydo bo'ladi. Ular yaxshi yoki yomon bo'lishi mumkin.</span></p>",
             "defaultFontName": "Nunito",
             "defaultColor": "rgb(0, 0, 0)",
             "align": "top"
@@ -2394,7 +2000,7 @@
             "style": "solid"
           },
           "text": {
-            "content": "<p style=\"text-align: left;\"><span style=\"color: #000000;font-size: 13.0px;font-family: Nunito;\">Belgilari orasida bosh og'rig'i, ko'ngil aynishi, va asabiylashish kabi simptomlar mavjud. Ular kasallikning turiga qarab o'zgaradi.</span></p>",
+            "content": "<p style=\"text-align: left;\"><span style=\"color: #000000;font-size: 13.0px;font-family: Nunito;\">Yomon o'simliklar tez sur'atlarda o'sadi va atrofdagi to'qimalarga zarar etkazadi. Belgilari orasida og'riq, shish va qon ketish bor.</span></p>",
             "defaultFontName": "Nunito",
             "defaultColor": "rgb(0, 0, 0)",
             "align": "top"
@@ -2453,7 +2059,7 @@
             "style": "solid"
           },
           "text": {
-            "content": "<p style=\"text-align: center;\"><span style=\"color: #000000;font-size: 13.0px;font-family: Nunito;\">O'smalarni aniqlash uchun turli tadqiqot usullari qo'llaniladi, masalan, tomografiya va biyopsiya. Bu usullar kasallikni erta aniqlashda muhimdir.</span></p>",
+            "content": "<p style=\"text-align: center;\"><span style=\"color: #000000;font-size: 13.0px;font-family: Nunito;\">Yaxshi o'simliklar esa sekin o'sadi va ko'pincha asoratlar keltirib chiqarmaydi. Ularning belgilari kamroq sezilarli bo'lishi mumkin.</span></p>",
             "defaultFontName": "Nunito",
             "defaultColor": "rgb(0, 0, 0)",
             "align": "top"
@@ -2487,7 +2093,7 @@
         {
           "type": "image",
           "id": "juMLTSpHR4",
-          "src": "./images\\slide6_img70.png",
+          "src": "https://img.freepik.com/premium-vector/vector-isolated-illustration-benign-tumor-tissue-medical-diagram-poster-educational-science-medical-use-biological-icon-logo_206049-1637.jpg?w=2000",
           "width": 305.5349081364829,
           "height": 389.89375328083986,
           "left": 327.2325459317585,
@@ -2548,7 +2154,7 @@
             "style": "solid"
           },
           "text": {
-            "content": "<p style=\"text-align: center;\"><span style=\"color: #45464D;font-size: 40.0px;font-family: Caveat Brush;\">Nerv tizimi o'smalari turlari</span></p>",
+            "content": "<p style=\"text-align: center;\"><span style=\"color: #45464D;font-size: 40.0px;font-family: Caveat Brush;\">Tumor Tasnifi Tushuntirish</span></p>",
             "defaultFontName": "Caveat Brush",
             "defaultColor": "rgb(69, 70, 77)",
             "align": "top"
@@ -2607,7 +2213,7 @@
             "style": "solid"
           },
           "text": {
-            "content": "<p style=\"text-align: left;\"><span style=\"color: #000000;font-size: 13.0px;font-family: Nunito;\">Nerv tizimi o'smalari asosan o'smalar, o'simliklar va hujayralardan iboratdir. Ular turli xil belgilarga ega bo'lishi mumkin.</span></p>",
+            "content": "<p style=\"text-align: left;\"><span style=\"color: #000000;font-size: 13.0px;font-family: Nunito;\">Tumorlar organizmda hujayralarning nazoratsiz o'sishi natijasida paydo bo'ladi.</span></p>",
             "defaultFontName": "Nunito",
             "defaultColor": "rgb(0, 0, 0)",
             "align": "top"
@@ -2666,7 +2272,7 @@
             "style": "solid"
           },
           "text": {
-            "content": "<p style=\"text-align: center;\"><span style=\"color: #000000;font-size: 15.0px;font-family: Nunito;font-weight: bold;\">O'smalarning turlari</span></p>",
+            "content": "<p style=\"text-align: center;\"><span style=\"color: #000000;font-size: 15.0px;font-family: Nunito;font-weight: bold;\">Asosiy turdagi tumorlar: benign va malign.</span></p>",
             "defaultFontName": "Nunito",
             "defaultColor": "rgb(0, 0, 0)",
             "align": "top"
@@ -2725,7 +2331,7 @@
             "style": "solid"
           },
           "text": {
-            "content": "<p style=\"text-align: center;\"><span style=\"color: #000000;font-size: 13.0px;font-family: Nunito;\">O'smalar benign va malign bo'lishi mumkin. Har bir turi o'ziga xos alomatlarni ko'rsatadi.</span></p>",
+            "content": "<p style=\"text-align: center;\"><span style=\"color: #000000;font-size: 13.0px;font-family: Nunito;\">Malign tumorlar: saraton hujayralari o'sib, boshqa to'qimalarga tarqaladi.</span></p>",
             "defaultFontName": "Nunito",
             "defaultColor": "rgb(0, 0, 0)",
             "align": "top"
@@ -2784,7 +2390,7 @@
             "style": "solid"
           },
           "text": {
-            "content": "<p style=\"text-align: center;\"><span style=\"color: #000000;font-size: 15.0px;font-family: Nunito;font-weight: bold;\">O'smalar belgilari</span></p>",
+            "content": "<p style=\"text-align: center;\"><span style=\"color: #000000;font-size: 15.0px;font-family: Nunito;font-weight: bold;\">Benign tumorlar: o'sish tezligi sekin, boshqa to'qimalarga tarqalmaydi.</span></p>",
             "defaultFontName": "Nunito",
             "defaultColor": "rgb(0, 0, 0)",
             "align": "top"
@@ -2843,7 +2449,7 @@
             "style": "solid"
           },
           "text": {
-            "content": "<p style=\"text-align: left;\"><span style=\"color: #000000;font-size: 13.0px;font-family: Nunito;\">Asosiy belgilari: og'riq, shish va harakat cheklanishi.</span></p>",
+            "content": "<p style=\"text-align: left;\"><span style=\"color: #000000;font-size: 13.0px;font-family: Nunito;\">Tumorlarning klassifikatsiyasi: joylashuvi, turiga ko'ra.</span></p>",
             "defaultFontName": "Nunito",
             "defaultColor": "rgb(0, 0, 0)",
             "align": "top"
@@ -2902,7 +2508,7 @@
             "style": "solid"
           },
           "text": {
-            "content": "<p style=\"text-align: center;\"><span style=\"color: #000000;font-size: 15.0px;font-family: Nunito;font-weight: bold;\">O'smalarni aniqlash usullari</span></p>",
+            "content": "<p style=\"text-align: center;\"><span style=\"color: #000000;font-size: 15.0px;font-family: Nunito;font-weight: bold;\">O'simta turlari: sarkoma, karcinoma, leiomiyoma. </span></p>",
             "defaultFontName": "Nunito",
             "defaultColor": "rgb(0, 0, 0)",
             "align": "top"
@@ -2961,7 +2567,7 @@
             "style": "solid"
           },
           "text": {
-            "content": "<p style=\"text-align: center;\"><span style=\"color: #000000;font-size: 13.0px;font-family: Nunito;\">Tahlil: tomografiya, rentgen va biopsiya. Bu usullar o'smalarni aniqlashda muhim.</span></p>",
+            "content": "<p style=\"text-align: center;\"><span style=\"color: #000000;font-size: 13.0px;font-family: Nunito;\">Tumorlar o'zaro turlicha belgilarga ega, ko'p holatda alomatlar paydo bo'ladi.</span></p>",
             "defaultFontName": "Nunito",
             "defaultColor": "rgb(0, 0, 0)",
             "align": "top"
@@ -3020,7 +2626,7 @@
             "style": "solid"
           },
           "text": {
-            "content": "<p style=\"text-align: center;\"><span style=\"color: #000000;font-size: 15.0px;font-family: Nunito;font-weight: bold;\">Davolash usullari</span></p>",
+            "content": "<p style=\"text-align: center;\"><span style=\"color: #000000;font-size: 15.0px;font-family: Nunito;font-weight: bold;\">Tashxis va davolash usullari: jarrohlik, kimyoterapiya, radiatsiya.</span></p>",
             "defaultFontName": "Nunito",
             "defaultColor": "rgb(0, 0, 0)",
             "align": "top"
@@ -3036,12 +2642,406 @@
       "remark": ""
     },
     {
-      "id": "A_Q31dICg1",
+      "id": "fW2hnyR_rB",
       "elements": [
         {
           "type": "image",
-          "id": "BbaafrlYgm",
-          "src": "./images\\slide12_img108.png",
+          "id": "wV1r0YYSnh",
+          "src": "./images\\slide4_img51.png",
+          "width": 960,
+          "height": 540,
+          "left": 0,
+          "top": 0,
+          "fixedRatio": true,
+          "rotate": 0,
+          "flipH": false,
+          "flipV": false
+        },
+        {
+          "type": "table",
+          "id": "2XLWVHM4kE",
+          "width": 750.3485564304461,
+          "height": 290.96871391076115,
+          "left": 104.82572178477689,
+          "top": 119.37133858267715,
+          "colWidths": [
+            0.23740637771842169,
+            0.2453625051944363,
+            0.2122071002522712,
+            0.3050240168348708
+          ],
+          "rotate": 0,
+          "data": [
+            [
+              {
+                "text": "O'sma nomi",
+                "style": {
+                  "fontname": "Nunito",
+                  "color": "rgb(0, 0, 0)",
+                  "align": "left",
+                  "fontsize": "12.0px",
+                  "backcolor": "#C1C5D4"
+                }
+              },
+              {
+                "text": "Joylashuvi",
+                "style": {
+                  "fontname": "Nunito",
+                  "color": "rgb(0, 0, 0)",
+                  "align": "left",
+                  "fontsize": "12.0px",
+                  "backcolor": "#C1C5D4"
+                }
+              },
+              {
+                "text": "Sintomlar",
+                "style": {
+                  "fontname": "Nunito",
+                  "color": "rgb(0, 0, 0)",
+                  "align": "left",
+                  "fontsize": "12.0px",
+                  "backcolor": "#C1C5D4"
+                }
+              }
+            ],
+            [
+              {
+                "text": "Meningioma",
+                "style": {
+                  "fontname": "Calibri",
+                  "color": "rgb(0, 0, 0)",
+                  "align": "left",
+                  "fontsize": "12.0px"
+                }
+              },
+              {
+                "text": "Meninges",
+                "style": {
+                  "fontname": "Calibri",
+                  "color": "rgb(0, 0, 0)",
+                  "align": "left",
+                  "fontsize": "12.0px"
+                }
+              },
+              {
+                "text": "Bosh og'rig'i, ko'rish muammolari",
+                "style": {
+                  "fontname": "Calibri",
+                  "color": "rgb(0, 0, 0)",
+                  "align": "left",
+                  "fontsize": "12.0px"
+                }
+              }
+            ],
+            [
+              {
+                "text": "Astrositoma",
+                "style": {
+                  "fontname": "Calibri",
+                  "color": "rgb(0, 0, 0)",
+                  "align": "left",
+                  "fontsize": "12.0px"
+                }
+              },
+              {
+                "text": "Miya",
+                "style": {
+                  "fontname": "Calibri",
+                  "color": "rgb(0, 0, 0)",
+                  "align": "left",
+                  "fontsize": "12.0px"
+                }
+              },
+              {
+                "text": "Kognitiv o'zgarishlar, o'zini tutish muammolari",
+                "style": {
+                  "fontname": "Calibri",
+                  "color": "rgb(0, 0, 0)",
+                  "align": "left",
+                  "fontsize": "12.0px"
+                }
+              }
+            ],
+            [
+              {
+                "text": "Glioblastoma",
+                "style": {
+                  "fontname": "Calibri",
+                  "color": "rgb(0, 0, 0)",
+                  "align": "left",
+                  "fontsize": "12.0px"
+                }
+              },
+              {
+                "text": "Miya",
+                "style": {
+                  "fontname": "Calibri",
+                  "color": "rgb(0, 0, 0)",
+                  "align": "left",
+                  "fontsize": "12.0px"
+                }
+              },
+              {
+                "text": "Tez o'sish, bosh og'rig'i, muvofiqlik yo'qligi",
+                "style": {
+                  "fontname": "Calibri",
+                  "color": "rgb(0, 0, 0)",
+                  "align": "left",
+                  "fontsize": "12.0px"
+                }
+              }
+            ]
+          ],
+          "outline": {
+            "width": 0.5,
+            "style": "solid",
+            "color": "#000000"
+          },
+          "cellMinHeight": 48.4948031496063
+        },
+        {
+          "type": "shape",
+          "id": "AA6IOXQvK2",
+          "width": 776.4724409448818,
+          "height": 70,
+          "left": 91.76377952755905,
+          "top": 25.85805774278215,
+          "viewBox": [
+            582.3543307086613,
+            52.5
+          ],
+          "path": " M0,0 L582.3543307086613,0 L582.3543307086613,52.5 L0,52.5z",
+          "fill": "#00000000",
+          "fixedRatio": false,
+          "rotate": 0,
+          "outline": {
+            "color": "#000000",
+            "width": 0,
+            "style": "solid"
+          },
+          "text": {
+            "content": "",
+            "defaultFontName": "Arial",
+            "defaultColor": "#000000",
+            "align": "top"
+          },
+          "flipH": false,
+          "flipV": false,
+          "special": false
+        },
+        {
+          "type": "shape",
+          "id": "qZRGMmOdy8",
+          "width": 776.4724409448818,
+          "height": 70,
+          "left": 91.76377952755905,
+          "top": 25.85805774278215,
+          "viewBox": [
+            200,
+            200
+          ],
+          "path": "M 0 0 L 200 0 L 200 200 L 0 200 Z",
+          "fill": "",
+          "fixedRatio": false,
+          "rotate": 0,
+          "outline": {
+            "color": "#000000",
+            "width": 0,
+            "style": "solid"
+          },
+          "text": {
+            "content": "<p style=\"text-align: center;\"><span style=\"color: #45464D;font-size: 40.0px;font-family: Caveat Brush;\">Nerv tizimining o'smalari haqida ma'lumotlar</span></p>",
+            "defaultFontName": "Caveat Brush",
+            "defaultColor": "rgb(69, 70, 77)",
+            "align": "top"
+          },
+          "flipH": false,
+          "flipV": false
+        },
+        {
+          "type": "image",
+          "id": "T3jQ-47DAP",
+          "src": "./images\\slide4_img52.png",
+          "width": 125.80167979002624,
+          "height": 179.25112860892386,
+          "left": 833.2307611548556,
+          "top": 206.77679790026244,
+          "fixedRatio": true,
+          "rotate": -30,
+          "flipH": false,
+          "flipV": false
+        },
+        {
+          "type": "shape",
+          "id": "4SudpM7XJA",
+          "width": 125.80167979002624,
+          "height": 179.25112860892386,
+          "left": 833.2307611548556,
+          "top": 206.77679790026244,
+          "viewBox": [
+            94.35125984251968,
+            134.4383464566929
+          ],
+          "path": " M0,0 L94.35125984251968,0 L94.35125984251968,134.4383464566929 L0,134.4383464566929z",
+          "fill": "#00000000",
+          "fixedRatio": false,
+          "rotate": -30,
+          "outline": {
+            "color": "#000000",
+            "width": 0,
+            "style": "solid"
+          },
+          "text": {
+            "content": "",
+            "defaultFontName": "Arial",
+            "defaultColor": "#000000",
+            "align": "top"
+          },
+          "flipH": false,
+          "flipV": false,
+          "special": false
+        },
+        {
+          "type": "shape",
+          "id": "pnUwmNwAEZ",
+          "width": 125.80167979002624,
+          "height": 179.25112860892386,
+          "left": 833.2307611548556,
+          "top": 206.77679790026244,
+          "viewBox": [
+            200,
+            200
+          ],
+          "path": "M 0 0 L 200 0 L 200 200 L 0 200 Z",
+          "fill": "",
+          "fixedRatio": false,
+          "rotate": -30,
+          "outline": {
+            "color": "#000000",
+            "width": 0,
+            "style": "solid"
+          },
+          "text": {
+            "content": "<p style=\"text-align: left;\"><span style=\"font-size: 24.0px;font-family: Calibri;\">&nbsp;</span></p>",
+            "defaultFontName": "Calibri",
+            "defaultColor": "#000000",
+            "align": "top"
+          },
+          "flipH": false,
+          "flipV": false
+        },
+        {
+          "type": "image",
+          "id": "Q5QCcaU4Zs",
+          "src": "./images\\slide4_img53.png",
+          "width": 125.80167979002624,
+          "height": 179.25112860892386,
+          "left": 833.2307611548556,
+          "top": 206.77679790026244,
+          "fixedRatio": true,
+          "rotate": -30,
+          "flipH": false,
+          "flipV": false
+        },
+        {
+          "type": "image",
+          "id": "6FZtW8aJPI",
+          "src": "./images\\slide4_img54.png",
+          "width": 114.04913385826771,
+          "height": 162.50540682414697,
+          "left": -29.68482939632546,
+          "top": 362.46309711286085,
+          "fixedRatio": true,
+          "rotate": 77,
+          "flipH": false,
+          "flipV": false
+        },
+        {
+          "type": "shape",
+          "id": "e4T0KuVImH",
+          "width": 114.04913385826771,
+          "height": 162.50540682414697,
+          "left": -29.68482939632546,
+          "top": 362.46309711286085,
+          "viewBox": [
+            85.53685039370079,
+            121.87905511811023
+          ],
+          "path": " M0,0 L85.53685039370079,0 L85.53685039370079,121.87905511811023 L0,121.87905511811023z",
+          "fill": "#00000000",
+          "fixedRatio": false,
+          "rotate": 77,
+          "outline": {
+            "color": "#000000",
+            "width": 0,
+            "style": "solid"
+          },
+          "text": {
+            "content": "",
+            "defaultFontName": "Arial",
+            "defaultColor": "#000000",
+            "align": "top"
+          },
+          "flipH": false,
+          "flipV": false,
+          "special": false
+        },
+        {
+          "type": "shape",
+          "id": "LDXqrq9O8a",
+          "width": 114.04913385826771,
+          "height": 162.50540682414697,
+          "left": -29.68482939632546,
+          "top": 362.46309711286085,
+          "viewBox": [
+            200,
+            200
+          ],
+          "path": "M 0 0 L 200 0 L 200 200 L 0 200 Z",
+          "fill": "",
+          "fixedRatio": false,
+          "rotate": 77,
+          "outline": {
+            "color": "#000000",
+            "width": 0,
+            "style": "solid"
+          },
+          "text": {
+            "content": "<p style=\"text-align: left;\"><span style=\"font-size: 24.0px;font-family: Calibri;\">&nbsp;</span></p>",
+            "defaultFontName": "Calibri",
+            "defaultColor": "#000000",
+            "align": "top"
+          },
+          "flipH": false,
+          "flipV": false
+        },
+        {
+          "type": "image",
+          "id": "bqCpdJV50E",
+          "src": "./images\\slide4_img55.png",
+          "width": 114.04913385826771,
+          "height": 162.50540682414697,
+          "left": -29.68482939632546,
+          "top": 362.46309711286085,
+          "fixedRatio": true,
+          "rotate": 77,
+          "flipH": false,
+          "flipV": false
+        }
+      ],
+      "background": {
+        "type": "solid",
+        "color": "#F1F1F1"
+      },
+      "remark": ""
+    },
+    {
+      "id": "4XLUCMzhDz",
+      "elements": [
+        {
+          "type": "image",
+          "id": "30Siixfl_J",
+          "src": "https://islife.uz/wp-content/uploads/2023/02/birinchi-erdam-768x349.png",
           "width": 960,
           "height": 540,
           "left": 0,
@@ -3053,42 +3053,29 @@
         },
         {
           "type": "image",
-          "id": "siVNBMcbRp",
-          "src": "./images\\slide12_img109.jpeg",
-          "width": 960,
-          "height": 196.56818897637794,
-          "left": 0,
-          "top": 0,
+          "id": "DPN4Ca5rmN",
+          "src": "./images\\slide11_img107.png",
+          "width": 266.934593175853,
+          "height": 319.8562729658792,
+          "left": 639.065406824147,
+          "top": 176.7030971128609,
           "fixedRatio": true,
           "rotate": 0,
           "flipH": false,
-          "flipV": false,
-          "clip": {
-            "shape": "rect",
-            "range": [
-              [
-                0,
-                4.098
-              ],
-              [
-                54.253,
-                18.596999999999994
-              ]
-            ]
-          }
+          "flipV": false
         },
         {
           "type": "shape",
-          "id": "NTsBjOAawE",
-          "width": 821.7174803149605,
+          "id": "D-ha4DKxaK",
+          "width": 776.4740157480314,
           "height": 50,
-          "left": 64.47622047244093,
-          "top": 200.80902887139104,
+          "left": 91.76293963254592,
+          "top": 54.442834645669286,
           "viewBox": [
-            616.2881102362205,
+            582.3555118110237,
             37.50000000000001
           ],
-          "path": " M0,0 L616.2881102362203,0 L616.2881102362203,37.50000000000001 L0,37.50000000000001z",
+          "path": " M0,0 L582.3555118110236,0 L582.3555118110236,37.50000000000001 L0,37.50000000000001z",
           "fill": "#00000000",
           "fixedRatio": false,
           "rotate": 0,
@@ -3109,11 +3096,11 @@
         },
         {
           "type": "shape",
-          "id": "6Q74fTJGLX",
-          "width": 821.7174803149605,
+          "id": "PvIJwzNg4_",
+          "width": 776.4740157480314,
           "height": 50,
-          "left": 64.47622047244093,
-          "top": 200.80902887139104,
+          "left": 91.76293963254592,
+          "top": 54.442834645669286,
           "viewBox": [
             200,
             200
@@ -3128,7 +3115,7 @@
             "style": "solid"
           },
           "text": {
-            "content": "<p style=\"text-align: center;\"><span style=\"color: #45464D;font-size: 40.0px;font-family: Caveat Brush;\">Nerv tizimi o'smalarini davolash usullari</span></p>",
+            "content": "<p style=\"text-align: center;\"><span style=\"color: #45464D;font-size: 40.0px;font-family: Caveat Brush;\">Davolash Usullari</span></p>",
             "defaultFontName": "Caveat Brush",
             "defaultColor": "rgb(69, 70, 77)",
             "align": "top"
@@ -3138,16 +3125,16 @@
         },
         {
           "type": "shape",
-          "id": "nlgqIyuwnE",
-          "width": 816.7562204724409,
-          "height": 257.68745406824144,
-          "left": 69.43737532808399,
-          "top": 250.80902887139104,
+          "id": "C2COZAq09V",
+          "width": 179.92125984251965,
+          "height": 58,
+          "left": 74.11044619422572,
+          "top": 170.45784776902886,
           "viewBox": [
-            612.5671653543308,
-            193.26559055118113
+            134.94094488188975,
+            43.5
           ],
-          "path": " M0,0 L612.5671653543305,0 L612.5671653543305,193.26559055118113 L0,193.26559055118113z",
+          "path": " M0,0 L134.94094488188975,0 L134.94094488188975,43.5 L0,43.5z",
           "fill": "#00000000",
           "fixedRatio": false,
           "rotate": 0,
@@ -3168,11 +3155,11 @@
         },
         {
           "type": "shape",
-          "id": "zTC5c9S-1J",
-          "width": 816.7562204724409,
-          "height": 257.68745406824144,
-          "left": 69.43737532808399,
-          "top": 250.80902887139104,
+          "id": "olMl5jCZG8",
+          "width": 179.92125984251965,
+          "height": 58,
+          "left": 74.11044619422572,
+          "top": 170.45784776902886,
           "viewBox": [
             200,
             200
@@ -3187,9 +3174,481 @@
             "style": "solid"
           },
           "text": {
-            "content": "<p style=\"text-align: left;\"><span style=\"color: #000000;font-size: 13.0px;font-family: Nunito;\">Nerv tizimi o'smalari uchun davolash usullari ko'plab yondashuvlarni o'z ichiga oladi. Eng ommabop usullar qatoriga jarrohlik, radioterapiya va kimyoterapiya kiradi. Har bir usulning o'ziga xos afzalliklari va kamchiliklari mavjud. Jarrohlik asosan o'smani olib tashlashda qo'llaniladi. Radioterapiya o'sma hujayralarini yo'q qilish uchun yuqori energiyali nurlarni ishlatadi. Kimyoterapiya esa dori vositalarini qo'llab, o'sma hujayralarining o'sishini to'xtatishga yordam beradi. Har bir bemor uchun eng mos davolash rejasi individual ravishda belgilanadi.</span></p><p style=\"text-align: left;\"><span style=\"color: #000000;font-size: 13.0px;font-family: Nunito;\"></span></p><p style=\"text-align: left;\"><span style=\"color: #333333;font-size: 24.0px;font-family: Calibri;\">&nbsp;</span></p><p style=\"text-align: left;\"><span style=\"color: #000000;font-size: 13.0px;font-family: Nunito;\"></span></p><p style=\"text-align: left;\"><span style=\"color: #333333;font-size: 24.0px;font-family: Calibri;\">&nbsp;</span></p><p style=\"text-align: left;\"><span style=\"color: #000000;font-size: 13.0px;font-family: Nunito;\"></span></p>",
+            "content": "<p style=\"text-align: center;\"><span style=\"color: #45464D;font-size: 24.0px;font-family: Caveat Brush;\">Birinchi</span></p>",
+            "defaultFontName": "Caveat Brush",
+            "defaultColor": "rgb(69, 70, 77)",
+            "align": "top"
+          },
+          "flipH": false,
+          "flipV": false
+        },
+        {
+          "type": "shape",
+          "id": "RCHYn6raHH",
+          "width": 209.8496587926509,
+          "height": 58,
+          "left": 67.21165354330708,
+          "top": 347.6312860892388,
+          "viewBox": [
+            157.38724409448818,
+            43.5
+          ],
+          "path": " M0,0 L157.38724409448818,0 L157.38724409448818,43.5 L0,43.5z",
+          "fill": "#00000000",
+          "fixedRatio": false,
+          "rotate": 0,
+          "outline": {
+            "color": "#000000",
+            "width": 0,
+            "style": "solid"
+          },
+          "text": {
+            "content": "",
+            "defaultFontName": "Arial",
+            "defaultColor": "#000000",
+            "align": "top"
+          },
+          "flipH": false,
+          "flipV": false,
+          "special": false
+        },
+        {
+          "type": "shape",
+          "id": "bsVxqpG-AJ",
+          "width": 209.8496587926509,
+          "height": 58,
+          "left": 67.21165354330708,
+          "top": 347.6312860892388,
+          "viewBox": [
+            200,
+            200
+          ],
+          "path": "M 0 0 L 200 0 L 200 200 L 0 200 Z",
+          "fill": "",
+          "fixedRatio": false,
+          "rotate": 0,
+          "outline": {
+            "color": "#000000",
+            "width": 0,
+            "style": "solid"
+          },
+          "text": {
+            "content": "<p style=\"text-align: center;\"><span style=\"color: #45464D;font-size: 24.0px;font-family: Caveat Brush;\">Uchinchi</span></p>",
+            "defaultFontName": "Caveat Brush",
+            "defaultColor": "rgb(69, 70, 77)",
+            "align": "top"
+          },
+          "flipH": false,
+          "flipV": false
+        },
+        {
+          "type": "shape",
+          "id": "cUUMsS41pJ",
+          "width": 113.65354330708661,
+          "height": 58,
+          "left": 404.04734908136476,
+          "top": 170.4579527559055,
+          "viewBox": [
+            85.24015748031498,
+            43.50000000000001
+          ],
+          "path": " M0,0 L85.24015748031498,0 L85.24015748031498,43.5 L0,43.5z",
+          "fill": "#00000000",
+          "fixedRatio": false,
+          "rotate": 0,
+          "outline": {
+            "color": "#000000",
+            "width": 0,
+            "style": "solid"
+          },
+          "text": {
+            "content": "",
+            "defaultFontName": "Arial",
+            "defaultColor": "#000000",
+            "align": "top"
+          },
+          "flipH": false,
+          "flipV": false,
+          "special": false
+        },
+        {
+          "type": "shape",
+          "id": "XJOooUJjSA",
+          "width": 113.65354330708661,
+          "height": 58,
+          "left": 404.04734908136476,
+          "top": 170.4579527559055,
+          "viewBox": [
+            200,
+            200
+          ],
+          "path": "M 0 0 L 200 0 L 200 200 L 0 200 Z",
+          "fill": "",
+          "fixedRatio": false,
+          "rotate": 0,
+          "outline": {
+            "color": "#000000",
+            "width": 0,
+            "style": "solid"
+          },
+          "text": {
+            "content": "<p style=\"text-align: center;\"><span style=\"color: #45464D;font-size: 24.0px;font-family: Caveat Brush;\">Ikkinchi</span></p>",
+            "defaultFontName": "Caveat Brush",
+            "defaultColor": "rgb(69, 70, 77)",
+            "align": "top"
+          },
+          "flipH": false,
+          "flipV": false
+        },
+        {
+          "type": "shape",
+          "id": "pmbIHqK42s",
+          "width": 311.691968503937,
+          "height": 58,
+          "left": 301.9310236220472,
+          "top": 347.6312860892388,
+          "viewBox": [
+            233.76897637795275,
+            43.5
+          ],
+          "path": " M0,0 L233.76897637795275,0 L233.76897637795275,43.5 L0,43.5z",
+          "fill": "#00000000",
+          "fixedRatio": false,
+          "rotate": 0,
+          "outline": {
+            "color": "#000000",
+            "width": 0,
+            "style": "solid"
+          },
+          "text": {
+            "content": "",
+            "defaultFontName": "Arial",
+            "defaultColor": "#000000",
+            "align": "top"
+          },
+          "flipH": false,
+          "flipV": false,
+          "special": false
+        },
+        {
+          "type": "shape",
+          "id": "4sj7i7p8LE",
+          "width": 311.691968503937,
+          "height": 58,
+          "left": 301.9310236220472,
+          "top": 347.6312860892388,
+          "viewBox": [
+            200,
+            200
+          ],
+          "path": "M 0 0 L 200 0 L 200 200 L 0 200 Z",
+          "fill": "",
+          "fixedRatio": false,
+          "rotate": 0,
+          "outline": {
+            "color": "#000000",
+            "width": 0,
+            "style": "solid"
+          },
+          "text": {
+            "content": "<p style=\"text-align: center;\"><span style=\"color: #45464D;font-size: 24.0px;font-family: Caveat Brush;\">To'rtinchi</span></p>",
+            "defaultFontName": "Caveat Brush",
+            "defaultColor": "rgb(69, 70, 77)",
+            "align": "top"
+          },
+          "flipH": false,
+          "flipV": false
+        },
+        {
+          "type": "shape",
+          "id": "zzPf93CxlF",
+          "width": 198.52587926509185,
+          "height": 97.92230971128608,
+          "left": 74.11044619422572,
+          "top": 228.45784776902886,
+          "viewBox": [
+            148.8944094488189,
+            73.44173228346456
+          ],
+          "path": " M0,0 L148.8944094488189,0 L148.8944094488189,73.44173228346455 L0,73.44173228346455z",
+          "fill": "#00000000",
+          "fixedRatio": false,
+          "rotate": 0,
+          "outline": {
+            "color": "#000000",
+            "width": 0,
+            "style": "solid"
+          },
+          "text": {
+            "content": "",
+            "defaultFontName": "Arial",
+            "defaultColor": "#000000",
+            "align": "top"
+          },
+          "flipH": false,
+          "flipV": false,
+          "special": false
+        },
+        {
+          "type": "shape",
+          "id": "sOgBf4q8WB",
+          "width": 198.52587926509185,
+          "height": 97.92230971128608,
+          "left": 74.11044619422572,
+          "top": 228.45784776902886,
+          "viewBox": [
+            200,
+            200
+          ],
+          "path": "M 0 0 L 200 0 L 200 200 L 0 200 Z",
+          "fill": "",
+          "fixedRatio": false,
+          "rotate": 0,
+          "outline": {
+            "color": "#000000",
+            "width": 0,
+            "style": "solid"
+          },
+          "text": {
+            "content": "<p style=\"text-align: left;\"><span style=\"color: #000000;font-size: 13.0px;font-family: Nunito;\">Davolash usullari turli muammolar uchun ishlab chiqilgan. Har bir usulning o'ziga xos afzalliklari bor.</span></p>",
             "defaultFontName": "Nunito",
             "defaultColor": "rgb(0, 0, 0)",
+            "align": "top"
+          },
+          "flipH": false,
+          "flipV": false
+        },
+        {
+          "type": "shape",
+          "id": "npZAAcRf1t",
+          "width": 179.92125984251965,
+          "height": 128.66362204724408,
+          "left": 74.11044619422572,
+          "top": 411.33637795275587,
+          "viewBox": [
+            134.94094488188975,
+            96.49771653543307
+          ],
+          "path": " M0,0 L134.94094488188975,0 L134.94094488188975,96.49771653543307 L0,96.49771653543307z",
+          "fill": "#00000000",
+          "fixedRatio": false,
+          "rotate": 0,
+          "outline": {
+            "color": "#000000",
+            "width": 0,
+            "style": "solid"
+          },
+          "text": {
+            "content": "",
+            "defaultFontName": "Arial",
+            "defaultColor": "#000000",
+            "align": "top"
+          },
+          "flipH": false,
+          "flipV": false,
+          "special": false
+        },
+        {
+          "type": "shape",
+          "id": "skh251t502",
+          "width": 179.92125984251965,
+          "height": 128.66362204724408,
+          "left": 74.11044619422572,
+          "top": 411.33637795275587,
+          "viewBox": [
+            200,
+            200
+          ],
+          "path": "M 0 0 L 200 0 L 200 200 L 0 200 Z",
+          "fill": "",
+          "fixedRatio": false,
+          "rotate": 0,
+          "outline": {
+            "color": "#000000",
+            "width": 0,
+            "style": "solid"
+          },
+          "text": {
+            "content": "<p style=\"text-align: left;\"><span style=\"color: #000000;font-size: 13.0px;font-family: Nunito;\">Ushbu usullar sog'liqni yaxshilashga, kasalliklarni oldini olishga yordam beradi. Har bir usul individual yondashuvni talab qiladi.</span></p>",
+            "defaultFontName": "Nunito",
+            "defaultColor": "rgb(0, 0, 0)",
+            "align": "top"
+          },
+          "flipH": false,
+          "flipV": false
+        },
+        {
+          "type": "shape",
+          "id": "xE94_bYygx",
+          "width": 202.2468241469816,
+          "height": 128.66362204724408,
+          "left": 370.9137007874015,
+          "top": 411.33637795275587,
+          "viewBox": [
+            151.6851181102362,
+            96.49771653543307
+          ],
+          "path": " M0,0 L151.6851181102362,0 L151.6851181102362,96.49771653543307 L0,96.49771653543307z",
+          "fill": "#00000000",
+          "fixedRatio": false,
+          "rotate": 0,
+          "outline": {
+            "color": "#000000",
+            "width": 0,
+            "style": "solid"
+          },
+          "text": {
+            "content": "",
+            "defaultFontName": "Arial",
+            "defaultColor": "#000000",
+            "align": "top"
+          },
+          "flipH": false,
+          "flipV": false,
+          "special": false
+        },
+        {
+          "type": "shape",
+          "id": "EYoMmu3yb5",
+          "width": 202.2468241469816,
+          "height": 128.66362204724408,
+          "left": 370.9137007874015,
+          "top": 411.33637795275587,
+          "viewBox": [
+            200,
+            200
+          ],
+          "path": "M 0 0 L 200 0 L 200 200 L 0 200 Z",
+          "fill": "",
+          "fixedRatio": false,
+          "rotate": 0,
+          "outline": {
+            "color": "#000000",
+            "width": 0,
+            "style": "solid"
+          },
+          "text": {
+            "content": "<p style=\"text-align: left;\"><span style=\"color: #000000;font-size: 13.0px;font-family: Nunito;\">Yuqori samarali davolash usullari bilan zamonaviy tibbiyot o'zining imkoniyatlarini kengaytirmoqda. Yangiliklar va tadqiqotlar doimiy ravishda davom etmoqda.</span></p>",
+            "defaultFontName": "Nunito",
+            "defaultColor": "rgb(0, 0, 0)",
+            "align": "top"
+          },
+          "flipH": false,
+          "flipV": false
+        },
+        {
+          "type": "shape",
+          "id": "7gmDRmRmJo",
+          "width": 218.3709186351706,
+          "height": 90.97700787401574,
+          "left": 364.7122309711286,
+          "top": 215.55821522309708,
+          "viewBox": [
+            163.77818897637795,
+            68.23275590551181
+          ],
+          "path": " M0,0 L163.77818897637795,0 L163.77818897637795,68.23275590551181 L0,68.23275590551181z",
+          "fill": "#00000000",
+          "fixedRatio": false,
+          "rotate": 0,
+          "outline": {
+            "color": "#000000",
+            "width": 0,
+            "style": "solid"
+          },
+          "text": {
+            "content": "",
+            "defaultFontName": "Arial",
+            "defaultColor": "#000000",
+            "align": "top"
+          },
+          "flipH": false,
+          "flipV": false,
+          "special": false
+        },
+        {
+          "type": "shape",
+          "id": "NGd54rZbvS",
+          "width": 218.3709186351706,
+          "height": 90.97700787401574,
+          "left": 364.7122309711286,
+          "top": 215.55821522309708,
+          "viewBox": [
+            200,
+            200
+          ],
+          "path": "M 0 0 L 200 0 L 200 200 L 0 200 Z",
+          "fill": "",
+          "fixedRatio": false,
+          "rotate": 0,
+          "outline": {
+            "color": "#000000",
+            "width": 0,
+            "style": "solid"
+          },
+          "text": {
+            "content": "<p style=\"text-align: left;\"><span style=\"color: #000000;font-size: 13.0px;font-family: Nunito;\">Davolash jarayonida bemorlarning individual xususiyatlarini hisobga olish muhimdir. Har bir bemorning holati alohida baholanadi.</span></p>",
+            "defaultFontName": "Nunito",
+            "defaultColor": "rgb(0, 0, 0)",
+            "align": "top"
+          },
+          "flipH": false,
+          "flipV": false
+        },
+        {
+          "type": "shape",
+          "id": "9bju-etOga",
+          "width": 300,
+          "height": 25,
+          "left": 0,
+          "top": 0,
+          "viewBox": [
+            225.00000000000006,
+            18.750000000000004
+          ],
+          "path": " M0,0 L225,0 L225,18.750000000000004 L0,18.750000000000004z",
+          "fill": "#00000000",
+          "fixedRatio": false,
+          "rotate": 0,
+          "outline": {
+            "color": "#000000",
+            "width": 0,
+            "style": "solid"
+          },
+          "text": {
+            "content": "",
+            "defaultFontName": "Arial",
+            "defaultColor": "#000000",
+            "align": "top"
+          },
+          "flipH": false,
+          "flipV": false,
+          "special": false
+        },
+        {
+          "type": "shape",
+          "id": "os0lP6b1sa",
+          "width": 300,
+          "height": 25,
+          "left": 0,
+          "top": 0,
+          "viewBox": [
+            200,
+            200
+          ],
+          "path": "M 0 0 L 200 0 L 200 200 L 0 200 Z",
+          "fill": "",
+          "fixedRatio": false,
+          "rotate": 0,
+          "outline": {
+            "color": "#000000",
+            "width": 0,
+            "style": "solid"
+          },
+          "text": {
+            "content": "<p style=\"text-align: left;\"><span style=\"color: #333333;font-size: 8.0px;font-family: 微软雅黑;\">Davolash usullarining xilma-xilligi</span></p>",
+            "defaultFontName": "微软雅黑",
+            "defaultColor": "rgb(51, 51, 51)",
             "align": "top"
           },
           "flipH": false,
@@ -3208,7 +3667,7 @@
         {
           "type": "image",
           "id": "sDJValbAiM",
-          "src": "./images\\slide14_img117.png",
+          "src": "https://oefen.uz/data/documents/b3ac6fa9-d4bc-44f3-b7ff-4f025a47a2c4/page_7.png",
           "width": 960,
           "height": 540,
           "left": 0,
@@ -3465,7 +3924,7 @@
             "style": "solid"
           },
           "text": {
-            "content": "<p style=\"text-align: center;\"><span style=\"color: #45464D;font-size: 40.0px;font-family: Caveat Brush;\">Nerv tizimi o'smalari davolash</span></p>",
+            "content": "<p style=\"text-align: center;\"><span style=\"color: #45464D;font-size: 40.0px;font-family: Caveat Brush;\">Tadqiqot va Statistika</span></p>",
             "defaultFontName": "Caveat Brush",
             "defaultColor": "rgb(69, 70, 77)",
             "align": "top"
@@ -3524,7 +3983,7 @@
             "style": "solid"
           },
           "text": {
-            "content": "<p style=\"text-align: center;\"><span style=\"color: #45464D;font-size: 24.0px;font-family: Caveat Brush;\">Birinchi</span></p>",
+            "content": "<p style=\"text-align: center;\"><span style=\"color: #45464D;font-size: 24.0px;font-family: Caveat Brush;\">Asosiy</span></p>",
             "defaultFontName": "Caveat Brush",
             "defaultColor": "rgb(69, 70, 77)",
             "align": "top"
@@ -3583,7 +4042,7 @@
             "style": "solid"
           },
           "text": {
-            "content": "<p style=\"text-align: center;\"><span style=\"color: #45464D;font-size: 24.0px;font-family: Caveat Brush;\">Ikkinchi</span></p>",
+            "content": "<p style=\"text-align: center;\"><span style=\"color: #45464D;font-size: 24.0px;font-family: Caveat Brush;\">Tahlil</span></p>",
             "defaultFontName": "Caveat Brush",
             "defaultColor": "rgb(69, 70, 77)",
             "align": "top"
@@ -3642,7 +4101,7 @@
             "style": "solid"
           },
           "text": {
-            "content": "<p style=\"text-align: center;\"><span style=\"color: #45464D;font-size: 24.0px;font-family: Caveat Brush;\">Uchinchi</span></p>",
+            "content": "<p style=\"text-align: center;\"><span style=\"color: #45464D;font-size: 24.0px;font-family: Caveat Brush;\">Natijalar</span></p>",
             "defaultFontName": "Caveat Brush",
             "defaultColor": "rgb(69, 70, 77)",
             "align": "top"
@@ -3701,7 +4160,7 @@
             "style": "solid"
           },
           "text": {
-            "content": "<p style=\"text-align: left;\"><span style=\"color: #000000;font-size: 13.0px;font-family: Nunito;\">Nerv tizimi o'smalarini davolashda dastlabki bosqichda kasallikni aniqlash juda muhimdir. O'sma turlari va ularning joylashuvi muhim rol o'ynaydi. Davolash usullari o'smaning xususiyatlariga qarab tanlanadi. Har bir bemor uchun individual yondashuv zarur.</span></p>",
+            "content": "<p style=\"text-align: left;\"><span style=\"color: #000000;font-size: 13.0px;font-family: Nunito;\">Tadqiqot jarayoni statistik ma'lumotlarni to'plash, tahlil qilish va natijalarni sharhlashdan iborat. Bu jarayonlar ilmiy tadqiqotlarda muhim ahamiyatga ega.</span></p>",
             "defaultFontName": "Nunito",
             "defaultColor": "rgb(0, 0, 0)",
             "align": "top"
@@ -3760,7 +4219,7 @@
             "style": "solid"
           },
           "text": {
-            "content": "<p style=\"text-align: left;\"><span style=\"color: #000000;font-size: 13.0px;font-family: Nunito;\">Asosiy davolash usullari: jarrohlik, radioterapiya va kemoterapiya. Ularning har biri o'zining afzalliklari va kamchiliklariga ega. Davolash strategiyasi o'smaning rivojlanish bosqichiga qarab belgilanadi. Tegishli mutaxassislar bilan maslahatlashish muhimdir.</span></p>",
+            "content": "<p style=\"text-align: left;\"><span style=\"color: #000000;font-size: 13.0px;font-family: Nunito;\">Statistika, ma'lumotlarni sanash va tasniflash usuli bo'lib, u tadqiqot natijalarini ishonchli va aniq ko'rsatadi. Bu soha turli fanlarda qo'llaniladi.</span></p>",
             "defaultFontName": "Nunito",
             "defaultColor": "rgb(0, 0, 0)",
             "align": "top"
@@ -3819,7 +4278,7 @@
             "style": "solid"
           },
           "text": {
-            "content": "<p style=\"text-align: left;\"><span style=\"color: #000000;font-size: 13.0px;font-family: Nunito;\">O'smalarni davolashda qo'shimcha terapiyalardan ham foydalaniladi. Masalan, immunoterapiya yoki maqsadli terapiyalar. Ushbu usullar o'sma hujayralarining o'sishini to'xtatishga yordam beradi. Barcha davolash usullari mutaxassislar tomonidan nazorat qilinishi lozim.</span></p>",
+            "content": "<p style=\"text-align: left;\"><span style=\"color: #000000;font-size: 13.0px;font-family: Nunito;\">Tadqiqot va statistika jarayoni muammoni aniqlashdan boshlanadi, so'ngra ma'lumot to'planadi va tahlil qilinadi, natijalar esa qaror qabul qilishda qo'llaniladi.</span></p>",
             "defaultFontName": "Nunito",
             "defaultColor": "rgb(0, 0, 0)",
             "align": "top"
@@ -3853,7 +4312,7 @@
         {
           "type": "image",
           "id": "qs9LrMFINQ",
-          "src": "./images\\slide15_img124.png",
+          "src": "https://arxiv.uz/data/documents/328c577a-4ec7-4e55-a2bc-9010d440670b/page-4.png",
           "width": 960,
           "height": 540,
           "left": 0,
@@ -3999,7 +4458,7 @@
             "style": "solid"
           },
           "text": {
-            "content": "<p style=\"text-align: left;\"><span style=\"color: #000000;font-size: 13.0px;font-family: Nunito;\">Nerv tizimi o'smalari, asab tizimining turli qismlarida rivojlanadigan benign yoki malignant o'smalardir. Ushbu o'smalar asab hujayralaridan, myelindan yoki glial hujayralardan paydo bo'lishi mumkin. O'smalarning belgilari keng qamrovli bo'lib, bosh og'rig'i, muvofiqlikni boshqarishdagi qiyinchilik, his-tuyg'u o'zgarishlari va boshqa nevrologik simptomlar orqali namoyon bo'lishi mumkin. Diagnostika asosan MRI, CT skanerlash va biopsiya yordamida amalga oshiriladi. Davolash usullari esa jarrohlik, radioterapiya va kimyoterapiyani o'z ichiga oladi. O'smalarning tipiga ko'ra, davolash strategiyalari har xil bo'ladi va har bir bemorda individual yondashuv talab etiladi.</span></p><p style=\"text-align: left;\"><span style=\"color: #000000;font-size: 13.0px;font-family: Nunito;\"></span></p><p style=\"text-align: left;\"><span style=\"color: #333333;font-size: 24.0px;font-family: Calibri;\">&nbsp;</span></p><p style=\"text-align: left;\"><span style=\"color: #000000;font-size: 13.0px;font-family: Nunito;\"></span></p><p style=\"text-align: left;\"><span style=\"color: #333333;font-size: 24.0px;font-family: Calibri;\">&nbsp;</span></p><p style=\"text-align: left;\"><span style=\"color: #000000;font-size: 13.0px;font-family: Nunito;\"></span></p>",
+            "content": "<p style=\"text-align: left;\"><span style=\"color: #000000;font-size: 13.0px;font-family: Nunito;\">Nerv tizimi o'smalari - bu asab tizimidagi o'smalar bo'lib, ular turli xil shakl va o'lchamda bo'lishi mumkin. Ushbu o'smalar ma'lum bir joyda to'planishi yoki tarqalishi mumkin. Ularning diagnostikasi uchun kompyuter tomografiyasi va magnet-rezonans tomografiyasi kabi tasvirlash usullari qo'llaniladi. Davolash usullari, odatda, xirurgik aralashuv, kimyoviy terapiya va radiatsiya terapiyasini o'z ichiga oladi. Nerv tizimi o'smalari rivojlantirish sabablari aniq emas, ammo genetik omillar va atrof-muhit ta'siri rol o'ynashi mumkin. Malakali tibbiy yordamga murojaat qilish va erta aniqlash juda muhimdir.</span></p><p style=\"text-align: left;\"><span style=\"color: #000000;font-size: 13.0px;font-family: Nunito;\"></span></p><p style=\"text-align: left;\"><span style=\"color: #333333;font-size: 24.0px;font-family: Calibri;\">&nbsp;</span></p><p style=\"text-align: left;\"><span style=\"color: #000000;font-size: 13.0px;font-family: Nunito;\"></span></p><p style=\"text-align: left;\"><span style=\"color: #333333;font-size: 24.0px;font-family: Calibri;\">&nbsp;</span></p><p style=\"text-align: left;\"><span style=\"color: #000000;font-size: 13.0px;font-family: Nunito;\"></span></p>",
             "defaultFontName": "Nunito",
             "defaultColor": "rgb(0, 0, 0)",
             "align": "top"
@@ -4238,7 +4697,7 @@
             "style": "solid"
           },
           "text": {
-            "content": "<p style=\"text-align: left;\"><span style=\"color: #333333;font-size: 18.0px;font-family: 微软雅黑;\">1. Abdullayev A. A., Mirzaev R. M. Nerv tizimi o'smalari va ularning davolash usullari. 2020. Tibbiyot nashrlari.\n2. krijanov S. Y., Shabanov A. R. Nerv tizimi o'smalari kasalliklari. 2019. O'zbekiston Tibbiyot Akademiyasi.\n3. Nurmurodova Z. U. Asab tizimi va o'smalari: Xavflar va oldini olish. 2021. Noshirlar engraving.\n4. Qodirov I. S., Mullaev O. F. Onkologiya asoslari. Nerv tizimidagi o'smalar. 2018. Tibbiyot ilmiy jurnali.\n5. Turg'unov Sh. Kh. Asab tizimidagi o'smalar va ularni aniq tadqiq qilish. 2022. O'zbekiston Fanlar Akademiyasi.</span></p><p style=\"text-align: left;\"><span style=\"color: #333333;font-size: 18.0px;font-family: 微软雅黑;\"></span></p><p style=\"text-align: left;\"><span style=\"color: #333333;font-size: 18.0px;font-family: 微软雅黑;\"></span></p><p style=\"text-align: left;\"><span style=\"color: #333333;font-size: 18.0px;font-family: 微软雅黑;\"></span></p><p style=\"text-align: left;\"><span style=\"color: #333333;font-size: 18.0px;font-family: 微软雅黑;\"></span></p><p style=\"text-align: left;\"><span style=\"color: #333333;font-size: 18.0px;font-family: 微软雅黑;\"></span></p><p style=\"text-align: left;\"><span style=\"color: #333333;font-size: 18.0px;font-family: 微软雅黑;\"></span></p><p style=\"text-align: left;\"><span style=\"color: #333333;font-size: 18.0px;font-family: 微软雅黑;\"></span></p><p style=\"text-align: left;\"><span style=\"color: #333333;font-size: 18.0px;font-family: 微软雅黑;\"></span></p><p style=\"text-align: left;\"><span style=\"color: #333333;font-size: 18.0px;font-family: 微软雅黑;\"></span></p>",
+            "content": "<p style=\"text-align: left;\"><span style=\"color: #333333;font-size: 18.0px;font-family: 微软雅黑;\">1. Azizov D., Sharipov Z. \"Nerv tizimi o'smalari: patologiya va davolash jarayoni\". 2021, Tibbiyot nashr.</span></p><p style=\"text-align: left;\"><span style=\"color: #333333;font-size: 18.0px;font-family: 微软雅黑;\"></span></p><p style=\"text-align: left;\"><span style=\"color: #333333;font-size: 18.0px;font-family: 微软雅黑;\"></span></p><p style=\"text-align: left;\"><span style=\"color: #333333;font-size: 18.0px;font-family: 微软雅黑;\"></span></p><p style=\"text-align: left;\"><span style=\"color: #333333;font-size: 18.0px;font-family: 微软雅黑;\"></span></p><p style=\"text-align: left;\"><span style=\"color: #333333;font-size: 18.0px;font-family: 微软雅黑;\"></span></p><p style=\"text-align: left;\"><span style=\"color: #333333;font-size: 18.0px;font-family: 微软雅黑;\"></span></p><p style=\"text-align: left;\"><span style=\"color: #333333;font-size: 18.0px;font-family: 微软雅黑;\"></span></p><p style=\"text-align: left;\"><span style=\"color: #333333;font-size: 18.0px;font-family: 微软雅黑;\"></span></p><p style=\"text-align: left;\"><span style=\"color: #333333;font-size: 18.0px;font-family: 微软雅黑;\"></span></p>",
             "defaultFontName": "微软雅黑",
             "defaultColor": "rgb(51, 51, 51)",
             "align": "top"

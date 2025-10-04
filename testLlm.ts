@@ -6,6 +6,7 @@ import {
   generateReferences,
   generateThankYouSlide,
 } from "./llma-structured";
+import ImageReplacerService from "./services/image-replacer";
 
 const start = async () => {
   // 1. Load AI schema (simplified slide structure)
@@ -172,6 +173,30 @@ const start = async () => {
     JSON.stringify(allFilledSlides, null, 2)
   );
   console.log("✅ All filled slides saved\n");
+
+  // 9. Replace edited images with Bing search results
+  console.log("🖼️  Replacing edited images...");
+  const imageReplacer = new ImageReplacerService(
+    "Amir.all-filled-slides.json",
+    "./images"
+  );
+
+  const replacementResults = await imageReplacer.replaceEditedImages();
+
+  console.log(`\n📊 Image Replacement Summary:`);
+  console.log(`   - Total images processed: ${replacementResults.total}`);
+  console.log(`   - Successfully replaced: ${replacementResults.successful}`);
+  console.log(`   - Failed: ${replacementResults.failed}`);
+  // console.log(`   - Skipped: ${replacementResults.skipped}`);
+
+  if (replacementResults.errors.length > 0) {
+    console.log(`\n⚠️  Errors encountered:`);
+    replacementResults.errors.forEach((error, index) => {
+      console.log(`   ${index + 1}. ${error}`);
+    });
+  }
+
+  console.log("✅ Image replacement completed\n");
 };
 
 start();

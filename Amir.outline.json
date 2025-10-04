@@ -1,47 +1,47 @@
 {
   "outline": [
     {
-      "title": "Nerv tizimi o'smalarining turlari",
-      "title_eng": "Types of Nervous System Tumors"
+      "title": "Nerv tizimining o'smalari: Tushuncha va Turlari",
+      "title_eng": "Understanding and Types of Nervous System Tumors"
     },
     {
-      "title": "Nerv tizimi o'smalarining simptomlari va tashxis",
+      "title": "Nerv tizimi o'smalarining Belgilari va Diagnostika",
       "title_eng": "Symptoms and Diagnosis of Nervous System Tumors"
     },
     {
-      "title": "Nerv tizimi o'smalarini davolash usullari",
+      "title": "Nerv tizimi o'smalarining Davolash Usullari",
       "title_eng": "Treatment Methods for Nervous System Tumors"
     }
   ],
   "slides": [
     {
+      "slideIndex": 3,
+      "title": "Tumor Turi va Belgilari",
+      "title_eng": "Tumor Types and Symptoms",
+      "outlineIndex": 0
+    },
+    {
       "slideIndex": 4,
-      "title": "Tumor tasnifi jadvali",
+      "title": "Tumor Tasnifi Jadvali",
       "title_eng": "Tumor Classification Table",
       "outlineIndex": 0
     },
     {
-      "slideIndex": 3,
-      "title": "Nerv tizimi o'smalari",
+      "slideIndex": 2,
+      "title": "Nerv tizimining o'smalari",
       "title_eng": "Nervous System Tumors",
-      "outlineIndex": 0
-    },
-    {
-      "slideIndex": 10,
-      "title": "Nerv tizimi o'smalarining simptomlari",
-      "title_eng": "Symptoms of Nervous System Tumors",
       "outlineIndex": 1
     },
     {
-      "slideIndex": 11,
-      "title": "Nerv tizimi o'smalarini davolash",
-      "title_eng": "Treatment of Nervous System Tumors",
+      "slideIndex": 9,
+      "title": "Davolash Usullari",
+      "title_eng": "Treatment Methods",
       "outlineIndex": 2
     },
     {
       "slideIndex": 12,
-      "title": "Nerv tizimi o'smalariga oid asosiy ma'lumotlar",
-      "title_eng": "Key Information about Nervous System Tumors",
+      "title": "Tadqiqot va Statistika",
+      "title_eng": "Research and Statistics",
       "outlineIndex": 2
     }
   ]
