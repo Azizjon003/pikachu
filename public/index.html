@@ -1,0 +1,588 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI PowerPoint Generator</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+        .gradient-bg {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        }
+        .card-shadow {
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+        }
+        .upload-zone {
+            border: 2px dashed #cbd5e0;
+            transition: all 0.3s ease;
+        }
+        .upload-zone:hover {
+            border-color: #667eea;
+            background-color: #f7fafc;
+        }
+        .upload-zone.dragover {
+            border-color: #667eea;
+            background-color: #edf2f7;
+        }
+        .spinner {
+            border: 3px solid #f3f4f6;
+            border-top: 3px solid #667eea;
+            border-radius: 50%;
+            width: 24px;
+            height: 24px;
+            animation: spin 1s linear infinite;
+        }
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        .progress-bar {
+            transition: width 0.3s ease;
+        }
+        .fade-in {
+            animation: fadeIn 0.3s ease-in;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(-10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .pulse-animation {
+            animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+        }
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: .5; }
+        }
+    </style>
+</head>
+<body class="bg-gray-50">
+    <!-- Header -->
+    <header class="gradient-bg text-white shadow-lg">
+        <div class="container mx-auto px-4 py-6">
+            <div class="flex items-center justify-between">
+                <div>
+                    <h1 class="text-3xl font-bold">AI PowerPoint Generator</h1>
+                    <p class="text-purple-100 mt-1">Create professional presentations with AI</p>
+                </div>
+                <div class="text-right">
+                    <div class="text-sm text-purple-200">API Status</div>
+                    <div id="api-status" class="flex items-center justify-end mt-1">
+                        <span class="w-2 h-2 bg-yellow-400 rounded-full mr-2 pulse-animation"></span>
+                        <span class="text-sm">Checking...</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="container mx-auto px-4 py-8">
+        <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+
+            <!-- Left Column - Upload & Templates -->
+            <div class="lg:col-span-1 space-y-6">
+
+                <!-- Template Upload Card -->
+                <div class="bg-white rounded-xl card-shadow p-6">
+                    <h2 class="text-xl font-semibold text-gray-800 mb-4 flex items-center">
+                        <svg class="w-6 h-6 mr-2 text-purple-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M15 13l-3-3m0 0l-3 3m3-3v12"/>
+                        </svg>
+                        Upload Template
+                    </h2>
+
+                    <div id="upload-zone" class="upload-zone rounded-lg p-8 text-center cursor-pointer">
+                        <svg class="w-12 h-12 mx-auto text-gray-400 mb-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M15 13l-3-3m0 0l-3 3m3-3v12"/>
+                        </svg>
+                        <p class="text-gray-600 mb-2">Click to upload or drag and drop</p>
+                        <p class="text-sm text-gray-400">PPTX files only</p>
+                        <input type="file" id="template-file-input" class="hidden" accept=".pptx">
+                    </div>
+
+                    <div id="upload-status" class="mt-4 hidden"></div>
+                </div>
+
+                <!-- Available Templates Card -->
+                <div class="bg-white rounded-xl card-shadow p-6">
+                    <div class="flex items-center justify-between mb-4">
+                        <h2 class="text-xl font-semibold text-gray-800 flex items-center">
+                            <svg class="w-6 h-6 mr-2 text-purple-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/>
+                            </svg>
+                            Available Templates
+                        </h2>
+                        <button id="refresh-templates-btn" class="text-purple-600 hover:text-purple-700 transition-colors">
+                            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"/>
+                            </svg>
+                        </button>
+                    </div>
+
+                    <div id="templates-list" class="space-y-2">
+                        <div class="text-center text-gray-400 py-4">
+                            <div class="spinner mx-auto mb-2"></div>
+                            <p class="text-sm">Loading templates...</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Right Column - Generation Form & Results -->
+            <div class="lg:col-span-2 space-y-6">
+
+                <!-- Generation Form Card -->
+                <div class="bg-white rounded-xl card-shadow p-6">
+                    <h2 class="text-xl font-semibold text-gray-800 mb-6 flex items-center">
+                        <svg class="w-6 h-6 mr-2 text-purple-600" fill="none" stroke="currentColor" viewBox="0  0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 4a2 2 0 114 0v1a1 1 0 001 1h3a1 1 0 011 1v3a1 1 0 01-1 1h-1a2 2 0 100 4h1a1 1 0 011 1v3a1 1 0 01-1 1h-3a1 1 0 01-1-1v-1a2 2 0 10-4 0v1a1 1 0 01-1 1H7a1 1 0 01-1-1v-3a1 1 0 00-1-1H4a2 2 0 110-4h1a1 1 0 001-1V7a1 1 0 011-1h3a1 1 0 001-1V4z"/>
+                        </svg>
+                        Generate Presentation
+                    </h2>
+
+                    <form id="generate-form" class="space-y-5">
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
+                            <!-- Template Selection -->
+                            <div>
+                                <label class="block text-sm font-medium text-gray-700 mb-2">
+                                    Template <span class="text-red-500">*</span>
+                                </label>
+                                <select id="template-select" required class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-transparent transition-all">
+                                    <option value="">Select a template...</option>
+                                </select>
+                            </div>
+
+                            <!-- Language -->
+                            <div>
+                                <label class="block text-sm font-medium text-gray-700 mb-2">
+                                    Language <span class="text-red-500">*</span>
+                                </label>
+                                <select id="language-input" required class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-transparent transition-all">
+                                    <option value="Uzbek">Uzbek (O'zbek)</option>
+                                    <option value="English">English</option>
+                                    <option value="Russian">Russian (Русский)</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
+                            <!-- Number of Pages -->
+                            <div>
+                                <label class="block text-sm font-medium text-gray-700 mb-2">
+                                    Number of Content Slides <span class="text-red-500">*</span>
+                                </label>
+                                <input type="number" id="page-input" min="1" max="20" value="3" required
+                                    class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-transparent transition-all">
+                                <p class="text-xs text-gray-500 mt-1">Additional slides (intro, outline, conclusion) will be added automatically</p>
+                            </div>
+
+                            <!-- Author Name -->
+                            <div>
+                                <label class="block text-sm font-medium text-gray-700 mb-2">
+                                    Author Name <span class="text-red-500">*</span>
+                                </label>
+                                <input type="text" id="author-input" required placeholder="e.g., John Doe"
+                                    class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-transparent transition-all">
+                            </div>
+                        </div>
+
+                        <!-- Topic -->
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-2">
+                                Presentation Topic <span class="text-red-500">*</span>
+                            </label>
+                            <textarea id="topic-input" required rows="3" placeholder="e.g., Artificial Intelligence in Modern Healthcare"
+                                class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-transparent transition-all resize-none"></textarea>
+                        </div>
+
+                        <!-- Generate Button -->
+                        <button type="submit" id="generate-btn"
+                            class="w-full bg-gradient-to-r from-purple-600 to-indigo-600 text-white font-semibold py-3 px-6 rounded-lg hover:from-purple-700 hover:to-indigo-700 transition-all transform hover:scale-[1.02] active:scale-[0.98] shadow-lg">
+                            <span id="generate-btn-text">Generate Presentation</span>
+                            <span id="generate-btn-spinner" class="hidden">
+                                <div class="spinner inline-block mr-2"></div>
+                                Generating...
+                            </span>
+                        </button>
+                    </form>
+                </div>
+
+                <!-- Results Card -->
+                <div id="results-card" class="bg-white rounded-xl card-shadow p-6 hidden fade-in">
+                    <h2 class="text-xl font-semibold text-gray-800 mb-4 flex items-center">
+                        <svg class="w-6 h-6 mr-2 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                        </svg>
+                        Generation Results
+                    </h2>
+                    <div id="results-content"></div>
+                </div>
+
+                <!-- Progress Card -->
+                <div id="progress-card" class="bg-white rounded-xl card-shadow p-6 hidden fade-in">
+                    <h2 class="text-xl font-semibold text-gray-800 mb-4 flex items-center">
+                        <div class="spinner mr-3"></div>
+                        Generation in Progress
+                    </h2>
+                    <div class="space-y-3">
+                        <div id="progress-message" class="text-gray-600"></div>
+                        <div class="bg-gray-200 rounded-full h-2 overflow-hidden">
+                            <div id="progress-bar" class="progress-bar bg-gradient-to-r from-purple-600 to-indigo-600 h-full" style="width: 0%"></div>
+                        </div>
+                        <div class="flex justify-between text-sm text-gray-500">
+                            <span id="progress-step">Step 1 of 5</span>
+                            <span id="progress-percentage">0%</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-white border-t border-gray-200 mt-12">
+        <div class="container mx-auto px-4 py-6 text-center text-gray-600">
+            <p>AI PowerPoint Generator - Powered by Advanced AI Technology</p>
+            <p class="text-sm text-gray-400 mt-1">API Base URL: <span id="api-url-display"></span></p>
+        </div>
+    </footer>
+
+    <script>
+        // Configuration
+        const API_BASE_URL = 'http://localhost:3000/api';
+
+        // Update API URL display
+        document.getElementById('api-url-display').textContent = API_BASE_URL;
+
+        // API Status Check
+        async function checkApiStatus() {
+            const statusElement = document.getElementById('api-status');
+            try {
+                const response = await fetch(`${API_BASE_URL}/template/templates`);
+                if (response.ok) {
+                    statusElement.innerHTML = `
+                        <span class="w-2 h-2 bg-green-400 rounded-full mr-2"></span>
+                        <span class="text-sm">Connected</span>
+                    `;
+                } else {
+                    throw new Error('API not responding');
+                }
+            } catch (error) {
+                statusElement.innerHTML = `
+                    <span class="w-2 h-2 bg-red-400 rounded-full mr-2"></span>
+                    <span class="text-sm">Disconnected</span>
+                `;
+            }
+        }
+
+        // Load Templates
+        async function loadTemplates() {
+            const templatesList = document.getElementById('templates-list');
+            const templateSelect = document.getElementById('template-select');
+
+            try {
+                const response = await fetch(`${API_BASE_URL}/template/templates`);
+                const data = await response.json();
+
+                if (data.success && data.templates.length > 0) {
+                    // Update list display
+                    templatesList.innerHTML = data.templates.map(template => `
+                        <div class="flex items-center justify-between p-3 bg-gray-50 rounded-lg hover:bg-gray-100 transition-colors">
+                            <div class="flex items-center">
+                                <svg class="w-5 h-5 text-purple-600 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/>
+                                </svg>
+                                <span class="text-sm font-medium text-gray-700">${template.replace('.sxema.json', '')}</span>
+                            </div>
+                            <svg class="w-4 h-4 text-green-500" fill="currentColor" viewBox="0 0 20 20">
+                                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
+                            </svg>
+                        </div>
+                    `).join('');
+
+                    // Update select dropdown
+                    templateSelect.innerHTML = '<option value="">Select a template...</option>' +
+                        data.templates.map(template =>
+                            `<option value="${template}">${template.replace('.sxema.json', '')}</option>`
+                        ).join('');
+                } else {
+                    templatesList.innerHTML = `
+                        <div class="text-center text-gray-400 py-4">
+                            <p class="text-sm">No templates available</p>
+                            <p class="text-xs mt-1">Upload a PPTX template to get started</p>
+                        </div>
+                    `;
+                }
+            } catch (error) {
+                templatesList.innerHTML = `
+                    <div class="text-center text-red-500 py-4">
+                        <p class="text-sm">Error loading templates</p>
+                        <p class="text-xs mt-1">${error.message}</p>
+                    </div>
+                `;
+            }
+        }
+
+        // Template Upload
+        const uploadZone = document.getElementById('upload-zone');
+        const fileInput = document.getElementById('template-file-input');
+        const uploadStatus = document.getElementById('upload-status');
+
+        uploadZone.addEventListener('click', () => fileInput.click());
+
+        uploadZone.addEventListener('dragover', (e) => {
+            e.preventDefault();
+            uploadZone.classList.add('dragover');
+        });
+
+        uploadZone.addEventListener('dragleave', () => {
+            uploadZone.classList.remove('dragover');
+        });
+
+        uploadZone.addEventListener('drop', (e) => {
+            e.preventDefault();
+            uploadZone.classList.remove('dragover');
+            const files = e.dataTransfer.files;
+            if (files.length > 0) {
+                handleFileUpload(files[0]);
+            }
+        });
+
+        fileInput.addEventListener('change', (e) => {
+            if (e.target.files.length > 0) {
+                handleFileUpload(e.target.files[0]);
+            }
+        });
+
+        async function handleFileUpload(file) {
+            if (!file.name.endsWith('.pptx')) {
+                showUploadStatus('error', 'Please upload a PPTX file');
+                return;
+            }
+
+            const formData = new FormData();
+            formData.append('file', file);
+
+            showUploadStatus('loading', 'Uploading and processing template...');
+
+            try {
+                const response = await fetch(`${API_BASE_URL}/template/import`, {
+                    method: 'POST',
+                    body: formData
+                });
+
+                const data = await response.json();
+
+                if (data.success) {
+                    showUploadStatus('success', `Template "${data.filename}" uploaded successfully!`);
+                    // Reload templates after successful upload
+                    setTimeout(() => {
+                        loadTemplates();
+                        uploadStatus.classList.add('hidden');
+                    }, 2000);
+                } else {
+                    showUploadStatus('error', data.error || 'Upload failed');
+                }
+            } catch (error) {
+                showUploadStatus('error', `Upload error: ${error.message}`);
+            }
+        }
+
+        function showUploadStatus(type, message) {
+            uploadStatus.classList.remove('hidden');
+
+            const icons = {
+                loading: '<div class="spinner inline-block mr-2"></div>',
+                success: '<svg class="w-5 h-5 inline-block mr-2" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/></svg>',
+                error: '<svg class="w-5 h-5 inline-block mr-2" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM8.707 7.293a1 1 0 00-1.414 1.414L8.586 10l-1.293 1.293a1 1 0 101.414 1.414L10 11.414l1.293 1.293a1 1 0 001.414-1.414L11.414 10l1.293-1.293a1 1 0 00-1.414-1.414L10 8.586 8.707 7.293z" clip-rule="evenodd"/></svg>'
+            };
+
+            const colors = {
+                loading: 'bg-blue-50 text-blue-700 border-blue-200',
+                success: 'bg-green-50 text-green-700 border-green-200',
+                error: 'bg-red-50 text-red-700 border-red-200'
+            };
+
+            uploadStatus.className = `mt-4 p-3 rounded-lg border ${colors[type]} flex items-center fade-in`;
+            uploadStatus.innerHTML = `${icons[type]}<span class="text-sm">${message}</span>`;
+        }
+
+        // Refresh Templates
+        document.getElementById('refresh-templates-btn').addEventListener('click', loadTemplates);
+
+        // Generate Presentation
+        const generateForm = document.getElementById('generate-form');
+        const generateBtn = document.getElementById('generate-btn');
+        const generateBtnText = document.getElementById('generate-btn-text');
+        const generateBtnSpinner = document.getElementById('generate-btn-spinner');
+        const progressCard = document.getElementById('progress-card');
+        const resultsCard = document.getElementById('results-card');
+
+        generateForm.addEventListener('submit', async (e) => {
+            e.preventDefault();
+
+            const formData = {
+                template: document.getElementById('template-select').value,
+                language: document.getElementById('language-input').value,
+                page: parseInt(document.getElementById('page-input').value),
+                topic: document.getElementById('topic-input').value,
+                author: document.getElementById('author-input').value
+            };
+
+            // Validation
+            if (!formData.template) {
+                alert('Please select a template');
+                return;
+            }
+
+            // Update UI
+            generateBtn.disabled = true;
+            generateBtnText.classList.add('hidden');
+            generateBtnSpinner.classList.remove('hidden');
+            progressCard.classList.remove('hidden');
+            resultsCard.classList.add('hidden');
+
+            // Simulate progress (since we don't have real-time updates)
+            let progress = 0;
+            const progressSteps = [
+                { progress: 20, message: 'Analyzing template and generating outline...', step: 'Step 1 of 5' },
+                { progress: 40, message: 'Creating slide content with AI...', step: 'Step 2 of 5' },
+                { progress: 60, message: 'Searching and adding relevant images...', step: 'Step 3 of 5' },
+                { progress: 80, message: 'Finalizing presentation layout...', step: 'Step 4 of 5' },
+                { progress: 95, message: 'Exporting PowerPoint file...', step: 'Step 5 of 5' }
+            ];
+
+            let currentStep = 0;
+            const progressInterval = setInterval(() => {
+                if (currentStep < progressSteps.length) {
+                    const step = progressSteps[currentStep];
+                    updateProgress(step.progress, step.message, step.step);
+                    currentStep++;
+                }
+            }, 3000);
+
+            try {
+                const response = await fetch(`${API_BASE_URL}/slide/generate`, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify(formData)
+                });
+
+                const data = await response.json();
+
+                clearInterval(progressInterval);
+
+                if (data.success) {
+                    updateProgress(100, 'Presentation generated successfully!', 'Complete');
+                    setTimeout(() => {
+                        showResults(data);
+                        progressCard.classList.add('hidden');
+                    }, 1000);
+                } else {
+                    throw new Error(data.error || 'Generation failed');
+                }
+            } catch (error) {
+                clearInterval(progressInterval);
+                progressCard.classList.add('hidden');
+                showError(error.message);
+            } finally {
+                generateBtn.disabled = false;
+                generateBtnText.classList.remove('hidden');
+                generateBtnSpinner.classList.add('hidden');
+            }
+        });
+
+        function updateProgress(percentage, message, step) {
+            document.getElementById('progress-bar').style.width = `${percentage}%`;
+            document.getElementById('progress-message').textContent = message;
+            document.getElementById('progress-step').textContent = step;
+            document.getElementById('progress-percentage').textContent = `${percentage}%`;
+        }
+
+        function showResults(data) {
+            resultsCard.classList.remove('hidden');
+            const resultsContent = document.getElementById('results-content');
+
+            const downloadUrl = data.slidePath.replace(/\\/g, '/').replace('C:/Users/Zenbook-PC/Desktop/work/pikachu', API_BASE_URL.replace('/api', ''));
+
+            resultsContent.innerHTML = `
+                <div class="space-y-4">
+                    <div class="bg-green-50 border border-green-200 rounded-lg p-4">
+                        <div class="flex items-start">
+                            <svg class="w-6 h-6 text-green-600 mr-3 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
+                                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
+                            </svg>
+                            <div class="flex-1">
+                                <h3 class="text-green-800 font-semibold mb-1">Generation Complete!</h3>
+                                <p class="text-green-700 text-sm">${data.message}</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="bg-gray-50 rounded-lg p-4">
+                        <h4 class="font-semibold text-gray-800 mb-3">Presentation Details</h4>
+                        <div class="space-y-2 text-sm">
+                            <div class="flex justify-between">
+                                <span class="text-gray-600">File Name:</span>
+                                <span class="font-medium text-gray-800">${data.slideName}</span>
+                            </div>
+                            <div class="flex justify-between">
+                                <span class="text-gray-600">File Path:</span>
+                                <span class="font-mono text-xs text-gray-800 break-all">${data.slidePath}</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="flex gap-3">
+                        <a href="/generated/${data.slideName}" download
+                            class="flex-1 bg-gradient-to-r from-green-600 to-emerald-600 text-white font-semibold py-3 px-6 rounded-lg hover:from-green-700 hover:to-emerald-700 transition-all text-center shadow-lg">
+                            <svg class="w-5 h-5 inline-block mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"/>
+                            </svg>
+                            Download Presentation
+                        </a>
+                        <button onclick="document.getElementById('generate-form').reset(); document.getElementById('results-card').classList.add('hidden');"
+                            class="px-6 py-3 border-2 border-gray-300 text-gray-700 font-semibold rounded-lg hover:bg-gray-50 transition-all">
+                            Generate Another
+                        </button>
+                    </div>
+                </div>
+            `;
+        }
+
+        function showError(message) {
+            resultsCard.classList.remove('hidden');
+            const resultsContent = document.getElementById('results-content');
+
+            resultsContent.innerHTML = `
+                <div class="bg-red-50 border border-red-200 rounded-lg p-4">
+                    <div class="flex items-start">
+                        <svg class="w-6 h-6 text-red-600 mr-3 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
+                            <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM8.707 7.293a1 1 0 00-1.414 1.414L8.586 10l-1.293 1.293a1 1 0 101.414 1.414L10 11.414l1.293 1.293a1 1 0 001.414-1.414L11.414 10l1.293-1.293a1 1 0 00-1.414-1.414L10 8.586 8.707 7.293z" clip-rule="evenodd"/>
+                        </svg>
+                        <div class="flex-1">
+                            <h3 class="text-red-800 font-semibold mb-1">Generation Failed</h3>
+                            <p class="text-red-700 text-sm">${message}</p>
+                        </div>
+                    </div>
+                    <button onclick="document.getElementById('results-card').classList.add('hidden');"
+                        class="mt-4 w-full bg-red-600 text-white font-semibold py-2 px-4 rounded-lg hover:bg-red-700 transition-all">
+                        Try Again
+                    </button>
+                </div>
+            `;
+        }
+
+        // Initialize
+        checkApiStatus();
+        loadTemplates();
+        setInterval(checkApiStatus, 30000); // Check API status every 30 seconds
+    </script>
+</body>
+</html>
