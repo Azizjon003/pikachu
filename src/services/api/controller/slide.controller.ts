@@ -168,7 +168,7 @@ export const generateSlide = async (req: Request, res: Response) => {
     let allFilledSlides = [];
     allFilledSlides.push(firstSlide);
     allFilledSlides.push(secondSlide);
-
+    console.log(outline, "slidesToFill");
     for (let i = 0; i < slidesToFill.length; i++) {
       const slide = slidesToFill[i];
       const outlineForSlide = outline.slides[i];
@@ -176,7 +176,8 @@ export const generateSlide = async (req: Request, res: Response) => {
       const filledSlide = await generateContent(
         slide,
         outlineForSlide,
-        "Uzbek"
+        "Uzbek",
+        topic
       );
       allFilledSlides.push(filledSlide);
       await new Promise((resolve) => setTimeout(resolve, 1000));
@@ -199,7 +200,7 @@ export const generateSlide = async (req: Request, res: Response) => {
 
     const referencesSlide = await generateReferences(
       topic,
-      "Uzbek",
+      language,
       5,
       aiSchema[aiSchema.length - 2]
     );
@@ -211,7 +212,7 @@ export const generateSlide = async (req: Request, res: Response) => {
 
     const thankYouSlide = await generateThankYouSlide(
       topic,
-      "Uzbek",
+      language,
       aiSchema[aiSchema.length - 1]
     );
     await new Promise((resolve) => setTimeout(resolve, 1000));
@@ -246,10 +247,20 @@ export const generateSlide = async (req: Request, res: Response) => {
     console.log(`   - Total images processed: ${replacementResults.total}`);
     console.log(`   - Successfully replaced: ${replacementResults.successful}`);
     console.log(`   - Failed: ${replacementResults.failed}`);
-    // console.log(`   - Skipped: ${replacementResults.skipped}`);
+    console.log(
+      `   - Duplicate URLs avoided: ${replacementResults.duplicatesAvoided}`
+    );
+    console.log(`   - Unique images used: ${replacementResults.successful}`);
+
+    if (replacementResults.failed > 0) {
+      console.log(`\n⚠️  Failure Breakdown:`);
+      console.log(
+        `   - All search attempts failed: ${replacementResults.failureReasons.allAttemptsFailed}`
+      );
+    }
 
     if (replacementResults.errors.length > 0) {
-      console.log(`\n⚠️  Errors encountered:`);
+      console.log(`\n❌ Errors encountered:`);
       replacementResults.errors.forEach((error: any, index: any) => {
         console.log(`   ${index + 1}. ${error}`);
       });

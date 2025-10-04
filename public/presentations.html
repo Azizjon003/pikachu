@@ -1,0 +1,592 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Presentations - AI PowerPoint Generator</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+        .gradient-bg {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        }
+        .gradient-bg-alt {
+            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+        }
+        .gradient-bg-success {
+            background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+        }
+        .card-shadow {
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+        }
+        .card-hover {
+            transition: all 0.3s ease;
+        }
+        .card-hover:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 50px rgba(0, 0, 0, 0.15);
+        }
+        .spinner {
+            border: 3px solid #f3f4f6;
+            border-top: 3px solid #667eea;
+            border-radius: 50%;
+            width: 24px;
+            height: 24px;
+            animation: spin 1s linear infinite;
+        }
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        .fade-in {
+            animation: fadeIn 0.5s ease-in;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .pulse-animation {
+            animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+        }
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: .5; }
+        }
+        .skeleton {
+            background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
+            background-size: 200% 100%;
+            animation: loading 1.5s ease-in-out infinite;
+        }
+        @keyframes loading {
+            0% { background-position: 200% 0; }
+            100% { background-position: -200% 0; }
+        }
+        .toast {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            z-index: 1000;
+            min-width: 300px;
+            max-width: 500px;
+            animation: slideIn 0.3s ease-out;
+        }
+        @keyframes slideIn {
+            from {
+                transform: translateX(400px);
+                opacity: 0;
+            }
+            to {
+                transform: translateX(0);
+                opacity: 1;
+            }
+        }
+        .modal-overlay {
+            background: rgba(0, 0, 0, 0.5);
+            backdrop-filter: blur(4px);
+        }
+        .modal-content {
+            animation: modalSlideIn 0.3s ease-out;
+        }
+        @keyframes modalSlideIn {
+            from {
+                transform: scale(0.9);
+                opacity: 0;
+            }
+            to {
+                transform: scale(1);
+                opacity: 1;
+            }
+        }
+    </style>
+</head>
+<body class="bg-gray-50">
+    <!-- Header -->
+    <header class="gradient-bg text-white shadow-lg">
+        <div class="container mx-auto px-4 py-6">
+            <div class="flex items-center justify-between">
+                <div>
+                    <h1 class="text-3xl font-bold">My Presentations</h1>
+                    <p class="text-purple-100 mt-1">View and manage your generated PowerPoint presentations</p>
+                </div>
+                <div class="flex items-center gap-4">
+                    <a href="/index.html" class="bg-white text-purple-700 font-semibold py-2 px-6 rounded-lg hover:bg-purple-50 transition-all shadow-lg flex items-center">
+                        <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6"/>
+                        </svg>
+                        Generate New
+                    </a>
+                    <button id="refresh-btn" class="bg-purple-700 hover:bg-purple-800 text-white font-semibold py-2 px-4 rounded-lg transition-all shadow-lg flex items-center">
+                        <svg id="refresh-icon" class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"/>
+                        </svg>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="container mx-auto px-4 py-8">
+        <!-- Statistics Cards -->
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
+            <!-- Total Presentations -->
+            <div class="bg-white rounded-xl card-shadow p-6 fade-in">
+                <div class="flex items-center justify-between">
+                    <div>
+                        <p class="text-gray-500 text-sm font-medium mb-1">Total Presentations</p>
+                        <p id="stat-total" class="text-3xl font-bold text-gray-800">
+                            <span class="skeleton inline-block w-16 h-8 rounded"></span>
+                        </p>
+                    </div>
+                    <div class="bg-gradient-to-br from-purple-500 to-indigo-500 p-4 rounded-xl">
+                        <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/>
+                        </svg>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Total Storage -->
+            <div class="bg-white rounded-xl card-shadow p-6 fade-in" style="animation-delay: 0.1s;">
+                <div class="flex items-center justify-between">
+                    <div>
+                        <p class="text-gray-500 text-sm font-medium mb-1">Total Storage</p>
+                        <p id="stat-storage" class="text-3xl font-bold text-gray-800">
+                            <span class="skeleton inline-block w-16 h-8 rounded"></span>
+                        </p>
+                    </div>
+                    <div class="bg-gradient-to-br from-pink-500 to-rose-500 p-4 rounded-xl">
+                        <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 7v10c0 2.21 3.582 4 8 4s8-1.79 8-4V7M4 7c0 2.21 3.582 4 8 4s8-1.79 8-4M4 7c0-2.21 3.582-4 8-4s8 1.79 8 4"/>
+                        </svg>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Average Size -->
+            <div class="bg-white rounded-xl card-shadow p-6 fade-in" style="animation-delay: 0.2s;">
+                <div class="flex items-center justify-between">
+                    <div>
+                        <p class="text-gray-500 text-sm font-medium mb-1">Average File Size</p>
+                        <p id="stat-avg" class="text-3xl font-bold text-gray-800">
+                            <span class="skeleton inline-block w-16 h-8 rounded"></span>
+                        </p>
+                    </div>
+                    <div class="bg-gradient-to-br from-cyan-500 to-blue-500 p-4 rounded-xl">
+                        <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"/>
+                        </svg>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Search and Filter Bar -->
+        <div class="bg-white rounded-xl card-shadow p-4 mb-6 fade-in">
+            <div class="flex flex-col md:flex-row gap-4">
+                <!-- Search -->
+                <div class="flex-1">
+                    <div class="relative">
+                        <input type="text" id="search-input" placeholder="Search presentations..."
+                            class="w-full pl-10 pr-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-transparent transition-all">
+                        <svg class="w-5 h-5 text-gray-400 absolute left-3 top-2.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/>
+                        </svg>
+                    </div>
+                </div>
+
+                <!-- Sort -->
+                <div class="md:w-64">
+                    <select id="sort-select" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-transparent transition-all">
+                        <option value="date-desc">Newest First</option>
+                        <option value="date-asc">Oldest First</option>
+                        <option value="name-asc">Name (A-Z)</option>
+                        <option value="name-desc">Name (Z-A)</option>
+                        <option value="size-desc">Largest First</option>
+                        <option value="size-asc">Smallest First</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+
+        <!-- Presentations Grid -->
+        <div id="presentations-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            <!-- Loading Skeletons -->
+            <div class="skeleton-card">
+                <div class="bg-white rounded-xl card-shadow p-6">
+                    <div class="skeleton w-full h-32 rounded-lg mb-4"></div>
+                    <div class="skeleton w-3/4 h-6 rounded mb-2"></div>
+                    <div class="skeleton w-1/2 h-4 rounded mb-4"></div>
+                    <div class="skeleton w-full h-10 rounded"></div>
+                </div>
+            </div>
+            <div class="skeleton-card">
+                <div class="bg-white rounded-xl card-shadow p-6">
+                    <div class="skeleton w-full h-32 rounded-lg mb-4"></div>
+                    <div class="skeleton w-3/4 h-6 rounded mb-2"></div>
+                    <div class="skeleton w-1/2 h-4 rounded mb-4"></div>
+                    <div class="skeleton w-full h-10 rounded"></div>
+                </div>
+            </div>
+            <div class="skeleton-card">
+                <div class="bg-white rounded-xl card-shadow p-6">
+                    <div class="skeleton w-full h-32 rounded-lg mb-4"></div>
+                    <div class="skeleton w-3/4 h-6 rounded mb-2"></div>
+                    <div class="skeleton w-1/2 h-4 rounded mb-4"></div>
+                    <div class="skeleton w-full h-10 rounded"></div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Empty State -->
+        <div id="empty-state" class="hidden">
+            <div class="bg-white rounded-xl card-shadow p-12 text-center">
+                <div class="mb-6">
+                    <svg class="w-24 h-24 mx-auto text-gray-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 13h6m-3-3v6m5 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/>
+                    </svg>
+                </div>
+                <h3 class="text-2xl font-bold text-gray-800 mb-2">No Presentations Yet</h3>
+                <p class="text-gray-600 mb-6">Start creating your first presentation with AI</p>
+                <a href="/index.html" class="inline-flex items-center bg-gradient-to-r from-purple-600 to-indigo-600 text-white font-semibold py-3 px-8 rounded-lg hover:from-purple-700 hover:to-indigo-700 transition-all shadow-lg">
+                    <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6"/>
+                    </svg>
+                    Create First Presentation
+                </a>
+            </div>
+        </div>
+    </main>
+
+    <!-- Delete Confirmation Modal -->
+    <div id="delete-modal" class="hidden fixed inset-0 z-50 flex items-center justify-center">
+        <div class="modal-overlay absolute inset-0"></div>
+        <div class="modal-content bg-white rounded-2xl shadow-2xl p-6 max-w-md w-full mx-4 relative z-10">
+            <div class="text-center mb-6">
+                <div class="bg-red-100 rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-4">
+                    <svg class="w-8 h-8 text-red-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"/>
+                    </svg>
+                </div>
+                <h3 class="text-xl font-bold text-gray-800 mb-2">Delete Presentation?</h3>
+                <p class="text-gray-600">Are you sure you want to delete <span id="delete-filename" class="font-semibold text-gray-800"></span>? This action cannot be undone.</p>
+            </div>
+            <div class="flex gap-3">
+                <button id="cancel-delete-btn" class="flex-1 bg-gray-200 hover:bg-gray-300 text-gray-800 font-semibold py-3 px-6 rounded-lg transition-all">
+                    Cancel
+                </button>
+                <button id="confirm-delete-btn" class="flex-1 bg-red-600 hover:bg-red-700 text-white font-semibold py-3 px-6 rounded-lg transition-all">
+                    Delete
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Toast Container -->
+    <div id="toast-container"></div>
+
+    <!-- Footer -->
+    <footer class="bg-white border-t border-gray-200 mt-12">
+        <div class="container mx-auto px-4 py-6 text-center text-gray-600">
+            <p>AI PowerPoint Generator - Powered by Advanced AI Technology</p>
+            <p class="text-sm text-gray-400 mt-1">API Base URL: <span id="api-url-display"></span></p>
+        </div>
+    </footer>
+
+    <script>
+        // Configuration
+        const API_BASE_URL = 'http://localhost:3000/api';
+
+        // State
+        let allPresentations = [];
+        let currentDeleteFile = null;
+
+        // Update API URL display
+        document.getElementById('api-url-display').textContent = API_BASE_URL;
+
+        // Utility Functions
+        function formatFileSize(bytes) {
+            if (bytes === 0) return '0 Bytes';
+            const k = 1024;
+            const sizes = ['Bytes', 'KB', 'MB', 'GB'];
+            const i = Math.floor(Math.log(bytes) / Math.log(k));
+            return Math.round((bytes / Math.pow(k, i)) * 100) / 100 + ' ' + sizes[i];
+        }
+
+        function formatDate(dateString) {
+            const date = new Date(dateString);
+            const now = new Date();
+            const diff = now - date;
+            const seconds = Math.floor(diff / 1000);
+            const minutes = Math.floor(seconds / 60);
+            const hours = Math.floor(minutes / 60);
+            const days = Math.floor(hours / 24);
+
+            if (days > 7) {
+                return date.toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' });
+            } else if (days > 0) {
+                return `${days} day${days > 1 ? 's' : ''} ago`;
+            } else if (hours > 0) {
+                return `${hours} hour${hours > 1 ? 's' : ''} ago`;
+            } else if (minutes > 0) {
+                return `${minutes} minute${minutes > 1 ? 's' : ''} ago`;
+            } else {
+                return 'Just now';
+            }
+        }
+
+        function showToast(message, type = 'success') {
+            const toast = document.createElement('div');
+            toast.className = `toast card-shadow rounded-lg p-4 mb-4`;
+
+            const colors = {
+                success: 'bg-green-500',
+                error: 'bg-red-500',
+                info: 'bg-blue-500',
+                warning: 'bg-yellow-500'
+            };
+
+            const icons = {
+                success: '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>',
+                error: '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2m7-2a9 9 0 11-18 0 9 9 0 0118 0z"/>',
+                info: '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>',
+                warning: '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"/>'
+            };
+
+            toast.innerHTML = `
+                <div class="${colors[type]} text-white flex items-center justify-between rounded-lg px-4 py-3">
+                    <div class="flex items-center">
+                        <svg class="w-6 h-6 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            ${icons[type]}
+                        </svg>
+                        <span class="font-medium">${message}</span>
+                    </div>
+                    <button onclick="this.parentElement.parentElement.remove()" class="ml-4 hover:opacity-75 transition-opacity">
+                        <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
+                            <path fill-rule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clip-rule="evenodd"/>
+                        </svg>
+                    </button>
+                </div>
+            `;
+
+            document.getElementById('toast-container').appendChild(toast);
+
+            setTimeout(() => {
+                toast.remove();
+            }, 5000);
+        }
+
+        // API Functions
+        async function loadStats() {
+            try {
+                const response = await fetch(`${API_BASE_URL}/presentations/stats`);
+                const data = await response.json();
+
+                if (data.success) {
+                    document.getElementById('stat-total').textContent = data.stats.total;
+                    document.getElementById('stat-storage').textContent = formatFileSize(data.stats.totalSize);
+                    document.getElementById('stat-avg').textContent = formatFileSize(data.stats.avgSize);
+                }
+            } catch (error) {
+                console.error('Error loading stats:', error);
+                document.getElementById('stat-total').textContent = '0';
+                document.getElementById('stat-storage').textContent = '0 MB';
+                document.getElementById('stat-avg').textContent = '0 MB';
+            }
+        }
+
+        async function loadPresentations() {
+            try {
+                const response = await fetch(`${API_BASE_URL}/presentations/list`);
+                const data = await response.json();
+
+                if (data.success) {
+                    allPresentations = data.presentations;
+                    renderPresentations(allPresentations);
+                }
+            } catch (error) {
+                console.error('Error loading presentations:', error);
+                showToast('Failed to load presentations', 'error');
+                renderPresentations([]);
+            }
+        }
+
+        function renderPresentations(presentations) {
+            const grid = document.getElementById('presentations-grid');
+            const emptyState = document.getElementById('empty-state');
+
+            // Remove skeleton cards
+            document.querySelectorAll('.skeleton-card').forEach(card => card.remove());
+
+            if (presentations.length === 0) {
+                grid.classList.add('hidden');
+                emptyState.classList.remove('hidden');
+                return;
+            }
+
+            grid.classList.remove('hidden');
+            emptyState.classList.add('hidden');
+
+            grid.innerHTML = presentations.map((file, index) => `
+                <div class="bg-white rounded-xl card-shadow card-hover p-6 fade-in" style="animation-delay: ${index * 0.05}s;">
+                    <!-- File Icon -->
+                    <div class="bg-gradient-to-br from-purple-100 to-indigo-100 rounded-lg p-8 mb-4 flex items-center justify-center">
+                        <svg class="w-16 h-16 text-purple-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/>
+                        </svg>
+                    </div>
+
+                    <!-- File Info -->
+                    <h3 class="font-semibold text-gray-800 mb-2 truncate" title="${file.filename}">
+                        ${file.filename}
+                    </h3>
+
+                    <div class="space-y-1 mb-4 text-sm text-gray-600">
+                        <div class="flex items-center">
+                            <svg class="w-4 h-4 mr-2 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 21h10a2 2 0 002-2V9.414a1 1 0 00-.293-.707l-5.414-5.414A1 1 0 0012.586 3H7a2 2 0 00-2 2v14a2 2 0 002 2z"/>
+                            </svg>
+                            <span>${formatFileSize(file.size)}</span>
+                        </div>
+                        <div class="flex items-center">
+                            <svg class="w-4 h-4 mr-2 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                            </svg>
+                            <span>${formatDate(file.createdAt)}</span>
+                        </div>
+                    </div>
+
+                    <!-- Actions -->
+                    <div class="flex gap-2">
+                        <button onclick="downloadFile('${file.filename}')"
+                            class="flex-1 bg-gradient-to-r from-purple-600 to-indigo-600 text-white font-semibold py-2 px-4 rounded-lg hover:from-purple-700 hover:to-indigo-700 transition-all flex items-center justify-center"
+                            aria-label="Download ${file.filename}">
+                            <svg class="w-4 h-4 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"/>
+                            </svg>
+                            Download
+                        </button>
+                        <button onclick="confirmDelete('${file.filename}')"
+                            class="bg-red-100 hover:bg-red-200 text-red-600 font-semibold py-2 px-4 rounded-lg transition-all"
+                            aria-label="Delete ${file.filename}">
+                            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"/>
+                            </svg>
+                        </button>
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        // Action Functions
+        function downloadFile(filename) {
+            window.location.href = `${API_BASE_URL}/presentations/download/${encodeURIComponent(filename)}`;
+            showToast(`Downloading ${filename}`, 'success');
+        }
+
+        function confirmDelete(filename) {
+            currentDeleteFile = filename;
+            document.getElementById('delete-filename').textContent = filename;
+            document.getElementById('delete-modal').classList.remove('hidden');
+        }
+
+        async function deleteFile() {
+            if (!currentDeleteFile) return;
+
+            try {
+                const response = await fetch(`${API_BASE_URL}/presentations/${encodeURIComponent(currentDeleteFile)}`, {
+                    method: 'DELETE'
+                });
+
+                const data = await response.json();
+
+                if (data.success) {
+                    showToast(`${currentDeleteFile} deleted successfully`, 'success');
+                    closeDeleteModal();
+                    await loadPresentations();
+                    await loadStats();
+                } else {
+                    throw new Error(data.error || 'Delete failed');
+                }
+            } catch (error) {
+                console.error('Error deleting file:', error);
+                showToast(`Failed to delete ${currentDeleteFile}`, 'error');
+            }
+        }
+
+        function closeDeleteModal() {
+            document.getElementById('delete-modal').classList.add('hidden');
+            currentDeleteFile = null;
+        }
+
+        // Search and Filter Functions
+        function filterAndSortPresentations() {
+            const searchTerm = document.getElementById('search-input').value.toLowerCase();
+            const sortBy = document.getElementById('sort-select').value;
+
+            let filtered = allPresentations.filter(file =>
+                file.filename.toLowerCase().includes(searchTerm)
+            );
+
+            // Sort
+            switch(sortBy) {
+                case 'date-desc':
+                    filtered.sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt));
+                    break;
+                case 'date-asc':
+                    filtered.sort((a, b) => new Date(a.createdAt) - new Date(b.createdAt));
+                    break;
+                case 'name-asc':
+                    filtered.sort((a, b) => a.filename.localeCompare(b.filename));
+                    break;
+                case 'name-desc':
+                    filtered.sort((a, b) => b.filename.localeCompare(a.filename));
+                    break;
+                case 'size-desc':
+                    filtered.sort((a, b) => b.size - a.size);
+                    break;
+                case 'size-asc':
+                    filtered.sort((a, b) => a.size - b.size);
+                    break;
+            }
+
+            renderPresentations(filtered);
+        }
+
+        // Event Listeners
+        document.getElementById('refresh-btn').addEventListener('click', async () => {
+            const icon = document.getElementById('refresh-icon');
+            icon.style.animation = 'spin 1s linear infinite';
+
+            await Promise.all([loadPresentations(), loadStats()]);
+
+            setTimeout(() => {
+                icon.style.animation = '';
+            }, 1000);
+
+            showToast('Presentations refreshed', 'success');
+        });
+
+        document.getElementById('search-input').addEventListener('input', filterAndSortPresentations);
+        document.getElementById('sort-select').addEventListener('change', filterAndSortPresentations);
+
+        document.getElementById('cancel-delete-btn').addEventListener('click', closeDeleteModal);
+        document.getElementById('confirm-delete-btn').addEventListener('click', deleteFile);
+
+        // Close modal on overlay click
+        document.getElementById('delete-modal').addEventListener('click', (e) => {
+            if (e.target.classList.contains('modal-overlay')) {
+                closeDeleteModal();
+            }
+        });
+
+        // Initialize
+        (async function init() {
+            await Promise.all([loadPresentations(), loadStats()]);
+        })();
+    </script>
+</body>
+</html>

@@ -231,17 +231,34 @@ export const generateOutline = async (
     messages: [
       {
         role: "system",
-        content: `You are a professional presentation assistant. Analyze the provided slides and create a structured outline based on the given topic.
+        content: `You are a professional presentation assistant specialized in creating highly focused, topic-specific content.
+
+🎯 PRIMARY OBJECTIVE: Create outlines SPECIFICALLY about "${topic}" - NOT generic content
+
+CRITICAL TOPIC SPECIFICITY REQUIREMENTS:
+✅ Every outline MUST be directly about "${topic}" - use specific terminology
+✅ Avoid generic statements - be SPECIFIC to this exact topic
+✅ Use keywords and terms that are unique to "${topic}"
+✅ Do NOT deviate to related but different topics
+
+❌ BAD EXAMPLE (too generic):
+   Topic: "Nerv tizimining o'smalari" (Nervous System Tumors)
+   Bad outline: "Sog'liqni saqlash asoslari" (Healthcare Fundamentals) ❌ TOO GENERIC
+
+✅ GOOD EXAMPLE (topic-specific):
+   Topic: "Nerv tizimining o'smalari" (Nervous System Tumors)
+   Good outline: "Markaziy nerv tizimi o'smalarining turlari" (Types of CNS Tumors) ✅ SPECIFIC
 
 STRICT RULES:
 
 1. OUTLINE GENERATION:
    - Create EXACTLY 3 main topic outlines
    - Each outline must have:
-     * "title": Outline title in ${language} (based on topic "${topic}")
-     * "title_eng": Outline title in English (based on topic "${topic}")
-   - Outlines must cover the main aspects of "${topic}"
+     * "title": Outline title in ${language} SPECIFICALLY about "${topic}"
+     * "title_eng": Outline title in English SPECIFICALLY about "${topic}"
+   - Outlines must cover SPECIFIC aspects of "${topic}" (not general related topics)
    - Outlines must follow a logical sequence
+   - USE TERMINOLOGY SPECIFIC TO "${topic}"
 
 2. SLIDES SELECTION:
    ⚠️ CRITICAL: Total available slides = ${availableSlidesCount}
@@ -250,8 +267,8 @@ STRICT RULES:
    - If ${actualPageCount} > ${availableSlidesCount}, you MUST REUSE slides until the total reaches ${actualPageCount}
    - For each slide:
      * "slideIndex": MUST be a valid index from the available range
-     * "title": Slide title in ${language}
-     * "title_eng": Slide title in English
+     * "title": Slide title in ${language} - MUST be SPECIFIC to "${topic}"
+     * "title_eng": Slide title in English - MUST be SPECIFIC to "${topic}"
      * "outlineIndex": Which outline it belongs to (0, 1, or 2)
 
 
@@ -260,20 +277,21 @@ STRICT RULES:
    - ✅ ONLY use slideIndex from the provided list [0-${
      availableSlidesCount - 1
    }]
-   - Outline titles must be directly related to the topic "${topic}"
-   - Each outline must represent a logical section
+   - Outline titles must be SPECIFICALLY about "${topic}" (not general concepts)
+   - Each outline must represent a specific logical section of "${topic}"
    - Group slides under the appropriate outline
+   - Every title must contain topic-specific keywords
 
 EXAMPLE for topic "The Future of AI":
 {
   "outline": [
-    {"title": "Fundamentals and History of AI", "title_eng": "Fundamentals and History of AI"},
-    {"title": "Current AI Technologies", "title_eng": "Current AI Technologies"},
-    {"title": "Future Prospects of AI", "title_eng": "Future Prospects of AI"}
+    {"title": "AI Evolution and Historical Breakthroughs", "title_eng": "AI Evolution and Historical Breakthroughs"},
+    {"title": "Machine Learning and Neural Networks Today", "title_eng": "Machine Learning and Neural Networks Today"},
+    {"title": "Emerging AI Technologies and Predictions", "title_eng": "Emerging AI Technologies and Predictions"}
   ],
   "slides": [
-    {"slideIndex": 0, "title": "...", "title_eng": "...", "outlineIndex": 0},
-    {"slideIndex": 3, "title": "...", "title_eng": "...", "outlineIndex": 1}
+    {"slideIndex": 0, "title": "Deep Learning Revolution", "title_eng": "Deep Learning Revolution", "outlineIndex": 0},
+    {"slideIndex": 3, "title": "Transformer Architecture Impact", "title_eng": "Transformer Architecture Impact", "outlineIndex": 1}
   ]
 }`,
       },
@@ -289,16 +307,27 @@ AVAILABLE SLIDES (with their ACTUAL index numbers):
 ${JSON.stringify(slides)}
 
 YOUR TASK:
-1. Analyze the main topic "${topic}"
-2. Create 3 logical outline topics that cover different aspects of "${topic}"
+1. Analyze the main topic "${topic}" - understand its SPECIFIC scope
+2. Create 3 logical outline topics that cover SPECIFIC aspects of "${topic}"
+   - ✅ MUST use terminology SPECIFIC to "${topic}"
+   - ✅ MUST focus on unique aspects of "${topic}"
+   - ❌ AVOID generic/broad related topics
    - Write each outline title in both ${language} and English
-   - Make sure outlines logically divide the main topic into 3 parts
+   - Make sure outlines logically divide "${topic}" into 3 SPECIFIC parts
 3. Select EXACTLY ${actualPageCount} slides from the ${availableSlidesCount} slides listed above
 4. ⚠️ IMPORTANT: Use ONLY the actual index numbers shown in brackets [0] to [${
           availableSlidesCount - 1
         }]
 5. Assign each slide to the appropriate outline (outlineIndex: 0, 1, or 2)
-6. Write slide titles in both ${language} and English`,
+6. Write slide titles in both ${language} and English
+   - Each slide title MUST be SPECIFIC to "${topic}"
+   - Use topic-specific keywords in every title
+
+VALIDATION CHECKLIST (verify before responding):
+□ All outline titles contain "${topic}"-specific terminology
+□ No generic/broad topics that could apply to other subjects
+□ All slide titles are directly related to "${topic}"
+□ Used specific keywords unique to "${topic}"`,
       },
     ],
     response_format: {
@@ -361,7 +390,8 @@ YOUR TASK:
 export const generateContent = async (
   slide: any,
   outline: any,
-  language: string
+  language: string,
+  mainTopic?: string
 ) => {
   // Extract and prepare text/shape/table elements with full details including fontSize and maxCharacters
   const textShapeTableElements = slide.elements
@@ -451,20 +481,53 @@ export const generateContent = async (
     messages: [
       {
         role: "system",
-        content: `You are a professional presentation content writer. Generate content for ALL text, shape, and table elements.
+        content: `You are a professional presentation content writer specialized in creating TOPIC-SPECIFIC content.
+
+🎯 PRIMARY OBJECTIVE: Generate content SPECIFICALLY about ${
+          mainTopic ? `"${mainTopic}"` : "the main topic"
+        } - NOT generic content
+
+CRITICAL TOPIC SPECIFICITY REQUIREMENTS:
+✅ ALL content MUST be SPECIFICALLY about ${
+          mainTopic ? `"${mainTopic}"` : "the topic"
+        }
+✅ Use terminology and keywords SPECIFIC to ${
+          mainTopic ? `"${mainTopic}"` : "the topic"
+        }
+✅ Avoid generic statements - be SPECIFIC to this exact topic
+✅ Every sentence must contain topic-specific information
+
+❌ BAD EXAMPLES (too generic):
+   ${
+     mainTopic
+       ? `Topic: "${mainTopic}"\n   Bad: "Sog'liqni saqlash asoslari" (Healthcare Fundamentals) ❌ TOO GENERIC\n   Bad: "Kasalliklar haqida" (About Diseases) ❌ TOO BROAD`
+       : "Bad: Generic healthcare terms ❌ TOO GENERIC"
+   }
+
+✅ GOOD EXAMPLES (topic-specific):
+   ${
+     mainTopic
+       ? `Topic: "${mainTopic}"\n   Good: Content using "${mainTopic}"-specific terms ✅ SPECIFIC`
+       : "Good: Specific to the actual topic ✅ SPECIFIC"
+   }
 
 CRITICAL RULES:
 1. You MUST generate content for EVERY element listed
 2. Do NOT skip any elements
 3. Content MUST be in ${language} language
-4. ⚠️ STRICT CHARACTER LIMITS: Each element has a maxCharacters limit. Try to stay within it, but don't worry too much - font size will be adjusted if needed.
-5. ⚠️ CONTENT DIVERSITY: Each element MUST have UNIQUE content. NEVER repeat the same text across different elements!
-6. For similar-sized elements, provide DIFFERENT topics, aspects, or perspectives
-7. Use element properties to determine content style:
-   - Large width/height + top position = Main title (3-8 words)
-   - Medium size + center = Body text (concise paragraphs or bullets)
-   - Small size = Labels or callouts (1-3 words)
-   - Table elements = Generate appropriate table data with rows and columns
+4. Content MUST be SPECIFICALLY about ${
+          mainTopic ? `"${mainTopic}"` : "the topic"
+        } - NOT generic
+5. ⚠️ STRICT CHARACTER LIMITS: Each element has a maxCharacters limit. Try to stay within it, but don't worry too much - font size will be adjusted if needed.
+6. ⚠️ CONTENT DIVERSITY: Each element MUST have UNIQUE content. NEVER repeat the same text across different elements!
+7. For similar-sized elements, provide DIFFERENT SPECIFIC aspects of ${
+          mainTopic ? `"${mainTopic}"` : "the topic"
+        }
+8. Use element properties to determine content style:
+   - Large width/height + top position = Main title (3-8 words, TOPIC-SPECIFIC)
+   - Medium size + center = Body text (concise paragraphs or bullets, TOPIC-SPECIFIC)
+   - Small size = Labels or callouts (1-3 words, TOPIC-SPECIFIC)
+   - Table elements = Generate appropriate table data with TOPIC-SPECIFIC information
 
 CHARACTER LIMIT GUIDELINES:
 - For small elements (maxChars < 50): Use very short text (1-5 words)
@@ -475,35 +538,54 @@ CHARACTER LIMIT GUIDELINES:
 
 CONTENT VARIETY RULES:
 - NEVER use the same or similar text for different elements
-- Each element should cover a DIFFERENT aspect of the topic
-- Similar-sized elements should have DISTINCT, non-overlapping content
+- Each element should cover a DIFFERENT SPECIFIC aspect of ${
+          mainTopic ? `"${mainTopic}"` : "the topic"
+        }
+- Similar-sized elements should have DISTINCT, non-overlapping, TOPIC-SPECIFIC content
 - Vary your language and phrasing across elements
-
-GOOD CONTENT EXAMPLES:
-✅ Element 1: "Introduction to AI" (title)
-✅ Element 2: "Machine Learning Fundamentals" (different subtitle)
-✅ Element 3: "Neural networks process data through interconnected layers" (unique body text)
-
-BAD CONTENT EXAMPLES:
-❌ Element 1: "Introduction" and Element 2: "Introduction" (DUPLICATE!)
-❌ Element 1: "Key Points" and Element 2: "Key Points" (DUPLICATE!)
-❌ "THISISATITLEWITHOUTSPACES" (missing spaces)
+- ALL content must use ${
+          mainTopic ? `"${mainTopic}"` : "topic"
+        }-specific terminology
 
 QUALITY GUIDELINES:
-- Main titles: Short, impactful, clear
-- Subtitles: Descriptive and informative
-- Body text: Concise, professional, engaging
-- Labels: Brief but meaningful
-- Tables: Relevant data with proper headers and content
-- ALL content must relate to: "${outline.title || outline.title_eng}"
-- EVERY element must have DIFFERENT, UNIQUE content!${diversityContext}`,
+- Main titles: Short, impactful, clear, TOPIC-SPECIFIC
+- Subtitles: Descriptive and informative, TOPIC-SPECIFIC
+- Body text: Concise, professional, engaging, TOPIC-SPECIFIC
+- Labels: Brief but meaningful, TOPIC-SPECIFIC
+- Tables: Relevant data with proper headers and TOPIC-SPECIFIC content
+- ALL content must be SPECIFICALLY about: ${
+          mainTopic
+            ? `"${mainTopic}"`
+            : `"${outline.title || outline.title_eng}"`
+        }
+- EVERY element must have DIFFERENT, UNIQUE, TOPIC-SPECIFIC content!${diversityContext}
+
+VALIDATION BEFORE RESPONDING:
+□ All content uses ${
+          mainTopic ? `"${mainTopic}"` : "topic"
+        }-specific terminology
+□ No generic statements that could apply to other topics
+□ Each element is directly related to ${
+          mainTopic ? `"${mainTopic}"` : "the topic"
+        }`,
       },
       {
         role: "user",
         content: `SLIDE ID: ${slide.id}
+${
+  mainTopic
+    ? `MAIN TOPIC: "${mainTopic}" (ALL content must be SPECIFICALLY about this)`
+    : ""
+}
 OUTLINE TOPIC: ${outline.title || outline.title_eng}
 LANGUAGE: ${language}
 TOTAL TEXT/SHAPE/TABLE ELEMENTS: ${textShapeTableElements.length}
+
+⚠️ CRITICAL: Every piece of content MUST be SPECIFICALLY about ${
+          mainTopic
+            ? `"${mainTopic}"`
+            : `"${outline.title || outline.title_eng}"`
+        }
 
 ELEMENTS TO FILL (you must fill ALL ${textShapeTableElements.length} elements):
 ${textShapeTableElements
