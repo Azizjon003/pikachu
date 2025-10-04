@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
-    "start": "ts-node main.ts",
+    "start": "tsx src/services/api/api-client.ts",
     "api": "tsx src/services/api/api-client.ts",
     "test:image-replacer": "ts-node testImageReplacer.ts",
     "test:image-replacer:single": "ts-node testImageReplacer.ts single",
