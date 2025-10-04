@@ -253,10 +253,10 @@
 
     <script>
         // Configuration
-        const API_BASE_URL = 'http://localhost:3000/api';
+        const API_BASE_URL = '/api';
 
         // Update API URL display
-        document.getElementById('api-url-display').textContent = API_BASE_URL;
+        document.getElementById('api-url-display').textContent = window.location.origin + API_BASE_URL;
 
         // API Status Check
         async function checkApiStatus() {
