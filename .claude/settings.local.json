@@ -1,0 +1,18 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(npx tsc:*)",
+      "Bash(awk:*)",
+      "Bash(tree:*)",
+      "Bash(grep:*)",
+      "Bash(git mv:*)",
+      "Bash(git rm:*)",
+      "Bash(while read f)",
+      "Bash(done)",
+      "Bash(mkdir:*)",
+      "Bash(cat:*)"
+    ],
+    "deny": [],
+    "ask": []
+  }
+}

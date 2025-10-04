@@ -4,26 +4,38 @@
   "main": "index.js",
   "scripts": {
     "start": "ts-node main.ts",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "api": "tsx src/services/api/api-client.ts",
+    "test:image-replacer": "ts-node testImageReplacer.ts",
+    "test:image-replacer:single": "ts-node testImageReplacer.ts single",
+    "test:image-replacer:keywords": "ts-node testImageReplacer.ts keywords"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "description": "",
   "dependencies": {
+    "axios": "^1.12.2",
+    "dotenv": "^17.2.3",
+    "express": "^5.1.0",
     "jsdom": "^27.0.0",
     "lodash": "^4.17.21",
+    "multer": "^2.0.2",
     "nanoid": "^5.1.6",
+    "openai": "^6.0.1",
     "pptxgenjs": "^4.0.1",
     "pptxtojson": "^1.6.0",
     "sharp": "^0.33.5",
     "svg-arc-to-cubic-bezier": "^3.2.0",
     "svg-pathdata": "^7.2.0",
-    "tinycolor2": "^1.6.0"
+    "tinycolor2": "^1.6.0",
+    "zod": "^4.1.11",
+    "zod-to-json-schema": "^3.24.6"
   },
   "devDependencies": {
+    "@types/express": "^5.0.3",
     "@types/jsdom": "^21.1.7",
     "@types/lodash": "^4.17.20",
+    "@types/multer": "^2.0.0",
     "@types/sharp": "^0.32.0",
     "@types/svg-arc-to-cubic-bezier": "^3.2.3",
     "@types/tinycolor2": "^1.4.6",

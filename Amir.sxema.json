@@ -1,359 +1,1926 @@
 [
   {
-    "id": "yxaulYjiDh",
+    "id": "skZN1LrhW8",
     "index": 0,
     "slide": 1,
     "elements": [
       {
         "type": "image",
-        "src": "https://pixabay.com/get/gd490a0d0baf64ccecf2a7f1d7009a00970a79869.jpg",
-        "hasImage": true
+        "src": "./images\\slide0_img1.png",
+        "hasImage": true,
+        "elementIndex": 0
       },
       {
-        "type": "text",
-        "content": "Mirzo Ulug‘bek"
+        "type": "image",
+        "src": "./images\\slide0_img2.png",
+        "hasImage": true,
+        "elementIndex": 1
       },
       {
-        "type": "text",
-        "content": "Buyuk olim va hukmdor"
+        "type": "image",
+        "src": "./images\\slide0_img3.png",
+        "hasImage": true,
+        "elementIndex": 2
       },
       {
-        "type": "text",
-        "content": "SAMARQAND AKADEMIYASI"
+        "type": "image",
+        "src": "./images\\slide0_img4.png",
+        "hasImage": true,
+        "elementIndex": 3
       },
       {
-        "type": "text",
-        "content": "1394–1449"
+        "type": "shape",
+        "width": 620.82624671916,
+        "height": 40,
+        "left": 168.13543307086613,
+        "top": 225.18771653543303,
+        "content": "TUMORS OF NERVOUS SYSTEM",
+        "fontSize": 30,
+        "maxCharacters": 34,
+        "elementIndex": 5
       },
       {
-        "type": "text",
-        "content": "Presentation"
+        "type": "image",
+        "src": "./images\\slide0_img5.png",
+        "hasImage": true,
+        "elementIndex": 6
+      },
+      {
+        "type": "image",
+        "src": "./images\\slide0_img6.png",
+        "hasImage": true,
+        "elementIndex": 7
+      },
+      {
+        "type": "shape",
+        "width": 440.98131233595797,
+        "height": 32,
+        "left": 334.945091863517,
+        "top": 346.4566929133858,
+        "content": "Azizjon Aliqulov",
+        "fontSize": 22,
+        "maxCharacters": 33,
+        "elementIndex": 9
       }
     ],
     "note": ""
   },
   {
-    "id": "HY9xvafZW2",
+    "id": "Kx25LG3jKV",
     "index": 1,
     "slide": 2,
     "elements": [
       {
         "type": "image",
-        "src": "https://www.gettyimages.com/detail/photo/ulugh-beg-observatory-museum-royalty-free-image/157305384",
-        "hasImage": true
+        "src": "./images\\slide1_img7.png",
+        "hasImage": true,
+        "elementIndex": 0
       },
       {
-        "type": "text",
-        "content": "1. Kirish"
+        "type": "image",
+        "src": "./images\\slide1_img8.png",
+        "hasImage": true,
+        "elementIndex": 1
       },
       {
-        "type": "text",
-        "content": "2. Ulug‘bekning hayoti"
+        "type": "image",
+        "src": "./images\\slide1_img9.png",
+        "hasImage": true,
+        "elementIndex": 4
       },
       {
-        "type": "text",
-        "content": "3. Samarqand ilmiy markazi"
+        "type": "image",
+        "src": "./images\\slide1_img10.png",
+        "hasImage": true,
+        "elementIndex": 5
       },
       {
-        "type": "text",
-        "content": "4. Rasadxona"
+        "type": "image",
+        "src": "./images\\slide1_img11.png",
+        "hasImage": true,
+        "elementIndex": 8
       },
       {
-        "type": "text",
-        "content": "5. Ilmiy meros"
+        "type": "image",
+        "src": "./images\\slide1_img12.png",
+        "hasImage": true,
+        "elementIndex": 9
       },
       {
-        "type": "text",
-        "content": "6. Ta’limga qo‘shgan hissasi"
+        "type": "image",
+        "src": "./images\\slide1_img13.png",
+        "hasImage": true,
+        "elementIndex": 12
       },
       {
-        "type": "text",
-        "content": "7. Ulug‘bekning ta’siri"
+        "type": "image",
+        "src": "./images\\slide1_img14.png",
+        "hasImage": true,
+        "elementIndex": 13
       },
       {
-        "type": "text",
-        "content": "8. Madaniyat va fan"
+        "type": "image",
+        "src": "./images\\slide1_img15.png",
+        "hasImage": true,
+        "elementIndex": 16
       },
       {
-        "type": "text",
-        "content": "9. Merosi bugungi kunda"
+        "type": "image",
+        "src": "./images\\slide1_img16.png",
+        "hasImage": true,
+        "elementIndex": 17
       },
       {
-        "type": "text",
-        "content": "10. Xulosa"
+        "type": "image",
+        "src": "./images\\slide1_img17.png",
+        "hasImage": true,
+        "elementIndex": 20
       },
       {
-        "type": "text",
-        "content": "Agenda"
+        "type": "image",
+        "src": "./images\\slide1_img18.png",
+        "hasImage": true,
+        "elementIndex": 21
       },
       {
-        "type": "text",
-        "content": "History of Science"
+        "type": "image",
+        "src": "./images\\slide1_img19.png",
+        "hasImage": true,
+        "elementIndex": 24
+      },
+      {
+        "type": "shape",
+        "width": 411.37480314960624,
+        "height": 54,
+        "left": 9.151391076115484,
+        "top": 78.17301837270341,
+        "content": "Table of Contents",
+        "fontSize": 44,
+        "maxCharacters": 15,
+        "elementIndex": 26
+      },
+      {
+        "type": "shape",
+        "width": 54.49448818897637,
+        "height": 87,
+        "left": 455.62435695538056,
+        "top": 82.93459317585301,
+        "content": "1",
+        "fontSize": 77,
+        "maxCharacters": 10,
+        "elementIndex": 28
+      },
+      {
+        "type": "shape",
+        "width": 54.49448818897637,
+        "height": 87,
+        "left": 455.62435695538056,
+        "top": 225.43590551181103,
+        "content": "2",
+        "fontSize": 77,
+        "maxCharacters": 10,
+        "elementIndex": 30
+      },
+      {
+        "type": "shape",
+        "width": 54.49448818897637,
+        "height": 87,
+        "left": 455.62435695538056,
+        "top": 367.93721784776903,
+        "content": "3",
+        "fontSize": 77,
+        "maxCharacters": 10,
+        "elementIndex": 32
+      },
+      {
+        "type": "shape",
+        "width": 364.3911811023622,
+        "height": 30,
+        "left": 529.1859317585302,
+        "top": 94.66162729658791,
+        "content": "Nervous System Tumors",
+        "fontSize": 20,
+        "maxCharacters": 30,
+        "elementIndex": 34
+      },
+      {
+        "type": "shape",
+        "width": 364.3911811023622,
+        "height": 30,
+        "left": 529.1859317585302,
+        "top": 231.86666666666667,
+        "content": "Diagnostic Techniques",
+        "fontSize": 20,
+        "maxCharacters": 30,
+        "elementIndex": 36
+      },
+      {
+        "type": "shape",
+        "width": 364.3911811023622,
+        "height": 30,
+        "left": 529.1859317585302,
+        "top": 374.53028871391075,
+        "content": "Treatment Approaches",
+        "fontSize": 20,
+        "maxCharacters": 30,
+        "elementIndex": 38
+      },
+      {
+        "type": "image",
+        "src": "./images\\slide1_img20.png",
+        "hasImage": true,
+        "elementIndex": 39
+      },
+      {
+        "type": "image",
+        "src": "./images\\slide1_img21.png",
+        "hasImage": true,
+        "elementIndex": 43
       }
     ],
     "note": ""
   },
   {
-    "id": "ErapRUw-Jg",
+    "id": "O3ybxTN_ey",
     "index": 2,
     "slide": 3,
     "elements": [
       {
-        "type": "text",
-        "content": "Kirish"
+        "type": "image",
+        "src": "./images\\slide2_img22.png",
+        "hasImage": true,
+        "elementIndex": 0
       },
       {
-        "type": "text",
-        "content": "1."
+        "type": "image",
+        "src": "./images\\slide2_img23.png",
+        "hasImage": true,
+        "elementIndex": 1
       },
       {
-        "type": "text",
-        "content": "Mirzo Ulug‘bek – Temuriylar sulolasining buyuk vakili, astronom va matematik. U ilm-fan va ta’limni rivojlantirishda beqiyos o‘rin tutadi."
+        "type": "image",
+        "src": "./images\\slide2_img24.png",
+        "hasImage": true,
+        "elementIndex": 2
+      },
+      {
+        "type": "image",
+        "src": "./images\\slide2_img25.png",
+        "hasImage": true,
+        "elementIndex": 3
+      },
+      {
+        "type": "image",
+        "src": "./images\\slide2_img26.png",
+        "hasImage": true,
+        "elementIndex": 4
+      },
+      {
+        "type": "image",
+        "src": "./images\\slide2_img27.png",
+        "hasImage": true,
+        "elementIndex": 7
+      },
+      {
+        "type": "image",
+        "src": "./images\\slide2_img28.png",
+        "hasImage": true,
+        "elementIndex": 8
+      },
+      {
+        "type": "image",
+        "src": "./images\\slide2_img29.png",
+        "isEdited": true,
+        "hasImage": true,
+        "elementIndex": 11
+      },
+      {
+        "type": "shape",
+        "width": 609.357060367454,
+        "height": 137,
+        "left": 175.32146981627295,
+        "top": 361.21312335958,
+        "content": "Nervous System TumorsNervous System TumorsNervous System TumorsNervous System TumorsNervous System TumorsNervous System TumorsNervous System Tumors",
+        "fontSize": 16,
+        "maxCharacters": 441,
+        "elementIndex": 13
+      },
+      {
+        "type": "shape",
+        "width": 165.6293963254593,
+        "height": 142.64839895013122,
+        "left": 397.18530183727034,
+        "top": 137.74687664041994,
+        "content": "01",
+        "fontSize": 22,
+        "maxCharacters": 60,
+        "elementIndex": 15
+      },
+      {
+        "type": "image",
+        "src": "./images\\slide2_img30.png",
+        "hasImage": true,
+        "elementIndex": 16
+      },
+      {
+        "type": "image",
+        "src": "./images\\slide2_img31.png",
+        "hasImage": true,
+        "elementIndex": 19
       }
     ],
     "note": ""
   },
   {
-    "id": "3Ggzc0PdYM",
+    "id": "fJyJ7oPtcG",
     "index": 3,
     "slide": 4,
     "elements": [
       {
         "type": "image",
-        "src": "https://www.gettyimages.com/detail/photo/ulugh-beg-observatory-museum-royalty-free-image/497146410",
-        "hasImage": true
+        "src": "./images\\slide3_img32.png",
+        "hasImage": true,
+        "elementIndex": 0
       },
       {
-        "type": "text",
-        "content": "Mirzo Ulug‘bek hayoti"
+        "type": "image",
+        "src": "./images\\slide3_img33.png",
+        "hasImage": true,
+        "elementIndex": 1
       },
       {
-        "type": "text",
-        "content": "Ulug‘bek 1394-yilda tug‘ilgan. Temuriylar saltanatining hukmdori bo‘lishiga qaramay, u ilmiy izlanishlarga katta e’tibor qaratdi."
+        "type": "image",
+        "src": "./images\\slide3_img34.png",
+        "hasImage": true,
+        "elementIndex": 4
       },
       {
-        "type": "text",
-        "content": "Samarqandni ilm markaziga aylantirdi."
+        "type": "image",
+        "src": "./images\\slide3_img35.png",
+        "hasImage": true,
+        "elementIndex": 5
       },
       {
-        "type": "text",
-        "content": "SAMARQAND AKADEMIYASI"
+        "type": "image",
+        "src": "./images\\slide3_img36.png",
+        "hasImage": true,
+        "elementIndex": 8
       },
       {
-        "type": "text",
-        "content": "XV asr"
+        "type": "image",
+        "src": "./images\\slide3_img37.png",
+        "hasImage": true,
+        "elementIndex": 9
+      },
+      {
+        "type": "image",
+        "src": "./images\\slide3_img38.png",
+        "hasImage": true,
+        "elementIndex": 12
+      },
+      {
+        "type": "image",
+        "src": "./images\\slide3_img39.png",
+        "hasImage": true,
+        "elementIndex": 13
+      },
+      {
+        "type": "image",
+        "src": "./images\\slide3_img40.png",
+        "hasImage": true,
+        "elementIndex": 16
+      },
+      {
+        "type": "image",
+        "src": "./images\\slide3_img41.png",
+        "hasImage": true,
+        "elementIndex": 17
+      },
+      {
+        "type": "image",
+        "src": "./images\\slide3_img42.png",
+        "hasImage": true,
+        "elementIndex": 20
+      },
+      {
+        "type": "image",
+        "src": "./images\\slide3_img43.png",
+        "hasImage": true,
+        "elementIndex": 21
+      },
+      {
+        "type": "image",
+        "src": "./images\\slide3_img44.png",
+        "hasImage": true,
+        "elementIndex": 24
+      },
+      {
+        "type": "image",
+        "src": "./images\\slide3_img45.png",
+        "hasImage": true,
+        "elementIndex": 25
+      },
+      {
+        "type": "image",
+        "src": "./images\\slide3_img46.png",
+        "hasImage": true,
+        "elementIndex": 28
+      },
+      {
+        "type": "image",
+        "src": "./images\\slide3_img47.png",
+        "hasImage": true,
+        "elementIndex": 29
+      },
+      {
+        "type": "image",
+        "src": "./images\\slide3_img48.png",
+        "hasImage": true,
+        "elementIndex": 32
+      },
+      {
+        "type": "image",
+        "src": "./images\\slide3_img49.png",
+        "hasImage": true,
+        "elementIndex": 33
+      },
+      {
+        "type": "image",
+        "src": "./images\\slide3_img50.png",
+        "hasImage": true,
+        "isEdited": true,
+        "elementIndex": 36
+      },
+      {
+        "type": "shape",
+        "width": 715.39937007874,
+        "height": 70,
+        "left": 161.37322834645667,
+        "top": 38.44272965879264,
+        "content": "Write a main idea here",
+        "fontSize": 40,
+        "maxCharacters": 29,
+        "elementIndex": 38
+      },
+      {
+        "type": "shape",
+        "width": 240.5805774278215,
+        "height": 103.43748031496062,
+        "left": 44.704566929133854,
+        "top": 332.79611548556426,
+        "content": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
+        "fontSize": 13,
+        "maxCharacters": 180,
+        "elementIndex": 40
+      },
+      {
+        "type": "shape",
+        "width": 242.202624671916,
+        "height": 103.43748031496062,
+        "left": 674.6445144356954,
+        "top": 332.79611548556426,
+        "content": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
+        "fontSize": 13,
+        "maxCharacters": 186,
+        "elementIndex": 42
       }
     ],
     "note": ""
   },
   {
-    "id": "d5A6cNGzJ-",
+    "id": "fW2hnyR_rB",
     "index": 4,
     "slide": 5,
     "elements": [
       {
-        "type": "text",
-        "content": "Samarqand ilmiy maktabi"
+        "type": "image",
+        "src": "./images\\slide4_img51.png",
+        "hasImage": true,
+        "elementIndex": 0
       },
       {
-        "type": "text",
-        "content": "Ulug‘bek hukmronligi davrida ko‘plab olimlar Samarqandga yig‘ildi."
+        "type": "table",
+        "data": [
+          ["Tumor Type", "Location", "Benign/Malignant", "Common Symptoms"],
+          ["Glioma", "Brain/Spinal Cord", "Malignant", "Headaches, Seizures"],
+          [
+            "Meningioma",
+            "Brain Meninges",
+            "Benign",
+            "Vision Issues, Headaches"
+          ],
+          [
+            "Schwannoma",
+            "Peripheral Nerves",
+            "Benign",
+            "Hearing Loss, Balance Problems"
+          ],
+          [
+            "Medulloblastoma",
+            "Cerebellum (Pediatric)",
+            "Malignant",
+            "Nausea, Coordination Issues"
+          ],
+          [
+            "Pituitary Adenoma",
+            "Pituitary Gland",
+            "Benign/Malignant",
+            "Hormonal Imbalance"
+          ]
+        ],
+        "elementIndex": 1
+      },
+      {
+        "type": "shape",
+        "width": 776.4724409448818,
+        "height": 70,
+        "left": 91.76377952755905,
+        "top": 25.85805774278215,
+        "content": "Tumor Classification Table",
+        "fontSize": 40,
+        "maxCharacters": 32,
+        "elementIndex": 3
       },
       {
         "type": "image",
-        "src": "https://www.gettyimages.com/detail/photo/ulugh-beg-madrasah-samarkand-royalty-free-image/11577",
-        "hasImage": true
+        "src": "./images\\slide4_img52.png",
+        "hasImage": true,
+        "elementIndex": 4
       },
       {
-        "type": "text",
-        "content": "Ilmiy doiralar"
+        "type": "image",
+        "src": "./images\\slide4_img53.png",
+        "hasImage": true,
+        "elementIndex": 7
       },
       {
-        "type": "text",
-        "content": "Matematika va astronomiya"
+        "type": "image",
+        "src": "./images\\slide4_img54.png",
+        "hasImage": true,
+        "elementIndex": 8
       },
       {
-        "type": "text",
-        "content": "Falsafa"
-      },
-      {
-        "type": "text",
-        "content": "SAMARQAND AKADEMIYASI"
-      },
-      {
-        "type": "text",
-        "content": "XV asr"
+        "type": "image",
+        "src": "./images\\slide4_img55.png",
+        "hasImage": true,
+        "elementIndex": 11
       }
     ],
     "note": ""
   },
   {
-    "id": "ZTNrnUHgzu",
+    "id": "UIV9L1AYyp",
     "index": 5,
     "slide": 6,
     "elements": [
       {
-        "type": "text",
-        "content": "Rasadxona"
+        "type": "image",
+        "src": "./images\\slide5_img56.png",
+        "hasImage": true,
+        "elementIndex": 0
       },
       {
-        "type": "text",
-        "content": "1428-yilda Samarqandda barpo etilgan."
+        "type": "image",
+        "src": "./images\\slide5_img57.png",
+        "hasImage": true,
+        "isEdited": true,
+        "elementIndex": 1
       },
       {
-        "type": "text",
-        "content": "Eng katta ilmiy inshootlardan biri."
+        "type": "image",
+        "src": "./images\\slide5_img58.png",
+        "hasImage": true,
+        "elementIndex": 4
       },
       {
-        "type": "text",
-        "content": "Yulduzlar xaritasi tuzildi."
+        "type": "image",
+        "src": "./images\\slide5_img59.png",
+        "hasImage": true,
+        "elementIndex": 5
       },
       {
-        "type": "text",
-        "content": "Aniq astronomik kuzatuvlar."
+        "type": "image",
+        "src": "./images\\slide5_img60.png",
+        "hasImage": true,
+        "elementIndex": 8
       },
       {
-        "type": "text",
-        "content": "Ilmiy kashfiyot markazi."
+        "type": "image",
+        "src": "./images\\slide5_img61.png",
+        "hasImage": true,
+        "elementIndex": 9
       },
       {
-        "type": "text",
-        "content": "Timeline"
+        "type": "image",
+        "src": "./images\\slide5_img62.png",
+        "hasImage": true,
+        "elementIndex": 12
       },
       {
-        "type": "text",
-        "content": "SAMARQAND"
+        "type": "image",
+        "src": "./images\\slide5_img63.png",
+        "hasImage": true,
+        "elementIndex": 13
       },
       {
-        "type": "text",
-        "content": "1428"
+        "type": "image",
+        "src": "./images\\slide5_img64.png",
+        "hasImage": true,
+        "elementIndex": 16
+      },
+      {
+        "type": "image",
+        "src": "./images\\slide5_img65.png",
+        "hasImage": true,
+        "elementIndex": 17
+      },
+      {
+        "type": "image",
+        "src": "./images\\slide5_img66.png",
+        "hasImage": true,
+        "elementIndex": 20
+      },
+      {
+        "type": "image",
+        "src": "./images\\slide5_img67.png",
+        "hasImage": true,
+        "elementIndex": 21
+      },
+      {
+        "type": "image",
+        "src": "./images\\slide5_img68.png",
+        "hasImage": true,
+        "elementIndex": 24
+      },
+      {
+        "type": "shape",
+        "width": 776.4724409448818,
+        "height": 58,
+        "left": 91.76293963254592,
+        "top": 20.76850393700787,
+        "content": "Write a main idea here",
+        "fontSize": 40,
+        "maxCharacters": 32,
+        "elementIndex": 26
+      },
+      {
+        "type": "shape",
+        "width": 238.25102362204723,
+        "height": 63.390656167978996,
+        "left": 68.36514435695537,
+        "top": 155.26225721784775,
+        "content": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+        "fontSize": 13,
+        "maxCharacters": 120,
+        "elementIndex": 28
+      },
+      {
+        "type": "shape",
+        "width": 232.7155905511811,
+        "height": 63.390656167978996,
+        "left": 355.4745406824146,
+        "top": 161.46383202099736,
+        "content": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+        "fontSize": 13,
+        "maxCharacters": 116,
+        "elementIndex": 30
+      },
+      {
+        "type": "shape",
+        "width": 233.99611548556427,
+        "height": 63.390656167978996,
+        "left": 654.5164304461941,
+        "top": 167.66540682414697,
+        "content": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+        "fontSize": 13,
+        "maxCharacters": 116,
+        "elementIndex": 32
       }
     ],
     "note": ""
   },
   {
-    "id": "TvzG_6ZrJi",
+    "id": "Gb50ZvJTTu",
     "index": 6,
     "slide": 7,
     "elements": [
       {
-        "type": "text",
-        "content": "Ulug‘bekning ilmiy merosi"
+        "type": "image",
+        "src": "./images\\slide6_img69.png",
+        "hasImage": true,
+        "elementIndex": 0
       },
       {
-        "type": "text",
-        "content": "2."
+        "type": "image",
+        "src": "./images\\slide6_img70.png",
+        "hasImage": true,
+        "isEdited": true,
+        "elementIndex": 1
       },
       {
-        "type": "text",
-        "content": "‘Ziji Jadidi Kuragoniy’ – yulduzlar katalogi. Bu asar 1018 yulduzni o‘z ichiga olgan va yuz yillar davomida jahon olimlari tomonidan foydalanilgan."
+        "type": "shape",
+        "width": 665.7322834645669,
+        "height": 50,
+        "left": 147.13721784776902,
+        "top": 16.931653543307085,
+        "content": "Write a main idea here",
+        "fontSize": 40,
+        "maxCharacters": 27,
+        "elementIndex": 3
+      },
+      {
+        "type": "shape",
+        "width": 212.77165354330705,
+        "height": 36.695328083989494,
+        "left": 684.2036745406823,
+        "top": 224.64881889763777,
+        "content": "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+        "fontSize": 13,
+        "maxCharacters": 54,
+        "elementIndex": 5
+      },
+      {
+        "type": "shape",
+        "width": 212.77165354330705,
+        "height": 25.343727034120732,
+        "left": 676.7618897637794,
+        "top": 159.58414698162727,
+        "content": "Write a main idea here",
+        "fontSize": 15,
+        "maxCharacters": 23,
+        "elementIndex": 7
+      },
+      {
+        "type": "shape",
+        "width": 212.77165354330705,
+        "height": 36.695328083989494,
+        "left": 684.2036745406823,
+        "top": 411.93784776902885,
+        "content": "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+        "fontSize": 13,
+        "maxCharacters": 54,
+        "elementIndex": 9
+      },
+      {
+        "type": "shape",
+        "width": 212.77165354330705,
+        "height": 25.343727034120732,
+        "left": 680.4828346456692,
+        "top": 347.24094488188973,
+        "content": "Write a main idea here",
+        "fontSize": 15,
+        "maxCharacters": 23,
+        "elementIndex": 11
+      },
+      {
+        "type": "shape",
+        "width": 212.77165354330705,
+        "height": 36.695328083989494,
+        "left": 63.03128608923883,
+        "top": 211.92787401574802,
+        "content": "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+        "fontSize": 13,
+        "maxCharacters": 54,
+        "elementIndex": 13
+      },
+      {
+        "type": "shape",
+        "width": 212.77165354330705,
+        "height": 25.343727034120732,
+        "left": 63.03128608923883,
+        "top": 152.95191601049868,
+        "content": "Write a main idea here",
+        "fontSize": 15,
+        "maxCharacters": 23,
+        "elementIndex": 15
+      },
+      {
+        "type": "shape",
+        "width": 212.77165354330705,
+        "height": 36.695328083989494,
+        "left": 63.03128608923883,
+        "top": 405.93784776902885,
+        "content": "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+        "fontSize": 13,
+        "maxCharacters": 54,
+        "elementIndex": 17
+      },
+      {
+        "type": "shape",
+        "width": 212.77165354330705,
+        "height": 25.343727034120732,
+        "left": 50.62813648293963,
+        "top": 347.24094488188973,
+        "content": "Write a main idea here",
+        "fontSize": 15,
+        "maxCharacters": 23,
+        "elementIndex": 19
       }
     ],
     "note": ""
   },
   {
-    "id": "LzxyBZZFuW",
+    "id": "yzf1oPwqfC",
     "index": 7,
     "slide": 8,
     "elements": [
       {
         "type": "image",
-        "src": "https://www.gettyimages.com/detail/photo/ulugh-beg-observatory-museum-royalty-free-image/818876121",
-        "hasImage": true
+        "src": "./images\\slide7_img71.png",
+        "hasImage": true,
+        "elementIndex": 0
       },
       {
-        "type": "text",
-        "content": "Matematika"
+        "type": "image",
+        "src": "./images\\slide7_img72.png",
+        "hasImage": true,
+        "isEdited": true,
+        "elementIndex": 1
       },
       {
-        "type": "text",
-        "content": "Astronomiya"
+        "type": "image",
+        "src": "./images\\slide7_img73.png",
+        "hasImage": true,
+        "elementIndex": 6
       },
       {
-        "type": "text",
-        "content": "Geometriya"
+        "type": "shape",
+        "width": 775.154750656168,
+        "height": 76,
+        "left": 104.88083989501311,
+        "top": 55.85291338582677,
+        "content": "Write a main idea here",
+        "fontSize": 66,
+        "maxCharacters": 10,
+        "elementIndex": 8
       },
       {
-        "type": "text",
-        "content": "Ta’lim tizimi"
+        "type": "shape",
+        "width": 212.7649343832021,
+        "height": 189.2450393700787,
+        "left": 189.48797900262463,
+        "top": 270,
+        "content": "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+        "fontSize": 13,
+        "maxCharacters": 324,
+        "elementIndex": 10
       },
       {
-        "type": "text",
-        "content": "Madaniyat"
+        "type": "shape",
+        "width": 212.7649343832021,
+        "height": 25.343727034120732,
+        "left": 189.48797900262463,
+        "top": 213.39464566929132,
+        "content": "Write a main idea here",
+        "fontSize": 15,
+        "maxCharacters": 23,
+        "elementIndex": 12
       },
       {
-        "type": "text",
-        "content": "Ilmiy meros"
+        "type": "image",
+        "src": "./images\\slide7_img74.png",
+        "hasImage": true,
+        "elementIndex": 13
       },
       {
-        "type": "text",
-        "content": "Ulug‘bekning ilm-fanga qo‘shgan hissasi ko‘plab sohalarni qamrab olgan."
+        "type": "image",
+        "src": "./images\\slide7_img75.png",
+        "hasImage": true,
+        "elementIndex": 16
       },
       {
-        "type": "text",
-        "content": "Our Services"
+        "type": "shape",
+        "width": 212.7649343832021,
+        "height": 135.92010498687662,
+        "left": 696.7748031496062,
+        "top": 251.65238845144353,
+        "content": "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+        "fontSize": 13,
+        "maxCharacters": 216,
+        "elementIndex": 22
       },
       {
-        "type": "text",
-        "content": "SAMARQAND"
+        "type": "shape",
+        "width": 212.7649343832021,
+        "height": 25.343727034120732,
+        "left": 696.7748031496062,
+        "top": 213.13270341207345,
+        "content": "Write a main idea here",
+        "fontSize": 15,
+        "maxCharacters": 23,
+        "elementIndex": 24
       },
       {
-        "type": "text",
-        "content": "XV asr"
+        "type": "image",
+        "src": "./images\\slide7_img76.png",
+        "hasImage": true,
+        "elementIndex": 25
+      },
+      {
+        "type": "image",
+        "src": "./images\\slide7_img77.png",
+        "hasImage": true,
+        "elementIndex": 26
+      },
+      {
+        "type": "shape",
+        "width": 340.51685039370074,
+        "height": 90.02866141732284,
+        "left": 428.3793175853018,
+        "top": 455.1692388451443,
+        "content": "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+        "fontSize": 13,
+        "maxCharacters": 215,
+        "elementIndex": 32
+      },
+      {
+        "type": "shape",
+        "width": 319.43160104986873,
+        "height": 25.343727034120732,
+        "left": 428.3793175853018,
+        "top": 428.15443569553804,
+        "content": "Write a main idea here",
+        "fontSize": 15,
+        "maxCharacters": 35,
+        "elementIndex": 34
+      },
+      {
+        "type": "image",
+        "src": "./images\\slide7_img78.png",
+        "hasImage": true,
+        "elementIndex": 35
       }
     ],
     "note": ""
   },
   {
-    "id": "zly9kOdJ0C",
+    "id": "txghhUrRiY",
     "index": 8,
     "slide": 9,
     "elements": [
       {
         "type": "image",
-        "src": "https://www.gettyimages.com/detail/photo/ulugh-beg-madrasah-samarkand-royalty-free-image/106467616",
-        "hasImage": true
+        "src": "./images\\slide8_img79.png",
+        "hasImage": true,
+        "isEdited": true,
+        "elementIndex": 0
       },
       {
-        "type": "text",
-        "content": "Ulug‘bekning ta’siri"
+        "type": "image",
+        "src": "./images\\slide8_img80.png",
+        "hasImage": true,
+        "elementIndex": 1
       },
       {
-        "type": "text",
-        "content": "Ulug‘bek ilmiy ishlari Yevropa va Sharq olimlariga kuchli ta’sir ko‘rsatdi."
+        "type": "image",
+        "src": "./images\\slide8_img81.png",
+        "hasImage": true,
+        "elementIndex": 2
       },
       {
-        "type": "text",
-        "content": "Uning izdoshlari ilmiy izlanishlarni davom ettirdi."
+        "type": "image",
+        "src": "./images\\slide8_img82.png",
+        "hasImage": true,
+        "elementIndex": 5
       },
       {
-        "type": "text",
-        "content": "Bugungi kunda ham uning merosi o‘rganilmoqda."
+        "type": "image",
+        "src": "./images\\slide8_img83.png",
+        "hasImage": true,
+        "elementIndex": 8
+      },
+      {
+        "type": "image",
+        "src": "./images\\slide8_img84.png",
+        "hasImage": true,
+        "elementIndex": 11
+      },
+      {
+        "type": "shape",
+        "width": 868.237060367454,
+        "height": 58,
+        "left": 91.76293963254592,
+        "top": 34.442834645669286,
+        "content": "Write a main idea here",
+        "fontSize": 48,
+        "maxCharacters": 30,
+        "elementIndex": 15
+      },
+      {
+        "type": "shape",
+        "width": 187.19811023622043,
+        "height": 106.23296587926508,
+        "left": 434.77753280839886,
+        "top": 257.68913385826767,
+        "content": "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+        "fontSize": 13,
+        "maxCharacters": 138,
+        "elementIndex": 17
+      },
+      {
+        "type": "shape",
+        "width": 202.08482939632543,
+        "height": 26.64839895013123,
+        "left": 432.19999999999993,
+        "top": 192.80682414698163,
+        "content": "Write a main idea here",
+        "fontSize": 16,
+        "maxCharacters": 21,
+        "elementIndex": 19
+      },
+      {
+        "type": "shape",
+        "width": 177.27559055118107,
+        "height": 106.60293963254591,
+        "left": 728.7213648293962,
+        "top": 263.28220472440944,
+        "content": "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+        "fontSize": 13,
+        "maxCharacters": 132,
+        "elementIndex": 21
+      },
+      {
+        "type": "shape",
+        "width": 212.0073490813648,
+        "height": 56.4158530183727,
+        "left": 728.7213648293962,
+        "top": 192.80682414698163,
+        "content": "Write a main idea here",
+        "fontSize": 16,
+        "maxCharacters": 44,
+        "elementIndex": 23
+      },
+      {
+        "type": "shape",
+        "width": 177.27559055118107,
+        "height": 189.3538057742782,
+        "left": 444.7000524934383,
+        "top": 432.2674015748031,
+        "content": "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+        "fontSize": 13,
+        "maxCharacters": 264,
+        "elementIndex": 25
+      },
+      {
+        "type": "shape",
+        "width": 193.77858267716533,
+        "height": 26,
+        "left": 428.19999999999993,
+        "top": 370.1067716535433,
+        "content": "Write a main idea here",
+        "fontSize": 16,
+        "maxCharacters": 20,
+        "elementIndex": 27
+      },
+      {
+        "type": "shape",
+        "width": 177.27559055118107,
+        "height": 107.73259842519684,
+        "left": 728.7213648293962,
+        "top": 432.2674015748031,
+        "content": "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+        "fontSize": 13,
+        "maxCharacters": 132,
+        "elementIndex": 29
+      },
+      {
+        "type": "shape",
+        "width": 205.8057742782152,
+        "height": 26.64839895013123,
+        "left": 728.7213648293962,
+        "top": 370.1067716535433,
+        "content": "Write a main idea here",
+        "fontSize": 16,
+        "maxCharacters": 21,
+        "elementIndex": 31
       }
     ],
     "note": ""
   },
   {
-    "id": "VB85BMYxXg",
+    "id": "Z0fdHAVmdF",
     "index": 9,
     "slide": 10,
     "elements": [
       {
         "type": "image",
-        "src": "https://pixabay.com/get/g6fdb0f1e6ee3d8f9a07d5ba2c8bc5e1a2253f0e5.jpg",
-        "hasImage": true
+        "src": "./images\\slide9_img85.png",
+        "hasImage": true,
+        "isEdited": true,
+        "elementIndex": 0
       },
       {
-        "type": "text",
-        "content": "Xulosa"
+        "type": "image",
+        "src": "./images\\slide9_img86.png",
+        "hasImage": true,
+        "elementIndex": 1
       },
       {
-        "type": "text",
-        "content": "Mirzo Ulug‘bek – ilm-fan va ta’limning buyuk homiysi. U nafaqat astronomiya, balki matematika va madaniyat rivojida ham ulkan o‘rin tutadi."
+        "type": "image",
+        "src": "./images\\slide9_img87.png",
+        "hasImage": true,
+        "elementIndex": 4
       },
       {
-        "type": "text",
-        "content": "Uning merosi butun insoniyat uchun bebaho qadriyatdir."
+        "type": "image",
+        "src": "./images\\slide9_img88.png",
+        "hasImage": true,
+        "elementIndex": 5
+      },
+      {
+        "type": "image",
+        "src": "./images\\slide9_img89.png",
+        "hasImage": true,
+        "elementIndex": 8
+      },
+      {
+        "type": "image",
+        "src": "./images\\slide9_img90.jpeg",
+        "hasImage": true,
+        "elementIndex": 9
+      },
+      {
+        "type": "shape",
+        "width": 776.4724409448818,
+        "height": 54,
+        "left": 91.76293963254592,
+        "top": 11.89018372703412,
+        "content": "Write a main idea here",
+        "fontSize": 44,
+        "maxCharacters": 29,
+        "elementIndex": 11
+      },
+      {
+        "type": "image",
+        "src": "./images\\slide9_img91.png",
+        "hasImage": true,
+        "elementIndex": 12
+      },
+      {
+        "type": "shape",
+        "width": 282.06299212598424,
+        "height": 50.04682414698162,
+        "left": 27.413648293963252,
+        "top": 417.8666666666666,
+        "content": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+        "fontSize": 13,
+        "maxCharacters": 108,
+        "elementIndex": 14
+      },
+      {
+        "type": "shape",
+        "width": 282.06299212598424,
+        "height": 50.04682414698162,
+        "left": 650.5212598425196,
+        "top": 417.8666666666666,
+        "content": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+        "fontSize": 13,
+        "maxCharacters": 108,
+        "elementIndex": 16
+      },
+      {
+        "type": "shape",
+        "width": 282.06299212598424,
+        "height": 50.04682414698162,
+        "left": 338.9674540682414,
+        "top": 417.8666666666666,
+        "content": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+        "fontSize": 13,
+        "maxCharacters": 108,
+        "elementIndex": 18
+      }
+    ],
+    "note": ""
+  },
+  {
+    "id": "m6RCmQeSN6",
+    "index": 10,
+    "slide": 11,
+    "elements": [
+      {
+        "type": "image",
+        "src": "./images\\slide10_img92.png",
+        "hasImage": true,
+        "isEdited": true,
+        "elementIndex": 0
+      },
+      {
+        "type": "image",
+        "src": "./images\\slide10_img93.png",
+        "hasImage": true,
+        "elementIndex": 1
+      },
+      {
+        "type": "image",
+        "src": "./images\\slide10_img94.png",
+        "hasImage": true,
+        "elementIndex": 2
+      },
+      {
+        "type": "image",
+        "src": "./images\\slide10_img95.png",
+        "hasImage": true,
+        "elementIndex": 5
+      },
+      {
+        "type": "image",
+        "src": "./images\\slide10_img96.png",
+        "hasImage": true,
+        "elementIndex": 6
+      },
+      {
+        "type": "image",
+        "src": "./images\\slide10_img97.png",
+        "hasImage": true,
+        "elementIndex": 9
+      },
+      {
+        "type": "image",
+        "src": "./images\\slide10_img98.png",
+        "hasImage": true,
+        "elementIndex": 10
+      },
+      {
+        "type": "image",
+        "src": "./images\\slide10_img99.png",
+        "hasImage": true,
+        "elementIndex": 13
+      },
+      {
+        "type": "shape",
+        "width": 776.4740157480314,
+        "height": 62,
+        "left": 91.76293963254592,
+        "top": 54.442834645669286,
+        "content": "Write a main idea here",
+        "fontSize": 52,
+        "maxCharacters": 10,
+        "elementIndex": 15
+      },
+      {
+        "type": "image",
+        "src": "./images\\slide10_img100.png",
+        "hasImage": true,
+        "elementIndex": 16
+      },
+      {
+        "type": "image",
+        "src": "./images\\slide10_img101.png",
+        "hasImage": true,
+        "elementIndex": 19
+      },
+      {
+        "type": "image",
+        "src": "./images\\slide10_img102.png",
+        "hasImage": true,
+        "elementIndex": 20
+      },
+      {
+        "type": "image",
+        "src": "./images\\slide10_img103.png",
+        "hasImage": true,
+        "elementIndex": 23
+      },
+      {
+        "type": "image",
+        "src": "./images\\slide10_img104.png",
+        "hasImage": true,
+        "elementIndex": 24
+      },
+      {
+        "type": "image",
+        "src": "./images\\slide10_img105.png",
+        "hasImage": true,
+        "elementIndex": 27
+      },
+      {
+        "type": "shape",
+        "width": 180.20829396325456,
+        "height": 62,
+        "left": 395.4772703412073,
+        "top": 256.4524934383202,
+        "content": "87%",
+        "fontSize": 52,
+        "maxCharacters": 10,
+        "elementIndex": 29
+      },
+      {
+        "type": "shape",
+        "width": 187.80545931758527,
+        "height": 58,
+        "left": 670.0476640419947,
+        "top": 256.4524934383202,
+        "content": "36%",
+        "fontSize": 48,
+        "maxCharacters": 10,
+        "elementIndex": 31
+      },
+      {
+        "type": "shape",
+        "width": 176.8958530183727,
+        "height": 62,
+        "left": 91.76293963254592,
+        "top": 256.4524934383202,
+        "content": "67%",
+        "fontSize": 52,
+        "maxCharacters": 10,
+        "elementIndex": 33
+      },
+      {
+        "type": "shape",
+        "width": 195.5127559055118,
+        "height": 76.12094488188976,
+        "left": 391.3606299212598,
+        "top": 463.87905511811016,
+        "content": "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+        "fontSize": 13,
+        "maxCharacters": 100,
+        "elementIndex": 35
+      },
+      {
+        "type": "shape",
+        "width": 190.17543307086612,
+        "height": 77.62551181102361,
+        "left": 86.57427821522307,
+        "top": 452.71632545931755,
+        "content": "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+        "fontSize": 13,
+        "maxCharacters": 96,
+        "elementIndex": 37
+      },
+      {
+        "type": "shape",
+        "width": 177.27863517060365,
+        "height": 76.12094488188976,
+        "left": 680.5744881889764,
+        "top": 463.87905511811016,
+        "content": "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+        "fontSize": 13,
+        "maxCharacters": 88,
+        "elementIndex": 39
+      },
+      {
+        "type": "shape",
+        "width": 228.13133858267716,
+        "height": 26.64839895013123,
+        "left": 377.7172703412073,
+        "top": 411.82624671916005,
+        "content": "Write a main idea here",
+        "fontSize": 16,
+        "maxCharacters": 23,
+        "elementIndex": 41
+      },
+      {
+        "type": "shape",
+        "width": 219.44913385826771,
+        "height": 26.64839895013123,
+        "left": 71.56031496062991,
+        "top": 411.5916010498687,
+        "content": "Write a main idea here",
+        "fontSize": 16,
+        "maxCharacters": 22,
+        "elementIndex": 43
+      },
+      {
+        "type": "shape",
+        "width": 223.03989501312336,
+        "height": 26.64839895013123,
+        "left": 652.0474540682414,
+        "top": 411.82624671916005,
+        "content": "Write a main idea here",
+        "fontSize": 16,
+        "maxCharacters": 23,
+        "elementIndex": 45
+      }
+    ],
+    "note": ""
+  },
+  {
+    "id": "4XLUCMzhDz",
+    "index": 11,
+    "slide": 12,
+    "elements": [
+      {
+        "type": "image",
+        "src": "./images\\slide11_img106.png",
+        "hasImage": true,
+        "isEdited": true,
+        "elementIndex": 0
+      },
+      {
+        "type": "image",
+        "src": "./images\\slide11_img107.png",
+        "hasImage": true,
+        "elementIndex": 1
+      },
+      {
+        "type": "shape",
+        "width": 776.4740157480314,
+        "height": 50,
+        "left": 91.76293963254592,
+        "top": 54.442834645669286,
+        "content": "Write a main idea here",
+        "fontSize": 40,
+        "maxCharacters": 32,
+        "elementIndex": 3
+      },
+      {
+        "type": "shape",
+        "width": 179.92125984251965,
+        "height": 58,
+        "left": 74.11044619422572,
+        "top": 170.45784776902886,
+        "content": "01",
+        "fontSize": 24,
+        "maxCharacters": 24,
+        "elementIndex": 5
+      },
+      {
+        "type": "shape",
+        "width": 209.8496587926509,
+        "height": 58,
+        "left": 67.21165354330708,
+        "top": 347.6312860892388,
+        "content": "03",
+        "fontSize": 24,
+        "maxCharacters": 28,
+        "elementIndex": 7
+      },
+      {
+        "type": "shape",
+        "width": 113.65354330708661,
+        "height": 58,
+        "left": 404.04734908136476,
+        "top": 170.4579527559055,
+        "content": "02",
+        "fontSize": 24,
+        "maxCharacters": 14,
+        "elementIndex": 9
+      },
+      {
+        "type": "shape",
+        "width": 311.691968503937,
+        "height": 58,
+        "left": 301.9310236220472,
+        "top": 347.6312860892388,
+        "content": "04",
+        "fontSize": 24,
+        "maxCharacters": 42,
+        "elementIndex": 11
+      },
+      {
+        "type": "shape",
+        "width": 198.52587926509185,
+        "height": 97.92230971128608,
+        "left": 74.11044619422572,
+        "top": 228.45784776902886,
+        "content": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor.",
+        "fontSize": 13,
+        "maxCharacters": 150,
+        "elementIndex": 13
+      },
+      {
+        "type": "shape",
+        "width": 179.92125984251965,
+        "height": 128.66362204724408,
+        "left": 74.11044619422572,
+        "top": 411.33637795275587,
+        "content": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor.",
+        "fontSize": 13,
+        "maxCharacters": 184,
+        "elementIndex": 15
+      },
+      {
+        "type": "shape",
+        "width": 202.2468241469816,
+        "height": 128.66362204724408,
+        "left": 370.9137007874015,
+        "top": 411.33637795275587,
+        "content": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor.",
+        "fontSize": 13,
+        "maxCharacters": 200,
+        "elementIndex": 17
+      },
+      {
+        "type": "shape",
+        "width": 218.3709186351706,
+        "height": 90.97700787401574,
+        "left": 364.7122309711286,
+        "top": 215.55821522309708,
+        "content": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor.",
+        "fontSize": 13,
+        "maxCharacters": 135,
+        "elementIndex": 19
+      },
+      {
+        "type": "shape",
+        "width": 300,
+        "height": 25,
+        "left": 0,
+        "top": 0,
+        "content": "04",
+        "fontSize": 8,
+        "maxCharacters": 124,
+        "elementIndex": 21
+      }
+    ],
+    "note": ""
+  },
+  {
+    "id": "A_Q31dICg1",
+    "index": 12,
+    "slide": 13,
+    "elements": [
+      {
+        "type": "image",
+        "src": "./images\\slide12_img108.png",
+        "hasImage": true,
+        "isEdited": true,
+        "elementIndex": 0
+      },
+      {
+        "type": "image",
+        "src": "./images\\slide12_img109.jpeg",
+        "hasImage": true,
+        "elementIndex": 1
+      },
+      {
+        "type": "shape",
+        "width": 821.7174803149605,
+        "height": 50,
+        "left": 64.47622047244093,
+        "top": 200.80902887139104,
+        "content": "Write a main idea here",
+        "fontSize": 40,
+        "maxCharacters": 34,
+        "elementIndex": 3
+      },
+      {
+        "type": "shape",
+        "width": 816.7562204724409,
+        "height": 257.68745406824144,
+        "left": 69.43737532808399,
+        "top": 250.80902887139104,
+        "content": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
+        "fontSize": 13,
+        "maxCharacters": 1664,
+        "elementIndex": 5
+      }
+    ],
+    "note": ""
+  },
+  {
+    "id": "uio-8W9H_o",
+    "index": 13,
+    "slide": 14,
+    "elements": [
+      {
+        "type": "image",
+        "src": "./images\\slide13_img110.png",
+        "hasImage": true,
+        "isEdited": true,
+        "elementIndex": 0
+      },
+      {
+        "type": "image",
+        "src": "./images\\slide13_img111.png",
+        "hasImage": true,
+        "elementIndex": 1
+      },
+      {
+        "type": "image",
+        "src": "./images\\slide13_img112.png",
+        "hasImage": true,
+        "elementIndex": 4
+      },
+      {
+        "type": "image",
+        "src": "./images\\slide13_img113.png",
+        "hasImage": true,
+        "elementIndex": 5
+      },
+      {
+        "type": "image",
+        "src": "./images\\slide13_img114.png",
+        "hasImage": true,
+        "elementIndex": 8
+      },
+      {
+        "type": "shape",
+        "width": 776.4740157480314,
+        "height": 50,
+        "left": 91.76293963254592,
+        "top": 44.62866141732283,
+        "content": "Write a main idea here",
+        "fontSize": 40,
+        "maxCharacters": 32,
+        "elementIndex": 10
+      },
+      {
+        "type": "shape",
+        "width": 264.67947506561677,
+        "height": 36.5709186351706,
+        "left": 135.54855643044618,
+        "top": 382.8205774278215,
+        "content": "Write a main idea here",
+        "fontSize": 16,
+        "maxCharacters": 27,
+        "elementIndex": 12
+      },
+      {
+        "type": "shape",
+        "width": 274.02278215223095,
+        "height": 35.33060367454068,
+        "left": 538.8139632545931,
+        "top": 372.89816272965874,
+        "content": "Write a main idea here",
+        "fontSize": 16,
+        "maxCharacters": 28,
+        "elementIndex": 14
+      },
+      {
+        "type": "shape",
+        "width": 347.51128608923887,
+        "height": 63.390656167978996,
+        "left": 132.48871391076113,
+        "top": 423.92881889763777,
+        "content": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+        "fontSize": 13,
+        "maxCharacters": 176,
+        "elementIndex": 16
+      },
+      {
+        "type": "shape",
+        "width": 384.32839895013115,
+        "height": 63.390656167978996,
+        "left": 549.3974803149606,
+        "top": 423.92881889763777,
+        "content": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+        "fontSize": 13,
+        "maxCharacters": 196,
+        "elementIndex": 18
+      },
+      {
+        "type": "image",
+        "src": "./images\\slide13_img115.png",
+        "hasImage": true,
+        "elementIndex": 19
+      },
+      {
+        "type": "image",
+        "src": "./images\\slide13_img116.png",
+        "hasImage": true,
+        "elementIndex": 20
+      }
+    ],
+    "note": ""
+  },
+  {
+    "id": "1MZLZh5X84",
+    "index": 14,
+    "slide": 15,
+    "elements": [
+      {
+        "type": "image",
+        "src": "./images\\slide14_img117.png",
+        "hasImage": true,
+        "isEdited": true,
+        "elementIndex": 0
+      },
+      {
+        "type": "image",
+        "src": "./images\\slide14_img118.png",
+        "hasImage": true,
+        "elementIndex": 1
+      },
+      {
+        "type": "image",
+        "src": "./images\\slide14_img119.png",
+        "hasImage": true,
+        "elementIndex": 4
+      },
+      {
+        "type": "image",
+        "src": "./images\\slide14_img120.png",
+        "hasImage": true,
+        "elementIndex": 5
+      },
+      {
+        "type": "image",
+        "src": "./images\\slide14_img121.png",
+        "hasImage": true,
+        "elementIndex": 8
+      },
+      {
+        "type": "image",
+        "src": "./images\\slide14_img122.jpeg",
+        "hasImage": true,
+        "elementIndex": 9
+      },
+      {
+        "type": "shape",
+        "width": 776.4724409448818,
+        "height": 50,
+        "left": 91.76293963254592,
+        "top": 30.442834645669286,
+        "content": "Write a main idea here",
+        "fontSize": 40,
+        "maxCharacters": 32,
+        "elementIndex": 11
+      },
+      {
+        "type": "shape",
+        "width": 152.04094488188974,
+        "height": 50,
+        "left": 480,
+        "top": 185.6387401574803,
+        "content": "01",
+        "fontSize": 24,
+        "maxCharacters": 10,
+        "elementIndex": 13
+      },
+      {
+        "type": "shape",
+        "width": 138.48283464566927,
+        "height": 50,
+        "left": 480,
+        "top": 271.0981627296587,
+        "content": "02",
+        "fontSize": 24,
+        "maxCharacters": 10,
+        "elementIndex": 15
+      },
+      {
+        "type": "shape",
+        "width": 138.48283464566927,
+        "height": 50,
+        "left": 480,
+        "top": 384.6643569553805,
+        "content": "03",
+        "fontSize": 24,
+        "maxCharacters": 10,
+        "elementIndex": 17
+      },
+      {
+        "type": "shape",
+        "width": 324.5370078740157,
+        "height": 106.71905511811022,
+        "left": 635.4629921259842,
+        "top": 182.36115485564304,
+        "content": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+        "fontSize": 13,
+        "maxCharacters": 246,
+        "elementIndex": 19
+      },
+      {
+        "type": "shape",
+        "width": 324.5370078740157,
+        "height": 95.58414698162728,
+        "left": 635.4629921259842,
+        "top": 289.08020997375326,
+        "content": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+        "fontSize": 13,
+        "maxCharacters": 246,
+        "elementIndex": 21
+      },
+      {
+        "type": "shape",
+        "width": 324.5370078740157,
+        "height": 103.08062992125983,
+        "left": 635.4629921259842,
+        "top": 403.8868241469816,
+        "content": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+        "fontSize": 13,
+        "maxCharacters": 246,
+        "elementIndex": 23
+      },
+      {
+        "type": "image",
+        "src": "./images\\slide14_img123.png",
+        "hasImage": true,
+        "elementIndex": 24
+      }
+    ],
+    "note": ""
+  },
+  {
+    "id": "gys_ewGxU-",
+    "index": 15,
+    "slide": 16,
+    "elements": [
+      {
+        "type": "image",
+        "src": "./images\\slide15_img124.png",
+        "hasImage": true,
+        "isEdited": true,
+        "elementIndex": 0
+      },
+      {
+        "type": "image",
+        "src": "./images\\slide15_img125.jpeg",
+        "hasImage": true,
+        "elementIndex": 1
+      },
+      {
+        "type": "shape",
+        "width": 821.7174803149605,
+        "height": 58,
+        "left": 64.47622047244093,
+        "top": 231.80902887139104,
+        "content": "Xulosa",
+        "fontSize": 24,
+        "maxCharacters": 114,
+        "elementIndex": 3
+      },
+      {
+        "type": "shape",
+        "width": 816.7562204724409,
+        "height": 226.68745406824146,
+        "left": 69.43737532808399,
+        "top": 281.80902887139104,
+        "content": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
+        "fontSize": 13,
+        "maxCharacters": 1456,
+        "elementIndex": 5
+      }
+    ],
+    "note": ""
+  },
+  {
+    "id": "7OtuWYebCV",
+    "index": 16,
+    "slide": 17,
+    "elements": [
+      {
+        "type": "image",
+        "src": "./images\\slide16_img126.png",
+        "hasImage": true,
+        "elementIndex": 0
+      },
+      {
+        "type": "image",
+        "src": "./images\\slide16_img127.png",
+        "hasImage": true,
+        "elementIndex": 1
+      },
+      {
+        "type": "image",
+        "src": "./images\\slide16_img128.png",
+        "hasImage": true,
+        "elementIndex": 2
+      },
+      {
+        "type": "image",
+        "src": "./images\\slide16_img129.png",
+        "hasImage": true,
+        "elementIndex": 5
+      },
+      {
+        "type": "shape",
+        "width": 852,
+        "height": 50,
+        "left": 59,
+        "top": 82.25312335958004,
+        "content": "Foydalanilgan adabiyotlar",
+        "fontSize": 24,
+        "maxCharacters": 59,
+        "elementIndex": 7
+      },
+      {
+        "type": "shape",
+        "width": 852,
+        "height": 302.72986876640414,
+        "left": 59,
+        "top": 137.28682414698162,
+        "content": "Foydalanilgan adabiyotlarFoydalanilgan adabiyotlarFoydalanilgan adabiyotlarFoydalanilgan adabiyotlarFoydalanilgan adabiyotlarFoydalanilgan adabiyotlarFoydalanilgan adabiyotlarFoydalanilgan adabiyotlarFoydalanilgan adabiyotlarFoydalanilgan adabiyotlar",
+        "fontSize": 18,
+        "maxCharacters": 1092,
+        "elementIndex": 9
+      }
+    ],
+    "note": ""
+  },
+  {
+    "id": "f2GyaNTs5Z",
+    "index": 17,
+    "slide": 18,
+    "elements": [
+      {
+        "type": "image",
+        "src": "./images\\slide17_img130.png",
+        "hasImage": true,
+        "elementIndex": 0
+      },
+      {
+        "type": "shape",
+        "width": 852,
+        "height": 70,
+        "left": 46.55811023622047,
+        "top": 214.96629921259841,
+        "content": "Etiboringiz uchun rahmat",
+        "fontSize": 60,
+        "maxCharacters": 10,
+        "elementIndex": 2
       }
     ],
     "note": ""

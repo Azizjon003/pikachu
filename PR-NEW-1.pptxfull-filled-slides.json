@@ -1,0 +1,616 @@
+[
+  {
+    "id": "qrWfSu906N",
+    "index": 0,
+    "slide": 1,
+    "elements": [
+      {
+        "type": "shape",
+        "width": 311.22477690288713,
+        "height": 58,
+        "left": 55,
+        "top": 45.64724409448819,
+        "content": "O'simliklar olami",
+        "fontSize": 32,
+        "maxCharacters": 19,
+        "elementIndex": 1
+      },
+      {
+        "type": "shape",
+        "width": 286.23097112860887,
+        "height": 40,
+        "left": 651.7767979002624,
+        "top": 133.36041994750656,
+        "content": "Azizjon Aliqulov",
+        "fontSize": 30,
+        "maxCharacters": 18,
+        "elementIndex": 3
+      },
+      {
+        "type": "image",
+        "src": "./images\\slide0_img1.png",
+        "hasImage": true,
+        "elementIndex": 4
+      },
+      {
+        "type": "image",
+        "src": "https://uzbekistan.travel/storage/app/media/Otabek/Turli xil/Flora uzb/cropped-images/IMG_0729-0-0-0-0-1725511096.jpg",
+        "hasImage": true,
+        "elementIndex": 9
+      }
+    ],
+    "note": ""
+  },
+  {
+    "id": "CVDb2CAqmC",
+    "index": 1,
+    "slide": 2,
+    "elements": [
+      {
+        "type": "image",
+        "src": "./images\\slide1_img3.png",
+        "hasImage": true,
+        "elementIndex": 0
+      },
+      {
+        "type": "shape",
+        "width": 426,
+        "height": 76.64839895013122,
+        "left": 33.65606299212598,
+        "top": 240.08314960629917,
+        "content": "Reja:",
+        "fontSize": 66,
+        "maxCharacters": 10,
+        "elementIndex": 6
+      },
+      {
+        "type": "shape",
+        "width": 387.6975328083989,
+        "height": 46,
+        "left": 498.7000524934383,
+        "top": 82.79391076115485,
+        "content": "1. O'simliklar olamiga kirish",
+        "fontSize": 18,
+        "maxCharacters": 84,
+        "elementIndex": 8
+      },
+      {
+        "type": "shape",
+        "width": 387.6975328083989,
+        "height": 46,
+        "left": 498.7000524934383,
+        "top": 145.0417847769029,
+        "content": "2. O'simliklarning muhim roli",
+        "fontSize": 18,
+        "maxCharacters": 84,
+        "elementIndex": 10
+      },
+      {
+        "type": "shape",
+        "width": 387.6975328083989,
+        "height": 46,
+        "left": 507.06278215223097,
+        "top": 212.05721784776898,
+        "content": "3. O'simliklar va ularning hayotimizga ta'siri",
+        "fontSize": 18,
+        "maxCharacters": 84,
+        "elementIndex": 12
+      }
+    ],
+    "note": ""
+  },
+  {
+    "id": "vxVLk8fZQR",
+    "index": 4,
+    "slide": 5,
+    "elements": [
+      {
+        "type": "shape",
+        "width": 337.27559055118104,
+        "height": 119.19527559055116,
+        "left": 81.98488188976377,
+        "top": 86.76325459317584,
+        "content": "Kirish: Mavzuni O'rganish",
+        "fontSize": 32,
+        "maxCharacters": 61,
+        "elementIndex": 1
+      },
+      {
+        "type": "image",
+        "src": "./images\\slide4_img8.png",
+        "hasImage": true,
+        "elementIndex": 2
+      },
+      {
+        "type": "image",
+        "src": "./images\\slide4_img9.png",
+        "hasImage": true,
+        "elementIndex": 5,
+        "isEdited": false
+      },
+      {
+        "type": "image",
+        "src": "./images\\slide4_img10.png",
+        "hasImage": true,
+        "elementIndex": 8,
+        "isEdited": false
+      },
+      {
+        "type": "image",
+        "src": "./images\\slide4_img11.png",
+        "hasImage": true,
+        "elementIndex": 11,
+        "isEdited": false
+      },
+      {
+        "type": "image",
+        "src": "./images\\slide4_img12.png",
+        "hasImage": true,
+        "elementIndex": 14,
+        "isEdited": false
+      },
+      {
+        "type": "image",
+        "src": "./images\\slide4_img13.png",
+        "hasImage": true,
+        "elementIndex": 17,
+        "isEdited": false
+      },
+      {
+        "type": "shape",
+        "width": 326.06299212598424,
+        "height": 47.2969028871391,
+        "left": 87.59181102362204,
+        "top": 299.23937007874014,
+        "content": "O'qish jarayoni va uning ahamiyati haqida qisqacha ma'lumot.",
+        "fontSize": 18,
+        "maxCharacters": 72,
+        "elementIndex": 21
+      },
+      {
+        "type": "shape",
+        "width": 326.06299212598424,
+        "height": 47.2969028871391,
+        "left": 87.59181102362204,
+        "top": 410.9849868766404,
+        "content": "Zamonaviy tadqiqotlar va yondashuvlar ko'rsatmalari.",
+        "fontSize": 18,
+        "maxCharacters": 72,
+        "elementIndex": 23
+      },
+      {
+        "type": "shape",
+        "width": 326.06299212598424,
+        "height": 47.2969028871391,
+        "left": 546.345406824147,
+        "top": 75.7483464566929,
+        "content": "Kirishning asosiy maqsadlari va vazifalari.",
+        "fontSize": 18,
+        "maxCharacters": 72,
+        "elementIndex": 25
+      },
+      {
+        "type": "shape",
+        "width": 326.06299212598424,
+        "height": 47.2969028871391,
+        "left": 546.345406824147,
+        "top": 187.49385826771652,
+        "content": "Kirishni o'rganishning ijtimoiy va iqtisodiy ta'siri.",
+        "fontSize": 18,
+        "maxCharacters": 72,
+        "elementIndex": 27
+      },
+      {
+        "type": "shape",
+        "width": 326.06299212598424,
+        "height": 47.2969028871391,
+        "left": 546.345406824147,
+        "top": 299.00881889763775,
+        "content": "O'quv jarayonida kirishning o'rni va roli.",
+        "fontSize": 18,
+        "maxCharacters": 72,
+        "elementIndex": 29
+      },
+      {
+        "type": "shape",
+        "width": 326.06299212598424,
+        "height": 47.2969028871391,
+        "left": 546.345406824147,
+        "top": 410.754435695538,
+        "content": "Kirishda muhim bo'lgan metodologiya va usullar.",
+        "fontSize": 18,
+        "maxCharacters": 72,
+        "elementIndex": 31
+      }
+    ],
+    "note": ""
+  },
+  {
+    "id": "tKBVb7Gctp",
+    "index": 5,
+    "slide": 6,
+    "elements": [
+      {
+        "type": "shape",
+        "width": 844.5624146981627,
+        "height": 37,
+        "left": 81.98488188976377,
+        "top": 44.26330708661417,
+        "content": "O'simliklarning muhim roli",
+        "fontSize": 27,
+        "maxCharacters": 62,
+        "elementIndex": 1
+      },
+      {
+        "type": "image",
+        "src": "./images\\slide5_img14.png",
+        "hasImage": true,
+        "elementIndex": 4
+      },
+      {
+        "type": "image",
+        "src": "./images\\slide5_img15.png",
+        "hasImage": true,
+        "elementIndex": 9
+      },
+      {
+        "type": "shape",
+        "width": 354.59013123359574,
+        "height": 233.78908136482937,
+        "left": 86.35149606299213,
+        "top": 180.96766404199474,
+        "content": "O'simliklar inson hayotida muhim ahamiyatga ega. Ular nafaqat oziq-ovqat manbai, balki atrof-muhitni tozalashda va kislorod ishlab chiqarishda ham katta rol o'ynaydi. O'simliklarning turli xil xususiyatlari, masalan, dori-darmonlar tayyorlashda ham qo'llaniladi.",
+        "fontSize": 18,
+        "maxCharacters": 384,
+        "elementIndex": 17
+      },
+      {
+        "type": "shape",
+        "width": 349.6288713910761,
+        "height": 261.76566929133855,
+        "left": 542.6245669291338,
+        "top": 173.49165354330708,
+        "content": "O'simliklar biologik xilma-xillikni saqlashda muhimdir. Ular ekosistemalarning barqarorligini ta'minlaydi va ko'plab hayvonot turlari uchun yashash joyi bo'lib xizmat qiladi. O'simliklarning o'zaro aloqalari va ularga ta'sir etuvchi omillar hayotiy muhim masalalardir.",
+        "fontSize": 18,
+        "maxCharacters": 460,
+        "elementIndex": 19
+      }
+    ],
+    "note": ""
+  },
+  {
+    "id": "YxVcoYRmm1",
+    "index": 6,
+    "slide": 7,
+    "elements": [
+      {
+        "type": "image",
+        "src": "./images\\slide6_img16.png",
+        "hasImage": true,
+        "elementIndex": 0
+      },
+      {
+        "type": "image",
+        "src": "https://talaba.su/chandrasona/2022/10/27-rasm.-osimliklar-sistematikasi..jpg",
+        "hasImage": true,
+        "elementIndex": 5
+      },
+      {
+        "type": "image",
+        "src": "https://talaba.su/chandrasona/2022/10/27-rasm.-osimliklar-sistematikasi..jpg",
+        "hasImage": true,
+        "elementIndex": 6
+      },
+      {
+        "type": "image",
+        "src": "https://talaba.su/chandrasona/2022/10/27-rasm.-osimliklar-sistematikasi..jpg",
+        "hasImage": true,
+        "elementIndex": 7
+      },
+      {
+        "type": "image",
+        "src": "https://talaba.su/chandrasona/2022/10/27-rasm.-osimliklar-sistematikasi..jpg",
+        "hasImage": true,
+        "elementIndex": 8
+      },
+      {
+        "type": "shape",
+        "width": 337.27559055118104,
+        "height": 63.343727034120725,
+        "left": 311.3617847769028,
+        "top": 46,
+        "content": "BELGILARI",
+        "fontSize": 53,
+        "maxCharacters": 10,
+        "elementIndex": 10
+      },
+      {
+        "type": "shape",
+        "width": 181.32283464566927,
+        "height": 56.04682414698162,
+        "left": 84.31580052493437,
+        "top": 418.7860367454068,
+        "content": "O'simliklar odamlar va hayvonlar hayotida muhim rol o'ynaydi.",
+        "fontSize": 15,
+        "maxCharacters": 72,
+        "elementIndex": 12
+      },
+      {
+        "type": "shape",
+        "width": 181.31758530183725,
+        "height": 26.64839895013123,
+        "left": 84.31580052493437,
+        "top": 386.8015748031496,
+        "content": "Belgi 1",
+        "fontSize": 16,
+        "maxCharacters": 21,
+        "elementIndex": 14
+      },
+      {
+        "type": "shape",
+        "width": 181.32283464566927,
+        "height": 56.04682414698162,
+        "left": 287.6660367454068,
+        "top": 418.7860367454068,
+        "content": "O'simliklar qurg'oqchilikka sezgir bo'lishi mumkin.",
+        "fontSize": 15,
+        "maxCharacters": 72,
+        "elementIndex": 16
+      },
+      {
+        "type": "shape",
+        "width": 181.31758530183725,
+        "height": 26.64839895013123,
+        "left": 287.6660367454068,
+        "top": 386.8015748031496,
+        "content": "Belgi 2",
+        "fontSize": 16,
+        "maxCharacters": 21,
+        "elementIndex": 18
+      },
+      {
+        "type": "shape",
+        "width": 181.32283464566927,
+        "height": 56.04682414698162,
+        "left": 491.01627296587924,
+        "top": 418.7860367454068,
+        "content": "O'simliklar, ozuqalar etishmovchiligi bilan kurashadi.",
+        "fontSize": 15,
+        "maxCharacters": 72,
+        "elementIndex": 20
+      },
+      {
+        "type": "shape",
+        "width": 181.31758530183725,
+        "height": 26.64839895013123,
+        "left": 491.01627296587924,
+        "top": 386.8015748031496,
+        "content": "Belgi 3",
+        "fontSize": 16,
+        "maxCharacters": 21,
+        "elementIndex": 22
+      },
+      {
+        "type": "shape",
+        "width": 181.32283464566927,
+        "height": 56.04682414698162,
+        "left": 694.3339632545931,
+        "top": 418.7860367454068,
+        "content": "O'simliklar kasalliklar va zararkunandalarga qarshi kurashadi.",
+        "fontSize": 15,
+        "maxCharacters": 72,
+        "elementIndex": 24
+      },
+      {
+        "type": "shape",
+        "width": 181.31758530183725,
+        "height": 26.64839895013123,
+        "left": 694.3339632545931,
+        "top": 386.8015748031496,
+        "content": "Belgi 4",
+        "fontSize": 16,
+        "maxCharacters": 21,
+        "elementIndex": 26
+      }
+    ],
+    "note": ""
+  },
+  {
+    "id": "ZpT0O5-3fT",
+    "index": 7,
+    "slide": 8,
+    "elements": [
+      {
+        "type": "image",
+        "src": "./images\\slide7_img21.png",
+        "hasImage": true,
+        "elementIndex": 0
+      },
+      {
+        "type": "image",
+        "src": "./images\\slide7_img22.png",
+        "hasImage": true,
+        "elementIndex": 1
+      },
+      {
+        "type": "shape",
+        "width": 367.6850393700787,
+        "height": 177.85942257217846,
+        "left": 549.2190026246718,
+        "top": 148.86425196850394,
+        "content": "Alisher Navoiy, o'zbek adabiyotining buyuk namoyandasi, falsafiy g'oyalari va ijodiy asarlari bilan insoniyatning ruhiy va ma'naviy taraqqiyotida muhim o'rin tutadi. U, asarlarida erkinlik, adolat va insoniy fazilatlarni yuksak darajada ifodalaydi. Navoiy falsafasida, asosan, ma'naviyat, bilim va ko'nikmalarni rivojlantirishga alohida e'tibor qaratiladi. Shu bilan birga, u o'z ijodida hayotning maqsadi va insonning ijtimoiy mas'uliyati kabi muhim savollarni ko'taradi. Navoiy falsafasi, zamonaviy dunyoda ham o'z ahamiyatini yo'qotmagan, chunki u insonning ichki dunyosini va axloqiy qadriyatlarini o'rganishga qaratilgan.",
+        "fontSize": 18,
+        "maxCharacters": 326,
+        "elementIndex": 7
+      },
+      {
+        "type": "shape",
+        "width": 367.69039370078735,
+        "height": 63.343727034120725,
+        "left": 549.2190026246718,
+        "top": 54,
+        "content": "FALSAFA",
+        "fontSize": 53,
+        "maxCharacters": 10,
+        "elementIndex": 9
+      }
+    ],
+    "note": ""
+  },
+  {
+    "id": "e55ACzdce7",
+    "index": 2,
+    "slide": 3,
+    "elements": [
+      {
+        "type": "image",
+        "src": "./images\\slide2_img4.png",
+        "hasImage": true,
+        "elementIndex": 0
+      },
+      {
+        "type": "shape",
+        "width": 852,
+        "height": 63.343727034120725,
+        "left": 54,
+        "top": 82.14981627296586,
+        "content": "O'SIMLIKLAR",
+        "fontSize": 53,
+        "maxCharacters": 10,
+        "elementIndex": 6
+      },
+      {
+        "type": "image",
+        "src": "./images\\slide2_img5.png",
+        "hasImage": true,
+        "elementIndex": 7
+      },
+      {
+        "type": "shape",
+        "width": 747.7007874015746,
+        "height": 159.20314960629918,
+        "left": 106.14960629921259,
+        "top": 209.4584776902887,
+        "content": "O'simliklar, tabiatimizdagi muhim hayot manbai bo'lib, insoniyat uchun oziq-ovqat, dori-darmon va boshqa resurslarni taqdim etadi. Ular turli xil ekosistemalarda yashab, biologik xilma-xillikni saqlashga yordam beradi. O'simliklarning fotosintez jarayoni orqali ular quyosh energiyasini kimyoviy energiyaga aylantiradi, bu jarayon esa hayotning davom etishida asosiy rol o'ynaydi. O'simliklar nafaqat oziq-ovqat manbai, balki tuproqni muhofaza qilish, havo sifatini yaxshilash va iqlim o'zgarishiga qarshi kurashishda ham katta ahamiyatga ega.",
+        "fontSize": 18,
+        "maxCharacters": 579,
+        "elementIndex": 13
+      }
+    ],
+    "note": ""
+  },
+  {
+    "id": "a02Qo7W5ZE",
+    "index": 8,
+    "slide": 9,
+    "elements": [
+      {
+        "type": "image",
+        "src": "https://talaba.su/chandrasona/2022/10/27-rasm.-osimliklar-sistematikasi.-696x459.jpg",
+        "hasImage": true,
+        "elementIndex": 0
+      },
+      {
+        "type": "image",
+        "src": "./images\\slide8_img24.png",
+        "hasImage": true,
+        "elementIndex": 1
+      },
+      {
+        "type": "shape",
+        "width": 383.03937007874015,
+        "height": 177.85942257217846,
+        "left": 531.238530183727,
+        "top": 201.04881889763777,
+        "content": "O'simliklar olami bizning hayotimizda muhim rol o'ynaydi. Ular nafaqat havoni tozalash va oksigen ishlab chiqarish, balki oziq-ovqat, dori-darmon va boshqa turli xil zamonaviy mahsulotlar uchun zarurdir. O'simliklar ekologik tizimning asosi sifatida, turli hayvonlar va insonlar uchun yashash muhitini ta'minlaydi. Ular o'zaro bog'lanish va ko'p turli formalar va tuzilmalarda evolyutsiyalashmoqda. O'simliklar haqidagi bilimimiz, ularning saqlanishi va ko'payishini ta'minlashda muhim ahamiyatga ega.",
+        "fontSize": 18,
+        "maxCharacters": 336,
+        "elementIndex": 7
+      },
+      {
+        "type": "shape",
+        "width": 383.04587926509186,
+        "height": 63.343727034120725,
+        "left": 525.7154855643043,
+        "top": 106.18456692913385,
+        "content": "XULOSA",
+        "fontSize": 32,
+        "maxCharacters": 22,
+        "elementIndex": 9
+      }
+    ],
+    "note": ""
+  },
+  {
+    "id": "EHDh2yzG9_",
+    "index": 9,
+    "slide": 10,
+    "elements": [
+      {
+        "type": "image",
+        "src": "./images\\slide9_img25.png",
+        "hasImage": true,
+        "elementIndex": 0
+      },
+      {
+        "type": "shape",
+        "width": 852,
+        "height": 63.343727034120725,
+        "left": 54,
+        "top": 82.14981627296586,
+        "content": "Adabiyotlar",
+        "fontSize": 53,
+        "maxCharacters": 10,
+        "elementIndex": 6
+      },
+      {
+        "type": "image",
+        "src": "./images\\slide9_img26.png",
+        "hasImage": true,
+        "elementIndex": 7
+      },
+      {
+        "type": "shape",
+        "width": 747.7007874015746,
+        "height": 49.79685039370078,
+        "left": 106.14960629921259,
+        "top": 209.4584776902887,
+        "content": "1. Abdullayeva, M. O'simliklar olamining biologik xilma-xilligi. 2021. Fan va texnologiya nashrlari. 2. Azizov, R. O'simliklar va ularning ekologik roli. 2020. Ekologiya va tabiat nashri. 3. Karimov, A. O'simliklarni saqlash va boshqarish. 2019. Qishloq xo'jaligi ilmiy tadqiqotlari jurnali. 4. Murodov, D. O'simliklarning kimyoviy tarkibi. 2022. O'zbekiston fanlar akademiyasi. 5. Usmanov, A. O'simliklar olamining morfologik xususiyatlari. 2018. Buxoro davlat universiteti.",
+        "fontSize": 18,
+        "maxCharacters": 165,
+        "elementIndex": 13
+      }
+    ],
+    "note": ""
+  },
+  {
+    "id": "zhQRKv2KKD",
+    "index": 10,
+    "slide": 11,
+    "elements": [
+      {
+        "type": "shape",
+        "width": 836.4882939632545,
+        "height": 70,
+        "left": 54,
+        "top": 175,
+        "content": "Etiboringiz uchun rahmat",
+        "fontSize": 60,
+        "maxCharacters": 10,
+        "elementIndex": 1
+      },
+      {
+        "type": "shape",
+        "width": 300,
+        "height": 22,
+        "left": 0,
+        "top": 0,
+        "content": "Etiboringiz uchun rahmat!",
+        "fontSize": 8,
+        "maxCharacters": 148,
+        "elementIndex": 3
+      }
+    ],
+    "note": ""
+  }
+]
