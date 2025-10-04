@@ -1,3 +1,4 @@
+import { z } from "zod";
 import {
   Slide,
   PPTTextElement,
@@ -6,10 +7,38 @@ import {
   PPTChartElement,
   PPTImageElement,
   SlideTheme,
-} from "./types/slides";
+} from "../../../types/slides";
 import { JSDOM } from "jsdom";
 
-// HTML dan faqat textni olish
+/**
+ * Outline Schema Definition
+ * Used for generating presentation structure
+ */
+export const OutlineSchema = z.object({
+  outline: z
+    .array(
+      z.object({
+        title: z.string(), // mavzu tilida
+        title_eng: z.string(), // ingliz tilida
+      })
+    )
+    .min(3)
+    .max(3), // 3 ta asosiy mavzu
+  slides: z.array(
+    z.object({
+      slideIndex: z.number().int().min(0), // original slides arraydan index (0 dan boshlanadi)
+      title: z.string(), // mavzu tilida
+      title_eng: z.string(), // ingliz tilida
+      outlineIndex: z.number().int().min(0).max(2), // qaysi outline punktiga tegishli (0-2)
+    })
+  ),
+});
+
+export type OutlineResponse = z.infer<typeof OutlineSchema>;
+
+/**
+ * HTML dan faqat textni olish
+ */
 const extractTextFromHTML = (html: string): string => {
   if (!html || typeof html !== "string") return "";
 
@@ -75,7 +104,9 @@ const calculateMaxCharacters = (
   return Math.max(10, generousMaxChars);
 };
 
-// AI uchun minimal JSON sxema (fontSize va maxCharacters qo'shildi)
+/**
+ * AI uchun minimal JSON sxema (fontSize va maxCharacters qo'shildi)
+ */
 export const generateAISchema = (slides: Slide[]) => {
   return slides.map((slide, slideIndex) => {
     const elements = slide.elements
@@ -159,7 +190,9 @@ export const generateAISchema = (slides: Slide[]) => {
   });
 };
 
-// HTML ichidagi textni yangilash (stil va strukturani saqlagan holda)
+/**
+ * HTML ichidagi textni yangilash (stil va strukturani saqlagan holda)
+ */
 const updateHTMLContent = (originalHTML: string, newText: string): string => {
   if (!originalHTML || typeof originalHTML !== "string") {
     return `<p><span>${newText}</span></p>`;
@@ -207,7 +240,10 @@ const updateHTMLContent = (originalHTML: string, newText: string): string => {
     return originalHTML;
   }
 };
-// AI sxemasidan to'liq Slide sxemasini yaratish (Optimallashtirilgan)
+
+/**
+ * AI sxemasidan to'liq Slide sxemasini yaratish (Optimallashtirilgan)
+ */
 export const generateSlideFromAI = (
   aiSchema: any[],
   originalData: {
