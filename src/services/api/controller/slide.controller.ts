@@ -19,6 +19,7 @@ import {
   findOutlineItemElements,
 } from "../utils/slide-detector";
 import { placeOutlineWithAI } from "../utils/ai-outline-placer";
+import TextPlacementValidator from "@/src/services/validation/text-placement-validator";
 
 export const generateSlide = async (req: Request, res: Response) => {
   try {
@@ -267,7 +268,38 @@ export const generateSlide = async (req: Request, res: Response) => {
     }
 
     const allFilledSlidesFromData = fs.readFileSync(fullFilledSlides, "utf-8");
-    const allFilledSlidesFromDataJson = JSON.parse(allFilledSlidesFromData);
+    let allFilledSlidesFromDataJson = JSON.parse(allFilledSlidesFromData);
+
+    // ===== POST-GENERATION VALIDATION STEP =====
+    console.log('\n🔍 Starting post-generation validation...');
+    const validator = new TextPlacementValidator();
+
+    // Extract outline titles for validation
+    const outlineTitles = outline.outline.map((item: any) => item.title);
+
+    const validationResult = await validator.validatePresentation(
+      allFilledSlidesFromDataJson,
+      topic,
+      author,
+      outlineTitles
+    );
+
+    // Print validation report
+    validator.printValidationReport(validationResult);
+
+    // Use validated (and potentially fixed) slides
+    if (validationResult.fixedSlides > 0) {
+      console.log(`\n✅ Applied fixes to ${validationResult.fixedSlides} slides`);
+      allFilledSlidesFromDataJson = validationResult.validatedSlides;
+
+      // Save validated slides
+      fs.writeFileSync(
+        fullFilledSlides,
+        JSON.stringify(allFilledSlidesFromDataJson, null, 2)
+      );
+      console.log('✅ Validated slides saved\n');
+    }
+    // ===== END VALIDATION STEP =====
 
     const dataFullSxema = generateSlideFromAI(
       allFilledSlidesFromDataJson,
@@ -298,6 +330,13 @@ export const generateSlide = async (req: Request, res: Response) => {
       slidePath,
       message: "Slide generated successfully",
       slideName,
+      validation: {
+        totalSlides: validationResult.totalSlides,
+        validSlides: validationResult.validSlides,
+        fixedSlides: validationResult.fixedSlides,
+        issuesFound: validationResult.issues.length,
+        fixesApplied: validationResult.fixes.length
+      }
     });
   } catch (error: any) {
     console.log(error);

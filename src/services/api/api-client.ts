@@ -12,6 +12,11 @@ app.use(express.static(path.join(process.cwd(), "public")));
 // Serve generated PPTX files
 app.use("/generated", express.static(path.join(process.cwd(), "generated")));
 
+// Serve images directory (both /images and /templates/images point to same location)
+// This is because JSON files reference images as ./images/ but frontend may use /templates/images/
+app.use("/images", express.static(path.join(process.cwd(), "images")));
+app.use("/templates/images", express.static(path.join(process.cwd(), "images")));
+
 app.use("/api", indexRoutes);
 
 app.listen(3000, () => {

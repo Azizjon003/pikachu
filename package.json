@@ -10,7 +10,9 @@
     "api": "tsx src/services/api/api-client.ts",
     "test:image-replacer": "ts-node testImageReplacer.ts",
     "test:image-replacer:single": "ts-node testImageReplacer.ts single",
-    "test:image-replacer:keywords": "ts-node testImageReplacer.ts keywords"
+    "test:image-replacer:keywords": "ts-node testImageReplacer.ts keywords",
+    "test:ai-images": "tsx src/tests/test-ai-image-system.ts",
+    "test:validation": "tsx src/tests/test-validation-system.ts"
   },
   "keywords": [],
   "author": "",
