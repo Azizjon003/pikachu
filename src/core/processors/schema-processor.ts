@@ -135,6 +135,10 @@ export const generateAISchema = (slides: Slide[]) => {
             type: "image",
             src: el.src,
             hasImage: true,
+            width: el.width,
+            height: el.height,
+            left: el.left,
+            top: el.top,
           };
         } else if (el.type === "shape") {
           if (el.text?.content) {

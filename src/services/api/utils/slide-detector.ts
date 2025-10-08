@@ -78,10 +78,11 @@ export function findTitleElement(slide: Slide): SlideElement | null {
  * Find the author element on a slide
  *
  * Strategy:
- * - Looks for medium fontSize (18-26)
+ * - Looks for medium-large fontSize (22-32)
  * - Excludes the title element
  * - Prefers elements positioned lower on the slide (higher 'top' value)
- * - Should be relatively short text
+ * - Should be relatively short text (author name)
+ * - Typically positioned below or near the title
  *
  * @param slide - The slide object to search
  * @returns The author element or null if not found
@@ -95,19 +96,34 @@ export function findAuthorElement(slide: Slide): SlideElement | null {
 
   const titleElement = findTitleElement(slide);
   const titleIndex = titleElement?.elementIndex;
+  const titleTop = titleElement?.top || 0;
+  const titleFontSize = titleElement?.fontSize || 0;
 
-  // Filter candidates: medium font size, not too long, exclude title
+  // Filter candidates: medium-large font size, not too long, exclude title
   const candidates = textShapes
     .filter((el) => {
       if (el.elementIndex === titleIndex) return false;
-      if (el.fontSize < 18 || el.fontSize > 26) return false;
+
+      // Author should have font size between 22-32 (larger than before)
+      if (el.fontSize < 22 || el.fontSize > 32) return false;
+
+      // Author name should be relatively short
       if (el.content.trim().length > 50) return false;
+
+      // Author should typically be positioned below the title
+      if (titleElement && el.top <= titleTop) return false;
+
+      // Should be slightly smaller than title font
+      if (el.fontSize >= titleFontSize) return false;
+
       return true;
     })
     .sort((a, b) => {
-      // Primary: prefer lower position on slide (higher top value)
-      if (b.top !== a.top) {
-        return b.top - a.top;
+      // Primary: prefer closer to title (smaller distance)
+      const distA = Math.abs(a.top - titleTop);
+      const distB = Math.abs(b.top - titleTop);
+      if (distA !== distB) {
+        return distA - distB;
       }
       // Secondary: prefer larger font size
       return b.fontSize - a.fontSize;
