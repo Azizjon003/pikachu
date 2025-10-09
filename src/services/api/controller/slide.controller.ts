@@ -25,6 +25,14 @@ export const generateSlide = async (req: Request, res: Response) => {
   try {
     const { template, language, page, topic, author } = req.body;
 
+    // Generate unique session ID and sanitized topic for file naming
+    const sessionId = Date.now();
+    const sanitizedTopic = topic
+      .replace(/[^a-zA-Z0-9\u0400-\u04FF\u0600-\u06FF]/g, '-') // Latin, Cyrillic, Arabic scripts
+      .replace(/-+/g, '-') // Replace multiple dashes with single dash
+      .replace(/^-|-$/g, '') // Remove leading/trailing dashes
+      .substring(0, 30);
+
     const templateData = fs.readFileSync(
       path.join(process.cwd(), "templates", template),
       "utf-8"
@@ -170,63 +178,44 @@ export const generateSlide = async (req: Request, res: Response) => {
     allFilledSlides.push(firstSlide);
     allFilledSlides.push(secondSlide);
     console.log(outline, "slidesToFill");
-    for (let i = 0; i < slidesToFill.length; i++) {
-      const slide = slidesToFill[i];
-      const outlineForSlide = outline.slides[i];
 
-      const filledSlide = await generateContent(
+    // Parallel content generation for all content slides
+    console.log(`🚀 Generating ${slidesToFill.length} content slides in parallel...`);
+    const contentPromises = slidesToFill.map((slide, i) => {
+      console.log(`📄 Starting content generation for slide ${i + 3}...`);
+      return generateContent(
         slide,
-        outlineForSlide,
+        outline.slides[i],
         "Uzbek",
         topic
       );
-      allFilledSlides.push(filledSlide);
-      await new Promise((resolve) => setTimeout(resolve, 1000));
-      console.log(`📄 Generated content for slide ${i + 3}...`);
-    }
+    });
 
-    // Generate consultation slide content
-    console.log("📄 Generating consultation slide...");
+    const contentSlides = await Promise.all(contentPromises);
+    allFilledSlides.push(...contentSlides);
+    console.log(`✅ All ${contentSlides.length} content slides generated in parallel!`);
 
-    const consultationSlide = await generateConculation(
-      topic,
-      "Uzbek",
-      aiSchema[aiSchema.length - 3]
-    );
-    await new Promise((resolve) => setTimeout(resolve, 1000));
-    console.log("✅ Consultation slide generated");
+    // Generate additional slides in parallel for maximum efficiency
+    console.log("🚀 Generating additional slides (consultation, references, thank you) in parallel...");
 
-    // Generate references slide content with numbered format
-    console.log("📄 Generating references slide...");
+    const [consultationSlide, referencesSlide, thankYouSlide] = await Promise.all([
+      generateConculation(topic, "Uzbek", aiSchema[aiSchema.length - 3]),
+      generateReferences(topic, language, 5, aiSchema[aiSchema.length - 2]),
+      generateThankYouSlide(topic, language, aiSchema[aiSchema.length - 1])
+    ]);
 
-    const referencesSlide = await generateReferences(
-      topic,
-      language,
-      5,
-      aiSchema[aiSchema.length - 2]
-    );
-    await new Promise((resolve) => setTimeout(resolve, 1000));
-    console.log("✅ References slide generated");
-
-    // Generate conclusion slide content
-    console.log("📄 Generating conclusion slide...");
-
-    const thankYouSlide = await generateThankYouSlide(
-      topic,
-      language,
-      aiSchema[aiSchema.length - 1]
-    );
-    await new Promise((resolve) => setTimeout(resolve, 1000));
-    console.log("✅ Thank you slide generated");
+    console.log("✅ All additional slides generated in parallel!");
 
     // Add additional slides to the end
     allFilledSlides.push(consultationSlide);
     allFilledSlides.push(referencesSlide);
     allFilledSlides.push(thankYouSlide);
+    // Use unique filename based on sessionId and topic
+    const uniqueFilename = `${sessionId}-${sanitizedTopic}.full-filled-slides.json`;
     const fullFilledSlides = path.join(
       process.cwd(),
       "generated",
-      template.replace(".sxema.json", ".full-filled-slides.json")
+      uniqueFilename
     );
 
     // Ensure generated directory exists before writing
@@ -311,7 +300,8 @@ export const generateSlide = async (req: Request, res: Response) => {
       allFilledSlidesFromDataJson,
       fullSxema
     );
-    const slideName = `${Date.now()}.pptx`;
+    // Use same sessionId for PPTX file to match JSON file
+    const slideName = `${sessionId}-${sanitizedTopic}.pptx`;
     if (!fs.existsSync(path.join(process.cwd(), "generated"))) {
       fs.mkdirSync(path.join(process.cwd(), "generated"), { recursive: true });
     }
@@ -336,6 +326,9 @@ export const generateSlide = async (req: Request, res: Response) => {
       slidePath,
       message: "Slide generated successfully",
       slideName,
+      sessionId,
+      jsonFilePath: fullFilledSlides,
+      jsonFileName: uniqueFilename,
       validation: {
         totalSlides: validationResult.totalSlides,
         validSlides: validationResult.validSlides,
