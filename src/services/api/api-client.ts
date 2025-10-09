@@ -12,9 +12,17 @@ app.use(express.static(path.join(process.cwd(), "public")));
 // Serve generated PPTX files
 app.use("/generated", express.static(path.join(process.cwd(), "generated")));
 
-// Serve images directory (both /images and /templates/images point to same location)
-// This is because JSON files reference images as ./images/ but frontend may use /templates/images/
+// Serve images directory with template-specific paths
+// Format: /templatename/images/* -> images/templatename/*
+// This allows JSON files to reference images as /templatename/images/filename
 app.use("/images", express.static(path.join(process.cwd(), "images")));
+app.use("/:templateName/images", (req, res, next) => {
+  const templateName = req.params.templateName;
+  const imagePath = path.join(process.cwd(), "images", templateName);
+  express.static(imagePath)(req, res, next);
+});
+
+// Legacy support for old format
 app.use("/templates/images", express.static(path.join(process.cwd(), "images")));
 
 app.use("/api", indexRoutes);

@@ -228,6 +228,12 @@ export const generateSlide = async (req: Request, res: Response) => {
       "generated",
       template.replace(".sxema.json", ".full-filled-slides.json")
     );
+
+    // Ensure generated directory exists before writing
+    if (!fs.existsSync(path.join(process.cwd(), "generated"))) {
+      fs.mkdirSync(path.join(process.cwd(), "generated"), { recursive: true });
+    }
+
     fs.writeFileSync(
       fullFilledSlides,
       JSON.stringify(allFilledSlides, null, 2)

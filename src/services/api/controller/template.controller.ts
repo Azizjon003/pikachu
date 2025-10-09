@@ -27,10 +27,14 @@ const uploadAndCreateTemplate = async (req: Request, res: Response) => {
 
     await sleep(1000);
 
+    // Extract template name without extension
+    const templateName = originalName.replace(/\.pptx$/i, '');
+
     const slides = await importPPTX(
       fs.readFileSync(targetPath).buffer as ArrayBuffer,
       {
         cover: true,
+        templateName: templateName,
       }
     );
 

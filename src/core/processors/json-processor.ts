@@ -75,6 +75,7 @@ const isPathComplex = (path: string): boolean => {
 
 const imageCounter = { value: 0 };
 const imagesDir = "images";
+let currentTemplateName = "";
 
 // Rasmni format o'zgartirishsiz saqlash (original sifat)
 const saveBase64ImageRaw = (base64: string, slideIndex: number): string => {
@@ -84,13 +85,19 @@ const saveBase64ImageRaw = (base64: string, slideIndex: number): string => {
     base64.startsWith("http://") ||
     base64.startsWith("https://") ||
     base64.startsWith("./") ||
-    base64.startsWith("../")
+    base64.startsWith("../") ||
+    base64.startsWith("/")
   ) {
     return base64;
   }
 
-  if (!fs.existsSync(imagesDir)) {
-    fs.mkdirSync(imagesDir, { recursive: true });
+  // Template-specific images directory
+  const templateImagesDir = currentTemplateName
+    ? path.join(imagesDir, currentTemplateName)
+    : imagesDir;
+
+  if (!fs.existsSync(templateImagesDir)) {
+    fs.mkdirSync(templateImagesDir, { recursive: true });
   }
 
   let base64Data = base64;
@@ -127,12 +134,15 @@ const saveBase64ImageRaw = (base64: string, slideIndex: number): string => {
 
   imageCounter.value++;
   const filename = `slide${slideIndex}_img${imageCounter.value}.${extension}`;
-  const filepath = path.join(imagesDir, filename);
+  const filepath = path.join(templateImagesDir, filename);
 
   try {
     const buffer = Buffer.from(base64Data, "base64");
     fs.writeFileSync(filepath, buffer);
-    return `./${filepath}`;
+    // Return path in format: /templatename/images/filename
+    return currentTemplateName
+      ? `/${currentTemplateName}/images/${filename}`
+      : `./${imagesDir}/${filename}`;
   } catch (error) {
     console.error(`Error saving raw image ${filename}:`, error);
     return "";
@@ -151,13 +161,19 @@ const saveBase64Image = async (
     base64.startsWith("http://") ||
     base64.startsWith("https://") ||
     base64.startsWith("./") ||
-    base64.startsWith("../")
+    base64.startsWith("../") ||
+    base64.startsWith("/")
   ) {
     return base64;
   }
 
-  if (!fs.existsSync(imagesDir)) {
-    fs.mkdirSync(imagesDir, { recursive: true });
+  // Template-specific images directory
+  const templateImagesDir = currentTemplateName
+    ? path.join(imagesDir, currentTemplateName)
+    : imagesDir;
+
+  if (!fs.existsSync(templateImagesDir)) {
+    fs.mkdirSync(templateImagesDir, { recursive: true });
   }
 
   let base64Data = base64;
@@ -211,7 +227,7 @@ const saveBase64Image = async (
 
   imageCounter.value++;
   const filename = `slide${slideIndex}_img${imageCounter.value}.${extension}`;
-  const filepath = path.join(imagesDir, filename);
+  const filepath = path.join(templateImagesDir, filename);
 
   try {
     const buffer = Buffer.from(base64Data, "base64");
@@ -219,7 +235,9 @@ const saveBase64Image = async (
     // SVG va GIF ni to'g'ridan-to'g'ri saqlash (siqmasdan)
     if (extension === "svg" || extension === "gif") {
       fs.writeFileSync(filepath, buffer);
-      return `./${filepath}`;
+      return currentTemplateName
+        ? `/${currentTemplateName}/images/${filename}`
+        : `./${imagesDir}/${filename}`;
     }
 
     // Raster rasmlarni optimallash bilan saqlash
@@ -250,14 +268,18 @@ const saveBase64Image = async (
       fs.writeFileSync(filepath, buffer);
     }
 
-    return `./${filepath}`;
+    return currentTemplateName
+      ? `/${currentTemplateName}/images/${filename}`
+      : `./${imagesDir}/${filename}`;
   } catch (error) {
     console.error(`Error saving image ${filename}:`, error);
     // Xatolik bo'lsa, original bufferdan to'g'ridan-to'g'ri saqlash
     try {
       const buffer = Buffer.from(base64Data, "base64");
       fs.writeFileSync(filepath, buffer);
-      return `./${filepath}`;
+      return currentTemplateName
+        ? `/${currentTemplateName}/images/${filename}`
+        : `./${imagesDir}/${filename}`;
     } catch (fallbackError) {
       console.error(`Fallback save failed for ${filename}:`, fallbackError);
       return "";
@@ -502,13 +524,19 @@ const calculateRotatedPosition = (
 
 export const importPPTX = async (
   buffer: ArrayBuffer,
-  options?: { cover?: boolean; fixedViewport?: boolean }
+  options?: { cover?: boolean; fixedViewport?: boolean; templateName?: string }
 ) => {
   const defaultOptions = {
     cover: false,
     fixedViewport: false,
+    templateName: "",
   };
-  const { cover, fixedViewport } = { ...defaultOptions, ...options };
+  const { cover, fixedViewport, templateName } = { ...defaultOptions, ...options };
+
+  // Set current template name for image saving
+  currentTemplateName = templateName || "";
+  imageCounter.value = 0; // Reset counter for each template
+
   const shapeList: ShapePoolItem[] = [];
   for (const item of SHAPE_LIST) {
     shapeList.push(...item.children);

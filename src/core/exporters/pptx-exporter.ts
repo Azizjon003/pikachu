@@ -398,13 +398,40 @@ const loadImageAsBase64 = (imagePath: string): string => {
     }
 
     // Normalize path for cross-platform compatibility
-    const normalizedPath = imagePath.replace(/\\/g, "/");
+    let normalizedPath = imagePath.replace(/\\/g, "/");
+    let resolvedPath = "";
 
-    if (fs.existsSync(normalizedPath)) {
-      const buffer = fs.readFileSync(normalizedPath);
+    // Convert new format (/templatename/images/file.png) to actual path
+    if (normalizedPath.startsWith("/")) {
+      // Remove leading slash and convert to actual file path
+      // Format: /templatename/images/file.png -> images/templatename/file.png
+      const pathParts = normalizedPath.substring(1).split("/");
+
+      if (pathParts.length >= 3 && pathParts[1] === "images") {
+        const templateName = pathParts[0];
+        const filename = pathParts.slice(2).join("/");
+        // Use path.resolve for absolute path
+        resolvedPath = path.resolve(process.cwd(), "images", templateName, filename);
+      } else {
+        resolvedPath = path.resolve(process.cwd(), normalizedPath.substring(1));
+      }
+    } else if (normalizedPath.startsWith("./")) {
+      // Handle legacy format (./images/file.png)
+      resolvedPath = path.resolve(process.cwd(), normalizedPath.substring(2));
+    } else if (!path.isAbsolute(normalizedPath)) {
+      // Relative path
+      resolvedPath = path.resolve(process.cwd(), normalizedPath);
+    } else {
+      // Already absolute path
+      resolvedPath = normalizedPath;
+    }
+
+    // Check if file exists
+    if (fs.existsSync(resolvedPath)) {
+      const buffer = fs.readFileSync(resolvedPath);
       const base64 = buffer.toString("base64");
 
-      const ext = path.extname(normalizedPath).toLowerCase().substring(1);
+      const ext = path.extname(resolvedPath).toLowerCase().substring(1);
       let mimeType = "image/png";
 
       if (ext === "jpg" || ext === "jpeg") mimeType = "image/jpeg";
@@ -417,10 +444,15 @@ const loadImageAsBase64 = (imagePath: string): string => {
       return `data:${mimeType};base64,${base64}`;
     }
 
-    console.warn(`Image file not found: ${imagePath}`);
+    // If file not found, log warning
+    console.warn(`[WARN] Image file not found:`);
+    console.warn(`  Original path: ${imagePath}`);
+    console.warn(`  Resolved path: ${resolvedPath}`);
+    console.warn(`  File exists: ${fs.existsSync(resolvedPath)}`);
+
     return "";
   } catch (error) {
-    console.error(`Error loading image ${imagePath}:`, error);
+    console.error(`[ERROR] Error loading image ${imagePath}:`, error);
     return "";
   }
 };
@@ -637,13 +669,29 @@ export const exportPPTX = (
         if (el.vertical) options.vert = "eaVert";
         pptxSlide.addText(textProps, options);
       } else if (el.type === "image") {
+        // Load and convert image to base64
+        const imageSrc = loadImageAsBase64(el.src);
+
+        // Skip if image not found
+        if (!imageSrc) {
+          console.warn(`Skipping image element - file not found: ${el.src}`);
+          continue;
+        }
+
         const options: pptxgen.ImageProps = {
           x: el.left / ratioPx2Inch,
           y: el.top / ratioPx2Inch,
           w: el.width / ratioPx2Inch,
           h: el.height / ratioPx2Inch,
         };
-        options.path = el.src;
+
+        // Use base64 data or URL
+        if (isBase64Image(imageSrc)) {
+          options.data = imageSrc;
+        } else {
+          options.path = imageSrc;
+        }
+
         if (el.flipH) options.flipH = el.flipH;
         if (el.flipV) options.flipV = el.flipV;
         if (el.rotate) options.rotate = el.rotate;
