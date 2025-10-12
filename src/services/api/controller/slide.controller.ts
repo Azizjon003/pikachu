@@ -20,6 +20,7 @@ import {
 } from "../utils/slide-detector";
 import { placeOutlineWithAI } from "../utils/ai-outline-placer";
 import TextPlacementValidator from "@/src/services/validation/text-placement-validator";
+import { AISlidePlacer } from "../utils/ai-slide-placer";
 
 export const generateSlide = async (req: Request, res: Response) => {
   try {
@@ -51,114 +52,17 @@ export const generateSlide = async (req: Request, res: Response) => {
     );
     const outline = await generateOutline(aiSchema, language, page, topic);
 
-    // Intelligently detect title and author elements in first slide
-    const titleElement = findTitleElement(aiSchema[0]);
-    const authorElement = findAuthorElement(aiSchema[0]);
+    // Initialize AI Slide Placer
+    const aiPlacer = new AISlidePlacer();
 
-    const firstSlide = {
-      ...aiSchema[0],
-      elements: aiSchema[0].elements.map((element: any) => {
-        // Update title element with topic
-        if (
-          titleElement &&
-          element.type === "shape" &&
-          element.elementIndex === titleElement.elementIndex
-        ) {
-          return {
-            ...element,
-            content: topic,
-          };
-        }
-        // Update author element
-        if (
-          authorElement &&
-          element.type === "shape" &&
-          element.elementIndex === authorElement.elementIndex
-        ) {
-          return {
-            ...element,
-            content: author,
-          };
-        }
-        return element;
-      }),
-    };
+    // Use AI to intelligently place title and author on first slide
+    console.log('\n📄 Processing First Slide (Title Page)...');
+    const firstSlide = await aiPlacer.placeTitlePage(aiSchema[0], topic, author);
 
-    // Intelligently detect outline elements in second slide
-    const outlineHeader = findOutlineHeaderElement(aiSchema[1]);
-    const outlineItems = findOutlineItemElements(aiSchema[1], 3);
-
-    // Debug logging
-    console.log("\n📋 Outline Detection Debug:");
-    console.log(
-      "  Header found:",
-      outlineHeader
-        ? `elementIndex ${outlineHeader.elementIndex} - "${outlineHeader.content}"`
-        : "NOT FOUND"
-    );
-    console.log("  Outline items found:", outlineItems.length);
-    outlineItems.forEach((item, i) => {
-      console.log(
-        `    ${i + 1}. elementIndex ${item.elementIndex} - "${
-          item.content
-        }" (fontSize: ${item.fontSize})`
-      );
-    });
-
-    let secondSlide;
-
-    // Use AI placement if detection finds fewer than 3 items
-    if (outlineItems.length < 3) {
-      console.log("\n⚠️ Detection found < 3 items, using AI placement...");
-      const outlineTitles = outline.outline.map((item: any) => item.title);
-      secondSlide = await placeOutlineWithAI(aiSchema[1], outlineTitles);
-    } else {
-      // Use traditional detection-based placement
-      console.log("\n✅ Using detection-based placement");
-      secondSlide = {
-        ...aiSchema[1],
-        elements: aiSchema[1].elements.map((element: any) => {
-          // Update outline header element
-          if (
-            outlineHeader &&
-            element.type === "shape" &&
-            element.elementIndex === outlineHeader.elementIndex
-          ) {
-            console.log(
-              `  ✅ Updating header at index ${element.elementIndex}`
-            );
-            return {
-              ...element,
-              content: "Reja:",
-            };
-          }
-
-          // Update outline item elements
-          for (
-            let i = 0;
-            i < outlineItems.length && i < outline.outline.length;
-            i++
-          ) {
-            if (
-              element.type === "shape" &&
-              element.elementIndex === outlineItems[i].elementIndex
-            ) {
-              console.log(
-                `  ✅ Updating outline item ${i + 1} at index ${
-                  element.elementIndex
-                }`
-              );
-              return {
-                ...element,
-                content: `${i + 1}. ${outline.outline[i].title}`,
-              };
-            }
-          }
-
-          return element;
-        }),
-      };
-    }
+    // Use AI to intelligently place outline on second slide
+    console.log('\n📄 Processing Second Slide (Outline Page)...');
+    const outlineTitlesForSecondSlide = outline.outline.map((item: any) => item.title);
+    const secondSlide = await aiPlacer.placeOutline(aiSchema[1], outlineTitlesForSecondSlide);
 
     // Filter remaining slides (skip first 2 and last 3)
     const filteredSchema = aiSchema.filter(
@@ -195,19 +99,19 @@ export const generateSlide = async (req: Request, res: Response) => {
     allFilledSlides.push(...contentSlides);
     console.log(`✅ All ${contentSlides.length} content slides generated in parallel!`);
 
-    // Generate additional slides in parallel for maximum efficiency
-    console.log("🚀 Generating additional slides (consultation, references, thank you) in parallel...");
+    // Generate additional slides with AI placer in parallel for maximum efficiency
+    console.log("🚀 Generating additional slides (conclusion, references, thank you) with AI placer in parallel...");
 
-    const [consultationSlide, referencesSlide, thankYouSlide] = await Promise.all([
-      generateConculation(topic, "Uzbek", aiSchema[aiSchema.length - 3]),
-      generateReferences(topic, language, 5, aiSchema[aiSchema.length - 2]),
-      generateThankYouSlide(topic, language, aiSchema[aiSchema.length - 1])
+    const [conclusionSlide, referencesSlide, thankYouSlide] = await Promise.all([
+      aiPlacer.placeConclusion(aiSchema[aiSchema.length - 3], topic, language),
+      aiPlacer.placeReferences(aiSchema[aiSchema.length - 2], topic, 5, language),
+      aiPlacer.placeThankYou(aiSchema[aiSchema.length - 1], language)
     ]);
 
-    console.log("✅ All additional slides generated in parallel!");
+    console.log("✅ All additional slides generated with AI placer in parallel!");
 
     // Add additional slides to the end
-    allFilledSlides.push(consultationSlide);
+    allFilledSlides.push(conclusionSlide);
     allFilledSlides.push(referencesSlide);
     allFilledSlides.push(thankYouSlide);
     // Use unique filename based on sessionId and topic

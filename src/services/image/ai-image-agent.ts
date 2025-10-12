@@ -100,29 +100,41 @@ export class AIImageAgent {
       const searchStrategies = await this.generateSearchStrategies(context);
       console.log(`📋 Generated ${searchStrategies.length} search strategies`);
 
-      // Phase 2: Execute Searches & Collect Candidates
+      // Phase 2: Execute Searches & Collect Candidates (PARALLEL)
       const allCandidates: ImageCandidate[] = [];
 
-      for (const strategy of searchStrategies) {
-        console.log(
-          `🔍 Executing strategy: "${strategy.query}" (Priority: ${strategy.priority})`
-        );
+      console.log(`🔍 Executing ${searchStrategies.length} search strategies in parallel...`);
 
-        const candidates = await this.executeSearchStrategy(strategy, context);
+      // Execute all search strategies in parallel
+      const searchPromises = searchStrategies.map((strategy) =>
+        this.executeSearchStrategy(strategy, context)
+          .then((candidates) => {
+            if (candidates.length > 0) {
+              console.log(
+                `✓ Strategy "${strategy.query}" found ${candidates.length} candidates`
+              );
+            }
+            return candidates;
+          })
+          .catch((error) => {
+            console.warn(
+              `✗ Strategy "${strategy.query}" failed:`,
+              error.message
+            );
+            return [];
+          })
+      );
 
+      const searchResults = await Promise.all(searchPromises);
+
+      // Flatten all results
+      searchResults.forEach((candidates) => {
         if (candidates.length > 0) {
           allCandidates.push(...candidates);
-          console.log(`✓ Found ${candidates.length} candidates`);
         }
+      });
 
-        // Stop if we have enough high-quality candidates
-        if (allCandidates.filter((c) => c.overallScore > 0.8).length >= 3) {
-          console.log(
-            "✓ Found sufficient high-quality candidates, stopping search"
-          );
-          break;
-        }
-      }
+      console.log(`✓ Total candidates found: ${allCandidates.length}`);
 
       if (allCandidates.length === 0) {
         console.log(
@@ -423,23 +435,39 @@ Return as JSON array.`;
     context: ImageSearchContext,
     templateName: string
   ): Promise<ImageCandidate[]> {
-    console.log(`🎯 AI Ranking ${candidates.length} candidates...`);
+    console.log(`🎯 AI Ranking ${candidates.length} candidates in parallel...`);
 
-    // Batch process candidates for efficiency
+    // Batch process candidates in parallel for maximum efficiency
     const batchSize = 5;
-    const rankedCandidates: ImageCandidate[] = [];
+    const batches: ImageCandidate[][] = [];
 
+    // Split into batches
     for (let i = 0; i < candidates.length; i += batchSize) {
-      const batch = candidates.slice(i, i + batchSize);
-
-      try {
-        const scoredBatch = await this.scoreCandidateBatch(batch, context);
-        rankedCandidates.push(...scoredBatch);
-      } catch (error) {
-        console.warn("Batch scoring failed, using technical scores:", error);
-        rankedCandidates.push(...batch);
-      }
+      batches.push(candidates.slice(i, i + batchSize));
     }
+
+    console.log(`🔄 Processing ${batches.length} batches in parallel...`);
+
+    // Process all batches in parallel
+    const batchPromises = batches.map((batch, index) =>
+      this.scoreCandidateBatch(batch, context)
+        .then((scoredBatch) => {
+          console.log(`✓ Batch ${index + 1}/${batches.length} scored`);
+          return scoredBatch;
+        })
+        .catch((error) => {
+          console.warn(
+            `✗ Batch ${index + 1} scoring failed, using technical scores:`,
+            error.message
+          );
+          return batch;
+        })
+    );
+
+    const scoredBatches = await Promise.all(batchPromises);
+
+    // Flatten results
+    const rankedCandidates: ImageCandidate[] = scoredBatches.flat();
 
     // Calculate overall scores
     rankedCandidates.forEach((candidate) => {

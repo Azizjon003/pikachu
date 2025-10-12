@@ -258,36 +258,48 @@ export class IntegratedAIImageService {
     let failedCount = 0;
     let totalConfidence = 0;
 
-    for (let i = 0; i < batchRequest.slides.length; i++) {
-      const slide = batchRequest.slides[i];
+    // Process slides in parallel with concurrency control
+    const maxConcurrency = 3; // Process max 3 slides at a time
 
-      console.log(`\n--- Processing Slide ${i + 1}/${batchRequest.slides.length} ---`);
+    for (let i = 0; i < batchRequest.slides.length; i += maxConcurrency) {
+      const chunk = batchRequest.slides.slice(i, i + maxConcurrency);
 
-      const result = await this.findAndDownloadImage({
-        slideTitle: slide.slideTitle,
-        slideContent: slide.slideContent,
-        slideIndex: slide.slideIndex,
-        elementType: slide.elementType,
-        templateName: batchRequest.templateName,
-        presentationTitle: batchRequest.presentationTitle,
-        presentationTheme: batchRequest.presentationTheme,
-        desiredStyle: slide.desiredStyle,
-        colorScheme: slide.colorScheme
+      console.log(`\n--- Processing Chunk ${Math.floor(i / maxConcurrency) + 1}/${Math.ceil(batchRequest.slides.length / maxConcurrency)} (${chunk.length} slides) ---`);
+
+      const chunkPromises = chunk.map(async (slide, chunkIndex) => {
+        const globalIndex = i + chunkIndex;
+        console.log(`\n[${globalIndex + 1}/${batchRequest.slides.length}] Processing slide: "${slide.slideTitle}"`);
+
+        return await this.findAndDownloadImage({
+          slideTitle: slide.slideTitle,
+          slideContent: slide.slideContent,
+          slideIndex: slide.slideIndex,
+          elementType: slide.elementType,
+          templateName: batchRequest.templateName,
+          presentationTitle: batchRequest.presentationTitle,
+          presentationTheme: batchRequest.presentationTheme,
+          desiredStyle: slide.desiredStyle,
+          colorScheme: slide.colorScheme
+        });
       });
 
-      results.push(result);
+      const chunkResults = await Promise.all(chunkPromises);
+      results.push(...chunkResults);
 
-      if (result.success) {
-        successfulCount++;
-        totalConfidence += result.confidence;
-      } else {
-        failedCount++;
-      }
+      // Count successes and failures
+      chunkResults.forEach(result => {
+        if (result.success) {
+          successfulCount++;
+          totalConfidence += result.confidence;
+        } else {
+          failedCount++;
+        }
+      });
 
-      // Add delay between requests to avoid rate limiting
-      if (i < batchRequest.slides.length - 1) {
-        console.log('⏳ Waiting 2s before next request...');
-        await new Promise(resolve => setTimeout(resolve, 2000));
+      // Add delay between chunks to avoid rate limiting
+      if (i + maxConcurrency < batchRequest.slides.length) {
+        console.log('\n⏳ Waiting 3s before next chunk...');
+        await new Promise(resolve => setTimeout(resolve, 3000));
       }
     }
 

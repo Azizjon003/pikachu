@@ -548,45 +548,74 @@ class ImageReplacerService {
         return stats;
       }
 
-      // Process each edited image individually with delay
-      for (let i = 0; i < editedImages.length; i++) {
-        const { slide, image } = editedImages[i];
+      // Process all edited images in parallel with concurrency control
+      this.log(`\n🚀 Processing ${editedImages.length} images in parallel with concurrency control...`, 'info');
 
-        this.log(`\n--- Processing image ${i + 1}/${stats.total} ---`, 'info');
-        this.log(`Slide: ${slide.slide}, Element: ${image.elementIndex}`, 'info');
+      const maxConcurrency = 5; // Process max 5 images at a time
+      const results: boolean[] = [];
 
-        // Extract slide context
-        const slideContext = this.extractSlideContext(slide);
-        this.log(`Slide context: ${slideContext.substring(0, 100)}...`, 'info');
+      // Process in chunks for controlled concurrency
+      for (let i = 0; i < editedImages.length; i += maxConcurrency) {
+        const chunk = editedImages.slice(i, i + maxConcurrency);
 
-        // Track duplicates before replacement
-        const urlsBefore = this.usedImageUrls.size;
+        this.log(`\n--- Processing chunk ${Math.floor(i / maxConcurrency) + 1}/${Math.ceil(editedImages.length / maxConcurrency)} (${chunk.length} images) ---`, 'info');
 
-        // Replace the image (now with validation and fallbacks)
-        const success = await this.replaceImage(slide, image, slideContext);
+        const chunkPromises = chunk.map(async ({ slide, image }, chunkIndex) => {
+          const globalIndex = i + chunkIndex;
+          this.log(`\n  [${globalIndex + 1}/${stats.total}] Processing slide ${slide.slide}, element ${image.elementIndex}`, 'info');
 
-        // Check if we avoided duplicates
-        const urlsAfter = this.usedImageUrls.size;
-        if (urlsAfter > urlsBefore) {
-          // New unique URL added
-          stats.duplicatesAvoided += (urlsBefore - (urlsAfter - 1));
-        }
+          // Extract slide context
+          const slideContext = this.extractSlideContext(slide);
+          this.log(`  [${globalIndex + 1}/${stats.total}] Slide context: ${slideContext.substring(0, 80)}...`, 'info');
 
-        if (success) {
-          stats.successful++;
-          this.log(`✅ Successfully replaced image ${i + 1}/${stats.total}`, 'success');
-        } else {
-          stats.failed++;
-          stats.failureReasons.allAttemptsFailed++;
-          const errorMsg = `Failed to replace image on slide ${slide.slide}, element ${image.elementIndex}`;
-          stats.errors.push(errorMsg);
-          this.log(errorMsg, 'error');
-        }
+          // Track duplicates before replacement
+          const urlsBefore = this.usedImageUrls.size;
 
-        // Add delay between requests to avoid rate limiting
-        if (i < editedImages.length - 1) {
-          this.log(`  ⏳ Waiting 1s before next request...`, 'info');
-          await new Promise(resolve => setTimeout(resolve, 1000));
+          try {
+            // Replace the image (now with validation and fallbacks)
+            const success = await this.replaceImage(slide, image, slideContext);
+
+            // Check if we avoided duplicates
+            const urlsAfter = this.usedImageUrls.size;
+            if (urlsAfter > urlsBefore) {
+              stats.duplicatesAvoided += (urlsBefore - (urlsAfter - 1));
+            }
+
+            if (success) {
+              this.log(`  [${globalIndex + 1}/${stats.total}] ✅ Successfully replaced`, 'success');
+              return true;
+            } else {
+              stats.failureReasons.allAttemptsFailed++;
+              const errorMsg = `Failed to replace image on slide ${slide.slide}, element ${image.elementIndex}`;
+              stats.errors.push(errorMsg);
+              this.log(`  [${globalIndex + 1}/${stats.total}] ❌ ${errorMsg}`, 'error');
+              return false;
+            }
+          } catch (error) {
+            stats.failureReasons.allAttemptsFailed++;
+            const errorMsg = `Exception while replacing image on slide ${slide.slide}, element ${image.elementIndex}: ${error}`;
+            stats.errors.push(errorMsg);
+            this.log(`  [${globalIndex + 1}/${stats.total}] ❌ ${errorMsg}`, 'error');
+            return false;
+          }
+        });
+
+        const chunkResults = await Promise.all(chunkPromises);
+        results.push(...chunkResults);
+
+        // Count successes/failures in this chunk
+        chunkResults.forEach(success => {
+          if (success) {
+            stats.successful++;
+          } else {
+            stats.failed++;
+          }
+        });
+
+        // Add delay between chunks to avoid rate limiting
+        if (i + maxConcurrency < editedImages.length) {
+          this.log(`\n  ⏳ Waiting 2s before next chunk...`, 'info');
+          await new Promise(resolve => setTimeout(resolve, 2000));
         }
       }
 
