@@ -21,6 +21,7 @@ import {
 import { placeOutlineWithAI } from "../utils/ai-outline-placer";
 import TextPlacementValidator from "@/src/services/validation/text-placement-validator";
 import { AISlidePlacer } from "../utils/ai-slide-placer";
+import AITextLayoutOptimizer from "@/src/services/layout/ai-layout-optimizer";
 
 export const generateSlide = async (req: Request, res: Response) => {
   try {
@@ -200,6 +201,110 @@ export const generateSlide = async (req: Request, res: Response) => {
     }
     // ===== END VALIDATION STEP =====
 
+    // ===== OVERLAP DETECTION & OPTIMIZATION STEP (PARALLEL) =====
+    console.log('\n🔍 Starting parallel overlap detection and layout optimization...');
+
+    // Get viewport dimensions from schema
+    const viewportWidth = fullSxema.viewportWidth || 1920;
+    const viewportHeight = fullSxema.viewportHeight || 1080;
+
+    const layoutOptimizer = new AITextLayoutOptimizer(viewportWidth, viewportHeight);
+
+    // Optimize slides in parallel batches to avoid rate limiting
+    const BATCH_SIZE = 3; // Process 3 slides at a time
+    let totalOverlapsFix = 0;
+    let totalSlidesFix = 0;
+
+    // Split slides into batches
+    const batches: number[][] = [];
+    for (let i = 0; i < allFilledSlidesFromDataJson.length; i += BATCH_SIZE) {
+      batches.push(
+        Array.from(
+          { length: Math.min(BATCH_SIZE, allFilledSlidesFromDataJson.length - i) },
+          (_, j) => i + j
+        )
+      );
+    }
+
+    console.log(`   Processing ${allFilledSlidesFromDataJson.length} slides in ${batches.length} parallel batches...\n`);
+
+    // Process each batch in parallel
+    for (let batchIndex = 0; batchIndex < batches.length; batchIndex++) {
+      const batch = batches[batchIndex];
+      console.log(`🔄 Batch ${batchIndex + 1}/${batches.length}: Optimizing slides ${batch[0] + 1}-${batch[batch.length - 1] + 1} in parallel...`);
+
+      // Create optimization promises for all slides in batch
+      const optimizationPromises = batch.map(async (slideIndex) => {
+        const slide = allFilledSlidesFromDataJson[slideIndex];
+
+        try {
+          console.log(`   📄 Starting optimization for slide ${slideIndex + 1}...`);
+
+          // Optimize layout for this slide
+          const optimizationResult = await layoutOptimizer.optimizeLayout(slide.elements);
+
+          return {
+            slideIndex,
+            success: true,
+            result: optimizationResult
+          };
+        } catch (error) {
+          console.error(`   ❌ Error optimizing slide ${slideIndex + 1}:`, error);
+          return {
+            slideIndex,
+            success: false,
+            error
+          };
+        }
+      });
+
+      // Wait for all slides in this batch to complete
+      const batchResults = await Promise.all(optimizationPromises);
+
+      // Apply results
+      for (const { slideIndex, success, result, error } of batchResults) {
+        if (success && result) {
+          // Apply optimized elements if improvements were made
+          if (result.success && result.appliedFixes.length > 0) {
+            allFilledSlidesFromDataJson[slideIndex].elements = result.optimizedElements;
+            totalOverlapsFix += result.appliedFixes.length;
+            totalSlidesFix++;
+            console.log(`   ✅ Slide ${slideIndex + 1}: ${result.appliedFixes.length} fixes applied (${result.improvementScore.toFixed(1)}% improvement)`);
+          } else if (!result.originalAnalysis.hasIssues) {
+            console.log(`   ✅ Slide ${slideIndex + 1}: No issues detected`);
+          } else {
+            console.log(`   ⚠️  Slide ${slideIndex + 1}: Some issues remain but acceptable`);
+          }
+        }
+      }
+
+      console.log(`✓ Batch ${batchIndex + 1} completed\n`);
+
+      // Small delay between batches to avoid rate limiting
+      if (batchIndex < batches.length - 1) {
+        await sleep(1500);
+      }
+    }
+
+    console.log('\n╔═══════════════════════════════════════════════════════════╗');
+    console.log('║          Layout Optimization Summary                     ║');
+    console.log('╚═══════════════════════════════════════════════════════════╝');
+    console.log(`\n   Total Slides Analyzed: ${allFilledSlidesFromDataJson.length}`);
+    console.log(`   Slides Optimized: ${totalSlidesFix}`);
+    console.log(`   Total Fixes Applied: ${totalOverlapsFix}`);
+    console.log(`   Processing Mode: PARALLEL (${BATCH_SIZE} slides per batch)`);
+    console.log('');
+
+    // Save optimized slides
+    if (totalSlidesFix > 0) {
+      fs.writeFileSync(
+        fullFilledSlides,
+        JSON.stringify(allFilledSlidesFromDataJson, null, 2)
+      );
+      console.log('✅ Optimized slides saved\n');
+    }
+    // ===== END OVERLAP DETECTION & OPTIMIZATION STEP =====
+
     const dataFullSxema = generateSlideFromAI(
       allFilledSlidesFromDataJson,
       fullSxema
@@ -239,6 +344,11 @@ export const generateSlide = async (req: Request, res: Response) => {
         fixedSlides: validationResult.fixedSlides,
         issuesFound: validationResult.issues.length,
         fixesApplied: validationResult.fixes.length
+      },
+      overlapOptimization: {
+        slidesOptimized: totalSlidesFix,
+        totalSlides: allFilledSlidesFromDataJson.length,
+        fixesApplied: totalOverlapsFix
       }
     });
   } catch (error: any) {
