@@ -1,10 +1,56 @@
 import express from "express";
-import indexRoutes from "./routes/index.routes";
+import cors from "cors";
+import helmet from "helmet";
+import dotenv from "dotenv";
 import path from "path";
+import indexRoutes from "./routes/index.routes";
+import { errorHandler, notFoundHandler } from "./middleware/error-handler";
+import { apiLimiter } from "./middleware/rate-limiter";
+
+// Load environment variables
+dotenv.config();
 
 const app = express();
+const PORT = process.env.PORT || 3000;
 
-app.use(express.json());
+// ============================================
+// SECURITY MIDDLEWARE
+// ============================================
+
+// Helmet - Security headers
+app.use(helmet({
+  crossOriginResourcePolicy: { policy: "cross-origin" }, // Allow cross-origin resources
+  contentSecurityPolicy: false, // Disable CSP for now (customize as needed)
+}));
+
+// CORS - Cross-Origin Resource Sharing
+const corsOptions = {
+  origin: process.env.ALLOWED_ORIGINS
+    ? process.env.ALLOWED_ORIGINS.split(',')
+    : '*', // Allow all origins if not specified
+  credentials: true,
+  optionsSuccessStatus: 200,
+  methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
+  allowedHeaders: ['Content-Type', 'Authorization', 'X-API-Key'],
+};
+app.use(cors(corsOptions));
+
+// Rate limiting - Protect against DDoS
+app.use('/api/', apiLimiter);
+
+// Body parsing middleware
+app.use(express.json({ limit: '50mb' })); // Increased limit for large requests
+app.use(express.urlencoded({ extended: true, limit: '50mb' }));
+
+// Request logging middleware
+app.use((req, res, next) => {
+  console.log(`📨 ${new Date().toISOString()} - ${req.method} ${req.path}`);
+  next();
+});
+
+// ============================================
+// STATIC FILE SERVING
+// ============================================
 
 // Serve static files from public directory
 app.use(express.static(path.join(process.cwd(), "public")));
@@ -25,9 +71,49 @@ app.use("/:templateName/images", (req, res, next) => {
 // Legacy support for old format
 app.use("/templates/images", express.static(path.join(process.cwd(), "images")));
 
+// ============================================
+// HEALTH CHECK ENDPOINT
+// ============================================
+
+app.get('/health', (req, res) => {
+  res.json({
+    success: true,
+    status: 'healthy',
+    timestamp: new Date().toISOString(),
+    uptime: process.uptime(),
+    environment: process.env.NODE_ENV || 'development',
+  });
+});
+
+// ============================================
+// API ROUTES
+// ============================================
+
 app.use("/api", indexRoutes);
 
-app.listen(3000, () => {
-  console.log("Server is running on port 3000");
-  console.log("Frontend available at: http://localhost:3000");
+// ============================================
+// ERROR HANDLING
+// ============================================
+
+// 404 handler - must be after all routes
+app.use(notFoundHandler);
+
+// Global error handler - must be last
+app.use(errorHandler);
+
+// ============================================
+// START SERVER
+// ============================================
+
+app.listen(PORT, () => {
+  console.log('\n╔════════════════════════════════════════════════════════╗');
+  console.log('║           🚀 Pikachu API Server Started              ║');
+  console.log('╚════════════════════════════════════════════════════════╝');
+  console.log(`\n📡 Server running on port ${PORT}`);
+  console.log(`🌐 Frontend available at: http://localhost:${PORT}`);
+  console.log(`🔧 API endpoint: http://localhost:${PORT}/api`);
+  console.log(`💚 Health check: http://localhost:${PORT}/health`);
+  console.log(`🔒 Security: CORS, Helmet, Rate Limiting enabled`);
+  console.log(`🌍 Environment: ${process.env.NODE_ENV || 'development'}`);
+  console.log('\n════════════════════════════════════════════════════════\n');
 });
