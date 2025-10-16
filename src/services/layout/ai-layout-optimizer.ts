@@ -5,22 +5,22 @@
  * Uses AI to make smart decisions about repositioning, resizing, and reformatting
  */
 
-import OpenAI from 'openai';
-import dotenv from 'dotenv';
+import OpenAI from "openai";
+import dotenv from "dotenv";
 import {
   TextOverlapDetector,
   type TextElement,
   type SpatialAnalysis,
   type OverlapIssue,
   type BoundaryIssue,
-  type BoundingBox
-} from './text-overlap-detector';
+  type BoundingBox,
+} from "./text-overlap-detector";
 
 dotenv.config();
 
 interface LayoutFix {
   elementIndex: number;
-  action: 'move' | 'resize' | 'reduce-font' | 'reformat' | 'split';
+  action: "move" | "resize" | "reduce-font" | "reformat" | "split";
   originalElement: TextElement;
   modifiedElement: TextElement;
   changes: {
@@ -73,7 +73,7 @@ export class AITextLayoutOptimizer {
   ) {
     const apiKey = openaiApiKey || process.env.OPENAI_API_KEY;
     if (!apiKey) {
-      throw new Error('OPENAI_API_KEY is required');
+      throw new Error("OPENAI_API_KEY is required");
     }
 
     this.openai = new OpenAI({ apiKey });
@@ -86,16 +86,20 @@ export class AITextLayoutOptimizer {
    * Main optimization method - analyzes and fixes all layout issues
    */
   async optimizeLayout(elements: TextElement[]): Promise<OptimizationResult> {
-    console.log('\n╔═══════════════════════════════════════════════════════════╗');
-    console.log('║          AI Layout Optimization Started                  ║');
-    console.log('╚═══════════════════════════════════════════════════════════╝\n');
+    console.log(
+      "\n╔═══════════════════════════════════════════════════════════╗"
+    );
+    console.log("║          AI Layout Optimization Started                  ║");
+    console.log(
+      "╚═══════════════════════════════════════════════════════════╝\n"
+    );
 
     // Initial analysis
     const originalAnalysis = this.detector.analyzeSlide(elements);
     this.detector.printAnalysisReport(originalAnalysis);
 
     if (!originalAnalysis.hasIssues) {
-      console.log('✅ No issues found - layout is already optimal!\n');
+      console.log("✅ No issues found - layout is already optimal!\n");
       return {
         success: true,
         originalAnalysis,
@@ -104,7 +108,7 @@ export class AITextLayoutOptimizer {
         newAnalysis: originalAnalysis,
         iterationsUsed: 0,
         improvementScore: 100,
-        summary: 'Layout is already optimal - no changes needed'
+        summary: "Layout is already optimal - no changes needed",
       };
     }
 
@@ -115,27 +119,37 @@ export class AITextLayoutOptimizer {
 
     while (iteration < this.maxIterations) {
       iteration++;
-      console.log(`\n🔄 Optimization Iteration ${iteration}/${this.maxIterations}...`);
+      console.log(
+        `\n🔄 Optimization Iteration ${iteration}/${this.maxIterations}...`
+      );
 
       // Analyze current state
       const currentAnalysis = this.detector.analyzeSlide(currentElements);
 
       // Check if we're done
       if (!currentAnalysis.hasIssues) {
-        console.log('✅ All issues resolved!');
+        console.log("✅ All issues resolved!");
         break;
       }
 
-      if (currentAnalysis.criticalIssues === 0 && currentAnalysis.majorIssues === 0) {
-        console.log('✅ All critical and major issues resolved, minor issues acceptable');
+      if (
+        currentAnalysis.criticalIssues === 0 &&
+        currentAnalysis.majorIssues === 0
+      ) {
+        console.log(
+          "✅ All critical and major issues resolved, minor issues acceptable"
+        );
         break;
       }
 
       // Get AI-powered fixes
-      const fixes = await this.generateAIFixes(currentElements, currentAnalysis);
+      const fixes = await this.generateAIFixes(
+        currentElements,
+        currentAnalysis
+      );
 
       if (fixes.length === 0) {
-        console.log('⚠️  No more fixes can be applied');
+        console.log("⚠️  No more fixes can be applied");
         break;
       }
 
@@ -154,9 +168,15 @@ export class AITextLayoutOptimizer {
     // Final analysis
     const newAnalysis = this.detector.analyzeSlide(currentElements);
 
-    console.log('\n╔═══════════════════════════════════════════════════════════╗');
-    console.log('║          Optimization Results                             ║');
-    console.log('╚═══════════════════════════════════════════════════════════╝\n');
+    console.log(
+      "\n╔═══════════════════════════════════════════════════════════╗"
+    );
+    console.log(
+      "║          Optimization Results                             ║"
+    );
+    console.log(
+      "╚═══════════════════════════════════════════════════════════╝\n"
+    );
 
     this.detector.printAnalysisReport(newAnalysis);
 
@@ -182,7 +202,7 @@ export class AITextLayoutOptimizer {
       newAnalysis,
       iterationsUsed: iteration,
       improvementScore,
-      summary
+      summary,
     };
   }
 
@@ -193,33 +213,33 @@ export class AITextLayoutOptimizer {
     elements: TextElement[],
     analysis: SpatialAnalysis
   ): Promise<LayoutFix[]> {
-    console.log('\n🤖 AI: Analyzing layout and generating fixes...');
+    console.log("\n🤖 AI: Analyzing layout and generating fixes...");
 
     // Prepare data for AI
     const elementsData = elements
-      .filter(el => (el.type === 'shape' || el.type === 'text') && el.content)
-      .map(el => ({
+      .filter((el) => (el.type === "shape" || el.type === "text") && el.content)
+      .map((el) => ({
         elementIndex: el.elementIndex,
         left: Math.round(el.left),
         top: Math.round(el.top),
         width: Math.round(el.width),
         height: Math.round(el.height),
         fontSize: el.fontSize || 18,
-        contentLength: el.content.replace(/<[^>]*>/g, '').length,
-        contentPreview: el.content.replace(/<[^>]*>/g, '').substring(0, 50)
+        contentLength: el.content.replace(/<[^>]*>/g, "").length,
+        contentPreview: el.content.replace(/<[^>]*>/g, "").substring(0, 50),
       }));
 
-    const overlapsData = analysis.overlapIssues.map(issue => ({
+    const overlapsData = analysis.overlapIssues.map((issue) => ({
       element1: issue.element1.elementIndex,
       element2: issue.element2.elementIndex,
       overlapPercentage: Math.round(issue.overlapPercentage),
-      severity: issue.severity
+      severity: issue.severity,
     }));
 
-    const boundaryData = analysis.boundaryIssues.map(issue => ({
+    const boundaryData = analysis.boundaryIssues.map((issue) => ({
       element: issue.element.elementIndex,
       overflow: Math.round(issue.overflow),
-      severity: issue.severity
+      severity: issue.severity,
     }));
 
     const prompt = `You are an expert PowerPoint layout optimizer. Analyze this slide layout and provide specific fixes to resolve overlaps and boundary issues.
@@ -230,10 +250,10 @@ ELEMENTS:
 ${JSON.stringify(elementsData, null, 2)}
 
 OVERLAP ISSUES:
-${overlapsData.length > 0 ? JSON.stringify(overlapsData, null, 2) : 'None'}
+${overlapsData.length > 0 ? JSON.stringify(overlapsData, null, 2) : "None"}
 
 BOUNDARY ISSUES (text overflow):
-${boundaryData.length > 0 ? JSON.stringify(boundaryData, null, 2) : 'None'}
+${boundaryData.length > 0 ? JSON.stringify(boundaryData, null, 2) : "None"}
 
 CRITICAL ISSUES: ${analysis.criticalIssues}
 MAJOR ISSUES: ${analysis.majorIssues}
@@ -248,7 +268,9 @@ AVAILABLE ACTIONS:
 4. "reformat" - Combination of resize + move
 
 CONSTRAINTS:
-- Elements must stay within slide boundaries (0,0 to ${this.slideWidth},${this.slideHeight})
+- Elements must stay within slide boundaries (0,0 to ${this.slideWidth},${
+      this.slideHeight
+    })
 - Minimum 10px spacing between elements
 - Font size must be >= 10px and <= 72px
 - Maintain visual hierarchy (don't move titles below content)
@@ -284,24 +306,25 @@ IMPORTANT: Provide AT LEAST one fix for each critical issue. Return valid JSON o
 
     try {
       const response = await this.openai.chat.completions.create({
-        model: 'gpt-4o',
+        model: "gpt-4o-mini",
         messages: [
           {
-            role: 'system',
-            content: 'You are an expert PowerPoint layout optimizer. Analyze spatial relationships and provide precise numerical fixes. Return ONLY valid JSON.'
+            role: "system",
+            content:
+              "You are an expert PowerPoint layout optimizer. Analyze spatial relationships and provide precise numerical fixes. Return ONLY valid JSON.",
           },
           {
-            role: 'user',
-            content: prompt
-          }
+            role: "user",
+            content: prompt,
+          },
         ],
         temperature: 0.3,
-        response_format: { type: 'json_object' },
-        max_tokens: 2000
+        response_format: { type: "json_object" },
+        max_tokens: 2000,
       });
 
       const result: AILayoutDecision = JSON.parse(
-        response.choices[0].message.content || '{}'
+        response.choices[0].message.content || "{}"
       );
 
       console.log(`   🎯 AI Strategy: ${result.strategy}`);
@@ -312,7 +335,9 @@ IMPORTANT: Provide AT LEAST one fix for each critical issue. Return valid JSON o
       const fixes: LayoutFix[] = [];
 
       for (const aiFix of result.fixes) {
-        const element = elements.find(el => el.elementIndex === aiFix.elementIndex);
+        const element = elements.find(
+          (el) => el.elementIndex === aiFix.elementIndex
+        );
         if (!element) continue;
 
         const modifiedElement = { ...element };
@@ -320,45 +345,51 @@ IMPORTANT: Provide AT LEAST one fix for each critical issue. Return valid JSON o
 
         if (aiFix.newLeft !== undefined && aiFix.newLeft !== element.left) {
           changes.push({
-            field: 'left',
+            field: "left",
             oldValue: element.left,
-            newValue: aiFix.newLeft
+            newValue: aiFix.newLeft,
           });
           modifiedElement.left = aiFix.newLeft;
         }
 
         if (aiFix.newTop !== undefined && aiFix.newTop !== element.top) {
           changes.push({
-            field: 'top',
+            field: "top",
             oldValue: element.top,
-            newValue: aiFix.newTop
+            newValue: aiFix.newTop,
           });
           modifiedElement.top = aiFix.newTop;
         }
 
         if (aiFix.newWidth !== undefined && aiFix.newWidth !== element.width) {
           changes.push({
-            field: 'width',
+            field: "width",
             oldValue: element.width,
-            newValue: aiFix.newWidth
+            newValue: aiFix.newWidth,
           });
           modifiedElement.width = aiFix.newWidth;
         }
 
-        if (aiFix.newHeight !== undefined && aiFix.newHeight !== element.height) {
+        if (
+          aiFix.newHeight !== undefined &&
+          aiFix.newHeight !== element.height
+        ) {
           changes.push({
-            field: 'height',
+            field: "height",
             oldValue: element.height,
-            newValue: aiFix.newHeight
+            newValue: aiFix.newHeight,
           });
           modifiedElement.height = aiFix.newHeight;
         }
 
-        if (aiFix.newFontSize !== undefined && aiFix.newFontSize !== element.fontSize) {
+        if (
+          aiFix.newFontSize !== undefined &&
+          aiFix.newFontSize !== element.fontSize
+        ) {
           changes.push({
-            field: 'fontSize',
+            field: "fontSize",
             oldValue: element.fontSize,
-            newValue: aiFix.newFontSize
+            newValue: aiFix.newFontSize,
           });
           modifiedElement.fontSize = aiFix.newFontSize;
         }
@@ -371,17 +402,18 @@ IMPORTANT: Provide AT LEAST one fix for each critical issue. Return valid JSON o
             modifiedElement,
             changes,
             confidence: aiFix.confidence,
-            reasoning: aiFix.reasoning
+            reasoning: aiFix.reasoning,
           });
 
-          console.log(`   ✅ Fix for element ${aiFix.elementIndex}: ${aiFix.action} - ${aiFix.reasoning}`);
+          console.log(
+            `   ✅ Fix for element ${aiFix.elementIndex}: ${aiFix.action} - ${aiFix.reasoning}`
+          );
         }
       }
 
       return fixes;
-
     } catch (error) {
-      console.error('❌ AI fix generation failed:', error);
+      console.error("❌ AI fix generation failed:", error);
 
       // Fallback to heuristic fixes
       return this.generateHeuristicFixes(elements, analysis);
@@ -395,13 +427,13 @@ IMPORTANT: Provide AT LEAST one fix for each critical issue. Return valid JSON o
     elements: TextElement[],
     analysis: SpatialAnalysis
   ): LayoutFix[] {
-    console.log('   ⚠️  Using heuristic fallback fixes...');
+    console.log("   ⚠️  Using heuristic fallback fixes...");
 
     const fixes: LayoutFix[] = [];
 
     // Fix overlaps by moving elements
     for (const issue of analysis.overlapIssues) {
-      if (issue.severity === 'critical' || issue.severity === 'major') {
+      if (issue.severity === "critical" || issue.severity === "major") {
         const el2 = issue.element2;
         const moveDistance = Math.ceil(issue.overlapBox.height + 20);
 
@@ -410,43 +442,50 @@ IMPORTANT: Provide AT LEAST one fix for each critical issue. Return valid JSON o
 
         fixes.push({
           elementIndex: el2.elementIndex,
-          action: 'move',
+          action: "move",
           originalElement: el2,
           modifiedElement,
-          changes: [{
-            field: 'top',
-            oldValue: el2.top,
-            newValue: modifiedElement.top
-          }],
+          changes: [
+            {
+              field: "top",
+              oldValue: el2.top,
+              newValue: modifiedElement.top,
+            },
+          ],
           confidence: 0.7,
-          reasoning: `Heuristic: Move element down to resolve ${issue.severity} overlap`
+          reasoning: `Heuristic: Move element down to resolve ${issue.severity} overlap`,
         });
       }
     }
 
     // Fix boundary issues by reducing font size
     for (const issue of analysis.boundaryIssues) {
-      if (issue.severity === 'critical' || issue.severity === 'major') {
+      if (issue.severity === "critical" || issue.severity === "major") {
         const el = issue.element;
         const currentFontSize = el.fontSize || 18;
         const reductionFactor = 0.85; // Reduce by 15%
-        const newFontSize = Math.max(10, Math.floor(currentFontSize * reductionFactor));
+        const newFontSize = Math.max(
+          10,
+          Math.floor(currentFontSize * reductionFactor)
+        );
 
         const modifiedElement = { ...el };
         modifiedElement.fontSize = newFontSize;
 
         fixes.push({
           elementIndex: el.elementIndex,
-          action: 'reduce-font',
+          action: "reduce-font",
           originalElement: el,
           modifiedElement,
-          changes: [{
-            field: 'fontSize',
-            oldValue: currentFontSize,
-            newValue: newFontSize
-          }],
+          changes: [
+            {
+              field: "fontSize",
+              oldValue: currentFontSize,
+              newValue: newFontSize,
+            },
+          ],
           confidence: 0.6,
-          reasoning: `Heuristic: Reduce font size to fit content within boundaries`
+          reasoning: `Heuristic: Reduce font size to fit content within boundaries`,
         });
       }
     }
@@ -466,7 +505,7 @@ IMPORTANT: Provide AT LEAST one fix for each critical issue. Return valid JSON o
 
     for (const fix of fixes) {
       const index = newElements.findIndex(
-        el => el.elementIndex === fix.elementIndex
+        (el) => el.elementIndex === fix.elementIndex
       );
 
       if (index !== -1) {
@@ -475,7 +514,9 @@ IMPORTANT: Provide AT LEAST one fix for each critical issue. Return valid JSON o
           newElements[index] = { ...fix.modifiedElement };
           appliedFixes.push(fix);
         } else {
-          console.log(`   ⚠️  Skipped invalid fix for element ${fix.elementIndex}`);
+          console.log(
+            `   ⚠️  Skipped invalid fix for element ${fix.elementIndex}`
+          );
         }
       }
     }
@@ -516,9 +557,7 @@ IMPORTANT: Provide AT LEAST one fix for each critical issue. Return valid JSON o
       before.minorIssues * 1;
 
     const afterScore =
-      after.criticalIssues * 10 +
-      after.majorIssues * 5 +
-      after.minorIssues * 1;
+      after.criticalIssues * 10 + after.majorIssues * 5 + after.minorIssues * 1;
 
     const maxScore = beforeScore;
 
@@ -539,43 +578,50 @@ IMPORTANT: Provide AT LEAST one fix for each critical issue. Return valid JSON o
   ): string {
     const lines: string[] = [];
 
-    lines.push('\n' + '═'.repeat(63));
-    lines.push('OPTIMIZATION SUMMARY');
-    lines.push('═'.repeat(63) + '\n');
+    lines.push("\n" + "═".repeat(63));
+    lines.push("OPTIMIZATION SUMMARY");
+    lines.push("═".repeat(63) + "\n");
 
     lines.push(`📊 Improvement Score: ${improvement.toFixed(1)}%\n`);
 
-    lines.push('BEFORE → AFTER:');
-    lines.push(`   Critical Issues: ${before.criticalIssues} → ${after.criticalIssues}`);
+    lines.push("BEFORE → AFTER:");
+    lines.push(
+      `   Critical Issues: ${before.criticalIssues} → ${after.criticalIssues}`
+    );
     lines.push(`   Major Issues: ${before.majorIssues} → ${after.majorIssues}`);
     lines.push(`   Minor Issues: ${before.minorIssues} → ${after.minorIssues}`);
-    lines.push(`   Overlap Issues: ${before.overlapIssues.length} → ${after.overlapIssues.length}`);
-    lines.push(`   Boundary Issues: ${before.boundaryIssues.length} → ${after.boundaryIssues.length}\n`);
+    lines.push(
+      `   Overlap Issues: ${before.overlapIssues.length} → ${after.overlapIssues.length}`
+    );
+    lines.push(
+      `   Boundary Issues: ${before.boundaryIssues.length} → ${after.boundaryIssues.length}\n`
+    );
 
     lines.push(`🔧 Fixes Applied: ${fixes.length}`);
-    const moveCount = fixes.filter(f => f.action === 'move').length;
-    const resizeCount = fixes.filter(f => f.action === 'resize').length;
-    const fontCount = fixes.filter(f => f.action === 'reduce-font').length;
-    const reformatCount = fixes.filter(f => f.action === 'reformat').length;
+    const moveCount = fixes.filter((f) => f.action === "move").length;
+    const resizeCount = fixes.filter((f) => f.action === "resize").length;
+    const fontCount = fixes.filter((f) => f.action === "reduce-font").length;
+    const reformatCount = fixes.filter((f) => f.action === "reformat").length;
 
     if (moveCount > 0) lines.push(`   Repositioned: ${moveCount} elements`);
     if (resizeCount > 0) lines.push(`   Resized: ${resizeCount} elements`);
     if (fontCount > 0) lines.push(`   Font adjustments: ${fontCount} elements`);
-    if (reformatCount > 0) lines.push(`   Reformatted: ${reformatCount} elements`);
+    if (reformatCount > 0)
+      lines.push(`   Reformatted: ${reformatCount} elements`);
 
-    lines.push('\n' + '═'.repeat(63) + '\n');
+    lines.push("\n" + "═".repeat(63) + "\n");
 
     if (after.criticalIssues === 0 && after.majorIssues === 0) {
-      lines.push('✅ SUCCESS: All critical and major issues resolved!');
+      lines.push("✅ SUCCESS: All critical and major issues resolved!");
     } else if (improvement >= 80) {
-      lines.push('✅ GOOD: Significant improvement achieved');
+      lines.push("✅ GOOD: Significant improvement achieved");
     } else if (improvement >= 50) {
-      lines.push('⚠️  PARTIAL: Some issues remain');
+      lines.push("⚠️  PARTIAL: Some issues remain");
     } else {
-      lines.push('❌ LIMITED: Minimal improvement - manual review recommended');
+      lines.push("❌ LIMITED: Minimal improvement - manual review recommended");
     }
 
-    return lines.join('\n');
+    return lines.join("\n");
   }
 }
 

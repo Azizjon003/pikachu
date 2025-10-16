@@ -1,7 +1,7 @@
-import sharp from 'sharp';
-import * as fs from 'fs';
-import * as path from 'path';
-import OpenAI from 'openai';
+import sharp from "sharp";
+import * as fs from "fs";
+import * as path from "path";
+import OpenAI from "openai";
 
 /**
  * Image Quality Validator
@@ -59,7 +59,7 @@ export interface AIQualityAnalysis {
   };
   contentAnalysis: {
     subject: string;
-    complexity: 'simple' | 'moderate' | 'complex';
+    complexity: "simple" | "moderate" | "complex";
     professionalismScore: number;
     emotions: string[];
     keywords: string[];
@@ -74,8 +74,14 @@ export interface AIQualityAnalysis {
 }
 
 export interface QualityIssue {
-  severity: 'critical' | 'major' | 'minor' | 'warning';
-  category: 'resolution' | 'format' | 'size' | 'quality' | 'content' | 'usability';
+  severity: "critical" | "major" | "minor" | "warning";
+  category:
+    | "resolution"
+    | "format"
+    | "size"
+    | "quality"
+    | "content"
+    | "usability";
   message: string;
   impact: string;
   recommendation: string;
@@ -86,7 +92,7 @@ export interface QualityScore {
   technical: number;
   visual: number;
   usability: number;
-  grade: 'A+' | 'A' | 'B+' | 'B' | 'C' | 'D' | 'F';
+  grade: "A+" | "A" | "B+" | "B" | "C" | "D" | "F";
 }
 
 export interface ValidationResult {
@@ -131,10 +137,10 @@ export class ImageQualityValidator {
   private defaultOptions: Required<ValidationOptions> = {
     minResolution: { width: 800, height: 600 },
     maxFileSize: 10 * 1024 * 1024, // 10MB
-    allowedFormats: ['jpeg', 'jpg', 'png', 'webp'],
+    allowedFormats: ["jpeg", "jpg", "png", "webp"],
     minQualityScore: 0.6,
     enableAIAnalysis: false,
-    strictMode: false
+    strictMode: false,
   };
 
   constructor(openaiApiKey?: string) {
@@ -167,12 +173,16 @@ export class ImageQualityValidator {
       const stats = fs.statSync(imagePath);
 
       // Technical analysis
-      const metrics = await this.analyzeTechnicalMetrics(image, metadata, stats.size);
+      const metrics = await this.analyzeTechnicalMetrics(
+        image,
+        metadata,
+        stats.size
+      );
 
       // AI analysis (if enabled and OpenAI available)
       let aiAnalysis: AIQualityAnalysis | undefined;
       if (opts.enableAIAnalysis && this.openai) {
-        console.log('   Running AI visual analysis...');
+        console.log("   Running AI visual analysis...");
         aiAnalysis = await this.analyzeWithAI(imagePath, metadata);
       }
 
@@ -183,7 +193,11 @@ export class ImageQualityValidator {
       const score = this.calculateQualityScore(metrics, aiAnalysis);
 
       // Generate recommendations
-      const recommendations = this.generateRecommendations(issues, metrics, aiAnalysis);
+      const recommendations = this.generateRecommendations(
+        issues,
+        metrics,
+        aiAnalysis
+      );
 
       // Determine pass/fail
       const passed = this.determinePassFail(score, issues, opts);
@@ -202,14 +216,13 @@ export class ImageQualityValidator {
           filePath: imagePath,
           fileName: path.basename(imagePath),
           validatedAt: new Date(),
-          validationDuration: duration
-        }
+          validationDuration: duration,
+        },
       };
 
       this.logValidationResult(result);
 
       return result;
-
     } catch (error) {
       console.error(`❌ Validation failed for ${imagePath}:`, error);
 
@@ -218,22 +231,32 @@ export class ImageQualityValidator {
       return {
         isValid: false,
         passed: false,
-        score: { overall: 0, technical: 0, visual: 0, usability: 0, grade: 'F' },
+        score: {
+          overall: 0,
+          technical: 0,
+          visual: 0,
+          usability: 0,
+          grade: "F",
+        },
         metrics: this.getDefaultMetrics(),
-        issues: [{
-          severity: 'critical',
-          category: 'quality',
-          message: `Validation error: ${error instanceof Error ? error.message : 'Unknown error'}`,
-          impact: 'Cannot process image',
-          recommendation: 'Check if file is a valid image format'
-        }],
-        recommendations: ['Fix validation errors before using this image'],
+        issues: [
+          {
+            severity: "critical",
+            category: "quality",
+            message: `Validation error: ${
+              error instanceof Error ? error.message : "Unknown error"
+            }`,
+            impact: "Cannot process image",
+            recommendation: "Check if file is a valid image format",
+          },
+        ],
+        recommendations: ["Fix validation errors before using this image"],
         metadata: {
           filePath: imagePath,
           fileName: path.basename(imagePath),
           validatedAt: new Date(),
-          validationDuration: duration
-        }
+          validationDuration: duration,
+        },
       };
     }
   }
@@ -254,7 +277,10 @@ export class ImageQualityValidator {
     const resolutionScore = this.scoreResolution(width, height);
 
     // Format scoring
-    const formatScore = this.scoreFormat(metadata.format || 'unknown', metadata.hasAlpha || false);
+    const formatScore = this.scoreFormat(
+      metadata.format || "unknown",
+      metadata.hasAlpha || false
+    );
 
     // File size scoring
     const fileSizeScore = this.scoreFileSize(fileSize, width, height);
@@ -264,7 +290,10 @@ export class ImageQualityValidator {
     const aspectRatioInfo = this.analyzeAspectRatio(aspectRatio);
 
     // Color space scoring
-    const colorSpaceScore = this.scoreColorSpace(metadata.space || 'unknown', metadata.channels || 3);
+    const colorSpaceScore = this.scoreColorSpace(
+      metadata.space || "unknown",
+      metadata.channels || 3
+    );
 
     // Sharpness estimation (basic)
     const sharpnessScore = 0.7; // Placeholder - would need actual sharpness detection
@@ -275,36 +304,36 @@ export class ImageQualityValidator {
         height,
         megapixels,
         dpi: metadata.density,
-        score: resolutionScore
+        score: resolutionScore,
       },
       format: {
-        type: metadata.format || 'unknown',
+        type: metadata.format || "unknown",
         hasAlpha: metadata.hasAlpha || false,
         isProgressive: metadata.isProgressive,
-        score: formatScore
+        score: formatScore,
       },
       fileSize: {
         bytes: fileSize,
         kilobytes: fileSize / 1024,
         megabytes: fileSize / 1024 / 1024,
-        score: fileSizeScore
+        score: fileSizeScore,
       },
       aspectRatio: {
         ratio: aspectRatio,
         label: aspectRatioInfo.label,
         isStandard: aspectRatioInfo.isStandard,
-        score: aspectRatioInfo.score
+        score: aspectRatioInfo.score,
       },
       colorSpace: {
-        space: metadata.space || 'unknown',
+        space: metadata.space || "unknown",
         channels: metadata.channels || 3,
         depth: metadata.depth as string | number | undefined,
-        score: colorSpaceScore
+        score: colorSpaceScore,
       },
       sharpness: {
         estimated: true,
-        score: sharpnessScore
-      }
+        score: sharpnessScore,
+      },
     };
   }
 
@@ -328,20 +357,20 @@ export class ImageQualityValidator {
     let score = 0.5;
 
     switch (format.toLowerCase()) {
-      case 'png':
+      case "png":
         score = 0.95;
         break;
-      case 'jpeg':
-      case 'jpg':
+      case "jpeg":
+      case "jpg":
         score = 0.85;
         break;
-      case 'webp':
+      case "webp":
         score = 0.9;
         break;
-      case 'gif':
+      case "gif":
         score = 0.6;
         break;
-      case 'svg':
+      case "svg":
         score = 1.0;
         break;
       default:
@@ -349,7 +378,7 @@ export class ImageQualityValidator {
     }
 
     // Bonus for transparency support when needed
-    if (hasAlpha && ['png', 'webp'].includes(format.toLowerCase())) {
+    if (hasAlpha && ["png", "webp"].includes(format.toLowerCase())) {
       score += 0.05;
     }
 
@@ -359,7 +388,11 @@ export class ImageQualityValidator {
   /**
    * Score file size appropriateness
    */
-  private scoreFileSize(fileSize: number, width: number, height: number): number {
+  private scoreFileSize(
+    fileSize: number,
+    width: number,
+    height: number
+  ): number {
     const pixels = width * height;
     const bytesPerPixel = fileSize / pixels;
 
@@ -374,13 +407,17 @@ export class ImageQualityValidator {
   /**
    * Analyze aspect ratio
    */
-  private analyzeAspectRatio(ratio: number): { label: string; isStandard: boolean; score: number } {
+  private analyzeAspectRatio(ratio: number): {
+    label: string;
+    isStandard: boolean;
+    score: number;
+  } {
     const ratios = [
-      { name: '16:9', value: 16 / 9, tolerance: 0.05 },
-      { name: '4:3', value: 4 / 3, tolerance: 0.05 },
-      { name: '1:1', value: 1, tolerance: 0.05 },
-      { name: '3:2', value: 3 / 2, tolerance: 0.05 },
-      { name: '21:9', value: 21 / 9, tolerance: 0.05 }
+      { name: "16:9", value: 16 / 9, tolerance: 0.05 },
+      { name: "4:3", value: 4 / 3, tolerance: 0.05 },
+      { name: "1:1", value: 1, tolerance: 0.05 },
+      { name: "3:2", value: 3 / 2, tolerance: 0.05 },
+      { name: "21:9", value: 21 / 9, tolerance: 0.05 },
     ];
 
     for (const standard of ratios) {
@@ -396,10 +433,10 @@ export class ImageQualityValidator {
    * Score color space
    */
   private scoreColorSpace(space: string, channels: number): number {
-    if (space === 'srgb' && channels === 3) return 1.0;
-    if (space === 'rgb' && channels === 3) return 0.95;
+    if (space === "srgb" && channels === 3) return 1.0;
+    if (space === "rgb" && channels === 3) return 0.95;
     if (channels === 4) return 0.9; // RGBA
-    if (space === 'cmyk') return 0.8;
+    if (space === "cmyk") return 0.8;
     return 0.6;
   }
 
@@ -411,14 +448,14 @@ export class ImageQualityValidator {
     metadata: sharp.Metadata
   ): Promise<AIQualityAnalysis> {
     if (!this.openai) {
-      throw new Error('OpenAI not initialized');
+      throw new Error("OpenAI not initialized");
     }
 
     try {
       // Convert image to base64
       const imageBuffer = fs.readFileSync(imagePath);
-      const base64Image = imageBuffer.toString('base64');
-      const mimeType = this.getMimeType(metadata.format || 'jpeg');
+      const base64Image = imageBuffer.toString("base64");
+      const mimeType = this.getMimeType(metadata.format || "jpeg");
 
       const prompt = `Analyze this image for use in professional presentations. Rate the following aspects on a scale of 0-1:
 
@@ -466,42 +503,41 @@ Provide scores and reasoning in JSON format:
 }`;
 
       const response = await this.openai.chat.completions.create({
-        model: 'gpt-4o',
+        model: "gpt-4o-mini",
         messages: [
           {
-            role: 'user',
+            role: "user",
             content: [
-              { type: 'text', text: prompt },
+              { type: "text", text: prompt },
               {
-                type: 'image_url',
+                type: "image_url",
                 image_url: {
                   url: `data:${mimeType};base64,${base64Image}`,
-                  detail: 'high'
-                }
-              }
-            ]
-          }
+                  detail: "high",
+                },
+              },
+            ],
+          },
         ],
         max_tokens: 2000,
-        temperature: 0.3
+        temperature: 0.3,
       });
 
       const content = response.choices[0]?.message?.content;
       if (!content) {
-        throw new Error('No response from AI');
+        throw new Error("No response from AI");
       }
 
       // Extract JSON from response
       const jsonMatch = content.match(/\{[\s\S]*\}/);
       if (!jsonMatch) {
-        throw new Error('No JSON found in AI response');
+        throw new Error("No JSON found in AI response");
       }
 
       const analysis: AIQualityAnalysis = JSON.parse(jsonMatch[0]);
       return analysis;
-
     } catch (error) {
-      console.warn('AI analysis failed:', error);
+      console.warn("AI analysis failed:", error);
 
       // Return default analysis
       return {
@@ -510,22 +546,22 @@ Provide scores and reasoning in JSON format:
           lighting: 0.7,
           composition: 0.7,
           colorBalance: 0.7,
-          overallScore: 0.7
+          overallScore: 0.7,
         },
         contentAnalysis: {
-          subject: 'Unknown',
-          complexity: 'moderate',
+          subject: "Unknown",
+          complexity: "moderate",
           professionalismScore: 0.7,
           emotions: [],
-          keywords: []
+          keywords: [],
         },
         usabilityAssessment: {
           presentationReadiness: 0.7,
           backgroundSuitability: 0.7,
           textOverlaySuitability: 0.7,
-          printQuality: 0.7
+          printQuality: 0.7,
         },
-        aiReasoning: 'AI analysis unavailable - using default scores'
+        aiReasoning: "AI analysis unavailable - using default scores",
       };
     }
   }
@@ -535,15 +571,15 @@ Provide scores and reasoning in JSON format:
    */
   private getMimeType(format: string): string {
     const mimeTypes: Record<string, string> = {
-      'jpeg': 'image/jpeg',
-      'jpg': 'image/jpeg',
-      'png': 'image/png',
-      'webp': 'image/webp',
-      'gif': 'image/gif',
-      'svg': 'image/svg+xml'
+      jpeg: "image/jpeg",
+      jpg: "image/jpeg",
+      png: "image/png",
+      webp: "image/webp",
+      gif: "image/gif",
+      svg: "image/svg+xml",
     };
 
-    return mimeTypes[format.toLowerCase()] || 'image/jpeg';
+    return mimeTypes[format.toLowerCase()] || "image/jpeg";
   }
 
   /**
@@ -557,63 +593,74 @@ Provide scores and reasoning in JSON format:
     const issues: QualityIssue[] = [];
 
     // Resolution issues
-    if (metrics.resolution.width < options.minResolution.width ||
-        metrics.resolution.height < options.minResolution.height) {
+    if (
+      metrics.resolution.width < options.minResolution.width ||
+      metrics.resolution.height < options.minResolution.height
+    ) {
       issues.push({
-        severity: 'critical',
-        category: 'resolution',
+        severity: "critical",
+        category: "resolution",
         message: `Image resolution too low: ${metrics.resolution.width}x${metrics.resolution.height}`,
-        impact: 'May appear pixelated or blurry in presentations',
-        recommendation: `Use images with minimum ${options.minResolution.width}x${options.minResolution.height} resolution`
+        impact: "May appear pixelated or blurry in presentations",
+        recommendation: `Use images with minimum ${options.minResolution.width}x${options.minResolution.height} resolution`,
       });
     } else if (metrics.resolution.score < 0.7) {
       issues.push({
-        severity: 'warning',
-        category: 'resolution',
-        message: 'Resolution is below optimal',
-        impact: 'May not look sharp on large displays',
-        recommendation: 'Consider using higher resolution images (1920x1080 or higher)'
+        severity: "warning",
+        category: "resolution",
+        message: "Resolution is below optimal",
+        impact: "May not look sharp on large displays",
+        recommendation:
+          "Consider using higher resolution images (1920x1080 or higher)",
       });
     }
 
     // File size issues
     if (metrics.fileSize.bytes > options.maxFileSize) {
       issues.push({
-        severity: 'major',
-        category: 'size',
-        message: `File size too large: ${metrics.fileSize.megabytes.toFixed(2)} MB`,
-        impact: 'Will increase presentation file size and load time',
-        recommendation: `Compress image to under ${(options.maxFileSize / 1024 / 1024).toFixed(1)} MB`
+        severity: "major",
+        category: "size",
+        message: `File size too large: ${metrics.fileSize.megabytes.toFixed(
+          2
+        )} MB`,
+        impact: "Will increase presentation file size and load time",
+        recommendation: `Compress image to under ${(
+          options.maxFileSize /
+          1024 /
+          1024
+        ).toFixed(1)} MB`,
       });
     } else if (metrics.fileSize.score < 0.6) {
       issues.push({
-        severity: 'minor',
-        category: 'size',
-        message: 'File size not optimal',
-        impact: 'Either over-compressed or unnecessarily large',
-        recommendation: 'Adjust compression settings for better balance'
+        severity: "minor",
+        category: "size",
+        message: "File size not optimal",
+        impact: "Either over-compressed or unnecessarily large",
+        recommendation: "Adjust compression settings for better balance",
       });
     }
 
     // Format issues
     if (!options.allowedFormats.includes(metrics.format.type.toLowerCase())) {
       issues.push({
-        severity: 'major',
-        category: 'format',
+        severity: "major",
+        category: "format",
         message: `Unsupported format: ${metrics.format.type}`,
-        impact: 'May not display correctly in all viewers',
-        recommendation: `Convert to supported format: ${options.allowedFormats.join(', ')}`
+        impact: "May not display correctly in all viewers",
+        recommendation: `Convert to supported format: ${options.allowedFormats.join(
+          ", "
+        )}`,
       });
     }
 
     // Aspect ratio issues
     if (!metrics.aspectRatio.isStandard) {
       issues.push({
-        severity: 'minor',
-        category: 'quality',
+        severity: "minor",
+        category: "quality",
         message: `Non-standard aspect ratio: ${metrics.aspectRatio.label}`,
-        impact: 'May not fit well in standard layouts',
-        recommendation: 'Crop to standard aspect ratio (16:9, 4:3, or 1:1)'
+        impact: "May not fit well in standard layouts",
+        recommendation: "Crop to standard aspect ratio (16:9, 4:3, or 1:1)",
       });
     }
 
@@ -621,31 +668,33 @@ Provide scores and reasoning in JSON format:
     if (aiAnalysis) {
       if (aiAnalysis.visualQuality.overallScore < 0.6) {
         issues.push({
-          severity: 'major',
-          category: 'quality',
-          message: 'Visual quality below acceptable level',
-          impact: 'Poor visual impression on audience',
-          recommendation: 'Use higher quality images with better lighting and composition'
+          severity: "major",
+          category: "quality",
+          message: "Visual quality below acceptable level",
+          impact: "Poor visual impression on audience",
+          recommendation:
+            "Use higher quality images with better lighting and composition",
         });
       }
 
       if (aiAnalysis.usabilityAssessment.presentationReadiness < 0.6) {
         issues.push({
-          severity: 'major',
-          category: 'usability',
-          message: 'Not suitable for presentation use',
-          impact: 'May not convey intended message effectively',
-          recommendation: aiAnalysis.aiReasoning
+          severity: "major",
+          category: "usability",
+          message: "Not suitable for presentation use",
+          impact: "May not convey intended message effectively",
+          recommendation: aiAnalysis.aiReasoning,
         });
       }
 
       if (aiAnalysis.usabilityAssessment.textOverlaySuitability < 0.5) {
         issues.push({
-          severity: 'warning',
-          category: 'usability',
-          message: 'Poor text overlay suitability',
-          impact: 'Text may be hard to read if overlaid on this image',
-          recommendation: 'Choose images with clearer backgrounds or add text boxes'
+          severity: "warning",
+          category: "usability",
+          message: "Poor text overlay suitability",
+          impact: "Text may be hard to read if overlaid on this image",
+          recommendation:
+            "Choose images with clearer backgrounds or add text boxes",
         });
       }
     }
@@ -661,37 +710,36 @@ Provide scores and reasoning in JSON format:
     aiAnalysis: AIQualityAnalysis | undefined
   ): QualityScore {
     // Technical score (from metrics)
-    const technical = (
+    const technical =
       metrics.resolution.score * 0.3 +
       metrics.format.score * 0.2 +
       metrics.fileSize.score * 0.2 +
       metrics.aspectRatio.score * 0.15 +
-      metrics.colorSpace.score * 0.15
-    );
+      metrics.colorSpace.score * 0.15;
 
     // Visual score (from AI or default)
     const visual = aiAnalysis?.visualQuality.overallScore || 0.7;
 
     // Usability score (from AI or default)
-    const usability = aiAnalysis ? (
-      aiAnalysis.usabilityAssessment.presentationReadiness * 0.4 +
-      aiAnalysis.usabilityAssessment.backgroundSuitability * 0.3 +
-      aiAnalysis.usabilityAssessment.textOverlaySuitability * 0.2 +
-      aiAnalysis.usabilityAssessment.printQuality * 0.1
-    ) : 0.7;
+    const usability = aiAnalysis
+      ? aiAnalysis.usabilityAssessment.presentationReadiness * 0.4 +
+        aiAnalysis.usabilityAssessment.backgroundSuitability * 0.3 +
+        aiAnalysis.usabilityAssessment.textOverlaySuitability * 0.2 +
+        aiAnalysis.usabilityAssessment.printQuality * 0.1
+      : 0.7;
 
     // Overall score
-    const overall = (technical * 0.4 + visual * 0.35 + usability * 0.25);
+    const overall = technical * 0.4 + visual * 0.35 + usability * 0.25;
 
     // Determine grade
-    let grade: QualityScore['grade'];
-    if (overall >= 0.95) grade = 'A+';
-    else if (overall >= 0.85) grade = 'A';
-    else if (overall >= 0.80) grade = 'B+';
-    else if (overall >= 0.70) grade = 'B';
-    else if (overall >= 0.60) grade = 'C';
-    else if (overall >= 0.50) grade = 'D';
-    else grade = 'F';
+    let grade: QualityScore["grade"];
+    if (overall >= 0.95) grade = "A+";
+    else if (overall >= 0.85) grade = "A";
+    else if (overall >= 0.8) grade = "B+";
+    else if (overall >= 0.7) grade = "B";
+    else if (overall >= 0.6) grade = "C";
+    else if (overall >= 0.5) grade = "D";
+    else grade = "F";
 
     return { overall, technical, visual, usability, grade };
   }
@@ -707,7 +755,7 @@ Provide scores and reasoning in JSON format:
     const recommendations: string[] = [];
 
     // From issues
-    issues.forEach(issue => {
+    issues.forEach((issue) => {
       if (!recommendations.includes(issue.recommendation)) {
         recommendations.push(issue.recommendation);
       }
@@ -715,19 +763,23 @@ Provide scores and reasoning in JSON format:
 
     // General best practices
     if (metrics.resolution.megapixels < 2) {
-      recommendations.push('Use images with at least 2 megapixels for presentations');
+      recommendations.push(
+        "Use images with at least 2 megapixels for presentations"
+      );
     }
 
-    if (metrics.format.type !== 'png' && metrics.format.type !== 'webp') {
-      recommendations.push('Consider PNG or WebP formats for better quality');
+    if (metrics.format.type !== "png" && metrics.format.type !== "webp") {
+      recommendations.push("Consider PNG or WebP formats for better quality");
     }
 
     if (aiAnalysis && aiAnalysis.contentAnalysis.professionalismScore < 0.7) {
-      recommendations.push('Choose more professional-looking images for business presentations');
+      recommendations.push(
+        "Choose more professional-looking images for business presentations"
+      );
     }
 
     if (recommendations.length === 0) {
-      recommendations.push('Image meets all quality standards - ready for use');
+      recommendations.push("Image meets all quality standards - ready for use");
     }
 
     return recommendations;
@@ -747,14 +799,16 @@ Provide scores and reasoning in JSON format:
     }
 
     // Check for critical issues
-    const hasCriticalIssues = issues.some(issue => issue.severity === 'critical');
+    const hasCriticalIssues = issues.some(
+      (issue) => issue.severity === "critical"
+    );
     if (hasCriticalIssues) {
       return false;
     }
 
     // Strict mode: check for major issues
     if (options.strictMode) {
-      const hasMajorIssues = issues.some(issue => issue.severity === 'major');
+      const hasMajorIssues = issues.some((issue) => issue.severity === "major");
       if (hasMajorIssues) {
         return false;
       }
@@ -769,11 +823,11 @@ Provide scores and reasoning in JSON format:
   private getDefaultMetrics(): ImageQualityMetrics {
     return {
       resolution: { width: 0, height: 0, megapixels: 0, score: 0 },
-      format: { type: 'unknown', hasAlpha: false, score: 0 },
+      format: { type: "unknown", hasAlpha: false, score: 0 },
       fileSize: { bytes: 0, kilobytes: 0, megabytes: 0, score: 0 },
-      aspectRatio: { ratio: 0, label: 'unknown', isStandard: false, score: 0 },
-      colorSpace: { space: 'unknown', channels: 0, score: 0 },
-      sharpness: { estimated: true, score: 0 }
+      aspectRatio: { ratio: 0, label: "unknown", isStandard: false, score: 0 },
+      colorSpace: { space: "unknown", channels: 0, score: 0 },
+      sharpness: { estimated: true, score: 0 },
     };
   }
 
@@ -782,9 +836,13 @@ Provide scores and reasoning in JSON format:
    */
   private logValidationResult(result: ValidationResult): void {
     console.log(`\n📋 Validation Result: ${result.metadata.fileName}`);
-    console.log('═══════════════════════════════════════');
-    console.log(`Status: ${result.passed ? '✅ PASSED' : '❌ FAILED'}`);
-    console.log(`Grade: ${result.score.grade} (${(result.score.overall * 100).toFixed(1)}%)`);
+    console.log("═══════════════════════════════════════");
+    console.log(`Status: ${result.passed ? "✅ PASSED" : "❌ FAILED"}`);
+    console.log(
+      `Grade: ${result.score.grade} (${(result.score.overall * 100).toFixed(
+        1
+      )}%)`
+    );
     console.log(`  Technical: ${(result.score.technical * 100).toFixed(1)}%`);
     console.log(`  Visual: ${(result.score.visual * 100).toFixed(1)}%`);
     console.log(`  Usability: ${(result.score.usability * 100).toFixed(1)}%`);
@@ -792,7 +850,9 @@ Provide scores and reasoning in JSON format:
     if (result.issues.length > 0) {
       console.log(`\n⚠️  Issues Found: ${result.issues.length}`);
       result.issues.forEach((issue, index) => {
-        console.log(`  ${index + 1}. [${issue.severity.toUpperCase()}] ${issue.message}`);
+        console.log(
+          `  ${index + 1}. [${issue.severity.toUpperCase()}] ${issue.message}`
+        );
       });
     }
 
@@ -804,7 +864,7 @@ Provide scores and reasoning in JSON format:
     }
 
     console.log(`\nValidation took ${result.metadata.validationDuration}ms`);
-    console.log('═══════════════════════════════════════\n');
+    console.log("═══════════════════════════════════════\n");
   }
 
   /**
@@ -837,8 +897,9 @@ Provide scores and reasoning in JSON format:
       totalScore += result.score.overall;
 
       // Count issues by severity
-      result.issues.forEach(issue => {
-        issueBreakdown[issue.severity] = (issueBreakdown[issue.severity] || 0) + 1;
+      result.issues.forEach((issue) => {
+        issueBreakdown[issue.severity] =
+          (issueBreakdown[issue.severity] || 0) + 1;
       });
     }
 
@@ -851,14 +912,24 @@ Provide scores and reasoning in JSON format:
       failedCount,
       averageScore,
       issueBreakdown,
-      duration
+      duration,
     };
 
     console.log(`\n📊 Batch Validation Summary:`);
-    console.log('═══════════════════════════════════════');
+    console.log("═══════════════════════════════════════");
     console.log(`Total Images: ${summary.totalImages}`);
-    console.log(`Passed: ${summary.passedCount} (${((passedCount / imagePaths.length) * 100).toFixed(1)}%)`);
-    console.log(`Failed: ${summary.failedCount} (${((failedCount / imagePaths.length) * 100).toFixed(1)}%)`);
+    console.log(
+      `Passed: ${summary.passedCount} (${(
+        (passedCount / imagePaths.length) *
+        100
+      ).toFixed(1)}%)`
+    );
+    console.log(
+      `Failed: ${summary.failedCount} (${(
+        (failedCount / imagePaths.length) *
+        100
+      ).toFixed(1)}%)`
+    );
     console.log(`Average Score: ${(summary.averageScore * 100).toFixed(1)}%`);
     console.log(`Duration: ${(summary.duration / 1000).toFixed(2)}s`);
 
@@ -868,7 +939,7 @@ Provide scores and reasoning in JSON format:
         console.log(`  ${severity}: ${count}`);
       });
     }
-    console.log('═══════════════════════════════════════\n');
+    console.log("═══════════════════════════════════════\n");
 
     return { results, summary };
   }
@@ -879,7 +950,7 @@ Provide scores and reasoning in JSON format:
   async quickValidate(imagePath: string): Promise<boolean> {
     const result = await this.validateImage(imagePath, {
       enableAIAnalysis: false,
-      strictMode: false
+      strictMode: false,
     });
 
     return result.passed;
@@ -888,12 +959,15 @@ Provide scores and reasoning in JSON format:
   /**
    * Export validation report to JSON
    */
-  exportReport(result: ValidationResult | BatchValidationResult, outputPath: string): void {
+  exportReport(
+    result: ValidationResult | BatchValidationResult,
+    outputPath: string
+  ): void {
     try {
-      fs.writeFileSync(outputPath, JSON.stringify(result, null, 2), 'utf-8');
+      fs.writeFileSync(outputPath, JSON.stringify(result, null, 2), "utf-8");
       console.log(`📄 Validation report exported to: ${outputPath}`);
     } catch (error) {
-      console.error('❌ Failed to export report:', error);
+      console.error("❌ Failed to export report:", error);
       throw error;
     }
   }
