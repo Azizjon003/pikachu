@@ -11,36 +11,38 @@ import { apiLimiter } from "./middleware/rate-limiter";
 dotenv.config();
 
 const app = express();
-const PORT = process.env.PORT || 3000;
+const PORT = process.env.PORT || 8080;
 
 // ============================================
 // SECURITY MIDDLEWARE
 // ============================================
 
 // Helmet - Security headers
-app.use(helmet({
-  crossOriginResourcePolicy: { policy: "cross-origin" }, // Allow cross-origin resources
-  contentSecurityPolicy: false, // Disable CSP for now (customize as needed)
-}));
+app.use(
+  helmet({
+    crossOriginResourcePolicy: { policy: "cross-origin" }, // Allow cross-origin resources
+    contentSecurityPolicy: false, // Disable CSP for now (customize as needed)
+  })
+);
 
 // CORS - Cross-Origin Resource Sharing
 const corsOptions = {
   origin: process.env.ALLOWED_ORIGINS
-    ? process.env.ALLOWED_ORIGINS.split(',')
-    : '*', // Allow all origins if not specified
+    ? process.env.ALLOWED_ORIGINS.split(",")
+    : "*", // Allow all origins if not specified
   credentials: true,
   optionsSuccessStatus: 200,
-  methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
-  allowedHeaders: ['Content-Type', 'Authorization', 'X-API-Key'],
+  methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
+  allowedHeaders: ["Content-Type", "Authorization", "X-API-Key"],
 };
 app.use(cors(corsOptions));
 
 // Rate limiting - Protect against DDoS
-app.use('/api/', apiLimiter);
+app.use("/api/", apiLimiter);
 
 // Body parsing middleware
-app.use(express.json({ limit: '50mb' })); // Increased limit for large requests
-app.use(express.urlencoded({ extended: true, limit: '50mb' }));
+app.use(express.json({ limit: "50mb" })); // Increased limit for large requests
+app.use(express.urlencoded({ extended: true, limit: "50mb" }));
 
 // Request logging middleware
 app.use((req, res, next) => {
@@ -58,6 +60,12 @@ app.use(express.static(path.join(process.cwd(), "public")));
 // Serve generated PPTX files
 app.use("/generated", express.static(path.join(process.cwd(), "generated")));
 
+// Serve template preview images
+app.use(
+  "/templates/previews",
+  express.static(path.join(process.cwd(), "templates", "previews"))
+);
+
 // Serve images directory with template-specific paths
 // Format: /templatename/images/* -> images/templatename/*
 // This allows JSON files to reference images as /templatename/images/filename
@@ -69,19 +77,22 @@ app.use("/:templateName/images", (req, res, next) => {
 });
 
 // Legacy support for old format
-app.use("/templates/images", express.static(path.join(process.cwd(), "images")));
+app.use(
+  "/templates/images",
+  express.static(path.join(process.cwd(), "images"))
+);
 
 // ============================================
 // HEALTH CHECK ENDPOINT
 // ============================================
 
-app.get('/health', (req, res) => {
+app.get("/health", (req, res) => {
   res.json({
     success: true,
-    status: 'healthy',
+    status: "healthy",
     timestamp: new Date().toISOString(),
     uptime: process.uptime(),
-    environment: process.env.NODE_ENV || 'development',
+    environment: process.env.NODE_ENV || "development",
   });
 });
 
@@ -106,14 +117,14 @@ app.use(errorHandler);
 // ============================================
 
 app.listen(PORT, () => {
-  console.log('\n╔════════════════════════════════════════════════════════╗');
-  console.log('║           🚀 Pikachu API Server Started              ║');
-  console.log('╚════════════════════════════════════════════════════════╝');
+  console.log("\n╔════════════════════════════════════════════════════════╗");
+  console.log("║           🚀 Pikachu API Server Started              ║");
+  console.log("╚════════════════════════════════════════════════════════╝");
   console.log(`\n📡 Server running on port ${PORT}`);
   console.log(`🌐 Frontend available at: http://localhost:${PORT}`);
   console.log(`🔧 API endpoint: http://localhost:${PORT}/api`);
   console.log(`💚 Health check: http://localhost:${PORT}/health`);
   console.log(`🔒 Security: CORS, Helmet, Rate Limiting enabled`);
-  console.log(`🌍 Environment: ${process.env.NODE_ENV || 'development'}`);
-  console.log('\n════════════════════════════════════════════════════════\n');
+  console.log(`🌍 Environment: ${process.env.NODE_ENV || "development"}`);
+  console.log("\n════════════════════════════════════════════════════════\n");
 });

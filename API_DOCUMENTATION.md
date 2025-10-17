@@ -15,6 +15,10 @@ Pikachu API - AI-powered PowerPoint presentation generator. Bu API AI yordamida 
   - [Health Check](#health-check)
   - [Slide Generation](#slide-generation)
   - [Templates](#templates)
+    - [Get All Templates](#get-all-templates)
+    - [Upload Template](#upload-template)
+    - [Upload Template Preview](#upload-template-preview)
+    - [Get Template Preview](#get-template-preview)
   - [Presentations](#presentations)
 
 ---
@@ -249,13 +253,26 @@ Barcha mavjud templatelarni olish.
   "success": true,
   "templates": [
     {
-      "name": "modern-template.sxema.json",
-      "fullPath": "/path/to/templates/modern-template.sxema.json",
-      "size": 12345,
-      "createdAt": "2024-01-15T10:30:00.000Z"
+      "name": "modern-template.pptx.sxema.json",
+      "templateName": "modern-template.pptx",
+      "previewImage": "/templates/previews/modern-template.pptx.jpg",
+      "images": [
+        {
+          "filename": "a1b2c3d4e5f6.jpg",
+          "url": "/images/modern-template.pptx/images/a1b2c3d4e5f6.jpg",
+          "originalUrl": "https://example.com/image.jpg",
+          "dimensions": { "width": 1920, "height": 1080 },
+          "format": "jpeg",
+          "fileSize": 245123,
+          "slideIndex": 0,
+          "elementType": "background",
+          "downloadedAt": "2024-01-15T10:30:00Z"
+        }
+      ],
+      "imageCount": 5
     }
   ],
-  "count": 1
+  "totalTemplates": 1
 }
 ```
 
@@ -295,6 +312,98 @@ Yangi template yuklash.
 curl -X POST http://localhost:3000/api/template/import \
   -H "X-API-Key: your_api_key_here" \
   -F "file=@/path/to/template.pptx"
+```
+
+#### Upload Template Preview
+
+Template uchun preview (thumbnail) rasm yuklash.
+
+**Endpoint:** `POST /api/template/:templateName/preview`
+
+**Authentication:** Optional
+
+**Rate Limit:** 20 requests per hour
+
+**Request:** `multipart/form-data`
+
+| Field | Type | Required | Description |
+|-------|------|----------|-------------|
+| preview | File | Yes | Preview image (JPG, PNG, WebP) |
+
+**Parameters:**
+
+| Parameter | Type | Required | Description |
+|-----------|------|----------|-------------|
+| templateName | string | Yes | Template nomi (masalan: modern-template.pptx) |
+
+**File Constraints:**
+- **Allowed formats:** JPG, PNG, WebP
+- **Maximum size:** 5MB
+- **Automatic processing:** Rasmni 800x600px o'lchamga kichraytiradi
+- **Format conversion:** JPEG formatiga 85% sifat bilan konvertatsiya qiladi
+
+**Response:**
+```json
+{
+  "success": true,
+  "previewUrl": "/templates/previews/modern-template.pptx.jpg",
+  "message": "Preview image uploaded successfully"
+}
+```
+
+**Example (cURL):**
+```bash
+curl -X POST http://localhost:3000/api/template/modern-template.pptx/preview \
+  -H "X-API-Key: your_api_key_here" \
+  -F "preview=@/path/to/preview-image.jpg"
+```
+
+**Example (JavaScript):**
+```javascript
+const formData = new FormData();
+formData.append('preview', fileInput.files[0]);
+
+const response = await fetch('http://localhost:3000/api/template/modern-template.pptx/preview', {
+  method: 'POST',
+  headers: {
+    'X-API-Key': 'your_api_key_here'
+  },
+  body: formData
+});
+
+const data = await response.json();
+console.log('Preview uploaded:', data.previewUrl);
+```
+
+#### Get Template Preview
+
+Template uchun preview rasmni olish.
+
+**Endpoint:** `GET /api/template/:templateName/preview`
+
+**Authentication:** Optional
+
+**Parameters:**
+
+| Parameter | Type | Required | Description |
+|-----------|------|----------|-------------|
+| templateName | string | Yes | Template nomi (masalan: modern-template.pptx) |
+
+**Response:** Image file (JPEG format)
+
+**Status Codes:**
+- **200:** Preview rasm muvaffaqiyatli yuklandi
+- **404:** Preview rasm topilmadi
+
+**Example:**
+```bash
+curl -O http://localhost:3000/api/template/modern-template.pptx/preview
+```
+
+**Example (HTML img tag):**
+```html
+<img src="http://localhost:3000/api/template/modern-template.pptx/preview"
+     alt="Template Preview" />
 ```
 
 ---
@@ -571,6 +680,13 @@ Muammolar yoki savollar bo'lsa, repository ga issue oching yoki quyidagi ma'lumo
 ---
 
 ## Changelog
+
+### Version 2.1.0 (2024-01-17)
+- ✨ Template preview/thumbnail upload qo'shildi
+- ✨ Template list API'da preview image URL qo'shildi
+- ✨ Preview image automatic processing (resize to 800x600px, JPEG conversion)
+- ✨ Template metadata management system qo'shildi
+- 🐛 Template list response format yangilandi
 
 ### Version 2.0.0 (2024-01-15)
 - ✨ CORS qo'shildi

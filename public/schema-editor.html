@@ -490,20 +490,37 @@
                 const response = await fetch('/api/template/templates');
                 const data = await response.json();
 
-                if (data.success && data.templates) {
+                if (data.success && data.templates && Array.isArray(data.templates)) {
                     templateSelect.innerHTML = '<option value="">-- Choose a template --</option>';
+
                     data.templates.forEach(template => {
                         const option = document.createElement('option');
-                        // Remove .sxema.json from display
-                        const displayName = template.replace('.sxema.json', '');
-                        option.value = displayName;
+                        // Use template.name (schema filename) as the value, minus .sxema.json
+                        const schemaValue = template.name.replace('.sxema.json', '');
+                        option.value = schemaValue;
+
+                        // Display template.templateName with optional image count
+                        const displayName = template.imageCount
+                            ? `${template.templateName} (${template.imageCount} images)`
+                            : template.templateName;
                         option.textContent = displayName;
+
                         templateSelect.appendChild(option);
                     });
+
+                    // If no templates found, show empty state
+                    if (data.templates.length === 0) {
+                        templateSelect.innerHTML = '<option value="">No templates available</option>';
+                    }
+                } else {
+                    // Handle case where API returns success but no templates array
+                    templateSelect.innerHTML = '<option value="">No templates available</option>';
+                    console.warn('No templates found in response:', data);
                 }
             } catch (error) {
                 showToast('Failed to load templates', 'error');
                 console.error('Error loading templates:', error);
+                templateSelect.innerHTML = '<option value="">Error loading templates</option>';
             }
         }
 

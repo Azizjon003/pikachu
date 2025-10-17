@@ -15,7 +15,10 @@
       "Bash(node:*)",
       "Bash(npm install:*)",
       "Bash(npm run api:*)",
-      "Bash(curl:*)"
+      "Bash(curl:*)",
+      "Bash(npm run build:*)",
+      "Bash(test:*)",
+      "Bash(taskkill:*)"
     ],
     "deny": [],
     "ask": []

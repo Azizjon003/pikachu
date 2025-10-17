@@ -486,15 +486,33 @@
                 const response = await fetch('/api/template/templates');
                 const data = await response.json();
 
-                if (data.success && data.templates) {
+                if (data.success && data.templates && Array.isArray(data.templates)) {
                     templateSelect.innerHTML = '<option value="">-- Template tanlang --</option>';
+
                     data.templates.forEach(template => {
-                        const displayName = template.replace('.sxema.json', '');
+                        // Extract schema filename (template.name) and display name (template.templateName)
+                        const schemaFilename = template.name; // e.g., "template.pptx.sxema.json"
+                        const displayName = template.templateName || schemaFilename; // e.g., "template.pptx"
+                        const imageCount = template.imageCount || 0;
+
+                        // Remove .sxema.json extension from the value for API compatibility
+                        const optionValue = schemaFilename.replace('.sxema.json', '');
+
+                        // Create dropdown label with template name and image count
+                        const optionLabel = imageCount > 0
+                            ? `${displayName} (${imageCount} rasm)`
+                            : displayName;
+
                         const option = document.createElement('option');
-                        option.value = displayName;
-                        option.textContent = displayName;
+                        option.value = optionValue;
+                        option.textContent = optionLabel;
                         templateSelect.appendChild(option);
                     });
+
+                    console.log(`Loaded ${data.templates.length} templates`);
+                } else {
+                    console.warn('No templates found or invalid response format');
+                    showNotification('Templatelar topilmadi', 'error');
                 }
             } catch (error) {
                 console.error('Templatelarni yuklashda xato:', error);

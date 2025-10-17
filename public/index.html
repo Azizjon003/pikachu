@@ -57,6 +57,57 @@
             0%, 100% { opacity: 1; }
             50% { opacity: .5; }
         }
+        .preview-modal {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.75);
+            animation: fadeIn 0.2s ease;
+        }
+        .preview-modal.active {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .preview-content {
+            background: white;
+            border-radius: 12px;
+            max-width: 500px;
+            width: 90%;
+            max-height: 90vh;
+            overflow-y: auto;
+            animation: slideUp 0.3s ease;
+        }
+        @keyframes slideUp {
+            from {
+                transform: translateY(50px);
+                opacity: 0;
+            }
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+        .preview-thumbnail {
+            width: 80px;
+            height: 60px;
+            object-fit: cover;
+            border-radius: 6px;
+        }
+        .template-item {
+            transition: all 0.2s ease;
+        }
+        .template-item:hover .upload-preview-btn {
+            opacity: 1;
+        }
+        .upload-preview-btn {
+            opacity: 0;
+            transition: opacity 0.2s ease;
+        }
     </style>
 </head>
 <body class="bg-gray-50">
@@ -158,7 +209,7 @@
                 <!-- Generation Form Card -->
                 <div class="bg-white rounded-xl card-shadow p-6">
                     <h2 class="text-xl font-semibold text-gray-800 mb-6 flex items-center">
-                        <svg class="w-6 h-6 mr-2 text-purple-600" fill="none" stroke="currentColor" viewBox="0  0 24 24">
+                        <svg class="w-6 h-6 mr-2 text-purple-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 4a2 2 0 114 0v1a1 1 0 001 1h3a1 1 0 011 1v3a1 1 0 01-1 1h-1a2 2 0 100 4h1a1 1 0 011 1v3a1 1 0 01-1 1h-3a1 1 0 01-1-1v-1a2 2 0 10-4 0v1a1 1 0 01-1 1H7a1 1 0 01-1-1v-3a1 1 0 00-1-1H4a2 2 0 110-4h1a1 1 0 001-1V7a1 1 0 011-1h3a1 1 0 001-1V4z"/>
                         </svg>
                         Generate Presentation
@@ -263,6 +314,52 @@
         </div>
     </main>
 
+    <!-- Preview Upload Modal -->
+    <div id="preview-upload-modal" class="preview-modal">
+        <div class="preview-content">
+            <div class="flex items-center justify-between p-6 border-b border-gray-200">
+                <h3 class="text-xl font-semibold text-gray-800">Upload Template Preview</h3>
+                <button id="close-preview-modal" class="text-gray-500 hover:text-gray-700 transition">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
+                    </svg>
+                </button>
+            </div>
+            <div class="p-6">
+                <p class="text-sm text-gray-600 mb-4">Upload a preview image for: <span id="preview-template-name" class="font-semibold"></span></p>
+
+                <div id="preview-drop-zone" class="border-2 border-dashed border-gray-300 rounded-lg p-8 text-center cursor-pointer hover:border-purple-500 transition mb-4">
+                    <svg class="w-12 h-12 mx-auto text-gray-400 mb-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"/>
+                    </svg>
+                    <p class="text-gray-600 mb-2">Click to select or drag and drop</p>
+                    <p class="text-sm text-gray-400">JPG, PNG, or WEBP (max 5MB)</p>
+                    <input type="file" id="preview-file-input" class="hidden" accept="image/jpeg,image/png,image/webp">
+                </div>
+
+                <div id="preview-image-container" class="hidden mb-4">
+                    <p class="text-sm font-medium text-gray-700 mb-2">Preview:</p>
+                    <img id="preview-image-display" class="w-full rounded-lg border border-gray-300" alt="Preview">
+                </div>
+
+                <div id="preview-upload-status" class="mb-4 hidden"></div>
+
+                <div class="flex gap-3">
+                    <button id="upload-preview-btn" class="flex-1 bg-purple-600 text-white font-semibold py-3 rounded-lg hover:bg-purple-700 transition disabled:bg-gray-400 disabled:cursor-not-allowed" disabled>
+                        <span id="upload-preview-text">Upload Preview</span>
+                        <span id="upload-preview-spinner" class="hidden">
+                            <div class="spinner inline-block mr-2"></div>
+                            Uploading...
+                        </span>
+                    </button>
+                    <button id="cancel-preview-btn" class="px-6 py-3 border-2 border-gray-300 text-gray-700 font-semibold rounded-lg hover:bg-gray-50 transition">
+                        Cancel
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <!-- Footer -->
     <footer class="bg-white border-t border-gray-200 mt-12">
         <div class="container mx-auto px-4 py-6 text-center text-gray-600">
@@ -309,25 +406,66 @@
                 const data = await response.json();
 
                 if (data.success && data.templates.length > 0) {
-                    // Update list display
-                    templatesList.innerHTML = data.templates.map(template => `
-                        <div class="flex items-center justify-between p-3 bg-gray-50 rounded-lg hover:bg-gray-100 transition-colors">
-                            <div class="flex items-center">
-                                <svg class="w-5 h-5 text-purple-600 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/>
-                                </svg>
-                                <span class="text-sm font-medium text-gray-700">${template.replace('.sxema.json', '')}</span>
+                    // Update list display with preview images
+                    templatesList.innerHTML = data.templates.map(template => {
+                        // Use the previewImage URL directly from the API response
+                        const previewUrl = template.previewImage;
+
+                        return `
+                        <div class="template-item flex items-center justify-between p-3 bg-gray-50 rounded-lg hover:bg-gray-100 transition-colors">
+                            <div class="flex items-center gap-3 flex-1 min-w-0">
+                                ${previewUrl ? `
+                                    <img src="${previewUrl}"
+                                         alt="${template.templateName} preview"
+                                         class="preview-thumbnail flex-shrink-0"
+                                         onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                                    <div class="w-20 h-15 bg-gray-200 rounded flex-shrink-0 items-center justify-center" style="display: none;">
+                                        <svg class="w-8 h-8 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"/>
+                                        </svg>
+                                    </div>
+                                ` : `
+                                    <div class="w-20 h-15 bg-gray-200 rounded flex-shrink-0 flex items-center justify-center">
+                                        <svg class="w-8 h-8 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"/>
+                                        </svg>
+                                    </div>
+                                `}
+                                <div class="flex-1 min-w-0">
+                                    <div class="flex items-center gap-2">
+                                        <svg class="w-5 h-5 text-purple-600 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/>
+                                        </svg>
+                                        <span class="text-sm font-medium text-gray-700 truncate">${template.templateName}</span>
+                                    </div>
+                                </div>
                             </div>
-                            <svg class="w-4 h-4 text-green-500" fill="currentColor" viewBox="0 0 20 20">
-                                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
-                            </svg>
+                            <div class="flex items-center gap-2 flex-shrink-0">
+                                <span class="inline-flex items-center px-2 py-1 rounded-full text-xs font-medium bg-purple-100 text-purple-700">
+                                    <svg class="w-3 h-3 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"/>
+                                    </svg>
+                                    ${template.imageCount}
+                                </span>
+                                <button onclick="openPreviewUploadModal('${template.templateName}')"
+                                        class="upload-preview-btn p-2 text-gray-500 hover:text-purple-600 hover:bg-purple-50 rounded transition"
+                                        title="Upload preview image">
+                                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 9a2 2 0 012-2h.93a2 2 0 001.664-.89l.812-1.22A2 2 0 0110.07 4h3.86a2 2 0 011.664.89l.812 1.22A2 2 0 0018.07 7H19a2 2 0 012 2v9a2 2 0 01-2 2H5a2 2 0 01-2-2V9z"/>
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 13a3 3 0 11-6 0 3 3 0 016 0z"/>
+                                    </svg>
+                                </button>
+                                <svg class="w-4 h-4 text-green-500" fill="currentColor" viewBox="0 0 20 20">
+                                    <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
+                                </svg>
+                            </div>
                         </div>
-                    `).join('');
+                    `}).join('');
 
                     // Update select dropdown
                     templateSelect.innerHTML = '<option value="">Select a template...</option>' +
                         data.templates.map(template =>
-                            `<option value="${template}">${template.replace('.sxema.json', '')}</option>`
+                            `<option value="${template.name}">${template.templateName} (${template.imageCount} images)</option>`
                         ).join('');
                 } else {
                     templatesList.innerHTML = `
@@ -346,6 +484,153 @@
                 `;
             }
         }
+
+        // Preview Upload Modal Functions
+        let currentPreviewTemplate = null;
+        let selectedPreviewFile = null;
+
+        function openPreviewUploadModal(templateName) {
+            currentPreviewTemplate = templateName;
+            selectedPreviewFile = null;
+            document.getElementById('preview-template-name').textContent = templateName;
+            document.getElementById('preview-image-container').classList.add('hidden');
+            document.getElementById('preview-upload-status').classList.add('hidden');
+            document.getElementById('upload-preview-btn').disabled = true;
+            document.getElementById('preview-upload-modal').classList.add('active');
+        }
+
+        function closePreviewUploadModal() {
+            document.getElementById('preview-upload-modal').classList.remove('active');
+            currentPreviewTemplate = null;
+            selectedPreviewFile = null;
+        }
+
+        function handlePreviewFileSelect(file) {
+            if (!file) return;
+
+            // Validate file type
+            const validTypes = ['image/jpeg', 'image/png', 'image/webp'];
+            if (!validTypes.includes(file.type)) {
+                showPreviewUploadStatus('error', 'Please select a valid image file (JPG, PNG, or WEBP)');
+                return;
+            }
+
+            // Validate file size (5MB)
+            if (file.size > 5 * 1024 * 1024) {
+                showPreviewUploadStatus('error', 'File size must be less than 5MB');
+                return;
+            }
+
+            selectedPreviewFile = file;
+
+            // Show preview
+            const reader = new FileReader();
+            reader.onload = (e) => {
+                document.getElementById('preview-image-display').src = e.target.result;
+                document.getElementById('preview-image-container').classList.remove('hidden');
+                document.getElementById('upload-preview-btn').disabled = false;
+            };
+            reader.readAsDataURL(file);
+        }
+
+        async function uploadPreviewImage() {
+            if (!currentPreviewTemplate || !selectedPreviewFile) return;
+
+            const uploadBtn = document.getElementById('upload-preview-btn');
+            const uploadText = document.getElementById('upload-preview-text');
+            const uploadSpinner = document.getElementById('upload-preview-spinner');
+
+            uploadBtn.disabled = true;
+            uploadText.classList.add('hidden');
+            uploadSpinner.classList.remove('hidden');
+
+            const formData = new FormData();
+            formData.append('preview', selectedPreviewFile);
+
+            try {
+                const response = await fetch(`${API_BASE_URL}/template/${encodeURIComponent(currentPreviewTemplate)}/preview`, {
+                    method: 'POST',
+                    body: formData
+                });
+
+                const data = await response.json();
+
+                if (data.success) {
+                    showPreviewUploadStatus('success', 'Preview image uploaded successfully!');
+                    setTimeout(() => {
+                        closePreviewUploadModal();
+                        loadTemplates(); // Refresh template list
+                    }, 1500);
+                } else {
+                    showPreviewUploadStatus('error', data.error || 'Upload failed');
+                }
+            } catch (error) {
+                showPreviewUploadStatus('error', `Upload error: ${error.message}`);
+            } finally {
+                uploadBtn.disabled = false;
+                uploadText.classList.remove('hidden');
+                uploadSpinner.classList.add('hidden');
+            }
+        }
+
+        function showPreviewUploadStatus(type, message) {
+            const statusElement = document.getElementById('preview-upload-status');
+            statusElement.classList.remove('hidden');
+
+            const icons = {
+                success: '<svg class="w-5 h-5 inline-block mr-2" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/></svg>',
+                error: '<svg class="w-5 h-5 inline-block mr-2" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM8.707 7.293a1 1 0 00-1.414 1.414L8.586 10l-1.293 1.293a1 1 0 101.414 1.414L10 11.414l1.293 1.293a1 1 0 001.414-1.414L11.414 10l1.293-1.293a1 1 0 00-1.414-1.414L10 8.586 8.707 7.293z" clip-rule="evenodd"/></svg>'
+            };
+
+            const colors = {
+                success: 'bg-green-50 text-green-700 border-green-200',
+                error: 'bg-red-50 text-red-700 border-red-200'
+            };
+
+            statusElement.className = `mb-4 p-3 rounded-lg border ${colors[type]} flex items-center`;
+            statusElement.innerHTML = `${icons[type]}<span class="text-sm">${message}</span>`;
+        }
+
+        // Preview Upload Modal Event Listeners
+        document.getElementById('close-preview-modal').addEventListener('click', closePreviewUploadModal);
+        document.getElementById('cancel-preview-btn').addEventListener('click', closePreviewUploadModal);
+
+        const previewDropZone = document.getElementById('preview-drop-zone');
+        const previewFileInput = document.getElementById('preview-file-input');
+
+        previewDropZone.addEventListener('click', () => previewFileInput.click());
+
+        previewDropZone.addEventListener('dragover', (e) => {
+            e.preventDefault();
+            previewDropZone.classList.add('border-purple-500', 'bg-purple-50');
+        });
+
+        previewDropZone.addEventListener('dragleave', () => {
+            previewDropZone.classList.remove('border-purple-500', 'bg-purple-50');
+        });
+
+        previewDropZone.addEventListener('drop', (e) => {
+            e.preventDefault();
+            previewDropZone.classList.remove('border-purple-500', 'bg-purple-50');
+            const file = e.dataTransfer.files[0];
+            if (file) handlePreviewFileSelect(file);
+        });
+
+        previewFileInput.addEventListener('change', (e) => {
+            if (e.target.files[0]) handlePreviewFileSelect(e.target.files[0]);
+        });
+
+        document.getElementById('upload-preview-btn').addEventListener('click', uploadPreviewImage);
+
+        // Close modal on backdrop click
+        document.getElementById('preview-upload-modal').addEventListener('click', (e) => {
+            if (e.target.id === 'preview-upload-modal') {
+                closePreviewUploadModal();
+            }
+        });
+
+        // Make function global
+        window.openPreviewUploadModal = openPreviewUploadModal;
 
         // Template Upload
         const uploadZone = document.getElementById('upload-zone');
