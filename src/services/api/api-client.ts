@@ -5,7 +5,6 @@ import dotenv from "dotenv";
 import path from "path";
 import indexRoutes from "./routes/index.routes";
 import { errorHandler, notFoundHandler } from "./middleware/error-handler";
-import { apiLimiter } from "./middleware/rate-limiter";
 
 // Load environment variables
 dotenv.config();
@@ -36,9 +35,6 @@ const corsOptions = {
   allowedHeaders: ["Content-Type", "Authorization", "X-API-Key"],
 };
 app.use(cors(corsOptions));
-
-// Rate limiting - Protect against DDoS
-app.use("/api/", apiLimiter);
 
 // Body parsing middleware
 app.use(express.json({ limit: "50mb" })); // Increased limit for large requests
