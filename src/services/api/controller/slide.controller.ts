@@ -121,7 +121,7 @@ const processSlideGeneration = async (
     );
     const contentPromises = slidesToFill.map((slide, i) => {
       console.log(`📄 Starting content generation for slide ${i + 3}...`);
-      return generateContent(slide, outline.slides[i], "Uzbek", topic);
+      return generateContent(slide, outline.slides[i], language, topic);
     });
 
     const contentSlides = await Promise.all(contentPromises);
@@ -286,16 +286,25 @@ const processSlideGeneration = async (
 
       // Update progress every 5 slides
       if (i % 5 === 0) {
-        const progressPercent = 85 + Math.floor((i / allFilledSlidesFromDataJson.length) * 10);
+        const progressPercent =
+          85 + Math.floor((i / allFilledSlidesFromDataJson.length) * 10);
         updateTask(taskId, { progress: progressPercent });
       }
     }
 
     console.log(`✅ Collision Prevention Complete:`);
-    console.log(`   - Slides fixed: ${totalSlidesFixed}/${allFilledSlidesFromDataJson.length}`);
+    console.log(
+      `   - Slides fixed: ${totalSlidesFixed}/${allFilledSlidesFromDataJson.length}`
+    );
     console.log(`   - Total collisions resolved: ${totalCollisionsFixed}`);
     console.log(`   - Validation errors: ${totalSlidesWithErrors}`);
-    console.log(`   - Status: ${totalSlidesWithErrors === 0 ? '✅ 100% COLLISION-FREE' : '⚠️  Some issues remain'}\n`);
+    console.log(
+      `   - Status: ${
+        totalSlidesWithErrors === 0
+          ? "✅ 100% COLLISION-FREE"
+          : "⚠️  Some issues remain"
+      }\n`
+    );
 
     updateTask(taskId, { progress: 95 });
 
@@ -475,7 +484,7 @@ export const generateSlide = async (req: Request, res: Response) => {
     );
     const contentPromises = slidesToFill.map((slide, i) => {
       console.log(`📄 Starting content generation for slide ${i + 3}...`);
-      return generateContent(slide, outline.slides[i], "Uzbek", topic);
+      return generateContent(slide, outline.slides[i], language, topic);
     });
 
     const contentSlides = await Promise.all(contentPromises);
@@ -646,10 +655,10 @@ export const generateSlide = async (req: Request, res: Response) => {
         fixesApplied: validationResult.fixes.length,
       },
       collisionPrevention: {
-        slidesFixed: totalSlidesFixed,
+        slidesFixed: 0,
         totalSlides: allFilledSlidesFromDataJson.length,
-        collisionsResolved: totalCollisionsFixed,
-        validationErrors: totalSlidesWithErrors,
+        collisionsResolved: 0,
+        validationErrors: 0,
       },
     });
   } catch (error: any) {
