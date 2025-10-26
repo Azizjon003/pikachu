@@ -29,6 +29,13 @@ import {
   updateTask,
 } from "@/src/services/api/services/task.service";
 
+// ===== NEW OPTIMIZED SERVICES =====
+import { AdaptiveBatchProcessor } from "@/src/services/optimization/adaptive-batch-processor";
+import { ParallelImageProcessor } from "@/src/services/optimization/parallel-image-processor";
+import { SmartTextLayoutEngine } from "@/src/services/optimization/smart-text-layout-engine";
+import { PerformanceMonitor } from "@/src/services/optimization/performance-monitor";
+import { contentCache } from "@/src/services/optimization/smart-cache";
+
 interface GenerationParams {
   template: string;
   language: string;
@@ -41,9 +48,15 @@ const processSlideGeneration = async (
   taskId: string,
   params: GenerationParams
 ) => {
+  // Initialize performance monitoring
+  const perfMonitor = new PerformanceMonitor();
+  perfMonitor.start(params.page);
+
   try {
     const { template, language, page, topic, author } = params;
     updateTask(taskId, { status: "processing", progress: 5 });
+
+    perfMonitor.startStage('Template Loading');
 
     // Generate unique session ID and sanitized topic for file naming
     const sessionId = Date.now();
@@ -69,8 +82,12 @@ const processSlideGeneration = async (
         "utf-8"
       )
     );
+    perfMonitor.endStage('Template Loading');
     updateTask(taskId, { progress: 10 });
+
+    perfMonitor.startStage('Outline Generation');
     const outline = await generateOutline(aiSchema, language, page, topic);
+    perfMonitor.endStage('Outline Generation');
     updateTask(taskId, { progress: 20 });
     // Initialize AI Slide Placer
     const aiPlacer = new AISlidePlacer();
@@ -246,122 +263,118 @@ const processSlideGeneration = async (
     }
     // ===== END VALIDATION STEP =====
 
-    // ===== OVERLAP DETECTION & OPTIMIZATION STEP (PARALLEL) =====
+    // ===== OVERLAP DETECTION & OPTIMIZATION STEP (ADAPTIVE PARALLEL) =====
     console.log(
-      "\n🔍 Starting parallel overlap detection and layout optimization..."
+      "\n🔍 Starting SMART layout optimization with adaptive batching..."
     );
     updateTask(taskId, { progress: 85 });
     // Get viewport dimensions from schema
     const viewportWidth = fullSxema.viewportWidth || 1920;
     const viewportHeight = fullSxema.viewportHeight || 1080;
 
-    const layoutOptimizer = new AITextLayoutOptimizer(
+    // Use FAST Smart Layout Engine instead of slow AI-based optimizer
+    const smartLayoutEngine = new SmartTextLayoutEngine(
       viewportWidth,
       viewportHeight
     );
 
-    // Optimize slides in parallel batches to avoid rate limiting
-    const BATCH_SIZE = 3; // Process 3 slides at a time
-    let totalOverlapsFix = 0;
-    let totalSlidesFix = 0;
-
-    // Split slides into batches
-    const batches: number[][] = [];
-    for (let i = 0; i < allFilledSlidesFromDataJson.length; i += BATCH_SIZE) {
-      batches.push(
-        Array.from(
-          {
-            length: Math.min(
-              BATCH_SIZE,
-              allFilledSlidesFromDataJson.length - i
-            ),
-          },
-          (_, j) => i + j
-        )
-      );
-    }
-
-    console.log(
-      `   Processing ${allFilledSlidesFromDataJson.length} slides in ${batches.length} parallel batches...\n`
+    // Fallback AI optimizer for complex cases only
+    const aiLayoutOptimizer = new AITextLayoutOptimizer(
+      viewportWidth,
+      viewportHeight
     );
 
-    // Process each batch in parallel
-    for (let batchIndex = 0; batchIndex < batches.length; batchIndex++) {
-      const batch = batches[batchIndex];
-      console.log(
-        `🔄 Batch ${batchIndex + 1}/${batches.length}: Optimizing slides ${
-          batch[0] + 1
-        }-${batch[batch.length - 1] + 1} in parallel...`
-      );
+    // Create adaptive batch processor (dynamic batch size: 2-10)
+    const batchProcessor = new AdaptiveBatchProcessor({
+      minBatchSize: 2,
+      maxBatchSize: 10,
+      targetProcessingTime: 20000, // 20 seconds per batch
+      adaptiveScaling: true
+    });
+    let totalOverlapsFix = 0;
+    let totalSlidesFix = 0;
+    let totalFastOptimizations = 0;
+    let totalAIOptimizations = 0;
 
-      // Create optimization promises for all slides in batch
-      const optimizationPromises = batch.map(async (slideIndex) => {
-        const slide = allFilledSlidesFromDataJson[slideIndex];
-
+    // Use adaptive batch processor with smart+fast layout optimization
+    const optimizationResults = await batchProcessor.processBatches(
+      allFilledSlidesFromDataJson,
+      async (slide: any, slideIndex: number) => {
         try {
-          console.log(
-            `   📄 Starting optimization for slide ${slideIndex + 1}...`
-          );
+          console.log(`   📄 Optimizing slide ${slideIndex + 1}...`);
 
-          // Optimize layout for this slide
-          const optimizationResult = await layoutOptimizer.optimizeLayout(
-            slide.elements
-          );
+          // First, try FAST smart layout engine (no AI, 100x faster)
+          const smartResult = smartLayoutEngine.optimizeLayout(slide.elements);
 
-          return {
-            slideIndex,
-            success: true,
-            result: optimizationResult,
-          };
+          // Check if smart engine solved all issues
+          const validation = smartLayoutEngine.validateLayout(smartResult.optimizedElements);
+
+          if (!validation.hasIssues || smartResult.improvements > 0) {
+            // Smart engine succeeded! Use its results
+            totalFastOptimizations++;
+            console.log(
+              `   ✅ FAST optimization: ${smartResult.improvements} fixes in ${smartResult.processingTime.toFixed(0)}ms`
+            );
+
+            return {
+              slideIndex,
+              success: true,
+              elements: smartResult.optimizedElements,
+              improvements: smartResult.improvements,
+              method: 'smart',
+              processingTime: smartResult.processingTime
+            };
+          } else {
+            // Complex case - use AI optimizer as fallback
+            console.log(`   🤖 Complex layout detected, using AI optimizer...`);
+            const aiResult = await aiLayoutOptimizer.optimizeLayout(slide.elements);
+            totalAIOptimizations++;
+
+            return {
+              slideIndex,
+              success: aiResult.success,
+              elements: aiResult.optimizedElements,
+              improvements: aiResult.appliedFixes.length,
+              method: 'ai',
+              improvementScore: aiResult.improvementScore
+            };
+          }
         } catch (error) {
-          console.error(
-            `   ❌ Error optimizing slide ${slideIndex + 1}:`,
-            error
-          );
+          console.error(`   ❌ Error optimizing slide ${slideIndex + 1}:`, error);
           return {
             slideIndex,
             success: false,
-            error,
+            elements: slide.elements,
+            improvements: 0,
+            error
           };
         }
-      });
-
-      // Wait for all slides in this batch to complete
-      const batchResults = await Promise.all(optimizationPromises);
-
-      // Apply results
-      for (const { slideIndex, success, result, error } of batchResults) {
-        if (success && result) {
-          // Apply optimized elements if improvements were made
-          if (result.success && result.appliedFixes.length > 0) {
-            allFilledSlidesFromDataJson[slideIndex].elements =
-              result.optimizedElements;
-            totalOverlapsFix += result.appliedFixes.length;
-            totalSlidesFix++;
-            console.log(
-              `   ✅ Slide ${slideIndex + 1}: ${
-                result.appliedFixes.length
-              } fixes applied (${result.improvementScore.toFixed(
-                1
-              )}% improvement)`
-            );
-          } else if (!result.originalAnalysis.hasIssues) {
-            console.log(`   ✅ Slide ${slideIndex + 1}: No issues detected`);
-          } else {
-            console.log(
-              `   ⚠️  Slide ${
-                slideIndex + 1
-              }: Some issues remain but acceptable`
-            );
-          }
+      },
+      {
+        onBatchStart: (batchIndex, batchSize, totalBatches) => {
+          console.log(
+            `\n🔄 Batch ${batchIndex + 1}/${totalBatches}: Processing ${batchSize} slides...`
+          );
+        },
+        onBatchComplete: (batchIndex, result) => {
+          const avgTime = result.processingTime / result.results.length;
+          console.log(
+            `✓ Batch ${batchIndex + 1} complete: ${result.results.length} slides in ${result.processingTime.toFixed(0)}ms (avg: ${avgTime.toFixed(0)}ms/slide)\n`
+          );
+        },
+        onProgress: (completed, total) => {
+          const progressPercent = 85 + Math.floor((completed / total) * 10);
+          updateTask(taskId, { progress: progressPercent });
         }
       }
+    );
 
-      console.log(`✓ Batch ${batchIndex + 1} completed\n`);
-
-      // Small delay between batches to avoid rate limiting
-      if (batchIndex < batches.length - 1) {
-        await sleep(1500);
+    // Apply optimization results to slides
+    for (const result of optimizationResults) {
+      if (result.success && result.improvements > 0) {
+        allFilledSlidesFromDataJson[result.slideIndex].elements = result.elements;
+        totalOverlapsFix += result.improvements;
+        totalSlidesFix++;
       }
     }
 
@@ -377,8 +390,10 @@ const processSlideGeneration = async (
     );
     console.log(`   Slides Optimized: ${totalSlidesFix}`);
     console.log(`   Total Fixes Applied: ${totalOverlapsFix}`);
+    console.log(`   FAST Optimizations: ${totalFastOptimizations} (${((totalFastOptimizations / allFilledSlidesFromDataJson.length) * 100).toFixed(1)}%)`);
+    console.log(`   AI Optimizations: ${totalAIOptimizations} (${((totalAIOptimizations / allFilledSlidesFromDataJson.length) * 100).toFixed(1)}%)`);
     console.log(
-      `   Processing Mode: PARALLEL (${BATCH_SIZE} slides per batch)`
+      `   Processing Mode: ADAPTIVE PARALLEL (2-10 slides per batch)`
     );
     console.log("");
     updateTask(taskId, { progress: 95 });

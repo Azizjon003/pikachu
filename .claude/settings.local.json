@@ -18,7 +18,9 @@
       "Bash(curl:*)",
       "Bash(npm run build:*)",
       "Bash(test:*)",
-      "Bash(taskkill:*)"
+      "Bash(taskkill:*)",
+      "Bash(echo:*)",
+      "Bash(printf:*)"
     ],
     "deny": [],
     "ask": []
