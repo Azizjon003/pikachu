@@ -14,7 +14,6 @@
  * This is the ULTIMATE presentation design AI!
  */
 
-import OpenAI from "openai";
 import * as dotenv from "dotenv";
 import {
   CreativeLayoutAnalyzer,
@@ -22,6 +21,7 @@ import {
   type LayoutAnalysis,
   type CreativeInsights
 } from "./creative-layout-analyzer";
+import { getOpenAIService, OpenAIService } from "../openai";
 
 dotenv.config();
 
@@ -69,18 +69,13 @@ export interface AdvancedTransformOptions {
 }
 
 export class AdvancedAITransformer {
-  private openai: OpenAI;
+  private openaiService: OpenAIService;
   private analyzer: CreativeLayoutAnalyzer;
   private slideWidth: number;
   private slideHeight: number;
 
   constructor(slideWidth: number = 1920, slideHeight: number = 1080) {
-    const apiKey = process.env.OPENAI_API_KEY;
-    if (!apiKey) {
-      throw new Error("OPENAI_API_KEY is required");
-    }
-
-    this.openai = new OpenAI({ apiKey });
+    this.openaiService = getOpenAIService();
     this.analyzer = new CreativeLayoutAnalyzer(slideWidth, slideHeight);
     this.slideWidth = slideWidth;
     this.slideHeight = slideHeight;
@@ -182,7 +177,7 @@ export class AdvancedAITransformer {
     const prompt = this.buildAdvancedPrompt(elements, analysis, insights, options);
 
     try {
-      const response = await this.openai.chat.completions.create({
+      const result = await this.openaiService.createJsonCompletion({
         model: "gpt-4o",
         messages: [
           {
@@ -213,17 +208,9 @@ Be BOLD. Be CREATIVE. Make designs that WOW!`
             content: prompt
           }
         ],
-        response_format: { type: "json_object" },
         temperature: 0.8 + (options.creativityLevel * 0.2), // 0.8-1.0
-        max_tokens: 6000
+        maxTokens: 6000
       });
-
-      const content = response.choices[0].message.content;
-      if (!content) {
-        throw new Error("No response from AI");
-      }
-
-      const result = JSON.parse(content);
       const operations = this.parseOperations(result.operations || [], options);
 
       console.log(`   ✓ AI generated ${operations.length} operations`);

@@ -65,7 +65,7 @@ export interface GenerationConfig {
 
 const DEFAULT_CONFIG: GenerationConfig = {
   model: {
-    name: 'gpt-4o-mini',
+    name: 'gpt-4o',
     temperature: 0.7,
     maxTokens: 4096,
     topP: 1.0,

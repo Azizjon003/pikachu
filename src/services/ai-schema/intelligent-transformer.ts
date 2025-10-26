@@ -13,7 +13,6 @@
  * Bu tizim GANDONCHA ishqilib, chiroyli natija beradi!
  */
 
-import OpenAI from "openai";
 import * as dotenv from "dotenv";
 import {
   CreativeLayoutAnalyzer,
@@ -21,6 +20,7 @@ import {
   type LayoutAnalysis
 } from "./creative-layout-analyzer";
 import { PrecisionLayoutFixer } from "../layout/precision-layout-fixer";
+import { getOpenAIService, OpenAIService } from "../openai";
 
 dotenv.config();
 
@@ -84,19 +84,14 @@ export interface IntelligentTransformResult {
 }
 
 export class IntelligentAITransformer {
-  private openai: OpenAI;
+  private openaiService: OpenAIService;
   private analyzer: CreativeLayoutAnalyzer;
   private precisionFixer: PrecisionLayoutFixer;
   private slideWidth: number;
   private slideHeight: number;
 
   constructor(slideWidth: number = 1920, slideHeight: number = 1080) {
-    const apiKey = process.env.OPENAI_API_KEY;
-    if (!apiKey) {
-      throw new Error("OPENAI_API_KEY is required");
-    }
-
-    this.openai = new OpenAI({ apiKey });
+    this.openaiService = getOpenAIService();
     this.analyzer = new CreativeLayoutAnalyzer(slideWidth, slideHeight);
     this.precisionFixer = new PrecisionLayoutFixer(slideWidth, slideHeight);
     this.slideWidth = slideWidth;
@@ -235,7 +230,7 @@ export class IntelligentAITransformer {
     const prompt = this.buildIntelligentPrompt(elements, context, analysis, rules);
 
     try {
-      const response = await this.openai.chat.completions.create({
+      const result = await this.openaiService.createJsonCompletion({
         model: "gpt-4o",
         messages: [
           {
@@ -274,17 +269,9 @@ You are SMART and CAREFUL. Think before every action!`
             content: prompt
           }
         ],
-        response_format: { type: "json_object" },
         temperature: 0.7, // Lower for more careful decisions
-        max_tokens: 4000
+        maxTokens: 4000
       });
-
-      const content = response.choices[0].message.content;
-      if (!content) {
-        throw new Error("No response from AI");
-      }
-
-      const result = JSON.parse(content);
       return this.parseIntelligentOperations(result.operations || []);
     } catch (error) {
       console.error("   ❌ AI generation failed:", error);

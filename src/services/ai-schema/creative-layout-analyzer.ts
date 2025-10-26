@@ -9,8 +9,8 @@
  * - Cultural and contextual considerations
  */
 
-import OpenAI from "openai";
 import * as dotenv from "dotenv";
+import { getOpenAIService, OpenAIService } from "../openai";
 
 dotenv.config();
 
@@ -66,17 +66,12 @@ export interface CreativeInsights {
 }
 
 export class CreativeLayoutAnalyzer {
-  private openai: OpenAI;
+  private openaiService: OpenAIService;
   private slideWidth: number;
   private slideHeight: number;
 
   constructor(slideWidth: number = 1920, slideHeight: number = 1080) {
-    const apiKey = process.env.OPENAI_API_KEY;
-    if (!apiKey) {
-      throw new Error("OPENAI_API_KEY is required");
-    }
-
-    this.openai = new OpenAI({ apiKey });
+    this.openaiService = getOpenAIService();
     this.slideWidth = slideWidth;
     this.slideHeight = slideHeight;
   }
@@ -90,7 +85,7 @@ export class CreativeLayoutAnalyzer {
     const prompt = this.buildAnalysisPrompt(elements);
 
     try {
-      const response = await this.openai.chat.completions.create({
+      const insights = await this.openaiService.createJsonCompletion<CreativeInsights>({
         model: "gpt-4o",
         messages: [
           {
@@ -110,16 +105,8 @@ Analyze layouts and provide creative, professional suggestions that make present
             content: prompt
           }
         ],
-        response_format: { type: "json_object" },
         temperature: 0.8 // More creative!
       });
-
-      const content = response.choices[0].message.content;
-      if (!content) {
-        throw new Error("No response from AI");
-      }
-
-      const insights = JSON.parse(content) as CreativeInsights;
       console.log(`   ✓ AI Analysis: ${insights.style} style, ${insights.mood} mood`);
       console.log(`   ✓ Suggested ${insights.suggestedChanges.length} creative improvements`);
 

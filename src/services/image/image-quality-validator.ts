@@ -1,7 +1,7 @@
 import sharp from "sharp";
 import * as fs from "fs";
 import * as path from "path";
-import OpenAI from "openai";
+import { getOpenAIService, OpenAIService } from "../openai";
 
 /**
  * Image Quality Validator
@@ -133,7 +133,7 @@ export interface ValidationOptions {
 }
 
 export class ImageQualityValidator {
-  private openai?: OpenAI;
+  private openaiService?: OpenAIService;
   private defaultOptions: Required<ValidationOptions> = {
     minResolution: { width: 800, height: 600 },
     maxFileSize: 10 * 1024 * 1024, // 10MB
@@ -144,9 +144,8 @@ export class ImageQualityValidator {
   };
 
   constructor(openaiApiKey?: string) {
-    if (openaiApiKey) {
-      this.openai = new OpenAI({ apiKey: openaiApiKey });
-    }
+    // Use centralized OpenAI service
+    this.openaiService = getOpenAIService();
   }
 
   /**
@@ -447,8 +446,8 @@ export class ImageQualityValidator {
     imagePath: string,
     metadata: sharp.Metadata
   ): Promise<AIQualityAnalysis> {
-    if (!this.openai) {
-      throw new Error("OpenAI not initialized");
+    if (!this.openaiService) {
+      throw new Error("OpenAI service not initialized");
     }
 
     try {
@@ -502,8 +501,8 @@ Provide scores and reasoning in JSON format:
   "aiReasoning": "brief explanation of assessment"
 }`;
 
-      const response = await this.openai.chat.completions.create({
-        model: "gpt-4o-mini",
+      const response = await this.openaiService.getClient().chat.completions.create({
+        model: "gpt-4o",
         messages: [
           {
             role: "user",

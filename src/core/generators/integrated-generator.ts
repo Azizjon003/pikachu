@@ -3,7 +3,7 @@
  * Orchestrates all components for complete, production-ready slide generation
  */
 
-import OpenAI from 'openai';
+import { getOpenAIService, OpenAIService } from '../../services/openai';
 import { ResilientSlideGenerator } from './resilient-generator';
 import { QualityValidator, ValidationResult } from '../../lib/quality-validator';
 import { ContentIntelligence, ElementAnalysis } from '../processors/content-analyzer';
@@ -36,7 +36,7 @@ export interface GenerationMetadata {
 }
 
 export class IntegratedSlideGenerator {
-  private client: OpenAI;
+  private openaiService: OpenAIService;
   private resilientGenerator: ResilientSlideGenerator;
   private qualityValidator: QualityValidator;
   private contentIntelligence: ContentIntelligence;
@@ -46,8 +46,8 @@ export class IntegratedSlideGenerator {
   private config: ConfigManager;
 
   constructor(apiKey: string, configPath?: string) {
-    // Initialize OpenAI client
-    this.client = new OpenAI({ apiKey });
+    // Initialize OpenAI service
+    this.openaiService = getOpenAIService();
 
     // Initialize configuration
     this.config = new ConfigManager(configPath);

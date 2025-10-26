@@ -1,11 +1,10 @@
-import OpenAI from "openai";
 import dotenv from "dotenv";
 dotenv.config();
 import { OutlineSchema, OutlineResponse } from "../processors/schema-processor";
 import { Slide } from "../../../types/slides";
+import { getOpenAIService } from "../../services/openai";
 
-console.log(process.env.OPENAI_API_KEY, "OPENAI_API_KEY");
-const client = new OpenAI({ apiKey: process.env.OPENAI_API_KEY });
+const openaiService = getOpenAIService();
 
 export const generateOutline = async (
   slides: Slide[],
@@ -13,8 +12,8 @@ export const generateOutline = async (
   page: number,
   topic: string
 ): Promise<OutlineResponse> => {
-  const completion = await client.chat.completions.create({
-    model: "gpt-4o-mini",
+  const result = await openaiService.createJsonCompletion<OutlineResponse>({
+    model: "gpt-4o",
     messages: [
       {
         role: "system",
@@ -53,12 +52,10 @@ STRICT RULES:
         content: `Generate ${page} slides about "${topic}" in ${language}.`,
       },
     ],
-    response_format: { type: "json_object" },
   });
 
-  const raw = completion.choices[0].message.content ?? "{}";
-  console.log(JSON.parse(raw), "response");
+  console.log(result, "response");
 
-  const parsed = OutlineSchema.parse(JSON.parse(raw));
+  const parsed = OutlineSchema.parse(result);
   return parsed;
 };

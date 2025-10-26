@@ -1,11 +1,39 @@
 // OpenAI Structured Outputs version (requires openai >= 4.52.0)
-import OpenAI from "openai";
+import { getOpenAIService } from "../../services/openai";
 import fs from "fs";
 import dotenv from "dotenv";
 dotenv.config();
 import { OutlineSchema, OutlineResponse } from "../processors/schema-processor";
 
-const client = new OpenAI({ apiKey: process.env.OPENAI_API_KEY });
+const openaiService = getOpenAIService();
+const client = openaiService.getClient();
+
+/**
+ * Safely parse JSON response that may be wrapped in markdown code blocks
+ * Handles formats like: ```json { ... } ``` or ``` { ... } ```
+ */
+function safeParseJSON(content: string): any {
+  if (!content) return {};
+
+  let jsonString = content.trim();
+
+  // Remove markdown code block wrappers
+  // Match ```json or ``` at start
+  jsonString = jsonString.replace(/^```(?:json)?\s*/, '');
+  // Match ``` at end
+  jsonString = jsonString.replace(/\s*```$/, '');
+
+  // Trim whitespace again after removing code blocks
+  jsonString = jsonString.trim();
+
+  try {
+    return JSON.parse(jsonString);
+  } catch (error) {
+    console.error('Failed to parse JSON:', error);
+    console.error('Attempted to parse:', jsonString.substring(0, 100));
+    return {};
+  }
+}
 
 /**
  * Helper function to identify nearby elements (within 50px)
@@ -31,6 +59,105 @@ const findNearbyElements = (
 
     return isNearby;
   });
+};
+
+/**
+ * Create ASCII visual representation of slide layout
+ * Helps AI understand element positioning better
+ */
+const createLayoutVisualization = (elements: any[]): string => {
+  if (elements.length === 0) return "No elements";
+
+  // Find max coordinates to create grid
+  const maxLeft = Math.max(...elements.map((e) => e.left + e.width));
+  const maxTop = Math.max(...elements.map((e) => e.top + e.height));
+
+  // Determine grid size (scale it down)
+  const gridWidth = Math.min(80, Math.ceil(maxLeft / 50));
+  const gridHeight = Math.min(20, Math.ceil(maxTop / 50));
+
+  // Create grid
+  const grid: string[][] = Array(gridHeight)
+    .fill(null)
+    .map(() => Array(gridWidth).fill(" "));
+
+  // Place elements on grid
+  elements.forEach((el) => {
+    const startCol = Math.min(
+      Math.floor((el.left / maxLeft) * gridWidth),
+      gridWidth - 1
+    );
+    const startRow = Math.min(
+      Math.floor((el.top / maxTop) * gridHeight),
+      gridHeight - 1
+    );
+    const endCol = Math.min(
+      Math.ceil(((el.left + el.width) / maxLeft) * gridWidth),
+      gridWidth - 1
+    );
+    const endRow = Math.min(
+      Math.ceil(((el.top + el.height) / maxTop) * gridHeight),
+      gridHeight - 1
+    );
+
+    // Fill grid with element index
+    const elementChar = String(el.index);
+    for (let row = startRow; row <= endRow; row++) {
+      for (let col = startCol; col <= endCol; col++) {
+        if (row >= 0 && col >= 0) {
+          grid[row][col] = elementChar;
+        }
+      }
+    }
+  });
+
+  // Convert grid to string
+  let visualization = "SLIDE LAYOUT VISUALIZATION:\n";
+  visualization += "┌" + "─".repeat(gridWidth) + "┐\n";
+  grid.forEach((row) => {
+    visualization += "│" + row.join("") + "│\n";
+  });
+  visualization += "└" + "─".repeat(gridWidth) + "┘\n";
+
+  return visualization;
+};
+
+/**
+ * Get detailed position description for element
+ */
+const getPositionDescription = (element: any, allElements: any[]): string => {
+  const positions: string[] = [];
+
+  // Vertical position
+  if (element.top < 100) {
+    positions.push("TOP of slide");
+  } else if (element.top > 400) {
+    positions.push("BOTTOM of slide");
+  } else {
+    positions.push("MIDDLE of slide");
+  }
+
+  // Horizontal position
+  if (element.left < 100) {
+    positions.push("LEFT side");
+  } else if (element.left > 500) {
+    positions.push("RIGHT side");
+  } else {
+    positions.push("CENTER horizontally");
+  }
+
+  // Size category
+  if (element.width > 600 && element.height > 400) {
+    positions.push("LARGE FULL-WIDTH");
+  } else if (element.width > 300 && element.height > 200) {
+    positions.push("MEDIUM sized");
+  } else if (element.width > 150 || element.height > 100) {
+    positions.push("SMALL-MEDIUM");
+  } else {
+    positions.push("SMALL/LABEL");
+  }
+
+  return positions.join(", ");
 };
 
 /**
@@ -227,7 +354,7 @@ export const generateOutline = async (
   };
 
   const completion = await client.chat.completions.create({
-    model: "gpt-4o-mini",
+    model: "gpt-4o",
     messages: [
       {
         role: "system",
@@ -344,7 +471,7 @@ VALIDATION CHECKLIST (verify before responding):
   const raw = completion.choices[0].message.content ?? "{}";
   let parsed;
   try {
-    const jsonData = JSON.parse(raw);
+    const jsonData = safeParseJSON(raw);
 
     // Validate with Zod
     parsed = OutlineSchema.parse(jsonData);
@@ -476,8 +603,11 @@ export const generateContent = async (
     }
   }
 
+  // Create layout visualization for AI
+  const layoutVisualization = createLayoutVisualization(textShapeTableElements);
+
   const completion = await client.chat.completions.create({
-    model: "gpt-4o-mini",
+    model: "gpt-4o",
     messages: [
       {
         role: "system",
@@ -581,71 +711,72 @@ OUTLINE TOPIC: ${outline.title || outline.title_eng}
 LANGUAGE: ${language}
 TOTAL TEXT/SHAPE/TABLE ELEMENTS: ${textShapeTableElements.length}
 
+${layoutVisualization}
+
 ⚠️ CRITICAL: Every piece of content MUST be SPECIFICALLY about ${
           mainTopic
             ? `"${mainTopic}"`
             : `"${outline.title || outline.title_eng}"`
         }
 
-ELEMENTS TO FILL (you must fill ALL ${textShapeTableElements.length} elements):
+📍 ELEMENT LAYOUT & POSITIONING GUIDE:
 ${textShapeTableElements
   .map((el: any, i: number) => {
     const nearby = findNearbyElements(el, textShapeTableElements);
+    const positionDesc = getPositionDescription(el, textShapeTableElements);
     const nearbyInfo =
       nearby.length > 0
-        ? `\n   ⚠️ NEARBY ELEMENTS: ${nearby
-            .map((n) => `[${n.index}] at (${n.left},${n.top})`)
+        ? `\n   📌 NEARBY ELEMENTS: ${nearby
+            .map((n) => `[${n.index}] (${getPositionDescription(n, textShapeTableElements)})`)
             .join(", ")}`
         : "";
 
     return `
-${i + 1}. Element [${el.index}] - ${el.type.toUpperCase()} - ID: #${el.index}
-   Size: ${el.width} x ${el.height}
-   Position: (${el.left}, ${el.top})
-   Font Size: ${el.fontSize}px
-   ⚠️ MAX CHARACTERS: ${
+${i + 1}. Element [${el.index}] - ${el.type.toUpperCase()}
+   ┌─ LOCATION: ${positionDesc}
+   ├─ SIZE: ${el.width}px wide × ${el.height}px high
+   ├─ EXACT POSITION: Top=${el.top}px, Left=${el.left}px
+   ├─ FONT SIZE: ${el.fontSize}px
+   ├─ MAX CHARACTERS: ${
      el.maxCharacters
-   } (guideline - font will auto-adjust if slightly exceeded)
-   Current: "${el.currentContent || "EMPTY - FILL THIS"}"
+   } (AI will auto-adjust font if needed)
+   ├─ CURRENT CONTENT: "${el.currentContent || "❌ EMPTY - FILL THIS"}"
    ${
      el.type === "table"
-       ? `Table Data: ${JSON.stringify(el.tableData) || "EMPTY"}`
+       ? `├─ TABLE STRUCTURE: ${JSON.stringify(el.tableData) || "Empty - Generate rows/columns"}\n   `
        : ""
-   }
-   ${
+   }├─ CONTENT ROLE: ${
      el.top < 100 && el.width > 500
-       ? ">>> LIKELY MAIN TITLE (keep it short and UNIQUE!)"
-       : ""
+       ? "🎯 MAIN TITLE - Keep SHORT (3-8 words) and UNIQUE"
+       : el.height > 300
+       ? "📝 BODY CONTENT - Use detailed text, DISTINCT from others"
+       : el.width < 200 && el.height < 100
+       ? "🏷️ LABEL/CALLOUT - Very brief (1-3 words)"
+       : "📌 GENERAL CONTENT"
    }
-   ${
-     el.height > 300
-       ? ">>> LIKELY BODY CONTENT (detailed and DISTINCT from other elements!)"
-       : ""
-   }
-   ${
-     el.width < 200 && el.height < 100
-       ? ">>> LIKELY LABEL (very brief and UNIQUE!)"
-       : ""
-   }
-   ${
-     el.type === "table" ? ">>> TABLE - GENERATE ROWS AND COLUMNS" : ""
+   └─ INSTRUCTION: ${
+     el.type === "table"
+       ? "Generate table with proper rows & columns"
+       : "Write content SPECIFIC to topic, unique from other elements"
    }${nearbyInfo}`;
   })
   .join("\n")}
 
+═══════════════════════════════════════════════════════════════════════════
 MANDATORY TASK:
-1. Generate content for ALL ${textShapeTableElements.length} elements above
-2. ⚠️ CRITICAL: Each element MUST have UNIQUE, DIFFERENT content - NO DUPLICATES OR SIMILARITIES!
-3. Match content to outline topic: "${outline.title || outline.title_eng}"
-4. Consider size, position, and fontSize for content style
-5. Stay close to maxCharacters limit (slight overflow is OK)
-6. Ensure proper spacing between words (NO merged words!)
-7. For nearby elements, ensure content doesn't visually clash
-8. For table elements, generate appropriate tableData with rows
-9. Write in ${language} language
-10. Return content for EVERY element (slideId: "${
-          slide.id
-        }", elements: array of ${textShapeTableElements.length} items)`,
+═══════════════════════════════════════════════════════════════════════════
+1. ✅ Generate content for ALL ${textShapeTableElements.length} elements (refer to layout visualization)
+2. 🔴 CRITICAL: Each element MUST have UNIQUE, DIFFERENT content - NO DUPLICATES!
+3. 📍 Use position descriptions to understand WHERE each element sits on slide
+4. 🎨 Match content to outline topic: "${outline.title || outline.title_eng}"
+5. 📏 Respect element size/position for content style (titles vs body vs labels)
+6. 📄 Stay within maxCharacters guideline (slight overflow OK - font adjusts)
+7. 🔤 Add proper spacing between words (NEVER merge words!)
+8. 🗺️ Use layout visualization to avoid content confusion
+9. 🎯 For nearby elements, provide distinctly different content
+10. 📊 For table elements, generate proper rows and column data
+11. 🌐 Write ALL content in ${language} language
+12. ✔️ Return content for EVERY element (total: ${textShapeTableElements.length} items)`,
       },
     ],
     response_format: {
@@ -660,7 +791,7 @@ MANDATORY TASK:
   });
 
   const raw = completion.choices[0].message.content ?? "{}";
-  const generatedData = JSON.parse(raw);
+  const generatedData = safeParseJSON(raw);
 
   // TASK 1 & 2: Validate and apply font size reduction
   const validationResults: any[] = [];
@@ -806,6 +937,10 @@ export const generateConculation = async (
       (el: any) =>
         el.type === "text" || el.type === "shape" || el.type === "table"
     );
+
+  // Create layout visualization
+  const layoutVisualization = createLayoutVisualization(textShapeTableElements);
+
   const contentSchema = {
     type: "object",
     properties: {
@@ -836,7 +971,7 @@ export const generateConculation = async (
     additionalProperties: false,
   };
   const completion = await client.chat.completions.create({
-    model: "gpt-4o-mini",
+    model: "gpt-4o",
     messages: [
       {
         role: "system",
@@ -871,40 +1006,47 @@ TOPIC: ${topicName}
 LANGUAGE: ${language}
 TOTAL TEXT/SHAPE/TABLE ELEMENTS: ${textShapeTableElements.length}
 
-ELEMENTS TO FILL (you must fill ALL ${textShapeTableElements.length} elements):
+${layoutVisualization}
+
+📍 ELEMENT LAYOUT & POSITIONING GUIDE:
 ${textShapeTableElements
-  .map(
-    (el: any, i: number) =>
-      `
+  .map((el: any, i: number) => {
+    const positionDesc = getPositionDescription(el, textShapeTableElements);
+    return `
 ${i + 1}. Element [${el.index}] - ${el.type.toUpperCase()}
-   Size: ${el.width} x ${el.height}
-   Position: (${el.left}, ${el.top})
-   Font Size: ${el.fontSize}px
-   ⚠️ MAX CHARACTERS: ${el.maxCharacters} (guideline - font will auto-adjust)
-   Current: "${el.currentContent || "EMPTY - FILL THIS"}"
+   ┌─ LOCATION: ${positionDesc}
+   ├─ SIZE: ${el.width}px wide × ${el.height}px high
+   ├─ EXACT POSITION: Top=${el.top}px, Left=${el.left}px
+   ├─ FONT SIZE: ${el.fontSize}px
+   ├─ MAX CHARACTERS: ${el.maxCharacters} (auto-adjust if needed)
+   ├─ CURRENT CONTENT: "${el.currentContent || "❌ EMPTY - FILL THIS"}"
    ${
      el.type === "table"
-       ? `Table Data: ${JSON.stringify(el.tableData) || "EMPTY"}`
+       ? `├─ TABLE STRUCTURE: ${JSON.stringify(el.tableData) || "Empty"}\n   `
        : ""
+   }├─ CONTENT ROLE: ${
+     el.top < 100 && el.width > 500
+       ? "🎯 MAIN TITLE"
+       : el.height > 300
+       ? "📝 BODY CONTENT"
+       : el.width < 200 && el.height < 100
+       ? "🏷️ LABEL"
+       : "📌 GENERAL"
    }
-   ${el.top < 100 && el.width > 500 ? ">>> LIKELY MAIN TITLE" : ""}
-   ${el.height > 300 ? ">>> LIKELY BODY CONTENT" : ""}
-   ${el.width < 200 && el.height < 100 ? ">>> LIKELY LABEL" : ""}
-   ${el.type === "table" ? ">>> TABLE - GENERATE ROWS AND COLUMNS" : ""}`
-  )
+   └─ INSTRUCTION: Use for ${el.type === "table" ? "table data" : "conclusion content"}`;
+  })
   .join("\n")}
 
 MANDATORY TASK:
-1. Generate content for ALL ${textShapeTableElements.length} elements above
-2. ⚠️ Each element MUST have UNIQUE content - NO DUPLICATES!
-3. Match content to outline topic: "${topicName}"
-4. Consider size and position for content style
-5. For table elements, generate appropriate **tableData** with rows/columns
-6. Write in **${language}** language
-7. Stay close to maxCharacters limit (slight overflow is OK)
-8. Return content for EVERY element (slideId: "${
-          slide.id
-        }", elements: array of ${textShapeTableElements.length} items)
+1. ✅ Generate content for ALL ${textShapeTableElements.length} elements (refer to layout visualization)
+2. 🔴 CRITICAL: Each element MUST have UNIQUE content - NO DUPLICATES!
+3. 📍 Use position descriptions to understand WHERE each element sits
+4. 🎨 Write conclusion summary matching topic: "${topicName}"
+5. 📏 Respect element size/position for style (titles vs body vs labels)
+6. 📄 Stay within maxCharacters guideline (slight overflow OK)
+7. 📊 For table elements, generate proper rows and column data
+8. 🌐 Write ALL content in ${language} language
+9. ✔️ Return content for EVERY element (total: ${textShapeTableElements.length} items)
         `,
       },
     ],
@@ -920,7 +1062,7 @@ MANDATORY TASK:
 
   const raw = completion.choices[0].message.content ?? "{}";
 
-  const generatedData = JSON.parse(raw);
+  const generatedData = safeParseJSON(raw);
 
   const filledCount = generatedData.elements?.length || 0;
   const expectedCount = textShapeTableElements.length;
@@ -996,6 +1138,9 @@ export const generateReferences = async (
         el.type === "text" || el.type === "shape" || el.type === "table"
     );
 
+  // Create layout visualization
+  const layoutVisualization = createLayoutVisualization(textShapeTableElements);
+
   // Identify the likely main title element and the large body element for the list
   const mainTitleElement = textShapeTableElements.find(
     (el: any) => el.top < 100 && el.width > 500
@@ -1035,7 +1180,7 @@ export const generateReferences = async (
   };
 
   const completion = await client.chat.completions.create({
-    model: "gpt-4o-mini",
+    model: "gpt-4o",
     messages: [
       {
         role: "system",
@@ -1070,48 +1215,47 @@ TOPIC: ${topicName}
 LANGUAGE: ${language}
 TOTAL TEXT/SHAPE/TABLE ELEMENTS: ${textShapeTableElements.length}
 
-ELEMENTS TO FILL (you must fill ALL ${textShapeTableElements.length} elements):
+${layoutVisualization}
+
+📍 ELEMENT LAYOUT & POSITIONING GUIDE:
 ${textShapeTableElements
-  .map(
-    (el: any, i: number) =>
-      `
+  .map((el: any, i: number) => {
+    const positionDesc = getPositionDescription(el, textShapeTableElements);
+    return `
 ${i + 1}. Element [${el.index}] - ${el.type.toUpperCase()}
-   Size: ${el.width} x ${el.height}
-   Position: (${el.left}, ${el.top})
-   Font Size: ${el.fontSize}px
-   ⚠️ MAX CHARACTERS: ${el.maxCharacters} (guideline - font will auto-adjust)
-   Current: "${el.currentContent || "EMPTY - FILL THIS"}"
+   ┌─ LOCATION: ${positionDesc}
+   ├─ SIZE: ${el.width}px wide × ${el.height}px high
+   ├─ EXACT POSITION: Top=${el.top}px, Left=${el.left}px
+   ├─ FONT SIZE: ${el.fontSize}px
+   ├─ MAX CHARACTERS: ${el.maxCharacters} (auto-adjust if needed)
+   ├─ CURRENT CONTENT: "${el.currentContent || "❌ EMPTY - FILL THIS"}"
    ${
      el.type === "table"
-       ? `Table Data: ${JSON.stringify(el.tableData) || "EMPTY"}`
+       ? `├─ TABLE STRUCTURE: ${JSON.stringify(el.tableData) || "Empty"}\n   `
        : ""
-   }
-   ${
+   }├─ CONTENT ROLE: ${
      el.top < 100 && el.width > 500
-       ? ">>> LIKELY MAIN TITLE (Use the translated term for 'References')"
-       : ""
+       ? "🎯 MAIN TITLE (Translate 'References')"
+       : el.height > 300
+       ? `📝 BODY CONTENT (Place ${count} references here)`
+       : el.width < 200 && el.height < 100
+       ? "🏷️ LABEL"
+       : "📌 GENERAL"
    }
-   ${
-     el.height > 300
-       ? `>>> LIKELY BODY CONTENT (Use this for the complete, numbered list of ${count} references)`
-       : ""
-   }
-   ${el.width < 200 && el.height < 100 ? ">>> LIKELY LABEL" : ""}
-   ${el.type === "table" ? ">>> TABLE - GENERATE ROWS AND COLUMNS" : ""}`
-  )
+   └─ INSTRUCTION: ${el.type === "table" ? "Generate table rows" : "Academic references"}`;
+  })
   .join("\n")}
 
 MANDATORY TASK:
-1. Generate content for ALL ${textShapeTableElements.length} elements above.
-2. ⚠️ Each element MUST have UNIQUE content - NO DUPLICATES!
-3. Match content to outline topic: "${topicName}".
-4. Consider size and position for content style.
-5. For table elements, generate appropriate tableData with rows.
-6. Write in ${language} language.
-7. Stay close to maxCharacters limit (slight overflow is OK)
-8. Return content for EVERY element (slideId: "${
-          slide.id
-        }", elements: array of ${textShapeTableElements.length} items).
+1. ✅ Generate content for ALL ${textShapeTableElements.length} elements (refer to layout visualization)
+2. 🔴 CRITICAL: Each element MUST have UNIQUE content - NO DUPLICATES!
+3. 📍 Use position descriptions to understand WHERE each element sits
+4. 📚 Create ${count} academic references for: "${topicName}"
+5. 📏 Respect element size/position for style (titles vs body vs labels)
+6. 📄 Stay within maxCharacters guideline (slight overflow OK)
+7. 📊 For table elements, generate proper rows and column data
+8. 🌐 Write ALL content in ${language} language
+9. ✔️ Return content for EVERY element (total: ${textShapeTableElements.length} items).
 `,
       },
     ],
@@ -1127,7 +1271,7 @@ MANDATORY TASK:
 
   const raw = completion.choices[0].message.content ?? "{}";
 
-  const generatedData = JSON.parse(raw);
+  const generatedData = safeParseJSON(raw);
 
   const filledCount = generatedData.elements?.length || 0;
   const expectedCount = textShapeTableElements.length;
@@ -1201,6 +1345,10 @@ export const generateThankYouSlide = async (
       (el: any) =>
         el.type === "text" || el.type === "shape" || el.type === "table"
     );
+
+  // Create layout visualization
+  const layoutVisualization = createLayoutVisualization(textShapeTableElements);
+
   const contentSchema = {
     type: "object",
     properties: {
@@ -1232,16 +1380,65 @@ export const generateThankYouSlide = async (
   };
 
   const completion = await client.chat.completions.create({
-    model: "gpt-4o-mini",
+    model: "gpt-4o",
     messages: [
       {
         role: "system",
-        content: `Generate a thank you slide for the topic: **${topicName}**. The slide should be written entirely in **${language}**.
+        content: `You are a professional presentation content writer creating a thank you slide.
+
+Generate a thank you slide for the topic: **${topicName}**. The slide should be written entirely in **${language}**.
 
 **CRITICAL INSTRUCTION**: Ensure the main title or a prominent element on the slide contains the phrase for "Thank you for your attention" or "Thank you for listening" translated into the **${language}** language. For example, if the language is Uzbek, use "Etiboringiz uchun rahmat".
 
-Try to stay within maxCharacters limits (slight overflow is OK - font will auto-adjust)
-⚠️ Each element MUST have UNIQUE content - NO DUPLICATES!`,
+**IMPORTANT**:
+- Try to stay within maxCharacters limits (slight overflow is OK - font will auto-adjust)
+- Each element MUST have UNIQUE content - NO DUPLICATES!
+- Understand element positioning from the provided layout visualization
+- Use position descriptions to create appropriate content for each location`,
+      },
+      {
+        role: "user",
+        content: `SLIDE ID: ${slide.id}
+TOPIC: ${topicName}
+LANGUAGE: ${language}
+TOTAL TEXT/SHAPE/TABLE ELEMENTS: ${textShapeTableElements.length}
+
+${layoutVisualization}
+
+📍 ELEMENT LAYOUT & POSITIONING GUIDE:
+${textShapeTableElements
+  .map((el: any, i: number) => {
+    const positionDesc = getPositionDescription(el, textShapeTableElements);
+    return `
+${i + 1}. Element [${el.index}] - ${el.type.toUpperCase()}
+   ┌─ LOCATION: ${positionDesc}
+   ├─ SIZE: ${el.width}px wide × ${el.height}px high
+   ├─ EXACT POSITION: Top=${el.top}px, Left=${el.left}px
+   ├─ FONT SIZE: ${el.fontSize}px
+   ├─ MAX CHARACTERS: ${el.maxCharacters} (auto-adjust if needed)
+   ├─ CURRENT CONTENT: "${el.currentContent || "❌ EMPTY - FILL THIS"}"
+   ├─ CONTENT ROLE: ${
+     el.top < 100 && el.width > 500
+       ? "🎯 MAIN TITLE (Use 'Thank You' phrase)"
+       : el.height > 300
+       ? "📝 BODY CONTENT - Complementary text"
+       : el.width < 200 && el.height < 100
+       ? "🏷️ LABEL"
+       : "📌 GENERAL"
+   }
+   └─ INSTRUCTION: Generate thank you slide content`;
+  })
+  .join("\n")}
+
+MANDATORY TASK:
+1. ✅ Generate content for ALL ${textShapeTableElements.length} elements (refer to layout visualization)
+2. 🔴 CRITICAL: Each element MUST have UNIQUE content - NO DUPLICATES!
+3. 📍 Use position descriptions to understand WHERE each element sits
+4. 🙏 Include "Thank you" phrase in ${language} for main title
+5. 📏 Respect element size/position for style (titles vs body vs labels)
+6. 📄 Stay within maxCharacters guideline (slight overflow OK)
+7. 🌐 Write ALL content in ${language} language
+8. ✔️ Return content for EVERY element (total: ${textShapeTableElements.length} items)`,
       },
     ],
     response_format: {
@@ -1256,7 +1453,7 @@ Try to stay within maxCharacters limits (slight overflow is OK - font will auto-
 
   const raw = completion.choices[0].message.content ?? "{}";
 
-  const generatedData = JSON.parse(raw);
+  const generatedData = safeParseJSON(raw);
 
   const filledCount = generatedData.elements?.length || 0;
   const expectedCount = textShapeTableElements.length;

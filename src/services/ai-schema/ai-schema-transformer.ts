@@ -11,7 +11,6 @@
  * This transforms boring templates into visually stunning presentations!
  */
 
-import OpenAI from "openai";
 import * as dotenv from "dotenv";
 import {
   CreativeLayoutAnalyzer,
@@ -19,6 +18,7 @@ import {
   type LayoutAnalysis,
   type CreativeInsights
 } from "./creative-layout-analyzer";
+import { getOpenAIService, OpenAIService } from "../openai";
 
 dotenv.config();
 
@@ -53,7 +53,7 @@ export interface TransformOptions {
 }
 
 export class AISchemaTransformer {
-  private openai: OpenAI;
+  private openaiService: OpenAIService;
   private analyzer: CreativeLayoutAnalyzer;
   private slideWidth: number;
   private slideHeight: number;
@@ -93,12 +93,7 @@ export class AISchemaTransformer {
   ];
 
   constructor(slideWidth: number = 1920, slideHeight: number = 1080) {
-    const apiKey = process.env.OPENAI_API_KEY;
-    if (!apiKey) {
-      throw new Error("OPENAI_API_KEY is required");
-    }
-
-    this.openai = new OpenAI({ apiKey });
+    this.openaiService = getOpenAIService();
     this.analyzer = new CreativeLayoutAnalyzer(slideWidth, slideHeight);
     this.slideWidth = slideWidth;
     this.slideHeight = slideHeight;
@@ -186,7 +181,7 @@ export class AISchemaTransformer {
     );
 
     try {
-      const response = await this.openai.chat.completions.create({
+      const result = await this.openaiService.createJsonCompletion({
         model: "gpt-4o",
         messages: [
           {
@@ -208,17 +203,9 @@ You make bold, creative decisions that dramatically improve visual impact while 
             content: prompt
           }
         ],
-        response_format: { type: "json_object" },
         temperature: 0.7 + (creativityLevel * 0.3), // 0.7-1.0 range
-        max_tokens: 4000
+        maxTokens: 4000
       });
-
-      const content = response.choices[0].message.content;
-      if (!content) {
-        throw new Error("No response from AI");
-      }
-
-      const result = JSON.parse(content);
       const transformed = this.applyAITransformations(elements, result.transformations, maxChanges);
 
       console.log(`   ✓ AI generated ${result.transformations.length} transformations`);

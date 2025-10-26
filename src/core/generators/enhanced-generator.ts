@@ -3,7 +3,6 @@
  * Uses the new resilient, quality-validated, and optimized generation pipeline
  */
 
-import OpenAI from "openai";
 import fs from "fs";
 import dotenv from "dotenv";
 dotenv.config();
@@ -11,8 +10,9 @@ dotenv.config();
 import { OutlineSchema, OutlineResponse } from "../processors/schema-processor";
 import { IntegratedSlideGenerator } from "./integrated-generator";
 import { EnhancedLogger, LogLevel } from "../../lib/logger";
+import { getOpenAIService } from "../../services/openai";
 
-const client = new OpenAI({ apiKey: process.env.OPENAI_API_KEY });
+const openaiService = getOpenAIService();
 const logger = new EnhancedLogger(LogLevel.INFO);
 
 // Initialize integrated generator
@@ -283,8 +283,8 @@ export const generateConculation = async (
     additionalProperties: false,
   };
 
-  const completion = await client.chat.completions.create({
-    model: "gpt-4o-mini",
+  const completion = await openaiService.getClient().chat.completions.create({
+    model: "gpt-4o",
     messages: [
       {
         role: "system",
@@ -373,8 +373,8 @@ export const generateReferences = async (
     additionalProperties: false,
   };
 
-  const completion = await client.chat.completions.create({
-    model: "gpt-4o-mini",
+  const completion = await openaiService.getClient().chat.completions.create({
+    model: "gpt-4o",
     messages: [
       {
         role: "system",
@@ -462,8 +462,8 @@ export const generateThankYouSlide = async (
     additionalProperties: false,
   };
 
-  const completion = await client.chat.completions.create({
-    model: "gpt-4o-mini",
+  const completion = await openaiService.getClient().chat.completions.create({
+    model: "gpt-4o",
     messages: [
       {
         role: "system",

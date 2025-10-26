@@ -1,8 +1,8 @@
-import OpenAI from "openai";
 import dotenv from "dotenv";
+import { getOpenAIService } from "../../openai";
 dotenv.config();
 
-const openai = new OpenAI({ apiKey: process.env.OPENAI_API_KEY });
+const openaiService = getOpenAIService();
 
 /**
  * Represents the placement information for outline elements on a slide
@@ -79,8 +79,8 @@ Return JSON:
   "reasoning": "<brief>"
 }`;
 
-    const response = await openai.chat.completions.create({
-      model: 'gpt-4o-mini',
+    const result = await openaiService.createJsonCompletion({
+      model: 'gpt-4o',
       messages: [
         {
           role: 'system',
@@ -91,12 +91,9 @@ Return JSON:
           content: prompt,
         },
       ],
-      response_format: { type: 'json_object' },
       temperature: 0.2,
-      max_tokens: 300,
+      maxTokens: 300,
     });
-
-    const result = JSON.parse(response.choices[0].message.content || '{}');
 
     // Validate the response
     const placement: OutlinePlacement = {

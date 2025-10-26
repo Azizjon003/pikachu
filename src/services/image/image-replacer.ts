@@ -2,7 +2,7 @@ import * as fs from 'fs';
 import * as path from 'path';
 import axios from 'axios';
 import BingLinks from './image-search';
-import OpenAI from 'openai';
+import { getOpenAIService, OpenAIService } from '../openai';
 import dotenv from 'dotenv';
 dotenv.config();
 
@@ -60,7 +60,7 @@ class ImageReplacerService {
   private schemaPath: string;
   private imageBaseDir: string;
   private verbose: boolean;
-  private openai: OpenAI;
+  private openaiService: OpenAIService;
   private usedImageUrls: Set<string> = new Set();
 
   constructor(
@@ -72,12 +72,8 @@ class ImageReplacerService {
     this.imageBaseDir = path.resolve(imageBaseDir);
     this.verbose = verbose;
 
-    // Initialize OpenAI client
-    const openaiKey = process.env.OPENAI_API_KEY;
-    if (!openaiKey) {
-      throw new Error('OPENAI_API_KEY is required in environment variables');
-    }
-    this.openai = new OpenAI({ apiKey: openaiKey });
+    // Initialize OpenAI service
+    this.openaiService = getOpenAIService();
   }
 
   /**
@@ -213,8 +209,8 @@ class ImageReplacerService {
     try {
       this.log(`  Translating: "${text.substring(0, 80)}..."`, 'info');
 
-      const response = await this.openai.chat.completions.create({
-        model: 'gpt-4o-mini',
+      const response = await this.openaiService.createChatCompletion({
+        model: 'gpt-4o',
         messages: [
           {
             role: 'system',
@@ -229,7 +225,7 @@ class ImageReplacerService {
         max_tokens: 50
       });
 
-      const englishKeywords = response.choices[0].message.content?.trim() || '';
+      const englishKeywords = response.content?.trim() || '';
 
       if (englishKeywords) {
         this.log(`  ✓ English keywords: "${englishKeywords}"`, 'success');

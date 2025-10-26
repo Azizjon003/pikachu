@@ -335,7 +335,7 @@ export const generateContent = async (
   // Helper: completion call
   async function callOnce(): Promise<GeneratedPayload> {
     const completion = await client.chat.completions.create({
-      model: "gpt-4o-mini",
+      model: "gpt-4o",
       messages,
       response_format: {
         type: "json_schema",
@@ -406,7 +406,7 @@ export const generateContent = async (
       const repairMessages = [...messages, repairUser];
 
       const repair = await client.chat.completions.create({
-        model: "gpt-4o-mini",
+        model: "gpt-4o",
         messages: repairMessages,
         response_format: {
           type: "json_schema",

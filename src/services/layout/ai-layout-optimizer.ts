@@ -5,7 +5,6 @@
  * Uses AI to make smart decisions about repositioning, resizing, and reformatting
  */
 
-import OpenAI from "openai";
 import dotenv from "dotenv";
 import {
   TextOverlapDetector,
@@ -15,6 +14,7 @@ import {
   type BoundaryIssue,
   type BoundingBox,
 } from "./text-overlap-detector";
+import { getOpenAIService, OpenAIService } from "../openai";
 
 dotenv.config();
 
@@ -60,7 +60,7 @@ interface AILayoutDecision {
 }
 
 export class AITextLayoutOptimizer {
-  private openai: OpenAI;
+  private openaiService: OpenAIService;
   private detector: TextOverlapDetector;
   private maxIterations: number = 3;
   private slideWidth: number;
@@ -71,12 +71,7 @@ export class AITextLayoutOptimizer {
     slideHeight: number = 1080,
     openaiApiKey?: string
   ) {
-    const apiKey = openaiApiKey || process.env.OPENAI_API_KEY;
-    if (!apiKey) {
-      throw new Error("OPENAI_API_KEY is required");
-    }
-
-    this.openai = new OpenAI({ apiKey });
+    this.openaiService = getOpenAIService();
     this.detector = new TextOverlapDetector(slideWidth, slideHeight);
     this.slideWidth = slideWidth;
     this.slideHeight = slideHeight;
@@ -305,8 +300,8 @@ Return JSON with this EXACT structure:
 IMPORTANT: Provide AT LEAST one fix for each critical issue. Return valid JSON only.`;
 
     try {
-      const response = await this.openai.chat.completions.create({
-        model: "gpt-4o-mini",
+      const result: AILayoutDecision = await this.openaiService.createJsonCompletion({
+        model: "gpt-4o",
         messages: [
           {
             role: "system",
@@ -319,13 +314,8 @@ IMPORTANT: Provide AT LEAST one fix for each critical issue. Return valid JSON o
           },
         ],
         temperature: 0.3,
-        response_format: { type: "json_object" },
-        max_tokens: 2000,
+        maxTokens: 2000,
       });
-
-      const result: AILayoutDecision = JSON.parse(
-        response.choices[0].message.content || "{}"
-      );
 
       console.log(`   🎯 AI Strategy: ${result.strategy}`);
       console.log(`   📊 Expected Improvement: ${result.expectedImprovement}%`);

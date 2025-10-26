@@ -1,5 +1,5 @@
-import OpenAI from 'openai';
 import dotenv from 'dotenv';
+import { getOpenAIService, OpenAIService } from '../openai';
 
 dotenv.config();
 
@@ -64,14 +64,10 @@ export interface BatchValidationResult {
 }
 
 export class TextPlacementValidator {
-  private openai: OpenAI;
+  private openaiService: OpenAIService;
 
   constructor(openaiApiKey?: string) {
-    const apiKey = openaiApiKey || process.env.OPENAI_API_KEY;
-    if (!apiKey) {
-      throw new Error('OPENAI_API_KEY is required');
-    }
-    this.openai = new OpenAI({ apiKey });
+    this.openaiService = getOpenAIService();
   }
 
   /**
@@ -376,8 +372,8 @@ Provide a JSON response with:
 
 Return only valid JSON.`;
 
-      const response = await this.openai.chat.completions.create({
-        model: 'gpt-4o-mini',
+      const response = await this.openaiService.getClient().chat.completions.create({
+        model: 'gpt-4o',
         messages: [
           {
             role: 'system',

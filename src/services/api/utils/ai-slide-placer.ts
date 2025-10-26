@@ -5,8 +5,8 @@
  * Handles title page, outline page, conclusion, references, and thank you slides
  */
 
-import OpenAI from 'openai';
 import dotenv from 'dotenv';
+import { getOpenAIService, OpenAIService } from '../../openai';
 
 dotenv.config();
 
@@ -35,15 +35,38 @@ interface PlacementResult {
   reasoning: string;
 }
 
+/**
+ * Safely parse JSON response that may be wrapped in markdown code blocks
+ * Handles formats like: ```json { ... } ``` or ``` { ... } ```
+ */
+function safeParseJSON(content: string): any {
+  if (!content) return {};
+
+  let jsonString = content.trim();
+
+  // Remove markdown code block wrappers
+  // Match ```json or ``` at start
+  jsonString = jsonString.replace(/^```(?:json)?\s*/, '');
+  // Match ``` at end
+  jsonString = jsonString.replace(/\s*```$/, '');
+
+  // Trim whitespace again after removing code blocks
+  jsonString = jsonString.trim();
+
+  try {
+    return JSON.parse(jsonString);
+  } catch (error) {
+    console.error('Failed to parse JSON:', error);
+    console.error('Attempted to parse:', jsonString.substring(0, 100));
+    return {};
+  }
+}
+
 export class AISlidePlacer {
-  private openai: OpenAI;
+  private openaiService: OpenAIService;
 
   constructor(apiKey?: string) {
-    const key = apiKey || process.env.OPENAI_API_KEY;
-    if (!key) {
-      throw new Error('OPENAI_API_KEY is required');
-    }
-    this.openai = new OpenAI({ apiKey: key });
+    this.openaiService = getOpenAIService();
   }
 
   /**
@@ -125,8 +148,8 @@ Return ONLY this JSON structure (no markdown, no explanations):
 }`;
 
     try {
-      const response = await this.openai.chat.completions.create({
-        model: 'gpt-4o-mini',
+      const response = await this.openaiService.createChatCompletion({
+        model: 'gpt-4o',
         messages: [
           {
             role: 'system',
@@ -141,7 +164,7 @@ Return ONLY this JSON structure (no markdown, no explanations):
         response_format: { type: 'json_object' }
       });
 
-      const result = JSON.parse(response.choices[0].message.content || '{}');
+      const result = safeParseJSON(response.content || '{}');
 
       console.log(`  ✅ AI detected title element: ${result.title.elementIndex} (confidence: ${(result.title.confidence * 100).toFixed(0)}%)`);
       console.log(`  ✅ AI detected author element: ${result.author.elementIndex} (confidence: ${(result.author.confidence * 100).toFixed(0)}%)`);
@@ -244,8 +267,8 @@ Return ONLY this JSON structure (no markdown, no explanations):
 }`;
 
     try {
-      const response = await this.openai.chat.completions.create({
-        model: 'gpt-4o-mini',
+      const response = await this.openaiService.createChatCompletion({
+        model: 'gpt-4o',
         messages: [
           {
             role: 'system',
@@ -260,7 +283,7 @@ Return ONLY this JSON structure (no markdown, no explanations):
         response_format: { type: 'json_object' }
       });
 
-      const result = JSON.parse(response.choices[0].message.content || '{}');
+      const result = safeParseJSON(response.content || '{}');
 
       console.log(`  ✅ AI detected header element: ${result.header.elementIndex} (${result.header.reasoning})`);
       result.items.forEach((item: any, i: number) => {
@@ -342,8 +365,8 @@ Return JSON with this EXACT structure:
 }`;
 
     try {
-      const response = await this.openai.chat.completions.create({
-        model: 'gpt-4o-mini',
+      const response = await this.openaiService.createChatCompletion({
+        model: 'gpt-4o',
         messages: [
           {
             role: 'system',
@@ -358,7 +381,7 @@ Return JSON with this EXACT structure:
         response_format: { type: 'json_object' }
       });
 
-      const result = JSON.parse(response.choices[0].message.content || '{}');
+      const result = safeParseJSON(response.content || '{}');
 
       result.placements.forEach((placement: any) => {
         console.log(`  ✅ AI placed ${placement.type} at element ${placement.elementIndex}: "${placement.content.substring(0, 50)}..."`);
@@ -479,8 +502,8 @@ Example reference formats:
 - Web: "Veb sayt manzili. https://example.uz (Murojaat sanasi: 15.01.2024)"`;
 
     try {
-      const response = await this.openai.chat.completions.create({
-        model: 'gpt-4o-mini',
+      const response = await this.openaiService.createChatCompletion({
+        model: 'gpt-4o',
         messages: [
           {
             role: 'system',
@@ -495,7 +518,7 @@ Example reference formats:
         response_format: { type: 'json_object' }
       });
 
-      const result = JSON.parse(response.choices[0].message.content || '{}');
+      const result = safeParseJSON(response.content || '{}');
 
       result.placements.forEach((placement: any) => {
         const preview = placement.type === 'title'
@@ -570,8 +593,8 @@ Return JSON with this EXACT structure:
 }`;
 
     try {
-      const response = await this.openai.chat.completions.create({
-        model: 'gpt-4o-mini',
+      const response = await this.openaiService.createChatCompletion({
+        model: 'gpt-4o',
         messages: [
           {
             role: 'system',
@@ -586,7 +609,7 @@ Return JSON with this EXACT structure:
         response_format: { type: 'json_object' }
       });
 
-      const result = JSON.parse(response.choices[0].message.content || '{}');
+      const result = safeParseJSON(response.content || '{}');
 
       result.placements.forEach((placement: any) => {
         console.log(`  ✅ AI placed ${placement.type} message at element ${placement.elementIndex}: "${placement.content}"`);

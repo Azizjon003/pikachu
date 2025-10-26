@@ -1,6 +1,6 @@
-import OpenAI from "openai";
 import axios from "axios";
 import * as crypto from "crypto";
+import { getOpenAIService, OpenAIService } from "../openai";
 
 /**
  * Advanced AI Image Agent
@@ -66,7 +66,7 @@ export interface ImageUsageRecord {
 }
 
 export class AIImageAgent {
-  private openai: OpenAI;
+  private openaiService: OpenAIService;
   private bingApiKey: string;
   private imageUsageHistory: Map<string, ImageUsageRecord[]>;
   private sessionContext: Map<string, any>;
@@ -75,7 +75,7 @@ export class AIImageAgent {
   private minRelevanceThreshold: number = 0.7;
 
   constructor(openaiApiKey: string, bingApiKey: string) {
-    this.openai = new OpenAI({ apiKey: openaiApiKey });
+    this.openaiService = getOpenAIService();
     this.bingApiKey = bingApiKey;
     this.imageUsageHistory = new Map();
     this.sessionContext = new Map();
@@ -230,8 +230,8 @@ For each strategy, provide:
 Return as JSON array.`;
 
     try {
-      const response = await this.openai.chat.completions.create({
-        model: "gpt-4o-mini",
+      const result = await this.openaiService.createChatCompletion({
+        model: "gpt-4o",
         messages: [
           {
             role: "system",
@@ -244,13 +244,10 @@ Return as JSON array.`;
           },
         ],
         temperature: 0.8,
-        max_tokens: 2000,
+        maxTokens: 2000,
       });
 
-      const content = response.choices[0]?.message?.content;
-      if (!content) {
-        throw new Error("No response from AI");
-      }
+      const content = result.content;
 
       // Extract JSON from response
       const jsonMatch = content.match(/\[[\s\S]*\]/);
@@ -512,8 +509,8 @@ For each image, provide:
 Return as JSON array with indices matching input.`;
 
     try {
-      const response = await this.openai.chat.completions.create({
-        model: "gpt-4o-mini",
+      const result = await this.openaiService.createChatCompletion({
+        model: "gpt-4o",
         messages: [
           {
             role: "system",
@@ -526,13 +523,10 @@ Return as JSON array with indices matching input.`;
           },
         ],
         temperature: 0.3,
-        max_tokens: 1500,
+        maxTokens: 1500,
       });
 
-      const content = response.choices[0]?.message?.content;
-      if (!content) {
-        throw new Error("No response from AI");
-      }
+      const content = result.content;
 
       const jsonMatch = content.match(/\[[\s\S]*\]/);
       if (!jsonMatch) {
