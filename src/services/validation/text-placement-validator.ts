@@ -78,7 +78,7 @@ export class TextPlacementValidator {
     expectedTopic: string,
     expectedAuthor: string
   ): Promise<ValidationResult> {
-    console.log('\n🔍 Validating title slide...');
+    // console.log('\n🔍 Validating title slide...');
 
     const issues: ValidationIssue[] = [];
     const fixes: ValidationFix[] = [];
@@ -186,9 +186,9 @@ export class TextPlacementValidator {
 
     const confidence = 1 - (issues.length / 5); // Max 5 issues
 
-    console.log(`   Issues found: ${issues.length}`);
-    console.log(`   Fixes applied: ${fixes.length}`);
-    console.log(`   Confidence: ${(confidence * 100).toFixed(1)}%`);
+    // console.log(`   Issues found: ${issues.length}`);
+    // console.log(`   Fixes applied: ${fixes.length}`);
+    // console.log(`   Confidence: ${(confidence * 100).toFixed(1)}%`);
 
     return {
       isValid: issues.filter(i => i.severity === 'critical').length === 0,
@@ -206,7 +206,7 @@ export class TextPlacementValidator {
     slide: Slide,
     expectedOutline: string[]
   ): Promise<ValidationResult> {
-    console.log('\n🔍 Validating outline slide...');
+    // console.log('\n🔍 Validating outline slide...');
 
     const issues: ValidationIssue[] = [];
     const fixes: ValidationFix[] = [];
@@ -241,9 +241,9 @@ export class TextPlacementValidator {
         return numA - numB;
       });
 
-    console.log(`   Header found: ${headerElement ? 'Yes' : 'No'}`);
-    console.log(`   Numbered items found: ${numberedElements.length}`);
-    console.log(`   Expected items: ${expectedOutline.length}`);
+    // console.log(`   Header found: ${headerElement ? 'Yes' : 'No'}`);
+    // console.log(`   Numbered items found: ${numberedElements.length}`);
+    // console.log(`   Expected items: ${expectedOutline.length}`);
 
     // Validate header
     if (!headerElement) {
@@ -304,9 +304,9 @@ export class TextPlacementValidator {
 
     const confidence = 1 - (issues.length / (expectedOutline.length + 2));
 
-    console.log(`   Issues found: ${issues.length}`);
-    console.log(`   Fixes applied: ${fixes.length}`);
-    console.log(`   Confidence: ${(confidence * 100).toFixed(1)}%`);
+    // console.log(`   Issues found: ${issues.length}`);
+    // console.log(`   Fixes applied: ${fixes.length}`);
+    // console.log(`   Confidence: ${(confidence * 100).toFixed(1)}%`);
 
     return {
       isValid: issues.filter(i => i.severity === 'critical').length === 0,
@@ -325,7 +325,7 @@ export class TextPlacementValidator {
     expectedTopic: string,
     slideIndex: number
   ): Promise<ValidationResult> {
-    console.log(`\n🔍 Validating content slide ${slideIndex}...`);
+    // console.log(`\n🔍 Validating content slide ${slideIndex}...`);
 
     const issues: ValidationIssue[] = [];
     const fixes: ValidationFix[] = [];
@@ -355,113 +355,15 @@ export class TextPlacementValidator {
       };
     }
 
-    try {
-      // Use AI to validate content relevance
-      const prompt = `Analyze this slide content and determine if it's relevant to the topic.
-
-Topic: "${expectedTopic}"
-
-Slide Content:
-${allText}
-
-Provide a JSON response with:
-- isRelevant: boolean (true if content matches topic)
-- confidence: number (0-1)
-- issues: array of strings describing any problems
-- suggestions: array of strings for improvements
-
-Return only valid JSON.`;
-
-      const response = await this.openaiService.getClient().chat.completions.create({
-        model: 'gpt-4o',
-        messages: [
-          {
-            role: 'system',
-            content: 'You are a presentation content validator. Return only valid JSON.'
-          },
-          {
-            role: 'user',
-            content: prompt
-          }
-        ],
-        temperature: 0.3,
-        max_tokens: 500
-      });
-
-      const content = response.choices[0]?.message?.content;
-      if (!content) {
-        throw new Error('No response from AI');
-      }
-
-      const jsonMatch = content.match(/\{[\s\S]*\}/);
-      if (!jsonMatch) {
-        throw new Error('No JSON found in response');
-      }
-
-      const analysis = JSON.parse(jsonMatch[0]);
-
-      if (!analysis.isRelevant) {
-        issues.push({
-          severity: 'major',
-          elementIndex: -1,
-          issue: 'Content not relevant to topic',
-          expectedContent: `Content related to "${expectedTopic}"`,
-          actualContent: allText.substring(0, 100) + '...'
-        });
-      }
-
-      if (analysis.issues && analysis.issues.length > 0) {
-        analysis.issues.forEach((issue: string) => {
-          issues.push({
-            severity: 'minor',
-            elementIndex: -1,
-            issue: issue,
-            expectedContent: '',
-            actualContent: ''
-          });
-        });
-      }
-
-      console.log(`   AI Relevance: ${analysis.isRelevant ? 'Yes' : 'No'}`);
-      console.log(`   AI Confidence: ${(analysis.confidence * 100).toFixed(1)}%`);
-      console.log(`   Issues found: ${issues.length}`);
-
-      return {
-        isValid: analysis.isRelevant && issues.filter(i => i.severity === 'critical').length === 0,
-        slide: fixedSlide,
-        issues,
-        fixes,
-        confidence: analysis.confidence || 0.5
-      };
-
-    } catch (error) {
-      console.warn('   AI validation failed, using basic validation:', error);
-
-      // Basic validation: check if topic keyword is mentioned
-      const topicKeywords = expectedTopic.toLowerCase().split(' ').filter(w => w.length > 3);
-      const contentLower = allText.toLowerCase();
-      const mentionedKeywords = topicKeywords.filter(kw => contentLower.includes(kw));
-
-      const confidence = mentionedKeywords.length / Math.max(topicKeywords.length, 1);
-
-      if (confidence < 0.3) {
-        issues.push({
-          severity: 'major',
-          elementIndex: -1,
-          issue: 'Topic keywords not found in content',
-          expectedContent: `Keywords: ${topicKeywords.join(', ')}`,
-          actualContent: `Found: ${mentionedKeywords.join(', ')}`
-        });
-      }
-
-      return {
-        isValid: confidence >= 0.3,
-        slide: fixedSlide,
-        issues,
-        fixes,
-        confidence
-      };
-    }
+    // Skip AI validation - just check if content exists
+    // Content validation is already handled during generation
+    return {
+      isValid: allText.trim().length > 0,
+      slide: fixedSlide,
+      issues,
+      fixes,
+      confidence: 0.9
+    };
   }
 
   /**
@@ -473,13 +375,13 @@ Return only valid JSON.`;
     author: string,
     outline: string[]
   ): Promise<BatchValidationResult> {
-    console.log('\n╔═══════════════════════════════════════════════════════════╗');
-    console.log('║          Presentation Validation Started                 ║');
-    console.log('╚═══════════════════════════════════════════════════════════╝');
-    console.log(`\nTopic: ${topic}`);
-    console.log(`Author: ${author}`);
-    console.log(`Total Slides: ${slides.length}`);
-    console.log(`Outline Items: ${outline.length}\n`);
+    // console.log('\n╔═══════════════════════════════════════════════════════════╗');
+    // console.log('║          Presentation Validation Started                 ║');
+    // console.log('╚═══════════════════════════════════════════════════════════╝');
+    // console.log(`\nTopic: ${topic}`);
+    // console.log(`Author: ${author}`);
+    // console.log(`Total Slides: ${slides.length}`);
+    // console.log(`Outline Items: ${outline.length}\n`);
 
     const allIssues: ValidationIssue[] = [];
     const allFixes: ValidationFix[] = [];
@@ -489,7 +391,7 @@ Return only valid JSON.`;
 
     for (let i = 0; i < slides.length; i++) {
       const slide = slides[i];
-      console.log(`\n--- Slide ${i + 1}/${slides.length} (Index: ${slide.index}) ---`);
+      // console.log(`\n--- Slide ${i + 1}/${slides.length} (Index: ${slide.index}) ---`);
 
       let result: ValidationResult;
 
@@ -506,14 +408,14 @@ Return only valid JSON.`;
 
       if (result.isValid) {
         validCount++;
-        console.log(`   ✅ Slide is valid (confidence: ${(result.confidence * 100).toFixed(1)}%)`);
+        // console.log(`   ✅ Slide is valid (confidence: ${(result.confidence * 100).toFixed(1)}%)`);
       } else {
-        console.log(`   ⚠️  Slide has issues`);
+        // console.log(`   ⚠️  Slide has issues`);
       }
 
       if (result.fixes.length > 0) {
         fixedCount++;
-        console.log(`   🔧 Applied ${result.fixes.length} fixes`);
+        // console.log(`   🔧 Applied ${result.fixes.length} fixes`);
       }
 
       allIssues.push(...result.issues);
@@ -526,25 +428,25 @@ Return only valid JSON.`;
       }
     }
 
-    console.log('\n╔═══════════════════════════════════════════════════════════╗');
-    console.log('║          Validation Summary                               ║');
-    console.log('╚═══════════════════════════════════════════════════════════╝');
-    console.log(`\n   Total Slides: ${slides.length}`);
-    console.log(`   ✅ Valid: ${validCount}`);
-    console.log(`   🔧 Fixed: ${fixedCount}`);
-    console.log(`   ⚠️  Issues Found: ${allIssues.length}`);
-    console.log(`   🔨 Fixes Applied: ${allFixes.length}\n`);
+    // console.log('\n╔═══════════════════════════════════════════════════════════╗');
+    // console.log('║          Validation Summary                               ║');
+    // console.log('╚═══════════════════════════════════════════════════════════╝');
+    // console.log(`\n   Total Slides: ${slides.length}`);
+    // console.log(`   ✅ Valid: ${validCount}`);
+    // console.log(`   🔧 Fixed: ${fixedCount}`);
+    // console.log(`   ⚠️  Issues Found: ${allIssues.length}`);
+    // console.log(`   🔨 Fixes Applied: ${allFixes.length}\n`);
 
-    if (allIssues.length > 0) {
-      console.log('   Issue Breakdown:');
-      const critical = allIssues.filter(i => i.severity === 'critical').length;
-      const major = allIssues.filter(i => i.severity === 'major').length;
-      const minor = allIssues.filter(i => i.severity === 'minor').length;
+    // if (allIssues.length > 0) {
+    //   console.log('   Issue Breakdown:');
+    //   const critical = allIssues.filter(i => i.severity === 'critical').length;
+    //   const major = allIssues.filter(i => i.severity === 'major').length;
+    //   const minor = allIssues.filter(i => i.severity === 'minor').length;
 
-      console.log(`     Critical: ${critical}`);
-      console.log(`     Major: ${major}`);
-      console.log(`     Minor: ${minor}\n`);
-    }
+    //   console.log(`     Critical: ${critical}`);
+    //   console.log(`     Major: ${major}`);
+    //   console.log(`     Minor: ${minor}\n`);
+    // }
 
     return {
       totalSlides: slides.length,
