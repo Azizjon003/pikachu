@@ -20,7 +20,11 @@
       "Bash(test:*)",
       "Bash(taskkill:*)",
       "Bash(echo:*)",
-      "Bash(printf:*)"
+      "Bash(printf:*)",
+      "Bash(find:*)",
+      "Bash(npx ts-node:*)",
+      "Bash(tsx test:*)",
+      "Bash(npx tsx:*)"
     ],
     "deny": [],
     "ask": []

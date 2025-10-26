@@ -3,3 +3,13 @@ images
 generated
 templates
 .env
+
+# TypeScript compiled files
+*.js
+*.js.map
+*.d.ts
+
+# Exclude important JS config files (if needed)
+!*.config.js
+!jest.config.js
+!webpack.config.js
