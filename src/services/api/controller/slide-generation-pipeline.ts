@@ -102,7 +102,7 @@ export class SlideGenerationPipeline {
     // ===== Step 4: Place outline slide (20-25%) =====
     progress(22, 'Placing outline slide');
     const outlineTitles = outline.outline.map((item: any) => item.title);
-    const secondSlide = await this.layoutPlacer.placeOutline(aiSchema[1], outlineTitles);
+    const secondSlide = await this.layoutPlacer.placeOutline(aiSchema[1], outlineTitles, language);
     progress(25, 'Outline slide placed');
 
     // ===== Step 5: Generate content slides with Promise.allSettled (25-55%) =====

@@ -1,36 +1,51 @@
 /**
  * Centralized JSON schemas for OpenAI structured outputs.
- * These schemas are used across multiple generators to avoid duplication.
+ * All schemas use `strict: true` compatible format.
+ *
+ * Key rules for OpenAI strict mode:
+ * - Use "integer" instead of "number" for index fields
+ * - Use "anyOf" instead of type arrays like ["object", "null"]
+ * - Every object must have "additionalProperties: false"
+ * - Every property must be in "required" array
  */
 
 /**
  * Schema for special slides (conclusion, references, thank you).
  */
-export const specialSlideContentSchema: Record<string, unknown> = {
-  type: 'object',
-  properties: {
-    slideId: { type: 'string' },
-    elements: {
-      type: 'array',
-      items: {
-        type: 'object',
-        properties: {
-          elementIndex: { type: 'number' },
-          content: { type: 'string' },
+export function createSpecialSlideSchema(elementCount: number): Record<string, unknown> {
+  return {
+    type: 'object',
+    properties: {
+      slideId: { type: 'string' },
+      elements: {
+        type: 'array',
+        items: {
+          type: 'object',
+          properties: {
+            elementIndex: { type: 'integer', description: 'Index of the element in the slide' },
+            content: { type: 'string', minLength: 1, description: 'Generated text content' },
+          },
+          required: ['elementIndex', 'content'],
+          additionalProperties: false,
         },
-        required: ['elementIndex', 'content'],
-        additionalProperties: false,
+        minItems: elementCount,
+        maxItems: elementCount,
       },
     },
-  },
-  required: ['slideId', 'elements'],
-  additionalProperties: false,
-};
+    required: ['slideId', 'elements'],
+    additionalProperties: false,
+  };
+}
 
 /**
  * Create outline JSON schema for OpenAI structured output.
  */
-export function createOutlineSchema(language: string, outlineCount: number = 3): Record<string, unknown> {
+export function createOutlineSchema(
+  language: string,
+  outlineCount: number,
+  pageCount: number,
+  availableSlides: number
+): Record<string, unknown> {
   return {
     type: 'object',
     properties: {
@@ -53,14 +68,26 @@ export function createOutlineSchema(language: string, outlineCount: number = 3):
         items: {
           type: 'object',
           properties: {
-            slideIndex: { type: 'number', description: 'Original slide index (0-based)' },
+            slideIndex: {
+              type: 'integer',
+              minimum: 0,
+              maximum: availableSlides - 1,
+              description: `Original slide index (0-based, valid range: 0 to ${availableSlides - 1})`,
+            },
             title: { type: 'string', description: `Slide title in ${language}` },
             title_eng: { type: 'string', description: 'Slide title in English' },
-            outlineIndex: { type: 'number', description: `Outline point (0-${outlineCount - 1})` },
+            outlineIndex: {
+              type: 'integer',
+              minimum: 0,
+              maximum: outlineCount - 1,
+              description: `Which outline point this slide belongs to (0 to ${outlineCount - 1})`,
+            },
           },
           required: ['slideIndex', 'title', 'title_eng', 'outlineIndex'],
           additionalProperties: false,
         },
+        minItems: pageCount,
+        maxItems: pageCount,
       },
     },
     required: ['outline', 'slides'],
@@ -73,23 +100,34 @@ export function createOutlineSchema(language: string, outlineCount: number = 3):
  */
 export function createContentSchema(
   language: string,
-  hasTable: boolean
+  hasTable: boolean,
+  elementCount: number
 ): Record<string, unknown> {
   const elementProps: Record<string, unknown> = {
-    elementIndex: { type: 'number' },
-    content: { type: 'string', description: `Generated content in ${language}` },
+    elementIndex: { type: 'integer', description: 'Index of the element in the slide' },
+    content: { type: 'string', minLength: 1, description: `Generated content in ${language}` },
   };
 
   const required = ['elementIndex', 'content'];
 
   if (hasTable) {
     elementProps.tableData = {
-      type: ['object', 'null'],
-      properties: {
-        data: { type: 'array', items: { type: 'array', items: { type: 'string' } } },
-      },
-      required: ['data'],
-      additionalProperties: false,
+      anyOf: [
+        {
+          type: 'object',
+          properties: {
+            data: {
+              type: 'array',
+              items: { type: 'array', items: { type: 'string' } },
+              minItems: 1,
+            },
+          },
+          required: ['data'],
+          additionalProperties: false,
+        },
+        { type: 'null' },
+      ],
+      description: 'Table data if this is a table element, null otherwise',
     };
     required.push('tableData');
   }
@@ -106,9 +144,81 @@ export function createContentSchema(
           required,
           additionalProperties: false,
         },
+        minItems: elementCount,
+        maxItems: elementCount,
       },
     },
     required: ['slideId', 'elements'],
+    additionalProperties: false,
+  };
+}
+
+/**
+ * Schema for title page placement (used by LayoutPlacer).
+ */
+export const titlePlacementSchema: Record<string, unknown> = {
+  type: 'object',
+  properties: {
+    title: {
+      type: 'object',
+      properties: {
+        elementIndex: { type: 'integer', description: 'Index of the title element' },
+        confidence: { type: 'number', minimum: 0, maximum: 1 },
+        reasoning: { type: 'string' },
+      },
+      required: ['elementIndex', 'confidence', 'reasoning'],
+      additionalProperties: false,
+    },
+    author: {
+      type: 'object',
+      properties: {
+        elementIndex: { type: 'integer', description: 'Index of the author element' },
+        confidence: { type: 'number', minimum: 0, maximum: 1 },
+        reasoning: { type: 'string' },
+      },
+      required: ['elementIndex', 'confidence', 'reasoning'],
+      additionalProperties: false,
+    },
+  },
+  required: ['title', 'author'],
+  additionalProperties: false,
+};
+
+/**
+ * Schema for outline placement (used by LayoutPlacer).
+ */
+export function createOutlinePlacementSchema(itemCount: number): Record<string, unknown> {
+  return {
+    type: 'object',
+    properties: {
+      header: {
+        type: 'object',
+        properties: {
+          elementIndex: { type: 'integer', description: 'Index of the header element' },
+          confidence: { type: 'number', minimum: 0, maximum: 1 },
+          reasoning: { type: 'string' },
+        },
+        required: ['elementIndex', 'confidence', 'reasoning'],
+        additionalProperties: false,
+      },
+      items: {
+        type: 'array',
+        items: {
+          type: 'object',
+          properties: {
+            elementIndex: { type: 'integer', description: 'Index of the outline item element' },
+            order: { type: 'integer', minimum: 1, maximum: itemCount },
+            confidence: { type: 'number', minimum: 0, maximum: 1 },
+            reasoning: { type: 'string' },
+          },
+          required: ['elementIndex', 'order', 'confidence', 'reasoning'],
+          additionalProperties: false,
+        },
+        minItems: itemCount,
+        maxItems: itemCount,
+      },
+    },
+    required: ['header', 'items'],
     additionalProperties: false,
   };
 }

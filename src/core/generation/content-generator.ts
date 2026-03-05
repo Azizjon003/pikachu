@@ -15,6 +15,7 @@ import {
   validateContent,
   groupBySimilarSize,
 } from '../utils/layout-helpers';
+import { createContentSchema } from '../schemas/ai-response-schemas';
 import { AISlideElement, GenerationConfig, DEFAULT_GENERATION_CONFIG } from '../types/generation';
 
 interface ContentParams {
@@ -53,7 +54,7 @@ export class ContentGenerator {
 
     // Build content schema
     const hasTable = textElements.some((el) => el.type === 'table');
-    const contentSchema = this.buildContentSchema(language, hasTable);
+    const contentSchema = createContentSchema(language, hasTable, textElements.length);
 
     const topicRef = mainTopic ? `"${mainTopic}"` : `"${outline.title || outline.title_eng}"`;
 
@@ -150,45 +151,6 @@ export class ContentGenerator {
     return context;
   }
 
-  private buildContentSchema(language: string, hasTable: boolean): Record<string, unknown> {
-    const elementProps: Record<string, any> = {
-      elementIndex: { type: 'number' },
-      content: { type: 'string', description: `Generated content in ${language} language` },
-    };
-
-    const required = ['elementIndex', 'content'];
-
-    if (hasTable) {
-      elementProps.tableData = {
-        type: ['object', 'null'],
-        properties: {
-          data: { type: 'array', items: { type: 'array', items: { type: 'string' } } },
-        },
-        required: ['data'],
-        additionalProperties: false,
-      };
-      required.push('tableData');
-    }
-
-    return {
-      type: 'object',
-      properties: {
-        slideId: { type: 'string' },
-        elements: {
-          type: 'array',
-          items: {
-            type: 'object',
-            properties: elementProps,
-            required,
-            additionalProperties: false,
-          },
-        },
-      },
-      required: ['slideId', 'elements'],
-      additionalProperties: false,
-    };
-  }
-
   private buildSystemPrompt(language: string, topicRef: string, diversityContext: string): string {
     return `You are a professional presentation content writer specialized in creating TOPIC-SPECIFIC content.
 
@@ -273,11 +235,12 @@ ELEMENTS:
 ${elementDetails}
 
 MANDATORY:
-1. Generate content for ALL ${textElements.length} elements
+1. Generate content for ALL ${textElements.length} elements — no more, no less
 2. Each element MUST have UNIQUE, DIFFERENT content
-3. Match content to topic: ${topicRef}
-4. Write ALL content in ${language} language
-5. Return content for EVERY element (total: ${textElements.length} items)`;
+3. Use the element index shown in [brackets] as elementIndex value
+4. Match content to topic: ${topicRef}
+5. Write ALL content in ${language} language
+6. Content must NOT be empty — always provide meaningful text`;
   }
 
   private mergeContentToSlide(slide: { id: string; elements: any[] }, generatedData: any): any {

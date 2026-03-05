@@ -9,7 +9,7 @@ import { AIClient } from '../ai/ai-client';
 import { EnhancedLogger, LogLevel } from '../../lib/logger';
 import { createLayoutVisualization, getPositionDescription } from '../utils/layout-helpers';
 import { AISlideElement } from '../types/generation';
-import { specialSlideContentSchema } from '../schemas/ai-response-schemas';
+import { createSpecialSlideSchema } from '../schemas/ai-response-schemas';
 
 interface SpecialSlideParams {
   slide: { id: string; elements: any[] };
@@ -34,40 +34,41 @@ export class SpecialSlideGenerator {
     const { slide, topic, language } = params;
     const textElements = this.extractTextElements(slide);
     const layoutVisualization = createLayoutVisualization(textElements as AISlideElement[]);
-    const elementGuide = this.buildElementGuide(textElements, 'conclusion');
+    const elementGuide = this.buildElementGuide(textElements, 'conclusion', language);
+    const schema = createSpecialSlideSchema(textElements.length);
 
     const result = await this.aiClient.call<{ slideId: string; elements: any[] }>({
       operationName: 'generateConclusion',
       temperature: 0.7,
       responseFormat: 'json_schema',
-      responseSchema: specialSlideContentSchema,
+      responseSchema: schema,
       messages: [
         {
           role: 'system',
-          content: `Generate a conclusion slide for the topic: "${topic}".
-The content must be a concise summary of approximately 100 to 150 words, written entirely in ${language}.
+          content: `You are a professional presentation content writer. Generate a conclusion slide for the topic: "${topic}".
 
-Requirements:
-- Title: Use the topic name as the main title in ${language}
-- Content: Provide a brief yet informative overview focusing on key takeaways
-- Structure content into clear, complete declarative sentences
-- Try to stay within maxCharacters limits (slight overflow OK - font adjusts)
-- Each element MUST have UNIQUE content - NO DUPLICATES!
-- Write ALL content in ${language} language
+TASK: Write a concise summary (100-150 words) covering the key takeaways of "${topic}".
 
-SLIDE ID: ${slide.id}
-TOPIC: ${topic}
-LANGUAGE: ${language}
-TOTAL ELEMENTS: ${textElements.length}
+LANGUAGE: Write ALL content in ${language}. Do NOT mix languages.
+
+CONTENT RULES:
+- The LARGEST element (biggest font size or biggest area) = slide title. Write the topic name "${topic}" as the title, translated into ${language}.
+- Other elements = body content. Write clear, complete declarative sentences summarizing the main points.
+- Each element MUST have UNIQUE content — NO DUPLICATES or similar text.
+- Stay within maxCharacters limits for each element (slight overflow OK — font will auto-adjust).
+- Use terminology specific to "${topic}" — avoid generic filler text.
+
+OUTPUT RULES:
+- You MUST generate content for ALL ${textElements.length} elements listed below.
+- Use the elementIndex values EXACTLY as shown in the element guide.
+- slideId must be "${slide.id}".
 
 ${layoutVisualization}
 
-${elementGuide}
-
-Generate content for ALL ${textElements.length} elements. Each must be UNIQUE.`,
+${elementGuide}`,
         },
       ],
-      fallback: () => this.buildFallback(slide.id, textElements, 'Xulosa'),
+      fallback: () => this.buildFallback(slide.id, textElements, this.translate('conclusion', language), language),
     });
 
     this.logger.info('Conclusion slide generated', {
@@ -82,48 +83,50 @@ Generate content for ALL ${textElements.length} elements. Each must be UNIQUE.`,
     const { slide, topic, language, count = 5 } = params;
     const textElements = this.extractTextElements(slide);
     const layoutVisualization = createLayoutVisualization(textElements as AISlideElement[]);
-    const elementGuide = this.buildElementGuide(textElements, 'references');
+    const elementGuide = this.buildElementGuide(textElements, 'references', language);
+    const schema = createSpecialSlideSchema(textElements.length);
 
     const result = await this.aiClient.call<{ slideId: string; elements: any[] }>({
       operationName: 'generateReferences',
       temperature: 0.7,
       responseFormat: 'json_schema',
-      responseSchema: specialSlideContentSchema,
+      responseSchema: schema,
       messages: [
         {
           role: 'system',
-          content: `Generate ${count} academic literature references for the topic: "${topic}".
-All content must be written in ${language}.
+          content: `You are a professional academic reference generator. Generate ${count} realistic academic literature references for the topic: "${topic}".
 
-Requirements:
-- Main Title: Translate "References" into ${language} for the title element
-- Generate ${count} realistic academic references about "${topic}"
+LANGUAGE: Write ALL content in ${language}. Do NOT mix languages.
+
+CONTENT RULES:
+- The LARGEST element (biggest font size or biggest area) = slide title. Translate "References" into ${language} (e.g., Uzbek: "Foydalanilgan adabiyotlar", Russian: "Список литературы", English: "References").
+- The LARGEST body element = place ALL ${count} references here as a numbered list.
+- Other smaller elements = relevant labels or section markers in ${language}.
+- Each element MUST have UNIQUE content.
+- Stay within maxCharacters limits (slight overflow OK).
+
+REFERENCE FORMAT:
+- Generate ${count} realistic references about "${topic}"
 - Include: author(s), title, date, publisher/journal
-- Mix of books, articles, and papers
+- Mix of books, journal articles, and conference papers
 - Alphabetical order by author's last name
-- Format as numbered list (1., 2., 3., etc.)
-- Place all references in the body content element
-- Each element MUST have UNIQUE content
-- Stay within maxCharacters limits (slight overflow OK)
+- Numbered list format: 1. Author A.A. Title. Publisher, Year.
+- Example formats:
+  * Book: "Author A.A. Title. Publisher, Year."
+  * Article: "Author A.A. Article title // Journal. Year. Vol. Pages."
+  * Web: "Author A.A. Title. URL (access date)"
 
-Reference format examples:
-- Book: "Author A.A. Title. Publisher, Year."
-- Article: "Author A.A. Article title // Journal. Year. Vol. Pages."
-- Web: "Author A.A. Title. URL (access date)"
-
-SLIDE ID: ${slide.id}
-TOPIC: ${topic}
-LANGUAGE: ${language}
-TOTAL ELEMENTS: ${textElements.length}
+OUTPUT RULES:
+- Generate content for ALL ${textElements.length} elements.
+- Use the elementIndex values EXACTLY as shown.
+- slideId must be "${slide.id}".
 
 ${layoutVisualization}
 
-${elementGuide}
-
-Generate content for ALL ${textElements.length} elements. Each must be UNIQUE.`,
+${elementGuide}`,
         },
       ],
-      fallback: () => this.buildFallback(slide.id, textElements, 'Foydalanilgan adabiyotlar'),
+      fallback: () => this.buildFallback(slide.id, textElements, this.translate('references', language), language),
     });
 
     this.logger.info('References slide generated', {
@@ -139,42 +142,38 @@ Generate content for ALL ${textElements.length} elements. Each must be UNIQUE.`,
     const { slide, topic, language } = params;
     const textElements = this.extractTextElements(slide);
     const layoutVisualization = createLayoutVisualization(textElements as AISlideElement[]);
-    const elementGuide = this.buildElementGuide(textElements, 'thankyou');
+    const elementGuide = this.buildElementGuide(textElements, 'thankyou', language);
+    const schema = createSpecialSlideSchema(textElements.length);
 
     const result = await this.aiClient.call<{ slideId: string; elements: any[] }>({
       operationName: 'generateThankYou',
       temperature: 0.5,
       responseFormat: 'json_schema',
-      responseSchema: specialSlideContentSchema,
+      responseSchema: schema,
       messages: [
         {
           role: 'system',
-          content: `Generate a thank you slide for: "${topic}".
-Written entirely in ${language}.
+          content: `You are a professional presentation content writer. Generate a "Thank You" slide for: "${topic}".
 
-CRITICAL: The main/largest element must contain "Thank you for your attention" translated into ${language}.
-For example, if Uzbek: "E'tiboringiz uchun rahmat!"
+LANGUAGE: Write ALL content in ${language}. Do NOT mix languages.
 
-Requirements:
-- Main element: Thank you phrase in ${language}
-- Other elements: supportive text (contact info, Q&A invitation, etc.)
-- Each element MUST have UNIQUE content
-- Stay within maxCharacters limits
-- Write ALL content in ${language}
+CONTENT RULES:
+- The LARGEST element (biggest font size or biggest area) = main thank you phrase. Translate "Thank you for your attention!" into ${language} (e.g., Uzbek: "E'tiboringiz uchun rahmat!", Russian: "Спасибо за внимание!", English: "Thank you for your attention!").
+- Other elements = supportive text: contact info placeholders, Q&A invitation, topic summary phrase, etc.
+- Each element MUST have UNIQUE content.
+- Stay within maxCharacters limits.
 
-SLIDE ID: ${slide.id}
-TOPIC: ${topic}
-LANGUAGE: ${language}
-TOTAL ELEMENTS: ${textElements.length}
+OUTPUT RULES:
+- Generate content for ALL ${textElements.length} elements.
+- Use the elementIndex values EXACTLY as shown.
+- slideId must be "${slide.id}".
 
 ${layoutVisualization}
 
-${elementGuide}
-
-Generate content for ALL ${textElements.length} elements. Each must be UNIQUE.`,
+${elementGuide}`,
         },
       ],
-      fallback: () => this.buildFallback(slide.id, textElements, "E'tiboringiz uchun rahmat!"),
+      fallback: () => this.buildFallback(slide.id, textElements, this.translate('thankyou', language), language),
     });
 
     this.logger.info('Thank you slide generated', {
@@ -206,33 +205,40 @@ Generate content for ALL ${textElements.length} elements. Each must be UNIQUE.`,
       );
   }
 
-  private buildElementGuide(textElements: any[], slideType: string): string {
-    return `ELEMENT LAYOUT & POSITIONING GUIDE:
+  private buildElementGuide(textElements: any[], slideType: string, language: string): string {
+    return `ELEMENT GUIDE (${textElements.length} elements):
 ${textElements
   .map((el: any, i: number) => {
     const positionDesc = getPositionDescription(el as AISlideElement, textElements as AISlideElement[]);
-    const contentRole =
-      el.top < 100 && el.width > 500
-        ? slideType === 'references'
-          ? "MAIN TITLE (Translate 'References')"
-          : slideType === 'thankyou'
-          ? "MAIN TITLE (Use 'Thank You' phrase)"
-          : 'MAIN TITLE'
-        : el.height > 300
-        ? slideType === 'references'
-          ? 'BODY CONTENT (Place all references here)'
-          : 'BODY CONTENT'
-        : el.width < 200 && el.height < 100
-        ? 'LABEL'
-        : 'GENERAL';
+    const area = el.width * el.height;
+    const isLargestFont = el.fontSize >= Math.max(...textElements.map((e: any) => e.fontSize));
+    const isLargestArea = area >= Math.max(...textElements.map((e: any) => (e.width || 0) * (e.height || 0)));
 
-    return `${i + 1}. Element [${el.index}] - ${el.type.toUpperCase()}
-   LOCATION: ${positionDesc}
-   SIZE: ${el.width}px x ${el.height}px
-   POSITION: Top=${el.top}px, Left=${el.left}px
-   FONT SIZE: ${el.fontSize}px
-   MAX CHARACTERS: ${el.maxCharacters}
-   CONTENT ROLE: ${contentRole}`;
+    let contentRole: string;
+    if (isLargestFont || (el.top < 100 && el.width > 500)) {
+      if (slideType === 'references') {
+        contentRole = `TITLE — translate "References" into ${language}`;
+      } else if (slideType === 'thankyou') {
+        contentRole = `MAIN — translate "Thank you for your attention!" into ${language}`;
+      } else {
+        contentRole = `TITLE — write the topic name in ${language}`;
+      }
+    } else if (isLargestArea || el.height > 300) {
+      if (slideType === 'references') {
+        contentRole = 'BODY — place ALL numbered references here';
+      } else {
+        contentRole = 'BODY — main content text';
+      }
+    } else if (el.width < 200 && el.height < 100) {
+      contentRole = `LABEL — short label in ${language}`;
+    } else {
+      contentRole = `CONTENT — supporting text in ${language}`;
+    }
+
+    return `  Element [${el.index}] (elementIndex: ${el.index}) — ${el.type.toUpperCase()}
+    Location: ${positionDesc}
+    Size: ${el.width}px × ${el.height}px | Font: ${el.fontSize}px | Max chars: ${el.maxCharacters}
+    Role: ${contentRole}`;
   })
   .join('\n\n')}`;
   }
@@ -257,12 +263,65 @@ ${textElements
     };
   }
 
-  private buildFallback(slideId: string, textElements: any[], defaultTitle: string): any {
+  /**
+   * Translate default slide titles based on language
+   */
+  private translate(key: 'conclusion' | 'references' | 'thankyou', language: string): string {
+    const lang = language.toLowerCase();
+    const translations: Record<string, Record<string, string>> = {
+      conclusion: {
+        uzbek: 'Xulosa', uz: 'Xulosa',
+        russian: 'Заключение', ru: 'Заключение',
+        english: 'Conclusion', en: 'Conclusion',
+        kazakh: 'Қорытынды', kk: 'Қорытынды',
+        turkish: 'Sonuç', tr: 'Sonuç',
+        korean: '결론', ko: '결론',
+        chinese: '结论', zh: '结论',
+        japanese: '結論', ja: '結論',
+        german: 'Fazit', de: 'Fazit',
+        french: 'Conclusion', fr: 'Conclusion',
+        spanish: 'Conclusión', es: 'Conclusión',
+        arabic: 'الخلاصة', ar: 'الخلاصة',
+      },
+      references: {
+        uzbek: 'Foydalanilgan adabiyotlar', uz: 'Foydalanilgan adabiyotlar',
+        russian: 'Список литературы', ru: 'Список литературы',
+        english: 'References', en: 'References',
+        kazakh: 'Әдебиеттер тізімі', kk: 'Әдебиеттер тізімі',
+        turkish: 'Kaynakça', tr: 'Kaynakça',
+        korean: '참고문헌', ko: '참고문헌',
+        chinese: '参考文献', zh: '参考文献',
+        japanese: '参考文献', ja: '参考文献',
+        german: 'Literaturverzeichnis', de: 'Literaturverzeichnis',
+        french: 'Références', fr: 'Références',
+        spanish: 'Referencias', es: 'Referencias',
+        arabic: 'المراجع', ar: 'المراجع',
+      },
+      thankyou: {
+        uzbek: "E'tiboringiz uchun rahmat!", uz: "E'tiboringiz uchun rahmat!",
+        russian: 'Спасибо за внимание!', ru: 'Спасибо за внимание!',
+        english: 'Thank you for your attention!', en: 'Thank you for your attention!',
+        kazakh: 'Назарларыңызға рахмет!', kk: 'Назарларыңызға рахмет!',
+        turkish: 'İlginiz için teşekkürler!', tr: 'İlginiz için teşekkürler!',
+        korean: '경청해 주셔서 감사합니다!', ko: '경청해 주셔서 감사합니다!',
+        chinese: '感谢您的关注！', zh: '感谢您的关注！',
+        japanese: 'ご清聴ありがとうございました！', ja: 'ご清聴ありがとうございました！',
+        german: 'Vielen Dank für Ihre Aufmerksamkeit!', de: 'Vielen Dank für Ihre Aufmerksamkeit!',
+        french: "Merci pour votre attention\u00A0!", fr: "Merci pour votre attention\u00A0!",
+        spanish: '¡Gracias por su atención!', es: '¡Gracias por su atención!',
+        arabic: 'شكراً لاهتمامكم!', ar: 'شكراً لاهتمامكم!',
+      },
+    };
+
+    return translations[key]?.[lang] || translations[key]?.['english'] || key;
+  }
+
+  private buildFallback(slideId: string, textElements: any[], defaultTitle: string, language: string): any {
     return {
       slideId,
       elements: textElements.map((el, i) => ({
         elementIndex: el.index,
-        content: i === 0 ? defaultTitle : `[Content ${i}]`,
+        content: i === 0 ? defaultTitle : `[${language} content ${i}]`,
       })),
     };
   }

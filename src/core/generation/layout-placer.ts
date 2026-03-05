@@ -9,6 +9,10 @@
 
 import { AIClient } from '../ai/ai-client';
 import { EnhancedLogger, LogLevel } from '../../lib/logger';
+import {
+  titlePlacementSchema,
+  createOutlinePlacementSchema,
+} from '../schemas/ai-response-schemas';
 
 interface SlideElement {
   type: string;
@@ -68,7 +72,7 @@ export class LayoutPlacer {
 
     this.logger.debug(`Found ${textElements.length} text elements`);
 
-    const prompt = `You are a PowerPoint slide layout analyzer. Identify which text placeholders should contain the TITLE and which should contain the AUTHOR NAME on a title slide.
+    const prompt = `Analyze a PowerPoint title slide layout and determine which text placeholder should contain the TITLE and which should contain the AUTHOR NAME.
 
 Content to place:
 - TITLE: "${topic}"
@@ -78,34 +82,45 @@ Available text elements:
 ${textElements.map((el, i) => `Element #${i} (elementIndex: ${el.index}):
   - Current content: "${el.content}"
   - Font size: ${el.fontSize}px
-  - Position: top=${el.top}, left=${el.left}
-  - Size: ${el.width}x${el.height}
+  - Position: top=${el.top}px, left=${el.left}px
+  - Size: ${el.width}px × ${el.height}px
   - Max characters: ${el.maxCharacters}`).join('\n\n')}
 
-RULES:
-1. TITLE: Largest font size, positioned in upper-center or center
-2. AUTHOR: Smaller font size than title, positioned BELOW the title
-3. These MUST be two DIFFERENT elements
-4. Compare ALL elements by font size — the LARGEST is almost always the title
-
-Return JSON:
-{
-  "title": { "elementIndex": <number>, "confidence": <0-1>, "reasoning": "<why>" },
-  "author": { "elementIndex": <number>, "confidence": <0-1>, "reasoning": "<why>" }
-}`;
+ANALYSIS RULES:
+1. TITLE element: Has the LARGEST font size. Usually positioned in the upper-center or center of the slide.
+2. AUTHOR element: Has SMALLER font size than title. Usually positioned BELOW the title element (higher top value).
+3. Title and author MUST be two DIFFERENT elements — never assign both to the same element.
+4. Compare ALL elements by font size — the element with the largest fontSize is almost always the title.
+5. Set confidence based on how clear the distinction is (1.0 = very clear, 0.5 = ambiguous).`;
 
     const result = await this.aiClient.call<TitlePlacement>({
       operationName: 'placeTitlePage',
-      temperature: 0.3,
-      responseFormat: 'json_object',
+      temperature: 0.2,
+      responseFormat: 'json_schema',
+      responseSchema: titlePlacementSchema,
       messages: [
-        { role: 'system', content: 'You are a PowerPoint slide analyzer. Return ONLY valid JSON.' },
+        { role: 'system', content: 'You are an expert PowerPoint slide layout analyzer. Analyze element properties to determine correct placement.' },
         { role: 'user', content: prompt },
       ],
       fallback: () => this.fallbackTitlePlacement(textElements),
     });
 
     const placement = result.data;
+
+    // Validate: title and author must be different elements
+    if (placement.title.elementIndex === placement.author.elementIndex) {
+      this.logger.warn('AI returned same element for title and author, using fallback');
+      const fallback = this.fallbackTitlePlacement(textElements);
+      return this.applyTitlePlacement(slide, fallback, topic, author);
+    }
+
+    // Warn on low confidence
+    if (placement.title.confidence < 0.5 || placement.author.confidence < 0.5) {
+      this.logger.warn('Low confidence placement detected', {
+        titleConfidence: placement.title.confidence,
+        authorConfidence: placement.author.confidence,
+      });
+    }
 
     this.logger.info('Title placement detected', {
       titleElement: placement.title.elementIndex,
@@ -114,6 +129,85 @@ Return JSON:
       authorConfidence: placement.author.confidence,
     });
 
+    return this.applyTitlePlacement(slide, placement, topic, author);
+  }
+
+  /**
+   * Place outline items on second slide
+   */
+  async placeOutline(slide: Slide, outlineItems: string[], language: string): Promise<Slide> {
+    this.logger.info('Placing outline items on second slide', { itemCount: outlineItems.length, language });
+
+    const textElements = slide.elements
+      .filter((el) => el.type === 'shape' && el.content)
+      .map((el) => ({
+        index: el.elementIndex,
+        content: el.content,
+        fontSize: el.fontSize,
+        top: el.top,
+        left: el.left,
+        width: el.width,
+        height: el.height,
+        maxCharacters: el.maxCharacters,
+      }));
+
+    const outlinePlacementSchema = createOutlinePlacementSchema(outlineItems.length);
+
+    const prompt = `Analyze a PowerPoint outline/agenda slide layout. Identify which element is the HEADER (title) and which ${outlineItems.length} elements should contain the OUTLINE ITEMS.
+
+Outline items to place:
+${outlineItems.map((item, i) => `${i + 1}. ${item}`).join('\n')}
+
+Available text elements:
+${textElements.map((el, i) => `Element #${i} (elementIndex: ${el.index}):
+  - Current content: "${el.content}"
+  - Font size: ${el.fontSize}px
+  - Position: top=${el.top}px, left=${el.left}px
+  - Size: ${el.width}px × ${el.height}px
+  - Max characters: ${el.maxCharacters}`).join('\n\n')}
+
+ANALYSIS RULES:
+1. HEADER: The element with the LARGEST font size (usually > 32px), positioned at the TOP of the slide. This element will contain a short title like "Outline" or "Plan" in ${language}.
+2. OUTLINE ITEMS: The remaining ${outlineItems.length} elements with medium font size (usually 18-28px), positioned VERTICALLY below the header.
+   - Assign "order" based on vertical position: element with smallest "top" value = order 1, next = order 2, etc.
+   - Each item must accommodate numbered text like "1. Item text"
+3. ALL items must be DIFFERENT elements — never assign the same elementIndex twice.
+4. Set confidence based on how clear the layout structure is.`;
+
+    const result = await this.aiClient.call<OutlinePlacement>({
+      operationName: 'placeOutline',
+      temperature: 0.2,
+      responseFormat: 'json_schema',
+      responseSchema: outlinePlacementSchema,
+      messages: [
+        { role: 'system', content: 'You are an expert PowerPoint slide layout analyzer. Analyze element properties to determine correct placement.' },
+        { role: 'user', content: prompt },
+      ],
+      fallback: () => this.fallbackOutlinePlacement(textElements, outlineItems.length),
+    });
+
+    const placement = result.data;
+
+    // Validate: no duplicate elementIndex
+    const allIndexes = [placement.header.elementIndex, ...placement.items.map((item) => item.elementIndex)];
+    const uniqueIndexes = new Set(allIndexes);
+    if (uniqueIndexes.size !== allIndexes.length) {
+      this.logger.warn('Duplicate elementIndex in outline placement, using fallback');
+      const fallback = this.fallbackOutlinePlacement(textElements, outlineItems.length);
+      return this.applyOutlinePlacement(slide, fallback, outlineItems, language);
+    }
+
+    this.logger.info('Outline placement detected', {
+      headerElement: placement.header.elementIndex,
+      itemElements: placement.items.map((item) => item.elementIndex),
+    });
+
+    return this.applyOutlinePlacement(slide, placement, outlineItems, language);
+  }
+
+  // ===== Apply Placements =====
+
+  private applyTitlePlacement(slide: Slide, placement: TitlePlacement, topic: string, author: string): Slide {
     return {
       ...slide,
       elements: slide.elements.map((el) => {
@@ -128,84 +222,60 @@ Return JSON:
     };
   }
 
-  /**
-   * Place outline items on second slide
-   */
-  async placeOutline(slide: Slide, outlineItems: string[]): Promise<Slide> {
-    this.logger.info('Placing outline items on second slide', { itemCount: outlineItems.length });
-
-    const textElements = slide.elements
-      .filter((el) => el.type === 'shape' && el.content)
-      .map((el) => ({
-        index: el.elementIndex,
-        content: el.content,
-        fontSize: el.fontSize,
-        top: el.top,
-        left: el.left,
-        maxCharacters: el.maxCharacters,
-      }));
-
-    const prompt = `You are a PowerPoint outline slide analyzer. Identify which element should be the HEADER and which ${outlineItems.length} elements should contain the OUTLINE ITEMS.
-
-Outline items to place:
-${outlineItems.map((item, i) => `${i + 1}. ${item}`).join('\n')}
-
-Available text elements:
-${textElements.map((el, i) => `Element #${i} (elementIndex: ${el.index}):
-  - Current content: "${el.content}"
-  - Font size: ${el.fontSize}px
-  - Position: top=${el.top}, left=${el.left}
-  - Max characters: ${el.maxCharacters}`).join('\n\n')}
-
-RULES:
-1. HEADER: Shortest text, LARGE font size (> 32px), TOP of slide. Should contain "Reja:" only.
-2. OUTLINE ITEMS (${outlineItems.length} elements):
-   - Medium font size (18-28px), positioned vertically below header
-   - Order by 'top' position (smallest to largest = first to last item)
-   - Must accommodate numbered text like "1. Item text"
-3. All items must be DIFFERENT elements
-
-Return JSON:
-{
-  "header": { "elementIndex": <number>, "confidence": <0-1>, "reasoning": "<why>" },
-  "items": [
-    {"elementIndex": <number>, "order": 1, "confidence": <0-1>, "reasoning": "<why>"},
-    ...
-  ]
-}`;
-
-    const result = await this.aiClient.call<OutlinePlacement>({
-      operationName: 'placeOutline',
-      temperature: 0.3,
-      responseFormat: 'json_object',
-      messages: [
-        { role: 'system', content: 'You are a PowerPoint slide analyzer. Return ONLY valid JSON.' },
-        { role: 'user', content: prompt },
-      ],
-      fallback: () => this.fallbackOutlinePlacement(textElements, outlineItems.length),
-    });
-
-    const placement = result.data;
-
-    this.logger.info('Outline placement detected', {
-      headerElement: placement.header.elementIndex,
-      itemElements: placement.items.map((item) => item.elementIndex),
-    });
+  private applyOutlinePlacement(slide: Slide, placement: OutlinePlacement, outlineItems: string[], language: string): Slide {
+    // Translate header text based on language
+    const headerText = this.getOutlineHeaderText(language);
 
     return {
       ...slide,
       elements: slide.elements.map((el) => {
         if (el.elementIndex === placement.header.elementIndex) {
-          return { ...el, content: 'Reja:' };
+          return { ...el, content: headerText };
         }
         const itemMatch = placement.items.find((item) => item.elementIndex === el.elementIndex);
         if (itemMatch) {
           const itemIndex = itemMatch.order - 1;
-          return { ...el, content: `${itemIndex + 1}. ${outlineItems[itemIndex]}` };
+          if (itemIndex >= 0 && itemIndex < outlineItems.length) {
+            return { ...el, content: `${itemIndex + 1}. ${outlineItems[itemIndex]}` };
+          }
         }
         return el;
       }),
     };
+  }
+
+  /**
+   * Get translated "Outline" header text by language
+   */
+  private getOutlineHeaderText(language: string): string {
+    const lang = language.toLowerCase();
+    const translations: Record<string, string> = {
+      uzbek: 'Reja:',
+      uz: 'Reja:',
+      russian: 'План:',
+      ru: 'План:',
+      english: 'Outline:',
+      en: 'Outline:',
+      kazakh: 'Жоспар:',
+      kk: 'Жоспар:',
+      turkish: 'Plan:',
+      tr: 'Plan:',
+      korean: '개요:',
+      ko: '개요:',
+      chinese: '大纲:',
+      zh: '大纲:',
+      japanese: '概要:',
+      ja: '概要:',
+      german: 'Gliederung:',
+      de: 'Gliederung:',
+      french: 'Plan:',
+      fr: 'Plan:',
+      spanish: 'Esquema:',
+      es: 'Esquema:',
+      arabic: 'المخطط:',
+      ar: 'المخطط:',
+    };
+    return translations[lang] || 'Outline:';
   }
 
   // ===== Fallbacks =====
@@ -228,7 +298,7 @@ Return JSON:
         elementIndex: el.index,
         order: i + 1,
         confidence: 0.5,
-        reasoning: `Fallback: element ${i + 1} by position`,
+        reasoning: `Fallback: element ${i + 1} by vertical position`,
       })),
     };
   }

@@ -54,7 +54,7 @@ export class OutlineGenerator {
       outlineCount,
     });
 
-    const jsonSchema = createOutlineSchema(language, outlineCount);
+    const jsonSchema = createOutlineSchema(language, outlineCount, pageCount, availableSlidesCount);
 
     const result = await this.aiClient.call<OutlineResponse>({
       operationName: 'generateOutline',
@@ -192,7 +192,7 @@ VALIDATION CHECKLIST (verify before responding):
 
   private buildFallbackOutline(
     topic: string,
-    language: string,
+    _language: string,
     pageCount: number,
     availableSlides: number,
     outlineCount: number
@@ -200,16 +200,16 @@ VALIDATION CHECKLIST (verify before responding):
     this.logger.warn('Using fallback outline');
 
     const outlineLabels = [
-      { label: 'Introduction', labelEng: 'Introduction' },
-      { label: 'Main Content', labelEng: 'Main Content' },
-      { label: 'Conclusion', labelEng: 'Conclusion' },
-      { label: 'Analysis', labelEng: 'Analysis' },
-      { label: 'Summary', labelEng: 'Summary' },
+      'Introduction',
+      'Main Content',
+      'Analysis',
+      'Discussion',
+      'Conclusion',
     ];
 
     const outline = Array.from({ length: outlineCount }, (_, i) => ({
-      title: `${topic} - ${outlineLabels[i % outlineLabels.length].label}`,
-      title_eng: `${topic} - ${outlineLabels[i % outlineLabels.length].labelEng}`,
+      title: `${topic} - ${outlineLabels[i % outlineLabels.length]}`,
+      title_eng: `${topic} - ${outlineLabels[i % outlineLabels.length]}`,
     }));
 
     const slides = Array.from({ length: pageCount }, (_, i) => ({
