@@ -20,7 +20,7 @@ import { AISlideElement, GenerationConfig, DEFAULT_GENERATION_CONFIG } from '../
 
 interface ContentParams {
   slide: { id: string; elements: any[] };
-  outline: { title?: string; title_eng?: string };
+  outline: { title?: string; title_eng?: string; keyPoints?: string[] };
   language: string;
   mainTopic?: string;
 }
@@ -132,7 +132,7 @@ export class ContentGenerator {
         top: el.top || 0,
         currentContent: el.content || '',
         fontSize: el.fontSize || 14,
-        maxCharacters: el.maxCharacters || 100,
+        maxCharacters: el.maxCharacters || this.estimateMaxChars(el),
         tableData: el.tableData || null,
       }))
       .filter(
@@ -152,39 +152,41 @@ export class ContentGenerator {
   }
 
   private buildSystemPrompt(language: string, topicRef: string, diversityContext: string): string {
-    return `You are a professional presentation content writer specialized in creating TOPIC-SPECIFIC content.
+    return `You are an expert presentation content writer. Your task is to generate HIGH-QUALITY, FACTUALLY ACCURATE content for a presentation about ${topicRef}.
 
-PRIMARY OBJECTIVE: Generate content SPECIFICALLY about ${topicRef} - NOT generic content
+PRIMARY OBJECTIVE: Every piece of text MUST be specifically about ${topicRef}. Include real facts, specific details, and domain-relevant terminology. NEVER write generic placeholder text.
 
 CRITICAL RULES:
-1. You MUST generate content for EVERY element listed
-2. Do NOT skip any elements
-3. Content MUST be in ${language} language
-4. Content MUST be SPECIFICALLY about ${topicRef} - NOT generic
-5. STRICT CHARACTER LIMITS: Each element has a maxCharacters limit. Try to stay within it, but font size will be adjusted if needed.
-6. CONTENT DIVERSITY: Each element MUST have UNIQUE content. NEVER repeat the same text!
-7. Use element properties to determine content style:
-   - Large width/height + top position = Main title (3-8 words, TOPIC-SPECIFIC)
-   - Medium size + center = Body text (concise paragraphs or bullets)
-   - Small size = Labels or callouts (1-3 words)
-   - Table elements = Generate appropriate table data
+1. Generate content for EVERY element listed — do NOT skip any
+2. ALL content MUST be in ${language} language
+3. Content MUST be SPECIFICALLY about ${topicRef} with real facts and details
+4. Each element has a CONTENT ROLE (title, body, label etc.) — follow it precisely
+5. Respect maxCharacters limits. Prioritize quality over quantity
+6. CONTENT DIVERSITY: Each element covers a DIFFERENT aspect of the topic. NEVER repeat!
 
-CHARACTER LIMIT GUIDELINES:
-- Small elements (maxChars < 50): Very short text (1-5 words)
-- Medium elements (maxChars 50-200): Concise phrases or sentences
-- Large elements (maxChars > 200): Paragraphs
-- Add spaces between words - NEVER merge words together!
+CONTENT QUALITY STANDARDS:
+- TITLES: Short, impactful, topic-specific (not generic like "Introduction" or "Overview")
+- BODY TEXT: Include specific facts, statistics, dates, names, or technical details relevant to ${topicRef}
+- BULLET POINTS: Each point should convey a distinct, meaningful fact
+- LABELS: Short but descriptive and topic-relevant
+- TABLES: Fill with real, accurate data related to the topic
 
-CONTENT VARIETY RULES:
-- NEVER use the same or similar text for different elements
-- Each element should cover a DIFFERENT SPECIFIC aspect of the topic
-- Vary your language and phrasing across elements
-- ALL content must use topic-specific terminology${diversityContext}`;
+CHARACTER LIMITS:
+- Small (maxChars < 50): 1-5 precise words
+- Medium (maxChars 50-200): Concise informative sentences
+- Large (maxChars > 200): Detailed paragraphs with specific facts
+- Always use proper word spacing
+
+FORBIDDEN:
+- Generic filler text ("Lorem ipsum", "Sample text", "Content here")
+- Overly broad statements that could apply to any topic
+- Repeating the same idea in different words across elements
+- Empty or meaningless content${diversityContext}`;
   }
 
   private buildUserPrompt(
     slide: { id: string },
-    outline: { title?: string; title_eng?: string },
+    outline: { title?: string; title_eng?: string; keyPoints?: string[] },
     language: string,
     mainTopic: string | undefined,
     textElements: any[],
@@ -193,6 +195,11 @@ CONTENT VARIETY RULES:
     const topicRef = mainTopic
       ? `"${mainTopic}"`
       : `"${outline.title || outline.title_eng}"`;
+
+    // Build key points guidance if available
+    const keyPointsSection = outline.keyPoints && outline.keyPoints.length > 0
+      ? `\nKEY POINTS TO COVER IN THIS SLIDE:\n${outline.keyPoints.map((kp, i) => `  ${i + 1}. ${kp}`).join('\n')}\nDistribute these points across the elements below. Each element should address one or more of these points.\n`
+      : '';
 
     const elementDetails = textElements
       .map((el: any, i: number) => {
@@ -203,14 +210,7 @@ CONTENT VARIETY RULES:
             ? `\n   NEARBY ELEMENTS: ${nearby.map((n) => `[${n.index}] (${getPositionDescription(n, textElements as AISlideElement[])})`).join(', ')}`
             : '';
 
-        const contentRole =
-          el.top < 100 && el.width > 500
-            ? 'MAIN TITLE - Keep SHORT (3-8 words) and UNIQUE'
-            : el.height > 300
-            ? 'BODY CONTENT - Use detailed text, DISTINCT from others'
-            : el.width < 200 && el.height < 100
-            ? 'LABEL/CALLOUT - Very brief (1-3 words)'
-            : 'GENERAL CONTENT';
+        const contentRole = this.detectContentRole(el, textElements);
 
         return `${i + 1}. Element [${el.index}] - ${el.type.toUpperCase()}
    LOCATION: ${positionDesc}
@@ -224,23 +224,24 @@ CONTENT VARIETY RULES:
       .join('\n\n');
 
     return `SLIDE ID: ${slide.id}
-${mainTopic ? `MAIN TOPIC: "${mainTopic}" (ALL content must be SPECIFICALLY about this)` : ''}
-OUTLINE TOPIC: ${outline.title || outline.title_eng}
+${mainTopic ? `MAIN TOPIC: "${mainTopic}"` : ''}
+SLIDE TOPIC: ${outline.title || outline.title_eng}
 LANGUAGE: ${language}
 TOTAL ELEMENTS: ${textElements.length}
-
+${keyPointsSection}
 ${layoutVisualization}
 
 ELEMENTS:
 ${elementDetails}
 
-MANDATORY:
+REQUIREMENTS:
 1. Generate content for ALL ${textElements.length} elements — no more, no less
-2. Each element MUST have UNIQUE, DIFFERENT content
+2. Each element MUST have UNIQUE content covering a DIFFERENT aspect
 3. Use the element index shown in [brackets] as elementIndex value
-4. Match content to topic: ${topicRef}
-5. Write ALL content in ${language} language
-6. Content must NOT be empty — always provide meaningful text`;
+4. ALL content must be about: ${topicRef}
+5. Write in ${language} language
+6. Use the KEY POINTS above as your content guide — include specific facts from them
+7. Content must be factually accurate and informative`;
   }
 
   private mergeContentToSlide(slide: { id: string; elements: any[] }, generatedData: any): any {
@@ -277,6 +278,61 @@ MANDATORY:
         return el;
       }),
     };
+  }
+
+  /**
+   * Smart content role detection based on relative position, size, and font
+   */
+  private detectContentRole(el: any, allElements: any[]): string {
+    const avgWidth = allElements.reduce((s, e) => s + (e.width || 0), 0) / allElements.length;
+    const avgHeight = allElements.reduce((s, e) => s + (e.height || 0), 0) / allElements.length;
+    const maxFontSize = Math.max(...allElements.map((e: any) => e.fontSize || 14));
+    const area = (el.width || 0) * (el.height || 0);
+    const avgArea = avgWidth * avgHeight;
+
+    // Title: largest font size, near top, wide
+    if (el.fontSize >= maxFontSize * 0.9 && el.top < 150 && el.width > avgWidth * 0.6) {
+      return 'MAIN TITLE - Keep SHORT (3-8 words), bold and topic-specific';
+    }
+
+    // Subtitle: second largest font, near top
+    if (el.fontSize >= maxFontSize * 0.7 && el.top < 200 && el.width > avgWidth * 0.5) {
+      return 'SUBTITLE - One concise sentence describing the slide topic';
+    }
+
+    // Large body: big area, likely main content
+    if (area > avgArea * 1.5 || el.height > 250) {
+      return 'BODY CONTENT - Use detailed, informative text with specific facts. Use bullet points if appropriate';
+    }
+
+    // Small label/callout
+    if (area < avgArea * 0.3 || (el.width < 200 && el.height < 80)) {
+      return 'LABEL/CALLOUT - Very brief (1-5 words), descriptive';
+    }
+
+    // Medium content
+    if (el.maxCharacters > 150 || area > avgArea * 0.8) {
+      return 'CONTENT BLOCK - Informative paragraph or bullet points about a specific aspect of the topic';
+    }
+
+    return 'SUPPORTING TEXT - Brief, relevant text about the topic';
+  }
+
+  /**
+   * Estimate max characters based on element dimensions and font size
+   */
+  private estimateMaxChars(el: any): number {
+    const width = el.width || 200;
+    const height = el.height || 50;
+    const fontSize = el.fontSize || 14;
+
+    // Approximate chars per line based on width and font size
+    const charsPerLine = Math.floor(width / (fontSize * 0.6));
+    const lines = Math.floor(height / (fontSize * 1.4));
+    const estimated = charsPerLine * Math.max(1, lines);
+
+    // Clamp between 20 and 1000
+    return Math.max(20, Math.min(1000, estimated));
   }
 
   private buildFallbackContent(slideId: string, textElements: any[]): any {

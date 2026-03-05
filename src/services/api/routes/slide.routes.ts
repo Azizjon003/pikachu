@@ -4,8 +4,10 @@ import {
   startSlideGeneration,
   getSlideGenerationStatus,
   editSlide,
+  editSlideImages,
+  reRenderSlide,
 } from "../controller/slide.controller.new";
-import { validateSlideGeneration, validateSlideEdit } from "../middleware/validation";
+import { validateSlideGeneration, validateSlideEdit, validateImageEdit, validateReRender } from "../middleware/validation";
 import { asyncHandler } from "../middleware/error-handler";
 
 const router = Router();
@@ -32,6 +34,20 @@ router.post(
   "/edit",
   validateSlideEdit,
   asyncHandler(editSlide)
+);
+
+// POST /api/slide/edit-images - Replace images in an existing slide
+router.post(
+  "/edit-images",
+  validateImageEdit,
+  asyncHandler(editSlideImages)
+);
+
+// POST /api/slide/re-render - Re-render edited slides into PPTX
+router.post(
+  "/re-render",
+  validateReRender,
+  asyncHandler(reRenderSlide)
 );
 
 export default router;

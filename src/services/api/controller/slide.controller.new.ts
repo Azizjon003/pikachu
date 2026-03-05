@@ -9,6 +9,8 @@
 
 import { Request, Response } from 'express';
 import crypto from 'crypto';
+import fs from 'fs';
+import path from 'path';
 import { SlideGenerationPipeline } from './slide-generation-pipeline';
 import {
   createTask,
@@ -18,7 +20,10 @@ import {
 import { EnhancedLogger, LogLevel } from '@/src/lib/logger';
 import { PipelineOptions } from '@/src/core/types/generation';
 import { SlideEditor } from '@/src/core/generation/slide-editor';
+import { ImageEditor } from '@/src/core/generation/image-editor';
 import { AIClient } from '@/src/core/ai/ai-client';
+import { generateSlideFromAI } from '@/src/core/processors/schema-processor';
+import { exportPPTX } from '@/src/core/exporters';
 
 const logger = new EnhancedLogger(LogLevel.INFO);
 
@@ -101,6 +106,78 @@ export const editSlide = async (req: Request, res: Response) => {
     res.json({ success: true, slide: updatedSlide });
   } catch (error: any) {
     logger.error('Slide edit failed', error);
+    res.status(500).json({ success: false, error: error.message });
+  }
+};
+
+/**
+ * Replace images in an existing slide using AI-powered search
+ */
+export const editSlideImages = async (req: Request, res: Response) => {
+  try {
+    const editor = new ImageEditor(new AIClient());
+    const result = await editor.replaceImages(req.body);
+
+    res.json({ success: true, ...result });
+  } catch (error: any) {
+    logger.error('Image edit failed', error);
+    res.status(500).json({ success: false, error: error.message });
+  }
+};
+
+/**
+ * Re-render edited slides into a new PPTX file
+ */
+export const reRenderSlide = async (req: Request, res: Response) => {
+  try {
+    const { slides, template } = req.body;
+
+    // Load original template data (full schema with theme, viewport, etc.)
+    const templateJsonPath = path.join(
+      process.cwd(),
+      'templates',
+      template.replace('.sxema.json', '.json')
+    );
+
+    if (!fs.existsSync(templateJsonPath)) {
+      return res.status(404).json({ success: false, error: 'Template not found' });
+    }
+
+    const fullSxema = JSON.parse(fs.readFileSync(templateJsonPath, 'utf-8'));
+
+    // Merge edited slides with original template structure
+    const dataFullSxema = generateSlideFromAI(slides, fullSxema);
+
+    // Generate unique filename
+    const generatedDir = path.join(process.cwd(), 'generated');
+    if (!fs.existsSync(generatedDir)) {
+      fs.mkdirSync(generatedDir, { recursive: true });
+    }
+
+    const sessionId = Date.now();
+    const slideName = `${sessionId}-edited.pptx`;
+    const slidePath = path.join(generatedDir, slideName);
+
+    // Export PPTX
+    exportPPTX(
+      dataFullSxema.slide,
+      false,
+      false,
+      dataFullSxema.theme,
+      { width: dataFullSxema.viewportWidth, height: dataFullSxema.viewportHeight },
+      slidePath
+    );
+
+    logger.info('Slide re-rendered', { slideName, template });
+
+    res.json({
+      success: true,
+      slideName,
+      slidePath,
+      downloadUrl: `/generated/${slideName}`,
+    });
+  } catch (error: any) {
+    logger.error('Slide re-render failed', error);
     res.status(500).json({ success: false, error: error.message });
   }
 };

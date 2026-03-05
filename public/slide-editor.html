@@ -1,0 +1,593 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Slide Editor - AI PowerPoint Generator</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        body { font-family: 'Inter', sans-serif; }
+        .gradient-bg { background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); }
+        .card-shadow { box-shadow: 0 10px 40px rgba(0,0,0,0.1); }
+        .spinner { border: 3px solid #f3f4f6; border-top: 3px solid #667eea; border-radius: 50%; width: 24px; height: 24px; animation: spin 1s linear infinite; display: inline-block; }
+        @keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
+        .fade-in { animation: fadeIn 0.3s ease-in; }
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(-10px); } to { opacity: 1; transform: translateY(0); } }
+        .slide-card { transition: all 0.2s ease; cursor: pointer; }
+        .slide-card:hover { transform: translateY(-2px); box-shadow: 0 8px 25px rgba(0,0,0,0.1); }
+        .slide-card.active { border-color: #667eea; background: #f5f3ff; }
+        .toast { position: fixed; top: 20px; right: 20px; z-index: 1000; min-width: 300px; animation: slideIn 0.3s ease-out; }
+        @keyframes slideIn { from { transform: translateX(400px); opacity: 0; } to { transform: translateX(0); opacity: 1; } }
+        .img-thumb { width: 60px; height: 45px; object-fit: cover; border-radius: 6px; background: #f3f4f6; }
+        .chat-bubble { max-width: 85%; }
+        .chat-bubble.agent { background: #f0f4ff; border: 1px solid #dbeafe; }
+        .chat-bubble.user { background: #f5f3ff; border: 1px solid #e9d5ff; margin-left: auto; }
+        .element-preview { transition: all 0.15s ease; }
+        .element-preview:hover { background: #f9fafb; }
+    </style>
+</head>
+<body class="bg-gray-50 min-h-screen">
+    <!-- Header -->
+    <header class="gradient-bg text-white shadow-lg">
+        <div class="container mx-auto px-4 py-5">
+            <div class="flex items-center justify-between">
+                <div>
+                    <h1 class="text-2xl font-bold flex items-center gap-2">
+                        <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z"/>
+                        </svg>
+                        Slide Editor
+                    </h1>
+                    <p class="text-purple-200 text-sm mt-1">Slaydni tanlang, ko'rsatma bering — AI o'zgartiradi</p>
+                </div>
+                <div class="flex items-center gap-3">
+                    <a href="/" class="bg-white/10 hover:bg-white/20 text-white px-4 py-2 rounded-lg transition text-sm font-medium">Bosh sahifa</a>
+                    <a href="/presentations.html" class="bg-white/10 hover:bg-white/20 text-white px-4 py-2 rounded-lg transition text-sm font-medium">Taqdimotlar</a>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <main class="container mx-auto px-4 py-6">
+        <!-- Step 1: Select Presentation -->
+        <section id="selectSection" class="bg-white rounded-xl card-shadow p-6 mb-6 fade-in">
+            <h2 class="text-lg font-semibold text-gray-800 mb-4 flex items-center gap-2">
+                <span class="w-7 h-7 bg-purple-600 text-white rounded-full flex items-center justify-center text-sm font-bold">1</span>
+                Prezentatsiyani tanlang
+            </h2>
+
+            <!-- Available files grid -->
+            <div id="filesLoading" class="text-sm text-gray-400 py-4 text-center">Yuklanmoqda...</div>
+            <div id="filesGrid" class="hidden grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3 mb-4"></div>
+            <div id="filesEmpty" class="hidden text-sm text-gray-400 py-4 text-center">Prezentatsiya topilmadi. Avval bosh sahifada slayd generatsiya qiling.</div>
+
+            <!-- Manual input (collapsed) -->
+            <details class="mt-3 border-t border-gray-100 pt-3">
+                <summary class="text-xs text-gray-400 cursor-pointer hover:text-gray-600">Qo'lda yuklash</summary>
+                <div class="mt-3 flex gap-2">
+                    <input type="text" id="jsonFileInput" placeholder="fayl nomi yoki JSON qo'ying" class="flex-1 px-3 py-2 border border-gray-300 rounded-lg text-sm focus:ring-2 focus:ring-purple-500 focus:border-transparent">
+                    <button onclick="manualLoad()" class="px-4 py-2 bg-purple-600 text-white rounded-lg hover:bg-purple-700 transition text-sm font-medium">Yuklash</button>
+                </div>
+            </details>
+
+            <div id="loadError" class="hidden mt-3 p-3 bg-red-50 text-red-700 border border-red-200 rounded-lg text-sm"></div>
+        </section>
+
+        <!-- Step 2: Editor (hidden until loaded) -->
+        <div id="editorSection" class="hidden fade-in">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-6">
+
+                <!-- Left: Slide List + Preview -->
+                <div class="lg:col-span-4">
+                    <div class="bg-white rounded-xl card-shadow p-4 sticky top-4">
+                        <div class="flex items-center justify-between mb-3">
+                            <h3 class="text-sm font-semibold text-gray-600 uppercase tracking-wider flex items-center gap-2">
+                                <span class="w-6 h-6 bg-purple-600 text-white rounded-full flex items-center justify-center text-xs font-bold">2</span>
+                                Slaydlar
+                            </h3>
+                            <span id="slideCounter" class="text-xs text-gray-400"></span>
+                        </div>
+                        <button onclick="selectAllSlides()" class="w-full mb-3 px-3 py-1.5 bg-purple-50 text-purple-700 rounded-lg text-xs font-semibold hover:bg-purple-100 transition border border-purple-200" id="selectAllBtn">
+                            Barchasini tanlash
+                        </button>
+                        <div id="slideList" class="space-y-2 max-h-[35vh] overflow-y-auto mb-4"></div>
+
+                        <!-- Slide Preview -->
+                        <div id="slidePreview" class="hidden border-t border-gray-100 pt-4">
+                            <h4 id="previewTitle" class="text-sm font-semibold text-gray-700 mb-2"></h4>
+                            <div id="previewElements" class="space-y-1.5 max-h-[30vh] overflow-y-auto"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Right: Agent Panel -->
+                <div class="lg:col-span-8 space-y-6">
+
+                    <!-- Instructions (Agent Input) -->
+                    <div class="bg-white rounded-xl card-shadow p-6">
+                        <h3 class="text-lg font-semibold text-gray-800 mb-4 flex items-center gap-2">
+                            <span class="w-7 h-7 bg-purple-600 text-white rounded-full flex items-center justify-center text-sm font-bold">3</span>
+                            Ko'rsatma bering
+                        </h3>
+
+                        <div class="space-y-4">
+                            <textarea id="agentInstructions" rows="3" placeholder="Masalan: Sarlavhani qisqaroq qil va rasmlarni yangilariga almashtir..." class="w-full px-4 py-3 border border-gray-300 rounded-xl text-sm focus:ring-2 focus:ring-purple-500 focus:border-transparent resize-none"></textarea>
+
+                            <div class="grid grid-cols-3 gap-3">
+                                <div>
+                                    <label class="block text-xs font-medium text-gray-500 mb-1">Til</label>
+                                    <select id="agentLanguage" class="w-full px-3 py-2 border border-gray-300 rounded-lg text-sm focus:ring-2 focus:ring-purple-500 focus:border-transparent">
+                                        <option value="Uzbek">O'zbek</option>
+                                        <option value="English">English</option>
+                                        <option value="Russian">Русский</option>
+                                        <option value="Kazakh">Qozoq</option>
+                                        <option value="Turkish">Turk</option>
+                                        <option value="Korean">Koreys</option>
+                                    </select>
+                                </div>
+                                <div>
+                                    <label class="block text-xs font-medium text-gray-500 mb-1">Mavzu</label>
+                                    <input type="text" id="agentTopic" placeholder="ixtiyoriy" class="w-full px-3 py-2 border border-gray-300 rounded-lg text-sm focus:ring-2 focus:ring-purple-500 focus:border-transparent">
+                                </div>
+                                <div>
+                                    <label class="block text-xs font-medium text-gray-500 mb-1">Shablon</label>
+                                    <input type="text" id="templateName" placeholder="template.sxema.json" class="w-full px-3 py-2 border border-gray-300 rounded-lg text-sm focus:ring-2 focus:ring-purple-500 focus:border-transparent">
+                                </div>
+                            </div>
+
+                            <!-- Quick actions -->
+                            <div class="flex flex-wrap gap-2">
+                                <button onclick="setInstruction('Barcha matnlarni qisqaroq va aniqroq qil')" class="px-3 py-1.5 bg-gray-100 text-gray-600 rounded-full text-xs hover:bg-gray-200 transition">Matnni qisqartir</button>
+                                <button onclick="setInstruction('Sarlavhalarni yanada jozibador qil')" class="px-3 py-1.5 bg-gray-100 text-gray-600 rounded-full text-xs hover:bg-gray-200 transition">Sarlavhalarni yaxshila</button>
+                                <button onclick="setInstruction('Barcha rasmlarni mavzuga mos yangi rasmlarga almashtir')" class="px-3 py-1.5 bg-gray-100 text-gray-600 rounded-full text-xs hover:bg-gray-200 transition">Rasmlarni yangila</button>
+                                <button onclick="setInstruction('Matnlarni sodda va tushunarli tilda qayta yoz')" class="px-3 py-1.5 bg-gray-100 text-gray-600 rounded-full text-xs hover:bg-gray-200 transition">Sodda tilga o'tkaz</button>
+                            </div>
+
+                            <button id="agentRunBtn" disabled class="w-full px-4 py-3 bg-gradient-to-r from-purple-600 to-indigo-600 text-white rounded-xl hover:from-purple-700 hover:to-indigo-700 transition font-semibold disabled:from-gray-400 disabled:to-gray-400 disabled:cursor-not-allowed flex items-center justify-center gap-2 text-base shadow-lg">
+                                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/>
+                                </svg>
+                                <span id="agentRunBtnText">Tahrirlashni boshlash</span>
+                                <div id="agentRunSpinner" class="hidden spinner" style="border-top-color: white;"></div>
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Agent Log / Results -->
+                    <div id="agentLog" class="hidden bg-white rounded-xl card-shadow p-6 fade-in">
+                        <h3 class="text-sm font-semibold text-gray-600 uppercase tracking-wider mb-3">Jarayon</h3>
+                        <div id="agentMessages" class="space-y-3 max-h-[50vh] overflow-y-auto"></div>
+                    </div>
+
+                    <!-- Download Panel -->
+                    <div id="downloadPanel" class="hidden bg-white rounded-xl card-shadow p-6 fade-in">
+                        <div class="flex items-center justify-between">
+                            <div class="flex items-center gap-3">
+                                <div class="w-12 h-12 bg-green-100 rounded-xl flex items-center justify-center">
+                                    <svg class="w-6 h-6 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                                    </svg>
+                                </div>
+                                <div>
+                                    <p class="font-semibold text-gray-800">Tayyor!</p>
+                                    <p class="text-sm text-gray-500" id="downloadInfo"></p>
+                                </div>
+                            </div>
+                            <a id="downloadLink" href="#" class="px-5 py-2.5 bg-green-600 text-white rounded-lg hover:bg-green-700 transition font-semibold text-sm flex items-center gap-2" target="_blank">
+                                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/>
+                                </svg>
+                                PPTX yuklab olish
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Toast Container -->
+    <div id="toastContainer"></div>
+
+    <script>
+        const API = '/api';
+
+        // State
+        let allSlides = [];
+        let currentSlideIndex = -1;
+        let editAllMode = false;
+        let isRunning = false;
+
+        // ============================================
+        // STEP 1: Load presentations list
+        // ============================================
+
+        document.addEventListener('DOMContentLoaded', async () => {
+            const params = new URLSearchParams(window.location.search);
+            const template = params.get('template');
+            const file = params.get('file');
+
+            if (template) document.getElementById('templateName').value = template;
+
+            // Load files list
+            try {
+                const res = await fetch(`${API}/presentations/list`);
+                const data = await res.json();
+                document.getElementById('filesLoading').classList.add('hidden');
+
+                const jsonFiles = data.jsonFiles || [];
+                if (jsonFiles.length === 0) {
+                    document.getElementById('filesEmpty').classList.remove('hidden');
+                } else {
+                    const grid = document.getElementById('filesGrid');
+                    grid.classList.remove('hidden');
+                    grid.innerHTML = jsonFiles.map(f => {
+                        const parts = f.filename.match(/^(\d+)-(.+)\.full-filled-slides\.json$/);
+                        const topic = parts ? parts[2].replace(/-/g, ' ') : f.filename;
+                        const date = new Date(f.createdAt).toLocaleString('uz', { day: '2-digit', month: '2-digit', hour: '2-digit', minute: '2-digit' });
+                        const sizeKb = (f.size / 1024).toFixed(0);
+                        return `
+                            <div class="slide-card p-3 rounded-lg border-2 border-gray-200 bg-white hover:border-purple-400"
+                                 onclick="loadFile('${f.filename}')">
+                                <p class="text-sm font-semibold text-gray-800 capitalize truncate">${esc(topic)}</p>
+                                <p class="text-xs text-gray-400 mt-1">${date} &middot; ${sizeKb} KB</p>
+                            </div>
+                        `;
+                    }).join('');
+                }
+            } catch (e) {
+                document.getElementById('filesLoading').textContent = 'Yuklashda xatolik';
+            }
+
+            // Auto-load from URL
+            if (file) {
+                document.getElementById('jsonFileInput').value = file;
+                loadFile(file);
+            }
+        });
+
+        async function loadFile(filename) {
+            document.getElementById('loadError').classList.add('hidden');
+            try {
+                const res = await fetch(`${API}/presentations/download/${encodeURIComponent(filename)}`);
+                if (!res.ok) throw new Error('Fayl topilmadi');
+                const data = JSON.parse(await res.text());
+                initEditor(Array.isArray(data) ? data : [data]);
+            } catch (e) {
+                showError(e.message);
+            }
+        }
+
+        function manualLoad() {
+            const val = document.getElementById('jsonFileInput').value.trim();
+            if (!val) return;
+            // Check if it's JSON
+            if (val.startsWith('[') || val.startsWith('{')) {
+                try {
+                    const data = JSON.parse(val);
+                    initEditor(Array.isArray(data) ? data : [data]);
+                } catch (e) { showError('JSON xatosi: ' + e.message); }
+            } else {
+                loadFile(val);
+            }
+        }
+
+        function showError(msg) {
+            const el = document.getElementById('loadError');
+            el.textContent = msg;
+            el.classList.remove('hidden');
+        }
+
+        // ============================================
+        // STEP 2: Slide list & preview
+        // ============================================
+
+        function initEditor(slides) {
+            allSlides = slides;
+            document.getElementById('selectSection').classList.add('hidden');
+            document.getElementById('editorSection').classList.remove('hidden');
+            document.getElementById('slideCounter').textContent = `${slides.length} ta slayd`;
+            renderSlideList();
+            selectSlide(0);
+        }
+
+        function renderSlideList() {
+            document.getElementById('slideList').innerHTML = allSlides.map((s, i) => {
+                const textCount = s.elements.filter(e => ['text','shape','table'].includes(e.type)).length;
+                const imgCount = s.elements.filter(e => e.type === 'image').length;
+                return `
+                    <div class="slide-card ${i === currentSlideIndex ? 'active' : ''} p-3 rounded-lg border-2 border-gray-200"
+                         onclick="selectSlide(${i})">
+                        <div class="flex items-center justify-between">
+                            <span class="text-sm font-semibold text-gray-800">Slide ${i + 1}</span>
+                            <div class="flex gap-1">
+                                ${textCount ? `<span class="px-1.5 py-0.5 bg-blue-50 text-blue-600 text-[10px] rounded-full">${textCount}T</span>` : ''}
+                                ${imgCount ? `<span class="px-1.5 py-0.5 bg-green-50 text-green-600 text-[10px] rounded-full">${imgCount}I</span>` : ''}
+                            </div>
+                        </div>
+                    </div>
+                `;
+            }).join('');
+        }
+
+        function selectSlide(index) {
+            currentSlideIndex = index;
+            editAllMode = false;
+            renderSlideList();
+            renderPreview();
+            document.getElementById('agentRunBtn').disabled = false;
+            document.getElementById('agentRunBtnText').textContent = `Slide ${index + 1} ni tahrirlash`;
+            document.getElementById('selectAllBtn').textContent = 'Barchasini tanlash';
+        }
+        window.selectSlide = selectSlide;
+
+        function selectAllSlides() {
+            editAllMode = true;
+            currentSlideIndex = 0;
+            // Highlight all in list
+            document.querySelectorAll('#slideList .slide-card').forEach(c => c.classList.add('active'));
+            document.getElementById('slidePreview').classList.add('hidden');
+            document.getElementById('agentRunBtn').disabled = false;
+            document.getElementById('agentRunBtnText').textContent = `Barcha ${allSlides.length} ta slaydni tahrirlash`;
+            document.getElementById('selectAllBtn').textContent = 'Barchasi tanlangan';
+        }
+        window.selectAllSlides = selectAllSlides;
+
+        function renderPreview() {
+            const slide = allSlides[currentSlideIndex];
+            const preview = document.getElementById('slidePreview');
+            preview.classList.remove('hidden');
+
+            document.getElementById('previewTitle').textContent = `Slide ${currentSlideIndex + 1} — ${slide.elements.length} element`;
+
+            document.getElementById('previewElements').innerHTML = slide.elements.map((el, i) => {
+                const idx = el.elementIndex !== undefined ? el.elementIndex : i;
+                if (el.type === 'image') {
+                    const src = el.src || '';
+                    const displaySrc = src.startsWith('./') ? src.replace('./', '/templates/') : src;
+                    return `
+                        <div class="element-preview flex items-center gap-2 p-2 rounded-lg bg-green-50/50">
+                            <img src="${displaySrc}" class="img-thumb" onerror="this.src='data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 width=%2260%22 height=%2245%22%3E%3Crect width=%2260%22 height=%2245%22 fill=%22%23e5e7eb%22/%3E%3Ctext x=%2250%25%22 y=%2250%25%22 text-anchor=%22middle%22 dy=%22.3em%22 fill=%22%239ca3af%22 font-size=%229%22%3Eimg%3C/text%3E%3C/svg%3E'">
+                            <div class="min-w-0 flex-1">
+                                <span class="text-[10px] font-semibold text-green-600 uppercase">#${idx} rasm</span>
+                            </div>
+                        </div>
+                    `;
+                }
+                if (['text', 'shape', 'table'].includes(el.type)) {
+                    const content = (el.content || '').substring(0, 80);
+                    const typeLabel = el.type === 'text' ? 'matn' : el.type === 'shape' ? 'shakl' : 'jadval';
+                    return `
+                        <div class="element-preview p-2 rounded-lg bg-blue-50/50">
+                            <span class="text-[10px] font-semibold text-blue-600 uppercase">#${idx} ${typeLabel}</span>
+                            <p class="text-xs text-gray-600 mt-0.5 truncate">${esc(content)}</p>
+                        </div>
+                    `;
+                }
+                return '';
+            }).join('');
+        }
+
+        // ============================================
+        // STEP 3: Agent execution
+        // ============================================
+
+        document.getElementById('agentRunBtn').addEventListener('click', runAgent);
+
+        async function runAgent() {
+            const instructions = document.getElementById('agentInstructions').value.trim();
+            if (!instructions) return showToast('Ko\'rsatma kiriting', 'error');
+            if (currentSlideIndex < 0) return showToast('Slaydni tanlang', 'error');
+
+            const language = document.getElementById('agentLanguage').value;
+            const topic = document.getElementById('agentTopic').value.trim();
+            const template = document.getElementById('templateName').value.trim();
+
+            // Start
+            isRunning = true;
+            setRunning(true);
+            const log = document.getElementById('agentLog');
+            const msgs = document.getElementById('agentMessages');
+            log.classList.remove('hidden');
+            msgs.innerHTML = '';
+            document.getElementById('downloadPanel').classList.add('hidden');
+
+            addMessage('user', instructions);
+
+            // Decide what to do based on instruction
+            const mentionsImage = /rasm|image|surat|foto|photo|picture|visual|almashtir.*rasm|rasm.*almashtir|yangi.*rasm|rasm.*yangi/i.test(instructions);
+            const mentionsText = /matn|text|sarlavha|title|heading|yoz|qisqart|so'z|gap|tavsif|description|kontent|content/i.test(instructions);
+
+            // Which slides to process
+            const slideIndexes = editAllMode ? allSlides.map((_, i) => i) : [currentSlideIndex];
+            addMessage('agent', `${slideIndexes.length} ta slayd qayta ishlanadi...`);
+
+            let totalTextEdits = 0;
+            let totalImageEdits = 0;
+
+            // Helper: extract error message from API response
+            function getErrorMsg(data) {
+                if (typeof data.error === 'string') return data.error;
+                if (data.error?.message) return data.error.message;
+                return JSON.stringify(data);
+            }
+
+            try {
+                for (const si of slideIndexes) {
+                    const slide = allSlides[si];
+                    const textIndexes = [];
+                    const imageIndexes = [];
+
+                    slide.elements.forEach((el, i) => {
+                        const idx = el.elementIndex !== undefined ? el.elementIndex : i;
+                        if (['text', 'shape', 'table'].includes(el.type)) textIndexes.push(idx);
+                        if (el.type === 'image') imageIndexes.push(idx);
+                    });
+
+                    const doText = (mentionsText || !mentionsImage) && textIndexes.length > 0;
+                    const doImages = (mentionsImage || !mentionsText) && imageIndexes.length > 0;
+
+                    if (!doText && !doImages) continue;
+
+                    addMessage('agent', `--- Slide ${si + 1} (${textIndexes.length} matn, ${imageIndexes.length} rasm) ---`);
+
+                    // Text editing
+                    if (doText) {
+                        addMessage('agent', 'Matnlarni tahrirlash...');
+
+                        const textRes = await fetch(`${API}/slide/edit`, {
+                            method: 'POST',
+                            headers: { 'Content-Type': 'application/json' },
+                            body: JSON.stringify({
+                                slide: { id: slide.id, elements: slide.elements },
+                                instructions,
+                                language,
+                                elementIndexes: textIndexes,
+                                ...(topic && { topic }),
+                            }),
+                        });
+                        const textData = await textRes.json();
+
+                        if (textData.success && textData.slide) {
+                            allSlides[si] = textData.slide;
+                            totalTextEdits++;
+                            addMessage('agent', 'Matn tahrirlandi');
+                        } else {
+                            addMessage('agent', `Matn xatosi: ${getErrorMsg(textData)}`);
+                        }
+                    }
+
+                    // Image editing
+                    if (doImages) {
+                        const updatedSlide = allSlides[si];
+                        addMessage('agent', `Rasmlarni qidirish... (${imageIndexes.length} ta)`);
+
+                        const imgRes = await fetch(`${API}/slide/edit-images`, {
+                            method: 'POST',
+                            headers: { 'Content-Type': 'application/json' },
+                            body: JSON.stringify({
+                                slide: { id: updatedSlide.id, elements: updatedSlide.elements },
+                                elementIndexes: imageIndexes,
+                                language,
+                                ...(topic && { topic }),
+                            }),
+                        });
+                        const imgData = await imgRes.json();
+
+                        if (imgData.success) {
+                            allSlides[si] = imgData.slide;
+                            totalImageEdits++;
+
+                            const ok = (imgData.replacements || []).filter(r => r.success).length;
+                            addMessage('agent', `Rasmlar: ${ok}/${(imgData.replacements || []).length} almashtirildi`);
+
+                            (imgData.replacements || []).forEach(r => {
+                                if (r.success) {
+                                    addMessage('agent', `#${r.elementIndex}: "${r.searchKeyword}" — topildi`);
+                                }
+                            });
+                        } else {
+                            addMessage('agent', `Rasm xatosi: ${getErrorMsg(imgData)}`);
+                        }
+                    }
+                }
+
+                const hasChanges = totalTextEdits > 0 || totalImageEdits > 0;
+
+                // Re-render PPTX if template available
+                if (hasChanges && template) {
+                    addMessage('agent', 'PPTX fayl yaratilmoqda...');
+
+                    const renderRes = await fetch(`${API}/slide/re-render`, {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify({ slides: allSlides, template }),
+                    });
+                    const renderData = await renderRes.json();
+
+                    if (renderData.success) {
+                        addMessage('agent', 'PPTX tayyor! Yuklab olishingiz mumkin.');
+                        const dp = document.getElementById('downloadPanel');
+                        dp.classList.remove('hidden');
+                        document.getElementById('downloadInfo').textContent = renderData.slideName;
+                        document.getElementById('downloadLink').href = renderData.downloadUrl;
+                    } else {
+                        addMessage('agent', `PPTX xatosi: ${getErrorMsg(renderData)}`);
+                    }
+                } else if (hasChanges) {
+                    addMessage('agent', `Tayyor! ${totalTextEdits} matn + ${totalImageEdits} rasm tahrirlandi. PPTX uchun shablon nomini kiriting.`);
+                } else {
+                    addMessage('agent', 'Hech narsa o\'zgartirilmadi.');
+                }
+
+                // Refresh preview
+                renderPreview();
+
+            } catch (error) {
+                addMessage('agent', `Xatolik: ${error.message}`);
+            } finally {
+                isRunning = false;
+                setRunning(false);
+            }
+        }
+
+        function setInstruction(text) {
+            document.getElementById('agentInstructions').value = text;
+        }
+        window.setInstruction = setInstruction;
+
+        // ============================================
+        // UI Helpers
+        // ============================================
+
+        function addMessage(type, text) {
+            const msgs = document.getElementById('agentMessages');
+            const div = document.createElement('div');
+            div.className = `chat-bubble ${type} rounded-xl px-4 py-2.5 fade-in`;
+            if (type === 'agent') {
+                div.innerHTML = `<div class="flex items-start gap-2">
+                    <svg class="w-4 h-4 text-purple-500 mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/>
+                    </svg>
+                    <span class="text-sm text-gray-700">${esc(text)}</span>
+                </div>`;
+            } else {
+                div.innerHTML = `<span class="text-sm text-purple-700 font-medium">${esc(text)}</span>`;
+            }
+            msgs.appendChild(div);
+            msgs.scrollTop = msgs.scrollHeight;
+        }
+
+        function setRunning(running) {
+            document.getElementById('agentRunBtn').disabled = running;
+            document.getElementById('agentRunBtnText').classList.toggle('hidden', running);
+            document.getElementById('agentRunSpinner').classList.toggle('hidden', !running);
+        }
+
+        function esc(text) {
+            const d = document.createElement('div');
+            d.textContent = text;
+            return d.innerHTML;
+        }
+
+        function showToast(message, type = 'info') {
+            const colors = { success: 'bg-green-500', error: 'bg-red-500', info: 'bg-blue-500' };
+            const toast = document.createElement('div');
+            toast.className = 'toast';
+            toast.innerHTML = `
+                <div class="${colors[type]} text-white flex items-center justify-between rounded-lg px-4 py-3 shadow-lg">
+                    <span class="text-sm font-medium">${message}</span>
+                    <button onclick="this.parentElement.parentElement.remove()" class="ml-3 hover:opacity-75">
+                        <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
+                            <path fill-rule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clip-rule="evenodd"/>
+                        </svg>
+                    </button>
+                </div>
+            `;
+            document.getElementById('toastContainer').appendChild(toast);
+            setTimeout(() => toast.remove(), 4000);
+        }
+    </script>
+</body>
+</html>

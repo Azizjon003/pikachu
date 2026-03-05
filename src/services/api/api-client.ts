@@ -112,6 +112,24 @@ app.use(errorHandler);
 // START SERVER
 // ============================================
 
+// ============================================
+// GLOBAL ERROR HANDLERS (prevent crash on socket errors)
+// ============================================
+
+process.on('uncaughtException', (error: Error) => {
+  // Socket hang up / ECONNRESET — tashqi server ulanishni uzganda
+  // Bu xato process ni crash qilmasligi kerak
+  if (error.message === 'socket hang up' || (error as any).code === 'ECONNRESET') {
+    console.error(`⚠️ Socket error (non-fatal): ${error.message}`);
+    return;
+  }
+  console.error('❌ Uncaught Exception:', error);
+});
+
+process.on('unhandledRejection', (reason: any) => {
+  console.error('⚠️ Unhandled Rejection:', reason?.message || reason);
+});
+
 app.listen(PORT, () => {
   console.log("\n╔════════════════════════════════════════════════════════╗");
   console.log("║           🚀 Pikachu API Server Started              ║");

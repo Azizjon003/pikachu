@@ -110,45 +110,47 @@ export class OutlineGenerator {
     pageCount: number,
     outlineCount: number
   ): string {
-    return `You are a professional presentation assistant specialized in creating highly focused, topic-specific content.
+    return `You are an expert academic and professional presentation planner. Your job is to create a DEEP, WELL-STRUCTURED outline for a presentation about "${topic}".
 
-PRIMARY OBJECTIVE: Create outlines SPECIFICALLY about "${topic}" - NOT generic content
+PRIMARY OBJECTIVE: Plan a presentation that teaches the audience about "${topic}" with real facts, specific details, and logical flow.
 
-CRITICAL TOPIC SPECIFICITY REQUIREMENTS:
-- Every outline MUST be directly about "${topic}" - use specific terminology
-- Avoid generic statements - be SPECIFIC to this exact topic
-- Use keywords and terms that are unique to "${topic}"
-- Do NOT deviate to related but different topics
+THINKING PROCESS — Before generating output, mentally:
+1. Identify what "${topic}" actually is (field, subject, scope)
+2. List the most important aspects, facts, and sub-topics
+3. Organize them into ${outlineCount} logical sections that build on each other
+4. For each slide, plan 2-4 specific points that should be covered
+5. Ensure no repetition — each slide covers unique information
 
-STRICT RULES:
+OUTLINE RULES:
+- Create EXACTLY ${outlineCount} main sections
+- Each section needs:
+  * "title" in ${language} — specific to "${topic}"
+  * "title_eng" in English — specific to "${topic}"
+  * "description" — 1-2 sentence summary of what this section covers (in ${language})
+- Sections must follow a logical teaching order (e.g., definition → details → analysis → application)
+- Each section title must contain terminology specific to "${topic}"
 
-1. OUTLINE GENERATION:
-   - Create EXACTLY ${outlineCount} main topic outlines
-   - Each outline must have:
-     * "title": Outline title in ${language} SPECIFICALLY about "${topic}"
-     * "title_eng": Outline title in English SPECIFICALLY about "${topic}"
-   - Outlines must cover SPECIFIC aspects of "${topic}" (not general related topics)
-   - Outlines must follow a logical sequence
-   - USE TERMINOLOGY SPECIFIC TO "${topic}"
+SLIDE RULES:
+- Total available slide templates: ${availableSlides} (indexes 0 to ${availableSlides - 1})
+- Generate EXACTLY ${pageCount} slides
+- ${pageCount > availableSlides ? `REUSE slide indexes as needed (${pageCount} slides > ${availableSlides} templates)` : `Use indexes from 0 to ${availableSlides - 1}`}
+- Each slide needs:
+  * "slideIndex": valid index (0 to ${availableSlides - 1})
+  * "title" / "title_eng": specific slide title (NOT the same as the section title)
+  * "outlineIndex": which section it belongs to (0 to ${outlineCount - 1})
+  * "keyPoints": array of 2-4 SPECIFIC facts/points this slide should present
 
-2. SLIDES SELECTION:
-   - CRITICAL: Total available slides = ${availableSlides}
-   - You MUST generate EXACTLY ${pageCount} slides (NO LESS, NO MORE)
-   - You can ONLY use indexes from 0 to ${availableSlides - 1}
-   - If ${pageCount} > ${availableSlides}, you MUST REUSE slides until the total reaches ${pageCount}
-   - For each slide:
-     * "slideIndex": MUST be a valid index from the available range
-     * "title": Slide title in ${language} - MUST be SPECIFIC to "${topic}"
-     * "title_eng": Slide title in English - MUST be SPECIFIC to "${topic}"
-     * "outlineIndex": Which outline it belongs to (0 to ${outlineCount - 1})
+KEY POINTS QUALITY:
+- Each keyPoint must be a SPECIFIC fact, statistic, definition, or detail about "${topic}"
+- NOT generic statements like "important aspects" or "key features"
+- Include numbers, dates, names, technical terms where relevant
+- Example good keyPoint: "DNA ning ikki zanjirli spirali 1953-yilda Watson va Crick tomonidan kashf etilgan"
+- Example bad keyPoint: "DNA ning muhim xususiyatlari"
 
-3. IMPORTANT GUIDELINES:
-   - DO NOT create fake slideIndex numbers
-   - ONLY use slideIndex from the provided list [0-${availableSlides - 1}]
-   - Outline titles must be SPECIFICALLY about "${topic}" (not general concepts)
-   - Each outline must represent a specific logical section of "${topic}"
-   - Group slides under the appropriate outline
-   - Every title must contain topic-specific keywords`;
+VALIDATION:
+- Every title contains "${topic}"-specific terminology
+- No two slides have the same keyPoints
+- keyPoints are factual and specific, not vague`;
   }
 
   private buildUserPrompt(
@@ -159,35 +161,30 @@ STRICT RULES:
     pageCount: number,
     outlineCount: number
   ): string {
-    return `MAIN TOPIC: "${topic}"
+    return `TOPIC: "${topic}"
 LANGUAGE: ${language}
-TOTAL AVAILABLE SLIDES: ${availableSlides}
-SLIDES TO SELECT: ${pageCount}
-VALID SLIDE INDEXES: 0 to ${availableSlides - 1}
+AVAILABLE SLIDE TEMPLATES: ${availableSlides} (indexes 0 to ${availableSlides - 1})
+REQUIRED SLIDES: ${pageCount}
 
-AVAILABLE SLIDES (with their ACTUAL index numbers):
+AVAILABLE SLIDE TEMPLATES:
 ${JSON.stringify(slides)}
 
-YOUR TASK:
-1. Analyze the main topic "${topic}" - understand its SPECIFIC scope
-2. Create ${outlineCount} logical outline topics that cover SPECIFIC aspects of "${topic}"
-   - MUST use terminology SPECIFIC to "${topic}"
-   - MUST focus on unique aspects of "${topic}"
-   - AVOID generic/broad related topics
-   - Write each outline title in both ${language} and English
-   - Make sure outlines logically divide "${topic}" into ${outlineCount} SPECIFIC parts
-3. Select EXACTLY ${pageCount} slides from the ${availableSlides} slides listed above
-4. IMPORTANT: Use ONLY the actual index numbers shown in brackets [0] to [${availableSlides - 1}]
-5. Assign each slide to the appropriate outline (outlineIndex: 0 to ${outlineCount - 1})
-6. Write slide titles in both ${language} and English
-   - Each slide title MUST be SPECIFIC to "${topic}"
-   - Use topic-specific keywords in every title
+INSTRUCTIONS:
+1. Study the topic "${topic}" deeply — understand its scope, sub-topics, and key facts
+2. Create ${outlineCount} main sections that logically divide "${topic}":
+   - Each section with title (${language} + English) and a brief description
+   - Sections should build on each other (introduction → details → analysis/conclusion)
+3. Plan EXACTLY ${pageCount} slides, each with:
+   - A specific title (NOT the same as section title)
+   - 2-4 keyPoints — SPECIFIC facts, details, or talking points for that slide
+   - Assigned to the correct section (outlineIndex)
+4. Use ONLY slide indexes from 0 to ${availableSlides - 1}
 
-VALIDATION CHECKLIST (verify before responding):
-- All outline titles contain "${topic}"-specific terminology
-- No generic/broad topics that could apply to other subjects
-- All slide titles are directly related to "${topic}"
-- Used specific keywords unique to "${topic}"`;
+QUALITY CHECK before responding:
+- Each slide's keyPoints contain REAL, SPECIFIC information (not generic)
+- No two slides repeat the same information
+- The presentation tells a complete, coherent story about "${topic}"
+- All text is in ${language} (except title_eng which is English)`;
   }
 
   private buildFallbackOutline(
@@ -210,6 +207,7 @@ VALIDATION CHECKLIST (verify before responding):
     const outline = Array.from({ length: outlineCount }, (_, i) => ({
       title: `${topic} - ${outlineLabels[i % outlineLabels.length]}`,
       title_eng: `${topic} - ${outlineLabels[i % outlineLabels.length]}`,
+      description: `${outlineLabels[i % outlineLabels.length]} section about ${topic}`,
     }));
 
     const slides = Array.from({ length: pageCount }, (_, i) => ({
@@ -217,6 +215,7 @@ VALIDATION CHECKLIST (verify before responding):
       title: `${topic} - Slide ${i + 1}`,
       title_eng: `${topic} - Slide ${i + 1}`,
       outlineIndex: i % outlineCount,
+      keyPoints: [`Key point about ${topic}`],
     }));
 
     return { outline, slides };

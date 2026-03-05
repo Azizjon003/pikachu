@@ -20,6 +20,7 @@ export const OutlineSchema = z.object({
       z.object({
         title: z.string(), // mavzu tilida
         title_eng: z.string(), // ingliz tilida
+        description: z.string().optional(), // bo'lim haqida qisqacha tavsif
       })
     )
     .min(3)
@@ -30,6 +31,7 @@ export const OutlineSchema = z.object({
       title: z.string(), // mavzu tilida
       title_eng: z.string(), // ingliz tilida
       outlineIndex: z.number().int().min(0).max(2), // qaysi outline punktiga tegishli (0-2)
+      keyPoints: z.array(z.string()).optional(), // slaydda yoritilishi kerak bo'lgan 2-4 ta asosiy fikr
     })
   ),
 });

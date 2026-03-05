@@ -214,7 +214,7 @@ class ImageReplacerService {
         messages: [
           {
             role: 'system',
-            content: 'You are a translator specialized in medical and technical terminology. Translate the given text to English and extract 3-5 key searchable terms that would be good for finding relevant images. Return only the keywords separated by spaces, focusing on visual concepts.'
+            content: 'You are a translator and keyword extractor. Translate the given text to English and extract 3-5 key searchable terms that would be good for finding relevant images. Return only the keywords separated by spaces, focusing on visual concepts that can be photographed.'
           },
           {
             role: 'user',
@@ -247,48 +247,36 @@ class ImageReplacerService {
     // Clean up the text
     let text = slideContext.toLowerCase();
 
-    // Remove Lorem ipsum placeholder text
+    // Remove placeholder text
     text = text.replace(/lorem ipsum.*?(?=\.|$)/gi, '');
+    text = text.replace(/\[.*?\]/g, ''); // Remove [brackets]
 
-    // Extract meaningful medical/scientific terms
-    const medicalTerms = [
-      'tumor', 'nervous system', 'brain', 'cancer', 'glioma', 'meningioma',
-      'schwannoma', 'medulloblastoma', 'pituitary', 'mri', 'ct scan',
-      'diagnostic', 'treatment', 'surgery', 'radiation', 'chemotherapy',
-      'neurosurgery', 'oncology', 'pathology', 'biopsy', 'malignant',
-      'benign', 'cerebellum', 'spinal cord', 'peripheral nerves'
-    ];
+    // Extract meaningful words (>3 chars, not numbers, not common stop words)
+    const stopWords = new Set([
+      'this', 'that', 'with', 'from', 'have', 'been', 'will', 'would', 'could',
+      'should', 'about', 'which', 'their', 'there', 'these', 'those', 'then',
+      'than', 'them', 'they', 'what', 'when', 'where', 'were', 'also', 'very',
+      'more', 'most', 'some', 'such', 'only', 'other', 'into', 'over',
+    ]);
 
-    const foundTerms: string[] = [];
-    for (const term of medicalTerms) {
-      if (text.includes(term)) {
-        foundTerms.push(term);
-      }
-    }
+    const words = text
+      .split(/\s+/)
+      .map(w => w.replace(/[^a-z0-9'-]/g, ''))
+      .filter(word => word.length > 3 && !word.match(/^\d+$/) && !stopWords.has(word));
 
-    // If we found medical terms, use them
-    if (foundTerms.length > 0) {
-      // Take top 3 most specific terms
-      const keyword = foundTerms.slice(0, 3).join(' ') + ' medical';
+    // Take the most meaningful words (longer words tend to be more specific)
+    const sorted = words.sort((a, b) => b.length - a.length);
+    const unique = [...new Set(sorted)].slice(0, 4);
+
+    if (unique.length > 0) {
+      const keyword = unique.join(' ');
       this.log(`Generated keyword from content: "${keyword}"`, 'info');
       return keyword;
     }
 
-    // Fallback: extract first meaningful words
-    const words = text
-      .split(/\s+/)
-      .filter(word => word.length > 3 && !word.match(/^\d+$/))
-      .slice(0, 4);
-
-    if (words.length > 0) {
-      const keyword = words.join(' ');
-      this.log(`Generated fallback keyword: "${keyword}"`, 'info');
-      return keyword;
-    }
-
-    // Ultimate fallback
-    const fallback = `medical presentation slide ${slideNumber}`;
-    this.log(`Using ultimate fallback keyword: "${fallback}"`, 'warn');
+    // Ultimate fallback — generic professional image
+    const fallback = `professional presentation slide`;
+    this.log(`Using fallback keyword: "${fallback}"`, 'warn');
     return fallback;
   }
 
@@ -461,10 +449,10 @@ class ImageReplacerService {
         imageUrl = await this.searchImageUrl(fallbackKeyword);
       }
 
-      // Fallback 2: Try with generic medical keyword
+      // Fallback 2: Try with generic professional keyword
       if (!imageUrl) {
-        this.log('  Trying generic medical keyword...', 'warn');
-        imageUrl = await this.searchImageUrl('medical healthcare science');
+        this.log('  Trying generic keyword...', 'warn');
+        imageUrl = await this.searchImageUrl('professional presentation background');
       }
 
       if (imageUrl) {

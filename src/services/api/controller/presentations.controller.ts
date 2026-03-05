@@ -10,8 +10,9 @@ export const listPresentations = async (req: Request, res: Response) => {
       return res.json({ success: true, presentations: [] });
     }
 
-    const files = fs
-      .readdirSync(GENERATED_DIR)
+    const allFiles = fs.readdirSync(GENERATED_DIR);
+
+    const presentations = allFiles
       .filter((file) => file.endsWith(".pptx"))
       .map((file) => {
         const filePath = path.join(GENERATED_DIR, file);
@@ -24,9 +25,24 @@ export const listPresentations = async (req: Request, res: Response) => {
         };
       })
       .sort((a, b) => b.createdAt.getTime() - a.createdAt.getTime())
-      .slice(0, 5); // Limit to the 5 most recent files
+      .slice(0, 5);
 
-    res.json({ success: true, presentations: files });
+    const jsonFiles = allFiles
+      .filter((file) => file.endsWith(".json"))
+      .map((file) => {
+        const filePath = path.join(GENERATED_DIR, file);
+        const stats = fs.statSync(filePath);
+        return {
+          filename: file,
+          size: stats.size,
+          createdAt: stats.birthtime,
+          modifiedAt: stats.mtime,
+        };
+      })
+      .sort((a, b) => b.createdAt.getTime() - a.createdAt.getTime())
+      .slice(0, 10);
+
+    res.json({ success: true, presentations, jsonFiles });
   } catch (error: any) {
     res.status(500).json({ success: false, error: error.message });
   }

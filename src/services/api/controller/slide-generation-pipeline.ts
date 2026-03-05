@@ -20,6 +20,7 @@ import { OutlineGenerator } from '@/src/core/generation/outline-generator';
 import { ContentGenerator } from '@/src/core/generation/content-generator';
 import { SpecialSlideGenerator } from '@/src/core/generation/special-slide-generator';
 import { LayoutPlacer } from '@/src/core/generation/layout-placer';
+import { SlideReviewer } from '@/src/core/generation/slide-reviewer';
 import { generateSlideFromAI } from '@/src/core/processors';
 import { exportPPTX } from '@/src/core/exporters';
 import ImageReplacerService from '@/src/services/image/image-replacer';
@@ -272,7 +273,7 @@ export class SlideGenerationPipeline {
       }
 
       if (i % 3 === 0) {
-        const pct = 85 + Math.floor((i / allFilledSlidesJson.length) * 10);
+        const pct = 85 + Math.floor((i / allFilledSlidesJson.length) * 5);
         progress(pct, `Collision fix: slide ${i + 1}/${allFilledSlidesJson.length}`);
       }
     }
@@ -287,9 +288,25 @@ export class SlideGenerationPipeline {
       validationErrors: totalSlidesWithErrors,
     });
 
-    progress(95, 'Collisions fixed');
+    progress(90, 'Collisions fixed');
 
-    // ===== Step 10: Export PPTX (95-100%) =====
+    // ===== Step 10: Quality Review (90-95%) =====
+    progress(91, 'Reviewing slide quality');
+    const reviewer = new SlideReviewer(this.aiClient, this.logger);
+    const reviewResult = await reviewer.reviewPresentation(
+      allFilledSlidesJson, topic, language
+    );
+
+    if (reviewResult.summary.imagesRemoved > 0 || reviewResult.summary.imagesReplaced > 0
+        || reviewResult.summary.textIssuesFixed > 0) {
+      allFilledSlidesJson = reviewResult.slides;
+      fs.writeFileSync(fullFilledSlidesPath, JSON.stringify(allFilledSlidesJson, null, 2));
+      this.logger.info('Quality review applied fixes', reviewResult.summary);
+    }
+
+    progress(95, `Quality review: score ${reviewResult.summary.overallScore}/100`);
+
+    // ===== Step 11: Export PPTX (95-100%) =====
     progress(97, 'Exporting PPTX');
 
     const dataFullSxema = generateSlideFromAI(allFilledSlidesJson, fullSxema);
@@ -325,6 +342,12 @@ export class SlideGenerationPipeline {
         slidesFixed: totalSlidesFixed,
         collisionsResolved: totalCollisionsFixed,
         validationErrors: totalSlidesWithErrors,
+      },
+      qualityReview: {
+        overallScore: reviewResult.summary.overallScore,
+        imagesRemoved: reviewResult.summary.imagesRemoved,
+        imagesReplaced: reviewResult.summary.imagesReplaced,
+        textIssuesFixed: reviewResult.summary.textIssuesFixed,
       },
       failedSlides,
       tokenUsage: this.aiClient.getTotalUsage(),

@@ -162,6 +162,15 @@
                 Image Editor
               </a>
               <a
+                href="/slide-editor.html"
+                class="bg-white/10 hover:bg-white/20 backdrop-blur-sm text-white px-4 py-2 rounded-lg transition-all flex items-center gap-2 text-sm font-medium shadow-lg"
+              >
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z"/>
+                </svg>
+                Slide Editor
+              </a>
+              <a
                 href="/schema-editor.html"
                 class="bg-white/10 hover:bg-white/20 backdrop-blur-sm text-white px-4 py-2 rounded-lg transition-all flex items-center gap-2 text-sm font-medium shadow-lg"
               >
@@ -1157,6 +1166,14 @@
                             </svg>
                             Download Presentation
                         </a>
+                        ${data.jsonFileName ? `
+                        <a href="/slide-editor.html?file=${encodeURIComponent(data.jsonFileName)}&template=${encodeURIComponent(document.getElementById('template-select').value)}"
+                            class="px-6 py-3 bg-gradient-to-r from-purple-600 to-indigo-600 text-white font-semibold rounded-lg hover:from-purple-700 hover:to-indigo-700 transition-all text-center shadow-lg flex items-center gap-2">
+                            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z"/>
+                            </svg>
+                            Edit Slides
+                        </a>` : ''}
                         <button onclick="document.getElementById('generate-form').reset(); document.getElementById('results-card').classList.add('hidden');"
                             class="px-6 py-3 border-2 border-gray-300 text-gray-700 font-semibold rounded-lg hover:bg-gray-50 transition-all">
                             Generate Another

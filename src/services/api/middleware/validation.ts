@@ -125,13 +125,87 @@ export const validateSlideEdit = [
 ];
 
 /**
+ * Validation rules for image editing
+ */
+export const validateImageEdit = [
+  body('slide')
+    .notEmpty()
+    .withMessage('Slide is required')
+    .isObject()
+    .withMessage('Slide must be an object'),
+
+  body('slide.id')
+    .notEmpty()
+    .withMessage('Slide id is required')
+    .isString()
+    .withMessage('Slide id must be a string'),
+
+  body('slide.elements')
+    .notEmpty()
+    .withMessage('Slide elements are required')
+    .isArray()
+    .withMessage('Slide elements must be an array'),
+
+  body('elementIndexes')
+    .notEmpty()
+    .withMessage('elementIndexes is required')
+    .isArray({ min: 1 })
+    .withMessage('elementIndexes must be a non-empty array'),
+
+  body('elementIndexes.*')
+    .isInt({ min: 0 })
+    .withMessage('Each elementIndex must be a non-negative integer'),
+
+  body('language')
+    .notEmpty()
+    .withMessage('Language is required')
+    .isString()
+    .withMessage('Language must be a string')
+    .isLength({ min: 2, max: 50 })
+    .withMessage('Language must be between 2 and 50 characters'),
+
+  body('topic')
+    .optional()
+    .isString()
+    .withMessage('Topic must be a string')
+    .isLength({ max: 200 })
+    .withMessage('Topic must not exceed 200 characters'),
+
+  body('keywords')
+    .optional()
+    .isObject()
+    .withMessage('Keywords must be an object'),
+
+  handleValidationErrors,
+];
+
+/**
+ * Validation rules for slide re-rendering
+ */
+export const validateReRender = [
+  body('slides')
+    .notEmpty()
+    .withMessage('Slides are required')
+    .isArray({ min: 1 })
+    .withMessage('Slides must be a non-empty array'),
+
+  body('template')
+    .notEmpty()
+    .withMessage('Template is required')
+    .isString()
+    .withMessage('Template must be a string'),
+
+  handleValidationErrors,
+];
+
+/**
  * Validation rules for file downloads
  */
 export const validateFileDownload = [
   param('filename')
     .notEmpty()
     .withMessage('Filename is required')
-    .matches(/^[\w-]+\.(pptx|json)$/)
+    .matches(/^[\w.-]+\.(pptx|json)$/)
     .withMessage('Invalid filename format'),
 
   handleValidationErrors,
@@ -144,7 +218,7 @@ export const validateFileDeletion = [
   param('filename')
     .notEmpty()
     .withMessage('Filename is required')
-    .matches(/^[\w-]+\.(pptx|json)$/)
+    .matches(/^[\w.-]+\.(pptx|json)$/)
     .withMessage('Invalid filename format'),
 
   handleValidationErrors,
