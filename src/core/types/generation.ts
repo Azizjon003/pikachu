@@ -146,6 +146,14 @@ export interface QualityReviewSummary {
   textIssuesFixed: number;
 }
 
+export interface LayoutDesignSummary {
+  slidesProcessed: number;
+  fontAdjustments: number;
+  positionAdjustments: number;
+  spacingFixes: number;
+  hierarchyFixes: number;
+}
+
 export interface PipelineResult {
   success: boolean;
   slidePath: string;
@@ -156,6 +164,7 @@ export interface PipelineResult {
   validation: ValidationSummary;
   collisionPrevention: CollisionSummary;
   qualityReview: QualityReviewSummary;
+  layoutDesign: LayoutDesignSummary;
   failedSlides: FailedSlideInfo[];
   tokenUsage: TokenUsage;
 }

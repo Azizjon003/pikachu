@@ -28,6 +28,7 @@ import { exportPPTX } from '@/src/core/exporters';
 import ImageReplacerService from '@/src/services/image/image-replacer';
 import TextPlacementValidator from '@/src/services/validation/text-placement-validator';
 import { collisionAgent } from '@/src/services/layout/collision-prevention-agent';
+import { LayoutDesigner } from '@/src/services/layout/layout-designer';
 import { EnhancedLogger, LogLevel } from '@/src/lib/logger';
 import {
   PipelineOptions,
@@ -359,14 +360,40 @@ export class SlideGenerationPipeline {
       details: { score: reviewResult.summary.overallScore, ...reviewResult.summary } });
     progress(95, `Quality review: score ${reviewResult.summary.overallScore}/100`);
 
-    // ===== Step 11: Export PPTX (95-100%) =====
-    progress(97, 'Exporting PPTX');
+    // ===== Step 11: Merge AI content into full schema (95-96%) =====
+    progress(95, 'Merging content into template');
 
     const slideName = `${sessionId}-${sanitizedTopic}.pptx`;
     const slidePath = path.join(generatedDir, slideName);
 
+    const { result: dataFullSxema, durationMs: mergeMs } = timedSync(() =>
+      generateSlideFromAI(allFilledSlidesJson, fullSxema)
+    );
+
+    steps.push({ stepName: 'merge', stepOrder: 11, durationMs: mergeMs, status: 'completed' });
+
+    // ===== Step 12: Layout Design (96-98%) =====
+    progress(96, 'Optimizing layout design');
+
+    const { result: designResult, durationMs: designMs } = timedSync(() => {
+      const designer = new LayoutDesigner({
+        slideWidth: dataFullSxema.viewportWidth,
+        slideHeight: dataFullSxema.viewportHeight,
+      });
+      return designer.designSlides(dataFullSxema.slide);
+    });
+
+    dataFullSxema.slide = designResult.slides;
+    this.logger.info('Layout design complete', designResult.summary);
+
+    steps.push({ stepName: 'layout_design', stepOrder: 12, durationMs: designMs, status: 'completed',
+      details: designResult.summary as any });
+    progress(98, 'Layout optimized');
+
+    // ===== Step 13: Export PPTX (98-100%) =====
+    progress(98, 'Exporting PPTX');
+
     const { durationMs: exportMs } = timedSync(() => {
-      const dataFullSxema = generateSlideFromAI(allFilledSlidesJson, fullSxema);
       exportPPTX(
         dataFullSxema.slide,
         false,
@@ -377,7 +404,7 @@ export class SlideGenerationPipeline {
       );
     });
 
-    steps.push({ stepName: 'export', stepOrder: 11, durationMs: exportMs, status: 'completed' });
+    steps.push({ stepName: 'export', stepOrder: 13, durationMs: exportMs, status: 'completed' });
     progress(100, 'PPTX exported successfully');
 
     // ===== Save to database =====
@@ -460,6 +487,7 @@ export class SlideGenerationPipeline {
         imagesReplaced: reviewResult.summary.imagesReplaced,
         textIssuesFixed: reviewResult.summary.textIssuesFixed,
       },
+      layoutDesign: designResult.summary,
       failedSlides,
       tokenUsage,
     };
