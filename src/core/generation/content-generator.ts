@@ -20,9 +20,10 @@ import { AISlideElement, GenerationConfig, DEFAULT_GENERATION_CONFIG } from '../
 
 interface ContentParams {
   slide: { id: string; elements: any[] };
-  outline: { title?: string; title_eng?: string; keyPoints?: string[] };
+  outline: { title?: string; title_eng?: string; keyPoints?: string[]; description?: string };
   language: string;
   mainTopic?: string;
+  slidePosition?: { current: number; total: number; sectionName?: string };
 }
 
 export class ContentGenerator {
@@ -37,7 +38,7 @@ export class ContentGenerator {
   }
 
   async generate(params: ContentParams): Promise<any> {
-    const { slide, outline, language, mainTopic } = params;
+    const { slide, outline, language, mainTopic, slidePosition } = params;
 
     // Extract text/shape/table elements with metadata
     const textElements = this.extractTextElements(slide);
@@ -70,7 +71,7 @@ export class ContentGenerator {
         },
         {
           role: 'user',
-          content: this.buildUserPrompt(slide, outline, language, mainTopic, textElements, layoutVisualization),
+          content: this.buildUserPrompt(slide, outline, language, mainTopic, textElements, layoutVisualization, slidePosition),
         },
       ],
       fallback: () => this.buildFallbackContent(slide.id, textElements),
@@ -152,53 +153,78 @@ export class ContentGenerator {
   }
 
   private buildSystemPrompt(language: string, topicRef: string, diversityContext: string): string {
-    return `You are an expert presentation content writer. Your task is to generate HIGH-QUALITY, FACTUALLY ACCURATE content for a presentation about ${topicRef}.
+    return `You are a world-class presentation content writer with deep expertise in ${topicRef}. You write like a university professor — every sentence is precise, factual, and valuable.
 
-PRIMARY OBJECTIVE: Every piece of text MUST be specifically about ${topicRef}. Include real facts, specific details, and domain-relevant terminology. NEVER write generic placeholder text.
+YOUR MISSION: Generate professional, information-rich content for a presentation slide about ${topicRef}. Every word must earn its place — no filler, no fluff, no generic text.
 
-CRITICAL RULES:
-1. Generate content for EVERY element listed — do NOT skip any
-2. ALL content MUST be in ${language} language
-3. Content MUST be SPECIFICALLY about ${topicRef} with real facts and details
-4. Each element has a CONTENT ROLE (title, body, label etc.) — follow it precisely
-5. Respect maxCharacters limits. Prioritize quality over quantity
-6. CONTENT DIVERSITY: Each element covers a DIFFERENT aspect of the topic. NEVER repeat!
+WRITING STYLE:
+- Write like an expert teaching an audience — authoritative but accessible
+- Use domain-specific terminology naturally
+- Include SPECIFIC facts: numbers, percentages, dates, names, examples
+- Make every sentence independently informative
+- ALL content in ${language} language
 
-CONTENT QUALITY STANDARDS:
-- TITLES: Short, impactful, topic-specific (not generic like "Introduction" or "Overview")
-- BODY TEXT: Include specific facts, statistics, dates, names, or technical details relevant to ${topicRef}
-- BULLET POINTS: Each point should convey a distinct, meaningful fact
-- LABELS: Short but descriptive and topic-relevant
-- TABLES: Fill with real, accurate data related to the topic
+FORMATTING RULES BY ELEMENT TYPE:
+
+TITLES (role: MAIN TITLE or SUBTITLE):
+- 3-8 words maximum, bold and specific
+- Must contain a keyword from ${topicRef}
+- GOOD: "Sun'iy intellekt tarixi va evolyutsiyasi" | BAD: "Kirish" or "Umumiy ma'lumot"
+
+BODY TEXT (role: BODY CONTENT or CONTENT BLOCK):
+- Use bullet points with "• " prefix for lists
+- Each bullet = one COMPLETE fact or insight (not fragments)
+- Structure: "• [Key term]: [specific explanation with data]"
+- Example: "• Deep Learning: 2012-yilda AlexNet modeli ImageNet musobaqasida xatolikni 26% dan 15% ga kamaytirdi"
+- For paragraphs: Use clear topic sentences followed by supporting details
+- Target 80-95% of maxCharacters — fill the space with substance
+
+LABELS (role: LABEL/CALLOUT):
+- 1-5 precise words, topic-relevant
+- Act as section markers or highlights
+- GOOD: "Asosiy ko'rsatkichlar" | BAD: "Ma'lumot"
+
+TABLES:
+- Fill with REAL, plausible data (not placeholder text)
+- Headers should be descriptive column names
+- Data rows should contain specific values
 
 CHARACTER LIMITS:
-- Small (maxChars < 50): 1-5 precise words
-- Medium (maxChars 50-200): Concise informative sentences
-- Large (maxChars > 200): Detailed paragraphs with specific facts
-- Always use proper word spacing
+- Small (maxChars < 50): 2-6 precise words
+- Medium (maxChars 50-200): 1-3 informative sentences or 2-4 bullet points
+- Large (maxChars > 200): 4-8 bullet points OR 2-3 detailed paragraphs
+- Use 80-95% of available characters — don't leave space empty
+- NEVER exceed maxCharacters
 
-FORBIDDEN:
-- Generic filler text ("Lorem ipsum", "Sample text", "Content here")
-- Overly broad statements that could apply to any topic
-- Repeating the same idea in different words across elements
-- Empty or meaningless content${diversityContext}`;
+ABSOLUTE RULES:
+1. Generate content for EVERY element — skip NOTHING
+2. Each element has UNIQUE content — ZERO repetition
+3. Every sentence must contain topic-specific information
+4. No generic phrases: "muhim ahamiyatga ega", "turli sohalarda qo'llaniladi", "katta o'zgarishlar"
+5. No placeholder text: "Lorem ipsum", "[content]", "Sample text"${diversityContext}`;
   }
 
   private buildUserPrompt(
     slide: { id: string },
-    outline: { title?: string; title_eng?: string; keyPoints?: string[] },
+    outline: { title?: string; title_eng?: string; keyPoints?: string[]; description?: string },
     language: string,
     mainTopic: string | undefined,
     textElements: any[],
-    layoutVisualization: string
+    layoutVisualization: string,
+    slidePosition?: { current: number; total: number; sectionName?: string }
   ): string {
     const topicRef = mainTopic
       ? `"${mainTopic}"`
       : `"${outline.title || outline.title_eng}"`;
 
+    // Build position context
+    const positionContext = slidePosition
+      ? `\nSLIDE POSITION: ${slidePosition.current} of ${slidePosition.total} content slides${slidePosition.sectionName ? ` | Section: "${slidePosition.sectionName}"` : ''}\n`
+      : '';
+
     // Build key points guidance if available
     const keyPointsSection = outline.keyPoints && outline.keyPoints.length > 0
-      ? `\nKEY POINTS TO COVER IN THIS SLIDE:\n${outline.keyPoints.map((kp, i) => `  ${i + 1}. ${kp}`).join('\n')}\nDistribute these points across the elements below. Each element should address one or more of these points.\n`
+      ? `\nKEY POINTS TO COVER IN THIS SLIDE (use these as your PRIMARY content source):\n${outline.keyPoints.map((kp, i) => `  ${i + 1}. ${kp}`).join('\n')}\n\nIMPORTANT: Transform these key points into well-written slide content. Each key point should appear in at least one element. For BODY elements, use bullet points "• " with the key points as the basis.\n`
       : '';
 
     const elementDetails = textElements
@@ -223,25 +249,26 @@ FORBIDDEN:
       })
       .join('\n\n');
 
-    return `SLIDE ID: ${slide.id}
-${mainTopic ? `MAIN TOPIC: "${mainTopic}"` : ''}
-SLIDE TOPIC: ${outline.title || outline.title_eng}
-LANGUAGE: ${language}
-TOTAL ELEMENTS: ${textElements.length}
+    return `SLIDE: ${slide.id}
+PRESENTATION TOPIC: ${mainTopic ? `"${mainTopic}"` : ''}
+THIS SLIDE'S FOCUS: "${outline.title || outline.title_eng}"${outline.description ? `\nSECTION CONTEXT: ${outline.description}` : ''}
+LANGUAGE: ${language}${positionContext}
 ${keyPointsSection}
 ${layoutVisualization}
 
-ELEMENTS:
+ELEMENTS TO FILL (${textElements.length} total):
 ${elementDetails}
 
-REQUIREMENTS:
-1. Generate content for ALL ${textElements.length} elements — no more, no less
-2. Each element MUST have UNIQUE content covering a DIFFERENT aspect
-3. Use the element index shown in [brackets] as elementIndex value
-4. ALL content must be about: ${topicRef}
-5. Write in ${language} language
-6. Use the KEY POINTS above as your content guide — include specific facts from them
-7. Content must be factually accurate and informative`;
+INSTRUCTIONS:
+1. Fill ALL ${textElements.length} elements — every element gets content
+2. Follow each element's CONTENT ROLE precisely
+3. Use the KEY POINTS above as your primary content source — transform them into well-written slide text
+4. For BODY elements: use "• " bullet points with specific facts from key points
+5. For TITLES: write a compelling, specific title (3-8 words) related to this slide's focus
+6. Use elementIndex values EXACTLY as shown in [brackets]
+7. Write in ${language} — do not mix languages
+8. Fill 80-95% of each element's maxCharacters — don't leave elements half-empty
+9. Every sentence must contain at least one specific fact, number, or technical term`;
   }
 
   private mergeContentToSlide(slide: { id: string; elements: any[] }, generatedData: any): any {
@@ -287,35 +314,48 @@ REQUIREMENTS:
     const avgWidth = allElements.reduce((s, e) => s + (e.width || 0), 0) / allElements.length;
     const avgHeight = allElements.reduce((s, e) => s + (e.height || 0), 0) / allElements.length;
     const maxFontSize = Math.max(...allElements.map((e: any) => e.fontSize || 14));
+    const sortedByFont = [...allElements].sort((a, b) => (b.fontSize || 14) - (a.fontSize || 14));
     const area = (el.width || 0) * (el.height || 0);
     const avgArea = avgWidth * avgHeight;
 
     // Title: largest font size, near top, wide
-    if (el.fontSize >= maxFontSize * 0.9 && el.top < 150 && el.width > avgWidth * 0.6) {
-      return 'MAIN TITLE - Keep SHORT (3-8 words), bold and topic-specific';
+    if (el.fontSize >= maxFontSize * 0.9 && el.top < 150 && el.width > avgWidth * 0.5) {
+      return `MAIN TITLE — Write 3-8 words. Must contain a keyword from the topic. Be specific and impactful, NOT generic. Example: "Sun'iy intellektning rivojlanish bosqichlari"`;
     }
 
     // Subtitle: second largest font, near top
-    if (el.fontSize >= maxFontSize * 0.7 && el.top < 200 && el.width > avgWidth * 0.5) {
-      return 'SUBTITLE - One concise sentence describing the slide topic';
+    if (el.fontSize >= maxFontSize * 0.7 && el.top < 200 && el.width > avgWidth * 0.4) {
+      return `SUBTITLE — One concise descriptive sentence about this slide's specific sub-topic. Example: "Mashina o'rganishning asosiy algoritmlari va ularning ishlash printsiplari"`;
     }
 
     // Large body: big area, likely main content
     if (area > avgArea * 1.5 || el.height > 250) {
-      return 'BODY CONTENT - Use detailed, informative text with specific facts. Use bullet points if appropriate';
+      return `BODY CONTENT — This is the MAIN content area. Write detailed bullet points using "• " prefix. Each bullet = one complete fact with specific data. Fill 80-95% of maxCharacters. Example format:
+• [Term/Concept]: [Specific fact with numbers or dates]
+• [Another aspect]: [Detailed explanation]`;
+    }
+
+    // Medium-large content block
+    if (el.maxCharacters > 200 || (area > avgArea * 0.8 && el.height > 150)) {
+      return `CONTENT BLOCK — Write 3-6 bullet points with "• " prefix. Each point must contain a specific fact, statistic, or technical detail. Fill the space — use 80-95% of maxCharacters`;
     }
 
     // Small label/callout
-    if (area < avgArea * 0.3 || (el.width < 200 && el.height < 80)) {
-      return 'LABEL/CALLOUT - Very brief (1-5 words), descriptive';
+    if (area < avgArea * 0.25 || (el.width < 180 && el.height < 70)) {
+      return `LABEL/CALLOUT — 2-5 precise words. Use as a category marker or highlight. Example: "Asosiy ko'rsatkichlar"`;
     }
 
     // Medium content
-    if (el.maxCharacters > 150 || area > avgArea * 0.8) {
-      return 'CONTENT BLOCK - Informative paragraph or bullet points about a specific aspect of the topic';
+    if (el.maxCharacters > 100 || area > avgArea * 0.5) {
+      return `CONTENT BLOCK — Write 2-4 informative sentences or bullet points about a specific aspect. Include at least one number, date, or technical term`;
     }
 
-    return 'SUPPORTING TEXT - Brief, relevant text about the topic';
+    // Small supporting text
+    if (el.maxCharacters < 60) {
+      return `SHORT TEXT — 1-2 precise sentences or a key phrase. Be specific to the topic`;
+    }
+
+    return `SUPPORTING TEXT — Write 1-3 informative sentences with specific facts about the topic. Avoid generic statements`;
   }
 
   /**

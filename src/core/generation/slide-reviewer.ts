@@ -389,6 +389,13 @@ export class SlideReviewer {
           /^placeholder/i,
           /^your\s*(text|content|title)/i,
           /^click\s*to\s*(add|edit)/i,
+          /^element\s*\d/i,
+          /^\{.*\}$/,
+          /^untitled/i,
+          /^todo/i,
+          /^n\/a$/i,
+          /^none$/i,
+          /^test$/i,
         ];
 
         const isPlaceholder = placeholderPatterns.some(p => p.test(lowerContent));
@@ -399,6 +406,25 @@ export class SlideReviewer {
             description: `Element contains placeholder text: "${content.substring(0, 50)}"`,
             severity: 'critical',
           });
+        }
+
+        // Generic content check — content that's too vague to be useful
+        if (content.trim().length > 20 && content.trim().length < 100) {
+          const genericPatterns = [
+            /^(introduction|kirish|введение|overview|umumiy)$/i,
+            /^(conclusion|xulosa|заключение|summary)$/i,
+            /^(main content|asosiy ma'lumot|основной контент)$/i,
+            /^(important information|muhim ma'lumot)$/i,
+          ];
+          const isGeneric = genericPatterns.some(p => p.test(content.trim()));
+          if (isGeneric) {
+            issues.push({
+              type: 'generic_content',
+              elementIndex: idx,
+              description: `Element has overly generic content: "${content.substring(0, 50)}"`,
+              severity: 'minor',
+            });
+          }
         }
       }
 

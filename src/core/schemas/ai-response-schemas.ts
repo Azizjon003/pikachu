@@ -86,9 +86,9 @@ export function createOutlineSchema(
             keyPoints: {
               type: 'array',
               items: { type: 'string' },
-              minItems: 2,
-              maxItems: 4,
-              description: `2-4 specific key points/facts that this slide should cover (in ${language})`,
+              minItems: 3,
+              maxItems: 5,
+              description: `3-5 specific, factual key points that this slide should cover. Each must contain a concrete fact, number, or technical detail (in ${language})`,
             },
           },
           required: ['slideIndex', 'title', 'title_eng', 'outlineIndex', 'keyPoints'],

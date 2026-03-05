@@ -30,9 +30,21 @@ export class OutlineGenerator {
     this.logger = logger ?? new EnhancedLogger(LogLevel.INFO);
   }
 
+  /**
+   * Dynamic outline count based on page count.
+   * Fewer pages → fewer sections, more pages → more sections for depth.
+   */
+  private calculateOutlineCount(pageCount: number, configCount: number): number {
+    if (pageCount <= 6) return Math.min(configCount, 2);
+    if (pageCount <= 10) return 3;
+    if (pageCount <= 15) return 4;
+    if (pageCount <= 20) return 5;
+    return Math.min(6, Math.ceil(pageCount / 4));
+  }
+
   async generate(params: OutlineParams): Promise<OutlineResponse> {
     const { language, pageCount, topic } = params;
-    const outlineCount = params.outlineCount ?? this.config.outlineCount;
+    const outlineCount = this.calculateOutlineCount(pageCount, params.outlineCount ?? this.config.outlineCount);
 
     // Filter slides: remove first 2 and last 3 (title, outline, conclusion, references, thankyou)
     let slides = params.slides.filter(
@@ -110,47 +122,63 @@ export class OutlineGenerator {
     pageCount: number,
     outlineCount: number
   ): string {
-    return `You are an expert academic and professional presentation planner. Your job is to create a DEEP, WELL-STRUCTURED outline for a presentation about "${topic}".
+    return `You are a world-class presentation architect and subject-matter expert. Create a masterful, university-level presentation outline about "${topic}".
 
-PRIMARY OBJECTIVE: Plan a presentation that teaches the audience about "${topic}" with real facts, specific details, and logical flow.
+YOUR EXPERTISE: You have deep knowledge of "${topic}" and can provide specific facts, real data, historical context, and expert-level analysis. You write like a professor preparing a keynote lecture.
 
-THINKING PROCESS — Before generating output, mentally:
-1. Identify what "${topic}" actually is (field, subject, scope)
-2. List the most important aspects, facts, and sub-topics
-3. Organize them into ${outlineCount} logical sections that build on each other
-4. For each slide, plan 2-4 specific points that should be covered
-5. Ensure no repetition — each slide covers unique information
+PLANNING STRATEGY — Think step by step:
+1. What is "${topic}"? Define its scope, field, and significance
+2. What are the 5-10 most important facts, milestones, and concepts?
+3. What is the BEST logical flow? (chronological? cause→effect? problem→solution? simple→complex?)
+4. How to make each slide UNIQUE and VALUABLE — no filler, no repetition
+5. What specific data points, names, dates, statistics can you include?
 
 OUTLINE RULES:
 - Create EXACTLY ${outlineCount} main sections
 - Each section needs:
-  * "title" in ${language} — specific to "${topic}"
-  * "title_eng" in English — specific to "${topic}"
-  * "description" — 1-2 sentence summary of what this section covers (in ${language})
-- Sections must follow a logical teaching order (e.g., definition → details → analysis → application)
-- Each section title must contain terminology specific to "${topic}"
+  * "title" in ${language} — must be specific and meaningful (NOT generic like "Introduction" or "Overview")
+  * "title_eng" in English — same specificity
+  * "description" — 2-3 sentences explaining what this section covers, why it matters, and what the audience will learn (in ${language})
+- Sections MUST follow a compelling narrative arc:
+  * Start with WHAT (definition, context, importance)
+  * Move to HOW/WHY (mechanisms, causes, processes, history)
+  * End with IMPACT/APPLICATION (results, future, practical use)
+- Each section title must use domain-specific terminology of "${topic}"
+- Sections should have ROUGHLY equal numbers of slides
 
 SLIDE RULES:
 - Total available slide templates: ${availableSlides} (indexes 0 to ${availableSlides - 1})
 - Generate EXACTLY ${pageCount} slides
-- ${pageCount > availableSlides ? `REUSE slide indexes as needed (${pageCount} slides > ${availableSlides} templates)` : `Use indexes from 0 to ${availableSlides - 1}`}
+- ${pageCount > availableSlides ? `REUSE slide indexes as needed (${pageCount} slides > ${availableSlides} templates). Vary the reused templates — don't reuse the same one consecutively` : `Use indexes from 0 to ${availableSlides - 1}`}
 - Each slide needs:
   * "slideIndex": valid index (0 to ${availableSlides - 1})
-  * "title" / "title_eng": specific slide title (NOT the same as the section title)
+  * "title" / "title_eng": a SPECIFIC, descriptive slide title that tells the audience exactly what they'll learn (NOT the same as the section title, NOT generic like "Details" or "Information")
   * "outlineIndex": which section it belongs to (0 to ${outlineCount - 1})
-  * "keyPoints": array of 2-4 SPECIFIC facts/points this slide should present
+  * "keyPoints": array of 3-4 HIGHLY SPECIFIC talking points
 
-KEY POINTS QUALITY:
-- Each keyPoint must be a SPECIFIC fact, statistic, definition, or detail about "${topic}"
-- NOT generic statements like "important aspects" or "key features"
-- Include numbers, dates, names, technical terms where relevant
-- Example good keyPoint: "DNA ning ikki zanjirli spirali 1953-yilda Watson va Crick tomonidan kashf etilgan"
-- Example bad keyPoint: "DNA ning muhim xususiyatlari"
+KEY POINTS QUALITY — THIS IS CRITICAL:
+- Every keyPoint MUST contain at least ONE of: a specific number/statistic, a proper name, a date/year, a technical term, or a concrete example
+- Write keyPoints as COMPLETE informative sentences, not vague phrases
+- Each keyPoint should be independently valuable — if someone only reads that one point, they learn something real
 
-VALIDATION:
-- Every title contains "${topic}"-specific terminology
-- No two slides have the same keyPoints
-- keyPoints are factual and specific, not vague`;
+EXAMPLES OF GOOD keyPoints (for topic "Sun'iy intellekt"):
+✅ "GPT-4 modeli 1.7 trillion parametrga ega bo'lib, 2023-yilda OpenAI tomonidan ishlab chiqilgan"
+✅ "Deep learning asosida tibbiyotda saraton kasalligini 94% aniqlik bilan aniqlash mumkin"
+✅ "AlphaFold 2 oqsil strukturasini bashorat qilishda 200 million oqsilni xaritalagan"
+✅ "2024-yilga kelib sun'iy intellekt sohasi 500 milliard dollar bozorga ega"
+
+EXAMPLES OF BAD keyPoints (NEVER write like this):
+❌ "Sun'iy intellektning muhim xususiyatlari"
+❌ "Bu sohadagi asosiy rivojlanishlar"
+❌ "Turli qo'llanilish sohalari mavjud"
+❌ "Kelajakda ko'p o'zgarishlar bo'ladi"
+
+VALIDATION CHECKLIST:
+- Every slide title is unique and specific to "${topic}"
+- No two slides share similar keyPoints
+- keyPoints are factual, detailed sentences (not vague phrases)
+- Slides are evenly distributed across ${outlineCount} sections
+- The presentation tells a complete, compelling story about "${topic}"`;
   }
 
   private buildUserPrompt(
@@ -161,30 +189,40 @@ VALIDATION:
     pageCount: number,
     outlineCount: number
   ): string {
+    // Build a simplified template summary (avoid sending entire JSON)
+    const templateSummary = slides.map((s, i) => {
+      const textEls = s.elements?.filter((e: any) => e.type === 'text' || e.type === 'shape') || [];
+      return `Template ${i}: ${textEls.length} text elements`;
+    }).join(', ');
+
     return `TOPIC: "${topic}"
 LANGUAGE: ${language}
 AVAILABLE SLIDE TEMPLATES: ${availableSlides} (indexes 0 to ${availableSlides - 1})
 REQUIRED SLIDES: ${pageCount}
+REQUIRED SECTIONS: ${outlineCount}
 
-AVAILABLE SLIDE TEMPLATES:
-${JSON.stringify(slides)}
+TEMPLATE INFO: ${templateSummary}
 
-INSTRUCTIONS:
-1. Study the topic "${topic}" deeply — understand its scope, sub-topics, and key facts
-2. Create ${outlineCount} main sections that logically divide "${topic}":
-   - Each section with title (${language} + English) and a brief description
-   - Sections should build on each other (introduction → details → analysis/conclusion)
-3. Plan EXACTLY ${pageCount} slides, each with:
-   - A specific title (NOT the same as section title)
-   - 2-4 keyPoints — SPECIFIC facts, details, or talking points for that slide
-   - Assigned to the correct section (outlineIndex)
-4. Use ONLY slide indexes from 0 to ${availableSlides - 1}
+YOUR TASK:
+You are preparing a professional presentation about "${topic}" for an educated audience. This presentation should be informative, well-researched, and engaging.
 
-QUALITY CHECK before responding:
-- Each slide's keyPoints contain REAL, SPECIFIC information (not generic)
-- No two slides repeat the same information
-- The presentation tells a complete, coherent story about "${topic}"
-- All text is in ${language} (except title_eng which is English)`;
+STEP 1 — Create ${outlineCount} main sections:
+- Each with "title" (in ${language}), "title_eng" (English), and "description" (in ${language})
+- Sections must form a logical narrative: context → core content → analysis → application/conclusion
+- Section titles must be SPECIFIC to "${topic}" (not generic words like "Introduction")
+
+STEP 2 — Plan EXACTLY ${pageCount} slides:
+- Each slide: "slideIndex" (0 to ${availableSlides - 1}), "title"/"title_eng", "outlineIndex" (0 to ${outlineCount - 1}), "keyPoints" (3-4 items)
+- Distribute slides evenly across sections (~${Math.round(pageCount / outlineCount)} slides per section)
+- Each slide title should describe its specific sub-topic
+- keyPoints must be COMPLETE, FACTUAL sentences with specific data
+
+STEP 3 — Self-review before responding:
+✅ Every keyPoint contains a specific fact (number, name, date, or technical detail)
+✅ No two slides cover the same sub-topic
+✅ The ${pageCount} slides tell a complete story from beginning to end
+✅ All titles and keyPoints are in ${language} (except title_eng)
+✅ Slide indexes are valid (0 to ${availableSlides - 1})`;
   }
 
   private buildFallbackOutline(

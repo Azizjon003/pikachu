@@ -7,6 +7,7 @@ import { generateAISchema } from "@/src/core/processors";
 import { ImageStorageManager } from "@/src/services/image/image-storage-manager";
 import { getOpenAIService } from "@/src/services/openai";
 import sharp from "sharp";
+import prisma from "../../../lib/prisma";
 
 /**
  * Interface for template metadata
@@ -214,7 +215,7 @@ Return JSON: { "replace": [id1, id2] } — array of image IDs to REPLACE. Only J
             },
           ],
           temperature: 0.1,
-          max_tokens: Math.min(500, chunk.length * 10 + 50),
+          maxTokens: Math.min(500, chunk.length * 10 + 50),
         });
 
         const content = response.content?.trim() || "{}";
@@ -445,11 +446,30 @@ const uploadAndCreateTemplate = async (req: Request, res: Response) => {
       );
     }
 
+    // Save template to database (schema JSON directly in DB)
+    const slideArray = Array.isArray(slides) ? slides : (slides as { slide: any[] }).slide;
+    const dbTemplate = await prisma.template.upsert({
+      where: { name: originalName },
+      update: {
+        schema: aiSchema as any,
+        slideCount: slideArray.length,
+        imageCount: imageDownloadResults.totalFound,
+        updatedAt: new Date(),
+      },
+      create: {
+        name: originalName,
+        schema: aiSchema as any,
+        slideCount: slideArray.length,
+        imageCount: imageDownloadResults.totalFound,
+      },
+    });
+
     // Return success response with image processing results
     res.json({
       success: true,
       filename: originalName,
       path: targetPath,
+      templateId: dbTemplate?.id || null,
       message: "Template uploaded successfully",
       imageProcessing: {
         totalImagesFound: imageDownloadResults.totalFound,
@@ -540,10 +560,16 @@ export const uploadTemplatePreview = async (req: Request, res: Response) => {
 
       console.log(`Preview image uploaded for template: ${templateName}`);
 
-      // Update metadata
+      // Update metadata (file-based)
       const metadata = loadMetadata();
       metadata[templateName] = finalFilename;
       saveMetadata(metadata);
+
+      // Update DB
+      await prisma.template.updateMany({
+        where: { name: templateName },
+        data: { hasPreview: true },
+      });
 
       // Clean up temporary file (with retry for Windows)
       await deleteFileWithRetry(req.file.path);
@@ -619,29 +645,22 @@ export const getTemplatePreview = async (req: Request, res: Response) => {
 
 export const getTemplates = async (req: Request, res: Response) => {
   try {
-    const templatesDir = path.join(process.cwd(), "templates");
+    const dbTemplates = await prisma.template.findMany({
+      orderBy: { createdAt: "desc" },
+      include: {
+        _count: { select: { presentations: true } },
+      },
+    });
+
     const imageStorageManager = new ImageStorageManager(path.join(process.cwd(), "images"));
 
-    const templateFiles = fs
-      .readdirSync(templatesDir)
-      .filter((file) => file.endsWith(".sxema.json"));
-
-    // Load preview metadata
-    const previewMetadata = loadMetadata();
-
-    // Process each template with images
     const templatesWithImages = await Promise.all(
-      templateFiles.map(async (templateFile) => {
-        // Extract base template name (remove .sxema.json)
-        const templateName = templateFile.replace(".sxema.json", "");
+      dbTemplates.map(async (t) => {
+        const metadata = await imageStorageManager.loadAllMetadata(t.name);
 
-        // Template metadata and images
-        const metadata = await imageStorageManager.loadAllMetadata(templateName);
-
-        // Create URLs for images
         const images = metadata.map((img) => ({
           filename: img.filename,
-          url: `/images/${templateName}/images/${img.filename}`,
+          url: `/images/${t.name}/images/${img.filename}`,
           originalUrl: img.originalUrl,
           dimensions: img.dimensions,
           format: img.format,
@@ -651,18 +670,17 @@ export const getTemplates = async (req: Request, res: Response) => {
           downloadedAt: img.downloadedAt,
         }));
 
-        // Get preview image if exists - use templateName (e.g., "PR-4.pptx")
-        const previewFilename = previewMetadata[templateName];
-        const previewImage = previewFilename
-          ? `/templates/previews/${previewFilename}`
-          : null;
-
         return {
-          name: templateFile,
-          templateName: templateName,
-          previewImage: previewImage,
-          images: images,
-          imageCount: images.length,
+          id: t.id,
+          name: t.name,
+          templateName: t.name,
+          previewImage: t.hasPreview ? `/templates/previews/${t.name}.jpg` : null,
+          slideCount: t.slideCount,
+          imageCount: t.imageCount,
+          presentationCount: t._count.presentations,
+          hasSchema: t.schema !== null,
+          images,
+          createdAt: t.createdAt,
         };
       })
     );

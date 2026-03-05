@@ -1,6 +1,7 @@
 import { Router } from 'express';
 import {
   listPresentations,
+  getPresentation,
   downloadPresentation,
   deletePresentation,
   getStats
@@ -29,5 +30,8 @@ router.delete(
 
 // GET /api/presentations/stats - Get presentation statistics
 router.get('/stats', asyncHandler(getStats));
+
+// GET /api/presentations/:id - Get single presentation details
+router.get('/:id', asyncHandler(getPresentation));
 
 export default router;

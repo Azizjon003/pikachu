@@ -7,10 +7,14 @@ import {
   editSlideImages,
   reRenderSlide,
 } from "../controller/slide.controller.new";
+import { estimateCostHandler } from "../controller/cost-estimator";
 import { validateSlideGeneration, validateSlideEdit, validateImageEdit, validateReRender } from "../middleware/validation";
 import { asyncHandler } from "../middleware/error-handler";
 
 const router = Router();
+
+// POST /api/slide/estimate-cost - Estimate generation cost before starting
+router.post("/estimate-cost", asyncHandler(estimateCostHandler));
 
 // POST /api/slide/generate - Start asynchronous slide generation
 router.post(

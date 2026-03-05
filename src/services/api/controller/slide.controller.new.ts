@@ -34,7 +34,7 @@ export const startSlideGeneration = async (req: Request, res: Response) => {
   const params: PipelineOptions = req.body;
   const taskId = crypto.randomBytes(16).toString('hex');
 
-  createTask(taskId);
+  await createTask(taskId);
 
   const pipeline = new SlideGenerationPipeline();
 
@@ -63,7 +63,7 @@ export const startSlideGeneration = async (req: Request, res: Response) => {
  */
 export const getSlideGenerationStatus = async (req: Request, res: Response) => {
   const { taskId } = req.params;
-  const task = getTask(taskId);
+  const task = await getTask(taskId);
 
   if (!task) {
     return res.status(404).json({ success: false, message: 'Task not found' });

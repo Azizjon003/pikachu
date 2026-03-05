@@ -1,6 +1,5 @@
 import { Request, Response } from "express";
-import fs from "fs";
-import path from "path";
+import prisma from "../../../lib/prisma";
 
 // Types for schema structure
 interface ImageElement {
@@ -45,7 +44,6 @@ type Schema = SlideSchema[];
  * Validates template name to prevent path traversal attacks
  */
 const validateTemplateName = (template: string): boolean => {
-  // Check for path traversal attempts
   if (
     template.includes("..") ||
     template.includes("/") ||
@@ -55,7 +53,6 @@ const validateTemplateName = (template: string): boolean => {
     return false;
   }
 
-  // Must end with .pptx
   if (!template.endsWith(".pptx")) {
     return false;
   }
@@ -64,32 +61,21 @@ const validateTemplateName = (template: string): boolean => {
 };
 
 /**
- * Gets the schema file path for a template
+ * Find template and its schema from DB
  */
-const getSchemaPath = (template: string): string => {
-  return path.join(process.cwd(), "templates", `${template}.sxema.json`);
-};
+const findTemplateSchema = async (templateName: string): Promise<{ id: string; schema: Schema } | null> => {
+  const template = await prisma.template.findFirst({
+    where: { name: templateName },
+    select: { id: true, schema: true },
+  });
 
-/**
- * Creates a backup of the schema file
- */
-const backupSchema = (schemaPath: string): void => {
-  try {
-    const timestamp = new Date().toISOString().replace(/[:.]/g, "-");
-    const backupPath = schemaPath.replace(
-      ".sxema.json",
-      `.sxema.backup.${timestamp}.json`
-    );
-    fs.copyFileSync(schemaPath, backupPath);
-  } catch (error) {
-    console.error("Failed to create backup:", error);
-    // Don't throw - backup is optional
-  }
+  if (!template || !template.schema) return null;
+  return { id: template.id, schema: template.schema as unknown as Schema };
 };
 
 /**
  * GET /schema/:template
- * Get schema file by template name
+ * Get schema by template name from DB
  */
 export const getSchema = async (req: Request, res: Response) => {
   try {
@@ -109,21 +95,18 @@ export const getSchema = async (req: Request, res: Response) => {
       });
     }
 
-    const schemaPath = getSchemaPath(template);
+    const result = await findTemplateSchema(template);
 
-    if (!fs.existsSync(schemaPath)) {
+    if (!result) {
       return res.status(404).json({
         success: false,
-        error: `Schema file not found for template: ${template}`,
+        error: `Schema not found for template: ${template}`,
       });
     }
 
-    const schemaContent = fs.readFileSync(schemaPath, "utf-8");
-    const schema: Schema = JSON.parse(schemaContent);
-
     res.json({
       success: true,
-      data: schema,
+      data: result.schema,
     });
   } catch (error: any) {
     console.error("Error getting schema:", error);
@@ -136,7 +119,7 @@ export const getSchema = async (req: Request, res: Response) => {
 
 /**
  * PUT /schema
- * Update entire schema
+ * Update entire schema in DB
  */
 export const updateSchema = async (req: Request, res: Response) => {
   try {
@@ -170,20 +153,21 @@ export const updateSchema = async (req: Request, res: Response) => {
       });
     }
 
-    const schemaPath = getSchemaPath(template);
+    const existing = await prisma.template.findFirst({
+      where: { name: template },
+    });
 
-    if (!fs.existsSync(schemaPath)) {
+    if (!existing) {
       return res.status(404).json({
         success: false,
-        error: `Schema file not found for template: ${template}`,
+        error: `Template not found: ${template}`,
       });
     }
 
-    // Create backup before updating
-    backupSchema(schemaPath);
-
-    // Write updated schema with pretty print (2 spaces indent)
-    fs.writeFileSync(schemaPath, JSON.stringify(schema, null, 2), "utf-8");
+    await prisma.template.update({
+      where: { id: existing.id },
+      data: { schema: schema as any },
+    });
 
     res.json({
       success: true,
@@ -235,19 +219,17 @@ export const toggleImageEdited = async (req: Request, res: Response) => {
       });
     }
 
-    const schemaPath = getSchemaPath(template);
+    const result = await findTemplateSchema(template);
 
-    if (!fs.existsSync(schemaPath)) {
+    if (!result) {
       return res.status(404).json({
         success: false,
-        error: `Schema file not found for template: ${template}`,
+        error: `Schema not found for template: ${template}`,
       });
     }
 
-    const schemaContent = fs.readFileSync(schemaPath, "utf-8");
-    const schema: Schema = JSON.parse(schemaContent);
+    const schema = result.schema;
 
-    // Validate slide index
     if (slideIndex < 0 || slideIndex >= schema.length) {
       return res.status(400).json({
         success: false,
@@ -278,11 +260,11 @@ export const toggleImageEdited = async (req: Request, res: Response) => {
     const imageElement = element as ImageElement;
     imageElement.isEdited = !imageElement.isEdited;
 
-    // Create backup before updating
-    backupSchema(schemaPath);
-
-    // Write updated schema
-    fs.writeFileSync(schemaPath, JSON.stringify(schema, null, 2), "utf-8");
+    // Save updated schema to DB
+    await prisma.template.update({
+      where: { id: result.id },
+      data: { schema: schema as any },
+    });
 
     res.json({
       success: true,
@@ -345,19 +327,17 @@ export const updateElement = async (req: Request, res: Response) => {
       });
     }
 
-    const schemaPath = getSchemaPath(template);
+    const result = await findTemplateSchema(template);
 
-    if (!fs.existsSync(schemaPath)) {
+    if (!result) {
       return res.status(404).json({
         success: false,
-        error: `Schema file not found for template: ${template}`,
+        error: `Schema not found for template: ${template}`,
       });
     }
 
-    const schemaContent = fs.readFileSync(schemaPath, "utf-8");
-    const schema: Schema = JSON.parse(schemaContent);
+    const schema = result.schema;
 
-    // Validate slide index
     if (slideIndex < 0 || slideIndex >= schema.length) {
       return res.status(400).json({
         success: false,
@@ -389,11 +369,11 @@ export const updateElement = async (req: Request, res: Response) => {
     const oldContent = shapeElement.content;
     shapeElement.content = content;
 
-    // Create backup before updating
-    backupSchema(schemaPath);
-
-    // Write updated schema
-    fs.writeFileSync(schemaPath, JSON.stringify(schema, null, 2), "utf-8");
+    // Save updated schema to DB
+    await prisma.template.update({
+      where: { id: result.id },
+      data: { schema: schema as any },
+    });
 
     res.json({
       success: true,

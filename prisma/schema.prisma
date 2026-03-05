@@ -1,0 +1,151 @@
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+// ===== Shablonlar =====
+
+model Template {
+  id          String   @id @default(cuid())
+  name        String   @unique          // "PR-4.pptx" — PPTX va preview path shu nomdan olinadi
+  schema      Json?                     // AI schema (.sxema.json kontenti to'g'ridan-to'g'ri DB da)
+  slideCount  Int      @default(0)
+  imageCount  Int      @default(0)
+  hasPreview  Boolean  @default(false)  // preview mavjudligini belgilaydi
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  presentations Presentation[]
+
+  @@index([name])
+}
+
+// ===== Prezentatsiyalar =====
+
+model Presentation {
+  id         String   @id @default(cuid())
+  filename   String   @unique
+  filePath   String
+  topic      String
+  language   String   @default("uz")
+  author     String?
+  fileSize   Int?
+  slideCount Int      @default(0)
+  pageCount  Int?
+  status     String   @default("completed")
+
+  templateId String?
+  template   Template? @relation(fields: [templateId], references: [id], onDelete: SetNull)
+
+  // Generatsiya statistikasi
+  generationTime Int?
+  totalTokens    Int?
+  estimatedCost  Float?
+
+  // Sifat ko'rsatkichlari
+  qualityScore      Int?
+  validationIssues  Int?    @default(0)
+  validationFixes   Int?    @default(0)
+  collisionsFixed   Int?    @default(0)
+  imagesReplaced    Int?    @default(0)
+  imagesFailed      Int?    @default(0)
+  failedSlides      Int?    @default(0)
+
+  metadata  Json?
+  createdAt DateTime @default(now())
+
+  taskId String? @unique
+  task   Task?   @relation(fields: [taskId], references: [id])
+
+  generationSteps GenerationStep[]
+
+  @@index([createdAt])
+  @@index([topic])
+  @@index([templateId])
+  @@index([status])
+}
+
+// ===== Async tasklar =====
+
+model Task {
+  id           String   @id @default(cuid())
+  status       String   @default("pending")
+  progress     Int      @default(0)
+  progressText String?
+  result       Json?
+  error        String?
+  createdAt    DateTime @default(now())
+  updatedAt    DateTime @updatedAt
+
+  presentation Presentation?
+
+  @@index([status])
+  @@index([createdAt])
+}
+
+// ===== Generatsiya qadamlari (pipeline har bir bosqichi) =====
+
+model GenerationStep {
+  id             String   @id @default(cuid())
+  presentationId String
+  presentation   Presentation @relation(fields: [presentationId], references: [id], onDelete: Cascade)
+
+  stepName    String    // "outline", "content", "images", "validation", "collision", "review", "export"
+  stepOrder   Int
+  durationMs  Int
+  status      String    @default("completed") // "completed" | "failed" | "skipped"
+
+  // AI call statistikasi (agar AI ishlatilgan bo'lsa)
+  promptTokens     Int?
+  completionTokens Int?
+  totalTokens      Int?
+  estimatedCost    Float?
+  model            String?
+
+  details     Json?     // Qo'shimcha ma'lumotlar (har bir step uchun turlicha)
+  createdAt   DateTime  @default(now())
+
+  @@index([presentationId])
+  @@index([stepName])
+}
+
+// ===== AI API chaqiruvlari logi =====
+
+model AiCallLog {
+  id            String   @id @default(cuid())
+  operationName String
+  model         String
+  promptTokens  Int
+  completionTokens Int
+  totalTokens   Int
+  estimatedCost Float
+  latencyMs     Int
+  retryCount    Int      @default(0)
+  fromCache     Boolean  @default(false)
+  fromFallback  Boolean  @default(false)
+  status        String   @default("success") // "success" | "error"
+  error         String?
+  createdAt     DateTime @default(now())
+
+  @@index([operationName])
+  @@index([createdAt])
+  @@index([model])
+}
+
+// ===== Xatolar logi =====
+
+model ErrorLog {
+  id        String   @id @default(cuid())
+  level     String   // "error" | "warn"
+  message   String
+  stack     String?
+  context   Json?    // endpoint, taskId, slideIndex va boshqalar
+  createdAt DateTime @default(now())
+
+  @@index([level])
+  @@index([createdAt])
+}

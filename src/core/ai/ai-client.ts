@@ -10,6 +10,7 @@
 
 import { getOpenAIService, OpenAIService } from '../../services/openai';
 import { EnhancedLogger, LogLevel } from '../../lib/logger';
+import prisma from '../../lib/prisma';
 import { safeParseJSON } from '../utils/json-parser';
 import {
   AICallOptions,
@@ -106,9 +107,15 @@ export class AIClient {
           this.saveToCache(cacheKey, result.data);
         }
 
+        const latencyMs = Date.now() - startTime;
+
+        // Log to DB (fire-and-forget)
+        this.logAiCall(operationName, options.model ?? this.config.model,
+          result.usage, latencyMs, retryCount, false, false, 'success');
+
         return {
           ...result,
-          latencyMs: Date.now() - startTime,
+          latencyMs,
           retryCount,
           fromCache: false,
           fromFallback: false,
@@ -142,15 +149,26 @@ export class AIClient {
     if (fallback) {
       this.logger.warn(`${operationName}: using fallback content`);
       const fallbackData = fallback() as T;
+      const latencyMs = Date.now() - startTime;
+
+      this.logAiCall(operationName, options.model ?? this.config.model,
+        { promptTokens: 0, completionTokens: 0, totalTokens: 0, estimatedCost: 0 },
+        latencyMs, retryCount, false, true, 'success');
+
       return {
         data: fallbackData,
         usage: { promptTokens: 0, completionTokens: 0, totalTokens: 0, estimatedCost: 0 },
-        latencyMs: Date.now() - startTime,
+        latencyMs,
         retryCount,
         fromCache: false,
         fromFallback: true,
       };
     }
+
+    // Log failure
+    this.logAiCall(operationName, options.model ?? this.config.model,
+      { promptTokens: 0, completionTokens: 0, totalTokens: 0, estimatedCost: 0 },
+      Date.now() - startTime, retryCount, false, false, 'error', lastError?.message);
 
     throw new Error(
       `${operationName} failed after ${maxRetries} attempts: ${lastError?.message}`
@@ -333,6 +351,40 @@ export class AIClient {
     }
     // GPT-4o
     return (promptTokens * 0.0025 + completionTokens * 0.01) / 1000;
+  }
+
+  // ===== DB Logging =====
+
+  private logAiCall(
+    operationName: string,
+    model: string,
+    usage: TokenUsage,
+    latencyMs: number,
+    retryCount: number,
+    fromCache: boolean,
+    fromFallback: boolean,
+    status: string,
+    error?: string
+  ): void {
+    // Fire-and-forget — don't block the pipeline
+    prisma.aiCallLog.create({
+      data: {
+        operationName,
+        model,
+        promptTokens: usage.promptTokens,
+        completionTokens: usage.completionTokens,
+        totalTokens: usage.totalTokens,
+        estimatedCost: usage.estimatedCost,
+        latencyMs,
+        retryCount,
+        fromCache,
+        fromFallback,
+        status,
+        error: error || null,
+      },
+    }).catch(() => {
+      // Silently ignore DB errors — logging should never break the pipeline
+    });
   }
 
   // ===== Public Getters =====

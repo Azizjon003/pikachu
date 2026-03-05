@@ -415,6 +415,24 @@
                 ></textarea>
               </div>
 
+              <!-- Cost Estimate Panel -->
+              <div id="cost-estimate-panel" class="hidden border border-indigo-200 bg-indigo-50/50 rounded-lg p-4 fade-in">
+                <div class="flex items-center justify-between mb-3">
+                  <h4 class="text-sm font-semibold text-indigo-800 flex items-center gap-2">
+                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 7h6m0 10v-3m-3 3h.01M9 17h.01M9 14h.01M12 14h.01M15 11h.01M12 11h.01M9 11h.01M7 21h10a2 2 0 002-2V5a2 2 0 00-2-2H7a2 2 0 00-2 2v14a2 2 0 002 2z"/>
+                    </svg>
+                    Cost Estimate
+                  </h4>
+                  <div id="cost-estimate-loading" class="hidden">
+                    <div class="spinner" style="width:16px;height:16px;border-width:2px;"></div>
+                  </div>
+                </div>
+                <div id="cost-estimate-content">
+                  <!-- Filled by JS -->
+                </div>
+              </div>
+
               <!-- Generate Button -->
               <button
                 type="submit"
@@ -1205,6 +1223,143 @@
                 </div>
             `;
       }
+
+      // ===== Cost Estimation =====
+      let costEstimateTimeout = null;
+
+      function triggerCostEstimate() {
+        const template = document.getElementById("template-select").value;
+        const page = document.getElementById("page-input").value;
+        const topic = document.getElementById("topic-input").value;
+
+        if (!template || !page) {
+          document.getElementById("cost-estimate-panel").classList.add("hidden");
+          return;
+        }
+
+        // Debounce
+        clearTimeout(costEstimateTimeout);
+        costEstimateTimeout = setTimeout(() => fetchCostEstimate(template, page, topic), 400);
+      }
+
+      async function fetchCostEstimate(template, page, topic) {
+        const panel = document.getElementById("cost-estimate-panel");
+        const content = document.getElementById("cost-estimate-content");
+        const loading = document.getElementById("cost-estimate-loading");
+
+        panel.classList.remove("hidden");
+        loading.classList.remove("hidden");
+
+        try {
+          const response = await fetch(`${API_BASE_URL}/slide/estimate-cost`, {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ template, page: parseInt(page), topic }),
+          });
+          const data = await response.json();
+
+          if (!data.success) throw new Error(data.error);
+
+          const est = data.estimate;
+          const summary = est.summary;
+          const factors = est.factors;
+          const historical = est.historical;
+
+          let html = `
+            <div class="grid grid-cols-2 gap-3 text-sm">
+              <div class="bg-white rounded-lg p-3 border border-indigo-100">
+                <div class="text-indigo-600 font-semibold text-lg">$${summary.estimatedCost.toFixed(4)}</div>
+                <div class="text-gray-500 text-xs">Estimated Cost</div>
+              </div>
+              <div class="bg-white rounded-lg p-3 border border-indigo-100">
+                <div class="text-indigo-600 font-semibold text-lg">${(summary.totalTokens / 1000).toFixed(1)}K</div>
+                <div class="text-gray-500 text-xs">Total Tokens</div>
+              </div>
+            </div>
+
+            <div class="mt-3 text-xs text-gray-500 space-y-1">
+              <div class="flex justify-between">
+                <span>Content slides:</span>
+                <span class="font-medium text-gray-700">${factors.contentSlides}</span>
+              </div>
+              <div class="flex justify-between">
+                <span>Template images:</span>
+                <span class="font-medium text-gray-700">${factors.imageCount}</span>
+              </div>
+              <div class="flex justify-between">
+                <span>Model:</span>
+                <span class="font-medium text-gray-700">${summary.model}</span>
+              </div>
+            </div>
+          `;
+
+          // Show breakdown toggle
+          html += `
+            <details class="mt-3">
+              <summary class="text-xs text-indigo-600 cursor-pointer hover:text-indigo-800 font-medium">
+                Show breakdown by operation
+              </summary>
+              <div class="mt-2 space-y-1">
+                ${est.breakdown.map(b => `
+                  <div class="flex justify-between text-xs py-1 border-b border-gray-100 last:border-0">
+                    <span class="text-gray-600">${b.operation} ${b.calls > 1 ? '<span class="text-gray-400">x' + b.calls + '</span>' : ''}</span>
+                    <span class="font-mono text-gray-700">$${b.cost.toFixed(5)}</span>
+                  </div>
+                `).join('')}
+              </div>
+            </details>
+          `;
+
+          // Historical comparison
+          if (historical) {
+            const diff = historical.avgCost
+              ? ((summary.estimatedCost - historical.avgCost) / historical.avgCost * 100).toFixed(0)
+              : null;
+
+            html += `
+              <div class="mt-3 bg-white rounded-lg p-3 border border-indigo-100">
+                <div class="text-xs font-medium text-gray-700 mb-2">Historical Average (${historical.sampleSize} presentations)</div>
+                <div class="grid grid-cols-3 gap-2 text-xs">
+                  ${historical.avgCost !== null ? `
+                    <div>
+                      <div class="text-gray-500">Avg Cost</div>
+                      <div class="font-semibold text-gray-700">$${historical.avgCost.toFixed(4)}</div>
+                    </div>
+                  ` : ''}
+                  ${historical.avgTokens !== null ? `
+                    <div>
+                      <div class="text-gray-500">Avg Tokens</div>
+                      <div class="font-semibold text-gray-700">${(historical.avgTokens / 1000).toFixed(1)}K</div>
+                    </div>
+                  ` : ''}
+                  ${historical.avgDuration !== null ? `
+                    <div>
+                      <div class="text-gray-500">Avg Time</div>
+                      <div class="font-semibold text-gray-700">${historical.avgDuration}s</div>
+                    </div>
+                  ` : ''}
+                </div>
+                ${diff !== null ? `
+                  <div class="mt-2 text-xs ${parseInt(diff) > 0 ? 'text-amber-600' : 'text-green-600'}">
+                    ${parseInt(diff) > 0 ? 'Estimated ' + diff + '% higher than average' : parseInt(diff) < 0 ? 'Estimated ' + Math.abs(parseInt(diff)) + '% lower than average' : 'In line with average'}
+                  </div>
+                ` : ''}
+              </div>
+            `;
+          }
+
+          content.innerHTML = html;
+        } catch (error) {
+          content.innerHTML = `<p class="text-xs text-red-500">Could not estimate: ${error.message}</p>`;
+        } finally {
+          loading.classList.add("hidden");
+        }
+      }
+
+      // Auto-trigger estimation when form fields change
+      document.getElementById("template-select").addEventListener("change", triggerCostEstimate);
+      document.getElementById("page-input").addEventListener("input", triggerCostEstimate);
+      document.getElementById("topic-input").addEventListener("input", triggerCostEstimate);
 
       // Initialize
       checkApiStatus();

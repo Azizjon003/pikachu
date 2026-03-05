@@ -18,20 +18,20 @@ export const OutlineSchema = z.object({
   outline: z
     .array(
       z.object({
-        title: z.string(), // mavzu tilida
-        title_eng: z.string(), // ingliz tilida
-        description: z.string().optional(), // bo'lim haqida qisqacha tavsif
+        title: z.string(),
+        title_eng: z.string(),
+        description: z.string().optional(),
       })
     )
-    .min(3)
-    .max(3), // 3 ta asosiy mavzu
+    .min(2)
+    .max(6), // Dynamic: 2-6 sections based on page count
   slides: z.array(
     z.object({
-      slideIndex: z.number().int().min(0), // original slides arraydan index (0 dan boshlanadi)
-      title: z.string(), // mavzu tilida
-      title_eng: z.string(), // ingliz tilida
-      outlineIndex: z.number().int().min(0).max(2), // qaysi outline punktiga tegishli (0-2)
-      keyPoints: z.array(z.string()).optional(), // slaydda yoritilishi kerak bo'lgan 2-4 ta asosiy fikr
+      slideIndex: z.number().int().min(0),
+      title: z.string(),
+      title_eng: z.string(),
+      outlineIndex: z.number().int().min(0).max(5), // Max 6 sections (0-5)
+      keyPoints: z.array(z.string()).min(1), // At least 1 key point per slide
     })
   ),
 });

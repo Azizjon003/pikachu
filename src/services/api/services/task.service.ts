@@ -1,44 +1,56 @@
+import prisma from '../../../lib/prisma';
+
 export type TaskStatus = "pending" | "processing" | "completed" | "failed";
 
 export interface Task {
   id: string;
   status: TaskStatus;
   progress: number;
+  progressText?: string | null;
   result: any | null;
   error: string | null;
   createdAt: Date;
   updatedAt: Date;
 }
 
-const tasks = new Map<string, Task>();
+const toTask = (dbTask: any): Task => ({
+  id: dbTask.id,
+  status: dbTask.status as TaskStatus,
+  progress: dbTask.progress,
+  progressText: dbTask.progressText,
+  result: dbTask.result,
+  error: dbTask.error,
+  createdAt: dbTask.createdAt,
+  updatedAt: dbTask.updatedAt,
+});
 
-export const createTask = (taskId: string): Task => {
-  const task: Task = {
-    id: taskId,
-    status: "pending",
-    progress: 0,
-    result: null,
-    error: null,
-    createdAt: new Date(),
-    updatedAt: new Date(),
-  };
-  tasks.set(taskId, task);
-  return task;
+export const createTask = async (taskId: string): Promise<Task> => {
+  const task = await prisma.task.create({
+    data: { id: taskId, status: "pending" },
+  });
+  return toTask(task);
 };
 
-export const getTask = (taskId: string): Task | undefined => {
-  return tasks.get(taskId);
+export const getTask = async (taskId: string): Promise<Task | undefined> => {
+  const task = await prisma.task.findUnique({ where: { id: taskId } });
+  if (!task) return undefined;
+  return toTask(task);
 };
 
-export const updateTask = (
+export const updateTask = async (
   taskId: string,
   updates: Partial<Omit<Task, "id">>
-): Task | undefined => {
-  const task = tasks.get(taskId);
-  if (task) {
-    const updatedTask = { ...task, ...updates, updatedAt: new Date() };
-    tasks.set(taskId, updatedTask);
-    return updatedTask;
-  }
-  return undefined;
+): Promise<Task | undefined> => {
+  const data: any = {};
+  if (updates.status !== undefined) data.status = updates.status;
+  if (updates.progress !== undefined) data.progress = updates.progress;
+  if (updates.progressText !== undefined) data.progressText = updates.progressText;
+  if (updates.result !== undefined) data.result = updates.result;
+  if (updates.error !== undefined) data.error = updates.error;
+
+  const task = await prisma.task.update({
+    where: { id: taskId },
+    data,
+  });
+  return toTask(task);
 };

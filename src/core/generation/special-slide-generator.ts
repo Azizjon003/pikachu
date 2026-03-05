@@ -45,23 +45,24 @@ export class SpecialSlideGenerator {
       messages: [
         {
           role: 'system',
-          content: `You are a professional presentation content writer. Generate a conclusion slide for the topic: "${topic}".
+          content: `You are a world-class presentation writer. Generate a powerful CONCLUSION slide for: "${topic}".
 
-TASK: Write a concise summary (100-150 words) covering the key takeaways of "${topic}".
+YOUR TASK: Write a compelling summary that reinforces the most important takeaways. The conclusion should leave the audience with clear, memorable insights.
 
-LANGUAGE: Write ALL content in ${language}. Do NOT mix languages.
+LANGUAGE: ALL content in ${language}. Do NOT mix languages.
 
-CONTENT RULES:
-- The LARGEST element (biggest font size or biggest area) = slide title. Write the topic name "${topic}" as the title, translated into ${language}.
-- Other elements = body content. Write clear, complete declarative sentences summarizing the main points.
-- Each element MUST have UNIQUE content — NO DUPLICATES or similar text.
-- Stay within maxCharacters limits for each element (slight overflow OK — font will auto-adjust).
-- Use terminology specific to "${topic}" — avoid generic filler text.
+CONTENT STRATEGY:
+- TITLE element (largest font/area): Write "${topic}" translated into ${language}, or a concluding phrase like "Xulosa" / "Yakuniy xulosalar"
+- BODY elements: Write 4-6 KEY TAKEAWAYS as bullet points using "• " prefix:
+  * Each takeaway = one complete, specific insight about "${topic}"
+  * Include the most impactful facts, statistics, or conclusions
+  * Example: "• Sun'iy intellekt 2030-yilga kelib global IYaMga 15.7 trillion dollar qo'shishi prognoz qilinmoqda"
+  * NOT generic: "• Bu mavzu juda muhim" ❌
+- LABEL elements: Short conclusive phrases like "Asosiy xulosalar" or "Natijalar"
+- Each element MUST have UNIQUE content
+- Fill 80-95% of maxCharacters
 
-OUTPUT RULES:
-- You MUST generate content for ALL ${textElements.length} elements listed below.
-- Use the elementIndex values EXACTLY as shown in the element guide.
-- slideId must be "${slide.id}".
+OUTPUT: Generate content for ALL ${textElements.length} elements. Use elementIndex values EXACTLY as shown. slideId = "${slide.id}".
 
 ${layoutVisualization}
 
@@ -94,32 +95,29 @@ ${elementGuide}`,
       messages: [
         {
           role: 'system',
-          content: `You are a professional academic reference generator. Generate ${count} realistic academic literature references for the topic: "${topic}".
+          content: `You are an expert academic researcher. Generate ${count} REALISTIC academic references for: "${topic}".
 
-LANGUAGE: Write ALL content in ${language}. Do NOT mix languages.
+LANGUAGE: ALL content in ${language}. Do NOT mix languages.
 
-CONTENT RULES:
-- The LARGEST element (biggest font size or biggest area) = slide title. Translate "References" into ${language} (e.g., Uzbek: "Foydalanilgan adabiyotlar", Russian: "Список литературы", English: "References").
-- The LARGEST body element = place ALL ${count} references here as a numbered list.
-- Other smaller elements = relevant labels or section markers in ${language}.
-- Each element MUST have UNIQUE content.
-- Stay within maxCharacters limits (slight overflow OK).
+CONTENT STRATEGY:
+- TITLE element (largest font/area): Translate "References" into ${language} (Uzbek: "Foydalanilgan adabiyotlar", Russian: "Список литературы", English: "References")
+- MAIN BODY element (largest area): Place ALL ${count} references as a numbered list
+- LABEL elements: Short markers like "Adabiyotlar ro'yxati" in ${language}
 
-REFERENCE FORMAT:
-- Generate ${count} realistic references about "${topic}"
-- Include: author(s), title, date, publisher/journal
-- Mix of books, journal articles, and conference papers
-- Alphabetical order by author's last name
-- Numbered list format: 1. Author A.A. Title. Publisher, Year.
-- Example formats:
-  * Book: "Author A.A. Title. Publisher, Year."
-  * Article: "Author A.A. Article title // Journal. Year. Vol. Pages."
-  * Web: "Author A.A. Title. URL (access date)"
+REFERENCE QUALITY — Generate REALISTIC, plausible references:
+- Use real-sounding author names appropriate for the field of "${topic}"
+- Titles must be specific to "${topic}" (not generic academic titles)
+- Mix of: 2 books, 2 journal articles, 1 conference paper or web source
+- Use years between 2018-2024 for relevance
+- Alphabetical order by first author's last name
 
-OUTPUT RULES:
-- Generate content for ALL ${textElements.length} elements.
-- Use the elementIndex values EXACTLY as shown.
-- slideId must be "${slide.id}".
+FORMAT (numbered list):
+1. Surname I.I. Book Title. — City: Publisher, Year. — Pages p.
+2. Surname I.I., Surname I.I. Article title // Journal Name. — Year. — Vol. X, № Y. — P. XX-YY.
+3. Surname I.I. Conference paper title // Conference Name. — City, Year. — P. XX-YY.
+4. Surname I.I. Web resource title. — URL: https://... (accessed: DD.MM.YYYY).
+
+OUTPUT: Generate content for ALL ${textElements.length} elements. Use elementIndex values EXACTLY as shown. slideId = "${slide.id}".
 
 ${layoutVisualization}
 
@@ -153,20 +151,23 @@ ${elementGuide}`,
       messages: [
         {
           role: 'system',
-          content: `You are a professional presentation content writer. Generate a "Thank You" slide for: "${topic}".
+          content: `Generate a professional "Thank You" closing slide for a presentation about: "${topic}".
 
-LANGUAGE: Write ALL content in ${language}. Do NOT mix languages.
+LANGUAGE: ALL content in ${language}. Do NOT mix languages.
 
-CONTENT RULES:
-- The LARGEST element (biggest font size or biggest area) = main thank you phrase. Translate "Thank you for your attention!" into ${language} (e.g., Uzbek: "E'tiboringiz uchun rahmat!", Russian: "Спасибо за внимание!", English: "Thank you for your attention!").
-- Other elements = supportive text: contact info placeholders, Q&A invitation, topic summary phrase, etc.
-- Each element MUST have UNIQUE content.
-- Stay within maxCharacters limits.
+CONTENT:
+- MAIN element (largest font/area): The thank you phrase in ${language}:
+  * Uzbek: "E'tiboringiz uchun rahmat!"
+  * Russian: "Спасибо за внимание!"
+  * English: "Thank you for your attention!"
+- Other elements — use DIFFERENT content for each:
+  * Q&A invitation: "Savollar va muhokama" / "Вопросы?" / "Questions & Discussion"
+  * Topic summary: A brief one-line summary of "${topic}"
+  * Contact placeholder: "Aloqa: [email/phone]"
+  * Presentation date or occasion marker
+- Each element MUST have UNIQUE content
 
-OUTPUT RULES:
-- Generate content for ALL ${textElements.length} elements.
-- Use the elementIndex values EXACTLY as shown.
-- slideId must be "${slide.id}".
+OUTPUT: Generate content for ALL ${textElements.length} elements. Use elementIndex values EXACTLY as shown. slideId = "${slide.id}".
 
 ${layoutVisualization}
 

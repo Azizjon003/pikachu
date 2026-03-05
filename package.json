@@ -19,6 +19,7 @@
   "license": "ISC",
   "description": "",
   "dependencies": {
+    "@prisma/client": "^6.19.2",
     "axios": "^1.12.2",
     "cors": "^2.8.5",
     "dotenv": "^17.2.3",
@@ -50,6 +51,7 @@
     "@types/sharp": "^0.32.0",
     "@types/svg-arc-to-cubic-bezier": "^3.2.3",
     "@types/tinycolor2": "^1.4.6",
+    "prisma": "^6.19.2",
     "ts-node": "^10.9.2",
     "typescript": "^5.9.2"
   }

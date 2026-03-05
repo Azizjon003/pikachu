@@ -1,7 +1,10 @@
 /**
  * Enhanced Logger System
- * Provides structured logging with levels, colors, metadata, and export functionality
+ * Provides structured logging with levels, colors, metadata, and export functionality.
+ * ERROR and WARN logs are persisted to database (ErrorLog table).
  */
+
+import prisma from './prisma';
 
 export enum LogLevel {
   DEBUG = 0,
@@ -132,6 +135,18 @@ export class EnhancedLogger {
     }
 
     console.log(output);
+
+    // Persist errors and warnings to DB (fire-and-forget)
+    if (level >= LogLevel.WARN) {
+      prisma.errorLog.create({
+        data: {
+          level: level === LogLevel.ERROR ? 'error' : 'warn',
+          message,
+          stack: error?.stack || null,
+          context: metadata || undefined,
+        },
+      }).catch(() => {});
+    }
   }
 
   /**

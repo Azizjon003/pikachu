@@ -139,6 +139,13 @@ export interface FailedSlideInfo {
   usedFallback: boolean;
 }
 
+export interface QualityReviewSummary {
+  overallScore: number;
+  imagesRemoved: number;
+  imagesReplaced: number;
+  textIssuesFixed: number;
+}
+
 export interface PipelineResult {
   success: boolean;
   slidePath: string;
@@ -148,6 +155,7 @@ export interface PipelineResult {
   jsonFileName: string;
   validation: ValidationSummary;
   collisionPrevention: CollisionSummary;
+  qualityReview: QualityReviewSummary;
   failedSlides: FailedSlideInfo[];
   tokenUsage: TokenUsage;
 }
