@@ -67,6 +67,64 @@ export const validateSlideGeneration = [
 ];
 
 /**
+ * Validation rules for slide editing
+ */
+export const validateSlideEdit = [
+  body('slide')
+    .notEmpty()
+    .withMessage('Slide is required')
+    .isObject()
+    .withMessage('Slide must be an object'),
+
+  body('slide.id')
+    .notEmpty()
+    .withMessage('Slide id is required')
+    .isString()
+    .withMessage('Slide id must be a string'),
+
+  body('slide.elements')
+    .notEmpty()
+    .withMessage('Slide elements are required')
+    .isArray()
+    .withMessage('Slide elements must be an array'),
+
+  body('instructions')
+    .notEmpty()
+    .withMessage('Instructions are required')
+    .isString()
+    .withMessage('Instructions must be a string')
+    .isLength({ min: 3, max: 500 })
+    .withMessage('Instructions must be between 3 and 500 characters'),
+
+  body('language')
+    .notEmpty()
+    .withMessage('Language is required')
+    .isString()
+    .withMessage('Language must be a string')
+    .isLength({ min: 2, max: 50 })
+    .withMessage('Language must be between 2 and 50 characters'),
+
+  body('topic')
+    .optional()
+    .isString()
+    .withMessage('Topic must be a string')
+    .isLength({ max: 200 })
+    .withMessage('Topic must not exceed 200 characters'),
+
+  body('elementIndexes')
+    .optional()
+    .isArray()
+    .withMessage('elementIndexes must be an array'),
+
+  body('elementIndexes.*')
+    .optional()
+    .isInt({ min: 0 })
+    .withMessage('Each elementIndex must be a non-negative integer'),
+
+  handleValidationErrors,
+];
+
+/**
  * Validation rules for file downloads
  */
 export const validateFileDownload = [

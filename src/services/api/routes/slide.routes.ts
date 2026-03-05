@@ -3,8 +3,9 @@ import {
   generateSlide,
   startSlideGeneration,
   getSlideGenerationStatus,
+  editSlide,
 } from "../controller/slide.controller.new";
-import { validateSlideGeneration } from "../middleware/validation";
+import { validateSlideGeneration, validateSlideEdit } from "../middleware/validation";
 import { asyncHandler } from "../middleware/error-handler";
 
 const router = Router();
@@ -24,6 +25,13 @@ router.post(
   "/generate-sync",
   validateSlideGeneration, // Validate input
   asyncHandler(generateSlide) // Wrap async handler for error catching
+);
+
+// POST /api/slide/edit - Edit existing slide content
+router.post(
+  "/edit",
+  validateSlideEdit,
+  asyncHandler(editSlide)
 );
 
 export default router;

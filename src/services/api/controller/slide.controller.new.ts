@@ -17,6 +17,8 @@ import {
 } from '@/src/services/api/services/task.service';
 import { EnhancedLogger, LogLevel } from '@/src/lib/logger';
 import { PipelineOptions } from '@/src/core/types/generation';
+import { SlideEditor } from '@/src/core/generation/slide-editor';
+import { AIClient } from '@/src/core/ai/ai-client';
 
 const logger = new EnhancedLogger(LogLevel.INFO);
 
@@ -76,6 +78,29 @@ export const generateSlide = async (req: Request, res: Response) => {
     res.json(result);
   } catch (error: any) {
     logger.error('Slide generation failed', error);
+    res.status(500).json({ success: false, error: error.message });
+  }
+};
+
+/**
+ * Edit an existing slide's content based on instructions
+ */
+export const editSlide = async (req: Request, res: Response) => {
+  try {
+    const { slide, instructions, language, topic, elementIndexes } = req.body;
+
+    const editor = new SlideEditor(new AIClient());
+    const updatedSlide = await editor.edit({
+      slide,
+      instructions,
+      language,
+      topic,
+      elementIndexes,
+    });
+
+    res.json({ success: true, slide: updatedSlide });
+  } catch (error: any) {
+    logger.error('Slide edit failed', error);
     res.status(500).json({ success: false, error: error.message });
   }
 };
