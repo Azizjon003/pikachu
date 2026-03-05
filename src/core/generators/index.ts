@@ -1,10 +1,10 @@
 /**
- * Generators Module - Barrel Export
- * LLM and content generation utilities
+ * @deprecated Use imports from '@/src/core/generation' instead.
+ * This module is kept only for backward compatibility.
  */
-
-export * from './llm-client';
-export * from './structured-generator';
-export * from './enhanced-generator';
-export * from './integrated-generator';
-export * from './resilient-generator';
+export {
+  OutlineGenerator,
+  ContentGenerator,
+  SpecialSlideGenerator,
+  LayoutPlacer,
+} from '../generation';

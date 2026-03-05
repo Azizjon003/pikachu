@@ -27,7 +27,8 @@
       "Bash(npx tsx:*)",
       "Bash(git add:*)",
       "Bash(git check-ignore:*)",
-      "Bash(xargs:*)"
+      "Bash(xargs:*)",
+      "Bash(wc -l /c/Users/Zenbook-PC/Desktop/work/pikachu/src/**/*.ts)"
     ],
     "deny": [],
     "ask": []

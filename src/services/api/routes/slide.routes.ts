@@ -3,7 +3,7 @@ import {
   generateSlide,
   startSlideGeneration,
   getSlideGenerationStatus,
-} from "../controller/slide.controller";
+} from "../controller/slide.controller.new";
 import { validateSlideGeneration } from "../middleware/validation";
 import { asyncHandler } from "../middleware/error-handler";
 
