@@ -135,8 +135,9 @@ export const generateAISchema = (slides: Slide[]) => {
         } else if (el.type === "image") {
           aiElement = {
             type: "image",
-            src: el.src,
+            src: el.src || "",
             hasImage: true,
+            isEdited: false,
             width: el.width,
             height: el.height,
             left: el.left,

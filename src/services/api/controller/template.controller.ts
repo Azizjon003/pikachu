@@ -5,6 +5,7 @@ import path from "path";
 import { sleep } from "../utils/utils";
 import { generateAISchema } from "@/src/core/processors";
 import { ImageStorageManager } from "@/src/services/image/image-storage-manager";
+import { getOpenAIService } from "@/src/services/openai";
 import sharp from "sharp";
 
 /**
@@ -100,6 +101,153 @@ const deleteFileWithRetry = async (filePath: string, maxRetries: number = 3): Pr
       }
     }
   }
+};
+
+/**
+ * AI-powered image classification for template schema.
+ * Analyzes each image element and decides if it should be replaced with topic-specific content.
+ * Icons, logos, decorative backgrounds → keep (isEdited: false)
+ * Content placeholder images → replace (isEdited: true)
+ */
+const classifyTemplateImages = async (aiSchema: any[]): Promise<void> => {
+  // Collect all image elements across slides
+  const imageElements: Array<{
+    slideIdx: number;
+    elIdx: number;
+    src: string;
+    width: number;
+    height: number;
+    left: number;
+    top: number;
+  }> = [];
+
+  for (let si = 0; si < aiSchema.length; si++) {
+    const slide = aiSchema[si];
+    for (let ei = 0; ei < slide.elements.length; ei++) {
+      const el = slide.elements[ei];
+      if (el.type === "image") {
+        imageElements.push({
+          slideIdx: si,
+          elIdx: ei,
+          src: el.src || "",
+          width: el.width || 0,
+          height: el.height || 0,
+          left: el.left || 0,
+          top: el.top || 0,
+        });
+      }
+    }
+  }
+
+  if (imageElements.length === 0) return;
+
+  console.log(`[ImageClassifier] Classifying ${imageElements.length} images...`);
+
+  // Phase 1: Heuristic pre-classification for obvious cases
+  const ambiguous: number[] = []; // indexes into imageElements that need AI
+  let heuristicMarked = 0;
+
+  for (let i = 0; i < imageElements.length; i++) {
+    const img = imageElements[i];
+    const w = img.width;
+    const h = img.height;
+    const area = w * h;
+
+    // Obvious KEEP: tiny icons, bullets, decorative dots
+    if (w < 60 && h < 60) {
+      // keep as false
+      continue;
+    }
+
+    // Obvious KEEP: full-slide background (covers >80% of typical 960x540 slide)
+    if (w > 900 && h > 500) {
+      continue;
+    }
+
+    // Obvious REPLACE: medium-large content images
+    if (area > 20000 && w > 100 && h > 100) {
+      aiSchema[img.slideIdx].elements[img.elIdx].isEdited = true;
+      heuristicMarked++;
+      continue;
+    }
+
+    // Ambiguous: send to AI
+    ambiguous.push(i);
+  }
+
+  console.log(`[ImageClassifier] Heuristic: ${heuristicMarked} marked, ${ambiguous.length} ambiguous → AI`);
+
+  // Phase 2: AI classification for ambiguous images (in chunks)
+  if (ambiguous.length > 0) {
+    const CHUNK_SIZE = 50;
+    let aiMarked = 0;
+
+    try {
+      const openai = getOpenAIService();
+
+      for (let c = 0; c < ambiguous.length; c += CHUNK_SIZE) {
+        const chunk = ambiguous.slice(c, c + CHUNK_SIZE);
+        const imageSummary = chunk.map((imgIdx) => {
+          const img = imageElements[imgIdx];
+          return {
+            id: imgIdx,
+            slide: img.slideIdx + 1,
+            size: `${Math.round(img.width)}x${Math.round(img.height)}`,
+            pos: `(${Math.round(img.left)},${Math.round(img.top)})`,
+            src: img.src.substring(0, 80),
+          };
+        });
+
+        const response = await openai.createChatCompletion({
+          model: "gpt-4o-mini",
+          messages: [
+            {
+              role: "system",
+              content: `You classify images in a presentation template. Decide which should be REPLACED with topic-specific images.
+REPLACE: content photos, placeholder images, stock photos in content area.
+KEEP: icons, logos, decorative borders, thin separator lines.
+Return JSON: { "replace": [id1, id2] } — array of image IDs to REPLACE. Only JSON.`,
+            },
+            {
+              role: "user",
+              content: JSON.stringify(imageSummary),
+            },
+          ],
+          temperature: 0.1,
+          max_tokens: Math.min(500, chunk.length * 10 + 50),
+        });
+
+        const content = response.content?.trim() || "{}";
+        const jsonStr = content.replace(/```json?\s*/g, "").replace(/```/g, "").trim();
+        const result = JSON.parse(jsonStr);
+        const replaceIds: number[] = result.replace || [];
+
+        for (const id of replaceIds) {
+          if (id >= 0 && id < imageElements.length) {
+            const img = imageElements[id];
+            aiSchema[img.slideIdx].elements[img.elIdx].isEdited = true;
+            aiMarked++;
+          }
+        }
+      }
+
+      console.log(`[ImageClassifier] AI marked ${aiMarked} more images`);
+    } catch (error: any) {
+      console.error(`[ImageClassifier] AI failed for ambiguous images: ${error.message}`);
+      // For ambiguous images that AI couldn't classify, mark them for replacement (safer)
+      for (const imgIdx of ambiguous) {
+        const img = imageElements[imgIdx];
+        aiSchema[img.slideIdx].elements[img.elIdx].isEdited = true;
+      }
+    }
+  }
+
+  const totalMarked = imageElements.filter((_, i) => {
+    const img = imageElements[i];
+    return aiSchema[img.slideIdx].elements[img.elIdx].isEdited === true;
+  }).length;
+
+  console.log(`[ImageClassifier] Total: ${totalMarked}/${imageElements.length} images marked for replacement`);
 };
 
 /**
@@ -203,6 +351,9 @@ const uploadAndCreateTemplate = async (req: Request, res: Response) => {
     const aiSchema = generateAISchema(
       Array.isArray(slides) ? slides : (slides as { slide: any[] }).slide
     );
+
+    // AI classifies which images should be replaced during generation
+    await classifyTemplateImages(aiSchema);
 
     fs.writeFileSync(
       path.join(templatesDir, `${originalName}.sxema.json`),
