@@ -5,14 +5,17 @@
  * Runs parallel to the existing SlideGenerationPipeline without touching it.
  *
  * Pipeline steps:
- * 1. AI → Outline + pattern selection (5-15%)
- * 2. Build slide layouts from patterns (15-25%)
- * 3. AI → Content generation (25-55%)
- * 4. Build special slides (55-65%)
- * 5. Image search & placement (65-80%)
- * 6. Quality review (80-90%)
- * 7. Layout optimization (90-95%)
- * 8. Export PPTX (95-100%)
+ * 1. AI → Outline + pattern selection (0-12%)
+ * 2. Typography + Build slide layouts (12-20%)
+ * 3. AI → Content generation (20-45%)
+ * 4. Build special slides (45-52%)
+ * 5. Content enhancement agent (52-58%)
+ * 6. Smart image search & placement (58-72%)
+ * 7. Color harmony check (72-76%)
+ * 8. Quality review (76-82%)
+ * 9. Collision prevention (82-88%)
+ * 10. Transitions + Image placement (88-93%)
+ * 11. Export PPTX (93-100%)
  */
 
 import fs from 'fs';
@@ -25,12 +28,18 @@ import { SlideBuilder, type ElementContent } from '@/src/core/free-generation/sl
 import { THEMES, DEFAULT_VIEWPORT, buildCustomTheme, FONT_PAIRS } from '@/src/core/free-generation/design-system';
 import { getPattern } from '@/src/core/free-generation/slide-patterns';
 import { SlideReviewer } from '@/src/core/generation/slide-reviewer';
-import { LayoutDesigner } from '@/src/services/layout/layout-designer';
 import { exportPPTX } from '@/src/core/exporters';
 import { collisionAgent } from '@/src/services/layout/collision-prevention-agent';
 import BingLinks from '@/src/services/image/image-search';
 import { EnhancedLogger, LogLevel } from '@/src/lib/logger';
 import type { Slide } from '../../../../types/slides';
+// Pipeline agents
+import { SmartImageAgent } from '@/src/core/free-generation/agents/smart-image-agent';
+import { ColorHarmonyAgent } from '@/src/core/free-generation/agents/color-harmony-agent';
+import { ContentEnhancementAgent } from '@/src/core/free-generation/agents/content-enhancement-agent';
+import { ImagePlacementAgent } from '@/src/core/free-generation/agents/image-placement-agent';
+import { TransitionAgent } from '@/src/core/free-generation/agents/transition-agent';
+import { TypographyAgent } from '@/src/core/free-generation/agents/typography-agent';
 import {
   type FreeSlideOptions,
   type FreeOutlineResult,
@@ -117,10 +126,27 @@ export class FreeSlideGenerationPipeline {
         slideCount: outlineResult.slides.length,
       },
     });
-    progress(15, `Outline generated: ${outlineResult.outline.length} sections, ${outlineResult.slides.length} slides`);
+    // Ensure at least one image pattern exists — swap a bullet-list if needed
+    const hasImagePattern = outlineResult.slides.some(s =>
+      s.pattern === 'image-right' || s.pattern === 'image-left' || s.pattern === 'image-full' ||
+      s.pattern === 'split-image-stats'
+    );
+    if (!hasImagePattern && outlineResult.slides.length >= 3) {
+      // Find a bullet-list slide to swap (prefer middle slides)
+      const bulletIdx = outlineResult.slides.findIndex((s, i) =>
+        (s.pattern === 'bullet-list' || s.pattern === 'two-column') && i > 0
+      );
+      if (bulletIdx >= 0) {
+        outlineResult.slides[bulletIdx].pattern = 'image-right';
+        outlineResult.slides[bulletIdx].imageKeyword = outlineResult.slides[bulletIdx].title_eng;
+        this.logger.info(`Swapped slide ${bulletIdx} to image-right for visual variety`);
+      }
+    }
 
-    // ===== Step 2: Build slide layouts from patterns (15-25%) =====
-    progress(17, 'Building slide layouts');
+    progress(12, `Outline generated: ${outlineResult.outline.length} sections, ${outlineResult.slides.length} slides`);
+
+    // ===== Step 2: Typography + Build slide layouts (12-20%) =====
+    progress(14, 'Configuring typography and building layouts');
 
     // Resolve theme: use custom colors if provided, otherwise use preset theme
     const theme = outlineResult.customColors && outlineResult.theme === 'custom'
@@ -128,10 +154,19 @@ export class FreeSlideGenerationPipeline {
       : THEMES[outlineResult.theme] || THEMES.professional;
     const viewport = DEFAULT_VIEWPORT;
 
-    // Resolve font pair
+    // Resolve font pair with multi-language typography agent
     const fontPairName = outlineResult.fontPair || 'modern';
     const fontPair = FONT_PAIRS[fontPairName] || FONT_PAIRS.modern;
-    const builder = new SlideBuilder(theme, viewport, fontPair.title, fontPair.body);
+
+    const typographyAgent = new TypographyAgent();
+    const typography = typographyAgent.getTypography(language, fontPair);
+
+    const builder = new SlideBuilder(theme, viewport, typography.titleFont, typography.bodyFont);
+    this.logger.info('Typography configured', {
+      language, fontPair: fontPairName,
+      titleFont: typography.titleFont, bodyFont: typography.bodyFont,
+      isRTL: typography.isRTL,
+    });
 
     // Build fixed slides: title, outline, conclusion, references, thank-you
     const allSlides: Slide[] = [];
@@ -298,15 +333,30 @@ export class FreeSlideGenerationPipeline {
     });
 
     steps.push({ stepName: 'special_slides', stepOrder: 4, durationMs: specialMs, status: 'completed' });
-    progress(65, 'Special slides built');
+    progress(52, 'Special slides built');
 
-    // ===== Step 5: Image search & placement (65-80%) =====
-    progress(67, 'Searching for images');
+    // ===== Step 5: Content Enhancement Agent (52-58%) =====
+    progress(53, 'Enhancing content quality');
 
+    const { result: enhancementResult, durationMs: enhanceMs } = await timed(async () => {
+      const enhancer = new ContentEnhancementAgent(this.aiClient, this.logger);
+      return enhancer.enhance(allSlides, topic, language);
+    });
+
+    steps.push({
+      stepName: 'content_enhancement', stepOrder: 5, durationMs: enhanceMs, status: 'completed',
+      details: { issuesFound: enhancementResult.issuesFound, issuesFixed: enhancementResult.issuesFixed },
+    });
+    progress(58, `Content enhanced: ${enhancementResult.issuesFixed} fixes applied`);
+
+    // ===== Step 6: Smart Image Search & Placement (58-72%) =====
+    progress(59, 'Smart image search');
+
+    const smartImageAgent = new SmartImageAgent(this.aiClient, this.logger);
     const usedImageUrls = new Set<string>();
+
     const { durationMs: imageMs } = await timed(async () => {
-      // Find all slides that have image elements (both preset pattern and custom layouts)
-      const slidesWithImages: Array<{ keyword: string; slideIdx: number }> = [];
+      const slidesWithImages: Array<{ keyword: string; slideTitle: string; slideIdx: number; contentIdx: number }> = [];
 
       for (let i = 0; i < outlineResult.slides.length; i++) {
         const slide = outlineResult.slides[i];
@@ -314,11 +364,9 @@ export class FreeSlideGenerationPipeline {
         const pptSlide = allSlides[slideIdx];
         if (!pptSlide) continue;
 
-        // Check if this slide has any image elements
         const hasImageEl = pptSlide.elements.some((el) => el.type === 'image');
         if (!hasImageEl) continue;
 
-        // Use provided imageKeyword, or generate one from slide title for custom layouts
         const keyword = slide.imageKeyword || (
           slide.pattern === 'custom' && slide.customElements?.some(el => el.type === 'image')
             ? slide.title_eng
@@ -326,61 +374,63 @@ export class FreeSlideGenerationPipeline {
         );
 
         if (keyword) {
-          slidesWithImages.push({ keyword, slideIdx });
+          slidesWithImages.push({ keyword, slideTitle: slide.title_eng, slideIdx, contentIdx: i });
         }
       }
 
-      // Search images in parallel (batches of 4)
-      const BATCH_SIZE = 4;
-      for (let batch = 0; batch < slidesWithImages.length; batch += BATCH_SIZE) {
-        const batchSlides = slidesWithImages.slice(batch, batch + BATCH_SIZE);
+      // Use Smart Image Agent for each slide with images
+      for (let si = 0; si < slidesWithImages.length; si++) {
+        const { keyword, slideTitle, slideIdx, contentIdx } = slidesWithImages[si];
+        const pptSlide = allSlides[slideIdx];
+        const imageElements = pptSlide.elements
+          .map((el, idx) => ({ el, idx }))
+          .filter(({ el }) => el.type === 'image');
 
-        await Promise.allSettled(
-          batchSlides.map(async ({ keyword, slideIdx }) => {
-            const pptSlide = allSlides[slideIdx];
-            const imageElements = pptSlide.elements
-              .map((el, idx) => ({ el, idx }))
-              .filter(({ el }) => el.type === 'image');
+        for (const { idx } of imageElements) {
+          const result = await smartImageAgent.findBestImage({
+            keyword,
+            slideTitle,
+            slideIndex: contentIdx,
+          });
 
-            if (imageElements.length === 0) return;
+          if (result && result.isValid) {
+            (pptSlide.elements[idx] as any).src = result.url;
+            usedImageUrls.add(result.url);
+          }
+        }
 
-            try {
-              const bingSearch = new BingLinks(keyword, 8, 'off', 8, 'photo', [], false);
-              const links = await bingSearch.getImageLinks();
-
-              let linkIdx = 0;
-              for (const { idx } of imageElements) {
-                // Find an unused image URL
-                while (linkIdx < links.length && usedImageUrls.has(links[linkIdx])) {
-                  linkIdx++;
-                }
-                if (linkIdx >= links.length) break;
-
-                usedImageUrls.add(links[linkIdx]);
-                (pptSlide.elements[idx] as any).src = links[linkIdx];
-                linkIdx++;
-              }
-            } catch (error) {
-              this.logger.warn(`Image search failed for "${keyword}"`, { error });
-            }
-          })
-        );
-
-        const pct = 67 + Math.floor(((batch + BATCH_SIZE) / slidesWithImages.length) * 13);
-        progress(Math.min(pct, 80), `Searching images: ${Math.min(batch + BATCH_SIZE, slidesWithImages.length)}/${slidesWithImages.length}`);
+        const pct = 59 + Math.floor(((si + 1) / slidesWithImages.length) * 13);
+        progress(Math.min(pct, 72), `Smart image ${si + 1}/${slidesWithImages.length}`);
       }
     });
 
     steps.push({
-      stepName: 'images', stepOrder: 5, durationMs: imageMs, status: 'completed',
+      stepName: 'smart_images', stepOrder: 6, durationMs: imageMs, status: 'completed',
       details: { imagesFound: usedImageUrls.size },
     });
-    progress(80, `${usedImageUrls.size} images found`);
+    progress(72, `${usedImageUrls.size} images found`);
 
-    // ===== Step 6: Quality review (80-90%) =====
-    progress(82, 'Reviewing slide quality');
+    // ===== Step 7: Color Harmony Check (72-76%) =====
+    progress(73, 'Checking color harmony');
 
-    // Convert to the JSON format the reviewer expects
+    const { result: harmonyResult, durationMs: harmonyMs } = timedSync(() => {
+      const harmonyAgent = new ColorHarmonyAgent(theme);
+      return harmonyAgent.harmonize(allSlides);
+    });
+
+    steps.push({
+      stepName: 'color_harmony', stepOrder: 7, durationMs: harmonyMs, status: 'completed',
+      details: {
+        contrastIssues: harmonyResult.issuesFound,
+        contrastFixed: harmonyResult.issuesFixed,
+        chartColorsFixed: harmonyResult.chartColorsFixed,
+      },
+    });
+    progress(76, `Color harmony: ${harmonyResult.issuesFixed} contrast fixes`);
+
+    // ===== Step 8: Quality review (76-82%) =====
+    progress(77, 'Reviewing slide quality');
+
     const slidesJson = allSlides.map((slide, idx) => ({
       id: slide.id,
       elements: slide.elements.map((el, elIdx) => ({
@@ -395,43 +445,69 @@ export class FreeSlideGenerationPipeline {
     });
 
     steps.push({
-      stepName: 'review', stepOrder: 6, durationMs: reviewMs, status: 'completed',
+      stepName: 'review', stepOrder: 8, durationMs: reviewMs, status: 'completed',
       details: { score: reviewResult.summary.overallScore },
     });
-    progress(90, `Quality review: score ${reviewResult.summary.overallScore}/100`);
+    progress(82, `Quality review: score ${reviewResult.summary.overallScore}/100`);
 
-    // ===== Step 7: Collision prevention + Layout optimization (90-95%) =====
-    progress(91, 'Optimizing layout');
+    // ===== Step 9: Collision prevention (82-88%) =====
+    progress(83, 'Collision prevention');
 
     let totalCollisionsFixed = 0;
     const { durationMs: collisionMs } = timedSync(() => {
       for (const slide of allSlides) {
         try {
-          // Separate shape elements from content elements.
-          // Shapes intentionally overlap with text (card background effect)
-          // so they must be excluded from collision detection.
-          const shapeIndices: number[] = [];
-          const contentElements: any[] = [];
+          // Identify elements that should be EXCLUDED from collision detection:
+          // 1. Shapes, charts, lines — non-content decorative elements
+          // 2. Text elements that overlap with a shape (card content) — stat-numbers/labels inside card backgrounds
+          //    These are intentionally placed on top of shapes and should NOT be moved.
+          const skipIndices = new Set<number>();
 
+          // First pass: find all shapes and their bounding boxes
+          const shapeBounds: Array<{ left: number; top: number; right: number; bottom: number }> = [];
           slide.elements.forEach((el: any, idx: number) => {
-            if (el.type === 'shape') {
-              shapeIndices.push(idx);
-            } else {
+            if (el.type === 'shape' || el.type === 'chart' || el.type === 'line') {
+              skipIndices.add(idx);
+              if (el.type === 'shape') {
+                shapeBounds.push({
+                  left: el.left, top: el.top,
+                  right: el.left + el.width, bottom: el.top + el.height,
+                });
+              }
+            }
+          });
+
+          // Second pass: skip text elements that are inside a shape (card layout)
+          slide.elements.forEach((el: any, idx: number) => {
+            if (skipIndices.has(idx) || el.type !== 'text') return;
+            const elCenter = { x: el.left + el.width / 2, y: el.top + el.height / 2 };
+            for (const sb of shapeBounds) {
+              if (elCenter.x >= sb.left && elCenter.x <= sb.right &&
+                  elCenter.y >= sb.top && elCenter.y <= sb.bottom) {
+                skipIndices.add(idx); // This text is inside a card shape — don't move it
+                break;
+              }
+            }
+          });
+
+          const contentElements: any[] = [];
+          slide.elements.forEach((el: any, idx: number) => {
+            if (!skipIndices.has(idx)) {
               contentElements.push(el);
             }
           });
 
-          // Only run collision detection on non-shape elements
+          // Only run collision detection on free-standing content elements
           if (contentElements.length > 1) {
             const result = collisionAgent.fixAndValidate(contentElements);
             totalCollisionsFixed += result.fixesApplied;
 
-            // Rebuild elements array: shapes in original positions + fixed content
+            // Rebuild elements array: skipped in original positions + fixed content
             const newElements: any[] = [];
             let contentIdx = 0;
             for (let i = 0; i < slide.elements.length; i++) {
-              if (shapeIndices.includes(i)) {
-                newElements.push(slide.elements[i]); // Keep shape as-is
+              if (skipIndices.has(i)) {
+                newElements.push(slide.elements[i]); // Keep as-is
               } else {
                 newElements.push(result.fixedElements[contentIdx]);
                 contentIdx++;
@@ -445,15 +521,39 @@ export class FreeSlideGenerationPipeline {
       }
     });
 
-    const { result: designResult, durationMs: designMs } = timedSync(() => {
-      const designer = new LayoutDesigner({
-        slideWidth: viewport.width,
-        slideHeight: viewport.height,
-      });
-      return designer.designSlides(allSlides);
+    steps.push({
+      stepName: 'collision_prevention', stepOrder: 9,
+      durationMs: collisionMs, status: 'completed',
+      details: { collisionsFixed: totalCollisionsFixed },
     });
+    progress(88, `Collision prevention: ${totalCollisionsFixed} fixes`);
 
-    const optimizedSlides = designResult.slides;
+    // ===== Step 10: Transitions + Image Placement + RTL (88-93%) =====
+    progress(89, 'Applying transitions and image placement');
+
+    const optimizedSlides = allSlides;
+
+    // Transition Agent
+    const transitionAgent = new TransitionAgent();
+    const patterns = outlineResult.slides.map(s => s.pattern);
+    transitionAgent.assignTransitions(optimizedSlides, patterns);
+
+    // Image Placement Agent (handles placeholders for missing images + overlays)
+    const imagePlacementAgent = new ImagePlacementAgent(theme);
+    const placementResult = imagePlacementAgent.process(optimizedSlides);
+
+    // RTL support (if needed)
+    let rtlAdjustments = 0;
+    if (typography.isRTL) {
+      rtlAdjustments = typographyAgent.applyRTL(optimizedSlides, true);
+    }
+
+    // Apply typography fonts to all text elements
+    const fontUpdates = typographyAgent.applyFonts(
+      optimizedSlides,
+      typography.titleFont,
+      typography.bodyFont
+    );
 
     // Add slide numbers (skip title slide, start from 2)
     const totalSlideCount = optimizedSlides.length;
@@ -462,14 +562,19 @@ export class FreeSlideGenerationPipeline {
     }
 
     steps.push({
-      stepName: 'layout_optimization', stepOrder: 7,
-      durationMs: collisionMs + designMs, status: 'completed',
-      details: { collisionsFixed: totalCollisionsFixed, ...designResult.summary },
+      stepName: 'finalization', stepOrder: 10, durationMs: 0, status: 'completed',
+      details: {
+        transitions: optimizedSlides.length,
+        placeholders: placementResult.placeholdersGenerated,
+        overlays: placementResult.overlaysAdded,
+        rtlAdjustments,
+        fontUpdates,
+      },
     });
-    progress(95, 'Layout optimized');
+    progress(93, 'Transitions and placement applied');
 
-    // ===== Step 8: Export PPTX (95-100%) =====
-    progress(96, 'Exporting PPTX');
+    // ===== Step 11: Export PPTX (93-100%) =====
+    progress(94, 'Exporting PPTX');
 
     const sessionId = Date.now();
     const sanitizedTopic = topic
@@ -504,7 +609,7 @@ export class FreeSlideGenerationPipeline {
       );
     });
 
-    steps.push({ stepName: 'export', stepOrder: 8, durationMs: exportMs, status: 'completed' });
+    steps.push({ stepName: 'export', stepOrder: 11, durationMs: exportMs, status: 'completed' });
     progress(100, 'PPTX exported successfully');
 
     // ===== Save to database =====
@@ -538,9 +643,17 @@ export class FreeSlideGenerationPipeline {
           mode: 'template-free',
           theme: outlineResult.theme,
           fontPair: fontPairName,
+          fonts: { title: typography.titleFont, body: typography.bodyFont },
+          isRTL: typography.isRTL,
           hasCustomColors: !!outlineResult.customColors,
           outline: outlineResult.outline.map((o) => o.title),
           patterns: outlineResult.slides.map((s) => s.pattern),
+          agents: {
+            contentEnhancement: { found: enhancementResult.issuesFound, fixed: enhancementResult.issuesFixed },
+            colorHarmony: { contrastFixed: harmonyResult.issuesFixed, chartFixed: harmonyResult.chartColorsFixed },
+            imagePlacement: { placeholders: placementResult.placeholdersGenerated, overlays: placementResult.overlaysAdded },
+            typography: { fontUpdates, rtlAdjustments },
+          },
         },
       },
     });
@@ -576,7 +689,20 @@ export class FreeSlideGenerationPipeline {
         imagesReplaced: reviewResult.summary.imagesReplaced,
         textIssuesFixed: reviewResult.summary.textIssuesFixed,
       },
-      layoutDesign: designResult.summary,
+      layoutDesign: {
+        slidesProcessed: optimizedSlides.length,
+        fontAdjustments: fontUpdates,
+        positionAdjustments: 0,
+        spacingFixes: 0,
+        hierarchyFixes: 0,
+      },
+      agents: {
+        contentEnhancement: enhancementResult,
+        colorHarmony: harmonyResult,
+        imagePlacement: placementResult,
+        transitions: { applied: optimizedSlides.length },
+        typography: { titleFont: typography.titleFont, bodyFont: typography.bodyFont, isRTL: typography.isRTL, rtlAdjustments },
+      },
       failedSlides,
       tokenUsage,
     };

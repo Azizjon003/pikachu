@@ -22,7 +22,7 @@ export interface ValidationResult {
   fixed: CustomLayoutElement[];
 }
 
-const VALID_TYPES = ['text', 'image', 'shape', 'table'] as const;
+const VALID_TYPES = ['text', 'image', 'shape', 'table', 'chart', 'line'] as const;
 const VALID_ROLES = ['title', 'subtitle', 'body', 'label', 'image', 'accent', 'stat-number', 'stat-label'] as const;
 const VALID_COLORS = ['primary', 'text', 'muted', 'white', 'accent'] as const;
 const VALID_BACKGROUNDS = ['primary', 'accent', 'light', 'white', 'none', 'gradient', 'gradient-accent', 'glass'] as const;
@@ -36,6 +36,8 @@ const MIN_SPANS: Record<string, { cols: number; rows: number }> = {
   text: { cols: 2, rows: 1 },
   image: { cols: 2, rows: 2 },
   shape: { cols: 1, rows: 1 },
+  chart: { cols: 4, rows: 3 },
+  line: { cols: 2, rows: 1 },
 };
 
 /**

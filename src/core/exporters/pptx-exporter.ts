@@ -558,6 +558,23 @@ export const exportPPTX = (
   for (const slide of _slides) {
     const pptxSlide = pptx.addSlide();
 
+    // Apply slide transition if set
+    if (slide.turningMode && slide.turningMode !== 'no') {
+      const transitionMap: Record<string, string> = {
+        fade: 'fade',
+        slideX: 'push',
+        slideY: 'push',
+        slideX3D: 'push',
+        slideY3D: 'push',
+        rotate: 'fade',
+        scaleX: 'zoom',
+        scaleY: 'zoom',
+        random: 'fade',
+      };
+      const transType = transitionMap[slide.turningMode] || 'fade';
+      (pptxSlide as any).transition = { type: transType, speed: 1.0 };
+    }
+
     if (slide.background) {
       const background = slide.background;
       if (background.type === "image" && background.image) {
@@ -585,10 +602,12 @@ export const exportPPTX = (
         };
       } else if (background.type === "gradient" && background.gradient) {
         const colors: any[] = background.gradient.colors;
-        const color1 = colors[0].color;
-        const color2 = colors[colors.length - 1].color;
-        const color = tinycolor.mix(color1, color2).toHexString();
-        const c = formatColor(color);
+        // pptxgenjs doesn't support gradient backgrounds — use darker color for richer look
+        const color1 = tinycolor(colors[0].color);
+        const color2 = tinycolor(colors[colors.length - 1].color);
+        // Pick the darker color for a more professional background
+        const bgColor = color1.getLuminance() < color2.getLuminance() ? colors[0].color : colors[colors.length - 1].color;
+        const c = formatColor(bgColor);
         pptxSlide.background = {
           color: c.color,
           transparency: (1 - c.alpha) * 100,
@@ -918,7 +937,7 @@ export const exportPPTX = (
         for (let i = 0; i < el.data.series.length; i++) {
           const item = el.data.series[i];
           chartData.push({
-            name: `系列${i + 1}`,
+            name: el.data.legends?.[i] || `Series ${i + 1}`,
             labels: el.data.labels,
             values: item || [],
           });

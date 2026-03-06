@@ -13,8 +13,14 @@ import type {
   PPTImageElement,
   PPTShapeElement,
   PPTTableElement,
+  PPTChartElement,
+  PPTLineElement,
+  PPTElement,
   TableCell,
   SlideBackground,
+  ChartType,
+  ChartData,
+  LinePoint,
 } from '../../../types/slides';
 import type { PatternName, CustomLayoutElement } from '../types/generation';
 import { gridToPixels, ColorTheme, resolveColor, resolveBackground, DEFAULT_VIEWPORT } from './design-system';
@@ -30,6 +36,12 @@ export interface SlideContent {
   elements: ElementContent[];
 }
 
+export interface ChartContentData {
+  labels: string[];
+  legends: string[];
+  series: number[][];
+}
+
 export interface ElementContent {
   /** Text content (HTML or plain text) */
   text?: string;
@@ -37,6 +49,8 @@ export interface ElementContent {
   imageSrc?: string;
   /** Table data (2D array) */
   tableData?: string[][];
+  /** Chart data (labels, legends, series) */
+  chartData?: ChartContentData;
 }
 
 // ============================================
@@ -73,7 +87,7 @@ export class SlideBuilder {
    * Build a Slide from a pattern definition and content.
    */
   buildSlide(pattern: SlidePattern, content: SlideContent): Slide {
-    const elements: (PPTTextElement | PPTImageElement | PPTShapeElement | PPTTableElement)[] = [];
+    const elements: PPTElement[] = [];
 
     for (let i = 0; i < pattern.elements.length; i++) {
       const patEl = pattern.elements[i];
@@ -88,6 +102,10 @@ export class SlideBuilder {
         elements.push(this.createShapeElement(patEl, rect));
       } else if (patEl.type === 'table') {
         elements.push(this.createTableElement(patEl, rect, elContent));
+      } else if (patEl.type === 'chart') {
+        elements.push(this.createChartElement(patEl, rect, elContent));
+      } else if (patEl.type === 'line') {
+        elements.push(this.createLineElement(patEl, rect));
       }
     }
 
@@ -111,11 +129,11 @@ export class SlideBuilder {
 
     // Convert CustomLayoutElement[] to PatternElement[] for reuse
     const patternElements: PatternElement[] = fixed.map((el) => ({
-      type: el.type === 'image' ? 'image' : el.type === 'shape' ? 'shape' : el.type === 'table' ? 'table' : 'text',
+      type: el.type as PatternElement['type'],
       role: el.role,
       col: el.col,
       row: el.row,
-      fontSize: el.fontSize || (el.type === 'shape' ? 0 : 16),
+      fontSize: el.fontSize || (el.type === 'shape' || el.type === 'line' ? 0 : 16),
       fontWeight: el.fontWeight,
       align: el.align,
       color: el.color,
@@ -125,10 +143,13 @@ export class SlideBuilder {
       shadow: el.shadow,
       opacity: el.opacity,
       shapeVariant: el.shapeVariant,
+      chartType: el.chartType,
+      lineStyle: el.lineStyle,
+      linePoints: el.linePoints,
     }));
 
     // Build using the same element creation logic
-    const elements: (PPTTextElement | PPTImageElement | PPTShapeElement | PPTTableElement)[] = [];
+    const elements: PPTElement[] = [];
 
     for (let i = 0; i < patternElements.length; i++) {
       const patEl = patternElements[i];
@@ -143,6 +164,10 @@ export class SlideBuilder {
         elements.push(this.createShapeElement(patEl, rect));
       } else if (patEl.type === 'table') {
         elements.push(this.createTableElement(patEl, rect, elContent));
+      } else if (patEl.type === 'chart') {
+        elements.push(this.createChartElement(patEl, rect, elContent));
+      } else if (patEl.type === 'line') {
+        elements.push(this.createLineElement(patEl, rect));
       }
     }
 
@@ -212,6 +237,11 @@ export class SlideBuilder {
     // Build HTML content with inline styles
     const htmlContent = this.wrapTextAsHTML(text, fontSize, color, fontWeight, align, fontName);
 
+    // Tighter line height for titles, more spacing for body text
+    const lineHeight = patEl.role === 'title' || patEl.role === 'stat-number' ? 1.2
+      : patEl.role === 'body' ? 1.7
+      : 1.5;
+
     const element: PPTTextElement = {
       type: 'text',
       id: crypto.randomUUID(),
@@ -223,7 +253,7 @@ export class SlideBuilder {
       content: htmlContent,
       defaultFontName: fontName,
       defaultColor: color,
-      lineHeight: 1.5,
+      lineHeight,
     };
 
     // Add background fill if specified
@@ -396,22 +426,23 @@ export class SlideBuilder {
     const colWidths = Array(colCount).fill(colWidth);
     const textColor = resolveColor(patEl.color, this.theme);
 
-    const data: TableCell[][] = tableData.map((row, rowIdx) =>
-      row.map((cellText) => ({
+    const data: TableCell[][] = tableData.map((row, rowIdx) => {
+      const isHeader = rowIdx === 0;
+      const isAltRow = rowIdx > 0 && rowIdx % 2 === 0;
+      return row.map((cellText) => ({
         id: crypto.randomUUID(),
         colspan: 1,
         rowspan: 1,
         text: cellText,
         style: {
-          fontsize: `${patEl.fontSize || 14}`,
-          fontname: this.bodyFont,
-          color: textColor,
-          bold: rowIdx === 0,
-          backcolor: rowIdx === 0 ? this.theme.primary : undefined,
-          ...(rowIdx === 0 ? { color: this.theme.white } : {}),
+          fontsize: `${isHeader ? Math.max((patEl.fontSize || 14), 14) : (patEl.fontSize || 14)}`,
+          fontname: isHeader ? this.titleFont : this.bodyFont,
+          color: isHeader ? this.theme.white : textColor,
+          bold: isHeader,
+          backcolor: isHeader ? this.theme.primary : isAltRow ? this.theme.surface : undefined,
         },
-      }))
-    );
+      }));
+    });
 
     return {
       type: 'table',
@@ -432,6 +463,61 @@ export class SlideBuilder {
         colHeader: false,
         colFooter: false,
       },
+    };
+  }
+
+  private createChartElement(
+    patEl: PatternElement,
+    rect: { left: number; top: number; width: number; height: number },
+    content: ElementContent
+  ): PPTChartElement {
+    const chartType = (patEl.chartType || 'bar') as ChartType;
+    const cd = content.chartData;
+
+    const data: ChartData = cd
+      ? { labels: cd.labels, legends: cd.legends, series: cd.series }
+      : { labels: ['A', 'B', 'C', 'D'], legends: ['Series 1'], series: [[10, 20, 30, 40]] };
+
+    return {
+      type: 'chart',
+      id: crypto.randomUUID(),
+      left: rect.left,
+      top: rect.top,
+      width: rect.width,
+      height: rect.height,
+      rotate: 0,
+      chartType,
+      data,
+      themeColors: [
+        this.theme.primary, this.theme.accent,
+        '#4ECDC4', '#FF6B6B', '#45B7D1', '#96CEB4',
+        '#F9CA24', '#6C5CE7', '#FD79A8', '#00B894',
+      ],
+      textColor: this.theme.text,
+      lineColor: this.theme.surface,
+      fill: this.theme.background,
+    };
+  }
+
+  private createLineElement(
+    patEl: PatternElement,
+    rect: { left: number; top: number; width: number; height: number }
+  ): PPTLineElement {
+    const color = resolveColor(patEl.color, this.theme) || this.theme.muted;
+    const style = patEl.lineStyle || 'solid';
+    const points = patEl.linePoints || ['', ''];
+
+    return {
+      type: 'line',
+      id: crypto.randomUUID(),
+      left: rect.left,
+      top: rect.top,
+      width: rect.width,
+      start: [0, 0],
+      end: [rect.width, 0],
+      style,
+      color,
+      points: points as [LinePoint, LinePoint],
     };
   }
 
@@ -460,7 +546,13 @@ export class SlideBuilder {
 
     return lines
       .map((line) => {
-        return `<p style="font-size: ${fontSize}px; color: ${color}; text-align: ${align}; ${boldStyle} ${fontStyle}">${line}</p>`;
+        // Style bullet points with accent color and better formatting
+        const isBullet = line.startsWith('• ') || line.startsWith('- ');
+        if (isBullet) {
+          const bulletText = line.replace(/^[•\-]\s*/, '');
+          return `<p style="font-size: ${fontSize}px; color: ${color}; text-align: ${align}; ${fontStyle} margin-bottom: 4px; line-height: 1.6;"><span style="color: ${this.theme.accent}; font-weight: bold;">&#x25CF; </span>${bulletText}</p>`;
+        }
+        return `<p style="font-size: ${fontSize}px; color: ${color}; text-align: ${align}; ${boldStyle} ${fontStyle} line-height: 1.5;">${line}</p>`;
       })
       .join('');
   }

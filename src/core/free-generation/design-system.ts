@@ -21,8 +21,8 @@ export interface GridConfig {
 export const GRID: GridConfig = {
   columns: 12,
   rows: 8,
-  gutterPx: 20,
-  marginPx: 60,
+  gutterPx: 16,
+  marginPx: 50,
 };
 
 export interface GridRect {

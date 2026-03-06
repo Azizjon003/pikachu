@@ -214,7 +214,7 @@ PATTERN SELECTION RULES:
 1. First slide should use a pattern that introduces the topic well (bullet-list, image-right)
 2. Use VARIETY — don't repeat the same pattern more than twice in a row
 3. Match pattern to content type:
-   - Data/stats → "stats-grid" or "table-slide"
+   - Data/stats → "stats-grid", "table-slide", or CHART patterns
    - Comparison → "comparison" or "two-column"
    - Process/history → "timeline" or "process-flow"
    - Visual topic → "image-right" or "image-left"
@@ -222,8 +222,17 @@ PATTERN SELECTION RULES:
    - Important quote → "quote"
    - Hierarchy/levels → "pyramid"
    - Features overview → "icon-grid"
+   - Trends/growth over time → "chart-line"
+   - Ranking/comparing values → "chart-bar"
+   - Market share/composition → "chart-pie"
+   - KPIs/metrics overview → "data-dashboard"
+   - Stats + chart combo → "chart-combo" (3 stat cards + bar chart — great for analytics)
+   - Visual + data → "split-image-stats" (image left + stat cards right — case studies, results)
+   - Key facts row → "infographic-row" (4 numbered fact blocks — milestones, quick stats)
 4. Use "section-break" between major sections (max 1-2 times)
 5. For image patterns (image-right, image-left, image-full), provide an imageKeyword for Bing search
+6. IMPORTANT: Use at least 1-2 CHART patterns ("chart-bar", "chart-pie", "chart-line", "data-dashboard") per presentation — charts make data visually compelling. Data-heavy topics MUST include charts
+7. MANDATORY: Use at least 1 IMAGE pattern ("image-right", "image-left", or "image-full") per presentation. Every presentation needs visual imagery, not just text and data. Provide a specific imageKeyword in English for Bing image search
 
 CUSTOM LAYOUT ("custom" pattern):
 When NO preset pattern fits your creative vision, use pattern="custom" and design your OWN layout!
@@ -237,6 +246,8 @@ Available element types:
 - image: image placeholder (needs role="image", col, row)
 - shape: decorative shape (needs role="accent", background, shapeVariant, optional shadow/opacity)
 - table: data table (needs role="body", col, row, fontSize, color)
+- chart: interactive chart (needs role="body", col, row, chartType: bar|pie|line|ring|area|radar)
+- line: decorative connector line (needs role="accent", col, row, lineStyle, linePoints)
 
 Available roles: title, subtitle, body, label, image, accent, stat-number, stat-label
 Available colors: primary, text, muted, white, accent
@@ -337,7 +348,10 @@ Create the outline now. Remember:
 6. Choose a color theme AND font pair that match the topic
 7. If theme is "custom", provide customColors with a beautiful, topic-matched palette
 ${slideCount >= 5 ? '8. Use pattern="custom" for 2-3 slides where you want a UNIQUE creative layout — provide customElements array and customBackground' : '8. Do NOT use pattern="custom" — use only preset patterns for small presentations'}
-9. For non-custom patterns, set customElements=null and customBackground=null`;
+9. For non-custom patterns, set customElements=null and customBackground=null
+10. MANDATORY: Include at least 2 data-visualization patterns: charts (chart-bar, chart-pie, chart-line, chart-combo), dashboard (data-dashboard), infographic (infographic-row, split-image-stats), or stats-grid. Mix them for visual variety
+11. PREFER visually rich patterns over plain text: stats-grid > bullet-list, three-cards > two-column, chart-combo > chart-bar. The audience expects professional data visualization
+12. MANDATORY: At least 1 slide MUST use "image-right" or "image-left" pattern with a relevant imageKeyword. Presentations without photos look dull — always include at least one visual slide with a real photo`;
   }
 
   // ============================================
@@ -355,6 +369,8 @@ ${slideCount >= 5 ? '8. Use pattern="custom" for 2-3 slides where you want a UNI
       'stats-grid', 'comparison', 'timeline', 'table-slide',
       'quote', 'section-break', 'thank-you',
       'process-flow', 'pyramid', 'icon-grid',
+      'chart-bar', 'chart-pie', 'chart-line', 'data-dashboard',
+      'chart-combo', 'split-image-stats', 'infographic-row',
     ];
 
     const themeEnum = ['professional', 'modern', 'warm', 'cool', 'bold', 'minimal', 'custom'];
@@ -430,7 +446,7 @@ ${slideCount >= 5 ? '8. Use pattern="custom" for 2-3 slides where you want a UNI
                     items: {
                       type: 'object',
                       properties: {
-                        type: { type: 'string', enum: ['text', 'image', 'shape', 'table'] },
+                        type: { type: 'string', enum: ['text', 'image', 'shape', 'table', 'chart', 'line'] },
                         role: { type: 'string', enum: ['title', 'subtitle', 'body', 'label', 'image', 'accent', 'stat-number', 'stat-label'] },
                         col: { type: 'array', items: { type: 'integer', minimum: 1, maximum: 12 }, minItems: 2, maxItems: 2 },
                         row: { type: 'array', items: { type: 'integer', minimum: 1, maximum: 8 }, minItems: 2, maxItems: 2 },
@@ -444,8 +460,11 @@ ${slideCount >= 5 ? '8. Use pattern="custom" for 2-3 slides where you want a UNI
                         shadow: { anyOf: [{ type: 'string', enum: ['sm', 'md', 'lg'] }, { type: 'null' }] },
                         opacity: { anyOf: [{ type: 'number', minimum: 0, maximum: 1 }, { type: 'null' }] },
                         maxCharacters: { anyOf: [{ type: 'integer', minimum: 5, maximum: 500 }, { type: 'null' }] },
+                        chartType: { anyOf: [{ type: 'string', enum: ['bar', 'pie', 'line', 'ring', 'area', 'radar'] }, { type: 'null' }] },
+                        lineStyle: { anyOf: [{ type: 'string', enum: ['solid', 'dashed', 'dotted'] }, { type: 'null' }] },
+                        linePoints: { anyOf: [{ type: 'array', items: { type: 'string', enum: ['arrow', 'dot', ''] }, minItems: 2, maxItems: 2 }, { type: 'null' }] },
                       },
-                      required: ['type', 'role', 'col', 'row', 'fontSize', 'fontWeight', 'align', 'color', 'background', 'borderRadius', 'shapeVariant', 'shadow', 'opacity', 'maxCharacters'],
+                      required: ['type', 'role', 'col', 'row', 'fontSize', 'fontWeight', 'align', 'color', 'background', 'borderRadius', 'shapeVariant', 'shadow', 'opacity', 'maxCharacters', 'chartType', 'lineStyle', 'linePoints'],
                       additionalProperties: false,
                     },
                     minItems: 2,
@@ -494,9 +513,9 @@ ${slideCount >= 5 ? '8. Use pattern="custom" for 2-3 slides where you want a UNI
     theme?: ThemeName
   ): any {
     const patterns: PatternName[] = [
-      'bullet-list', 'image-right', 'two-column', 'stats-grid',
-      'three-cards', 'timeline', 'comparison', 'quote',
-      'process-flow', 'pyramid', 'icon-grid',
+      'bullet-list', 'image-right', 'stats-grid', 'chart-line',
+      'three-cards', 'infographic-row', 'comparison', 'chart-combo',
+      'process-flow', 'split-image-stats', 'icon-grid',
     ];
 
     const sectionLabels = ['Introduction', 'Core Concepts', 'Applications', 'Challenges', 'Future Outlook', 'Summary'];

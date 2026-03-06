@@ -457,7 +457,7 @@ class ImageReplacerService {
 
       if (imageUrl) {
         // Update the image src with the Bing URL
-        imageElement.src = imageUrl;
+        imageElement.src = imageUrl.replace(/^http:\/\//i, 'https://');
         // Remove isEdited flag
         delete imageElement.isEdited;
         this.log(`  ✅ Image replaced successfully: ${imageUrl}`, 'success');

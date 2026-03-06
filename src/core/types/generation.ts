@@ -165,6 +165,7 @@ export interface PipelineResult {
   collisionPrevention: CollisionSummary;
   qualityReview: QualityReviewSummary;
   layoutDesign: LayoutDesignSummary;
+  agents?: Record<string, unknown>;
   failedSlides: FailedSlideInfo[];
   tokenUsage: TokenUsage;
 }
@@ -190,6 +191,13 @@ export type PatternName =
   | 'process-flow'
   | 'pyramid'
   | 'icon-grid'
+  | 'chart-bar'
+  | 'chart-pie'
+  | 'chart-line'
+  | 'data-dashboard'
+  | 'chart-combo'
+  | 'split-image-stats'
+  | 'infographic-row'
   | 'custom';
 
 export type ThemeName = 'professional' | 'modern' | 'warm' | 'cool' | 'bold' | 'minimal' | 'custom';
@@ -220,7 +228,7 @@ export interface FreeSlideOptions {
 
 /** AI-designed custom layout element (used when pattern='custom') */
 export interface CustomLayoutElement {
-  type: 'text' | 'image' | 'shape' | 'table';
+  type: 'text' | 'image' | 'shape' | 'table' | 'chart' | 'line';
   role: ElementRole;
   col: [number, number];    // 1-12 grid columns
   row: [number, number];    // 1-8 grid rows
@@ -234,6 +242,12 @@ export interface CustomLayoutElement {
   shadow?: 'sm' | 'md' | 'lg';
   opacity?: number;
   maxCharacters?: number;
+  /** Chart type (only for type='chart') */
+  chartType?: 'bar' | 'pie' | 'line' | 'ring' | 'area' | 'radar';
+  /** Line style (only for type='line') */
+  lineStyle?: 'solid' | 'dashed' | 'dotted';
+  /** Line endpoint styles (only for type='line') */
+  linePoints?: ['arrow' | 'dot' | '', 'arrow' | 'dot' | ''];
 }
 
 export interface FreeOutlineSlide {

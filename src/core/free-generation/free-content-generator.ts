@@ -9,7 +9,7 @@ import { AIClient } from '../ai/ai-client';
 import { EnhancedLogger, LogLevel } from '../../lib/logger';
 import type { FreeOutlineSlide, GenerationConfig, DEFAULT_GENERATION_CONFIG, CustomLayoutElement } from '../types/generation';
 import { getPattern, type PatternElement } from './slide-patterns';
-import type { ElementContent } from './slide-builder';
+import type { ElementContent, ChartContentData } from './slide-builder';
 
 // ============================================
 // Types
@@ -45,10 +45,10 @@ export class FreeContentGenerator {
     // Get pattern elements — either from preset pattern or custom layout
     const patternElements = this.getPatternElements(slide);
 
-    // Separate text elements (need AI content) from non-text (image, shape)
+    // Separate content elements (need AI content) from non-content (image, shape, line)
     const textElements = patternElements
       .map((el, idx) => ({ el, idx }))
-      .filter(({ el }) => el.type === 'text' || el.type === 'table');
+      .filter(({ el }) => el.type === 'text' || el.type === 'table' || el.type === 'chart');
 
     if (textElements.length === 0) {
       return { elements: patternElements.map(() => ({})) };
@@ -57,7 +57,12 @@ export class FreeContentGenerator {
     const schema = this.buildSchema(textElements.map(t => t.el));
 
     const result = await this.aiClient.call<{
-      elements: Array<{ index: number; content: string; tableData?: string[][] | null }>;
+      elements: Array<{
+        index: number;
+        content: string;
+        tableData?: string[][] | null;
+        chartData?: { labels: string[]; legends: string[]; series: number[][] } | null;
+      }>;
     }>({
       operationName: `freeContent_${slide.slideIndex}`,
       temperature: 0.7,
@@ -76,8 +81,11 @@ export class FreeContentGenerator {
     for (const genEl of result.data.elements) {
       const mapping = textElements.find(t => t.idx === genEl.index);
       if (mapping) {
-        if (patternElements[mapping.idx].type === 'table' && genEl.tableData) {
+        const elType = patternElements[mapping.idx].type;
+        if (elType === 'table' && genEl.tableData) {
           elements[mapping.idx] = { tableData: genEl.tableData };
+        } else if (elType === 'chart' && genEl.chartData) {
+          elements[mapping.idx] = { chartData: genEl.chartData };
         } else {
           elements[mapping.idx] = { text: genEl.content };
         }
@@ -100,11 +108,11 @@ export class FreeContentGenerator {
   private getPatternElements(slide: FreeOutlineSlide): PatternElement[] {
     if (slide.pattern === 'custom' && slide.customElements?.length) {
       return slide.customElements.map((el): PatternElement => ({
-        type: el.type === 'image' ? 'image' : el.type === 'shape' ? 'shape' : el.type === 'table' ? 'table' : 'text',
+        type: el.type as PatternElement['type'],
         role: el.role,
         col: el.col,
         row: el.row,
-        fontSize: el.fontSize || (el.type === 'shape' ? 0 : 16),
+        fontSize: el.fontSize || (el.type === 'shape' || el.type === 'line' || el.type === 'chart' ? 0 : 16),
         fontWeight: el.fontWeight,
         align: el.align,
         color: el.color,
@@ -114,6 +122,9 @@ export class FreeContentGenerator {
         shadow: el.shadow,
         opacity: el.opacity,
         shapeVariant: el.shapeVariant,
+        chartType: el.chartType,
+        lineStyle: el.lineStyle,
+        linePoints: el.linePoints,
       }));
     }
     return getPattern(slide.pattern).elements;
@@ -185,7 +196,19 @@ ABSOLUTE RULES:
   ): string {
     const elementDetails = patternElements
       .map((el, i) => {
-        if (el.type !== 'text' && el.type !== 'table') return null;
+        if (el.type !== 'text' && el.type !== 'table' && el.type !== 'chart') return null;
+
+        if (el.type === 'chart') {
+          return `Element [${i}] — CHART
+  CHART TYPE: ${el.chartType || 'bar'}
+  Return chartData with: labels (3-8 category names), legends (1-4 series names), series (number arrays matching labels count).
+  Use REAL data with realistic numbers. Example for a bar chart about revenue:
+    labels: ["2019", "2020", "2021", "2022", "2023"]
+    legends: ["Revenue ($B)"]
+    series: [[12.5, 18.2, 24.7, 31.3, 42.1]]
+  For pie/ring charts, use a SINGLE series. Numbers represent proportions/percentages.
+  Set content to "" for chart elements.`;
+        }
 
         const maxChars = el.maxCharacters || this.estimateMaxChars(el);
         return `Element [${i}] — ${el.type.toUpperCase()}
@@ -224,10 +247,11 @@ For table elements, also include tableData as 2D string array.`;
 
   private buildSchema(textElements: PatternElement[]): Record<string, unknown> {
     const hasTable = textElements.some(el => el.type === 'table');
+    const hasChart = textElements.some(el => el.type === 'chart');
 
     const elementProps: Record<string, unknown> = {
       index: { type: 'integer', description: 'Element index from the pattern' },
-      content: { type: 'string', description: 'Generated text content' },
+      content: { type: 'string', description: 'Generated text content (empty string for chart elements)' },
     };
 
     const required = ['index', 'content'];
@@ -244,6 +268,30 @@ For table elements, also include tableData as 2D string array.`;
         ],
       };
       required.push('tableData');
+    }
+
+    if (hasChart) {
+      elementProps.chartData = {
+        anyOf: [
+          {
+            type: 'object',
+            properties: {
+              labels: { type: 'array', items: { type: 'string' }, minItems: 3, maxItems: 8 },
+              legends: { type: 'array', items: { type: 'string' }, minItems: 1, maxItems: 4 },
+              series: {
+                type: 'array',
+                items: { type: 'array', items: { type: 'number' }, minItems: 3, maxItems: 8 },
+                minItems: 1, maxItems: 4,
+              },
+            },
+            required: ['labels', 'legends', 'series'],
+            additionalProperties: false,
+          },
+          { type: 'null' },
+        ],
+        description: 'Chart data with labels (categories), legends (series names), and series (number arrays). Each series must have same length as labels.',
+      };
+      required.push('chartData');
     }
 
     return {
@@ -288,20 +336,23 @@ For table elements, also include tableData as 2D string array.`;
   ): any {
     return {
       elements: textElements.map((el, i) => {
-        if (el.role === 'title') return { index: i, content: slide.title, tableData: null };
-        if (el.role === 'subtitle') return { index: i, content: slide.title_eng, tableData: null };
+        const base: Record<string, unknown> = { index: i, content: '', tableData: null, chartData: null };
+        if (el.role === 'title') { base.content = slide.title; return base; }
+        if (el.role === 'subtitle') { base.content = slide.title_eng; return base; }
         if (el.type === 'table') {
-          return {
-            index: i,
-            content: '',
-            tableData: [['Column 1', 'Column 2'], ['Data 1', 'Data 2']],
-          };
+          base.tableData = [['Column 1', 'Column 2'], ['Data 1', 'Data 2']];
+          return base;
         }
-        return {
-          index: i,
-          content: slide.keyPoints.map(kp => `• ${kp}`).join('\n'),
-          tableData: null,
-        };
+        if (el.type === 'chart') {
+          base.chartData = {
+            labels: ['Category A', 'Category B', 'Category C', 'Category D'],
+            legends: ['Series 1'],
+            series: [[25, 40, 30, 45]],
+          };
+          return base;
+        }
+        base.content = slide.keyPoints.map(kp => `• ${kp}`).join('\n');
+        return base;
       }),
     };
   }

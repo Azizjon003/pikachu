@@ -12,7 +12,7 @@ import type { PatternName, ElementRole } from '../types/generation';
 // ============================================
 
 export interface PatternElement {
-  type: 'text' | 'image' | 'shape' | 'table';
+  type: 'text' | 'image' | 'shape' | 'table' | 'chart' | 'line';
   role: ElementRole;
   col: [number, number];
   row: [number, number];
@@ -29,6 +29,12 @@ export interface PatternElement {
   opacity?: number;
   /** Shape variant for more visual diversity */
   shapeVariant?: 'rect' | 'circle' | 'rounded-lg' | 'line-h' | 'line-v' | 'blob';
+  /** Chart type (only for type='chart') */
+  chartType?: 'bar' | 'pie' | 'line' | 'ring' | 'area' | 'radar';
+  /** Line style (only for type='line') */
+  lineStyle?: 'solid' | 'dashed' | 'dotted';
+  /** Line endpoint styles [start, end] */
+  linePoints?: [string, string];
 }
 
 export interface SlidePattern {
@@ -53,14 +59,14 @@ export const PATTERNS: Record<PatternName, SlidePattern> = {
       {
         type: 'text', role: 'title',
         col: [2, 11], row: [3, 4],
-        fontSize: 48, fontWeight: 'bold', align: 'center', color: 'white',
-        maxCharacters: 60,
+        fontSize: 42, fontWeight: 'bold', align: 'center', color: 'white',
+        maxCharacters: 80,
       },
       {
         type: 'text', role: 'subtitle',
-        col: [3, 10], row: [5, 5],
-        fontSize: 24, align: 'center', color: 'white',
-        maxCharacters: 120,
+        col: [3, 10], row: [5, 6],
+        fontSize: 22, align: 'center', color: 'white',
+        maxCharacters: 150,
       },
       {
         type: 'text', role: 'label',
@@ -113,14 +119,14 @@ export const PATTERNS: Record<PatternName, SlidePattern> = {
       {
         type: 'text', role: 'title',
         col: [1, 12], row: [1, 1],
-        fontSize: 36, fontWeight: 'bold', align: 'left', color: 'primary',
+        fontSize: 32, fontWeight: 'bold', align: 'left', color: 'primary',
         maxCharacters: 60,
       },
       {
         type: 'text', role: 'body',
-        col: [1, 11], row: [2, 7],
-        fontSize: 18, align: 'left', color: 'text',
-        maxCharacters: 600,
+        col: [1, 11], row: [2, 8],
+        fontSize: 16, align: 'left', color: 'text',
+        maxCharacters: 500,
       },
     ],
   },
@@ -160,19 +166,19 @@ export const PATTERNS: Record<PatternName, SlidePattern> = {
     elements: [
       {
         type: 'text', role: 'title',
-        col: [1, 6], row: [1, 1],
-        fontSize: 36, fontWeight: 'bold', align: 'left', color: 'primary',
-        maxCharacters: 40,
+        col: [1, 6], row: [1, 2],
+        fontSize: 30, fontWeight: 'bold', align: 'left', color: 'primary',
+        maxCharacters: 50,
       },
       {
         type: 'text', role: 'body',
-        col: [1, 6], row: [2, 7],
-        fontSize: 16, align: 'left', color: 'text',
-        maxCharacters: 400,
+        col: [1, 6], row: [3, 8],
+        fontSize: 15, align: 'left', color: 'text',
+        maxCharacters: 350,
       },
       {
         type: 'image', role: 'image',
-        col: [7, 12], row: [1, 7],
+        col: [7, 12], row: [1, 8],
         fontSize: 0,
       },
     ],
@@ -186,20 +192,20 @@ export const PATTERNS: Record<PatternName, SlidePattern> = {
     elements: [
       {
         type: 'image', role: 'image',
-        col: [1, 6], row: [1, 7],
+        col: [1, 6], row: [1, 8],
         fontSize: 0,
       },
       {
         type: 'text', role: 'title',
-        col: [7, 12], row: [1, 1],
-        fontSize: 36, fontWeight: 'bold', align: 'left', color: 'primary',
-        maxCharacters: 40,
+        col: [7, 12], row: [1, 2],
+        fontSize: 30, fontWeight: 'bold', align: 'left', color: 'primary',
+        maxCharacters: 50,
       },
       {
         type: 'text', role: 'body',
-        col: [7, 12], row: [2, 7],
-        fontSize: 16, align: 'left', color: 'text',
-        maxCharacters: 400,
+        col: [7, 12], row: [3, 8],
+        fontSize: 15, align: 'left', color: 'text',
+        maxCharacters: 350,
       },
     ],
   },
@@ -264,8 +270,8 @@ export const PATTERNS: Record<PatternName, SlidePattern> = {
       {
         type: 'text', role: 'body',
         col: [1, 4], row: [5, 7],
-        fontSize: 14, align: 'center', color: 'text',
-        maxCharacters: 200,
+        fontSize: 13, align: 'center', color: 'text',
+        maxCharacters: 150,
       },
       // Card 2 — background shape
       {
@@ -289,8 +295,8 @@ export const PATTERNS: Record<PatternName, SlidePattern> = {
       {
         type: 'text', role: 'body',
         col: [5, 8], row: [5, 7],
-        fontSize: 14, align: 'center', color: 'text',
-        maxCharacters: 200,
+        fontSize: 13, align: 'center', color: 'text',
+        maxCharacters: 150,
       },
       // Card 3 — background shape
       {
@@ -314,8 +320,8 @@ export const PATTERNS: Record<PatternName, SlidePattern> = {
       {
         type: 'text', role: 'body',
         col: [9, 12], row: [5, 7],
-        fontSize: 14, align: 'center', color: 'text',
-        maxCharacters: 200,
+        fontSize: 13, align: 'center', color: 'text',
+        maxCharacters: 150,
       },
     ],
   },
@@ -335,59 +341,59 @@ export const PATTERNS: Record<PatternName, SlidePattern> = {
       // Stat 1 card
       {
         type: 'shape', role: 'accent',
-        col: [1, 4], row: [3, 7],
+        col: [1, 4], row: [3, 6],
         fontSize: 0, background: 'white',
         borderRadius: 16, shadow: 'lg', shapeVariant: 'rounded-lg',
       },
       {
         type: 'text', role: 'stat-number',
-        col: [1, 4], row: [3, 5],
-        fontSize: 52, fontWeight: 'bold', align: 'center', color: 'accent',
-        maxCharacters: 10,
+        col: [1, 4], row: [3, 4],
+        fontSize: 44, fontWeight: 'bold', align: 'center', color: 'accent',
+        maxCharacters: 12,
       },
       {
         type: 'text', role: 'stat-label',
-        col: [1, 4], row: [6, 7],
-        fontSize: 16, align: 'center', color: 'muted',
-        maxCharacters: 50,
+        col: [1, 4], row: [5, 6],
+        fontSize: 15, align: 'center', color: 'muted',
+        maxCharacters: 60,
       },
       // Stat 2 card
       {
         type: 'shape', role: 'accent',
-        col: [5, 8], row: [3, 7],
+        col: [5, 8], row: [3, 6],
         fontSize: 0, background: 'white',
         borderRadius: 16, shadow: 'lg', shapeVariant: 'rounded-lg',
       },
       {
         type: 'text', role: 'stat-number',
-        col: [5, 8], row: [3, 5],
-        fontSize: 52, fontWeight: 'bold', align: 'center', color: 'accent',
-        maxCharacters: 10,
+        col: [5, 8], row: [3, 4],
+        fontSize: 44, fontWeight: 'bold', align: 'center', color: 'accent',
+        maxCharacters: 12,
       },
       {
         type: 'text', role: 'stat-label',
-        col: [5, 8], row: [6, 7],
-        fontSize: 16, align: 'center', color: 'muted',
-        maxCharacters: 50,
+        col: [5, 8], row: [5, 6],
+        fontSize: 15, align: 'center', color: 'muted',
+        maxCharacters: 60,
       },
       // Stat 3 card
       {
         type: 'shape', role: 'accent',
-        col: [9, 12], row: [3, 7],
+        col: [9, 12], row: [3, 6],
         fontSize: 0, background: 'white',
         borderRadius: 16, shadow: 'lg', shapeVariant: 'rounded-lg',
       },
       {
         type: 'text', role: 'stat-number',
-        col: [9, 12], row: [3, 5],
-        fontSize: 52, fontWeight: 'bold', align: 'center', color: 'accent',
-        maxCharacters: 10,
+        col: [9, 12], row: [3, 4],
+        fontSize: 44, fontWeight: 'bold', align: 'center', color: 'accent',
+        maxCharacters: 12,
       },
       {
         type: 'text', role: 'stat-label',
-        col: [9, 12], row: [6, 7],
-        fontSize: 16, align: 'center', color: 'muted',
-        maxCharacters: 50,
+        col: [9, 12], row: [5, 6],
+        fontSize: 15, align: 'center', color: 'muted',
+        maxCharacters: 60,
       },
     ],
   },
@@ -860,6 +866,415 @@ export const PATTERNS: Record<PatternName, SlidePattern> = {
         col: [7, 12], row: [6, 7],
         fontSize: 14, align: 'center', color: 'text',
         maxCharacters: 120,
+      },
+    ],
+  },
+
+  'chart-bar': {
+    name: 'chart-bar',
+    description: 'Title + bar chart with optional subtitle — for comparing values, rankings, budgets',
+    suitableFor: ['data', 'comparison', 'ranking', 'budget', 'statistics'],
+    background: 'white',
+    elements: [
+      {
+        type: 'text', role: 'title',
+        col: [1, 8], row: [1, 1],
+        fontSize: 32, fontWeight: 'bold', align: 'left', color: 'primary',
+        maxCharacters: 80,
+      },
+      {
+        type: 'text', role: 'subtitle',
+        col: [1, 8], row: [2, 2],
+        fontSize: 16, align: 'left', color: 'muted',
+        maxCharacters: 120,
+      },
+      {
+        type: 'chart', role: 'body',
+        col: [1, 12], row: [3, 8],
+        fontSize: 0, chartType: 'bar',
+      },
+    ],
+  },
+
+  'chart-pie': {
+    name: 'chart-pie',
+    description: 'Title + pie/doughnut chart + key insight text — for market share, composition, distribution',
+    suitableFor: ['distribution', 'market-share', 'composition', 'breakdown', 'percentage'],
+    background: 'white',
+    elements: [
+      {
+        type: 'text', role: 'title',
+        col: [1, 12], row: [1, 1],
+        fontSize: 32, fontWeight: 'bold', align: 'center', color: 'primary',
+        maxCharacters: 80,
+      },
+      {
+        type: 'chart', role: 'body',
+        col: [1, 7], row: [2, 7],
+        fontSize: 0, chartType: 'ring',
+      },
+      {
+        type: 'text', role: 'body',
+        col: [8, 12], row: [2, 7],
+        fontSize: 15, align: 'left', color: 'text',
+        maxCharacters: 300,
+      },
+      {
+        type: 'text', role: 'label',
+        col: [1, 12], row: [8, 8],
+        fontSize: 12, align: 'center', color: 'muted',
+        maxCharacters: 80,
+      },
+    ],
+  },
+
+  'chart-line': {
+    name: 'chart-line',
+    description: 'Title + line/area chart — for trends, growth, time-series, progress over time',
+    suitableFor: ['trend', 'growth', 'time-series', 'progress', 'forecast', 'historical'],
+    background: 'white',
+    elements: [
+      {
+        type: 'text', role: 'title',
+        col: [1, 8], row: [1, 1],
+        fontSize: 32, fontWeight: 'bold', align: 'left', color: 'primary',
+        maxCharacters: 80,
+      },
+      {
+        type: 'text', role: 'subtitle',
+        col: [1, 8], row: [2, 2],
+        fontSize: 16, align: 'left', color: 'muted',
+        maxCharacters: 120,
+      },
+      {
+        type: 'chart', role: 'body',
+        col: [1, 12], row: [3, 8],
+        fontSize: 0, chartType: 'line',
+      },
+    ],
+  },
+
+  'data-dashboard': {
+    name: 'data-dashboard',
+    description: 'Title + 2 stat numbers + bar chart + key insight — data-rich dashboard layout',
+    suitableFor: ['overview', 'dashboard', 'KPI', 'metrics', 'summary-data', 'performance'],
+    background: 'light',
+    elements: [
+      {
+        type: 'text', role: 'title',
+        col: [1, 12], row: [1, 1],
+        fontSize: 28, fontWeight: 'bold', align: 'left', color: 'primary',
+        maxCharacters: 60,
+      },
+      // Stat card 1
+      {
+        type: 'shape', role: 'accent',
+        col: [1, 4], row: [2, 3],
+        fontSize: 0, background: 'white', shapeVariant: 'rounded-lg', borderRadius: 12, shadow: 'md',
+      },
+      {
+        type: 'text', role: 'stat-number',
+        col: [1, 4], row: [2, 2],
+        fontSize: 36, fontWeight: 'bold', align: 'center', color: 'primary',
+        maxCharacters: 15,
+      },
+      {
+        type: 'text', role: 'stat-label',
+        col: [1, 4], row: [3, 3],
+        fontSize: 13, align: 'center', color: 'muted',
+        maxCharacters: 50,
+      },
+      // Stat card 2
+      {
+        type: 'shape', role: 'accent',
+        col: [5, 8], row: [2, 3],
+        fontSize: 0, background: 'white', shapeVariant: 'rounded-lg', borderRadius: 12, shadow: 'md',
+      },
+      {
+        type: 'text', role: 'stat-number',
+        col: [5, 8], row: [2, 2],
+        fontSize: 36, fontWeight: 'bold', align: 'center', color: 'accent',
+        maxCharacters: 15,
+      },
+      {
+        type: 'text', role: 'stat-label',
+        col: [5, 8], row: [3, 3],
+        fontSize: 13, align: 'center', color: 'muted',
+        maxCharacters: 50,
+      },
+      // Insight text
+      {
+        type: 'text', role: 'body',
+        col: [9, 12], row: [2, 3],
+        fontSize: 14, align: 'left', color: 'text',
+        maxCharacters: 150,
+      },
+      // Chart
+      {
+        type: 'chart', role: 'body',
+        col: [1, 12], row: [4, 8],
+        fontSize: 0, chartType: 'bar',
+      },
+    ],
+  },
+
+  'chart-combo': {
+    name: 'chart-combo',
+    description: 'Stats cards on top + chart below — for KPI overview with supporting trend data',
+    suitableFor: ['KPI', 'metrics', 'dashboard', 'performance', 'overview-data', 'analytics'],
+    background: 'light',
+    elements: [
+      {
+        type: 'text', role: 'title',
+        col: [1, 12], row: [1, 1],
+        fontSize: 28, fontWeight: 'bold', align: 'left', color: 'primary',
+        maxCharacters: 60,
+      },
+      // 3 stat cards across top
+      {
+        type: 'shape', role: 'accent',
+        col: [1, 4], row: [2, 3],
+        fontSize: 0, background: 'white', shapeVariant: 'rounded-lg', borderRadius: 12, shadow: 'md',
+      },
+      {
+        type: 'text', role: 'stat-number',
+        col: [1, 4], row: [2, 2],
+        fontSize: 32, fontWeight: 'bold', align: 'center', color: 'primary',
+        maxCharacters: 12,
+      },
+      {
+        type: 'text', role: 'stat-label',
+        col: [1, 4], row: [3, 3],
+        fontSize: 12, align: 'center', color: 'muted',
+        maxCharacters: 40,
+      },
+      {
+        type: 'shape', role: 'accent',
+        col: [5, 8], row: [2, 3],
+        fontSize: 0, background: 'white', shapeVariant: 'rounded-lg', borderRadius: 12, shadow: 'md',
+      },
+      {
+        type: 'text', role: 'stat-number',
+        col: [5, 8], row: [2, 2],
+        fontSize: 32, fontWeight: 'bold', align: 'center', color: 'accent',
+        maxCharacters: 12,
+      },
+      {
+        type: 'text', role: 'stat-label',
+        col: [5, 8], row: [3, 3],
+        fontSize: 12, align: 'center', color: 'muted',
+        maxCharacters: 40,
+      },
+      {
+        type: 'shape', role: 'accent',
+        col: [9, 12], row: [2, 3],
+        fontSize: 0, background: 'white', shapeVariant: 'rounded-lg', borderRadius: 12, shadow: 'md',
+      },
+      {
+        type: 'text', role: 'stat-number',
+        col: [9, 12], row: [2, 2],
+        fontSize: 32, fontWeight: 'bold', align: 'center', color: 'primary',
+        maxCharacters: 12,
+      },
+      {
+        type: 'text', role: 'stat-label',
+        col: [9, 12], row: [3, 3],
+        fontSize: 12, align: 'center', color: 'muted',
+        maxCharacters: 40,
+      },
+      // Chart below
+      {
+        type: 'chart', role: 'body',
+        col: [1, 12], row: [4, 8],
+        fontSize: 0, chartType: 'bar',
+      },
+    ],
+  },
+
+  'split-image-stats': {
+    name: 'split-image-stats',
+    description: 'Image on left + title and stat cards on right — for visual data storytelling',
+    suitableFor: ['visual-data', 'case-study', 'product-metrics', 'achievement', 'results'],
+    background: 'white',
+    elements: [
+      // Left image
+      {
+        type: 'image', role: 'image',
+        col: [1, 5], row: [1, 8],
+        fontSize: 0,
+      },
+      // Right side: title
+      {
+        type: 'text', role: 'title',
+        col: [6, 12], row: [1, 1],
+        fontSize: 28, fontWeight: 'bold', align: 'left', color: 'primary',
+        maxCharacters: 50,
+      },
+      // Subtitle / context
+      {
+        type: 'text', role: 'subtitle',
+        col: [6, 12], row: [2, 2],
+        fontSize: 15, align: 'left', color: 'muted',
+        maxCharacters: 100,
+      },
+      // Stat card row 1
+      {
+        type: 'shape', role: 'accent',
+        col: [6, 8], row: [3, 5],
+        fontSize: 0, background: 'light', shapeVariant: 'rounded-lg', borderRadius: 12, shadow: 'sm',
+      },
+      {
+        type: 'text', role: 'stat-number',
+        col: [6, 8], row: [3, 4],
+        fontSize: 36, fontWeight: 'bold', align: 'center', color: 'primary',
+        maxCharacters: 10,
+      },
+      {
+        type: 'text', role: 'stat-label',
+        col: [6, 8], row: [5, 5],
+        fontSize: 12, align: 'center', color: 'muted',
+        maxCharacters: 35,
+      },
+      {
+        type: 'shape', role: 'accent',
+        col: [9, 12], row: [3, 5],
+        fontSize: 0, background: 'light', shapeVariant: 'rounded-lg', borderRadius: 12, shadow: 'sm',
+      },
+      {
+        type: 'text', role: 'stat-number',
+        col: [9, 12], row: [3, 4],
+        fontSize: 36, fontWeight: 'bold', align: 'center', color: 'accent',
+        maxCharacters: 10,
+      },
+      {
+        type: 'text', role: 'stat-label',
+        col: [9, 12], row: [5, 5],
+        fontSize: 12, align: 'center', color: 'muted',
+        maxCharacters: 35,
+      },
+      // Body text below stats
+      {
+        type: 'text', role: 'body',
+        col: [6, 12], row: [6, 8],
+        fontSize: 15, align: 'left', color: 'text',
+        maxCharacters: 250,
+      },
+    ],
+  },
+
+  'infographic-row': {
+    name: 'infographic-row',
+    description: 'Title + 4 icon-style info blocks in a row with numbers — for step overview or key facts',
+    suitableFor: ['facts', 'key-numbers', 'overview', 'quick-stats', 'highlights', 'milestones'],
+    background: 'white',
+    elements: [
+      {
+        type: 'text', role: 'title',
+        col: [1, 12], row: [1, 1],
+        fontSize: 32, fontWeight: 'bold', align: 'center', color: 'primary',
+        maxCharacters: 60,
+      },
+      {
+        type: 'text', role: 'subtitle',
+        col: [2, 11], row: [2, 2],
+        fontSize: 16, align: 'center', color: 'muted',
+        maxCharacters: 120,
+      },
+      // Block 1
+      {
+        type: 'shape', role: 'accent',
+        col: [1, 3], row: [3, 3],
+        fontSize: 0, background: 'gradient', shapeVariant: 'circle', opacity: 0.15,
+      },
+      {
+        type: 'text', role: 'stat-number',
+        col: [1, 3], row: [3, 4],
+        fontSize: 40, fontWeight: 'bold', align: 'center', color: 'primary',
+        maxCharacters: 8,
+      },
+      {
+        type: 'text', role: 'label',
+        col: [1, 3], row: [5, 5],
+        fontSize: 16, fontWeight: 'bold', align: 'center', color: 'text',
+        maxCharacters: 25,
+      },
+      {
+        type: 'text', role: 'body',
+        col: [1, 3], row: [6, 7],
+        fontSize: 13, align: 'center', color: 'muted',
+        maxCharacters: 80,
+      },
+      // Block 2
+      {
+        type: 'shape', role: 'accent',
+        col: [4, 6], row: [3, 3],
+        fontSize: 0, background: 'gradient-accent', shapeVariant: 'circle', opacity: 0.15,
+      },
+      {
+        type: 'text', role: 'stat-number',
+        col: [4, 6], row: [3, 4],
+        fontSize: 40, fontWeight: 'bold', align: 'center', color: 'accent',
+        maxCharacters: 8,
+      },
+      {
+        type: 'text', role: 'label',
+        col: [4, 6], row: [5, 5],
+        fontSize: 16, fontWeight: 'bold', align: 'center', color: 'text',
+        maxCharacters: 25,
+      },
+      {
+        type: 'text', role: 'body',
+        col: [4, 6], row: [6, 7],
+        fontSize: 13, align: 'center', color: 'muted',
+        maxCharacters: 80,
+      },
+      // Block 3
+      {
+        type: 'shape', role: 'accent',
+        col: [7, 9], row: [3, 3],
+        fontSize: 0, background: 'gradient', shapeVariant: 'circle', opacity: 0.15,
+      },
+      {
+        type: 'text', role: 'stat-number',
+        col: [7, 9], row: [3, 4],
+        fontSize: 40, fontWeight: 'bold', align: 'center', color: 'primary',
+        maxCharacters: 8,
+      },
+      {
+        type: 'text', role: 'label',
+        col: [7, 9], row: [5, 5],
+        fontSize: 16, fontWeight: 'bold', align: 'center', color: 'text',
+        maxCharacters: 25,
+      },
+      {
+        type: 'text', role: 'body',
+        col: [7, 9], row: [6, 7],
+        fontSize: 13, align: 'center', color: 'muted',
+        maxCharacters: 80,
+      },
+      // Block 4
+      {
+        type: 'shape', role: 'accent',
+        col: [10, 12], row: [3, 3],
+        fontSize: 0, background: 'gradient-accent', shapeVariant: 'circle', opacity: 0.15,
+      },
+      {
+        type: 'text', role: 'stat-number',
+        col: [10, 12], row: [3, 4],
+        fontSize: 40, fontWeight: 'bold', align: 'center', color: 'accent',
+        maxCharacters: 8,
+      },
+      {
+        type: 'text', role: 'label',
+        col: [10, 12], row: [5, 5],
+        fontSize: 16, fontWeight: 'bold', align: 'center', color: 'text',
+        maxCharacters: 25,
+      },
+      {
+        type: 'text', role: 'body',
+        col: [10, 12], row: [6, 7],
+        fontSize: 13, align: 'center', color: 'muted',
+        maxCharacters: 80,
       },
     ],
   },
