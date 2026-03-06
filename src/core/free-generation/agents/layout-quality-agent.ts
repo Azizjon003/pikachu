@@ -29,7 +29,15 @@ export interface LayoutQualityResult {
   issues: LayoutIssue[];
 }
 
+import type { AgentMemory } from './agent-memory';
+
 export class LayoutQualityAgent {
+  private memory?: AgentMemory;
+
+  constructor(memory?: AgentMemory) {
+    this.memory = memory;
+  }
+
   /**
    * Audit and fix layout issues across all slides
    */
@@ -146,6 +154,24 @@ export class LayoutQualityAgent {
           }
         }
       }
+    }
+
+    // Log to shared memory
+    if (this.memory) {
+      // Read font quality warnings to be aware of prior changes
+      const fontWarnings = this.memory.getByAgent('FontQuality').filter(e => e.type === 'warning');
+      if (fontWarnings.length > 0) {
+        this.memory.logDecision('LayoutQuality', -1, `Aware of ${fontWarnings.length} font warnings from FontQuality agent`);
+      }
+
+      for (const issue of issues) {
+        if (issue.fixed) {
+          this.memory.logFix('LayoutQuality', issue.slideIndex, issue.elementIndex, issue.description);
+        } else {
+          this.memory.logWarning('LayoutQuality', issue.slideIndex, issue.description);
+        }
+      }
+      this.memory.logInfo('LayoutQuality', `Completed: ${issues.length} issues found, ${issues.filter(i => i.fixed).length} fixed`);
     }
 
     return {

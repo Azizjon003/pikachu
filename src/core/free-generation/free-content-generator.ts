@@ -225,9 +225,12 @@ ABSOLUTE RULES:
       .filter(Boolean)
       .join('\n\n');
 
+    const patternHint = this.getPatternSpecificHint(slide.pattern);
+
     return `PRESENTATION: "${mainTopic}"
 SLIDE FOCUS: "${slide.title}" (${slide.title_eng})
 LANGUAGE: ${language}
+PATTERN: ${slide.pattern}
 POSITION: Slide ${slidePosition.current} of ${slidePosition.total}${slidePosition.sectionName ? ` | Section: "${slidePosition.sectionName}"` : ''}
 
 KEY POINTS — these are your primary content source. EXPAND each point with real data, examples, and context:
@@ -235,13 +238,15 @@ ${slide.keyPoints.map((kp, i) => `  ${i + 1}. ${kp}`).join('\n')}
 
 ELEMENTS TO FILL:
 ${elementDetails}
-
+${patternHint}
 CONTENT INSTRUCTIONS:
-- TITLE elements: Create a compelling, specific title that makes the audience curious. Include a number or keyword.
+- TITLE elements: Create a compelling, specific title that makes the audience curious. Include a number or keyword. Do NOT wrap in quotes.
 - BODY elements: Transform each key point into a rich bullet (• ) with specific facts, real examples, and data. Each bullet should be a complete, informative thought — not a fragment.
-- STAT elements: Use real, specific numbers with proper units. Reference where the data comes from.
+- STAT-NUMBER elements: Use ONLY the number/value — e.g., "97.3%", "$3.2B", "45 kun". NO quotes. NO extra text. Just the impressive number.
+- STAT-LABEL elements: Short explanation of what the stat measures — e.g., "Diagnostika aniqligi (2024)". Do NOT wrap in quotes.
 - TABLE elements: Fill with real, specific data — real names, real numbers, real comparisons. First row = headers.
-- LABEL elements: Concise but descriptive — include context.
+- LABEL elements: Concise but descriptive — include context. Do NOT wrap in quotes.
+- IMPORTANT: Never wrap any content in quotation marks ("..." or «...»). Write plain text directly.
 
 Return JSON with elements array, each having index (matching [N] above) and content string.
 For table elements, also include tableData as 2D string array.`;
@@ -323,6 +328,75 @@ For table elements, also include tableData as 2D string array.`;
   // ============================================
   // Helpers
   // ============================================
+
+  /**
+   * Get pattern-specific content instructions to ensure AI generates
+   * balanced, properly formatted content for each pattern type.
+   */
+  private getPatternSpecificHint(pattern: string): string {
+    const hints: Record<string, string> = {
+      'three-cards': `
+PATTERN-SPECIFIC RULES (three-cards):
+- This slide has 3 EQUAL cards side by side. Each card has a LABEL (heading) and BODY text.
+- ALL 3 cards MUST have approximately EQUAL content length (within 20% of each other).
+- Each card LABEL: 2-4 words, bold heading. Example: "Raqamli transformatsiya"
+- Each card BODY: 2-3 concise sentences (~80-120 chars each). Cover ONE distinct subtopic per card.
+- Distribute key points EVENLY: ~1-2 key points per card, not all in one card.
+- WRONG: Card 1 = 200 chars, Card 2 = 50 chars, Card 3 = 180 chars
+- RIGHT: Card 1 = 130 chars, Card 2 = 140 chars, Card 3 = 125 chars`,
+
+      'stats-grid': `
+PATTERN-SPECIFIC RULES (stats-grid):
+- This slide has 3 STAT CARDS, each with a BIG NUMBER and a short label below.
+- STAT-NUMBER: Write ONLY the number with unit — "15%", "$3.2B", "2.4M+", "10x", "45 kun".
+  Keep under 8 characters. NO quotes. NO extra words.
+- STAT-LABEL: One clear line explaining what the number means — "Yillik eksport o'sishi (2023-2025)"
+  Keep under 50 characters. NO quotes.
+- Each stat should cover a DIFFERENT metric — do not repeat similar stats.
+- Make numbers impressive and specific — "15.7%" not "15%", "$3.2B" not "$3B"`,
+
+      'icon-grid': `
+PATTERN-SPECIFIC RULES (icon-grid):
+- This slide has 4 feature boxes in a 2x2 grid. Each box has a LABEL and BODY.
+- ALL 4 boxes MUST have approximately EQUAL content length.
+- LABEL: 2-4 words describing the feature.
+- BODY: 1-2 short sentences (~60-80 chars). Be specific, not generic.`,
+
+      'comparison': `
+PATTERN-SPECIFIC RULES (comparison):
+- This slide compares TWO sides. Each side must be equally detailed.
+- Use parallel structure — if left side has 4 bullets, right side also needs 4 bullets.
+- Be specific and factual in both columns — no vague pros/cons.`,
+
+      'chart-combo': `
+PATTERN-SPECIFIC RULES (chart-combo):
+- This slide has 3 stat cards on top and a bar chart below.
+- STAT-NUMBER: Short number only — "15%", "$1.2B". NO quotes.
+- STAT-LABEL: Brief description. NO quotes.
+- Chart data must have realistic, consistent numbers that tell a clear trend story.`,
+
+      'infographic-row': `
+PATTERN-SPECIFIC RULES (infographic-row):
+- This slide has 4 numbered fact blocks in a row.
+- Each block has a STAT-NUMBER and LABEL/BODY.
+- ALL 4 blocks must be approximately equal in length.
+- Numbers should be sequential or show progression.`,
+
+      'split-image-stats': `
+PATTERN-SPECIFIC RULES (split-image-stats):
+- Left side is an image. Right side has stat cards.
+- STAT-NUMBER: Short, impressive number. NO quotes.
+- STAT-LABEL: Brief context for the number. NO quotes.`,
+
+      'data-dashboard': `
+PATTERN-SPECIFIC RULES (data-dashboard):
+- This slide combines stat numbers with a chart.
+- Keep stat numbers short and impactful.
+- Chart data should complement (not duplicate) the stat numbers.`,
+    };
+
+    return hints[pattern] || '';
+  }
 
   private estimateMaxChars(el: PatternElement): number {
     const roleDefaults: Record<string, number> = {

@@ -348,14 +348,14 @@ export const PATTERNS: Record<PatternName, SlidePattern> = {
       {
         type: 'text', role: 'stat-number',
         col: [1, 4], row: [3, 4],
-        fontSize: 44, fontWeight: 'bold', align: 'center', color: 'accent',
-        maxCharacters: 12,
+        fontSize: 48, fontWeight: 'bold', align: 'center', color: 'accent',
+        maxCharacters: 10,
       },
       {
         type: 'text', role: 'stat-label',
         col: [1, 4], row: [5, 6],
-        fontSize: 15, align: 'center', color: 'muted',
-        maxCharacters: 60,
+        fontSize: 14, align: 'center', color: 'text',
+        maxCharacters: 50,
       },
       // Stat 2 card
       {
@@ -367,14 +367,14 @@ export const PATTERNS: Record<PatternName, SlidePattern> = {
       {
         type: 'text', role: 'stat-number',
         col: [5, 8], row: [3, 4],
-        fontSize: 44, fontWeight: 'bold', align: 'center', color: 'accent',
-        maxCharacters: 12,
+        fontSize: 48, fontWeight: 'bold', align: 'center', color: 'accent',
+        maxCharacters: 10,
       },
       {
         type: 'text', role: 'stat-label',
         col: [5, 8], row: [5, 6],
-        fontSize: 15, align: 'center', color: 'muted',
-        maxCharacters: 60,
+        fontSize: 14, align: 'center', color: 'text',
+        maxCharacters: 50,
       },
       // Stat 3 card
       {
@@ -386,14 +386,14 @@ export const PATTERNS: Record<PatternName, SlidePattern> = {
       {
         type: 'text', role: 'stat-number',
         col: [9, 12], row: [3, 4],
-        fontSize: 44, fontWeight: 'bold', align: 'center', color: 'accent',
-        maxCharacters: 12,
+        fontSize: 48, fontWeight: 'bold', align: 'center', color: 'accent',
+        maxCharacters: 10,
       },
       {
         type: 'text', role: 'stat-label',
         col: [9, 12], row: [5, 6],
-        fontSize: 15, align: 'center', color: 'muted',
-        maxCharacters: 60,
+        fontSize: 14, align: 'center', color: 'text',
+        maxCharacters: 50,
       },
     ],
   },

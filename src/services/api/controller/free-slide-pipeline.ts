@@ -57,6 +57,7 @@ import { DataVisualizationAgent } from '@/src/core/free-generation/agents/data-v
 import { FontQualityAgent } from '@/src/core/free-generation/agents/font-quality-agent';
 import { LayoutQualityAgent } from '@/src/core/free-generation/agents/layout-quality-agent';
 import { ContentQualityAgent } from '@/src/core/free-generation/agents/content-quality-agent';
+import { AgentMemory } from '@/src/core/free-generation/agents/agent-memory';
 import {
   type FreeSlideOptions,
   type FreeOutlineResult,
@@ -116,6 +117,9 @@ export class FreeSlideGenerationPipeline {
     const failedSlides: FailedSlideInfo[] = [];
     const steps: StepRecord[] = [];
     const pipelineStart = Date.now();
+
+    // Shared memory for inter-agent communication
+    const memory = new AgentMemory();
 
     const progress = (pct: number, msg: string) => {
       onProgress?.(pct, msg);
@@ -504,7 +508,7 @@ export class FreeSlideGenerationPipeline {
     progress(78, 'Checking font quality');
 
     const { result: fontResult, durationMs: fontMs } = timedSync(() => {
-      const fontAgent = new FontQualityAgent();
+      const fontAgent = new FontQualityAgent(memory);
       return fontAgent.audit(allSlides);
     });
 
@@ -518,7 +522,7 @@ export class FreeSlideGenerationPipeline {
     progress(79, 'Checking layout quality');
 
     const { result: layoutResult, durationMs: layoutMs } = timedSync(() => {
-      const layoutAgent = new LayoutQualityAgent();
+      const layoutAgent = new LayoutQualityAgent(memory);
       return layoutAgent.audit(allSlides);
     });
 
@@ -532,7 +536,7 @@ export class FreeSlideGenerationPipeline {
     progress(80, 'Checking content quality');
 
     const { result: contentQualityResult, durationMs: contentQualityMs } = await timed(async () => {
-      const contentQualityAgent = new ContentQualityAgent(this.aiClient, this.logger);
+      const contentQualityAgent = new ContentQualityAgent(this.aiClient, this.logger, memory);
       return contentQualityAgent.audit(allSlides, topic, language);
     });
 
@@ -632,7 +636,7 @@ export class FreeSlideGenerationPipeline {
     progress(85, 'Balancing whitespace');
 
     const { result: whitespaceResult, durationMs: whitespaceMs } = timedSync(() => {
-      const whitespaceAgent = new WhitespaceBalanceAgent();
+      const whitespaceAgent = new WhitespaceBalanceAgent(memory);
       return whitespaceAgent.balance(allSlides);
     });
 
@@ -813,6 +817,7 @@ export class FreeSlideGenerationPipeline {
             contentQuality: { found: contentQualityResult.issuesFound, fixed: contentQualityResult.issuesFixed, regenerated: contentQualityResult.regenerated },
             typography: { fontUpdates, rtlAdjustments },
           },
+          agentMemory: memory.getSummary(),
         },
       },
     });
@@ -871,6 +876,7 @@ export class FreeSlideGenerationPipeline {
         contentQuality: contentQualityResult,
         typography: { titleFont: typography.titleFont, bodyFont: typography.bodyFont, isRTL: typography.isRTL, rtlAdjustments },
       },
+      agentMemory: memory.getSummary(),
       failedSlides,
       tokenUsage,
     };

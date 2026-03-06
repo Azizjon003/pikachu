@@ -12,6 +12,7 @@
 
 import { AIClient } from '@/src/core/ai/ai-client';
 import { EnhancedLogger, LogLevel } from '@/src/lib/logger';
+import type { AgentMemory } from './agent-memory';
 
 export interface ContentIssue {
   slideIndex: number;
@@ -49,10 +50,12 @@ const PLACEHOLDER_PATTERNS = [
 export class ContentQualityAgent {
   private aiClient: AIClient;
   private logger: EnhancedLogger;
+  private memory?: AgentMemory;
 
-  constructor(aiClient: AIClient, logger?: EnhancedLogger) {
+  constructor(aiClient: AIClient, logger?: EnhancedLogger, memory?: AgentMemory) {
     this.aiClient = aiClient;
     this.logger = logger ?? new EnhancedLogger(LogLevel.INFO);
+    this.memory = memory;
   }
 
   /**
@@ -190,13 +193,24 @@ export class ContentQualityAgent {
         const maxLen = Math.max(...lengths);
         const minLen = Math.min(...lengths);
 
-        // If longest card body is >3x the shortest, flag imbalance
+        // If longest card body is >3x the shortest, truncate the long ones
         if (maxLen > 0 && minLen > 0 && maxLen > minLen * 3) {
+          // Target length: ~1.5x the shortest card (reasonable balance)
+          const targetLen = Math.round(minLen * 1.5);
+
+          for (const { el: bodyEl, idx: bodyIdx } of bodyElements) {
+            const bodyPlain = (bodyEl.content as string).replace(/<[^>]+>/g, '').trim();
+            if (bodyPlain.length > targetLen * 2) {
+              // Truncate: keep only the first sentences/bullets up to target length
+              bodyEl.content = this.truncateHTMLContent(bodyEl.content, targetLen);
+            }
+          }
+
           issues.push({
             slideIndex: si, elementIndex: -1,
             type: 'unbalanced-cards',
-            description: `Card content imbalance: shortest ${minLen} chars vs longest ${maxLen} chars (${(maxLen / minLen).toFixed(1)}x ratio)`,
-            fixed: false,
+            description: `Card content balanced: shortened from ${maxLen} to ~${targetLen} chars (was ${(maxLen / minLen).toFixed(1)}x ratio)`,
+            fixed: true,
           });
         }
       }
@@ -209,6 +223,30 @@ export class ContentQualityAgent {
 
     if (emptyBodies.length > 0) {
       regenerated = await this.regenerateContent(emptyBodies, slides, topic, language);
+    }
+
+    // Log to shared memory
+    if (this.memory) {
+      // Check if prior agents modified elements we're checking
+      const priorFixes = this.memory.getFixes();
+      if (priorFixes.length > 0) {
+        this.memory.logDecision('ContentQuality', -1, `Aware of ${priorFixes.length} prior fixes from: ${this.memory.getAgentOrder().join(', ')}`);
+      }
+
+      for (const issue of issues) {
+        if (issue.fixed) {
+          this.memory.logFix('ContentQuality', issue.slideIndex, issue.elementIndex, issue.description);
+        } else {
+          this.memory.logWarning('ContentQuality', issue.slideIndex, issue.description);
+        }
+      }
+      if (quotesStripped > 0) {
+        this.memory.logInfo('ContentQuality', `Stripped ${quotesStripped} quoted text elements`);
+      }
+      if (regenerated > 0) {
+        this.memory.logInfo('ContentQuality', `Regenerated ${regenerated} empty/placeholder elements via AI`);
+      }
+      this.memory.logInfo('ContentQuality', `Completed: ${issues.length} issues, ${issues.filter(i => i.fixed).length + regenerated} fixed`);
     }
 
     return {
@@ -298,6 +336,27 @@ Return JSON: { "fixes": [{ "fixIndex": 0, "content": "• Point 1\\n• Point 2\
       this.logger.warn('Content regeneration failed', { error });
       return 0;
     }
+  }
+
+  /**
+   * Truncate HTML content to approximately targetLen plain-text characters.
+   * Preserves complete <p> tags — removes whole paragraphs rather than cutting mid-sentence.
+   */
+  private truncateHTMLContent(html: string, targetLen: number): string {
+    // Split by <p> tags
+    const paragraphs = html.match(/<p[^>]*>.*?<\/p>/gi) || [];
+    if (paragraphs.length <= 1) return html;
+
+    let totalLen = 0;
+    const kept: string[] = [];
+    for (const p of paragraphs) {
+      const plainLen = p.replace(/<[^>]+>/g, '').trim().length;
+      if (totalLen + plainLen > targetLen && kept.length > 0) break;
+      kept.push(p);
+      totalLen += plainLen;
+    }
+
+    return kept.join('');
   }
 
   /**

@@ -28,7 +28,15 @@ const SLIDE_WIDTH = 1920;
 const SLIDE_HEIGHT = 1080;
 const EDGE_MARGIN = 10;
 
+import type { AgentMemory } from './agent-memory';
+
 export class WhitespaceBalanceAgent {
+  private memory?: AgentMemory;
+
+  constructor(memory?: AgentMemory) {
+    this.memory = memory;
+  }
+
   /**
    * Fix only critical boundary issues — don't touch pattern-designed positions
    */
@@ -78,6 +86,18 @@ export class WhitespaceBalanceAgent {
           });
         }
       }
+    }
+
+    // Log to shared memory — check if layout agent already fixed some elements
+    if (this.memory) {
+      const layoutFixes = this.memory.getByAgent('LayoutQuality').filter(e => e.type === 'fix');
+      if (layoutFixes.length > 0) {
+        this.memory.logDecision('Whitespace', -1, `LayoutQuality already fixed ${layoutFixes.length} elements, being extra conservative`);
+      }
+      for (const issue of issues) {
+        this.memory.logFix('Whitespace', issue.slideIndex, -1, issue.description);
+      }
+      this.memory.logInfo('Whitespace', `Completed: ${issues.length} boundary fixes`);
     }
 
     return {

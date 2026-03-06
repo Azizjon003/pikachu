@@ -32,7 +32,15 @@ const FONT_RANGES: Record<string, { min: number; max: number }> = {
   'stat-label': { min: 11, max: 16 },
 };
 
+import type { AgentMemory } from './agent-memory';
+
 export class FontQualityAgent {
+  private memory?: AgentMemory;
+
+  constructor(memory?: AgentMemory) {
+    this.memory = memory;
+  }
+
   /**
    * Audit and fix font issues across all slides
    */
@@ -137,6 +145,18 @@ export class FontQualityAgent {
           fixed: false,
         });
       }
+    }
+
+    // Log to shared memory
+    if (this.memory) {
+      for (const issue of issues) {
+        if (issue.fixed) {
+          this.memory.logFix('FontQuality', issue.slideIndex, issue.elementIndex, issue.description);
+        } else {
+          this.memory.logWarning('FontQuality', issue.slideIndex, issue.description);
+        }
+      }
+      this.memory.logInfo('FontQuality', `Completed: ${issues.length} issues found, ${issues.filter(i => i.fixed).length} fixed`);
     }
 
     return {

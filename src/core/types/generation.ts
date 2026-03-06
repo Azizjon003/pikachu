@@ -166,6 +166,14 @@ export interface PipelineResult {
   qualityReview: QualityReviewSummary;
   layoutDesign: LayoutDesignSummary;
   agents?: Record<string, unknown>;
+  agentMemory?: {
+    totalEntries: number;
+    totalFixes: number;
+    totalWarnings: number;
+    agentsRun: string[];
+    slidesModified: number;
+    heavilyModifiedSlides: number[];
+  };
   failedSlides: FailedSlideInfo[];
   tokenUsage: TokenUsage;
 }

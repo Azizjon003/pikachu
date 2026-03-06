@@ -1252,6 +1252,118 @@
         ).textContent = `${percentage}%`;
       }
 
+      function buildQualityReport(data) {
+        if (!data.agents && !data.qualityReview) return '';
+
+        const agents = data.agents || {};
+        const review = data.qualityReview || {};
+        const score = review.overallScore ?? null;
+        const tokenUsage = data.tokenUsage || {};
+        const validation = data.validation || {};
+
+        // Quality score badge
+        let scoreBadge = '';
+        if (score !== null) {
+          const scoreColor = score >= 80 ? 'green' : score >= 60 ? 'yellow' : 'red';
+          const scoreLabel = score >= 80 ? 'Excellent' : score >= 60 ? 'Good' : 'Needs Work';
+          scoreBadge = `
+            <div class="flex items-center gap-3 mb-4">
+              <div class="w-14 h-14 rounded-full flex items-center justify-center text-white font-bold text-lg bg-${scoreColor}-500">${score}</div>
+              <div>
+                <div class="font-semibold text-gray-800">Quality Score: ${scoreLabel}</div>
+                <div class="text-xs text-gray-500">${validation.totalSlides || '?'} slides generated</div>
+              </div>
+            </div>`;
+        }
+
+        // Build agent stats rows
+        const stats = [];
+
+        if (agents.fontQuality) {
+          const f = agents.fontQuality;
+          stats.push({ label: 'Font Quality', found: f.issuesFound || f.found || 0, fixed: f.issuesFixed || f.fixed || 0, icon: 'Aa' });
+        }
+        if (agents.layoutQuality) {
+          const l = agents.layoutQuality;
+          stats.push({ label: 'Layout Quality', found: l.issuesFound || l.found || 0, fixed: l.issuesFixed || l.fixed || 0, icon: '\u2B1C' });
+        }
+        if (agents.contentQuality) {
+          const c = agents.contentQuality;
+          const extra = [];
+          if (c.quotesStripped) extra.push(`${c.quotesStripped} quotes stripped`);
+          if (c.regenerated) extra.push(`${c.regenerated} regenerated`);
+          stats.push({ label: 'Content Quality', found: c.issuesFound || c.found || 0, fixed: c.issuesFixed || c.fixed || 0, icon: '\u270D', extra: extra.join(', ') });
+        }
+        if (agents.contentEnhancement) {
+          const ce = agents.contentEnhancement;
+          stats.push({ label: 'Content Enhancement', found: ce.issuesFound || ce.found || 0, fixed: ce.issuesFixed || ce.fixed || 0, icon: '\u2728' });
+        }
+        if (agents.colorHarmony) {
+          const ch = agents.colorHarmony;
+          stats.push({ label: 'Color Harmony', found: ch.contrastFixed || 0, fixed: ch.contrastFixed || 0, icon: '\u{1F3A8}', extra: ch.chartFixed ? `${ch.chartFixed} chart colors` : '' });
+        }
+        if (agents.accessibility) {
+          const a = agents.accessibility;
+          stats.push({ label: 'Accessibility', found: a.issuesFound || a.found || 0, fixed: a.issuesFixed || a.fixed || 0, icon: '\u267F' });
+        }
+        if (agents.narrativeFlow) {
+          const nf = agents.narrativeFlow;
+          stats.push({ label: 'Narrative Flow', found: nf.issuesFound || nf.issues || 0, fixed: 0, icon: '\u{1F4D6}', extra: nf.flowScore ? `Score: ${nf.flowScore}` : '' });
+        }
+        if (agents.dataVisualization) {
+          const dv = agents.dataVisualization;
+          stats.push({ label: 'Data Visualization', found: dv.chartsGenerated || 0, fixed: dv.chartsFixed || 0, icon: '\u{1F4CA}', extra: `${dv.chartsGenerated || 0} charts` });
+        }
+        if (agents.speakerNotes) {
+          const sn = agents.speakerNotes;
+          stats.push({ label: 'Speaker Notes', found: sn.notesGenerated || sn.generated || 0, fixed: sn.notesGenerated || sn.generated || 0, icon: '\u{1F399}' });
+        }
+
+        const statsRows = stats.map(s => {
+          const statusColor = s.found === 0 ? 'green' : (s.fixed >= s.found ? 'green' : 'yellow');
+          const statusText = s.found === 0 ? 'Clean' : `${s.fixed}/${s.found} fixed`;
+          return `
+            <div class="flex items-center justify-between py-2 border-b border-gray-100 last:border-0">
+              <div class="flex items-center gap-2">
+                <span class="text-base w-6 text-center">${s.icon}</span>
+                <span class="text-sm text-gray-700">${s.label}</span>
+              </div>
+              <div class="flex items-center gap-2">
+                ${s.extra ? `<span class="text-xs text-gray-400">${s.extra}</span>` : ''}
+                <span class="text-xs px-2 py-0.5 rounded-full bg-${statusColor}-100 text-${statusColor}-700 font-medium">${statusText}</span>
+              </div>
+            </div>`;
+        }).join('');
+
+        // Token usage row
+        let tokenRow = '';
+        if (tokenUsage.totalTokens) {
+          tokenRow = `
+            <div class="flex justify-between text-xs text-gray-400 mt-3 pt-2 border-t border-gray-100">
+              <span>Tokens: ${(tokenUsage.totalTokens / 1000).toFixed(1)}k</span>
+              ${tokenUsage.estimatedCost ? `<span>Est. cost: $${tokenUsage.estimatedCost.toFixed(3)}</span>` : ''}
+            </div>`;
+        }
+
+        return `
+          <div class="bg-white border border-gray-200 rounded-lg p-4 mt-2">
+            <div class="flex items-center justify-between mb-3 cursor-pointer" onclick="this.parentElement.querySelector('#qr-details').classList.toggle('hidden'); this.querySelector('#qr-chevron').classList.toggle('rotate-180');">
+              <h4 class="font-semibold text-gray-800 flex items-center gap-2">
+                <svg class="w-4 h-4 text-indigo-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+                Quality Report
+              </h4>
+              <svg id="qr-chevron" class="w-4 h-4 text-gray-400 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+            </div>
+            <div id="qr-details">
+              ${scoreBadge}
+              <div class="space-y-0">
+                ${statsRows}
+              </div>
+              ${tokenRow}
+            </div>
+          </div>`;
+      }
+
       function showResults(data) {
         resultsCard.classList.remove("hidden");
         const resultsContent = document.getElementById("results-content");
@@ -1283,6 +1395,8 @@
                             </div>
                         </div>
                     </div>
+
+                    ${buildQualityReport(data)}
 
                     <div class="flex gap-3">
                         <a href="/generated/${data.slideName}" download
