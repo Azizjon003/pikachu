@@ -31,7 +31,8 @@
       "Bash(wc -l /c/Users/Zenbook-PC/Desktop/work/pikachu/src/**/*.ts)",
       "Bash(python3 -c \"import json,sys; d=json.load\\(sys.stdin\\); [print\\(t[''name'']\\) for t in d.get\\(''data'',{}\\).get\\(''templates'',d.get\\(''templates'',[]\\)\\)[:3]]\")",
       "Bash(python3 -c \"import json,sys; d=json.load\\(sys.stdin\\); print\\(json.dumps\\(d, indent=2, ensure_ascii=False\\)[:500]\\)\")",
-      "Bash(npx prisma generate)"
+      "Bash(npx prisma generate)",
+      "Bash(python3 -c \":*)"
     ],
     "deny": [],
     "ask": []

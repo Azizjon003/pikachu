@@ -3,12 +3,13 @@ import {
   generateSlide,
   startSlideGeneration,
   getSlideGenerationStatus,
+  startFreeSlideGeneration,
   editSlide,
   editSlideImages,
   reRenderSlide,
 } from "../controller/slide.controller.new";
 import { estimateCostHandler } from "../controller/cost-estimator";
-import { validateSlideGeneration, validateSlideEdit, validateImageEdit, validateReRender } from "../middleware/validation";
+import { validateSlideGeneration, validateFreeSlideGeneration, validateSlideEdit, validateImageEdit, validateReRender } from "../middleware/validation";
 import { asyncHandler } from "../middleware/error-handler";
 
 const router = Router();
@@ -25,6 +26,13 @@ router.post(
 
 // GET /api/slide/generate/status/:taskId - Check generation status
 router.get("/generate/status/:taskId", asyncHandler(getSlideGenerationStatus));
+
+// POST /api/slide/generate-free - Start template-free slide generation
+router.post(
+  "/generate-free",
+  validateFreeSlideGeneration,
+  asyncHandler(startFreeSlideGeneration)
+);
 
 // POST /api/slide/generate-sync - (Legacy) Generate presentation slides synchronously
 router.post(

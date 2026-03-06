@@ -169,6 +169,95 @@ export interface PipelineResult {
   tokenUsage: TokenUsage;
 }
 
+// ===== Free Generation Types =====
+
+export type PatternName =
+  | 'title-center'
+  | 'title-subtitle'
+  | 'bullet-list'
+  | 'two-column'
+  | 'image-right'
+  | 'image-left'
+  | 'image-full'
+  | 'three-cards'
+  | 'stats-grid'
+  | 'comparison'
+  | 'timeline'
+  | 'table-slide'
+  | 'quote'
+  | 'section-break'
+  | 'thank-you'
+  | 'process-flow'
+  | 'pyramid'
+  | 'icon-grid'
+  | 'custom';
+
+export type ThemeName = 'professional' | 'modern' | 'warm' | 'cool' | 'bold' | 'minimal' | 'custom';
+
+export type FontPairName = 'classic' | 'modern' | 'elegant' | 'playful' | 'technical' | 'minimal';
+
+export interface CustomColorPalette {
+  primary: string;
+  accent: string;
+  background: string;
+  surface: string;
+  text: string;
+  muted: string;
+  gradientStart: string;
+  gradientEnd: string;
+}
+
+export type ElementRole = 'title' | 'subtitle' | 'body' | 'label' | 'image' | 'accent' | 'stat-number' | 'stat-label';
+
+export interface FreeSlideOptions {
+  language: string;
+  page: number;
+  topic: string;
+  author?: string;
+  theme?: ThemeName;
+  fontPair?: FontPairName;
+}
+
+/** AI-designed custom layout element (used when pattern='custom') */
+export interface CustomLayoutElement {
+  type: 'text' | 'image' | 'shape' | 'table';
+  role: ElementRole;
+  col: [number, number];    // 1-12 grid columns
+  row: [number, number];    // 1-8 grid rows
+  fontSize?: number;
+  fontWeight?: 'normal' | 'bold';
+  align?: 'left' | 'center' | 'right';
+  color?: 'primary' | 'text' | 'muted' | 'white' | 'accent';
+  background?: 'primary' | 'accent' | 'light' | 'white' | 'none' | 'gradient' | 'gradient-accent' | 'glass';
+  borderRadius?: number;
+  shapeVariant?: 'rect' | 'circle' | 'rounded-lg' | 'line-h' | 'line-v' | 'blob';
+  shadow?: 'sm' | 'md' | 'lg';
+  opacity?: number;
+  maxCharacters?: number;
+}
+
+export interface FreeOutlineSlide {
+  slideIndex: number;
+  title: string;
+  title_eng: string;
+  outlineIndex: number;
+  keyPoints: string[];
+  pattern: PatternName;
+  imageKeyword?: string;
+  /** Custom layout elements (only when pattern='custom') */
+  customElements?: CustomLayoutElement[];
+  /** Background for custom layout slides */
+  customBackground?: 'white' | 'light' | 'dark' | 'gradient' | 'primary';
+}
+
+export interface FreeOutlineResult {
+  outline: OutlineItem[];
+  slides: FreeOutlineSlide[];
+  theme: ThemeName;
+  customColors?: CustomColorPalette;
+  fontPair?: FontPairName;
+}
+
 // ===== Configuration =====
 
 export interface GenerationConfig {

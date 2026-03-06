@@ -67,6 +67,54 @@ export const validateSlideGeneration = [
 ];
 
 /**
+ * Validation rules for template-free slide generation
+ */
+export const validateFreeSlideGeneration = [
+  body('language')
+    .notEmpty()
+    .withMessage('Language is required')
+    .isString()
+    .withMessage('Language must be a string')
+    .isLength({ min: 2, max: 50 })
+    .withMessage('Language must be between 2 and 50 characters'),
+
+  body('page')
+    .notEmpty()
+    .withMessage('Page count is required')
+    .isInt({ min: 6, max: 100 })
+    .withMessage('Page must be between 6 and 100 (minimum: title + outline + 1 content + conclusion + references + thank-you)'),
+
+  body('topic')
+    .notEmpty()
+    .withMessage('Topic is required')
+    .isString()
+    .withMessage('Topic must be a string')
+    .isLength({ min: 3, max: 200 })
+    .withMessage('Topic must be between 3 and 200 characters'),
+
+  body('author')
+    .optional()
+    .isString()
+    .withMessage('Author must be a string')
+    .isLength({ max: 100 })
+    .withMessage('Author must not exceed 100 characters'),
+
+  body('theme')
+    .optional()
+    .isString()
+    .isIn(['professional', 'modern', 'warm', 'cool', 'bold', 'minimal', 'custom'])
+    .withMessage('Theme must be one of: professional, modern, warm, cool, bold, minimal, custom'),
+
+  body('fontPair')
+    .optional()
+    .isString()
+    .isIn(['classic', 'modern', 'elegant', 'playful', 'technical', 'minimal'])
+    .withMessage('Font pair must be one of: classic, modern, elegant, playful, technical, minimal'),
+
+  handleValidationErrors,
+];
+
+/**
  * Validation rules for slide editing
  */
 export const validateSlideEdit = [

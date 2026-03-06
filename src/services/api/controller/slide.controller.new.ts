@@ -12,13 +12,14 @@ import crypto from 'crypto';
 import fs from 'fs';
 import path from 'path';
 import { SlideGenerationPipeline } from './slide-generation-pipeline';
+import { FreeSlideGenerationPipeline } from './free-slide-pipeline';
 import {
   createTask,
   getTask,
   updateTask,
 } from '@/src/services/api/services/task.service';
 import { EnhancedLogger, LogLevel } from '@/src/lib/logger';
-import { PipelineOptions } from '@/src/core/types/generation';
+import { PipelineOptions, FreeSlideOptions } from '@/src/core/types/generation';
 import { SlideEditor } from '@/src/core/generation/slide-editor';
 import { ImageEditor } from '@/src/core/generation/image-editor';
 import { AIClient } from '@/src/core/ai/ai-client';
@@ -180,4 +181,34 @@ export const reRenderSlide = async (req: Request, res: Response) => {
     logger.error('Slide re-render failed', error);
     res.status(500).json({ success: false, error: error.message });
   }
+};
+
+/**
+ * Start async template-free slide generation (returns immediately with taskId)
+ */
+export const startFreeSlideGeneration = async (req: Request, res: Response) => {
+  const params: FreeSlideOptions = req.body;
+  const taskId = crypto.randomBytes(16).toString('hex');
+
+  await createTask(taskId);
+
+  const pipeline = new FreeSlideGenerationPipeline();
+
+  pipeline
+    .execute(params, (progress, message) => {
+      updateTask(taskId, { status: 'processing', progress });
+    })
+    .then((result) => {
+      updateTask(taskId, { status: 'completed', progress: 100, result });
+    })
+    .catch((error: Error) => {
+      logger.error('Free pipeline failed', error);
+      updateTask(taskId, { status: 'failed', error: error.message });
+    });
+
+  res.status(202).json({
+    success: true,
+    message: 'Template-free slide generation started',
+    taskId,
+  });
 };

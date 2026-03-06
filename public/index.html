@@ -345,6 +345,7 @@
                     class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-transparent transition-all"
                   >
                     <option value="">Select a template...</option>
+                    <option value="__free__">Template-Free (AI Design)</option>
                   </select>
                 </div>
 
@@ -413,6 +414,50 @@
                   placeholder="e.g., Artificial Intelligence in Modern Healthcare"
                   class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-transparent transition-all resize-none"
                 ></textarea>
+              </div>
+
+              <!-- Theme & Font Selection (only for Template-Free) -->
+              <div id="theme-row" class="hidden space-y-4">
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                  <div>
+                    <label class="block text-sm font-medium text-gray-700 mb-2">
+                      Color Theme
+                    </label>
+                    <select
+                      id="theme-input"
+                      class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-transparent transition-all"
+                    >
+                      <option value="">Auto (AI selects)</option>
+                      <option value="professional">Professional (Blue)</option>
+                      <option value="modern">Modern (Purple)</option>
+                      <option value="warm">Warm (Orange)</option>
+                      <option value="cool">Cool (Sky Blue)</option>
+                      <option value="bold">Bold (Red)</option>
+                      <option value="minimal">Minimal (Gray)</option>
+                      <option value="custom">Custom (AI generates unique colors)</option>
+                    </select>
+                  </div>
+                  <div>
+                    <label class="block text-sm font-medium text-gray-700 mb-2">
+                      Font Style
+                    </label>
+                    <select
+                      id="fontpair-input"
+                      class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-transparent transition-all"
+                    >
+                      <option value="">Auto (AI selects)</option>
+                      <option value="classic">Classic (Georgia + Source Sans)</option>
+                      <option value="modern">Modern (Montserrat + Open Sans)</option>
+                      <option value="elegant">Elegant (Playfair + Lato)</option>
+                      <option value="playful">Playful (Poppins + Nunito)</option>
+                      <option value="technical">Technical (Roboto Slab + Roboto)</option>
+                      <option value="minimal">Minimal (Inter)</option>
+                    </select>
+                  </div>
+                </div>
+                <p class="text-xs text-gray-500">
+                  AI will design unique layouts, choose color palettes, and create creative slide compositions from scratch.
+                </p>
               </div>
 
               <!-- Cost Estimate Panel -->
@@ -715,9 +760,10 @@
               })
               .join("");
 
-            // Update select dropdown
+            // Update select dropdown (keep Template-Free option at top)
             templateSelect.innerHTML =
               '<option value="">Select a template...</option>' +
+              '<option value="__free__">✨ Template-Free (AI Design)</option>' +
               data.templates
                 .map(
                   (template) =>
@@ -728,9 +774,13 @@
             templatesList.innerHTML = `
                         <div class="text-center text-gray-400 py-4">
                             <p class="text-sm">No templates available</p>
-                            <p class="text-xs mt-1">Upload a PPTX template to get started</p>
+                            <p class="text-xs mt-1">Upload a PPTX template or use Template-Free mode</p>
                         </div>
                     `;
+            // Even with no templates, keep Template-Free option
+            templateSelect.innerHTML =
+              '<option value="">Select a template...</option>' +
+              '<option value="__free__">✨ Template-Free (AI Design)</option>';
           }
         } catch (error) {
           templatesList.innerHTML = `
@@ -739,6 +789,10 @@
                         <p class="text-xs mt-1">${error.message}</p>
                     </div>
                 `;
+          // Even on error, keep Template-Free option available
+          templateSelect.innerHTML =
+            '<option value="">Select a template...</option>' +
+            '<option value="__free__">✨ Template-Free (AI Design)</option>';
         }
       }
 
@@ -1014,6 +1068,22 @@
         .getElementById("refresh-templates-btn")
         .addEventListener("click", loadTemplates);
 
+      // Template-Free mode: adjust page min and hide/show theme selector
+      document.getElementById("template-select").addEventListener("change", function() {
+        const isTemplateFree = this.value === "__free__";
+        const pageInput = document.getElementById("page-input");
+        const themeRow = document.getElementById("theme-row");
+
+        if (isTemplateFree) {
+          pageInput.min = "6";
+          if (parseInt(pageInput.value) < 6) pageInput.value = "8";
+          if (themeRow) themeRow.classList.remove("hidden");
+        } else {
+          pageInput.min = "1";
+          if (themeRow) themeRow.classList.add("hidden");
+        }
+      });
+
       // Generate Presentation
       const generateForm = document.getElementById("generate-form");
       const generateBtn = document.getElementById("generate-btn");
@@ -1028,17 +1098,31 @@
       generateForm.addEventListener("submit", async (e) => {
         e.preventDefault();
 
-        const formData = {
-          template: document.getElementById("template-select").value,
-          language: document.getElementById("language-input").value,
-          page: parseInt(document.getElementById("page-input").value),
-          topic: document.getElementById("topic-input").value,
-          author: document.getElementById("author-input").value,
-        };
+        const selectedTemplate = document.getElementById("template-select").value;
+        const isTemplateFree = selectedTemplate === "__free__";
+
+        const selectedTheme = document.getElementById("theme-input").value;
+        const selectedFontPair = document.getElementById("fontpair-input").value;
+        const formData = isTemplateFree
+          ? {
+              language: document.getElementById("language-input").value,
+              page: parseInt(document.getElementById("page-input").value),
+              topic: document.getElementById("topic-input").value,
+              author: document.getElementById("author-input").value,
+              ...(selectedTheme ? { theme: selectedTheme } : {}),
+              ...(selectedFontPair ? { fontPair: selectedFontPair } : {}),
+            }
+          : {
+              template: selectedTemplate,
+              language: document.getElementById("language-input").value,
+              page: parseInt(document.getElementById("page-input").value),
+              topic: document.getElementById("topic-input").value,
+              author: document.getElementById("author-input").value,
+            };
 
         // Validation
-        if (!formData.template) {
-          alert("Please select a template");
+        if (!selectedTemplate) {
+          alert("Please select a template or Template-Free mode");
           return;
         }
 
@@ -1050,9 +1134,13 @@
         resultsCard.classList.add("hidden");
         updateProgress(0, "Starting generation...", "Initializing");
 
+        const endpoint = isTemplateFree
+          ? `${API_BASE_URL}/slide/generate-free`
+          : `${API_BASE_URL}/slide/generate`;
+
         try {
           // Start the generation process
-          const startResponse = await fetch(`${API_BASE_URL}/slide/generate`, {
+          const startResponse = await fetch(endpoint, {
             method: "POST",
             headers: {
               "Content-Type": "application/json",
