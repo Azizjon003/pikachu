@@ -184,7 +184,13 @@ ABSOLUTE RULES:
 4. NEVER exceed maxCharacters
 5. NO generic phrases ("as we know", "it is important to note", "in conclusion")
 6. NO placeholder text — every word must be real, specific, valuable content
-7. Tables must have real, specific data — not "Data 1", "Data 2"`;
+7. Tables must have real, specific data — not "Data 1", "Data 2"
+8. NEVER wrap content in quotes — no "..." or «...» around text. Write plain text directly:
+   WRONG: "15%"  →  CORRECT: 15%
+   WRONG: "Energiya sektori"  →  CORRECT: Energiya sektori
+   WRONG: "Yashil energiyaga sarflangan mablag'"  →  CORRECT: Yashil energiyaga sarflangan mablag'
+9. For CARD-based layouts (three-cards, stats-grid, icon-grid): ALL cards must have BALANCED content length. If one card has 50 words, others must also have ~50 words. Never leave one card with a wall of text and others nearly empty
+10. Every card in a multi-card layout MUST have both a clear heading/number AND supporting description text`;
   }
 
   private buildUserPrompt(

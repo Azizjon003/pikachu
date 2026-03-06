@@ -224,6 +224,29 @@ export interface FreeSlideOptions {
   author?: string;
   theme?: ThemeName;
   fontPair?: FontPairName;
+  /** Optional user prompt for custom instructions (e.g., "make it more visual", "focus on statistics") */
+  prompt?: string;
+}
+
+export interface SlideModifyOptions {
+  /** Path to the JSON file of the presentation to modify */
+  jsonFilePath: string;
+  /** User instruction for what to change */
+  prompt: string;
+  /** Language of the presentation */
+  language: string;
+  /** Original topic */
+  topic: string;
+}
+
+export interface SlideModifyResult {
+  success: boolean;
+  slidePath: string;
+  slideName: string;
+  jsonFilePath: string;
+  jsonFileName: string;
+  changesApplied: number;
+  changesSummary: string[];
 }
 
 /** AI-designed custom layout element (used when pattern='custom') */

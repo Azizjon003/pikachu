@@ -19,7 +19,8 @@ import {
   updateTask,
 } from '@/src/services/api/services/task.service';
 import { EnhancedLogger, LogLevel } from '@/src/lib/logger';
-import { PipelineOptions, FreeSlideOptions } from '@/src/core/types/generation';
+import { PipelineOptions, FreeSlideOptions, SlideModifyOptions } from '@/src/core/types/generation';
+import { SlideModifier } from '@/src/core/free-generation/slide-modifier';
 import { SlideEditor } from '@/src/core/generation/slide-editor';
 import { ImageEditor } from '@/src/core/generation/image-editor';
 import { AIClient } from '@/src/core/ai/ai-client';
@@ -211,4 +212,21 @@ export const startFreeSlideGeneration = async (req: Request, res: Response) => {
     message: 'Template-free slide generation started',
     taskId,
   });
+};
+
+/**
+ * Modify an existing presentation using a natural language prompt
+ */
+export const modifySlide = async (req: Request, res: Response) => {
+  try {
+    const params: SlideModifyOptions = req.body;
+
+    const modifier = new SlideModifier();
+    const result = await modifier.modify(params);
+
+    res.json(result);
+  } catch (error: any) {
+    logger.error('Slide modification failed', error);
+    res.status(500).json({ success: false, error: error.message });
+  }
 };

@@ -4,12 +4,13 @@ import {
   startSlideGeneration,
   getSlideGenerationStatus,
   startFreeSlideGeneration,
+  modifySlide,
   editSlide,
   editSlideImages,
   reRenderSlide,
 } from "../controller/slide.controller.new";
 import { estimateCostHandler } from "../controller/cost-estimator";
-import { validateSlideGeneration, validateFreeSlideGeneration, validateSlideEdit, validateImageEdit, validateReRender } from "../middleware/validation";
+import { validateSlideGeneration, validateFreeSlideGeneration, validateSlideModify, validateSlideEdit, validateImageEdit, validateReRender } from "../middleware/validation";
 import { asyncHandler } from "../middleware/error-handler";
 
 const router = Router();
@@ -32,6 +33,13 @@ router.post(
   "/generate-free",
   validateFreeSlideGeneration,
   asyncHandler(startFreeSlideGeneration)
+);
+
+// POST /api/slide/modify - Modify existing presentation via prompt
+router.post(
+  "/modify",
+  validateSlideModify,
+  asyncHandler(modifySlide)
 );
 
 // POST /api/slide/generate-sync - (Legacy) Generate presentation slides synchronously

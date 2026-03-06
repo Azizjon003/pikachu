@@ -602,27 +602,43 @@ export const exportPPTX = (
         };
       } else if (background.type === "gradient" && background.gradient) {
         const colors: any[] = background.gradient.colors;
-        // pptxgenjs doesn't support gradient backgrounds — use darker color for richer look
-        const color1 = tinycolor(colors[0].color);
-        const color2 = tinycolor(colors[colors.length - 1].color);
-        // Pick the darker color for a more professional background
-        const bgColor = color1.getLuminance() < color2.getLuminance() ? colors[0].color : colors[colors.length - 1].color;
-        const c = formatColor(bgColor);
-        pptxSlide.background = {
-          color: c.color,
-          transparency: (1 - c.alpha) * 100,
-        };
+        // Use a full-slide gradient shape as background (pptxgenjs supports shape gradients)
+        const gradColor1 = formatColor(colors[0].color);
+        const gradColor2 = formatColor(colors[colors.length - 1].color);
+        const rotate = background.gradient.rotate || 135;
+        // Map 0-360 degree rotation to pptxgenjs gradient direction (0-360)
+        const gradDir = rotate;
+        pptxSlide.addShape("rect" as pptxgen.ShapeType, {
+          x: 0,
+          y: 0,
+          w: "100%",
+          h: "100%",
+          fill: {
+            type: "solid",
+            color: gradColor1.color,
+          },
+        });
+        // Overlay with gradient shape
+        pptxSlide.addShape("rect" as pptxgen.ShapeType, {
+          x: 0,
+          y: 0,
+          w: "100%",
+          h: "100%",
+          fill: {
+            type: "gradient" as any,
+            color: gradColor1.color,
+            colorTo: gradColor2.color,
+            direction: gradDir > 90 ? "up-right" : "down-right",
+          } as any,
+        });
       }
     }
     if (slide.remark) {
-      const doc = new DOMParser().parseFromString(slide.remark, "text/html");
-      const pList: any = doc.body.querySelectorAll("p");
-      const text: string[] = [];
-      for (const p of pList) {
-        const textContent = p.textContent;
-        text.push(textContent || "");
+      // Strip HTML tags if present (DOMParser is not available in Node.js)
+      const plainRemark = slide.remark.replace(/<[^>]+>/g, '').replace(/&[^;]+;/g, ' ').trim();
+      if (plainRemark) {
+        pptxSlide.addNotes(plainRemark);
       }
-      pptxSlide.addNotes(text.join("\n"));
     }
 
     if (!slide.elements) continue;
@@ -780,12 +796,17 @@ export const exportPPTX = (
 
             let fillColor = formatColor(el.fill);
 
+            let gradientFill2: any = null;
             if (el.gradient) {
               const colors: any = el.gradient.colors;
-              const color1 = colors[0].color;
-              const color2 = colors[colors.length - 1].color;
-              const color = tinycolor.mix(color1, color2).toHexString();
-              fillColor = formatColor(color);
+              const color1 = formatColor(colors[0].color);
+              const color2 = formatColor(colors[colors.length - 1].color);
+              fillColor = color1;
+              gradientFill2 = {
+                type: 'gradient' as any,
+                color: color1.color,
+                colorTo: color2.color,
+              };
             }
             if (el.pattern) fillColor = formatColor("#00000000");
             const opacity = el.opacity === undefined ? 1 : el.opacity;
@@ -795,7 +816,7 @@ export const exportPPTX = (
               y: el.top / ratioPx2Inch,
               w: el.width / ratioPx2Inch,
               h: el.height / ratioPx2Inch,
-              fill: {
+              fill: gradientFill2 || {
                 color: fillColor.color,
                 transparency: (1 - fillColor.alpha * opacity) * 100,
               },
@@ -824,12 +845,17 @@ export const exportPPTX = (
 
           let fillColor = formatColor(el.fill);
 
+          let gradientFill: any = null;
           if (el.gradient) {
             const colors: any = el.gradient.colors;
-            const color1 = colors[0].color;
-            const color2 = colors[colors.length - 1].color;
-            const color = tinycolor.mix(color1, color2).toHexString();
-            fillColor = formatColor(color);
+            const color1 = formatColor(colors[0].color);
+            const color2 = formatColor(colors[colors.length - 1].color);
+            fillColor = color1;
+            gradientFill = {
+              type: 'gradient' as any,
+              color: color1.color,
+              colorTo: color2.color,
+            };
           }
           if (el.pattern) fillColor = formatColor("#00000000");
           const opacity = el.opacity === undefined ? 1 : el.opacity;
@@ -839,7 +865,7 @@ export const exportPPTX = (
             y: el.top / ratioPx2Inch,
             w: el.width / ratioPx2Inch,
             h: el.height / ratioPx2Inch,
-            fill: {
+            fill: gradientFill || {
               color: fillColor.color,
               transparency: (1 - fillColor.alpha * opacity) * 100,
             },

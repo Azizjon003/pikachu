@@ -33,6 +33,8 @@ export interface FreeOutlineParams {
   topic: string;
   theme?: ThemeName;
   fontPair?: FontPairName;
+  /** Optional user prompt for custom instructions */
+  prompt?: string;
 }
 
 // ============================================
@@ -49,7 +51,7 @@ export class FreeOutlineGenerator {
   }
 
   async generate(params: FreeOutlineParams): Promise<FreeOutlineResult> {
-    const { language, pageCount, topic, theme, fontPair } = params;
+    const { language, pageCount, topic, theme, fontPair, prompt } = params;
     const outlineCount = this.calculateOutlineCount(pageCount);
 
     // Content slide count (excluding: title, outline, conclusion, references, thank-you = 5 fixed)
@@ -87,7 +89,7 @@ export class FreeOutlineGenerator {
         },
         {
           role: 'user',
-          content: this.buildUserPrompt(topic, language, outlineCount, contentSlideCount, theme, fontPair),
+          content: this.buildUserPrompt(topic, language, outlineCount, contentSlideCount, theme, fontPair, prompt),
         },
       ],
       fallback: () => this.buildFallback(topic, outlineCount, contentSlideCount, theme),
@@ -321,7 +323,10 @@ OUTLINE RULES:
   GOOD: "GPT-4 tibbiy testlarda shifokorlardan 15% yuqori natija ko'rsatdi (Nature Medicine, 2024)"
   BAD: "AI tibbiyotda qo'llaniladi"
 - Write all titles and key points in ${language}
-- title_eng is always in English`;
+- title_eng is always in English
+- NEVER wrap titles or key points in quotes — no "..." or «...» around text. Write plain text directly:
+  WRONG: "Sanoat sektori"  →  CORRECT: Sanoat sektori
+  WRONG: "15%"  →  CORRECT: 15%`;
   }
 
   private buildUserPrompt(
@@ -330,7 +335,8 @@ OUTLINE RULES:
     outlineCount: number,
     slideCount: number,
     theme?: ThemeName,
-    fontPair?: FontPairName
+    fontPair?: FontPairName,
+    prompt?: string
   ): string {
     return `PRESENTATION TOPIC: "${topic}"
 LANGUAGE: ${language}
@@ -338,7 +344,7 @@ SECTIONS: ${outlineCount}
 CONTENT SLIDES: ${slideCount}
 ${theme ? `PREFERRED THEME: "${theme}"` : 'CHOOSE THE BEST THEME for this topic (consider using "custom" for a unique look)'}
 ${fontPair ? `PREFERRED FONT PAIR: "${fontPair}"` : 'CHOOSE THE BEST FONT PAIR for this topic'}
-
+${prompt ? `\nUSER INSTRUCTIONS: "${prompt}"\nIMPORTANT: Follow the user's instructions above carefully. They describe the desired style, focus areas, or specific requirements for this presentation.\n` : ''}
 Create the outline now. Remember:
 1. ${outlineCount} outline sections with titles in ${language}
 2. ${slideCount} content slides, each assigned to a section

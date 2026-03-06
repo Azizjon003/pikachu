@@ -535,6 +535,9 @@ export class SlideBuilder {
   ): string {
     if (!text) return '';
 
+    // Strip wrapping quotes that AI sometimes adds around content
+    text = this.stripWrappingQuotes(text);
+
     // If text already contains HTML tags, wrap with style
     if (text.includes('<p') || text.includes('<div') || text.includes('<ul')) {
       return text;
@@ -550,11 +553,36 @@ export class SlideBuilder {
         const isBullet = line.startsWith('• ') || line.startsWith('- ');
         if (isBullet) {
           const bulletText = line.replace(/^[•\-]\s*/, '');
-          return `<p style="font-size: ${fontSize}px; color: ${color}; text-align: ${align}; ${fontStyle} margin-bottom: 4px; line-height: 1.6;"><span style="color: ${this.theme.accent}; font-weight: bold;">&#x25CF; </span>${bulletText}</p>`;
+          return `<p style="font-size: ${fontSize}px; color: ${color}; text-align: ${align}; ${fontStyle} margin-bottom: 4px; line-height: 1.6;"><span style="color: ${this.theme.accent}; font-weight: bold;">\u25CF </span>${bulletText}</p>`;
         }
         return `<p style="font-size: ${fontSize}px; color: ${color}; text-align: ${align}; ${boldStyle} ${fontStyle} line-height: 1.5;">${line}</p>`;
       })
       .join('');
+  }
+
+  /**
+   * Strip wrapping quotes from AI-generated text.
+   * AI often wraps content in "..." which renders as literal quotes on slides.
+   */
+  private stripWrappingQuotes(text: string): string {
+    // Strip per-line quotes for multi-line content (bullets, etc.)
+    const lines = text.split('\n');
+    const stripped = lines.map(line => {
+      let l = line.trim();
+      // Strip "..." or «...» wrapping
+      if ((l.startsWith('"') && l.endsWith('"')) || (l.startsWith('«') && l.endsWith('»'))) {
+        l = l.slice(1, -1).trim();
+      }
+      // Preserve bullet prefix if original line had it
+      if (line.trimStart().startsWith('• ') || line.trimStart().startsWith('- ')) {
+        const prefix = line.trimStart().startsWith('• ') ? '• ' : '- ';
+        if (!l.startsWith('• ') && !l.startsWith('- ')) {
+          l = prefix + l;
+        }
+      }
+      return l;
+    });
+    return stripped.join('\n');
   }
 
   private createBackground(bg?: string): SlideBackground | undefined {

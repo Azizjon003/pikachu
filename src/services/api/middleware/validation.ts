@@ -111,6 +111,50 @@ export const validateFreeSlideGeneration = [
     .isIn(['classic', 'modern', 'elegant', 'playful', 'technical', 'minimal'])
     .withMessage('Font pair must be one of: classic, modern, elegant, playful, technical, minimal'),
 
+  body('prompt')
+    .optional()
+    .isString()
+    .withMessage('Prompt must be a string')
+    .isLength({ max: 1000 })
+    .withMessage('Prompt must not exceed 1000 characters'),
+
+  handleValidationErrors,
+];
+
+/**
+ * Validation rules for slide modification via prompt
+ */
+export const validateSlideModify = [
+  body('jsonFilePath')
+    .notEmpty()
+    .withMessage('jsonFilePath is required')
+    .isString()
+    .withMessage('jsonFilePath must be a string'),
+
+  body('prompt')
+    .notEmpty()
+    .withMessage('Prompt is required')
+    .isString()
+    .withMessage('Prompt must be a string')
+    .isLength({ min: 3, max: 2000 })
+    .withMessage('Prompt must be between 3 and 2000 characters'),
+
+  body('language')
+    .notEmpty()
+    .withMessage('Language is required')
+    .isString()
+    .withMessage('Language must be a string')
+    .isLength({ min: 2, max: 50 })
+    .withMessage('Language must be between 2 and 50 characters'),
+
+  body('topic')
+    .notEmpty()
+    .withMessage('Topic is required')
+    .isString()
+    .withMessage('Topic must be a string')
+    .isLength({ min: 3, max: 200 })
+    .withMessage('Topic must be between 3 and 200 characters'),
+
   handleValidationErrors,
 ];
 

@@ -8,14 +8,22 @@
  * 1. AI → Outline + pattern selection (0-12%)
  * 2. Typography + Build slide layouts (12-20%)
  * 3. AI → Content generation (20-45%)
- * 4. Build special slides (45-52%)
- * 5. Content enhancement agent (52-58%)
- * 6. Smart image search & placement (58-72%)
- * 7. Color harmony check (72-76%)
- * 8. Quality review (76-82%)
- * 9. Collision prevention (82-88%)
- * 10. Transitions + Image placement (88-93%)
- * 11. Export PPTX (93-100%)
+ * 4. Build special slides (45-50%)
+ * 5. Content enhancement agent (50-54%)
+ * 6. Data visualization agent (54-58%)
+ * 7. Smart image search & placement (58-68%)
+ * 8. Color harmony check (68-71%)
+ * 9. Narrative flow analysis (71-74%)
+ * 10. Quality review (74-78%)
+ * 11. Font quality check (78-79%)
+ * 12. Layout quality check (79-80%)
+ * 13. Content quality check (80-82%)
+ * 14. Collision prevention (82-85%)
+ * 15. Whitespace balance (85-86%)
+ * 16. Accessibility audit (86-88%)
+ * 17. Transitions + Animations + Image placement (88-92%)
+ * 18. Speaker notes generation (92-95%)
+ * 19. Export PPTX (95-100%)
  */
 
 import fs from 'fs';
@@ -40,6 +48,15 @@ import { ContentEnhancementAgent } from '@/src/core/free-generation/agents/conte
 import { ImagePlacementAgent } from '@/src/core/free-generation/agents/image-placement-agent';
 import { TransitionAgent } from '@/src/core/free-generation/agents/transition-agent';
 import { TypographyAgent } from '@/src/core/free-generation/agents/typography-agent';
+import { SpeakerNotesAgent } from '@/src/core/free-generation/agents/speaker-notes-agent';
+import { AnimationAgent } from '@/src/core/free-generation/agents/animation-agent';
+import { AccessibilityAgent } from '@/src/core/free-generation/agents/accessibility-agent';
+import { NarrativeFlowAgent } from '@/src/core/free-generation/agents/narrative-flow-agent';
+import { WhitespaceBalanceAgent } from '@/src/core/free-generation/agents/whitespace-balance-agent';
+import { DataVisualizationAgent } from '@/src/core/free-generation/agents/data-visualization-agent';
+import { FontQualityAgent } from '@/src/core/free-generation/agents/font-quality-agent';
+import { LayoutQualityAgent } from '@/src/core/free-generation/agents/layout-quality-agent';
+import { ContentQualityAgent } from '@/src/core/free-generation/agents/content-quality-agent';
 import {
   type FreeSlideOptions,
   type FreeOutlineResult,
@@ -95,7 +112,7 @@ export class FreeSlideGenerationPipeline {
     options: FreeSlideOptions,
     onProgress?: ProgressCallback
   ): Promise<PipelineResult> {
-    const { language, page, topic, author } = options;
+    const { language, page, topic, author, prompt } = options;
     const failedSlides: FailedSlideInfo[] = [];
     const steps: StepRecord[] = [];
     const pipelineStart = Date.now();
@@ -115,6 +132,7 @@ export class FreeSlideGenerationPipeline {
         topic,
         theme: options.theme,
         fontPair: options.fontPair,
+        prompt,
       })
     );
 
@@ -347,9 +365,26 @@ export class FreeSlideGenerationPipeline {
       stepName: 'content_enhancement', stepOrder: 5, durationMs: enhanceMs, status: 'completed',
       details: { issuesFound: enhancementResult.issuesFound, issuesFixed: enhancementResult.issuesFixed },
     });
-    progress(58, `Content enhanced: ${enhancementResult.issuesFixed} fixes applied`);
+    progress(54, `Content enhanced: ${enhancementResult.issuesFixed} fixes applied`);
 
-    // ===== Step 6: Smart Image Search & Placement (58-72%) =====
+    // Pre-compute patterns array (used by multiple agents)
+    const patterns = outlineResult.slides.map(s => s.pattern);
+
+    // ===== Step 6: Data Visualization Agent (54-58%) =====
+    progress(55, 'Generating data visualizations');
+
+    const { result: dataVizResult, durationMs: dataVizMs } = await timed(async () => {
+      const dataVizAgent = new DataVisualizationAgent(this.aiClient, theme, this.logger);
+      return dataVizAgent.process(allSlides, topic, language, patterns);
+    });
+
+    steps.push({
+      stepName: 'data_visualization', stepOrder: 6, durationMs: dataVizMs, status: 'completed',
+      details: { chartsGenerated: dataVizResult.chartsGenerated, chartsFixed: dataVizResult.chartsFixed },
+    });
+    progress(58, `Data viz: ${dataVizResult.chartsGenerated} charts generated, ${dataVizResult.chartsFixed} fixed`);
+
+    // ===== Step 7: Smart Image Search & Placement (58-68%) =====
     progress(59, 'Smart image search');
 
     const smartImageAgent = new SmartImageAgent(this.aiClient, this.logger);
@@ -405,13 +440,13 @@ export class FreeSlideGenerationPipeline {
     });
 
     steps.push({
-      stepName: 'smart_images', stepOrder: 6, durationMs: imageMs, status: 'completed',
+      stepName: 'smart_images', stepOrder: 7, durationMs: imageMs, status: 'completed',
       details: { imagesFound: usedImageUrls.size },
     });
-    progress(72, `${usedImageUrls.size} images found`);
+    progress(68, `${usedImageUrls.size} images found`);
 
-    // ===== Step 7: Color Harmony Check (72-76%) =====
-    progress(73, 'Checking color harmony');
+    // ===== Step 8: Color Harmony Check (68-71%) =====
+    progress(69, 'Checking color harmony');
 
     const { result: harmonyResult, durationMs: harmonyMs } = timedSync(() => {
       const harmonyAgent = new ColorHarmonyAgent(theme);
@@ -419,17 +454,32 @@ export class FreeSlideGenerationPipeline {
     });
 
     steps.push({
-      stepName: 'color_harmony', stepOrder: 7, durationMs: harmonyMs, status: 'completed',
+      stepName: 'color_harmony', stepOrder: 8, durationMs: harmonyMs, status: 'completed',
       details: {
         contrastIssues: harmonyResult.issuesFound,
         contrastFixed: harmonyResult.issuesFixed,
         chartColorsFixed: harmonyResult.chartColorsFixed,
       },
     });
-    progress(76, `Color harmony: ${harmonyResult.issuesFixed} contrast fixes`);
+    progress(71, `Color harmony: ${harmonyResult.issuesFixed} contrast fixes`);
 
-    // ===== Step 8: Quality review (76-82%) =====
-    progress(77, 'Reviewing slide quality');
+    // ===== Step 9: Narrative Flow Analysis (71-74%) =====
+    progress(72, 'Analyzing narrative flow');
+
+    const outlineTitlesForFlow = outlineResult.outline.map((o) => o.title);
+    const { result: narrativeResult, durationMs: narrativeMs } = await timed(async () => {
+      const narrativeAgent = new NarrativeFlowAgent(this.aiClient, this.logger);
+      return narrativeAgent.analyze(allSlides, topic, language, outlineTitlesForFlow);
+    });
+
+    steps.push({
+      stepName: 'narrative_flow', stepOrder: 9, durationMs: narrativeMs, status: 'completed',
+      details: { flowScore: narrativeResult.flowScore, issuesFound: narrativeResult.issuesFound },
+    });
+    progress(74, `Narrative flow: score ${narrativeResult.flowScore}/100, ${narrativeResult.issuesFound} issues`);
+
+    // ===== Step 10: Quality review (74-78%) =====
+    progress(75, 'Reviewing slide quality');
 
     const slidesJson = allSlides.map((slide, idx) => ({
       id: slide.id,
@@ -445,12 +495,61 @@ export class FreeSlideGenerationPipeline {
     });
 
     steps.push({
-      stepName: 'review', stepOrder: 8, durationMs: reviewMs, status: 'completed',
+      stepName: 'review', stepOrder: 10, durationMs: reviewMs, status: 'completed',
       details: { score: reviewResult.summary.overallScore },
     });
-    progress(82, `Quality review: score ${reviewResult.summary.overallScore}/100`);
+    progress(78, `Quality review: score ${reviewResult.summary.overallScore}/100`);
 
-    // ===== Step 9: Collision prevention (82-88%) =====
+    // ===== Step 11: Font Quality Check (78-79%) =====
+    progress(78, 'Checking font quality');
+
+    const { result: fontResult, durationMs: fontMs } = timedSync(() => {
+      const fontAgent = new FontQualityAgent();
+      return fontAgent.audit(allSlides);
+    });
+
+    steps.push({
+      stepName: 'font_quality', stepOrder: 11, durationMs: fontMs, status: 'completed',
+      details: { issuesFound: fontResult.issuesFound, issuesFixed: fontResult.issuesFixed },
+    });
+    progress(79, `Font quality: ${fontResult.issuesFixed} fixes`);
+
+    // ===== Step 12: Layout Quality Check (79-80%) =====
+    progress(79, 'Checking layout quality');
+
+    const { result: layoutResult, durationMs: layoutMs } = timedSync(() => {
+      const layoutAgent = new LayoutQualityAgent();
+      return layoutAgent.audit(allSlides);
+    });
+
+    steps.push({
+      stepName: 'layout_quality', stepOrder: 12, durationMs: layoutMs, status: 'completed',
+      details: { issuesFound: layoutResult.issuesFound, issuesFixed: layoutResult.issuesFixed },
+    });
+    progress(80, `Layout quality: ${layoutResult.issuesFixed} fixes`);
+
+    // ===== Step 13: Content Quality Check (80-82%) =====
+    progress(80, 'Checking content quality');
+
+    const { result: contentQualityResult, durationMs: contentQualityMs } = await timed(async () => {
+      const contentQualityAgent = new ContentQualityAgent(this.aiClient, this.logger);
+      return contentQualityAgent.audit(allSlides, topic, language);
+    });
+
+    steps.push({
+      stepName: 'content_quality', stepOrder: 13, durationMs: contentQualityMs, status: 'completed',
+      details: {
+        issuesFound: contentQualityResult.issuesFound,
+        issuesFixed: contentQualityResult.issuesFixed,
+        empty: contentQualityResult.emptyElements,
+        duplicates: contentQualityResult.duplicateTitles,
+        quotesStripped: contentQualityResult.quotesStripped,
+        regenerated: contentQualityResult.regenerated,
+      },
+    });
+    progress(82, `Content quality: ${contentQualityResult.issuesFixed} fixes, ${contentQualityResult.regenerated} regenerated`);
+
+    // ===== Step 14: Collision prevention (82-85%) =====
     progress(83, 'Collision prevention');
 
     let totalCollisionsFixed = 0;
@@ -498,7 +597,8 @@ export class FreeSlideGenerationPipeline {
           });
 
           // Only run collision detection on free-standing content elements
-          if (contentElements.length > 1) {
+          // Skip if few elements — pattern layouts are trusted
+          if (contentElements.length > 2) {
             const result = collisionAgent.fixAndValidate(contentElements);
             totalCollisionsFixed += result.fixesApplied;
 
@@ -522,21 +622,56 @@ export class FreeSlideGenerationPipeline {
     });
 
     steps.push({
-      stepName: 'collision_prevention', stepOrder: 9,
+      stepName: 'collision_prevention', stepOrder: 14,
       durationMs: collisionMs, status: 'completed',
       details: { collisionsFixed: totalCollisionsFixed },
     });
-    progress(88, `Collision prevention: ${totalCollisionsFixed} fixes`);
+    progress(85, `Collision prevention: ${totalCollisionsFixed} fixes`);
 
-    // ===== Step 10: Transitions + Image Placement + RTL (88-93%) =====
-    progress(89, 'Applying transitions and image placement');
+    // ===== Step 15: Whitespace Balance (85-86%) =====
+    progress(85, 'Balancing whitespace');
+
+    const { result: whitespaceResult, durationMs: whitespaceMs } = timedSync(() => {
+      const whitespaceAgent = new WhitespaceBalanceAgent();
+      return whitespaceAgent.balance(allSlides);
+    });
+
+    steps.push({
+      stepName: 'whitespace_balance', stepOrder: 15, durationMs: whitespaceMs, status: 'completed',
+      details: { issuesFound: whitespaceResult.issuesFound, issuesFixed: whitespaceResult.issuesFixed },
+    });
+    progress(86, `Whitespace: ${whitespaceResult.issuesFixed} fixes`);
+
+    // ===== Step 16: Accessibility Audit (86-88%) =====
+    progress(86, 'Running accessibility audit');
+
+    const { result: accessibilityResult, durationMs: accessMs } = await timed(async () => {
+      const accessAgent = new AccessibilityAgent(this.aiClient, this.logger);
+      return accessAgent.audit(allSlides, topic, language);
+    });
+
+    steps.push({
+      stepName: 'accessibility', stepOrder: 16, durationMs: accessMs, status: 'completed',
+      details: {
+        issuesFound: accessibilityResult.issuesFound,
+        issuesFixed: accessibilityResult.issuesFixed,
+        altTexts: accessibilityResult.altTextsGenerated,
+      },
+    });
+    progress(88, `Accessibility: ${accessibilityResult.issuesFixed} fixes, ${accessibilityResult.altTextsGenerated} alt texts`);
+
+    // ===== Step 17: Transitions + Animations + Image Placement + RTL (88-92%) =====
+    progress(89, 'Applying transitions, animations and image placement');
 
     const optimizedSlides = allSlides;
 
     // Transition Agent
     const transitionAgent = new TransitionAgent();
-    const patterns = outlineResult.slides.map(s => s.pattern);
     transitionAgent.assignTransitions(optimizedSlides, patterns);
+
+    // Animation Agent (element-level entrance animations)
+    const animationAgent = new AnimationAgent();
+    const animationResult = animationAgent.assignAnimations(optimizedSlides);
 
     // Image Placement Agent (handles placeholders for missing images + overlays)
     const imagePlacementAgent = new ImagePlacementAgent(theme);
@@ -562,19 +697,34 @@ export class FreeSlideGenerationPipeline {
     }
 
     steps.push({
-      stepName: 'finalization', stepOrder: 10, durationMs: 0, status: 'completed',
+      stepName: 'finalization', stepOrder: 17, durationMs: 0, status: 'completed',
       details: {
         transitions: optimizedSlides.length,
+        animations: animationResult.animationsAdded,
         placeholders: placementResult.placeholdersGenerated,
         overlays: placementResult.overlaysAdded,
         rtlAdjustments,
         fontUpdates,
       },
     });
-    progress(93, 'Transitions and placement applied');
+    progress(92, 'Transitions, animations and placement applied');
 
-    // ===== Step 11: Export PPTX (93-100%) =====
-    progress(94, 'Exporting PPTX');
+    // ===== Step 18: Speaker Notes Generation (92-95%) =====
+    progress(93, 'Generating speaker notes');
+
+    const { result: speakerNotesResult, durationMs: notesMs } = await timed(async () => {
+      const notesAgent = new SpeakerNotesAgent(this.aiClient, this.logger);
+      return notesAgent.generate(optimizedSlides, topic, language, outlineTitlesForFlow);
+    });
+
+    steps.push({
+      stepName: 'speaker_notes', stepOrder: 18, durationMs: notesMs, status: 'completed',
+      details: { notesGenerated: speakerNotesResult.notesGenerated },
+    });
+    progress(95, `Speaker notes: ${speakerNotesResult.notesGenerated} slides`);
+
+    // ===== Step 19: Export PPTX (95-100%) =====
+    progress(96, 'Exporting PPTX');
 
     const sessionId = Date.now();
     const sanitizedTopic = topic
@@ -609,7 +759,7 @@ export class FreeSlideGenerationPipeline {
       );
     });
 
-    steps.push({ stepName: 'export', stepOrder: 11, durationMs: exportMs, status: 'completed' });
+    steps.push({ stepName: 'export', stepOrder: 19, durationMs: exportMs, status: 'completed' });
     progress(100, 'PPTX exported successfully');
 
     // ===== Save to database =====
@@ -650,8 +800,17 @@ export class FreeSlideGenerationPipeline {
           patterns: outlineResult.slides.map((s) => s.pattern),
           agents: {
             contentEnhancement: { found: enhancementResult.issuesFound, fixed: enhancementResult.issuesFixed },
+            dataVisualization: { chartsGenerated: dataVizResult.chartsGenerated, chartsFixed: dataVizResult.chartsFixed },
             colorHarmony: { contrastFixed: harmonyResult.issuesFixed, chartFixed: harmonyResult.chartColorsFixed },
+            narrativeFlow: { score: narrativeResult.flowScore, issues: narrativeResult.issuesFound },
+            whitespace: { found: whitespaceResult.issuesFound, fixed: whitespaceResult.issuesFixed },
+            accessibility: { found: accessibilityResult.issuesFound, fixed: accessibilityResult.issuesFixed, altTexts: accessibilityResult.altTextsGenerated },
+            animations: { added: animationResult.animationsAdded },
+            speakerNotes: { generated: speakerNotesResult.notesGenerated },
             imagePlacement: { placeholders: placementResult.placeholdersGenerated, overlays: placementResult.overlaysAdded },
+            fontQuality: { found: fontResult.issuesFound, fixed: fontResult.issuesFixed },
+            layoutQuality: { found: layoutResult.issuesFound, fixed: layoutResult.issuesFixed },
+            contentQuality: { found: contentQualityResult.issuesFound, fixed: contentQualityResult.issuesFixed, regenerated: contentQualityResult.regenerated },
             typography: { fontUpdates, rtlAdjustments },
           },
         },
@@ -698,9 +857,18 @@ export class FreeSlideGenerationPipeline {
       },
       agents: {
         contentEnhancement: enhancementResult,
+        dataVisualization: dataVizResult,
         colorHarmony: harmonyResult,
+        narrativeFlow: narrativeResult,
+        whitespace: whitespaceResult,
+        accessibility: accessibilityResult,
+        animations: animationResult,
+        speakerNotes: speakerNotesResult,
         imagePlacement: placementResult,
         transitions: { applied: optimizedSlides.length },
+        fontQuality: fontResult,
+        layoutQuality: layoutResult,
+        contentQuality: contentQualityResult,
         typography: { titleFont: typography.titleFont, bodyFont: typography.bodyFont, isRTL: typography.isRTL, rtlAdjustments },
       },
       failedSlides,
